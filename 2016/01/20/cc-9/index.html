@@ -12,7 +12,8 @@
 <meta property="og:site_name" content="小土刀">
 <meta property="og:description" content="这一讲我们就要开始实际接触一个真实的项目——处理一个大文本数据集了。在云上编程和平时学习的可能有一些不同，这里会尽量写得详细一些。">
 <meta property="og:image" content="http://yoursite.com/images/14532371430507.jpg">
-<meta property="og:updated_time" content="2016-01-20T17:57:12.000Z">
+<meta property="og:image" content="http://yoursite.com/images/14533207601658.jpg">
+<meta property="og:updated_time" content="2016-01-20T20:15:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云计算 第 9 课 Sequential Programming">
 <meta name="twitter:description" content="这一讲我们就要开始实际接触一个真实的项目——处理一个大文本数据集了。在云上编程和平时学习的可能有一些不同，这里会尽量写得详细一些。">
@@ -273,7 +274,13 @@
 <p>这个项目中，我们主要会分析 2015 年 12 月的数据。不过现在我们只需要处理 12 月 1 日的第一个小时的数据。数据在 <code>s3://cmucc-datasets/wikipediatraf/201512/pagecounts-20151201-000000.gz</code>。可以使用 <code>aws-cli</code>, <code>s3cmd</code> 或者 S3 查看器来了解。但是在服务器上，就需要用 <code>wget</code> 来下载了，具体的地址是 <a href="https://cmucc-datasets.s3.amazonaws.com/wikipediatraf/201512/pagecounts-20151201-000000.gz" target="_blank" rel="external">https://cmucc-datasets.s3.amazonaws.com/wikipediatraf/201512/pagecounts-20151201-000000.gz</a></p>
 <p>命令为 <code>wget https://cmucc-datasets.s3.amazonaws.com/wikipediatraf/201512/pagecounts-20151201-000000.gz</code></p>
 <p>如果不是很了解如何访问 Amazon S3，可以回头看看<a href="http://wdxtub.com/2016/01/15/cc-2/" target="_blank" rel="external">云计算 第 2 课 AWS 简介</a></p>
-<h3 id="Data_Filtering"><a href="#Data_Filtering" class="headerlink" title="Data Filtering"></a>Data Filtering</h3>
+<h3 id="Data_Filtering"><a href="#Data_Filtering" class="headerlink" title="Data Filtering"></a>Data Filtering</h3><p>简单来说，我们要从维基的访问数据中，用各类数据分析的方法，看看能不能找到些什么有意思的东西。</p>
+<p>我们会先从第一个小时的维基流量日志开始分析，主要关注英文维基的内容。这种从完整数据的一个子集开始测试起并最终应用到全部数据的方法，在之后的项目中会很有用。</p>
+<p>我们先使用 <code>ami-95e9cdff</code>（社区 AMI 中）来创建一个 <code>t1.micro</code> 实例，记得在右上角把地区切换为 <code>弗吉尼亚北部</code>。允许 SSH 和 HTTP 连接（可以使用之前的安全组）。像下面这样：</p>
+<p><img src="/images/14533207601658.jpg" alt=""></p>
+<p>这里我选择的是竞价型实例（因为会便宜一点），但需要注意的是申请成功之后一定要注意重新打上标签：<code>{&quot;Key&quot;:&quot;Project&quot;,&quot;Value&quot;:&quot;1.1&quot;}</code>。</p>
+<p>然后我们耐心等待实例创建，</p>
+
       
     </div>
     
