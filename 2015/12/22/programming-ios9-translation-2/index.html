@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Programming iOS9 翻译 2 - Drawing | 小土刀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这一章会介绍如何自定义绘制代码，来让诸如 UIImageView 或 UIButton 达到期望的展现形式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programming iOS9 翻译 2 - Drawing">
+<meta property="og:url" content="http://yoursite.com/2015/12/22/programming-ios9-translation-2/index.html">
+<meta property="og:site_name" content="小土刀">
+<meta property="og:description" content="这一章会介绍如何自定义绘制代码，来让诸如 UIImageView 或 UIButton 达到期望的展现形式">
+<meta property="og:image" content="http://yoursite.com/images/pios15.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios16.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios17.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios18.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios19.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios20.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios21.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios22.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios23.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios24.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios25.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios26.jpg">
+<meta property="og:updated_time" content="2015-12-23T00:50:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Programming iOS9 翻译 2 - Drawing">
+<meta name="twitter:description" content="这一章会介绍如何自定义绘制代码，来让诸如 UIImageView 或 UIButton 达到期望的展现形式">
+  
+    <link rel="alternative" href="/atom.xml" title="小土刀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpeg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wdxtub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Agony is my triumph</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">索引</a></li>
+				        
+							<li><a href="/categories/Technique">技术</a></li>
+				        
+							<li><a href="/categories/Reading">读书</a></li>
+				        
+							<li><a href="/categories/Thinking">思考</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/API/" style="font-size: 10.63px;">API</a> <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/AWS/" style="font-size: 11.88px;">AWS</a> <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 10.63px;">Android</a> <a href="/tags/Anroid/" style="font-size: 10px;">Anroid</a> <a href="/tags/Apple/" style="font-size: 11.88px;">Apple</a> <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/CMU/" style="font-size: 20px;">CMU</a> <a href="/tags/COC/" style="font-size: 10px;">COC</a> <a href="/tags/Capcom/" style="font-size: 10px;">Capcom</a> <a href="/tags/CodePlane/" style="font-size: 10px;">CodePlane</a> <a href="/tags/Datalab/" style="font-size: 10px;">Datalab</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IT/" style="font-size: 10px;">IT</a> <a href="/tags/Imaging-Cup/" style="font-size: 10px;">Imaging Cup</a> <a href="/tags/Java/" style="font-size: 11.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10.63px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Overview/" style="font-size: 10px;">Overview</a> <a href="/tags/PS4/" style="font-size: 10px;">PS4</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Swift/" style="font-size: 13.13px;">Swift</a> <a href="/tags/Swift-千金方/" style="font-size: 10.63px;">Swift 千金方</a> <a href="/tags/TOC/" style="font-size: 10px;">TOC</a> <a href="/tags/V2/" style="font-size: 10px;">V2</a> <a href="/tags/YC-创业课/" style="font-size: 10px;">YC 创业课</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 11.25px;">iOS</a> <a href="/tags/iOS-9/" style="font-size: 10px;">iOS 9</a> <a href="/tags/iOS-杂病论/" style="font-size: 10.63px;">iOS 杂病论</a> <a href="/tags/iOS9/" style="font-size: 13.75px;">iOS9</a> <a href="/tags/三观/" style="font-size: 10px;">三观</a> <a href="/tags/世界/" style="font-size: 10px;">世界</a> <a href="/tags/东野圭吾/" style="font-size: 10px;">东野圭吾</a> <a href="/tags/个人发展/" style="font-size: 10px;">个人发展</a> <a href="/tags/中国/" style="font-size: 10px;">中国</a> <a href="/tags/中秋/" style="font-size: 10px;">中秋</a> <a href="/tags/乐趣/" style="font-size: 10px;">乐趣</a> <a href="/tags/习题/" style="font-size: 10px;">习题</a> <a href="/tags/习题课/" style="font-size: 10px;">习题课</a> <a href="/tags/云计算/" style="font-size: 15.63px;">云计算</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/亲情/" style="font-size: 10px;">亲情</a> <a href="/tags/人口/" style="font-size: 10px;">人口</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/人造/" style="font-size: 10px;">人造</a> <a href="/tags/今何在/" style="font-size: 10px;">今何在</a> <a href="/tags/价值/" style="font-size: 10px;">价值</a> <a href="/tags/任天堂/" style="font-size: 10px;">任天堂</a> <a href="/tags/体力/" style="font-size: 10px;">体力</a> <a href="/tags/信息/" style="font-size: 10px;">信息</a> <a href="/tags/做饭/" style="font-size: 10px;">做饭</a> <a href="/tags/健康/" style="font-size: 10px;">健康</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/傅真/" style="font-size: 10px;">傅真</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/兄弟/" style="font-size: 10px;">兄弟</a> <a href="/tags/再而三/" style="font-size: 10px;">再而三</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/削发/" style="font-size: 10px;">削发</a> <a href="/tags/动画/" style="font-size: 10.63px;">动画</a> <a href="/tags/努力/" style="font-size: 10px;">努力</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/匹兹堡/" style="font-size: 10.63px;">匹兹堡</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/博客/" style="font-size: 11.88px;">博客</a> <a href="/tags/原创/" style="font-size: 12.5px;">原创</a> <a href="/tags/叙利亚/" style="font-size: 10px;">叙利亚</a> <a href="/tags/口译/" style="font-size: 10px;">口译</a> <a href="/tags/古希腊/" style="font-size: 10px;">古希腊</a> <a href="/tags/古董/" style="font-size: 10px;">古董</a> <a href="/tags/同性恋/" style="font-size: 10px;">同性恋</a> <a href="/tags/启程/" style="font-size: 10px;">启程</a> <a href="/tags/告别/" style="font-size: 10px;">告别</a> <a href="/tags/周记/" style="font-size: 17.5px;">周记</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/哲学/" style="font-size: 10.63px;">哲学</a> <a href="/tags/回合制/" style="font-size: 10px;">回合制</a> <a href="/tags/回头无岸/" style="font-size: 10px;">回头无岸</a> <a href="/tags/回忆/" style="font-size: 11.88px;">回忆</a> <a href="/tags/因果/" style="font-size: 10px;">因果</a> <a href="/tags/图像分类/" style="font-size: 10px;">图像分类</a> <a href="/tags/图灵/" style="font-size: 10px;">图灵</a> <a href="/tags/土豆/" style="font-size: 10px;">土豆</a> <a href="/tags/圣诞/" style="font-size: 10px;">圣诞</a> <a href="/tags/坚持/" style="font-size: 10px;">坚持</a> <a href="/tags/基础/" style="font-size: 11.25px;">基础</a> <a href="/tags/多元思维模型/" style="font-size: 10px;">多元思维模型</a> <a href="/tags/多看/" style="font-size: 10.63px;">多看</a> <a href="/tags/大一统/" style="font-size: 10px;">大一统</a> <a href="/tags/大圣归来/" style="font-size: 10.63px;">大圣归来</a> <a href="/tags/大学/" style="font-size: 10px;">大学</a> <a href="/tags/大结局/" style="font-size: 10px;">大结局</a> <a href="/tags/字体/" style="font-size: 10px;">字体</a> <a href="/tags/字节/" style="font-size: 10px;">字节</a> <a href="/tags/孙悟空/" style="font-size: 10px;">孙悟空</a> <a href="/tags/孤独/" style="font-size: 10px;">孤独</a> <a href="/tags/学习/" style="font-size: 16.25px;">学习</a> <a href="/tags/学术/" style="font-size: 10px;">学术</a> <a href="/tags/实例/" style="font-size: 10.63px;">实例</a> <a href="/tags/实践/" style="font-size: 10px;">实践</a> <a href="/tags/家庭/" style="font-size: 11.25px;">家庭</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/富勒/" style="font-size: 10px;">富勒</a> <a href="/tags/将军/" style="font-size: 10px;">将军</a> <a href="/tags/小学/" style="font-size: 10px;">小学</a> <a href="/tags/小说/" style="font-size: 10.63px;">小说</a> <a href="/tags/层/" style="font-size: 10px;">层</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/工作/" style="font-size: 10.63px;">工作</a> <a href="/tags/工作流/" style="font-size: 10px;">工作流</a> <a href="/tags/帐篷/" style="font-size: 10px;">帐篷</a> <a href="/tags/度假/" style="font-size: 10px;">度假</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/开学/" style="font-size: 10.63px;">开学</a> <a href="/tags/开篇/" style="font-size: 10.63px;">开篇</a> <a href="/tags/徐州/" style="font-size: 10px;">徐州</a> <a href="/tags/微软/" style="font-size: 10px;">微软</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/心智/" style="font-size: 11.25px;">心智</a> <a href="/tags/心理/" style="font-size: 10px;">心理</a> <a href="/tags/态度/" style="font-size: 10px;">态度</a> <a href="/tags/思考/" style="font-size: 16.25px;">思考</a> <a href="/tags/总体介绍/" style="font-size: 10px;">总体介绍</a> <a href="/tags/总览/" style="font-size: 10px;">总览</a> <a href="/tags/悖论/" style="font-size: 10px;">悖论</a> <a href="/tags/情侣/" style="font-size: 10px;">情侣</a> <a href="/tags/感恩节/" style="font-size: 10.63px;">感恩节</a> <a href="/tags/感情/" style="font-size: 10px;">感情</a> <a href="/tags/愿望/" style="font-size: 10px;">愿望</a> <a href="/tags/成功/" style="font-size: 10px;">成功</a> <a href="/tags/成绩/" style="font-size: 10px;">成绩</a> <a href="/tags/成长/" style="font-size: 11.25px;">成长</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/扩展/" style="font-size: 10px;">扩展</a> <a href="/tags/技巧/" style="font-size: 10.63px;">技巧</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/抱怨/" style="font-size: 10px;">抱怨</a> <a href="/tags/拖延症/" style="font-size: 10.63px;">拖延症</a> <a href="/tags/挫折/" style="font-size: 10px;">挫折</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/改变/" style="font-size: 11.25px;">改变</a> <a href="/tags/改进/" style="font-size: 10px;">改进</a> <a href="/tags/效率/" style="font-size: 10.63px;">效率</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/教育/" style="font-size: 10px;">教育</a> <a href="/tags/教训/" style="font-size: 10px;">教训</a> <a href="/tags/数字/" style="font-size: 10px;">数字</a> <a href="/tags/整型/" style="font-size: 10px;">整型</a> <a href="/tags/整理/" style="font-size: 10.63px;">整理</a> <a href="/tags/文化/" style="font-size: 10.63px;">文化</a> <a href="/tags/文本处理/" style="font-size: 10px;">文本处理</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 10px;">斯坦福 CS193p</a> <a href="/tags/新参者/" style="font-size: 10.63px;">新参者</a> <a href="/tags/新特性/" style="font-size: 10px;">新特性</a> <a href="/tags/方向/" style="font-size: 10px;">方向</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/方法论/" style="font-size: 10px;">方法论</a> <a href="/tags/旅行/" style="font-size: 11.88px;">旅行</a> <a href="/tags/旅途/" style="font-size: 10px;">旅途</a> <a href="/tags/旧金山/" style="font-size: 10.63px;">旧金山</a> <a href="/tags/早起/" style="font-size: 10px;">早起</a> <a href="/tags/时代/" style="font-size: 10px;">时代</a> <a href="/tags/时差/" style="font-size: 10.63px;">时差</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/明智行动的艺术/" style="font-size: 10px;">明智行动的艺术</a> <a href="/tags/智慧/" style="font-size: 10px;">智慧</a> <a href="/tags/暴走/" style="font-size: 10px;">暴走</a> <a href="/tags/朋友/" style="font-size: 12.5px;">朋友</a> <a href="/tags/期末/" style="font-size: 10.63px;">期末</a> <a href="/tags/未来/" style="font-size: 10px;">未来</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/机遇/" style="font-size: 10px;">机遇</a> <a href="/tags/极简/" style="font-size: 10px;">极简</a> <a href="/tags/架构/" style="font-size: 15.63px;">架构</a> <a href="/tags/核心/" style="font-size: 10px;">核心</a> <a href="/tags/格子/" style="font-size: 10px;">格子</a> <a href="/tags/格局/" style="font-size: 10px;">格局</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/概率/" style="font-size: 10px;">概率</a> <a href="/tags/概览/" style="font-size: 10px;">概览</a> <a href="/tags/概述/" style="font-size: 10px;">概述</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/欧洲/" style="font-size: 10px;">欧洲</a> <a href="/tags/步行/" style="font-size: 10px;">步行</a> <a href="/tags/死亡/" style="font-size: 10.63px;">死亡</a> <a href="/tags/比特/" style="font-size: 10px;">比特</a> <a href="/tags/氐惆/" style="font-size: 10px;">氐惆</a> <a href="/tags/民主/" style="font-size: 10px;">民主</a> <a href="/tags/沉默/" style="font-size: 10px;">沉默</a> <a href="/tags/沟通/" style="font-size: 10px;">沟通</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/洞察/" style="font-size: 10px;">洞察</a> <a href="/tags/活动/" style="font-size: 10px;">活动</a> <a href="/tags/浮点数/" style="font-size: 10px;">浮点数</a> <a href="/tags/深度/" style="font-size: 10px;">深度</a> <a href="/tags/清醒思考的艺术/" style="font-size: 10px;">清醒思考的艺术</a> <a href="/tags/游乐场/" style="font-size: 10px;">游乐场</a> <a href="/tags/游戏/" style="font-size: 14.38px;">游戏</a> <a href="/tags/游戏机/" style="font-size: 10px;">游戏机</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/滚动视图/" style="font-size: 10px;">滚动视图</a> <a href="/tags/灵活/" style="font-size: 10px;">灵活</a> <a href="/tags/炸鸡/" style="font-size: 10px;">炸鸡</a> <a href="/tags/烤肉/" style="font-size: 10px;">烤肉</a> <a href="/tags/热血/" style="font-size: 10px;">热血</a> <a href="/tags/照片/" style="font-size: 10px;">照片</a> <a href="/tags/爱情/" style="font-size: 11.25px;">爱情</a> <a href="/tags/父母/" style="font-size: 10px;">父母</a> <a href="/tags/独立博客/" style="font-size: 10px;">独立博客</a> <a href="/tags/玩家/" style="font-size: 10px;">玩家</a> <a href="/tags/环境/" style="font-size: 10px;">环境</a> <a href="/tags/理科生/" style="font-size: 10px;">理科生</a> <a href="/tags/生化危机/" style="font-size: 10px;">生化危机</a> <a href="/tags/生日/" style="font-size: 10.63px;">生日</a> <a href="/tags/生活/" style="font-size: 19.38px;">生活</a> <a href="/tags/电影/" style="font-size: 11.88px;">电影</a> <a href="/tags/男人/" style="font-size: 10px;">男人</a> <a href="/tags/界限/" style="font-size: 10px;">界限</a> <a href="/tags/留学生/" style="font-size: 10px;">留学生</a> <a href="/tags/目标/" style="font-size: 10.63px;">目标</a> <a href="/tags/看图说话/" style="font-size: 10px;">看图说话</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/知识管理/" style="font-size: 10px;">知识管理</a> <a href="/tags/研究/" style="font-size: 10px;">研究</a> <a href="/tags/社交/" style="font-size: 10px;">社交</a> <a href="/tags/社区/" style="font-size: 10px;">社区</a> <a href="/tags/神作/" style="font-size: 10px;">神作</a> <a href="/tags/离别/" style="font-size: 10px;">离别</a> <a href="/tags/科学/" style="font-size: 10px;">科学</a> <a href="/tags/科幻/" style="font-size: 10.63px;">科幻</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/积累/" style="font-size: 12.5px;">积累</a> <a href="/tags/程序员/" style="font-size: 11.25px;">程序员</a> <a href="/tags/穷查理宝典/" style="font-size: 10px;">穷查理宝典</a> <a href="/tags/童话/" style="font-size: 10.63px;">童话</a> <a href="/tags/笔记/" style="font-size: 16.25px;">笔记</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/简洁/" style="font-size: 10px;">简洁</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/类型/" style="font-size: 10px;">类型</a> <a href="/tags/粒度/" style="font-size: 10px;">粒度</a> <a href="/tags/精选/" style="font-size: 11.88px;">精选</a> <a href="/tags/系列/" style="font-size: 10px;">系列</a> <a href="/tags/索尼/" style="font-size: 10px;">索尼</a> <a href="/tags/纽约/" style="font-size: 10.63px;">纽约</a> <a href="/tags/组成原理/" style="font-size: 12.5px;">组成原理</a> <a href="/tags/组织/" style="font-size: 10px;">组织</a> <a href="/tags/经典/" style="font-size: 10px;">经典</a> <a href="/tags/绘制/" style="font-size: 10px;">绘制</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/编辑距离/" style="font-size: 10px;">编辑距离</a> <a href="/tags/羊驼/" style="font-size: 10px;">羊驼</a> <a href="/tags/美剧/" style="font-size: 10px;">美剧</a> <a href="/tags/美国/" style="font-size: 10px;">美国</a> <a href="/tags/翻译/" style="font-size: 13.75px;">翻译</a> <a href="/tags/老朝奉/" style="font-size: 10px;">老朝奉</a> <a href="/tags/自尊/" style="font-size: 10px;">自尊</a> <a href="/tags/自我/" style="font-size: 10.63px;">自我</a> <a href="/tags/节奏/" style="font-size: 10px;">节奏</a> <a href="/tags/苏州/" style="font-size: 10px;">苏州</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/英雄/" style="font-size: 11.25px;">英雄</a> <a href="/tags/英雄联盟/" style="font-size: 10.63px;">英雄联盟</a> <a href="/tags/苹果/" style="font-size: 10px;">苹果</a> <a href="/tags/荒野求生/" style="font-size: 10px;">荒野求生</a> <a href="/tags/萨博/" style="font-size: 10px;">萨博</a> <a href="/tags/落后/" style="font-size: 10px;">落后</a> <a href="/tags/蝴蝶效应/" style="font-size: 10px;">蝴蝶效应</a> <a href="/tags/行动/" style="font-size: 10px;">行动</a> <a href="/tags/西行者/" style="font-size: 10px;">西行者</a> <a href="/tags/观念/" style="font-size: 10px;">观念</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/视图控制器/" style="font-size: 10px;">视图控制器</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/计算机/" style="font-size: 15px;">计算机</a> <a href="/tags/记录/" style="font-size: 10.63px;">记录</a> <a href="/tags/记忆/" style="font-size: 10.63px;">记忆</a> <a href="/tags/讲义/" style="font-size: 10px;">讲义</a> <a href="/tags/许愿/" style="font-size: 10px;">许愿</a> <a href="/tags/论道/" style="font-size: 14.38px;">论道</a> <a href="/tags/设计/" style="font-size: 16.88px;">设计</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访谈/" style="font-size: 10px;">访谈</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/读书/" style="font-size: 18.13px;">读书</a> <a href="/tags/课程/" style="font-size: 10px;">课程</a> <a href="/tags/调整/" style="font-size: 10px;">调整</a> <a href="/tags/足球/" style="font-size: 10.63px;">足球</a> <a href="/tags/跑题/" style="font-size: 10px;">跑题</a> <a href="/tags/路线/" style="font-size: 10px;">路线</a> <a href="/tags/转型/" style="font-size: 10px;">转型</a> <a href="/tags/转换/" style="font-size: 10px;">转换</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/轻量/" style="font-size: 10px;">轻量</a> <a href="/tags/运动/" style="font-size: 10px;">运动</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/运算符重载/" style="font-size: 10px;">运算符重载</a> <a href="/tags/运营/" style="font-size: 10.63px;">运营</a> <a href="/tags/进阶/" style="font-size: 10px;">进阶</a> <a href="/tags/连接/" style="font-size: 10px;">连接</a> <a href="/tags/迷茫/" style="font-size: 10px;">迷茫</a> <a href="/tags/逆向思维/" style="font-size: 10px;">逆向思维</a> <a href="/tags/选择/" style="font-size: 11.25px;">选择</a> <a href="/tags/选课/" style="font-size: 10px;">选课</a> <a href="/tags/透析/" style="font-size: 10px;">透析</a> <a href="/tags/造假/" style="font-size: 10px;">造假</a> <a href="/tags/逻辑/" style="font-size: 10px;">逻辑</a> <a href="/tags/醒醒/" style="font-size: 10px;">醒醒</a> <a href="/tags/闭包/" style="font-size: 10.63px;">闭包</a> <a href="/tags/阅读/" style="font-size: 11.88px;">阅读</a> <a href="/tags/阿拉伯之春/" style="font-size: 10px;">阿拉伯之春</a> <a href="/tags/陌生人/" style="font-size: 10px;">陌生人</a> <a href="/tags/陪伴/" style="font-size: 10px;">陪伴</a> <a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a> <a href="/tags/难民/" style="font-size: 10px;">难民</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/顽皮狗/" style="font-size: 10px;">顽皮狗</a> <a href="/tags/预测/" style="font-size: 10px;">预测</a> <a href="/tags/预言/" style="font-size: 10px;">预言</a> <a href="/tags/马伯庸/" style="font-size: 10px;">马伯庸</a> <a href="/tags/骑行/" style="font-size: 10px;">骑行</a> <a href="/tags/高中/" style="font-size: 10px;">高中</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://illustrationsencouleur.lofter.com/">illustrations</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wdxtub.lofter.com/">wdxtub@lofter</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wdxtub</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wdxtub</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Agony is my triumph</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">索引</a></li>
+		        
+					<li><a href="/categories/Technique">技术</a></li>
+		        
+					<li><a href="/categories/Reading">读书</a></li>
+		        
+					<li><a href="/categories/Thinking">思考</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-programming-ios9-translation-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/22/programming-ios9-translation-2/" class="article-date">
+  	<time datetime="2015-12-22T21:37:18.000Z" itemprop="datePublished">2015-12-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Programming iOS9 翻译 2 - Drawing
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS9/">iOS9</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘制/">绘制</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Technique/">Technique</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一章会介绍如何自定义绘制代码，来让诸如 <code>UIImageView</code> 或 <code>UIButton</code> 达到期望的展现形式</p>
+<a id="more"></a>
+<hr>
+<h2 id="Images_and_Image_Views"><a href="#Images_and_Image_Views" class="headerlink" title="Images and Image Views"></a>Images and Image Views</h2><p><code>UIImage</code> 可以从磁盘中读入一个文件，支持 TIFF, JPEG, GIF 和 PNG。iOS 对 png 支持比较好，可能的话尽量用 png 格式。还可以通过网络下载的方式获得图片</p>
+<h2 id="Image_Files"><a href="#Image_Files" class="headerlink" title="Image Files"></a>Image Files</h2><p>可以通过 <code>UIImage</code> 中的 <code>init(named:)</code> 方法来获取一幅已有的图片，它会在如下两个地方查找：</p>
+<ul>
+<li>Asset catalog（先查找）</li>
+<li>Top level of app bundle（后查找）</li>
+</ul>
+<p>如果调用 <code>init(named:)</code> 时已有图片数据的缓存，那么就可以立即被载入。如果使用 <code>init(contentsOfFile:)</code> 则不会缓存，这个方法需要提供一个地址字符串，可以通过 <code>NSBundle.mainBundle()</code> 来获取当前 bundle 的地址。载入的时候会根据屏幕分辨率自动载入对应的素材，后缀名可能会加上 <code>@2x</code> 或 <code>@3x</code>。如果名字的后面加上 <code>~ipad</code>，则会在 iPad 上运行的时候自动被使用。</p>
+<p>使用 Asset catalog 就可以用图形化界面摆脱这些命名，直接拖入到对应的格子即可。</p>
+<h2 id="Image_Views"><a href="#Image_Views" class="headerlink" title="Image Views"></a>Image Views</h2><p>许多 Cocoa 界面对象都可以接受 <code>UIImage</code> 来进行绘制，比方说 <code>UIButton</code>, <code>UINavigationBar</code>, <code>UITabBar</code></p>
+<p>一个 <code>UIImageView</code> 可以有两幅图片，一幅是 <code>image</code> 属性，另一幅是 <code>highlightedImage</code> 属性，在用户点击图片的时候不会自动切换到 highlight，在其他一些情况比方说点击 tableview 时会自动切换。</p>
+<p><code>UIImageView</code> 也有背景颜色也可以透明，替换图片只需要修改 <code>image</code> 属性，移除图片就把 <code>image</code> 属性设为 <code>nil</code> 即可。</p>
+<p>具体的绘制方法由 <code>contentMode</code> 属性决定，是拉伸？还是剪裁之类的效果，可以自己设定。</p>
+<p>还应该注意 <code>clipsToBounds</code> 属性，如果这个是关闭的，图片可能会超出 imageView 本身的边界。</p>
+<p>用代码创建 <code>UIImageView</code> 可以利用便捷构造函数 <code>init(image:)</code>, <code>init(image:highlightedImage:)</code>。默认的 <code>contentMode</code> 是 <code>.ScaleToFill</code></p>
+<p><img src="/images/pios15.jpg" alt="pios15"></p>
+<p>效果如下</p>
+<p><img src="/images/pios16.jpg" alt="pios16"></p>
+<h2 id="Resizable_Images"><a href="#Resizable_Images" class="headerlink" title="Resizable Images"></a>Resizable Images</h2><p>有时候需要可以改变尺寸的 image，比方说进度条。创建的方法也很简单，和创建一个正常的 image 一样然后调用 <code>resizableImageWithCapInsets:resizingMode:</code> 方法，<code>capInsets:</code> 参数是一个 <code>UIEdgeInsets</code>，根据 <code>resizingMode:</code>(<code>UIImageResizingMode</code>)的不同会有不同的表现形式（<code>.Tile</code> 和 <code>.Stretch</code>）。</p>
+<p>下面是不同样式的例子，先是 <code>.Tile</code> 模式</p>
+<p><img src="/images/pios17.jpg" alt="pios17"></p>
+<p><img src="/images/pios18.jpg" alt="pios18"></p>
+<p><img src="/images/pios19.jpg" alt="pios19"></p>
+<p><img src="/images/pios20.jpg" alt="pios20"></p>
+<p>然后是 <code>.Stretch</code> 模式</p>
+<p><img src="/images/pios21.jpg" alt="pios21"></p>
+<p><img src="/images/pios22.jpg" alt="pios22"></p>
+<p><img src="/images/pios23.jpg" alt="pios23"></p>
+<p><img src="/images/pios24.jpg" alt="pios24"></p>
+<p>还可以通过 slice, clip 等操作来获得更多的自定义效果</p>
+<h2 id="Image_Rendering_Mode"><a href="#Image_Rendering_Mode" class="headerlink" title="Image Rendering Mode"></a>Image Rendering Mode</h2><p>iOS 应用界面的某些地方会把图片当做 transparency mask(template)，也就是说，颜色的值不重要，只有 alpha 的值有用。比方说 tab bar item 的图片就是这样显示的</p>
+<p>怎么被处理是由 image 的 <code>renderingMode</code> 决定的，这个属性是只读的，如果需要改变，就要用 <code>imageWithRenderingMode:</code> 来创建一个新的图片，不同的模式(<code>UIImageRenderingMode</code>)有：</p>
+<ul>
+<li><code>.Automatic</code></li>
+<li><code>.AlwaysOriginal</code></li>
+<li><code>.AlwaysTemplate</code></li>
+</ul>
+<p><img src="/images/pios25.jpg" alt="pios25"></p>
+<p>也可以在 asset catalog 里修改 rendering mode</p>
+<h2 id="Reversible_Images"><a href="#Reversible_Images" class="headerlink" title="Reversible Images"></a>Reversible Images</h2><p>针对不同的阅读方向所设定的属性，有些是从右往左读的，某些时候可能需要反转图片的方向。</p>
+<p>设定 <code>imageFlippedForRightToLeftLayoutDirection</code>。这个无法在 asset catalog 里设定</p>
+<p><img src="/images/pios26.jpg" alt="pios26"></p>
+<h2 id="Graphics_Context"><a href="#Graphics_Context" class="headerlink" title="Graphics Context"></a>Graphics Context</h2><p>如果想自己绘制一些图形，就要用 graphics context 了，这一部分主要是自定义，暂时略过，后面会专门介绍</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/22/programming-ios9-translation-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Programming iOS9 翻译 3 - Layer
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/22/programming-ios9-translation-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Programming iOS9 翻译 1 - Views</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="programming-ios9-translation-2" data-title="Programming iOS9 翻译 2 - Drawing" data-url="http://yoursite.com/2015/12/22/programming-ios9-translation-2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wdxblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 wdxtub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

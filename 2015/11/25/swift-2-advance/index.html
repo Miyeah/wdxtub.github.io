@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Swift2 学习笔记 3 - 进阶 | 小土刀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这一部分是稍微高级和复杂一些的内容，主要是面向对象相关的一些设定，和其他语言的设计基本也是一致的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift2 学习笔记 3 - 进阶">
+<meta property="og:url" content="http://yoursite.com/2015/11/25/swift-2-advance/index.html">
+<meta property="og:site_name" content="小土刀">
+<meta property="og:description" content="这一部分是稍微高级和复杂一些的内容，主要是面向对象相关的一些设定，和其他语言的设计基本也是一致的">
+<meta property="og:updated_time" content="2015-11-29T22:21:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift2 学习笔记 3 - 进阶">
+<meta name="twitter:description" content="这一部分是稍微高级和复杂一些的内容，主要是面向对象相关的一些设定，和其他语言的设计基本也是一致的">
+  
+    <link rel="alternative" href="/atom.xml" title="小土刀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpeg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wdxtub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Agony is my triumph</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">索引</a></li>
+				        
+							<li><a href="/categories/Technique">技术</a></li>
+				        
+							<li><a href="/categories/Reading">读书</a></li>
+				        
+							<li><a href="/categories/Thinking">思考</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/API/" style="font-size: 10.63px;">API</a> <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/AWS/" style="font-size: 11.88px;">AWS</a> <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 10.63px;">Android</a> <a href="/tags/Anroid/" style="font-size: 10px;">Anroid</a> <a href="/tags/Apple/" style="font-size: 11.88px;">Apple</a> <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/CMU/" style="font-size: 20px;">CMU</a> <a href="/tags/COC/" style="font-size: 10px;">COC</a> <a href="/tags/Capcom/" style="font-size: 10px;">Capcom</a> <a href="/tags/CodePlane/" style="font-size: 10px;">CodePlane</a> <a href="/tags/Datalab/" style="font-size: 10px;">Datalab</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IT/" style="font-size: 10px;">IT</a> <a href="/tags/Imaging-Cup/" style="font-size: 10px;">Imaging Cup</a> <a href="/tags/Java/" style="font-size: 11.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10.63px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Overview/" style="font-size: 10px;">Overview</a> <a href="/tags/PS4/" style="font-size: 10px;">PS4</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Swift/" style="font-size: 13.13px;">Swift</a> <a href="/tags/Swift-千金方/" style="font-size: 10.63px;">Swift 千金方</a> <a href="/tags/TOC/" style="font-size: 10px;">TOC</a> <a href="/tags/V2/" style="font-size: 10px;">V2</a> <a href="/tags/YC-创业课/" style="font-size: 10px;">YC 创业课</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 11.25px;">iOS</a> <a href="/tags/iOS-9/" style="font-size: 10px;">iOS 9</a> <a href="/tags/iOS-杂病论/" style="font-size: 10.63px;">iOS 杂病论</a> <a href="/tags/iOS9/" style="font-size: 13.75px;">iOS9</a> <a href="/tags/三观/" style="font-size: 10px;">三观</a> <a href="/tags/世界/" style="font-size: 10px;">世界</a> <a href="/tags/东野圭吾/" style="font-size: 10px;">东野圭吾</a> <a href="/tags/个人发展/" style="font-size: 10px;">个人发展</a> <a href="/tags/中国/" style="font-size: 10px;">中国</a> <a href="/tags/中秋/" style="font-size: 10px;">中秋</a> <a href="/tags/乐趣/" style="font-size: 10px;">乐趣</a> <a href="/tags/习题/" style="font-size: 10px;">习题</a> <a href="/tags/习题课/" style="font-size: 10px;">习题课</a> <a href="/tags/云计算/" style="font-size: 15.63px;">云计算</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/亲情/" style="font-size: 10px;">亲情</a> <a href="/tags/人口/" style="font-size: 10px;">人口</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/人造/" style="font-size: 10px;">人造</a> <a href="/tags/今何在/" style="font-size: 10px;">今何在</a> <a href="/tags/价值/" style="font-size: 10px;">价值</a> <a href="/tags/任天堂/" style="font-size: 10px;">任天堂</a> <a href="/tags/体力/" style="font-size: 10px;">体力</a> <a href="/tags/信息/" style="font-size: 10px;">信息</a> <a href="/tags/做饭/" style="font-size: 10px;">做饭</a> <a href="/tags/健康/" style="font-size: 10px;">健康</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/傅真/" style="font-size: 10px;">傅真</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/兄弟/" style="font-size: 10px;">兄弟</a> <a href="/tags/再而三/" style="font-size: 10px;">再而三</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/削发/" style="font-size: 10px;">削发</a> <a href="/tags/动画/" style="font-size: 10.63px;">动画</a> <a href="/tags/努力/" style="font-size: 10px;">努力</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/匹兹堡/" style="font-size: 10.63px;">匹兹堡</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/博客/" style="font-size: 11.88px;">博客</a> <a href="/tags/原创/" style="font-size: 12.5px;">原创</a> <a href="/tags/叙利亚/" style="font-size: 10px;">叙利亚</a> <a href="/tags/口译/" style="font-size: 10px;">口译</a> <a href="/tags/古希腊/" style="font-size: 10px;">古希腊</a> <a href="/tags/古董/" style="font-size: 10px;">古董</a> <a href="/tags/同性恋/" style="font-size: 10px;">同性恋</a> <a href="/tags/启程/" style="font-size: 10px;">启程</a> <a href="/tags/告别/" style="font-size: 10px;">告别</a> <a href="/tags/周记/" style="font-size: 17.5px;">周记</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/哲学/" style="font-size: 10.63px;">哲学</a> <a href="/tags/回合制/" style="font-size: 10px;">回合制</a> <a href="/tags/回头无岸/" style="font-size: 10px;">回头无岸</a> <a href="/tags/回忆/" style="font-size: 11.88px;">回忆</a> <a href="/tags/因果/" style="font-size: 10px;">因果</a> <a href="/tags/图像分类/" style="font-size: 10px;">图像分类</a> <a href="/tags/图灵/" style="font-size: 10px;">图灵</a> <a href="/tags/土豆/" style="font-size: 10px;">土豆</a> <a href="/tags/圣诞/" style="font-size: 10px;">圣诞</a> <a href="/tags/坚持/" style="font-size: 10px;">坚持</a> <a href="/tags/基础/" style="font-size: 11.25px;">基础</a> <a href="/tags/多元思维模型/" style="font-size: 10px;">多元思维模型</a> <a href="/tags/多看/" style="font-size: 10.63px;">多看</a> <a href="/tags/大一统/" style="font-size: 10px;">大一统</a> <a href="/tags/大圣归来/" style="font-size: 10.63px;">大圣归来</a> <a href="/tags/大学/" style="font-size: 10px;">大学</a> <a href="/tags/大结局/" style="font-size: 10px;">大结局</a> <a href="/tags/字体/" style="font-size: 10px;">字体</a> <a href="/tags/字节/" style="font-size: 10px;">字节</a> <a href="/tags/孙悟空/" style="font-size: 10px;">孙悟空</a> <a href="/tags/孤独/" style="font-size: 10px;">孤独</a> <a href="/tags/学习/" style="font-size: 16.25px;">学习</a> <a href="/tags/学术/" style="font-size: 10px;">学术</a> <a href="/tags/实例/" style="font-size: 10.63px;">实例</a> <a href="/tags/实践/" style="font-size: 10px;">实践</a> <a href="/tags/家庭/" style="font-size: 11.25px;">家庭</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/富勒/" style="font-size: 10px;">富勒</a> <a href="/tags/将军/" style="font-size: 10px;">将军</a> <a href="/tags/小学/" style="font-size: 10px;">小学</a> <a href="/tags/小说/" style="font-size: 10.63px;">小说</a> <a href="/tags/层/" style="font-size: 10px;">层</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/工作/" style="font-size: 10.63px;">工作</a> <a href="/tags/工作流/" style="font-size: 10px;">工作流</a> <a href="/tags/帐篷/" style="font-size: 10px;">帐篷</a> <a href="/tags/度假/" style="font-size: 10px;">度假</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/开学/" style="font-size: 10.63px;">开学</a> <a href="/tags/开篇/" style="font-size: 10.63px;">开篇</a> <a href="/tags/徐州/" style="font-size: 10px;">徐州</a> <a href="/tags/微软/" style="font-size: 10px;">微软</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/心智/" style="font-size: 11.25px;">心智</a> <a href="/tags/心理/" style="font-size: 10px;">心理</a> <a href="/tags/态度/" style="font-size: 10px;">态度</a> <a href="/tags/思考/" style="font-size: 16.25px;">思考</a> <a href="/tags/总体介绍/" style="font-size: 10px;">总体介绍</a> <a href="/tags/总览/" style="font-size: 10px;">总览</a> <a href="/tags/悖论/" style="font-size: 10px;">悖论</a> <a href="/tags/情侣/" style="font-size: 10px;">情侣</a> <a href="/tags/感恩节/" style="font-size: 10.63px;">感恩节</a> <a href="/tags/感情/" style="font-size: 10px;">感情</a> <a href="/tags/愿望/" style="font-size: 10px;">愿望</a> <a href="/tags/成功/" style="font-size: 10px;">成功</a> <a href="/tags/成绩/" style="font-size: 10px;">成绩</a> <a href="/tags/成长/" style="font-size: 11.25px;">成长</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/扩展/" style="font-size: 10px;">扩展</a> <a href="/tags/技巧/" style="font-size: 10.63px;">技巧</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/抱怨/" style="font-size: 10px;">抱怨</a> <a href="/tags/拖延症/" style="font-size: 10.63px;">拖延症</a> <a href="/tags/挫折/" style="font-size: 10px;">挫折</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/改变/" style="font-size: 11.25px;">改变</a> <a href="/tags/改进/" style="font-size: 10px;">改进</a> <a href="/tags/效率/" style="font-size: 10.63px;">效率</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/教育/" style="font-size: 10px;">教育</a> <a href="/tags/教训/" style="font-size: 10px;">教训</a> <a href="/tags/数字/" style="font-size: 10px;">数字</a> <a href="/tags/整型/" style="font-size: 10px;">整型</a> <a href="/tags/整理/" style="font-size: 10.63px;">整理</a> <a href="/tags/文化/" style="font-size: 10.63px;">文化</a> <a href="/tags/文本处理/" style="font-size: 10px;">文本处理</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 10px;">斯坦福 CS193p</a> <a href="/tags/新参者/" style="font-size: 10.63px;">新参者</a> <a href="/tags/新特性/" style="font-size: 10px;">新特性</a> <a href="/tags/方向/" style="font-size: 10px;">方向</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/方法论/" style="font-size: 10px;">方法论</a> <a href="/tags/旅行/" style="font-size: 11.88px;">旅行</a> <a href="/tags/旅途/" style="font-size: 10px;">旅途</a> <a href="/tags/旧金山/" style="font-size: 10.63px;">旧金山</a> <a href="/tags/早起/" style="font-size: 10px;">早起</a> <a href="/tags/时代/" style="font-size: 10px;">时代</a> <a href="/tags/时差/" style="font-size: 10.63px;">时差</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/明智行动的艺术/" style="font-size: 10px;">明智行动的艺术</a> <a href="/tags/智慧/" style="font-size: 10px;">智慧</a> <a href="/tags/暴走/" style="font-size: 10px;">暴走</a> <a href="/tags/朋友/" style="font-size: 12.5px;">朋友</a> <a href="/tags/期末/" style="font-size: 10.63px;">期末</a> <a href="/tags/未来/" style="font-size: 10px;">未来</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/机遇/" style="font-size: 10px;">机遇</a> <a href="/tags/极简/" style="font-size: 10px;">极简</a> <a href="/tags/架构/" style="font-size: 15.63px;">架构</a> <a href="/tags/核心/" style="font-size: 10px;">核心</a> <a href="/tags/格子/" style="font-size: 10px;">格子</a> <a href="/tags/格局/" style="font-size: 10px;">格局</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/概率/" style="font-size: 10px;">概率</a> <a href="/tags/概览/" style="font-size: 10px;">概览</a> <a href="/tags/概述/" style="font-size: 10px;">概述</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/欧洲/" style="font-size: 10px;">欧洲</a> <a href="/tags/步行/" style="font-size: 10px;">步行</a> <a href="/tags/死亡/" style="font-size: 10.63px;">死亡</a> <a href="/tags/比特/" style="font-size: 10px;">比特</a> <a href="/tags/氐惆/" style="font-size: 10px;">氐惆</a> <a href="/tags/民主/" style="font-size: 10px;">民主</a> <a href="/tags/沉默/" style="font-size: 10px;">沉默</a> <a href="/tags/沟通/" style="font-size: 10px;">沟通</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/洞察/" style="font-size: 10px;">洞察</a> <a href="/tags/活动/" style="font-size: 10px;">活动</a> <a href="/tags/浮点数/" style="font-size: 10px;">浮点数</a> <a href="/tags/深度/" style="font-size: 10px;">深度</a> <a href="/tags/清醒思考的艺术/" style="font-size: 10px;">清醒思考的艺术</a> <a href="/tags/游乐场/" style="font-size: 10px;">游乐场</a> <a href="/tags/游戏/" style="font-size: 14.38px;">游戏</a> <a href="/tags/游戏机/" style="font-size: 10px;">游戏机</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/滚动视图/" style="font-size: 10px;">滚动视图</a> <a href="/tags/灵活/" style="font-size: 10px;">灵活</a> <a href="/tags/炸鸡/" style="font-size: 10px;">炸鸡</a> <a href="/tags/烤肉/" style="font-size: 10px;">烤肉</a> <a href="/tags/热血/" style="font-size: 10px;">热血</a> <a href="/tags/照片/" style="font-size: 10px;">照片</a> <a href="/tags/爱情/" style="font-size: 11.25px;">爱情</a> <a href="/tags/父母/" style="font-size: 10px;">父母</a> <a href="/tags/独立博客/" style="font-size: 10px;">独立博客</a> <a href="/tags/玩家/" style="font-size: 10px;">玩家</a> <a href="/tags/环境/" style="font-size: 10px;">环境</a> <a href="/tags/理科生/" style="font-size: 10px;">理科生</a> <a href="/tags/生化危机/" style="font-size: 10px;">生化危机</a> <a href="/tags/生日/" style="font-size: 10.63px;">生日</a> <a href="/tags/生活/" style="font-size: 19.38px;">生活</a> <a href="/tags/电影/" style="font-size: 11.88px;">电影</a> <a href="/tags/男人/" style="font-size: 10px;">男人</a> <a href="/tags/界限/" style="font-size: 10px;">界限</a> <a href="/tags/留学生/" style="font-size: 10px;">留学生</a> <a href="/tags/目标/" style="font-size: 10.63px;">目标</a> <a href="/tags/看图说话/" style="font-size: 10px;">看图说话</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/知识管理/" style="font-size: 10px;">知识管理</a> <a href="/tags/研究/" style="font-size: 10px;">研究</a> <a href="/tags/社交/" style="font-size: 10px;">社交</a> <a href="/tags/社区/" style="font-size: 10px;">社区</a> <a href="/tags/神作/" style="font-size: 10px;">神作</a> <a href="/tags/离别/" style="font-size: 10px;">离别</a> <a href="/tags/科学/" style="font-size: 10px;">科学</a> <a href="/tags/科幻/" style="font-size: 10.63px;">科幻</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/积累/" style="font-size: 12.5px;">积累</a> <a href="/tags/程序员/" style="font-size: 11.25px;">程序员</a> <a href="/tags/穷查理宝典/" style="font-size: 10px;">穷查理宝典</a> <a href="/tags/童话/" style="font-size: 10.63px;">童话</a> <a href="/tags/笔记/" style="font-size: 16.25px;">笔记</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/简洁/" style="font-size: 10px;">简洁</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/类型/" style="font-size: 10px;">类型</a> <a href="/tags/粒度/" style="font-size: 10px;">粒度</a> <a href="/tags/精选/" style="font-size: 11.88px;">精选</a> <a href="/tags/系列/" style="font-size: 10px;">系列</a> <a href="/tags/索尼/" style="font-size: 10px;">索尼</a> <a href="/tags/纽约/" style="font-size: 10.63px;">纽约</a> <a href="/tags/组成原理/" style="font-size: 12.5px;">组成原理</a> <a href="/tags/组织/" style="font-size: 10px;">组织</a> <a href="/tags/经典/" style="font-size: 10px;">经典</a> <a href="/tags/绘制/" style="font-size: 10px;">绘制</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/编辑距离/" style="font-size: 10px;">编辑距离</a> <a href="/tags/羊驼/" style="font-size: 10px;">羊驼</a> <a href="/tags/美剧/" style="font-size: 10px;">美剧</a> <a href="/tags/美国/" style="font-size: 10px;">美国</a> <a href="/tags/翻译/" style="font-size: 13.75px;">翻译</a> <a href="/tags/老朝奉/" style="font-size: 10px;">老朝奉</a> <a href="/tags/自尊/" style="font-size: 10px;">自尊</a> <a href="/tags/自我/" style="font-size: 10.63px;">自我</a> <a href="/tags/节奏/" style="font-size: 10px;">节奏</a> <a href="/tags/苏州/" style="font-size: 10px;">苏州</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/英雄/" style="font-size: 11.25px;">英雄</a> <a href="/tags/英雄联盟/" style="font-size: 10.63px;">英雄联盟</a> <a href="/tags/苹果/" style="font-size: 10px;">苹果</a> <a href="/tags/荒野求生/" style="font-size: 10px;">荒野求生</a> <a href="/tags/萨博/" style="font-size: 10px;">萨博</a> <a href="/tags/落后/" style="font-size: 10px;">落后</a> <a href="/tags/蝴蝶效应/" style="font-size: 10px;">蝴蝶效应</a> <a href="/tags/行动/" style="font-size: 10px;">行动</a> <a href="/tags/西行者/" style="font-size: 10px;">西行者</a> <a href="/tags/观念/" style="font-size: 10px;">观念</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/视图控制器/" style="font-size: 10px;">视图控制器</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/计算机/" style="font-size: 15px;">计算机</a> <a href="/tags/记录/" style="font-size: 10.63px;">记录</a> <a href="/tags/记忆/" style="font-size: 10.63px;">记忆</a> <a href="/tags/讲义/" style="font-size: 10px;">讲义</a> <a href="/tags/许愿/" style="font-size: 10px;">许愿</a> <a href="/tags/论道/" style="font-size: 14.38px;">论道</a> <a href="/tags/设计/" style="font-size: 16.88px;">设计</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访谈/" style="font-size: 10px;">访谈</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/读书/" style="font-size: 18.13px;">读书</a> <a href="/tags/课程/" style="font-size: 10px;">课程</a> <a href="/tags/调整/" style="font-size: 10px;">调整</a> <a href="/tags/足球/" style="font-size: 10.63px;">足球</a> <a href="/tags/跑题/" style="font-size: 10px;">跑题</a> <a href="/tags/路线/" style="font-size: 10px;">路线</a> <a href="/tags/转型/" style="font-size: 10px;">转型</a> <a href="/tags/转换/" style="font-size: 10px;">转换</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/轻量/" style="font-size: 10px;">轻量</a> <a href="/tags/运动/" style="font-size: 10px;">运动</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/运算符重载/" style="font-size: 10px;">运算符重载</a> <a href="/tags/运营/" style="font-size: 10.63px;">运营</a> <a href="/tags/进阶/" style="font-size: 10px;">进阶</a> <a href="/tags/连接/" style="font-size: 10px;">连接</a> <a href="/tags/迷茫/" style="font-size: 10px;">迷茫</a> <a href="/tags/逆向思维/" style="font-size: 10px;">逆向思维</a> <a href="/tags/选择/" style="font-size: 11.25px;">选择</a> <a href="/tags/选课/" style="font-size: 10px;">选课</a> <a href="/tags/透析/" style="font-size: 10px;">透析</a> <a href="/tags/造假/" style="font-size: 10px;">造假</a> <a href="/tags/逻辑/" style="font-size: 10px;">逻辑</a> <a href="/tags/醒醒/" style="font-size: 10px;">醒醒</a> <a href="/tags/闭包/" style="font-size: 10.63px;">闭包</a> <a href="/tags/阅读/" style="font-size: 11.88px;">阅读</a> <a href="/tags/阿拉伯之春/" style="font-size: 10px;">阿拉伯之春</a> <a href="/tags/陌生人/" style="font-size: 10px;">陌生人</a> <a href="/tags/陪伴/" style="font-size: 10px;">陪伴</a> <a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a> <a href="/tags/难民/" style="font-size: 10px;">难民</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/顽皮狗/" style="font-size: 10px;">顽皮狗</a> <a href="/tags/预测/" style="font-size: 10px;">预测</a> <a href="/tags/预言/" style="font-size: 10px;">预言</a> <a href="/tags/马伯庸/" style="font-size: 10px;">马伯庸</a> <a href="/tags/骑行/" style="font-size: 10px;">骑行</a> <a href="/tags/高中/" style="font-size: 10px;">高中</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://illustrationsencouleur.lofter.com/">illustrations</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wdxtub.lofter.com/">wdxtub@lofter</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wdxtub</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wdxtub</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Agony is my triumph</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">索引</a></li>
+		        
+					<li><a href="/categories/Technique">技术</a></li>
+		        
+					<li><a href="/categories/Reading">读书</a></li>
+		        
+					<li><a href="/categories/Thinking">思考</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-swift-2-advance" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/25/swift-2-advance/" class="article-date">
+  	<time datetime="2015-11-25T21:25:50.000Z" itemprop="datePublished">2015-11-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift2 学习笔记 3 - 进阶
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apple/">Apple</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数/">函数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/属性/">属性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/继承/">继承</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Technique/">Technique</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一部分是稍微高级和复杂一些的内容，主要是面向对象相关的一些设定，和其他语言的设计基本也是一致的</p>
+<a id="more"></a>
+<hr>
+<h1 id="u51FD_u6570"><a href="#u51FD_u6570" class="headerlink" title="函数"></a>函数</h1><h2 id="u5B9A_u4E49_u4E00_u4E2A_u51FD_u6570"><a href="#u5B9A_u4E49_u4E00_u4E2A_u51FD_u6570" class="headerlink" title="定义一个函数"></a>定义一个函数</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">sayHello</span><span class="params">(personName: String)</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> greeting = <span class="string">"Hello, "</span> + personName + <span class="string">"!"</span></span><br><span class="line">	<span class="keyword">return</span> greeting</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(sayHello(<span class="string">"DaWang"</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="u65E0_u53C2_u6570_u51FD_u6570"><a href="#u65E0_u53C2_u6570_u51FD_u6570" class="headerlink" title="无参数函数"></a>无参数函数</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">sayHelloWorld</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Hello, World."</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(sayHelloWorld())</span><br></pre></td></tr></table></figure>
+<h2 id="u591A_u53C2_u6570_u51FD_u6570"><a href="#u591A_u53C2_u6570_u51FD_u6570" class="headerlink" title="多参数函数"></a>多参数函数</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">sayHello</span><span class="params">(personName: String, alreadyGreeted: Bool)</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> alreadyGreeted &#123;</span><br><span class="line">		<span class="comment">// ... </span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u65E0_u8FD4_u56DE_u503C"><a href="#u65E0_u8FD4_u56DE_u503C" class="headerlink" title="无返回值"></a>无返回值</h2><p>就不需要返回箭头和返回类型</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">sayGoodBye</span><span class="params">(personName: String)</span></span>&#123;</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"Goodbye, <span class="subst">\(personName)</span>!"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayGoodbye(<span class="string">"David"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="u591A_u91CD_u8FD4_u56DE_u503C_u51FD_u6570"><a href="#u591A_u91CD_u8FD4_u56DE_u503C_u51FD_u6570" class="headerlink" title="多重返回值函数"></a>多重返回值函数</h2><p>其实就是返回一个 tuple，名字已经由返回类型指定了，这个返回值也可以是一个可选的元组 <code>(min: Int, max: Int)?</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">minMax</span><span class="params">(array: [Int])</span></span> -&gt; (<span class="built_in">min</span>: <span class="type">Int</span>, <span class="built_in">max</span>: <span class="type">Int</span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> currentMin = array[<span class="number">0</span>]</span><br><span class="line">	<span class="keyword">var</span> currentMax = array[<span class="number">0</span>]</span><br><span class="line">	<span class="keyword">for</span> value <span class="keyword">in</span> array[<span class="number">1</span>..&lt;array.<span class="built_in">count</span>] &#123;</span><br><span class="line">		<span class="keyword">if</span> value &lt; currentMin &#123;</span><br><span class="line">			currentMin = value</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> value &gt; currentMax &#123;</span><br><span class="line">			currentMax = value</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (currentMin, currentMax)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bounds = minMax([<span class="number">8</span>, -<span class="number">6</span>, <span class="number">2</span>, <span class="number">109</span>, <span class="number">3</span>, <span class="number">71</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"min is <span class="subst">\(bounds.<span class="built_in">min</span>)</span> and max is <span class="subst">\(bounds.<span class="built_in">max</span>)</span>"</span>)</span><br></pre></td></tr></table></figure>
+<p>如果不想为第二个及后续的参数设置外部参数名，用一个下划线来代替一个明确的参数</p>
+<h2 id="u9ED8_u8BA4_u53C2_u6570_u503C"><a href="#u9ED8_u8BA4_u53C2_u6570_u503C" class="headerlink" title="默认参数值"></a>默认参数值</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunction</span><span class="params">(parameterWithDefault: Int = <span class="number">12</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u53EF_u53D8_u53C2_u6570"><a href="#u53EF_u53D8_u53C2_u6570" class="headerlink" title="可变参数"></a>可变参数</h2><p>可以接受零个或多个值。但是一个函数最多只能有一个可变参数，并且最好放在最后</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">arithmeticMean</span><span class="params">(numbers: Double...)</span></span> -&gt; <span class="type">Double</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> total: <span class="type">Double</span> = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</span><br><span class="line">		total += number</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> total / <span class="type">Double</span>(numbers.<span class="built_in">count</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">arithmeticMean(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="u53D8_u91CF_u51FD_u6570_u53C2_u6570"><a href="#u53D8_u91CF_u51FD_u6570_u53C2_u6570" class="headerlink" title="变量函数参数"></a>变量函数参数</h2><p>函数参数默认是常量，也就是说在函数体中不能更改。但是如果想要传入参数变量的值副本，可以像以下这样。但是对变量参数所进行的修改在函数调用结束后便消失了，并且对于函数体外是不可见的</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">alignRight</span><span class="params">(<span class="keyword">var</span> string: String, fotalLength: Int, pad: Character)</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u8F93_u5165_u8F93_u51FA_u53C2_u6570"><a href="#u8F93_u5165_u8F93_u51FA_u53C2_u6570" class="headerlink" title="输入输出参数"></a>输入输出参数</h2><p>如果需要在函数中对参数的修改仍然存在，就需要用 <code>inout</code> 关键字。只能传递变量给 inout 参数，并且需要在参数名前加 <code>&amp;</code>，表示这个值可以被函数修改</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="keyword">inout</span> a: Int, <span class="keyword">inout</span> <span class="number">_</span> b: Int)</span></span>&#123;</span><br><span class="line">	<span class="keyword">let</span> temporaryA = a</span><br><span class="line">	a = b</span><br><span class="line">	b = temporaryA</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> someInt = <span class="number">3</span></span><br><span class="line"><span class="keyword">var</span> anotherInt = <span class="number">107</span></span><br><span class="line">swapTwoInt(&amp;someInt, &amp;anotherInt)</span><br></pre></td></tr></table></figure>
+<h2 id="u51FD_u6570_u7C7B_u578B"><a href="#u51FD_u6570_u7C7B_u578B" class="headerlink" title="函数类型"></a>函数类型</h2><p>也就是把函数当成常量或者变量，比如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mathFunction: (<span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">Int</span> = addTwoInts</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Result: <span class="subst">\(mathFunction(<span class="number">2</span>, <span class="number">3</span>)</span>)"</span>)</span><br><span class="line"><span class="comment">// 也可以让 Swift 来推断函数类型，如</span></span><br><span class="line"><span class="keyword">let</span> anotherMathFunction = addTwoInts</span><br></pre></td></tr></table></figure>
+<p>函数类型作为参数类型</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">printMathResult</span><span class="params">(mathFunction: <span class="params">(Int, Int)</span></span></span> -&gt; <span class="type">Int</span>, <span class="number">_</span> a: <span class="type">Int</span>, <span class="number">_</span> b: <span class="type">Int</span>) &#123;</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"Result: <span class="subst">\(mathFunction(a, b)</span>)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">printMathResult(addTwoInts, <span class="number">3</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<p>函数类型作为返回类型，在返回箭头后写一个完整的函数类型</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">stepForward</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> input + <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">stepBackward</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> input - <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">chooseStepFunction</span><span class="params">(backwards: Bool)</span></span> -&gt; (<span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> backwards ? stepBackward : stepForward</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> currentvalue = <span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> moveNearerToZero = chooseStepFunction(currentValue &gt; <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="u5D4C_u5957_u51FD_u6570_nested_function"><a href="#u5D4C_u5957_u51FD_u6570_nested_function" class="headerlink" title="嵌套函数 nested function"></a>嵌套函数 nested function</h2><p>默认情况下，嵌套函数对外界不可见，但是可以被外围函数(enclosing function)调用。一个外围函数也可以返回它的某一个嵌套函数，使得这个函数可以在其他域中被使用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">chooseStepFunction</span><span class="params">(backwards: Bool)</span></span> -&gt; (<span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">	<span class="func"><span class="keyword">func</span> <span class="title">stepForward</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> input + <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="func"><span class="keyword">func</span> <span class="title">stepBackward</span><span class="params">(input: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> input - <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> backwards ? stepBackward : stepForward</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> currentValue = -<span class="number">4</span></span><br><span class="line"><span class="keyword">let</span> moveNearerToZero = chooseStepFunction(currentValue &gt; <span class="number">0</span>)</span><br><span class="line"><span class="keyword">while</span> currentValue != <span class="number">0</span> &#123;</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"<span class="subst">\(currentValue)</span>..."</span>)</span><br><span class="line">	currentValue = moveNearerToZero(currentValue)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="u95ED_u5305_Closure"><a href="#u95ED_u5305_Closure" class="headerlink" title="闭包 Closure"></a>闭包 Closure</h1><p>自包含的函数代码块，可以在代码中被传递和使用。闭包采取如下三种形式之一：</p>
+<ul>
+<li>全局函数是一个有名字但不会捕获任何值的闭包</li>
+<li>嵌套函数是一个有名字并可以捕获其封闭函数域内值的闭包</li>
+<li>闭包表达式是一个利用轻量级语法所写的可以捕获其上下文中变量或常量值的匿名闭包</li>
+</ul>
+<p>Swift 闭包表达式拥有简洁的风格，并鼓励在常见场景中进行语法优化，主要优化如下：</p>
+<ul>
+<li>利用上下文推断参数和返回值类型</li>
+<li>隐式返回单表达式闭包，即单表达式闭包可以省略 return 关键字</li>
+<li>参数名称所写</li>
+<li>尾随(Trailing)闭包语法</li>
+</ul>
+<h2 id="u95ED_u5305_u8868_u8FBE_u5F0F_Closure_Expressions"><a href="#u95ED_u5305_u8868_u8FBE_u5F0F_Closure_Expressions" class="headerlink" title="闭包表达式 Closure Expressions"></a>闭包表达式 Closure Expressions</h2><p>利用简洁语法构建內联闭包的方式。下面通过不同的方式展示了 <code>sort(_:)</code> 方法定义和语法优化的方式。</p>
+<p>首先是最原始的方式</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">"Chris"</span>, <span class="string">"Alex&amp;"</span>, <span class="string">"Ewa"</span>, <span class="string">"Barry"</span>, <span class="string">"Daniella"</span>]</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">backward</span><span class="params">(s1: String, s2: String)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> s1 &gt; s2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> reversed = names.<span class="built_in">sort</span>(backwards)</span><br></pre></td></tr></table></figure>
+<p>闭包表达式语法 <code>{ (parameters) -&gt; returnType in statements }</code>，例如，上面的 sort 可以写为：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reversed = names.<span class="built_in">sort</span>(&#123; (s1: <span class="type">String</span>, s2: <span class="type">String</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span> <span class="keyword">return</span> s1 &gt; s2 &#125;)</span><br></pre></td></tr></table></figure>
+<p>注意函数和返回值类型都写在大括号内，而不是大括号外。闭包的函数体部分由关键字 in 引入，该关键字表示闭包的参数和返回值类型定义已经完成，闭包函数体即将开始。而 Swift 可以根据调用方法的对象来推断</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reversed = names.<span class="built_in">sort</span>( &#123; s1, s2 <span class="keyword">in</span> <span class="keyword">return</span> s1 &gt; s2&#125;)</span><br></pre></td></tr></table></figure>
+<p>实际上任何情况下，通过內联闭包表达式构造的闭包作为参数传递给函数或方法时，都可以推断出闭包的参数和返回值类型，所以几乎不需要利用完整格式构造內联闭包。</p>
+<p><strong>单表达式闭包隐式返回 Implicit Return From Single-Expression Closures</strong></p>
+<p>其实就是省略 return 来隐式返回单行表达式的结果，如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reversed = names.<span class="built_in">sort</span>( &#123; s1, s2 <span class="keyword">in</span> s1 &gt; s2 &#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>参数名称缩写</strong></p>
+<p>可以直接通过 <code>$0</code>, <code>$1</code> 这样来顺序调用闭包的参数。如果用了缩写，就可以在闭包参数列表中省略对其的定义</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reversed = names.<span class="built_in">sort</span>( &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>运算符函数</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reversed = names.<span class="built_in">sort</span>(&gt;)</span><br></pre></td></tr></table></figure>
+<p><strong>尾随闭包(Trailing Closures)</strong></p>
+<p>如果需要将一个很长的闭包表达式作为最后一个参数传递给函数，可以使用尾随闭包来增强函数的可读性</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionThatTakesAClosure</span><span class="params">(closure: <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">	<span class="comment">// 函数体部分</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sort 方法可以写成</span></span><br><span class="line">reversed = names.<span class="built_in">sort</span>() &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者连圆括号都可以省略</span></span><br><span class="line">reversed = names.<span class="built_in">sort</span> &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u6355_u83B7_u503C_Capturing_Values"><a href="#u6355_u83B7_u503C_Capturing_Values" class="headerlink" title="捕获值 Capturing Values"></a>捕获值 Capturing Values</h2><p>闭包可以在其被定义的上下文中捕获常量或变量。即使定义这些常量和变量的原作用域已经不存在，闭包仍然可能在闭包函数体内引用和修改这些值</p>
+<ul>
+<li>闭包是引用类型 Closures Are Reference Types</li>
+</ul>
+<h2 id="u975E_u9003_u9038_u95ED_u5305_Nonescaping_Closures"><a href="#u975E_u9003_u9038_u95ED_u5305_Nonescaping_Closures" class="headerlink" title="非逃逸闭包 Nonescaping Closures"></a>非逃逸闭包 Nonescaping Closures</h2><p>当一个闭包作为参数传到一个函数中，但是这个闭包在函数返回之后才被执行，我们称该闭包从函数中逃逸。可以在参数名之前标注 <code>@noescape</code> 能使编译器知道这个闭包的生命周期，从而进行比较激进的优化</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionWithNoescapeClosure</span> <span class="params">(@noescape closure: <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">	closure()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一种能使闭包『逃逸』处函数的方法是，将这个闭包保存在一个函数外部定义的变量中。例如，很多启动异步操作的函数接受一个闭包参数作为 completion handler。这类函数会在异步操作开始之后立刻返回，但是闭包直到异步操作结束后才会被调用，如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个空数组，这个空数组的元素是一个闭包</span></span><br><span class="line"><span class="keyword">var</span> completionHandlers: [() -&gt; <span class="type">Void</span>] = []</span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionWishEscapingClosure</span><span class="params">(completionHandler: <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">	completionHandlers.append(completionHandler)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将闭包标注为 <code>@noescape</code> 使你能在闭包中隐式地引用 self</p>
+<h2 id="u81EA_u52A8_u95ED_u5305_Autoclosures"><a href="#u81EA_u52A8_u95ED_u5305_Autoclosures" class="headerlink" title="自动闭包 Autoclosures"></a>自动闭包 Autoclosures</h2><p>自动创建，用于包装传递给函数作为参数的表达式。这种闭包不接受任何参数，当它被调用的时候，会返回被包装在其中的表达式的值。这种便利语法让你能够用一个普通的表达式来代替显式的闭包，从而省略闭包的花括号。</p>
+<p>自动闭包让你能够延迟求值，直到执行这个闭包时代码才会执行</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> customersInLine = [<span class="string">"Chris"</span>, <span class="string">"Alex"</span>, <span class="string">"Ewa"</span>, <span class="string">"Barry"</span>, <span class="string">"Daniella"</span>]</span><br><span class="line"><span class="built_in">print</span> (customersInLine.<span class="built_in">count</span>) <span class="comment">// output: 5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> customerProvider = &#123;customersInLine.removeAtIndex(<span class="number">0</span>)&#125;</span><br><span class="line"><span class="built_in">print</span> (customersInLine.<span class="built_in">count</span>) <span class="comment">// output: 5</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">"Now serving <span class="subst">\(customerProvider()</span>)!"</span>) <span class="comment">// output: Chris</span></span><br><span class="line"><span class="built_in">print</span> (customersInLine.<span class="built_in">count</span>) <span class="comment">// output: 4</span></span><br></pre></td></tr></table></figure>
+<p>但是过度使用会使得代码非常难懂，要慎重</p>
+<h1 id="u679A_u4E3E_Enumerations"><a href="#u679A_u4E3E_Enumerations" class="headerlink" title="枚举 Enumerations"></a>枚举 Enumerations</h1><p>放到大括号里 </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">SomeEnumeration</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 枚举定义</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例如</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">CompassPoint</span> </span>&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="type">North</span></span><br><span class="line">	<span class="keyword">case</span> <span class="type">South</span></span><br><span class="line">	<span class="keyword">case</span> <span class="type">East</span></span><br><span class="line">	<span class="keyword">case</span> <span class="type">West</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多个成员值可以放在同一行</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Planet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="type">Mercury</span>, <span class="type">Venus</span>, <span class="type">Earth</span>, <span class="type">Mars</span>, <span class="type">Jupiter</span>, <span class="type">Saturn</span>, <span class="type">Uranus</span>, <span class="type">Neptune</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值</span></span><br><span class="line"><span class="keyword">var</span> directionToHead = <span class="type">CompassPoint</span>.<span class="type">West</span></span><br><span class="line"><span class="comment">// 因为类型已知，接下来的调用可以省略前面部分</span></span><br><span class="line">directionToHead = .<span class="type">East</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配合 switch</span></span><br><span class="line"><span class="keyword">switch</span> directionToHead&#123;</span><br><span class="line">	<span class="keyword">case</span> .<span class="type">North</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"north"</span>)</span><br><span class="line">	<span class="keyword">case</span> .<span class="type">South</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"south"</span>)</span><br><span class="line">	<span class="keyword">case</span> .<span class="type">East</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"east"</span>)	</span><br><span class="line">	<span class="keyword">case</span> .<span class="type">West</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"west"</span>)	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 给定原始值</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Planet</span>: <span class="title">Int</span> </span>&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="type">Mercury</span> = <span class="number">1</span>, <span class="type">Venus</span>, <span class="type">Earth</span>, <span class="type">Mars</span>, <span class="type">Jupiter</span>, <span class="type">Saturn</span>, <span class="type">Uranus</span>, <span class="type">Neptune</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> possible <span class="type">Planet</span> = <span class="type">Planet</span>(rawValue: <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 枚举递归</span></span><br><span class="line">用 <span class="keyword">indirect</span> 关键字，暂略</span><br></pre></td></tr></table></figure>
+<h1 id="u7C7B_u548C_u7ED3_u6784_u4F53"><a href="#u7C7B_u548C_u7ED3_u6784_u4F53" class="headerlink" title="类和结构体"></a>类和结构体</h1><p>相同：</p>
+<ul>
+<li>定义属性用于存储值</li>
+<li>定义方法用于提供功能</li>
+<li>定义附属脚本用于访问值</li>
+<li>定义构造器用于生成初始化值</li>
+<li>通过扩展以增加默认实现的功能</li>
+<li>通过协议以提供某种标准功能</li>
+</ul>
+<p>与结构体相比，类还有如下的附加功能：</p>
+<ul>
+<li>继承允许一个类继承另一个类的特征</li>
+<li>类型转换允许在运行时检查和解释一个类实例的类型</li>
+<li>解构器允许一个类实例释放任何其所被分配的资源</li>
+<li>引用计数允许对一个类的多次引用</li>
+</ul>
+<p>结构体总是通过被复制的方式在代码中传递，不使用引用计数</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 结构体定义</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Resolution</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> width = <span class="number">0</span></span><br><span class="line">	<span class="keyword">var</span> height = <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VideoMode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> resolution = <span class="type">Resolution</span>()</span><br><span class="line">	<span class="keyword">var</span> interlaced = <span class="literal">false</span></span><br><span class="line">	<span class="keyword">var</span> frameRate = <span class="number">0.0</span></span><br><span class="line">	<span class="keyword">var</span> name: <span class="type">String</span>?</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> someResolution = <span class="type">Resolution</span>()</span><br><span class="line"><span class="keyword">let</span> someVideoMode = <span class="type">VideoMode</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 属性访问</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">"The wide of someResolution is <span class="subst">\(someResolution.width)</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有结构体都有一个自动生成的成员逐一构造器</span></span><br><span class="line"><span class="keyword">let</span> vga = <span class="type">Resolution</span>(width: <span class="number">640</span>, height: <span class="number">480</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>结构体和枚举是值类型，并不是传引用</strong></p>
+<p><strong>类是引用类型</strong>，所以可能有多个变量和常量引用同一个类实例，这种时候比较是否是引用同一个实例，可以用 <code>===</code> 和 <code>!==</code></p>
+<h2 id="u7C7B_u548C_u7ED3_u6784_u4F53_u7684_u9009_u62E9"><a href="#u7C7B_u548C_u7ED3_u6784_u4F53_u7684_u9009_u62E9" class="headerlink" title="类和结构体的选择"></a>类和结构体的选择</h2><p>符合一条或者多条以下条件，请考虑结构体：</p>
+<ul>
+<li>封装少量相关的简单数据值</li>
+<li>预计的使用方式是传值而不是引用</li>
+<li>存储的值类型也应该被拷贝</li>
+<li>不需要继承</li>
+</ul>
+<p>在 Swift 中，许多基本类型，如 String, Array 和 Dictionary 类型均以结构体的形式实现。这意味着被赋值给新的常量或变量，或者被传入函数或方法中，它们的值会被拷贝。</p>
+<p>在 Objective-C 中 NSString, NSArray 和 NSDictionary 类型均以类的形式实现，而并非结构体。它们在被赋值或者被传入函数或方法时，不会发生值拷贝，而是传递现有实例的引用</p>
+<h1 id="u5C5E_u6027"><a href="#u5C5E_u6027" class="headerlink" title="属性"></a>属性</h1><p>延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用 <code>lazy</code> 来表示一个延迟存储属性。必须将延迟存储属性声明成变量，反正就是只有用到的时候才初始化，这样效率更高</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataImporter</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> fileName = <span class="string">"data.txt"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataManager</span> </span>&#123;</span><br><span class="line">	<span class="built_in">lazy</span> <span class="keyword">var</span> importer = <span class="type">DataImporter</span>()</span><br><span class="line">	<span class="keyword">var</span> data = [<span class="type">String</span>]()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> manager = <span class="type">DataManager</span>()</span><br><span class="line">manager.data.append(<span class="string">"Some data"</span>)</span><br><span class="line">manager.data.append(<span class="string">"Some more data"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="u4FBF_u6377_setter__u58F0_u660E"><a href="#u4FBF_u6377_setter__u58F0_u660E" class="headerlink" title="便捷 setter 声明"></a>便捷 setter 声明</h2><p>如果计算属性的 setter 没有定义表示新值的参数名，则可以使用默认名称 <code>newValue</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AlternativeRect</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> origin = <span class="type">Point</span>()</span><br><span class="line">	<span class="keyword">var</span> size = <span class="type">Size</span>()</span><br><span class="line">	<span class="keyword">var</span> center: <span class="type">Point</span> &#123;</span><br><span class="line">		<span class="keyword">get</span> &#123;</span><br><span class="line">			<span class="keyword">let</span> centerX = origin.x + (size.width / <span class="number">2</span>)</span><br><span class="line">			<span class="keyword">let</span> centerY = origin.y + (size.height / <span class="number">2</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="type">Point</span>(x: centerX, y: centerY)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">set</span> &#123;</span><br><span class="line">			origin.x = newValue.x - (size.width / <span class="number">2</span>)</span><br><span class="line">			origin.y = newValue - (size.height / <span class="number">2</span> )</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u5C5E_u6027_u89C2_u5BDF_u5668"><a href="#u5C5E_u6027_u89C2_u5BDF_u5668" class="headerlink" title="属性观察器"></a>属性观察器</h2><p>每次属性被设置值的时候会调用属性观察器</p>
+<ul>
+<li><code>willSet</code> 新值被设置前调用（默认参数 newValue）</li>
+<li><code>didSet</code> 新值被设置后调用（默认参数 oldValue）</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StepCounter</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> totalSteps: <span class="type">Int</span> = <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">willSet</span>(newTotalSteps) &#123;</span><br><span class="line">			<span class="built_in">print</span> (<span class="string">"About to set totalSteps to <span class="subst">\(newTotalSteps)</span>"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">didSet</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> totalSteps &gt; oldValue &#123;</span><br><span class="line">				<span class="built_in">print</span> (<span class="string">"Added <span class="subst">\(totalSteps - oldValue)</span> steps"</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意观察输出</span></span><br><span class="line"><span class="keyword">let</span> stepCounter = <span class="type">StepCounter</span>()</span><br><span class="line">stepCounter.totalSteps = <span class="number">200</span></span><br><span class="line">stepCounter.totalSteps = <span class="number">360</span></span><br></pre></td></tr></table></figure>
+<h2 id="u7C7B_u578B_u5C5E_u6027"><a href="#u7C7B_u578B_u5C5E_u6027" class="headerlink" title="类型属性"></a>类型属性</h2><p>就是属于类型本身，而不是属于类型的实例的，相当于静态变量</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SomeStructure</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">var</span> storedTypeProperty = <span class="string">"Some value."</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">var</span> computedTypeProperty: <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">SomeEnumeration</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">var</span> storedTypeProperty = <span class="string">"Some value."</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">var</span> computedTypeProperty: <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">6</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">var</span> storedTypeProperty = <span class="string">"Some value."</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">var</span> computedTypeProperty: <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">27</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u65B9_u6CD5_Methods"><a href="#u65B9_u6CD5_Methods" class="headerlink" title="方法 Methods"></a>方法 Methods</h2><p>分为实例方法与类型方法，就是普通方法与 static 方法的区别，这里不赘述</p>
+<h1 id="u4E0B_u6807_u811A_u672C_Subscript"><a href="#u4E0B_u6807_u811A_u672C_Subscript" class="headerlink" title="下标脚本 Subscript"></a>下标脚本 Subscript</h1><p>用在类、枚举、结构体等目标中，可以认为是访问集合 collection，列表 list 或序列 sequence 的快捷方式，等于是重写一个方法这样就可以用下标来访问数组的元素</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TimesTable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> multiplier: <span class="type">Int</span></span><br><span class="line">	<span class="keyword">subscript</span>(index: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> multiplier * index</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> threeTimesTable = <span class="type">TimesTable</span>(multiplier: <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"3 的 6 倍是 <span class="subst">\(threeTimesTable[<span class="number">6</span>])</span>"</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="u7EE7_u627F_Inheritance"><a href="#u7EE7_u627F_Inheritance" class="headerlink" title="继承 Inheritance"></a>继承 Inheritance</h1><p>基本就是面向对象的那一套，具体看代码演示</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> currentSpeed = <span class="number">0.0</span></span><br><span class="line">	<span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"travelling at  <span class="subst">\(currentSpeed)</span> miles per hour"</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="func"><span class="keyword">func</span> <span class="title">makeNoise</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="comment">// do nothing</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> someVehicle = <span class="type">Vehicle</span>()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">"Vehicle: <span class="subst">\(someVehicle.description)</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bicycle</span>: <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> hasBasket = <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bycycle = <span class="type">Bycycle</span>()</span><br><span class="line">bycycle.hasBascket = <span class="literal">true</span></span><br><span class="line">bycycle.currentSpeed = <span class="number">15.0</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">"Bycycle: <span class="subst">\(bicycle.description)</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 继续继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tandem</span>: <span class="title">Bicycle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> currentNumberOfPassengers = <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> tandem = <span class="type">Tandem</span>()</span><br><span class="line">tandem.hasBasket = <span class="literal">true</span></span><br><span class="line">tandem.currentNumberOfPassengers = <span class="number">2</span></span><br><span class="line">tandem.currentSpeed = <span class="number">22.0</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Tandem: <span class="subst">\(tandem.description)</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重写需要添加 override</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Train</span>: <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">makeNoise</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"Choo Choo"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> train = <span class="type">Train</span>()</span><br><span class="line">train.makeNoise()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同样也可以重写属性</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>: <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> gear = <span class="number">1</span></span><br><span class="line">	<span class="keyword">override</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.description + <span class="string">" in gear <span class="subst">\(gear)</span>"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> car = <span class="type">Car</span>()</span><br><span class="line">car.currentSpeed  = <span class="number">25.0</span></span><br><span class="line">car.gear = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Car: <span class="subst">\(car.description)</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重写属性观察器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutomaticCar</span>: <span class="title">Car</span> </span>&#123;</span><br><span class="line">	<span class="keyword">override</span> <span class="keyword">var</span> currentSpeed: <span class="type">Double</span> &#123;</span><br><span class="line">		<span class="keyword">didSet</span> &#123;</span><br><span class="line">			gear = <span class="type">Int</span>(currentSpeed / <span class="number">10.0</span>) + <span class="number">1</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>防止重写的话，在前面加上 <code>final</code> 关键字即可</p>
+<h1 id="u6784_u9020_u8FC7_u7A0B_Initialization"><a href="#u6784_u9020_u8FC7_u7A0B_Initialization" class="headerlink" title="构造过程 Initialization"></a>构造过程 Initialization</h1><p>在构造器中设置属性时是直接设置的，不会触发任何属性观察者(property observers)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Fahrenheit</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> temperature: <span class="type">Double</span></span><br><span class="line">	<span class="keyword">init</span>() &#123;</span><br><span class="line">		temperature = <span class="number">32.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认属性值</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Fahrenheit</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> temperature = <span class="number">32.0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义构造过程</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Celsius</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> temperatureInCelsius: <span class="type">Double</span></span><br><span class="line">	<span class="keyword">init</span> (fromFahrenheit fahrenheit: <span class="type">Double</span>) &#123;</span><br><span class="line">		temperatureInCelsius = (fahrenheit - <span class="number">32.0</span>) / <span class="number">1.8</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">init</span> (fromKelvin kelvin: <span class="type">Double</span>) &#123;</span><br><span class="line">		temperatureInCelsius = kelvin - <span class="number">273.15</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> boilingPointOfWater = <span class="type">Celsius</span>(fromFahrenheit: <span class="number">212.0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="u4FBF_u5229_u6784_u9020_u5668"><a href="#u4FBF_u5229_u6784_u9020_u5668" class="headerlink" title="便利构造器"></a>便利构造器</h2><p>调用同一个类中的指定构造器</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(parameters)&#123;</span><br><span class="line">	statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">covenience <span class="keyword">init</span>(parameters)&#123;</span><br><span class="line">	statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指定构造器必须调用其直接父类的指定构造器</li>
+<li>便利构造器必须调用同一类中定义的其他构造器</li>
+<li>便利构造器必须最终以吊用一个指定构造器结束</li>
+</ul>
+<p>或</p>
+<ul>
+<li>指定构造器必须总是向上代理</li>
+<li>便利够再起必须总是横向代理</li>
+</ul>
+<h2 id="u4E24_u6BB5_u5F0F_u6784_u9020_u8FC7_u7A0B"><a href="#u4E24_u6BB5_u5F0F_u6784_u9020_u8FC7_u7A0B" class="headerlink" title="两段式构造过程"></a>两段式构造过程</h2><p>阶段一中，每个存储型属性通过引入它们的类的构造器来设置初始值。当每一个存储型属性值被确定后，第二阶段开始，它给每个类一次机会在新实例准备使用之前进一步定制它们的存储型属性。</p>
+<p>两段式构造过程的使用让构造过程更安全，同时在整个类层级结构中给予每个类完全的灵活性。两段式构造过程可以防止属性值在初始化之前被访问；也可以防止属性被另外一个构造器意外地赋予不同的值。</p>
+<h2 id="u5176_u4ED6_u4E00_u4E9B_u5185_u5BB9"><a href="#u5176_u4ED6_u4E00_u4E9B_u5185_u5BB9" class="headerlink" title="其他一些内容"></a>其他一些内容</h2><p>这部分等具体用到的时候再补充，这里就是有个印象</p>
+<ul>
+<li>可失败构造器 <code>init?</code></li>
+<li>必要构造器 <code>required init()</code></li>
+<li>通过闭包和函数来设置属性的默认值</li>
+</ul>
+<h1 id="u6790_u6784_u8FC7_u7A0B_Deinitialization"><a href="#u6790_u6784_u8FC7_u7A0B_Deinitialization" class="headerlink" title="析构过程 Deinitialization"></a>析构过程 Deinitialization</h1><p>用关键字 <code>deinit</code> 定义，每个类最多只能有一个析构器，而且不带任何参数。在实例释放发生前被自动调用。析构器是不允许被主动调用。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">deinit</span> &#123;</span><br><span class="line">	<span class="comment">// 执行析构过程</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/28/time-flies/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          第十三周-荏苒冬春去
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/24/swift-2-basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift2 学习笔记 2 - 基础</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="swift-2-advance" data-title="Swift2 学习笔记 3 - 进阶" data-url="http://yoursite.com/2015/11/25/swift-2-advance/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wdxblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 wdxtub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

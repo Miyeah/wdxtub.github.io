@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Programming iOS9 翻译 6 - View Controllers | 小土刀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一个 view controller 管理一个单独的 view，称为 main view。
+main view 没有指向 view controller 的指针，但是 view controller 是一个 UIResponder，在 responder chain 上是 view 的上一级，也就是 view 的 nextResponder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programming iOS9 翻译 6 - View Controllers">
+<meta property="og:url" content="http://yoursite.com/2016/01/07/programming-ios9-translation-6/index.html">
+<meta property="og:site_name" content="小土刀">
+<meta property="og:description" content="一个 view controller 管理一个单独的 view，称为 main view。
+main view 没有指向 view controller 的指针，但是 view controller 是一个 UIResponder，在 responder chain 上是 view 的上一级，也就是 view 的 nextResponder">
+<meta property="og:image" content="http://yoursite.com/images/pios62.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios63.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios64.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios65.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios66.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios67.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios68.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios69.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios70.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios71.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios72.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios73.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios74.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios75.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios76.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios77.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios78.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios79.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios80.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios81.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios82.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios83.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios84.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios85.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios86.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios87.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios88.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios89.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios90.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios91.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios92.jpg">
+<meta property="og:image" content="http://yoursite.com/images/pios93.jpg">
+<meta property="og:updated_time" content="2016-01-08T02:02:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Programming iOS9 翻译 6 - View Controllers">
+<meta name="twitter:description" content="一个 view controller 管理一个单独的 view，称为 main view。
+main view 没有指向 view controller 的指针，但是 view controller 是一个 UIResponder，在 responder chain 上是 view 的上一级，也就是 view 的 nextResponder">
+  
+    <link rel="alternative" href="/atom.xml" title="小土刀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpeg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wdxtub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Agony is my triumph</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">索引</a></li>
+				        
+							<li><a href="/categories/Technique">技术</a></li>
+				        
+							<li><a href="/categories/Reading">读书</a></li>
+				        
+							<li><a href="/categories/Thinking">思考</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/API/" style="font-size: 10.63px;">API</a> <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/AWS/" style="font-size: 11.88px;">AWS</a> <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 10.63px;">Android</a> <a href="/tags/Anroid/" style="font-size: 10px;">Anroid</a> <a href="/tags/Apple/" style="font-size: 11.88px;">Apple</a> <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/CMU/" style="font-size: 20px;">CMU</a> <a href="/tags/COC/" style="font-size: 10px;">COC</a> <a href="/tags/Capcom/" style="font-size: 10px;">Capcom</a> <a href="/tags/CodePlane/" style="font-size: 10px;">CodePlane</a> <a href="/tags/Datalab/" style="font-size: 10px;">Datalab</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IT/" style="font-size: 10px;">IT</a> <a href="/tags/Imaging-Cup/" style="font-size: 10px;">Imaging Cup</a> <a href="/tags/Java/" style="font-size: 11.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10.63px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Overview/" style="font-size: 10px;">Overview</a> <a href="/tags/PS4/" style="font-size: 10px;">PS4</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Swift/" style="font-size: 13.13px;">Swift</a> <a href="/tags/Swift-千金方/" style="font-size: 10.63px;">Swift 千金方</a> <a href="/tags/TOC/" style="font-size: 10px;">TOC</a> <a href="/tags/V2/" style="font-size: 10px;">V2</a> <a href="/tags/YC-创业课/" style="font-size: 10px;">YC 创业课</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 11.25px;">iOS</a> <a href="/tags/iOS-9/" style="font-size: 10px;">iOS 9</a> <a href="/tags/iOS-杂病论/" style="font-size: 10.63px;">iOS 杂病论</a> <a href="/tags/iOS9/" style="font-size: 13.75px;">iOS9</a> <a href="/tags/三观/" style="font-size: 10px;">三观</a> <a href="/tags/世界/" style="font-size: 10px;">世界</a> <a href="/tags/东野圭吾/" style="font-size: 10px;">东野圭吾</a> <a href="/tags/个人发展/" style="font-size: 10px;">个人发展</a> <a href="/tags/中国/" style="font-size: 10px;">中国</a> <a href="/tags/中秋/" style="font-size: 10px;">中秋</a> <a href="/tags/乐趣/" style="font-size: 10px;">乐趣</a> <a href="/tags/习题/" style="font-size: 10px;">习题</a> <a href="/tags/习题课/" style="font-size: 10px;">习题课</a> <a href="/tags/云计算/" style="font-size: 15.63px;">云计算</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/亲情/" style="font-size: 10px;">亲情</a> <a href="/tags/人口/" style="font-size: 10px;">人口</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/人造/" style="font-size: 10px;">人造</a> <a href="/tags/今何在/" style="font-size: 10px;">今何在</a> <a href="/tags/价值/" style="font-size: 10px;">价值</a> <a href="/tags/任天堂/" style="font-size: 10px;">任天堂</a> <a href="/tags/体力/" style="font-size: 10px;">体力</a> <a href="/tags/信息/" style="font-size: 10px;">信息</a> <a href="/tags/做饭/" style="font-size: 10px;">做饭</a> <a href="/tags/健康/" style="font-size: 10px;">健康</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/傅真/" style="font-size: 10px;">傅真</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/兄弟/" style="font-size: 10px;">兄弟</a> <a href="/tags/再而三/" style="font-size: 10px;">再而三</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/削发/" style="font-size: 10px;">削发</a> <a href="/tags/动画/" style="font-size: 10.63px;">动画</a> <a href="/tags/努力/" style="font-size: 10px;">努力</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/匹兹堡/" style="font-size: 10.63px;">匹兹堡</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/博客/" style="font-size: 11.88px;">博客</a> <a href="/tags/原创/" style="font-size: 12.5px;">原创</a> <a href="/tags/叙利亚/" style="font-size: 10px;">叙利亚</a> <a href="/tags/口译/" style="font-size: 10px;">口译</a> <a href="/tags/古希腊/" style="font-size: 10px;">古希腊</a> <a href="/tags/古董/" style="font-size: 10px;">古董</a> <a href="/tags/同性恋/" style="font-size: 10px;">同性恋</a> <a href="/tags/启程/" style="font-size: 10px;">启程</a> <a href="/tags/告别/" style="font-size: 10px;">告别</a> <a href="/tags/周记/" style="font-size: 17.5px;">周记</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/哲学/" style="font-size: 10.63px;">哲学</a> <a href="/tags/回合制/" style="font-size: 10px;">回合制</a> <a href="/tags/回头无岸/" style="font-size: 10px;">回头无岸</a> <a href="/tags/回忆/" style="font-size: 11.88px;">回忆</a> <a href="/tags/因果/" style="font-size: 10px;">因果</a> <a href="/tags/图像分类/" style="font-size: 10px;">图像分类</a> <a href="/tags/图灵/" style="font-size: 10px;">图灵</a> <a href="/tags/土豆/" style="font-size: 10px;">土豆</a> <a href="/tags/圣诞/" style="font-size: 10px;">圣诞</a> <a href="/tags/坚持/" style="font-size: 10px;">坚持</a> <a href="/tags/基础/" style="font-size: 11.25px;">基础</a> <a href="/tags/多元思维模型/" style="font-size: 10px;">多元思维模型</a> <a href="/tags/多看/" style="font-size: 10.63px;">多看</a> <a href="/tags/大一统/" style="font-size: 10px;">大一统</a> <a href="/tags/大圣归来/" style="font-size: 10.63px;">大圣归来</a> <a href="/tags/大学/" style="font-size: 10px;">大学</a> <a href="/tags/大结局/" style="font-size: 10px;">大结局</a> <a href="/tags/字体/" style="font-size: 10px;">字体</a> <a href="/tags/字节/" style="font-size: 10px;">字节</a> <a href="/tags/孙悟空/" style="font-size: 10px;">孙悟空</a> <a href="/tags/孤独/" style="font-size: 10px;">孤独</a> <a href="/tags/学习/" style="font-size: 16.25px;">学习</a> <a href="/tags/学术/" style="font-size: 10px;">学术</a> <a href="/tags/实例/" style="font-size: 10.63px;">实例</a> <a href="/tags/实践/" style="font-size: 10px;">实践</a> <a href="/tags/家庭/" style="font-size: 11.25px;">家庭</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/富勒/" style="font-size: 10px;">富勒</a> <a href="/tags/将军/" style="font-size: 10px;">将军</a> <a href="/tags/小学/" style="font-size: 10px;">小学</a> <a href="/tags/小说/" style="font-size: 10.63px;">小说</a> <a href="/tags/层/" style="font-size: 10px;">层</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/工作/" style="font-size: 10.63px;">工作</a> <a href="/tags/工作流/" style="font-size: 10px;">工作流</a> <a href="/tags/帐篷/" style="font-size: 10px;">帐篷</a> <a href="/tags/度假/" style="font-size: 10px;">度假</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/开学/" style="font-size: 10.63px;">开学</a> <a href="/tags/开篇/" style="font-size: 10.63px;">开篇</a> <a href="/tags/徐州/" style="font-size: 10px;">徐州</a> <a href="/tags/微软/" style="font-size: 10px;">微软</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/心智/" style="font-size: 11.25px;">心智</a> <a href="/tags/心理/" style="font-size: 10px;">心理</a> <a href="/tags/态度/" style="font-size: 10px;">态度</a> <a href="/tags/思考/" style="font-size: 16.25px;">思考</a> <a href="/tags/总体介绍/" style="font-size: 10px;">总体介绍</a> <a href="/tags/总览/" style="font-size: 10px;">总览</a> <a href="/tags/悖论/" style="font-size: 10px;">悖论</a> <a href="/tags/情侣/" style="font-size: 10px;">情侣</a> <a href="/tags/感恩节/" style="font-size: 10.63px;">感恩节</a> <a href="/tags/感情/" style="font-size: 10px;">感情</a> <a href="/tags/愿望/" style="font-size: 10px;">愿望</a> <a href="/tags/成功/" style="font-size: 10px;">成功</a> <a href="/tags/成绩/" style="font-size: 10px;">成绩</a> <a href="/tags/成长/" style="font-size: 11.25px;">成长</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/扩展/" style="font-size: 10px;">扩展</a> <a href="/tags/技巧/" style="font-size: 10.63px;">技巧</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/抱怨/" style="font-size: 10px;">抱怨</a> <a href="/tags/拖延症/" style="font-size: 10.63px;">拖延症</a> <a href="/tags/挫折/" style="font-size: 10px;">挫折</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/改变/" style="font-size: 11.25px;">改变</a> <a href="/tags/改进/" style="font-size: 10px;">改进</a> <a href="/tags/效率/" style="font-size: 10.63px;">效率</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/教育/" style="font-size: 10px;">教育</a> <a href="/tags/教训/" style="font-size: 10px;">教训</a> <a href="/tags/数字/" style="font-size: 10px;">数字</a> <a href="/tags/整型/" style="font-size: 10px;">整型</a> <a href="/tags/整理/" style="font-size: 10.63px;">整理</a> <a href="/tags/文化/" style="font-size: 10.63px;">文化</a> <a href="/tags/文本处理/" style="font-size: 10px;">文本处理</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 10px;">斯坦福 CS193p</a> <a href="/tags/新参者/" style="font-size: 10.63px;">新参者</a> <a href="/tags/新特性/" style="font-size: 10px;">新特性</a> <a href="/tags/方向/" style="font-size: 10px;">方向</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/方法论/" style="font-size: 10px;">方法论</a> <a href="/tags/旅行/" style="font-size: 11.88px;">旅行</a> <a href="/tags/旅途/" style="font-size: 10px;">旅途</a> <a href="/tags/旧金山/" style="font-size: 10.63px;">旧金山</a> <a href="/tags/早起/" style="font-size: 10px;">早起</a> <a href="/tags/时代/" style="font-size: 10px;">时代</a> <a href="/tags/时差/" style="font-size: 10.63px;">时差</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/明智行动的艺术/" style="font-size: 10px;">明智行动的艺术</a> <a href="/tags/智慧/" style="font-size: 10px;">智慧</a> <a href="/tags/暴走/" style="font-size: 10px;">暴走</a> <a href="/tags/朋友/" style="font-size: 12.5px;">朋友</a> <a href="/tags/期末/" style="font-size: 10.63px;">期末</a> <a href="/tags/未来/" style="font-size: 10px;">未来</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/机遇/" style="font-size: 10px;">机遇</a> <a href="/tags/极简/" style="font-size: 10px;">极简</a> <a href="/tags/架构/" style="font-size: 15.63px;">架构</a> <a href="/tags/核心/" style="font-size: 10px;">核心</a> <a href="/tags/格子/" style="font-size: 10px;">格子</a> <a href="/tags/格局/" style="font-size: 10px;">格局</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/概率/" style="font-size: 10px;">概率</a> <a href="/tags/概览/" style="font-size: 10px;">概览</a> <a href="/tags/概述/" style="font-size: 10px;">概述</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/欧洲/" style="font-size: 10px;">欧洲</a> <a href="/tags/步行/" style="font-size: 10px;">步行</a> <a href="/tags/死亡/" style="font-size: 10.63px;">死亡</a> <a href="/tags/比特/" style="font-size: 10px;">比特</a> <a href="/tags/氐惆/" style="font-size: 10px;">氐惆</a> <a href="/tags/民主/" style="font-size: 10px;">民主</a> <a href="/tags/沉默/" style="font-size: 10px;">沉默</a> <a href="/tags/沟通/" style="font-size: 10px;">沟通</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/洞察/" style="font-size: 10px;">洞察</a> <a href="/tags/活动/" style="font-size: 10px;">活动</a> <a href="/tags/浮点数/" style="font-size: 10px;">浮点数</a> <a href="/tags/深度/" style="font-size: 10px;">深度</a> <a href="/tags/清醒思考的艺术/" style="font-size: 10px;">清醒思考的艺术</a> <a href="/tags/游乐场/" style="font-size: 10px;">游乐场</a> <a href="/tags/游戏/" style="font-size: 14.38px;">游戏</a> <a href="/tags/游戏机/" style="font-size: 10px;">游戏机</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/滚动视图/" style="font-size: 10px;">滚动视图</a> <a href="/tags/灵活/" style="font-size: 10px;">灵活</a> <a href="/tags/炸鸡/" style="font-size: 10px;">炸鸡</a> <a href="/tags/烤肉/" style="font-size: 10px;">烤肉</a> <a href="/tags/热血/" style="font-size: 10px;">热血</a> <a href="/tags/照片/" style="font-size: 10px;">照片</a> <a href="/tags/爱情/" style="font-size: 11.25px;">爱情</a> <a href="/tags/父母/" style="font-size: 10px;">父母</a> <a href="/tags/独立博客/" style="font-size: 10px;">独立博客</a> <a href="/tags/玩家/" style="font-size: 10px;">玩家</a> <a href="/tags/环境/" style="font-size: 10px;">环境</a> <a href="/tags/理科生/" style="font-size: 10px;">理科生</a> <a href="/tags/生化危机/" style="font-size: 10px;">生化危机</a> <a href="/tags/生日/" style="font-size: 10.63px;">生日</a> <a href="/tags/生活/" style="font-size: 19.38px;">生活</a> <a href="/tags/电影/" style="font-size: 11.88px;">电影</a> <a href="/tags/男人/" style="font-size: 10px;">男人</a> <a href="/tags/界限/" style="font-size: 10px;">界限</a> <a href="/tags/留学生/" style="font-size: 10px;">留学生</a> <a href="/tags/目标/" style="font-size: 10.63px;">目标</a> <a href="/tags/看图说话/" style="font-size: 10px;">看图说话</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/知识管理/" style="font-size: 10px;">知识管理</a> <a href="/tags/研究/" style="font-size: 10px;">研究</a> <a href="/tags/社交/" style="font-size: 10px;">社交</a> <a href="/tags/社区/" style="font-size: 10px;">社区</a> <a href="/tags/神作/" style="font-size: 10px;">神作</a> <a href="/tags/离别/" style="font-size: 10px;">离别</a> <a href="/tags/科学/" style="font-size: 10px;">科学</a> <a href="/tags/科幻/" style="font-size: 10.63px;">科幻</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/积累/" style="font-size: 12.5px;">积累</a> <a href="/tags/程序员/" style="font-size: 11.25px;">程序员</a> <a href="/tags/穷查理宝典/" style="font-size: 10px;">穷查理宝典</a> <a href="/tags/童话/" style="font-size: 10.63px;">童话</a> <a href="/tags/笔记/" style="font-size: 16.25px;">笔记</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/简洁/" style="font-size: 10px;">简洁</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/类型/" style="font-size: 10px;">类型</a> <a href="/tags/粒度/" style="font-size: 10px;">粒度</a> <a href="/tags/精选/" style="font-size: 11.88px;">精选</a> <a href="/tags/系列/" style="font-size: 10px;">系列</a> <a href="/tags/索尼/" style="font-size: 10px;">索尼</a> <a href="/tags/纽约/" style="font-size: 10.63px;">纽约</a> <a href="/tags/组成原理/" style="font-size: 12.5px;">组成原理</a> <a href="/tags/组织/" style="font-size: 10px;">组织</a> <a href="/tags/经典/" style="font-size: 10px;">经典</a> <a href="/tags/绘制/" style="font-size: 10px;">绘制</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/编辑距离/" style="font-size: 10px;">编辑距离</a> <a href="/tags/羊驼/" style="font-size: 10px;">羊驼</a> <a href="/tags/美剧/" style="font-size: 10px;">美剧</a> <a href="/tags/美国/" style="font-size: 10px;">美国</a> <a href="/tags/翻译/" style="font-size: 13.75px;">翻译</a> <a href="/tags/老朝奉/" style="font-size: 10px;">老朝奉</a> <a href="/tags/自尊/" style="font-size: 10px;">自尊</a> <a href="/tags/自我/" style="font-size: 10.63px;">自我</a> <a href="/tags/节奏/" style="font-size: 10px;">节奏</a> <a href="/tags/苏州/" style="font-size: 10px;">苏州</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/英雄/" style="font-size: 11.25px;">英雄</a> <a href="/tags/英雄联盟/" style="font-size: 10.63px;">英雄联盟</a> <a href="/tags/苹果/" style="font-size: 10px;">苹果</a> <a href="/tags/荒野求生/" style="font-size: 10px;">荒野求生</a> <a href="/tags/萨博/" style="font-size: 10px;">萨博</a> <a href="/tags/落后/" style="font-size: 10px;">落后</a> <a href="/tags/蝴蝶效应/" style="font-size: 10px;">蝴蝶效应</a> <a href="/tags/行动/" style="font-size: 10px;">行动</a> <a href="/tags/西行者/" style="font-size: 10px;">西行者</a> <a href="/tags/观念/" style="font-size: 10px;">观念</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/视图控制器/" style="font-size: 10px;">视图控制器</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/计算机/" style="font-size: 15px;">计算机</a> <a href="/tags/记录/" style="font-size: 10.63px;">记录</a> <a href="/tags/记忆/" style="font-size: 10.63px;">记忆</a> <a href="/tags/讲义/" style="font-size: 10px;">讲义</a> <a href="/tags/许愿/" style="font-size: 10px;">许愿</a> <a href="/tags/论道/" style="font-size: 14.38px;">论道</a> <a href="/tags/设计/" style="font-size: 16.88px;">设计</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访谈/" style="font-size: 10px;">访谈</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/读书/" style="font-size: 18.13px;">读书</a> <a href="/tags/课程/" style="font-size: 10px;">课程</a> <a href="/tags/调整/" style="font-size: 10px;">调整</a> <a href="/tags/足球/" style="font-size: 10.63px;">足球</a> <a href="/tags/跑题/" style="font-size: 10px;">跑题</a> <a href="/tags/路线/" style="font-size: 10px;">路线</a> <a href="/tags/转型/" style="font-size: 10px;">转型</a> <a href="/tags/转换/" style="font-size: 10px;">转换</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/轻量/" style="font-size: 10px;">轻量</a> <a href="/tags/运动/" style="font-size: 10px;">运动</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/运算符重载/" style="font-size: 10px;">运算符重载</a> <a href="/tags/运营/" style="font-size: 10.63px;">运营</a> <a href="/tags/进阶/" style="font-size: 10px;">进阶</a> <a href="/tags/连接/" style="font-size: 10px;">连接</a> <a href="/tags/迷茫/" style="font-size: 10px;">迷茫</a> <a href="/tags/逆向思维/" style="font-size: 10px;">逆向思维</a> <a href="/tags/选择/" style="font-size: 11.25px;">选择</a> <a href="/tags/选课/" style="font-size: 10px;">选课</a> <a href="/tags/透析/" style="font-size: 10px;">透析</a> <a href="/tags/造假/" style="font-size: 10px;">造假</a> <a href="/tags/逻辑/" style="font-size: 10px;">逻辑</a> <a href="/tags/醒醒/" style="font-size: 10px;">醒醒</a> <a href="/tags/闭包/" style="font-size: 10.63px;">闭包</a> <a href="/tags/阅读/" style="font-size: 11.88px;">阅读</a> <a href="/tags/阿拉伯之春/" style="font-size: 10px;">阿拉伯之春</a> <a href="/tags/陌生人/" style="font-size: 10px;">陌生人</a> <a href="/tags/陪伴/" style="font-size: 10px;">陪伴</a> <a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a> <a href="/tags/难民/" style="font-size: 10px;">难民</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/顽皮狗/" style="font-size: 10px;">顽皮狗</a> <a href="/tags/预测/" style="font-size: 10px;">预测</a> <a href="/tags/预言/" style="font-size: 10px;">预言</a> <a href="/tags/马伯庸/" style="font-size: 10px;">马伯庸</a> <a href="/tags/骑行/" style="font-size: 10px;">骑行</a> <a href="/tags/高中/" style="font-size: 10px;">高中</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://illustrationsencouleur.lofter.com/">illustrations</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wdxtub.lofter.com/">wdxtub@lofter</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wdxtub</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wdxtub</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Agony is my triumph</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">索引</a></li>
+		        
+					<li><a href="/categories/Technique">技术</a></li>
+		        
+					<li><a href="/categories/Reading">读书</a></li>
+		        
+					<li><a href="/categories/Thinking">思考</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-programming-ios9-translation-6" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/07/programming-ios9-translation-6/" class="article-date">
+  	<time datetime="2016-01-07T12:40:16.000Z" itemprop="datePublished">2016-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Programming iOS9 翻译 6 - View Controllers
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS9/">iOS9</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视图控制器/">视图控制器</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Technique/">Technique</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个 view controller 管理一个单独的 view，称为 main view。</p>
+<p>main view 没有指向 view controller 的指针，但是 view controller 是一个 <code>UIResponder</code>，在 responder chain 上是 view 的上一级，也就是 view 的 <code>nextResponder</code></p>
+<a id="more"></a>
+<hr>
+<h2 id="View_Controller_Responsibilities"><a href="#View_Controller_Responsibilities" class="headerlink" title="View Controller Responsibilities"></a>View Controller Responsibilities</h2><p>一个 view controller 必须有一个 view，也会提供 view 出现和消失时候的动画。大部分效果都有内置，但是如果你想要自己折腾的话，都是可以自由定制的。</p>
+<p>View controller 可以自动保存和恢复状态，这个特性保证了你的 app 即使在被关闭后也可以从用户最后看到的界面重新开始。</p>
+<p>最强大的 view controller 是 root view controller，它负责 root view，也就是在 view hierarchy 最顶端的那个。root view 作为 main window 的唯一直接 subview，是所有其他界面的 superview，并且被指定到 window 的 <code>rootViewController</code> 属性上。</p>
+<p>root view controller 主要负责两个重要的决定：</p>
+<ul>
+<li>界面的旋转</li>
+<li>status bar 的控制</li>
+</ul>
+<h2 id="View_Controller_Hierarchy"><a href="#View_Controller_Hierarchy" class="headerlink" title="View Controller Hierarchy"></a>View Controller Hierarchy</h2><p>在 iOS 中，不同的 controller 之间可以有两种坐标关系：</p>
+<ul>
+<li>Parentage(包含)<ul>
+<li>一个 view controller 可以包含另一个 view controller</li>
+<li>导航界面就是一个很好的例子</li>
+</ul>
+</li>
+<li>Presentation(modal views)<ul>
+<li>一个 view controller 展示另一个 view controller</li>
+<li>可以是替换或者是添加，可以是完整或者是局部</li>
+<li>iOS4 及之前主要叫 modal view，现在更多叫 presented view，不过 modal view 的叫法还会出现在部分文档中</li>
+</ul>
+</li>
+</ul>
+<p>通常来说 view hierarchy 是自动的，不需要我们去手动操作。</p>
+<p>举个例子，在下图中，我们可以看到两个界面元素</p>
+<p><img src="/images/pios62.jpg" alt="pios62"></p>
+<ul>
+<li>导航栏，包含 logo</li>
+<li>故事列表，是一个 <code>UITableView</code></li>
+</ul>
+<p><img src="/images/pios63.jpg" alt="pios63"></p>
+<ul>
+<li>这个 app 的 root view controller 是 <code>UINavigationController</code>，<code>UINavigationController</code> 的 view 是这个 window 唯一的直接 subview，也就是 root view。导航栏是 root view 的 subview。</li>
+<li><code>UINavigationController</code> 包含第二个 <code>UIViewController</code>，是一个父子关系。这个子 controller 的 view 占据了屏幕的剩余部分，就是一个 <code>UITableView</code>。当用户点击这个 tableview 时，会有另一个 <code>UIViewController</code> 来取代这个 <code>UITableView</code>，但是导航栏会还在原地</li>
+</ul>
+<p>这个例子中所有的都是 automatic 的，所以再举一个例子包含 manual 的部分</p>
+<p><img src="/images/pios64.jpg" alt="pios64"></p>
+<p>这是一个显示拉丁单词信息的 app，然后下面有一个工具栏，具体的 view hierarchy 如下</p>
+<p><img src="/images/pios65.jpg" alt="pios65"></p>
+<p>因为有很多拉丁单词，所以这里用 <code>UIPageViewController</code> 来进行展示，但是工具栏本身不应该在 <code>UIPageViewController</code> 的 view 中，所以</p>
+<ul>
+<li>app 的 root view controller 是自定义的 <code>UIViewController</code> 子类，包含工具栏以及一个 <code>UIPageViewController</code> 的 view。这个自定的 view controller  的 view 可以通过成为 window 的 rootViewController` 来自动成为 root view 的 subview。</li>
+<li>这里需要手动把 <code>UIPageViewController</code> 添加到 <code>RootViewController</code> 的 view 中</li>
+<li>最后 <code>UIPageViewController</code> 自动显示 <code>CardController</code> 的 view。</li>
+</ul>
+<p>这个 app 还有另一个模式，就是随机抽取并展示单词，虽然界面很像但是行为是完全不一样的</p>
+<p><img src="/images/pios66.jpg" alt="pios66"></p>
+<p>为了实现这个，我创建了另一个 <code>UIViewController</code> 的子类，叫做 <code>DrillViewController</code>，不同的是，这个 view controller 是被 <code>RootViewController</code> 给 present 的。</p>
+<p><img src="/images/pios67.jpg" alt="pios67"></p>
+<p><img src="/images/pios68.jpg" alt="pios68"></p>
+<h2 id="View_Controller_Creation"><a href="#View_Controller_Creation" class="headerlink" title="View Controller Creation"></a>View Controller Creation</h2><p>创建 view controller 的实例和其他实例一样，新建并初始化</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> llc = <span class="type">LessonListController</span>(terms: <span class="keyword">self</span>.data)</span><br><span class="line"><span class="keyword">let</span> nav = <span class="type">UINavigationController</span>(rootViewController: llc)</span><br></pre></td></tr></table></figure>
+<p>一个 view controller 被创建后必须被保持以保证不被回收，这个会在 view controller 被添加进 view controller hierarchy 的时候完成。</p>
+<p>被赋值到 <code>rootViewController</code> 属性的 view controller 会被对应的 window 保持，被当做子 view controller 的会被其父 view controller 保持，被 present 的 view controller 会由 present 它的 view controller 保持。</p>
+<p>如果一个 view 是从 storyboard 中实例化的，会自动被保持，其机制也就是和上面描述的一致。</p>
+<h2 id="How_a_View_Controller_Gets_Its_View"><a href="#How_a_View_Controller_Gets_Its_View" class="headerlink" title="How a View Controller Gets Its View"></a>How a View Controller Gets Its View</h2><p>当一个 view controller 刚被实例化的时候，它是没有 view 的。View controller 是一个小且轻量的对象；View 因为包括了界面元素，会占据内存，是相对重的对象。因此，一个 view controller 会把获得 view 的时间尽量推迟，也就是在访问其 <code>view</code> 属性的时候，才 lazy initialize 之。</p>
+<p>在处理一个新的 view controller 时，如果不需要用到 <code>view</code> 属性，就尽量不要引用，这样就避免触发创建一个新的 view。如何在不加载 view 的前提下知道一个 view controller 有没有对应的 view 呢？调用 <code>isViewLoaded</code> 方法。在 iOS 9 中，可以在不引用 view 的同时对 view 进行一些操作，使用 <code>viewIfLoaded</code>。我们可以使用 <code>loadViewIfNeeded</code> 显式加载 view，而不是把加载 view 作为其他操作的 side effect。</p>
+<p>一旦一个 view controller 有了其对应的 view，<code>viewDidLoad</code> 方法就会被调用，这个方法是在代码中修改 view 的内容的最佳时机，比如说添加 subview，调整界面元素等等。</p>
+<p>在 <code>viewDidLoad</code> 被调用之前，view controller 必须获取它的 view。如果你想要对 view 做一些自定义操作的话，就必须理解 view controller 是怎么获得 view 的。</p>
+<p>整个过程不难，但是很精妙，因为有多种可能，例如</p>
+<ul>
+<li>View 可能由 view controller 中的代码手动创建</li>
+<li>View 可能自动被创建为一个空的通用的 view</li>
+<li>View 可能在其独立的 nib 文件创建</li>
+<li>View 可能由其 view controller 的 nib 文件创建</li>
+</ul>
+<h3 id="Manual_View"><a href="#Manual_View" class="headerlink" title="Manual View"></a>Manual View</h3><p>要手动提供 view 的话，需要实现 <code>loadView</code> 方法，创建一个 <code>UIView</code> 的实例，然后赋值给 <code>self.view</code>。在这里一定不能调用 <code>super</code></p>
+<p><img src="/images/pios69.jpg" alt="pios69"></p>
+<p>举个例子，如果我们完全在代码中对视图进行初始化，需要这么做：</p>
+<ol>
+<li>需要一个 <code>UIViewController</code> 的子类，创建一个 Cocoa Touch Class</li>
+<li>命名为 <code>RootViewController</code>，父类是 <code>UIViewController</code>，取消勾选创建 xib 文件</li>
+<li>保存文件</li>
+</ol>
+<p>在 <code>RootViewController.swift</code> 中，我们需要实现 <code>loadView</code>，并且加一些东西显示上去：</p>
+<p><img src="/images/pios70.jpg" alt="pios70"></p>
+<p>这个时候我们还没有把 RootViewController 添加到 view hierarchy 中（事实上我们还没有 view hierarchy），所以在 <code>AppDelegate.swift</code> 中修改 <code>application:didFinishLaunchingWithOptions:</code>，创建一个 RootViewController 实例并且设置为 window 的 <code>rootViewController</code>:</p>
+<p><img src="/images/pios71.jpg" alt="pios71"></p>
+<p>运行 app 就可以看到对应的结果了。</p>
+<p>我们创建 view controller 的 view 时，没有给定 frame，因为这个事情由其他人做了，在这里是由 window 完成，因为 window 将把这个 view 作为其 subview。要注意 view controller 的 view 的尺寸可能会变。</p>
+<h3 id="Generic_Automatic_View"><a href="#Generic_Automatic_View" class="headerlink" title="Generic Automatic View"></a>Generic Automatic View</h3><p>上个例子有一个不好地方是，创建 view 和配置 view 放在了一起，理论上来说，最好把配置的过程放在 <code>viewDidLoad</code> 中，如下所示</p>
+<p><img src="/images/pios72.jpg" alt="pios72"></p>
+<p>如果我们这么写代码的话，其实连 <code>loadView</code> 方法都不需要自己重写。如果没有手动提供 view 的话， <code>UIViewController</code> 的默认实现是会自动生成一个通用的 <code>UIView</code> 的（其实就跟 <code>loadView</code> 方法中做的事情一样）。如果我们不想要默认的 <code>UIView</code> 而是我们自定的 <code>UIView</code> 子类的话，就需要在 <code>loadView</code> 方法中手动创建。</p>
+<h3 id="View_in_a_Separate_Nib"><a href="#View_in_a_Separate_Nib" class="headerlink" title="View in a Separate Nib"></a>View in a Separate Nib</h3><p>也可以通过 nib 文件来创建 view，这样的好处是可以可视化进行编辑。</p>
+<p>载入 nib 文件时，view controller 已经被创建，会成为 nib 的所有者。nib 载入的时候，view controller 通过 nib-loading 机制来获取它的 view。</p>
+<p>我们先从 <code>.xib</code> 文件弄起，之后再用 storyboard（这样有助于理解）</p>
+<p>在 <code>.xib</code> 文件中，nib 的所有者由 File’s Owner 代理对象表示。因此，需要进行如下两个设置：</p>
+<ul>
+<li>File’s Owner 类必须设置为 <code>UIViewController</code> 的子类</li>
+<li>File’s Owner 代理现在有一个 outlet，对应于 <code>UIViewController</code> 的 <code>view</code> 属性。这个 outlet 必须与 view 连接</li>
+</ul>
+<p>先删除 <code>loadView</code> 和 <code>viewDidLoad</code> 中的代码，因为这次我们要在 nib 文件中创建，然后进行如下步骤：</p>
+<ol>
+<li>选择 File -&gt; New -&gt; File and specify iOS -&gt; User Interface -&gt; View. 这是一个包含 <code>UIView</code> 对象的 nib 文件。点击下一步</li>
+<li>重命名为 <code>MyNib.xib</code>，放到合适的地方，点击创建</li>
+<li>编辑 <code>MyNib.xib</code><ul>
+<li>把 File’s Owner 类设置为 <code>RootViewController</code></li>
+<li>把 File’s Owner 的 <code>view</code> 的 outlet 连接到这个 view 对象 </li>
+</ul>
+</li>
+<li>用编辑器对 view 做一些修改</li>
+</ol>
+<p>接下来就是载入 nib 文件了，回到 <code>AppDelegate.swift</code> 中，在我们创建 <code>RootViewController</code> 实例的方法中把原来的：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> theRVC = <span class="type">RootViewController</span>()</span><br><span class="line"><span class="keyword">self</span>.window!.rootViewController = the <span class="type">RVC</span></span><br></pre></td></tr></table></figure>
+<p>替换成</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> the <span class="type">RVC</span> = <span class="type">RootViewController</span>(nibName:<span class="string">"MyNib"</span>, bundle:<span class="literal">nil</span>)</span><br><span class="line"><span class="keyword">self</span>.window!.rootViewController = the <span class="type">RVC</span></span><br></pre></td></tr></table></figure>
+<p>给 bundle 赋值为 nil 等于是指定 main bundle，通常来说这样就可以。</p>
+<p>还有一个技巧，默认的 init 函数在初始化的时候会查找同名的 nib，并进行载入，所以我们可以把 <code>MyNib.xib</code> 名字改为 <code>RootViewController.xib</code> 然后用下面的代码就可以自动载入对应的 nib</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> the <span class="type">RVC</span> = <span class="type">RootViewController</span>()</span><br><span class="line"><span class="keyword">self</span>.window!.rootViewController = the <span class="type">RVC</span></span><br></pre></td></tr></table></figure>
+<p>这又带来了一个问题，nib 并不是一个 controller，但是名字里却有 controller，所以可以把名字改为 <code>RootView.xib</code>，运行之后可以发现仍然是能够正确载入的。</p>
+<p>如果在之前创建 <code>UIViewController</code> 的子类的时候勾选了创建对应的 xib 文件，那么会自动生成并且连接好需要连接的东西。</p>
+<p>另外，如果命名为 <code>RootViewController~ipad.xib</code>，那么在用 ipad 打开时，会自动读取这个文件，是一个很方便的做法。</p>
+<p>现在我们可以总结一下 view controller 如何获得一个 view：</p>
+<ol>
+<li>当 view controller 第一次需要使用 view 时，会调用 <code>loadView</code></li>
+<li>如果重写了 <code>loadView</code>，就可以在代码中创建 <code>view</code>，不要调用 <code>super</code>。如果这样么做的话，创建完成</li>
+<li>如果没有重写 <code>loadView</code>，就会使用默认的实现，也就是载入 view controller 相关联的 nib。这也就是为什么我们重写 <code>loadView</code> 时不能调用 super，调用的话就会既从代码创建，又从 nib 创建了</li>
+<li>如果之前的步骤都没有成功，也就是既没有重写 <code>loadView</code> 也没有对应的 nib 文件，就会创建一个通用的 <code>UIView</code></li>
+</ol>
+<p><img src="/images/pios73.jpg" alt="pios73"></p>
+<h3 id="Nib-Instantiated_View_Controller"><a href="#Nib-Instantiated_View_Controller" class="headerlink" title="Nib-Instantiated View Controller"></a>Nib-Instantiated View Controller</h3><p><img src="/images/pios74.jpg" alt="pios74"></p>
+<p>我们同样可以从 nib 文件读取 view controller，举例如下：</p>
+<ol>
+<li>File -&gt; New -&gt; File and specify iOS -&gt; User Interface -&gt; Empty，点击下一步</li>
+<li>命名为 <code>Main.xib</code>，保存到合适位置，点击下一步</li>
+<li>编辑 <code>Main.xib</code>，拉一个 plain vanilla View Controller 对象到画布中</li>
+<li>可以看到这个 view controller 中有一个 view 对象，选择并删除它（不要担心，之后会详细说明）</li>
+</ol>
+<p>然后在 <code>AppDelegate.swift</code> 用代码载入这个 view controller：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = <span class="type">UINib</span>(nibName: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>).instantiatedWithOwner(<span class="literal">nil</span>, options: <span class="literal">nil</span>)</span><br><span class="line"><span class="keyword">self</span>.window!.rootViewController = arr[<span class="number">0</span>] <span class="keyword">as</span>? <span class="type">UIViewController</span></span><br></pre></td></tr></table></figure>
+<p>然后就可以对这个 view controller 进行操作了。</p>
+<p>我们同样也可以对 view controller 中的 view 指定另外的 nib 文件（Attributes inspector中），这个等于调用 <code>init(nibName:bundle:)</code></p>
+<p><img src="/images/pios75.jpg" alt="pios75"></p>
+<h3 id="Storyboard-Instantiated_View_Controller"><a href="#Storyboard-Instantiated_View_Controller" class="headerlink" title="Storyboard-Instantiated View Controller"></a>Storyboard-Instantiated View Controller</h3><p>Storyboard 等于是把之前的 nib 文件用可视化的形式展示了出来，实际上是一个 nib 文件的 bundle，每个 view 可以对应单独的 nib 文件，并且在需要的时候进行初始化。</p>
+<p><img src="/images/pios76.jpg" alt="pios76"></p>
+<p>Xcode 的 app 模板有一个 <code>Main.storyboard</code>，在 <code>Info.plist</code> 的 <code>UIMainStoryboardFile</code> 中指定。当应用启动时，<code>UIApplicationMain</code> 通过调用 <code>UIStoryboard</code> 的构造器 <code>init(name:bundle:)</code> 来实例化最初的 view controller（<code>instantiatedInitialiViewController</code>）并且指定为 <code>rootViewController</code>。</p>
+<p>添加 segue 之后，在跳转的时候会自动初始化目标 view controller。</p>
+<p>在 Xcode 7 中，对于对于多个 storyboard 的调用方便很多，可以根据功能和分工来使用多个 storyboard 并在主 storyboard 中进行引用，方便团队协作。</p>
+<p>有了一个 storyboard 实例后，view controller 可以通过以下四种方式之一来进行实例化：</p>
+<ul>
+<li>至多一个 view controller 可以被设置为最开始的 view controller，调用 <code>instantiateInitialViewController</code> 会返回这个实例</li>
+<li>一个 view controller 可以有一个字符串标识符，叫做 storyboard id（Identity inspector 中），也可以调用 <code>instantiateViewControllerWithIdentifier:</code>，会返回这个实例</li>
+<li>父类被实例化时，子类也会自动被实例化，比如 <code>UINavigationController</code></li>
+<li>如果是 segue 的目标 view controller，会在触发是进行实例化</li>
+</ul>
+<h2 id="View_Resizing"><a href="#View_Resizing" class="headerlink" title="View Resizing"></a>View Resizing</h2><p>一般在 view controller 中进行 view 的尺寸的对应调整。</p>
+<p>在 Nib 编辑器中编辑都是给定的尺寸，如果不做调整，在不同设备会有不同的效果。</p>
+<h3 id="Bars_and_Underlapping"><a href="#Bars_and_Underlapping" class="headerlink" title="Bars and Underlapping"></a>Bars and Underlapping</h3><p>通常来说，界面上还有有其他一些元素，需要在设计时进行考虑：</p>
+<ul>
+<li>root view 会被放置在状态栏的下面，状态栏是透明的</li>
+<li>root view 会被放在诸如导航栏、工具栏、tab bar 的下面，注意不要被这些元素遮挡</li>
+</ul>
+<p>这些界面元素可能出现，也就是说高度随时可能改变，这里主要使用 view controller 的 layout guides（<code>topLayoutGuide</code> 和 <code>bottomLayoutGuide</code>）</p>
+<p>最方便的做法就是结合 autolayout 和 constrains，iOS 9 中有一些新的属性：</p>
+<ul>
+<li>topLayoutGuide 的 <code>bottomAnchor</code></li>
+<li>bottomLayoutGuide 的 <code>topAnchor</code> </li>
+</ul>
+<p>如果需要进行布局计算，可以通过 main view 的 <code>length</code> 属性，注意，在 <code>viewDidLoad</code> 中这个属性不可用，最早可以使用是在 <code>viewWillLayoutSubviews</code> 方法中，在 iOS 9，可以使用 <code>heightAnchor</code> 属性</p>
+<p><strong>状态栏可见性</strong></p>
+<p>可以通过重写下面方法来进行定制</p>
+<ul>
+<li><code>preferredStatusBarStyle</code><ul>
+<li>可以选择 <code>UIStatusBarStyle</code> 的 <code>.Default</code> 或者 <code>.LightContent</code>，也就是深色文字和浅色文字，注意选择对比度高能看清的即可</li>
+</ul>
+</li>
+<li><code>prefersStatusBarHidden</code><ul>
+<li>返回 true 则状态栏不可见，调用 super 则是默认的设置</li>
+</ul>
+</li>
+<li><code>childViewControllerForStatusBarStyle</code></li>
+<li><code>chileViewControllerForStatusBarHidden</code><ul>
+<li>用 delegate 来改动 child view 的状态栏</li>
+<li>例如 tab view controller 中根据不同的 tab 来进行改动</li>
+</ul>
+</li>
+</ul>
+<p>这些方法都不需要自己去调用，如果想要改动立即生效，在 view controller 调用 <code>setNeedsStatusBarApplearanceUpdate</code>，如果这个是在 animation block 中调用的话，还可以设定动画方式 <code>preferredStatusBarUpdateAnimation</code>，可选的值有 <code>.Fade</code>, <code>.Slide</code>, <code>.None</code></p>
+<p>改动可见性会使得高度有 20 points 的变化，这也是会让界面忽然出现改变，不想这样的话，在同一个 animation block 中调用 <code>layoutIfNeeded</code> 方法，这样就会有比较自然的动画效果：</p>
+<p><img src="/images/pios77.jpg" alt="pios77"></p>
+<p>如果你的 view controller 的上一级是 navigation controller 或者 tab bar controller，可以通过一些属性来知道 top bar 和 bottom bar 的状态</p>
+<ul>
+<li><code>edgesForExtendedLayout</code><ul>
+<li><code>UIRectEdge</code>，模式是 <code>.All</code>，表示当前 view controller 会在半透明的top bar 或者半透明的 bottom bar 之下，其他的选择有 <code>.None</code> 表示不会在 top/bottom bar 之下以；<code>.Top</code>，表示只在 top bar 之下；<code>.Bottom</code>，表示只在 bottom bar 之下</li>
+</ul>
+</li>
+<li><code>extendedLayoutIncludesOpaqueBars</code><ul>
+<li>如果是 ture，即使 top/bottom bar 是不透明的也会应用上面设置的规则</li>
+</ul>
+</li>
+</ul>
+<h3 id="Resizing_Events"><a href="#Resizing_Events" class="headerlink" title="Resizing Events"></a>Resizing Events</h3><p>下面这些方法主要跟旋转有关，以及 iOS 9 中新增的 iPad 多任务处理有关</p>
+<ul>
+<li><code>willTransitionToTraitCollection:withTransitionCoordinator:</code><ul>
+<li>当 app 要产生 trait collection 变化的时候（size classes 将要改变）</li>
+<li>在启动时或者 view controller 的 view 第一次被嵌入到界面中时不会调用</li>
+<li>如果重写这个方法，记得调用 <code>super</code></li>
+<li><code>UIViewController</code> 通过 <code>UIContentContainer</code> 协议以接收这个事件</li>
+</ul>
+</li>
+<li><code>viewWillTransitionToSize:withTransitionCoordinator:</code><ul>
+<li>新的尺寸是第一个参数，旧的尺寸仍旧可用 <code>self.view.bounds.size</code></li>
+<li>在启动时或者 view controller 的 view 第一次被嵌入到界面中时不会调用</li>
+<li>如果重写这个方法，记得调用 <code>super</code></li>
+<li><code>UIViewController</code> 通过 <code>UIContentContainer</code> 协议以接收这个事件</li>
+</ul>
+</li>
+<li><code>traitCollectionDidChange:</code><ul>
+<li>在 trait collection 改变之后发送。参数是老的 trait collection，新的 trait collection <code>self.traitCollection</code></li>
+<li>在启动时或者 view controller 的 view 第一次被嵌入到界面中时会调用，并且参数为 nil</li>
+<li><code>UIViewController</code> 通过 <code>UITraitEnvironment</code> 协议以接收这个事件</li>
+</ul>
+</li>
+</ul>
+<p><code>UIViewController</code> 还回收到它的 view 的一些事件：</p>
+<ul>
+<li><code>updateViewConstraints</code><ul>
+<li>要更新 constraints</li>
+<li>启动时会被调用</li>
+<li>如果重写，记得调用 <code>super</code></li>
+</ul>
+</li>
+<li><code>viewWillLayoutSubviews</code></li>
+<li><code>viewDidLayoutSubviews</code><ul>
+<li>在 view 接收 <code>layoutSubview</code> 方法之前之后发送</li>
+<li>启动时会被调用</li>
+</ul>
+</li>
+</ul>
+<p>这些事件发送的顺序是：</p>
+<ul>
+<li><code>willTransitionToTraitCollection:withTransitionCoordinator:</code></li>
+<li><code>viewWillTransitionToSize:withTransitionCoordinator:</code></li>
+<li><code>updateViewConstraints</code></li>
+<li><code>traitCollectionDidChange:</code></li>
+<li><code>viewWillLayoutSubviews</code></li>
+<li><code>viewDidLayoutSubviews</code></li>
+</ul>
+<p>不能保证每个方法都只会发送一次</p>
+<p><img src="/images/pios78.jpg" alt="pios78"></p>
+<h3 id="Rotation"><a href="#Rotation" class="headerlink" title="Rotation"></a>Rotation</h3><p>iOS 7 及之前，旋转都是一个幻觉，实际上是 window 没有变化。iOS 8 及之后才算是真正的『旋转』。旋转的过程如下：</p>
+<ul>
+<li>状态栏方向改变<ul>
+<li>目前的方向可以通过 <code>UIApplication</code> 的 <code>statusBarOrientation</code> 获取</li>
+<li><code>UIInterfaceOrientation</code> 的可能值有<ul>
+<li><code>.Portrait</code></li>
+<li><code>.PortraitUpsideDown</code></li>
+<li><code>.LandscapeLeft</code></li>
+<li><code>.landscapeRight</code></li>
+</ul>
+</li>
+<li>两个便捷方法 <code>UIInterfaceOrientationIsLandscae</code> 和 <code>UIInterfaceOrientationIsPortrait</code> 接收一个 <code>UIInterfaceOrientation</code> 并返回一个布尔值</li>
+</ul>
+</li>
+<li>view controller 的 view 的尺寸改变<ul>
+<li>通常通过 <code>viewWillTransitionToSize:withTransitionCoordinator:</code> 来了解方向的改变</li>
+<li>对于 iPhone 来说主要专注 90 度旋转，那么主要是 <code>willTransitionToTraitCollection:withTransitionCoordinator:</code></li>
+</ul>
+</li>
+</ul>
+<p>有两个旋转的互补使用方法：</p>
+<ul>
+<li>Compensatory rotation</li>
+<li>Forced rotation</li>
+</ul>
+<p>这里主要是用于处理 90 度旋转的情况，因为可能需要做一定的界面改动</p>
+<p><strong>Permitting compensatory rotation</strong></p>
+<p>默认来说，对于 iPhone 支持除了 Upsidedown 的其他三种方式，iPad 则是全部支持。如果需要做一些改动，有以下三种改动的层级：</p>
+<ul>
+<li>应用本身<ul>
+<li>在 <code>Info.plist</code> 的 <code>UISupportedInterfaceOrientations</code> 设置</li>
+<li>在 app target 的 general bar 中设置</li>
+</ul>
+</li>
+<li>在 App Delegate 中<ul>
+<li>这个设置会覆盖 <code>Info.plist</code> 的设置，也就是说可以动态修改, bitmask</li>
+<li><code>application:supportedInterfaceOrientationForWindow:</code> 会在每次设备旋转是至少调用一次</li>
+</ul>
+</li>
+<li>最顶层的 view controller，也就是 root view controller 或者某个全屏 view controller<ul>
+<li>实现 <code>supportedInterfaceOrientations</code>, bitmask</li>
+<li>也可以实现 <code>shouldAutorotate</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/pios79.jpg" alt="pios79"></p>
+<p>上面哥提到的 bitmask 是 <code>UIinterfaceOrientationMask</code>，可以是下面的一个或者多个组合</p>
+<ul>
+<li><code>.Portrait</code></li>
+<li><code>.LandscapeLeft</code></li>
+<li><code>.LandscapeRight</code></li>
+<li><code>.ProtraitUpsideDown</code></li>
+<li><code>.Landscape</code> (Left 和 Right 的组合)</li>
+<li><code>.All</code> 四种</li>
+<li><code>.AllButUpsideDown</code> 三种</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">supportedInterfaceOrientations</span><span class="params">()</span></span> -&gt; <span class="type">UIInterfaceOrientationMask</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> .<span class="type">Portrait</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>想要知道当前的方向</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> orientation = <span class="type">UIDevice</span>.currentDevice().orientation</span><br></pre></td></tr></table></figure>
+<p>可能的返回值有：<code>.Unknown</code>, <code>.Portrait</code> 以及其他的选项。全局便捷方法 <code>UIDeviceOrientationIsPortrait</code> 和 <code>UIDeviceOrientationIsLandscape</code> 接收一个 <code>UIDeviceOrientation</code> 变量并返回一个布尔值。</p>
+<p>当你接收到一个旋转相关的事件时，设备的方向已经改变了</p>
+<p><img src="/images/pios80.jpg" alt="pios80"></p>
+<p><strong>Initial orientation</strong></p>
+<p>在 iPad 上没有特定的初始化方向，理论上来说会以当前设备最可能随处的方向来启动。</p>
+<p>在 iPhone 上，以 iOS 9 来说，如果在 <code>Info.plist</code> 中方向设为<code>UIInterfaceOrientationPortrait</code>，初始方向就是竖直。用户启动 app 时会先以竖直显示然后切换到水平。</p>
+<p>如果没有指定竖直，那么就会直接以水平显示，具体的顺序可以自己安排。</p>
+<p>如果指定了竖直，但是 root view controller 不支持竖直，那么 app 会在具体布局之前先以竖直载入然后旋转到水平。</p>
+<p><strong>Initial layout</strong> </p>
+<p>如果你有一些设置初始布局的代码，要放到哪里呢？虽然具体的顺序跟设备当前的方向有关，但是以下是肯定的：</p>
+<ul>
+<li><code>viewDidLoad</code><ul>
+<li>通常在这里操作，因为方便，会尽可能早只调用一次</li>
+<li>虽然 view 已经载入，但是并没有被插入到界面中，所以还没有对应的尺寸</li>
+<li>如果不依赖与具体的尺寸（比如说 autolayout），那么可以在这里操作</li>
+</ul>
+</li>
+<li><code>traitCollectionDidChange</code></li>
+<li><code>viewWillLayoutSubviews</code></li>
+</ul>
+<p>如果想要在屏幕中央插入一个小黑方块，下面代码是错误的：</p>
+<p><img src="/images/pios81.jpg" alt="pios81"></p>
+<p>因为这时候 <code>self.view</code> 可能还没有对应的尺寸，如果加入 autoresizing 可能会好一些：</p>
+<p><img src="/images/pios82.jpg" alt="pios82"></p>
+<p>当然如果用 autolayout 是最好的</p>
+<p><img src="/images/pios83.jpg" alt="pios83"></p>
+<p>即使 view 的尺寸会变化，但是我们添加的 constraints 会保证小黑方块出现在我们想要的位置。</p>
+<p>如果我们打算在 <code>traitCollectionDidChange</code> 或者 <code>viewWillLayoutSubviews</code> 进行设置，需要处理的问题是这两个方法可能会被调用不止一次，解决方法是设定一个布尔值用作开关：</p>
+<p><img src="/images/pios84.jpg" alt="pios84"></p>
+<p><strong>Responding to rotation</strong></p>
+<p>切换方向是不但可能需要改变尺寸，可能还需要增加或者删除一些 view。我们可以利用 autolayout 来实现（通过设定不同的 trait collection）</p>
+<h2 id="Presented_View_Controller"><a href="#Presented_View_Controller" class="headerlink" title="Presented View Controller"></a>Presented View Controller</h2><p>原来叫做 modal view controller，是用一个完整界面取代另一个的最简单方式（但是原来的 view 还在，只是这个 view 跳出来覆盖了而已，只有当当前 view 消失后，原本的 view 才出现）</p>
+<p><img src="/images/pios85.jpg" alt="pios85"></p>
+<p>现在 presented view controller 有了更多的可能：（这两个都是原先在 iPad 上，后来 iPhone 也可以使用的特性）</p>
+<ul>
+<li>可以只取代界面中的一个 subview</li>
+<li>可以只部分覆盖当前的界面，当前的界面不会被移除</li>
+</ul>
+<h3 id="Presenting_a_View"><a href="#Presenting_a_View" class="headerlink" title="Presenting a View"></a>Presenting a View</h3><p>最重要的让 view 出现和消失的两个方法是：</p>
+<ul>
+<li><code>presentViewController:animated:completion:</code></li>
+<li><code>dismissViewControllerAnimated:completion:</code></li>
+</ul>
+<p>可以在这里设置动画已经切换完成后需要指定的代码。</p>
+<p>presenting view controller（就是被要出现的 presented view 遮挡住的 view 的 controller）不一定是那个你需要发送 <code>presentViewController:animated:completion:</code> 的 controller。</p>
+<p>我们先来看看 view controller 在 presenting 一个 view controller 时可能的三个角色：</p>
+<ul>
+<li>Presented view controller<ul>
+<li>指定的第一个参数</li>
+</ul>
+</li>
+<li>Original presenter<ul>
+<li>接收 <code>presentViewController:animated:completion:</code> 方法的 view controller，也叫做 source</li>
+</ul>
+</li>
+<li>Presenting view controller<ul>
+<li>被遮住的那个 view 的 controller</li>
+</ul>
+</li>
+</ul>
+<p>这三个对象任何一个都可以接收 <code>dismissViewControllerAnimated:completion:</code> 方法，runtime 会找到对应的 <code>presentingViewController</code>。</p>
+<p>一个 view controller 至多可以有一个 <code>presentedViewController</code>。如果你对一个 <code>presentedViewController</code> 不为 nil 的 view controller 发送 <code>presentViewController:animated:completion:</code>，什么事情都不会发生，completion 中的代码也不会执行。</p>
+<p>但是一个 presented view controller 本身也可以 present 一个 view controller，所以这就可以弄出一个链条了。</p>
+<p>如果你对一个 <code>presentedViewController</code> 为 nil 的 view controller 发送 <code>dismissViewControllerAnimated:completion:</code>，什么事情都不会发生，completion 中的代码也不会执行。</p>
+<p>我们可以在 storyboard 中方便地完成连接，只要用 modal segue 连接两个 view controller 即可，这里我们不用这个方式，因为 modal segue 会自动调用 <code>presentViewController:animated:completion:</code>，我们来试试看自己调用。</p>
+<p>我们先创建一个 Single View Application（通过模板），然后我们加第二个 view controller 进去：</p>
+<ol>
+<li>File -&gt; New -&gt; File and specify iOS -&gt; Source -&gt; Cocoa Touch Class。点击下一步</li>
+<li>命名为 <code>SecondViewController</code>，确定是 <code>UIViewController</code> 的子类，勾选 xib 的框（这样我们可以在 nib 中设计界面，当然也可以用 storyboard，但是这里是要学东西，所以就不用 storyboard 自动处理）。点击下一步</li>
+<li>确保放在了合适的位置。点击创建</li>
+<li>编辑 <code>SecondViewController.xib</code>，随便加点什么东西让它和之前的不一样</li>
+<li>现在需要一个方式来激活这个 view，在第一个 view 中加一个按钮，连接一个叫 <code>doPresent</code> 的 aciton 到 <code>ViewController.swift</code> 中（这个就是模板自己生成的）</li>
+<li><code>doPresent</code> 的代码如下：</li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">doPresent</span><span class="params">(sender:AnyObject?)</span></span> &#123;</span><br><span class="line">	<span class="keyword">let</span> svc = <span class="type">SecondeViewController</span>(nibName: <span class="string">"SecondeViewController"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">	<span class="keyword">self</span>.presentViewController(svc, animated:<span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行就可以发现一切正常，但是现在我们没有办法退回去，所以在 <code>SecondViewController.xib</code> 中加一个按钮，然后连接一个 action 到 <code>SecondViewController.swift</code> 中：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">doDismiss</span><span class="params">(sender:AnyObject?)</span></span>&#123;</span><br><span class="line">	<span class="keyword">self</span>.presentingViewController!.dismissViewControllerAnimated(<span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Communication_With_a_Presented_View_Controller"><a href="#Communication_With_a_Presented_View_Controller" class="headerlink" title="Communication With a Presented View Controller"></a>Communication With a Presented View Controller</h3><p>从 original presenter 向 presented view controller 发消息比较简单，因为有一个指向它的引用，比方说 presented vew controller 有一个 <code>data</code> 属性，那么就可以这样传值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">doPresent</span><span class="params">(sender:AnyObject?)</span></span>&#123;</span><br><span class="line">	<span class="keyword">let</span> svc = <span class="type">SecondView</span>(nibName:<span class="string">"SecondViewController"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">	svc.data = <span class="string">"This is very important data!"</span></span><br><span class="line">	<span class="keyword">self</span>.presentViewController(svc, snimated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是从 presented view controll 传值到 original presenter 就比较有趣，因为我们需要知道 originalpresenter 是什么，但是我们并没有指向它的引用。再进一步，presented view controller 需要知道由 original presenter 实现的某些方法的签名，这样它就可以调用并且传递信息。通常的做法是通过代理：</p>
+<ol>
+<li>presented view controller 定义一个协议，声明一个方法，这个方法会在其 dismiss 之前被调用</li>
+<li>original presenter 接收这个协议，并且实现对应的方法</li>
+<li>presented view controller 提供一个方法能够获取到实现对应方法的对象</li>
+<li>这样当 original presenter 创建和配置 presented view controller 的时候也就把自己的引用通知给了它</li>
+</ol>
+<p>看起来很复杂，看一个例子就明白了。</p>
+<p>我们先修改 <code>SecondViewController.swift</code>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SecondViewControllerDelegate</span> : <span class="title">class</span> </span>&#123;</span><br><span class="line">	<span class="func"><span class="keyword">func</span> <span class="title">acceptData</span><span class="params">(data: AnyObject!)</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecondViewController</span> : <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> data : <span class="type">AnyObject</span>?</span><br><span class="line">	<span class="keyword">weak</span> <span class="keyword">var</span> delegate : <span class="type">SecondViewControllerDelegate</span>?</span><br><span class="line">	<span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">doDismiss</span><span class="params">(sender:AnyObject?)</span></span>&#123;</span><br><span class="line">		<span class="keyword">self</span>.delegate?.acceptData(<span class="string">"Even more important data!"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们回到 <code>ViewController.swift</code>，要做的是声明 <code>SecondViewControllerDelegate</code> 然后把自己设置为 SecondViewController 的代理。当代理方法被调用时，ViewController 就能接收到数据，之后 dismiss SecondViewController:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span> : <span class="title">UIViewController</span>, <span class="title">SecondViewControllerDelegate</span> </span>&#123;</span><br><span class="line">	<span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">doPresent</span><span class="params">(sender:AnyObject?)</span></span>&#123;</span><br><span class="line">		<span class="keyword">let</span> svc = <span class="type">SecondViewController</span>(nibName: <span class="string">"SecondViewController"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">		svc.data = <span class="string">"This is very important data!"</span></span><br><span class="line">		svc.delegate = <span class="keyword">self</span></span><br><span class="line">		<span class="keyword">self</span>.presentViewController(svc, animated:<span class="literal">true</span>, completion:<span class="literal">nil</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="func"><span class="keyword">func</span> <span class="title">acceptData</span><span class="params">(data:AnyObject!)</span></span>&#123;</span><br><span class="line">		<span class="comment">// do something with data here</span></span><br><span class="line">		<span class="keyword">self</span>.dismissViewControllerAnimated(<span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果不想一切都让 ViewController 操心，而让 SecondViewController 自己负责消失，并且自动回传数据的话，可以利用 <code>viewWillDisappear</code> 来进行，代码改成这样：</p>
+<p><img src="/images/pios86.jpg" alt="pios86"></p>
+<p>如果是用 storyboard，那么又会有一点不一样，在 original presenter（segue 开始的那个 view controller）中实现 <code>prepareForSegue:sender:</code>，在这个方法中可以传递数据。dismiss 的时候用 presented view controller 自己的 <code>prepareForSegue:sender:</code> 方法来传递数据，这个后面会详细说。</p>
+<h3 id="Presented_View_Animation"><a href="#Presented_View_Animation" class="headerlink" title="Presented View Animation"></a>Presented View Animation</h3><p>除了内置的一些简单动画，也可以自己提供动画效果。</p>
+<p>内置动画在 presented view controller 的 <code>modalTransitionStyle</code> 属性中设定，可选的有值有（<code>UIModalTransitionStyle</code>）:</p>
+<ul>
+<li><code>.CoverVertical</code> 默认<ul>
+<li>从底向上滑出</li>
+</ul>
+</li>
+<li><code>.FlipHorizontal</code><ul>
+<li>像一张纸的两面一样，这种情况下用户可以看到 window（一瞥），合理设置好背景颜色</li>
+</ul>
+</li>
+<li><code>.CrossDissolve</code><ul>
+<li>渐显效果</li>
+</ul>
+</li>
+<li><code>.PartialCurl</code><ul>
+<li>翻页一样的效果，但是第一个 view 还会保留在左上角</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/pios87.jpg" alt="pios87"></p>
+<h3 id="Presentation_Styles"><a href="#Presentation_Styles" class="headerlink" title="Presentation Styles"></a>Presentation Styles</h3><p>除了全屏覆盖，还有一些其他的内置选项，或者，也可以自己进行设置</p>
+<p>在 presented view controller 的 <code>modalPresentationStyle</code> 属性中设定，可选的有值有（<code>UIModalPresentationStyle</code>）:</p>
+<ul>
+<li><code>.FullScreen</code><ul>
+<li>默认，界面全部替换</li>
+</ul>
+</li>
+<li><code>.OverFullScreen</code><ul>
+<li>和之前的类似，但是不会被替换，如果之后的界面有一定透明，可以看到之前的界面</li>
+</ul>
+</li>
+<li><code>.PageSheet</code><ul>
+<li>在 iPad 和 iPhone 6/6s Plus 上会窄一点，后面的部分会变暗，在其他设备上和全屏一致</li>
+</ul>
+</li>
+<li><code>.FormSheet</code><ul>
+<li>与<code>.PageSheet</code> 类似，更小更窄一些，在 iPad 和 iPhone 6/6s Plus 上会窄一点，后面的部分会变暗，在其他设备上和全屏一致</li>
+</ul>
+</li>
+<li><code>.CurrentContext</code><ul>
+<li>presenting view controller 可以是任何 view controller，比如 child view controller，presented view controller 只会取代这个子视图，也就是屏幕一部分的位置</li>
+</ul>
+</li>
+<li><code>.OverCurrentContext</code><ul>
+<li>与 <code>.CurrentContext</code> 类似，但是不是取代，原来的还在，如果之后的界面有一定透明，可以看到之前的界面</li>
+</ul>
+</li>
+</ul>
+<h3 id="Adapative_Presentation"><a href="#Adapative_Presentation" class="headerlink" title="Adapative Presentation"></a>Adapative Presentation</h3><p>在使用 <code>.PageSheet</code> 和 <code>.FormSheet</code> 的时候，有另外一个机会来指定 <code>modalPresentationStyle</code> 甚至连 view controller 都可以指定不一样的，这就叫做 adaptive presentation。</p>
+<h3 id="Rotation_of_a_Presented_View"><a href="#Rotation_of_a_Presented_View" class="headerlink" title="Rotation of a Presented View"></a>Rotation of a Presented View</h3><p>当 presented view controller 被展示的时候，就处于最顶层，那么 <code>supportedInterfaceOrientations</code> 同样是有效的，如果这个时候所支持的方向和设备目前的方向不一致，可以强行改变屏幕的方向（也是官方唯一准许的强制旋转的方式）</p>
+<p>重写 <code>preferredInterfaceOrientationForPresentation</code> 方法来指定初始方向：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">preferredInterfaceOrientationForPresentation</span><span class="params">()</span></span> -&gt; <span class="type">UIInterfaceOrientation</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> .<span class="type">LandscapeLeft</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Tab_Bar_Controller"><a href="#Tab_Bar_Controller" class="headerlink" title="Tab Bar Controller"></a>Tab Bar Controller</h2><p>tab bar 是一个独立的界面对象，但是一般都和 tab bar controller 一起用（<code>UITabBarController</code>, <code>UIViewController</code> 的子类）。</p>
+<p>如果需要在不子类化 <code>UITabBarController</code> 的前提下控制方向，实现下面的方法：</p>
+<ul>
+<li><code>tabBarControllerSupportedInterfaceOrientations:</code></li>
+<li><code>tabBarControllerPreferredInterfaceOrientationForPresentation:</code></li>
+</ul>
+<p>关于状态栏，tab bar controller 实现了 <code>childViewControllerForStatusBarStyle</code> 和 <code>childViewControllerForStatusBarHidden</code> 方法，所以会根据当前正在显示的 child view controller 来决定状态栏</p>
+<h3 id="Tab_Bar_Items"><a href="#Tab_Bar_Items" class="headerlink" title="Tab Bar Items"></a>Tab Bar Items</h3><p>属于 <code>UITabBarItem</code>，继承自 <code>UIBarItem</code>（一个抽象类，提供一些重要属性如 <code>title</code>, <code>image</code>, <code>enabled</code>）</p>
+<p>有两种方法可以创建 tab bar item:</p>
+<ul>
+<li>用系统自带的：使用 <code>init(tabBarSystemItem:tag:)</code> 来实例化 child view controller 的 <code>tabBarItem</code>。注意，标题是不能改动的</li>
+<li>自己搞：使用 <code>init(title:image:tag:)</code> 来实例化 child view controller 的 <code>tabBarItem</code>，也可以自定点击的效果 <code>init(title:image:selectedImage:)</code></li>
+</ul>
+<p>图片的尺寸是 30x30 PNG 格式，如果尺寸大会自动缩小，注意图片只用作 mask，所以颜色什么的都不会显示，唯一能改的是 <code>tintColor</code>，也可以给 tab bar item 一个角标。</p>
+<h3 id="Configuring_a_Tab_Bar_Controller"><a href="#Configuring_a_Tab_Bar_Controller" class="headerlink" title="Configuring a Tab Bar Controller"></a>Configuring a Tab Bar Controller</h3><p>基本的配置很简单，把 view controller 设为其 children 即可。把这些 view controllers 放到一个数组里然后把 <code>UITabBarController</code> 的 <code>viewControllers</code> 属性赋值为这个数组。数组里的每个 view controller 的 <code>parentViewController</code> 都是这个 tab bar controller。一个简单的例子：</p>
+<p><img src="/images/pios88.jpg" alt="pios88"></p>
+<p>显示的顺序和数组中 view controller 的顺序一致。在把这个数组赋值给 tab bar controller 的 <code>viewControllers</code> 属性时 <code>tabBarItem</code> 就已经就绪了。</p>
+<p>注意，调用 <code>viewDidLoad</code> 的时候还不能操作 <code>tabBarItem</code> 所以通常是在对应的 child view controller 中的初始化函数进行配置：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>() &#123;</span><br><span class="line">	<span class="keyword">super</span>.<span class="keyword">init</span>(nibName:<span class="literal">nil</span>, bundle:<span class="literal">nil</span>)</span><br><span class="line">	<span class="comment">// tab bar configuration</span></span><br><span class="line">	<span class="keyword">self</span>.tabBarItem.image = <span class="type">UIImage</span>(named: <span class="string">"game.png"</span>)</span><br><span class="line">	<span class="keyword">self</span>.title = <span class="string">"Game"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一开始会选择第一个 child view controller，可以通过 <code>selectedViewController</code> 或者 <code>selectedIndex</code> 来知道现在在第几个 tab 中。</p>
+<p>可以自定义 tab 切换时的动画。</p>
+<p>在 storyboard 中可以很方便的进行设置，也可以直接使用项目模板来进行创建</p>
+<h2 id="Navigation_Controller"><a href="#Navigation_Controller" class="headerlink" title="Navigation Controller"></a>Navigation Controller</h2><p>类似与堆栈，<code>UINavigationItem</code>。导航栏是一个独立的界面对象，但是通常来说和 navagation controller 一起用。</p>
+<p>在堆栈 push 和 pop 的时候可以自定动画。</p>
+<p>也可以包含一个工具栏，参考 Mail 应用。</p>
+<p>关于旋转和状态栏的机制和 tab bar controller 很像，都是交由现在在展示的 view controller </p>
+<h3 id="Bar_Button_Items"><a href="#Bar_Button_Items" class="headerlink" title="Bar Button Items"></a>Bar Button Items</h3><p>有两种方式可以创建：</p>
+<ul>
+<li>基本的按钮<ul>
+<li>类似于一个简单的按钮</li>
+</ul>
+</li>
+<li>自定义 view</li>
+</ul>
+<p><code>UIBarItem</code> 不是 <code>UIView</code> 的子类，一个简单的 bar 按钮没有 frame，也没有 <code>UIView</code> 的触摸处理。但是自定义 view 则是 <code>UIView</code></p>
+<p>具体来看看三种创建方式</p>
+<ul>
+<li>用系统的：<code>init(barButtonSystemItem:target:action:)</code></li>
+<li>创建简单 bar 按钮：<code>init(title:style:target:action:)</code> 或者 <code>init(image:style:target:action:)</code></li>
+<li>自定义 view: <code>init(customeView:)</code></li>
+</ul>
+<h3 id="Navigation_Items_and_Toolbar_Items"><a href="#Navigation_Items_and_Toolbar_Items" class="headerlink" title="Navigation Items and Toolbar Items"></a>Navigation Items and Toolbar Items</h3><p>虽然 navigation 的堆栈是自动维护的，但是对于每个 child view controller，还是需要自己配置如下的 <code>UINavigationItem</code> 属性</p>
+<ul>
+<li><code>title</code> / <code>titleView</code></li>
+<li><code>prompt</code>：字符串</li>
+<li><code>rightBarButtonItem</code> / <code>rightBarButtonItems</code></li>
+<li><code>backBarButtonItem</code>：可以隐藏，也可以进行自定义（换成图片什么的）</li>
+<li><code>leftBarButtonItem</code> / <code>leftBarButtonItems</code></li>
+</ul>
+<h3 id="Configuring_a_Navigation_Controller"><a href="#Configuring_a_Navigation_Controller" class="headerlink" title="Configuring a Navigation Controller"></a>Configuring a Navigation Controller</h3><p>配置的过程实际上就是操作堆栈的过程，这个堆栈是一个叫 <code>viewControllers</code> 的数组属性，虽然实际上很少需要直接对其操作。</p>
+<p>最常见的操作方式就是 push 和 pop。初始化的时候一般用 <code>init(rootViewController:)</code>，例如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fvc = <span class="type">FirstViewController</span>()</span><br><span class="line"><span class="keyword">let</span> nav = <span class="type">UINavigationController</span>(rootViewController:fvc)</span><br></pre></td></tr></table></figure>
+<p>添加的时候就是 push</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> svc = <span class="type">SecondViewController</span>()</span><br><span class="line"><span class="keyword">self</span>.navigationController!.pushViewController(svc, animated: <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<p>通常来说不需要担心返回的事情，会自动调用 <code>popViewControllerAnimated:</code>，当然也可以显式调用</p>
+<p>还有另一种方式可以 push 一个 vieww controller 到 navigation controller 的堆栈中，这个方法不要 navigation controller 的引用，使用 <code>showViewController:sender:</code></p>
+<p>想要直接设置整个堆栈，用 <code>setViewControllers:animated:</code> 方法。想要删除位于中间的 view controller，直接操作堆栈是唯一的方法。</p>
+<p>在堆栈顶的叫做 <code>topViewController</code>，view 被显示的 view controller 叫做 <code>visibleViewController</code>。通常来说这两个属性的值是相同的，但是不要忘了之前的 presented view controller，这可能导致不一样。</p>
+<p>不同的 view controller 间传递数据和前面的 original presenter 和 presented view controller 相互间传递数据的机制是一样的，这里不再赘述。</p>
+<p>在 child view controller 中想要配置 <code>navigatoinItem</code> 的话最好不要在 <code>loadView</code> 或者 <code>viewDidLoad</code> 中进行，最好是重写 <code>init(nibName:bundle:)</code> 或者 <code>init(coder:)</code> 或者 <code>awakeFromNib</code>。</p>
+<p>可以通过 <code>navigationBar</code> 属性来访问导航栏，可以通过 <code>setNavigationBarHidden:animated:</code> 设置隐藏，下方的工具栏也可以通过 <code>setToolbarHidden:animated:</code> 来显示或隐藏。</p>
+<p>navigation controller 可以自动隐藏或显示导航栏和工具栏，通过一些属性进行配置</p>
+<ul>
+<li>点击时<ul>
+<li><code>hidesBarsOnTap</code> 对应 navigation controller 的 <code>barHideOnTapGestureRecognizer</code></li>
+</ul>
+</li>
+<li>横扫时<ul>
+<li><code>hidesBarsOnSwipe</code> 上滑隐藏，下滑显示，对应 navigation controller 的 <code>barHideOnSwipeGestureRecognizer</code></li>
+</ul>
+</li>
+<li>在水平时<ul>
+<li><code>hidesBarsWhenVerticallyCompact</code>，如果开启了点击显示，这时点击会再次显示导航栏</li>
+</ul>
+</li>
+<li>用户输入时<ul>
+<li><code>hidesBarsWhenKeyboardAppears</code>，键盘显示的时候导航栏自动隐藏</li>
+</ul>
+</li>
+</ul>
+<p>这些基本都可以在 Attributes inspector 中进行设置。</p>
+<p>可以利用 Master-Detail 模板来开始，或者自己手动嵌入 Navigation Controller</p>
+<h2 id="Custom_Transition"><a href="#Custom_Transition" class="headerlink" title="Custom Transition"></a>Custom Transition</h2><p>可以自定义大部分的动画，如：</p>
+<ul>
+<li>tab 切换的效果</li>
+<li>stack 的 push 和 pop 的效果</li>
+<li>presented 和 dismiss 的效果</li>
+</ul>
+<p>具体的会单开一篇来介绍和演示，这里略过</p>
+<h2 id="Page_View_Controller"><a href="#Page_View_Controller" class="headerlink" title="Page View Controller"></a>Page View Controller</h2><p><code>UIPageViewController</code> 可以通过手势来切换下一个或者上一个 child view controller</p>
+<h3 id="Preparing_a_Page_View_Controller"><a href="#Preparing_a_Page_View_Controller" class="headerlink" title="Preparing a Page View Controller"></a>Preparing a Page View Controller</h3><p>使用 designated 构造器来初始化</p>
+<p><code>init(transitionStyle:navigationOrientation:options:)</code></p>
+<p>其中参数的含义是</p>
+<ul>
+<li><code>transitionStyle:</code> 决定动画效果 <code>UIPageViewControllerTransitionStyle</code><ul>
+<li><code>.PageCurl</code></li>
+<li><code>.Scroll</code> 滚动</li>
+</ul>
+</li>
+<li><code>navagationOrientation:</code> 决定方向 <code>UIPageViewControllerNavigationOrientation</code><ul>
+<li><code>.Horizontal</code></li>
+<li><code>.Vertical</code></li>
+</ul>
+</li>
+<li><code>options:</code> 一个字典，根据不同的动画效果有不同的参数<ul>
+<li><code>UIPageViewControllerOptionSpineLocationKey</code> 翻页效果，翻页位置<ul>
+<li><code>.Min</code> (左或上)</li>
+<li><code>.Mid</code> (中间，会显示两页)</li>
+<li><code>.Max</code> (右或下)</li>
+</ul>
+</li>
+<li><code>UIPageViewControllerOptionInterPageSpacingKey</code> 滚动效果，页面的间隔，默认是 0</li>
+</ul>
+</li>
+</ul>
+<p>用下面的方法来指定 child view controllers</p>
+<p><code>setViewControllers:direction:animated:completion:</code></p>
+<p>下面是参数的含义</p>
+<ul>
+<li><code>viewControllers</code> 数组，每个元素是 1 个 view controller，用 <code>.Mid</code> 的话，每个元素是 2 个 view controller</li>
+<li><code>direction:</code><ul>
+<li><code>.Forward</code></li>
+<li><code>.Backward</code> </li>
+</ul>
+</li>
+<li><code>animated:</code>, <code>completion:</code><ul>
+<li>布尔值和完成之后要执行的操</li>
+</ul>
+</li>
+</ul>
+<p>还需要指定 <code>dataSource</code>，属于 <code>UIPageViewControllerDataSource</code> 协议，一个简单的例子：</p>
+<p><img src="/images/pios89.jpg" alt="pios89"></p>
+<h3 id="Page_View_Controller_Navigation"><a href="#Page_View_Controller_Navigation" class="headerlink" title="Page View Controller Navigation"></a>Page View Controller Navigation</h3><p>切换页面的时候，下面的数据源方法会被调用</p>
+<ul>
+<li><code>pageViewController:viewControllerAfterViewController:</code></li>
+<li><code>pageViewController:viewControllerBeforeViewController:</code></li>
+</ul>
+<p><img src="/images/pios90.jpg" alt="pios90"></p>
+<p><strong>Page indicator</strong></p>
+<p>用滚动模式的话会自动有一个页面指示器，为此还需要多实现两个方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">presentationCountForPageViewController</span><span class="params">(pageViewController: UIPageViewController)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">self</span>.pep.<span class="built_in">count</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">presentationIndexForPageViewController</span><span class="params">(pvc: UIPageViewController)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> page = pvc.viewControllers![<span class="number">0</span>] <span class="keyword">as</span>! <span class="type">Pep</span></span><br><span class="line">	<span class="keyword">let</span> boy = page.boy</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">self</span>.pip.indexOf(boy)!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通常来说还需要设置一下颜色，因为默认的颜色是白点透明背景，但是因为不能直接访问，所以用 proxy 来做</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> proxy = <span class="type">UIPageControl</span>.appearance()</span><br><span class="line">proxy.pageIndicatorTintColor = <span class="type">UIColor</span>.redColor().colorWithAlphaComponent(<span class="number">0.6</span>)</span><br><span class="line">proxy.currentPageIndicatorTintColor = <span class="type">UIColor</span>.redColor()</span><br><span class="line">proxy.backgroundColor = <span class="type">UIColor</span>.yellowColor()</span><br></pre></td></tr></table></figure>
+<p><strong>Navigation gestures</strong></p>
+<p>drap 和 tap 可以设定不同的行为，例如可以设定要点击两次才能翻页</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> g <span class="keyword">in</span> pvc.gestureRecognizers &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">let</span> g = g <span class="keyword">as</span>? <span class="type">UITapGestureRecognizer</span> &#123;</span><br><span class="line">		g.numberOfTapsRequired = <span class="number">2</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 storyboard 中可以设置大部分的内容，但是初始化 child view controllers 需要在代码中执行</p>
+<h2 id="Container_View_Controllers"><a href="#Container_View_Controllers" class="headerlink" title="Container View Controllers"></a>Container View Controllers</h2><p><code>UITabBarController</code>, <code>UINavigationController</code>, <code>UIPageViewController</code> 是内置的三种 parent view controllers，它们都有 child view controllers。如果我们想要自己也做一个类似的，要怎么做呢？</p>
+<p>使用 container view controller。</p>
+<h3 id="Adding_and_Removing_Children"><a href="#Adding_and_Removing_Children" class="headerlink" title="Adding and Removing Children"></a>Adding and Removing Children</h3><p>包含一个 <code>childViewControllers</code> 数组，一个 child view controller 需要在某些时刻接收特定的事件：</p>
+<ul>
+<li>当它成为 child view controller 时</li>
+<li>当它的 view 被加入界面或者从界面中移除的时候</li>
+<li>当它不再是 child view controller 时</li>
+</ul>
+<p>具体的会单开一篇来介绍和演示，这里略过</p>
+<h2 id="Storyboards"><a href="#Storyboards" class="headerlink" title="Storyboards"></a>Storyboards</h2><p><img src="/images/pios91.jpg" alt="pios91"></p>
+<p>基本的情况介绍主要就是拖动界面和设置对应的内容，以及 segue 相关的内容，还有 storyboard reference 的内容，比较基础，这里略过。</p>
+<h3 id="Unwind_Segues"><a href="#Unwind_Segues" class="headerlink" title="Unwind Segues"></a>Unwind Segues</h3><p>segue 可以完成一半的工作，因为有 push segue 但是没有 pop segue；有 present modally segue 但是没有 dismiss segue。</p>
+<p>注意不能再多连一条相反方向的 segue，这样会创建一个新的 view controller 而不是返回到原来的。</p>
+<p><img src="/images/pios92.jpg" alt="pios92"></p>
+<p>这个时候就是用 unwind segue 的地方了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">unwind</span><span class="params">(seg:UIStoryboardSegue!)</span></span>&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pios93.jpg" alt="pios93"></p>
+<h2 id="View_Controller_Lifetime_Events"><a href="#View_Controller_Lifetime_Events" class="headerlink" title="View Controller Lifetime Events"></a>View Controller Lifetime Events</h2><p>可以通过重写这些方法，来在对的时间做对的事情：</p>
+<ul>
+<li><code>viewDidLoad</code><ul>
+<li>这时 view controller 已经得到了它的 view，但是 size 还没有设置好</li>
+</ul>
+</li>
+<li><code>willTransistionToTraitCollection:withTransitionCoordinator:</code></li>
+<li><code>viewWillTransitionToSize:withTransitionCoordinator:</code></li>
+<li><code>traitCollectionDidChange:</code><ul>
+<li>前两个方法实现的时候需要调用 <code>super</code>，这是调整尺寸的地方</li>
+</ul>
+</li>
+<li><code>updateViewConstraints</code></li>
+<li><code>viewWillLayoutSubviews</code></li>
+<li><code>viewDidLayoutSubviews</code><ul>
+<li>实现第一个方法的时候需要调用 <code>super</code></li>
+</ul>
+</li>
+<li><code>willMoveToParentViewController:</code></li>
+<li><code>didMoveToParentViewController:</code><ul>
+<li>被作为 child view controller 添加或移除</li>
+</ul>
+</li>
+<li><code>viewWillAppear:</code></li>
+<li><code>viewDidAppear:</code></li>
+<li><code>viewWillDisappear:</code></li>
+<li><code>viewDidDisappear:</code></li>
+</ul>
+<p>具体的顺序大概是这样（这里是一个 UIViewController 被 push 到 navigation controller 的堆栈中）：</p>
+<ul>
+<li><code>willMoveToParentViewController:</code></li>
+<li><code>viewWillAppear:</code></li>
+<li><code>updateViewConstraints</code></li>
+<li><code>traitCollectionDidChange:</code></li>
+<li><code>viewWillLayoutSubviews</code></li>
+<li><code>viewDidLayoutSubviews</code></li>
+<li><code>viewDidAppear:</code></li>
+<li><code>didMoveToParentViewController:</code></li>
+</ul>
+<p>当被 pop 走的时候，会收到这些消息：</p>
+<ul>
+<li><code>willMoveToParentViewController:</code> 参数为 nil</li>
+<li><code>viewWillDisappear:</code></li>
+<li><code>updateViewConstraints</code></li>
+<li><code>viewWillLayoutSubviews</code></li>
+<li><code>viewDidLayoutSubviews</code></li>
+<li><code>viewDidDisappear:</code></li>
+<li><code>didMoveToParentViewController:</code> 参数为 nil</li>
+</ul>
+<p>注意具体调用的次数不是一定的，所以不要让代码依赖于『每个方法按顺序执行各一次』这个假定</p>
+<h2 id="View_Controller_Memory_Management"><a href="#View_Controller_Memory_Management" class="headerlink" title="View Controller Memory Management"></a>View Controller Memory Management</h2><p>一个避免使用太多内存的策略是，如果有资源暂时不用，就先释放掉。当内存过低时，view controller 会接收 <code>didReceiveMemoryWarning</code> 消息。</p>
+<p>一个比较好的方法是 lazy loading，也就是只有需要用的时候才载入。</p>
+<p>更底层的方法是把数据保存在磁盘中（例如 Cache 文件夹里）</p>
+<p>要测试低内存的情况，选择 Hardware -&gt; Simulate Memory Warning。</p>
+<p>相当于调用以下方法（注意这个是隐藏 api，苹果不给用的）</p>
+<p><code>UIApplication.shareApplication().performSelector(&quot;_performMemoryWarning&quot;)</code></p>
+<h2 id="State_Restoration"><a href="#State_Restoration" class="headerlink" title="State Restoration"></a>State Restoration</h2><p>这里简要介绍一下如何测试</p>
+<ol>
+<li>正常启动应用</li>
+<li>某个时刻点击 home 按键</li>
+<li>回到 Xcode，点击 Stop</li>
+<li>重新运行这个 app，看看有没有从上次结束的时候开始运行</li>
+</ol>
+<p>具体的会单开一篇来介绍和演示，这里略过</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/07/programming-ios9-translation-7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Programming iOS9 翻译 7 - Scroll View
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/05/hexo-github-site/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">静态博客 Github 并存指南</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="programming-ios9-translation-6" data-title="Programming iOS9 翻译 6 - View Controllers" data-url="http://yoursite.com/2016/01/07/programming-ios9-translation-6/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wdxblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 wdxtub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

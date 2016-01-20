@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Node.js 命令行程序实例教程 | 小土刀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这个学期 Coding Bootcamp 最后一个作业是用 Node.js 做一个小程序，正好借此机会学习一下 Node.js。这个教程主要是关于如何用 Node.js 做命令行程序的，涉及服务器和 web 的部分基本上是没有的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 命令行程序实例教程">
+<meta property="og:url" content="http://yoursite.com/2015/12/04/nodejs-cmd-tutorial/index.html">
+<meta property="og:site_name" content="小土刀">
+<meta property="og:description" content="这个学期 Coding Bootcamp 最后一个作业是用 Node.js 做一个小程序，正好借此机会学习一下 Node.js。这个教程主要是关于如何用 Node.js 做命令行程序的，涉及服务器和 web 的部分基本上是没有的。">
+<meta property="og:updated_time" content="2015-12-05T02:44:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js 命令行程序实例教程">
+<meta name="twitter:description" content="这个学期 Coding Bootcamp 最后一个作业是用 Node.js 做一个小程序，正好借此机会学习一下 Node.js。这个教程主要是关于如何用 Node.js 做命令行程序的，涉及服务器和 web 的部分基本上是没有的。">
+  
+    <link rel="alternative" href="/atom.xml" title="小土刀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpeg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wdxtub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Agony is my triumph</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">索引</a></li>
+				        
+							<li><a href="/categories/Technique">技术</a></li>
+				        
+							<li><a href="/categories/Reading">读书</a></li>
+				        
+							<li><a href="/categories/Thinking">思考</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/API/" style="font-size: 10.63px;">API</a> <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/AWS/" style="font-size: 11.88px;">AWS</a> <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 10.63px;">Android</a> <a href="/tags/Anroid/" style="font-size: 10px;">Anroid</a> <a href="/tags/Apple/" style="font-size: 11.88px;">Apple</a> <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/CMU/" style="font-size: 20px;">CMU</a> <a href="/tags/COC/" style="font-size: 10px;">COC</a> <a href="/tags/Capcom/" style="font-size: 10px;">Capcom</a> <a href="/tags/CodePlane/" style="font-size: 10px;">CodePlane</a> <a href="/tags/Datalab/" style="font-size: 10px;">Datalab</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IT/" style="font-size: 10px;">IT</a> <a href="/tags/Imaging-Cup/" style="font-size: 10px;">Imaging Cup</a> <a href="/tags/Java/" style="font-size: 11.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10.63px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Overview/" style="font-size: 10px;">Overview</a> <a href="/tags/PS4/" style="font-size: 10px;">PS4</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Swift/" style="font-size: 13.13px;">Swift</a> <a href="/tags/Swift-千金方/" style="font-size: 10.63px;">Swift 千金方</a> <a href="/tags/TOC/" style="font-size: 10px;">TOC</a> <a href="/tags/V2/" style="font-size: 10px;">V2</a> <a href="/tags/YC-创业课/" style="font-size: 10px;">YC 创业课</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 11.25px;">iOS</a> <a href="/tags/iOS-9/" style="font-size: 10px;">iOS 9</a> <a href="/tags/iOS-杂病论/" style="font-size: 10.63px;">iOS 杂病论</a> <a href="/tags/iOS9/" style="font-size: 13.75px;">iOS9</a> <a href="/tags/三观/" style="font-size: 10px;">三观</a> <a href="/tags/世界/" style="font-size: 10px;">世界</a> <a href="/tags/东野圭吾/" style="font-size: 10px;">东野圭吾</a> <a href="/tags/个人发展/" style="font-size: 10px;">个人发展</a> <a href="/tags/中国/" style="font-size: 10px;">中国</a> <a href="/tags/中秋/" style="font-size: 10px;">中秋</a> <a href="/tags/乐趣/" style="font-size: 10px;">乐趣</a> <a href="/tags/习题/" style="font-size: 10px;">习题</a> <a href="/tags/习题课/" style="font-size: 10px;">习题课</a> <a href="/tags/云计算/" style="font-size: 15.63px;">云计算</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/亲情/" style="font-size: 10px;">亲情</a> <a href="/tags/人口/" style="font-size: 10px;">人口</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/人造/" style="font-size: 10px;">人造</a> <a href="/tags/今何在/" style="font-size: 10px;">今何在</a> <a href="/tags/价值/" style="font-size: 10px;">价值</a> <a href="/tags/任天堂/" style="font-size: 10px;">任天堂</a> <a href="/tags/体力/" style="font-size: 10px;">体力</a> <a href="/tags/信息/" style="font-size: 10px;">信息</a> <a href="/tags/做饭/" style="font-size: 10px;">做饭</a> <a href="/tags/健康/" style="font-size: 10px;">健康</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/傅真/" style="font-size: 10px;">傅真</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/兄弟/" style="font-size: 10px;">兄弟</a> <a href="/tags/再而三/" style="font-size: 10px;">再而三</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/削发/" style="font-size: 10px;">削发</a> <a href="/tags/动画/" style="font-size: 10.63px;">动画</a> <a href="/tags/努力/" style="font-size: 10px;">努力</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/匹兹堡/" style="font-size: 10.63px;">匹兹堡</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/博客/" style="font-size: 11.88px;">博客</a> <a href="/tags/原创/" style="font-size: 12.5px;">原创</a> <a href="/tags/叙利亚/" style="font-size: 10px;">叙利亚</a> <a href="/tags/口译/" style="font-size: 10px;">口译</a> <a href="/tags/古希腊/" style="font-size: 10px;">古希腊</a> <a href="/tags/古董/" style="font-size: 10px;">古董</a> <a href="/tags/同性恋/" style="font-size: 10px;">同性恋</a> <a href="/tags/启程/" style="font-size: 10px;">启程</a> <a href="/tags/告别/" style="font-size: 10px;">告别</a> <a href="/tags/周记/" style="font-size: 17.5px;">周记</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/哲学/" style="font-size: 10.63px;">哲学</a> <a href="/tags/回合制/" style="font-size: 10px;">回合制</a> <a href="/tags/回头无岸/" style="font-size: 10px;">回头无岸</a> <a href="/tags/回忆/" style="font-size: 11.88px;">回忆</a> <a href="/tags/因果/" style="font-size: 10px;">因果</a> <a href="/tags/图像分类/" style="font-size: 10px;">图像分类</a> <a href="/tags/图灵/" style="font-size: 10px;">图灵</a> <a href="/tags/土豆/" style="font-size: 10px;">土豆</a> <a href="/tags/圣诞/" style="font-size: 10px;">圣诞</a> <a href="/tags/坚持/" style="font-size: 10px;">坚持</a> <a href="/tags/基础/" style="font-size: 11.25px;">基础</a> <a href="/tags/多元思维模型/" style="font-size: 10px;">多元思维模型</a> <a href="/tags/多看/" style="font-size: 10.63px;">多看</a> <a href="/tags/大一统/" style="font-size: 10px;">大一统</a> <a href="/tags/大圣归来/" style="font-size: 10.63px;">大圣归来</a> <a href="/tags/大学/" style="font-size: 10px;">大学</a> <a href="/tags/大结局/" style="font-size: 10px;">大结局</a> <a href="/tags/字体/" style="font-size: 10px;">字体</a> <a href="/tags/字节/" style="font-size: 10px;">字节</a> <a href="/tags/孙悟空/" style="font-size: 10px;">孙悟空</a> <a href="/tags/孤独/" style="font-size: 10px;">孤独</a> <a href="/tags/学习/" style="font-size: 16.25px;">学习</a> <a href="/tags/学术/" style="font-size: 10px;">学术</a> <a href="/tags/实例/" style="font-size: 10.63px;">实例</a> <a href="/tags/实践/" style="font-size: 10px;">实践</a> <a href="/tags/家庭/" style="font-size: 11.25px;">家庭</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/富勒/" style="font-size: 10px;">富勒</a> <a href="/tags/将军/" style="font-size: 10px;">将军</a> <a href="/tags/小学/" style="font-size: 10px;">小学</a> <a href="/tags/小说/" style="font-size: 10.63px;">小说</a> <a href="/tags/层/" style="font-size: 10px;">层</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/工作/" style="font-size: 10.63px;">工作</a> <a href="/tags/工作流/" style="font-size: 10px;">工作流</a> <a href="/tags/帐篷/" style="font-size: 10px;">帐篷</a> <a href="/tags/度假/" style="font-size: 10px;">度假</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/开学/" style="font-size: 10.63px;">开学</a> <a href="/tags/开篇/" style="font-size: 10.63px;">开篇</a> <a href="/tags/徐州/" style="font-size: 10px;">徐州</a> <a href="/tags/微软/" style="font-size: 10px;">微软</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/心智/" style="font-size: 11.25px;">心智</a> <a href="/tags/心理/" style="font-size: 10px;">心理</a> <a href="/tags/态度/" style="font-size: 10px;">态度</a> <a href="/tags/思考/" style="font-size: 16.25px;">思考</a> <a href="/tags/总体介绍/" style="font-size: 10px;">总体介绍</a> <a href="/tags/总览/" style="font-size: 10px;">总览</a> <a href="/tags/悖论/" style="font-size: 10px;">悖论</a> <a href="/tags/情侣/" style="font-size: 10px;">情侣</a> <a href="/tags/感恩节/" style="font-size: 10.63px;">感恩节</a> <a href="/tags/感情/" style="font-size: 10px;">感情</a> <a href="/tags/愿望/" style="font-size: 10px;">愿望</a> <a href="/tags/成功/" style="font-size: 10px;">成功</a> <a href="/tags/成绩/" style="font-size: 10px;">成绩</a> <a href="/tags/成长/" style="font-size: 11.25px;">成长</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/扩展/" style="font-size: 10px;">扩展</a> <a href="/tags/技巧/" style="font-size: 10.63px;">技巧</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/抱怨/" style="font-size: 10px;">抱怨</a> <a href="/tags/拖延症/" style="font-size: 10.63px;">拖延症</a> <a href="/tags/挫折/" style="font-size: 10px;">挫折</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/改变/" style="font-size: 11.25px;">改变</a> <a href="/tags/改进/" style="font-size: 10px;">改进</a> <a href="/tags/效率/" style="font-size: 10.63px;">效率</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/教育/" style="font-size: 10px;">教育</a> <a href="/tags/教训/" style="font-size: 10px;">教训</a> <a href="/tags/数字/" style="font-size: 10px;">数字</a> <a href="/tags/整型/" style="font-size: 10px;">整型</a> <a href="/tags/整理/" style="font-size: 10.63px;">整理</a> <a href="/tags/文化/" style="font-size: 10.63px;">文化</a> <a href="/tags/文本处理/" style="font-size: 10px;">文本处理</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 10px;">斯坦福 CS193p</a> <a href="/tags/新参者/" style="font-size: 10.63px;">新参者</a> <a href="/tags/新特性/" style="font-size: 10px;">新特性</a> <a href="/tags/方向/" style="font-size: 10px;">方向</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/方法论/" style="font-size: 10px;">方法论</a> <a href="/tags/旅行/" style="font-size: 11.88px;">旅行</a> <a href="/tags/旅途/" style="font-size: 10px;">旅途</a> <a href="/tags/旧金山/" style="font-size: 10.63px;">旧金山</a> <a href="/tags/早起/" style="font-size: 10px;">早起</a> <a href="/tags/时代/" style="font-size: 10px;">时代</a> <a href="/tags/时差/" style="font-size: 10.63px;">时差</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/明智行动的艺术/" style="font-size: 10px;">明智行动的艺术</a> <a href="/tags/智慧/" style="font-size: 10px;">智慧</a> <a href="/tags/暴走/" style="font-size: 10px;">暴走</a> <a href="/tags/朋友/" style="font-size: 12.5px;">朋友</a> <a href="/tags/期末/" style="font-size: 10.63px;">期末</a> <a href="/tags/未来/" style="font-size: 10px;">未来</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/机遇/" style="font-size: 10px;">机遇</a> <a href="/tags/极简/" style="font-size: 10px;">极简</a> <a href="/tags/架构/" style="font-size: 15.63px;">架构</a> <a href="/tags/核心/" style="font-size: 10px;">核心</a> <a href="/tags/格子/" style="font-size: 10px;">格子</a> <a href="/tags/格局/" style="font-size: 10px;">格局</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/概率/" style="font-size: 10px;">概率</a> <a href="/tags/概览/" style="font-size: 10px;">概览</a> <a href="/tags/概述/" style="font-size: 10px;">概述</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/欧洲/" style="font-size: 10px;">欧洲</a> <a href="/tags/步行/" style="font-size: 10px;">步行</a> <a href="/tags/死亡/" style="font-size: 10.63px;">死亡</a> <a href="/tags/比特/" style="font-size: 10px;">比特</a> <a href="/tags/氐惆/" style="font-size: 10px;">氐惆</a> <a href="/tags/民主/" style="font-size: 10px;">民主</a> <a href="/tags/沉默/" style="font-size: 10px;">沉默</a> <a href="/tags/沟通/" style="font-size: 10px;">沟通</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/洞察/" style="font-size: 10px;">洞察</a> <a href="/tags/活动/" style="font-size: 10px;">活动</a> <a href="/tags/浮点数/" style="font-size: 10px;">浮点数</a> <a href="/tags/深度/" style="font-size: 10px;">深度</a> <a href="/tags/清醒思考的艺术/" style="font-size: 10px;">清醒思考的艺术</a> <a href="/tags/游乐场/" style="font-size: 10px;">游乐场</a> <a href="/tags/游戏/" style="font-size: 14.38px;">游戏</a> <a href="/tags/游戏机/" style="font-size: 10px;">游戏机</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/滚动视图/" style="font-size: 10px;">滚动视图</a> <a href="/tags/灵活/" style="font-size: 10px;">灵活</a> <a href="/tags/炸鸡/" style="font-size: 10px;">炸鸡</a> <a href="/tags/烤肉/" style="font-size: 10px;">烤肉</a> <a href="/tags/热血/" style="font-size: 10px;">热血</a> <a href="/tags/照片/" style="font-size: 10px;">照片</a> <a href="/tags/爱情/" style="font-size: 11.25px;">爱情</a> <a href="/tags/父母/" style="font-size: 10px;">父母</a> <a href="/tags/独立博客/" style="font-size: 10px;">独立博客</a> <a href="/tags/玩家/" style="font-size: 10px;">玩家</a> <a href="/tags/环境/" style="font-size: 10px;">环境</a> <a href="/tags/理科生/" style="font-size: 10px;">理科生</a> <a href="/tags/生化危机/" style="font-size: 10px;">生化危机</a> <a href="/tags/生日/" style="font-size: 10.63px;">生日</a> <a href="/tags/生活/" style="font-size: 19.38px;">生活</a> <a href="/tags/电影/" style="font-size: 11.88px;">电影</a> <a href="/tags/男人/" style="font-size: 10px;">男人</a> <a href="/tags/界限/" style="font-size: 10px;">界限</a> <a href="/tags/留学生/" style="font-size: 10px;">留学生</a> <a href="/tags/目标/" style="font-size: 10.63px;">目标</a> <a href="/tags/看图说话/" style="font-size: 10px;">看图说话</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/知识管理/" style="font-size: 10px;">知识管理</a> <a href="/tags/研究/" style="font-size: 10px;">研究</a> <a href="/tags/社交/" style="font-size: 10px;">社交</a> <a href="/tags/社区/" style="font-size: 10px;">社区</a> <a href="/tags/神作/" style="font-size: 10px;">神作</a> <a href="/tags/离别/" style="font-size: 10px;">离别</a> <a href="/tags/科学/" style="font-size: 10px;">科学</a> <a href="/tags/科幻/" style="font-size: 10.63px;">科幻</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/积累/" style="font-size: 12.5px;">积累</a> <a href="/tags/程序员/" style="font-size: 11.25px;">程序员</a> <a href="/tags/穷查理宝典/" style="font-size: 10px;">穷查理宝典</a> <a href="/tags/童话/" style="font-size: 10.63px;">童话</a> <a href="/tags/笔记/" style="font-size: 16.25px;">笔记</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/简洁/" style="font-size: 10px;">简洁</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/类型/" style="font-size: 10px;">类型</a> <a href="/tags/粒度/" style="font-size: 10px;">粒度</a> <a href="/tags/精选/" style="font-size: 11.88px;">精选</a> <a href="/tags/系列/" style="font-size: 10px;">系列</a> <a href="/tags/索尼/" style="font-size: 10px;">索尼</a> <a href="/tags/纽约/" style="font-size: 10.63px;">纽约</a> <a href="/tags/组成原理/" style="font-size: 12.5px;">组成原理</a> <a href="/tags/组织/" style="font-size: 10px;">组织</a> <a href="/tags/经典/" style="font-size: 10px;">经典</a> <a href="/tags/绘制/" style="font-size: 10px;">绘制</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/编辑距离/" style="font-size: 10px;">编辑距离</a> <a href="/tags/羊驼/" style="font-size: 10px;">羊驼</a> <a href="/tags/美剧/" style="font-size: 10px;">美剧</a> <a href="/tags/美国/" style="font-size: 10px;">美国</a> <a href="/tags/翻译/" style="font-size: 13.75px;">翻译</a> <a href="/tags/老朝奉/" style="font-size: 10px;">老朝奉</a> <a href="/tags/自尊/" style="font-size: 10px;">自尊</a> <a href="/tags/自我/" style="font-size: 10.63px;">自我</a> <a href="/tags/节奏/" style="font-size: 10px;">节奏</a> <a href="/tags/苏州/" style="font-size: 10px;">苏州</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/英雄/" style="font-size: 11.25px;">英雄</a> <a href="/tags/英雄联盟/" style="font-size: 10.63px;">英雄联盟</a> <a href="/tags/苹果/" style="font-size: 10px;">苹果</a> <a href="/tags/荒野求生/" style="font-size: 10px;">荒野求生</a> <a href="/tags/萨博/" style="font-size: 10px;">萨博</a> <a href="/tags/落后/" style="font-size: 10px;">落后</a> <a href="/tags/蝴蝶效应/" style="font-size: 10px;">蝴蝶效应</a> <a href="/tags/行动/" style="font-size: 10px;">行动</a> <a href="/tags/西行者/" style="font-size: 10px;">西行者</a> <a href="/tags/观念/" style="font-size: 10px;">观念</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/视图控制器/" style="font-size: 10px;">视图控制器</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/计算机/" style="font-size: 15px;">计算机</a> <a href="/tags/记录/" style="font-size: 10.63px;">记录</a> <a href="/tags/记忆/" style="font-size: 10.63px;">记忆</a> <a href="/tags/讲义/" style="font-size: 10px;">讲义</a> <a href="/tags/许愿/" style="font-size: 10px;">许愿</a> <a href="/tags/论道/" style="font-size: 14.38px;">论道</a> <a href="/tags/设计/" style="font-size: 16.88px;">设计</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访谈/" style="font-size: 10px;">访谈</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/读书/" style="font-size: 18.13px;">读书</a> <a href="/tags/课程/" style="font-size: 10px;">课程</a> <a href="/tags/调整/" style="font-size: 10px;">调整</a> <a href="/tags/足球/" style="font-size: 10.63px;">足球</a> <a href="/tags/跑题/" style="font-size: 10px;">跑题</a> <a href="/tags/路线/" style="font-size: 10px;">路线</a> <a href="/tags/转型/" style="font-size: 10px;">转型</a> <a href="/tags/转换/" style="font-size: 10px;">转换</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/轻量/" style="font-size: 10px;">轻量</a> <a href="/tags/运动/" style="font-size: 10px;">运动</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/运算符重载/" style="font-size: 10px;">运算符重载</a> <a href="/tags/运营/" style="font-size: 10.63px;">运营</a> <a href="/tags/进阶/" style="font-size: 10px;">进阶</a> <a href="/tags/连接/" style="font-size: 10px;">连接</a> <a href="/tags/迷茫/" style="font-size: 10px;">迷茫</a> <a href="/tags/逆向思维/" style="font-size: 10px;">逆向思维</a> <a href="/tags/选择/" style="font-size: 11.25px;">选择</a> <a href="/tags/选课/" style="font-size: 10px;">选课</a> <a href="/tags/透析/" style="font-size: 10px;">透析</a> <a href="/tags/造假/" style="font-size: 10px;">造假</a> <a href="/tags/逻辑/" style="font-size: 10px;">逻辑</a> <a href="/tags/醒醒/" style="font-size: 10px;">醒醒</a> <a href="/tags/闭包/" style="font-size: 10.63px;">闭包</a> <a href="/tags/阅读/" style="font-size: 11.88px;">阅读</a> <a href="/tags/阿拉伯之春/" style="font-size: 10px;">阿拉伯之春</a> <a href="/tags/陌生人/" style="font-size: 10px;">陌生人</a> <a href="/tags/陪伴/" style="font-size: 10px;">陪伴</a> <a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a> <a href="/tags/难民/" style="font-size: 10px;">难民</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/顽皮狗/" style="font-size: 10px;">顽皮狗</a> <a href="/tags/预测/" style="font-size: 10px;">预测</a> <a href="/tags/预言/" style="font-size: 10px;">预言</a> <a href="/tags/马伯庸/" style="font-size: 10px;">马伯庸</a> <a href="/tags/骑行/" style="font-size: 10px;">骑行</a> <a href="/tags/高中/" style="font-size: 10px;">高中</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://illustrationsencouleur.lofter.com/">illustrations</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wdxtub.lofter.com/">wdxtub@lofter</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wdxtub</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wdxtub</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Agony is my triumph</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">索引</a></li>
+		        
+					<li><a href="/categories/Technique">技术</a></li>
+		        
+					<li><a href="/categories/Reading">读书</a></li>
+		        
+					<li><a href="/categories/Thinking">思考</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-nodejs-cmd-tutorial" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/04/nodejs-cmd-tutorial/" class="article-date">
+  	<time datetime="2015-12-05T02:06:21.000Z" itemprop="datePublished">2015-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Node.js 命令行程序实例教程
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令行/">命令行</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编辑距离/">编辑距离</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Technique/">Technique</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个学期 Coding Bootcamp 最后一个作业是用 Node.js 做一个小程序，正好借此机会学习一下 Node.js。这个教程主要是关于如何用 Node.js 做命令行程序的，涉及服务器和 web 的部分基本上是没有的。</p>
+<a id="more"></a>
+<hr>
+<h2 id="Node-js__u57FA_u672C_u4ECB_u7ECD"><a href="#Node-js__u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="Node.js 基本介绍"></a>Node.js 基本介绍</h2><p>简单的说 Node.js 就是运行在服务端的 JavaScript。</p>
+<ul>
+<li>Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台。</li>
+<li>Node.js是一个事件驱动I/O服务端 JavaScript 环境，基于 Google 的V8 引擎，V8 引擎执行 Javascript 的速度非常快，性能非常好。</li>
+</ul>
+<p>换个角度来看，JavaScript 是脚本语言，脚本语言都需要一个解析器才能运行。对于写在 HTML 页面里的 JavaScript，浏览器充当了解析器的角色。而对于需要独立运行的 JavaScript，Node.js 就是一个解析器。</p>
+<p>Node.js 的作者说，他创造 Node.js 的目的是为了实现高性能 Web 服务器，他首先看重的是事件机制和异步IO模型的优越性，而不是 JavaScript。但是他需要选择一种编程语言实现他的想法，这种编程语言不能自带IO功能，并且需要能良好支持事件机制。JavaScript 没有自带IO功能，天生就用于处理浏览器中的 DOM 事件，并且拥有一大群程序员，因此就成为了天然的选择。</p>
+<p>开发之前的准备工作这里不赘述，在<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>上有详细的文档</p>
+<p>唯一需要提的是最好安装一个 <a href="https://github.com/creationix/nvm" target="_blank" rel="external">NVM</a>。NVM 的全称是 Node Version Manager，之所以需要这个工具，是因为 Node.js 的各种特性都没有稳定下来，所以我们经常由于老项目或尝新的原因，需要切换各种版本。</p>
+<p>安装也很简单</p>
+<p><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash</code></p>
+<p>装好之后在终端中输入 <code>$ node</code>，REPL(read–eval–print loop) 应该就出来了，那我们就成功了。</p>
+<h2 id="u4EFB_u52A1_u4ECB_u7ECD"><a href="#u4EFB_u52A1_u4ECB_u7ECD" class="headerlink" title="任务介绍"></a>任务介绍</h2><p>既然是实例教程，我们需要有一个例子，这里我们要做的事情有四个</p>
+<ol>
+<li>读入一个<a href="http://www.gutenberg.org/cache/epub/45/pg45.txt" target="_blank" rel="external">文本文件</a></li>
+<li>根据读入的内容进行一些数据计算<ul>
+<li>词数</li>
+<li>行数</li>
+<li>列出所有的词以及对应的出现次数，降序排列</li>
+<li>出现次数最多的十个 trigram</li>
+<li>出现次数最多的 trigram 与之后的十个出现次数最多的 trigram 的编辑距离，列出比较的对象以及编辑距离的值 </li>
+</ul>
+</li>
+<li>把得到的结果写成 HTML 文件保存在本地</li>
+<li>支持自定义参数调用，例如可以在命令行中输入文件名</li>
+</ol>
+<h2 id="Hello_World"><a href="#Hello_World" class="headerlink" title="Hello World"></a>Hello World</h2><p>配置好了环境，就可以开始这次的任务了，但是开始之前，万变不离其宗，先要来一发 hello world。步骤如下</p>
+<ol>
+<li>新建一个文件夹</li>
+<li>文件夹里新建一个名为 <code>hello.js</code> 的文件</li>
+</ol>
+<p>文件内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hello World, this is wdx'</span>);</span><br></pre></td></tr></table></figure>
+<p>用命令行进入刚才新建的文件夹，然后 <code>node hello.js</code>，可以看到输出了 <code>Hello World, this is wdx</code>，于是第一步就完成了。</p>
+<h2 id="u4E00_uFF1A_u8BFB_u53D6_u6587_u4EF6"><a href="#u4E00_uFF1A_u8BFB_u53D6_u6587_u4EF6" class="headerlink" title="一：读取文件"></a>一：读取文件</h2><p>知道了基本的执行操作，我们可以开始读入指定的 txt 文件，下载好<a href="http://www.gutenberg.org/cache/epub/45/pg45.txt" target="_blank" rel="external">文件</a> 并放在同一个文件夹里，就可以利用 node.js 自带的库来进行操作了。</p>
+<p>然后我们新建另外一个文件 <code>parser.js</code>，具体的操作请参看注释，这里用了一些变量名方便以后拓展，也有把函数作为参数传给另外的函数，这个是函数式编程的做法，在这里不展开。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// load file system module</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> filename = <span class="string">'pg45.txt'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'loading content from '</span> + filename);</span><br><span class="line"></span><br><span class="line"><span class="comment">// read the contents of the file into memory</span></span><br><span class="line">fs.readFile(filename, <span class="function"><span class="keyword">function</span> (<span class="params">err, buffer</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// If an error occurred, throwing it will</span></span><br><span class="line">    <span class="comment">// display the exception and end our app</span></span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// buffer is a Buffer, convert to string</span></span><br><span class="line">    <span class="keyword">var</span> text = buffer.toString();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'loading done'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>载入之后我们就可以对内容进行操作了</p>
+<h2 id="u4E8C_uFF1A_u6570_u636E_u7EDF_u8BA1"><a href="#u4E8C_uFF1A_u6570_u636E_u7EDF_u8BA1" class="headerlink" title="二：数据统计"></a>二：数据统计</h2><h3 id="u884C_u6570/_u8BCD_u6570/_u8BCD_u9891"><a href="#u884C_u6570/_u8BCD_u6570/_u8BCD_u9891" class="headerlink" title="行数/词数/词频"></a>行数/词数/词频</h3><p>完成了上一节，我们已经拿到了文本的内容，可以开始具体操作了。直接在刚才的文件后面继续添加代码，统计单词数量，行数，以及每个单词出现的次数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'start processing content'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// the stats variable</span></span><br><span class="line"><span class="keyword">var</span> linecount = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> wordcount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get line count</span></span><br><span class="line"><span class="keyword">var</span> lines = text.split(<span class="string">'\n'</span>);</span><br><span class="line">linecount = lines.length;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get words count and their number of appearance</span></span><br><span class="line"><span class="keyword">var</span> index = &#123;&#125;;</span><br><span class="line">lines.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">line</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> words = line</span><br><span class="line">               .replace(<span class="regexp">/[.,?!;()"-]/g</span>, <span class="string">" "</span>)</span><br><span class="line">               .replace(<span class="regexp">/\s+/g</span>, <span class="string">" "</span>)</span><br><span class="line">               .toLowerCase()</span><br><span class="line">               .split(<span class="string">" "</span>);</span><br><span class="line">   <span class="comment">// count words</span></span><br><span class="line">   wordcount += words.length;</span><br><span class="line">   <span class="comment">// build index dictionary</span></span><br><span class="line">   words.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (word != <span class="string">''</span>)&#123;</span><br><span class="line">           <span class="keyword">if</span> (!(index.hasOwnProperty(word)))&#123;</span><br><span class="line">               index[word] = <span class="number">0</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           index[word]++;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// change dict to array for sort</span></span><br><span class="line"><span class="keyword">var</span> indexarr = [];</span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(index).sort())&#123;</span><br><span class="line">   indexarr[i] = [key, index[key]];</span><br><span class="line">   i += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sort the array</span></span><br><span class="line">indexarr = indexarr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> y[<span class="number">1</span>] - x[<span class="number">1</span>];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'processing content done'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'--------statistics--------'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Line Count: '</span> + linecount);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Word Count: '</span> + wordcount);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++)&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(indexarr[j]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Trigram__u7EDF_u8BA1"><a href="#Trigram__u7EDF_u8BA1" class="headerlink" title="Trigram 统计"></a>Trigram 统计</h3><p>Triagram 的定义可以从 <a href="https://en.wikipedia.org/wiki/Trigram" target="_blank" rel="external">wiki</a> 找到，其实就是遍历一次所有的单词，三个三个一组，然后统计频率，其实逻辑和前面统计词频是一样的。所以思路是增加一个存所有单词的数组，然后遍历生成字典，然后字典转数组进行排序找到前十一个，这样就可以显示前十个，并且计算第一个和后面十个的编辑距离。</p>
+<p>我们先修改一下之前统计词频的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get words count and their number of appearance</span></span><br><span class="line"><span class="keyword">var</span> index = &#123;&#125;;</span><br><span class="line"><span class="comment">// save each word to an array</span></span><br><span class="line"><span class="keyword">var</span> wordarr = [];</span><br><span class="line"><span class="comment">// save the trigram to an dictionary</span></span><br><span class="line"><span class="keyword">var</span> trigrams = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">lines.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">line</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> words = line</span><br><span class="line">               .replace(<span class="regexp">/[.,?!;()"-]/g</span>, <span class="string">" "</span>)</span><br><span class="line">               .replace(<span class="regexp">/\s+/g</span>, <span class="string">" "</span>)</span><br><span class="line">               .toLowerCase()</span><br><span class="line">               .split(<span class="string">" "</span>);</span><br><span class="line">   <span class="comment">// count words</span></span><br><span class="line">   wordcount += words.length;</span><br><span class="line">   <span class="comment">// build index dictionary</span></span><br><span class="line">   words.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (word != <span class="string">''</span>)&#123;</span><br><span class="line">           wordarr.push(word);</span><br><span class="line">           <span class="keyword">if</span> (!(index.hasOwnProperty(word)))&#123;</span><br><span class="line">               index[word] = <span class="number">0</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           index[word]++;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>接下来就主要处理这个 <code>wordarr</code> 数组了，利用 <code>slice()</code> 和 <code>join()</code> 的功能就可以很方便地实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get trigram</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; wordarr.length-<span class="number">3</span>; j++)&#123;</span><br><span class="line">   <span class="keyword">var</span> temp = wordarr.slice(j, j+<span class="number">3</span>).join(<span class="string">' '</span>);</span><br><span class="line">   <span class="keyword">if</span> (!(trigrams.hasOwnProperty(temp)))&#123;</span><br><span class="line">       trigrams[temp] = <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   trigrams[temp]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// change dict to array for sort</span></span><br><span class="line"><span class="keyword">var</span> trigramsarr = [];</span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(trigrams).sort())&#123;</span><br><span class="line">   trigramsarr[i] = [key, trigrams[key]];</span><br><span class="line">   i += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sort the array</span></span><br><span class="line">trigramsarr = trigramsarr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> y[<span class="number">1</span>] - x[<span class="number">1</span>];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get Top 11 trigrams</span></span><br><span class="line">trigramtop11 = trigramsarr.slice(<span class="number">0</span>,<span class="number">11</span>);</span><br></pre></td></tr></table></figure>
+<p>再运行一下，就可以看到结果没有问题了，就剩最后一个问题，编辑距离</p>
+<h3 id="u7F16_u8F91_u8DDD_u79BB"><a href="#u7F16_u8F91_u8DDD_u79BB" class="headerlink" title="编辑距离"></a>编辑距离</h3><p>编辑距离又叫 levenshtein 距离，是一种比较两个字符串相似程度的算法，具体的原理不赘述，利用动态规划就可以解决，我们这里写一个函数方便调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">levenshtein</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> al = a.length + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">var</span> bl = b.length + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">var</span> result = [];</span><br><span class="line">	<span class="keyword">var</span> temp = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 创建一个二维数组</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; al; result[i] = [i++]) &#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bl; result[<span class="number">0</span>][i] = i++) &#123;&#125;		</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; al; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">1</span>; j &lt; bl; j++) &#123;</span><br><span class="line">			<span class="comment">// 判断最上方和最左方数字是否相等</span></span><br><span class="line">			temp = a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>] ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line">			<span class="comment">// result[i - 1][j] + 1 左方数字</span></span><br><span class="line">			<span class="comment">// result[i][j - 1] + 1 上方数字</span></span><br><span class="line">			<span class="comment">// result[i - 1][j - 1] + temp 左上方数字</span></span><br><span class="line">			result[i][j] = <span class="built_in">Math</span>.min(result[i - <span class="number">1</span>][j] + <span class="number">1</span>, result[i][j - <span class="number">1</span>] + <span class="number">1</span>, result[i - <span class="number">1</span>][j - <span class="number">1</span>] + temp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result[i-<span class="number">1</span>][j-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后只要在代码中调用这个函数即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Calculate edit distance and sort by distance value</span></span><br><span class="line"><span class="comment">// create an array to save the result</span></span><br><span class="line"><span class="keyword">var</span> resultstr = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">1</span>; j &lt; <span class="number">11</span>; j++)&#123;</span><br><span class="line">   <span class="keyword">var</span> dis = levenshtein(trigramtop11[<span class="number">0</span>][<span class="number">0</span>], trigramtop11[j][<span class="number">0</span>]);</span><br><span class="line">   <span class="keyword">var</span> str = <span class="string">"["</span> + trigramtop11[<span class="number">0</span>][<span class="number">0</span>] + <span class="string">"] vs ["</span> + trigramtop11[j][<span class="number">0</span>] + <span class="string">"]: "</span>;</span><br><span class="line">   resultstr.push([str, dis]);</span><br><span class="line">&#125;</span><br><span class="line">resultstr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> y[<span class="number">1</span>] - x[<span class="number">1</span>];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样一来，第二步也就完成了</p>
+<h2 id="u4E09_uFF1A_u8F93_u51FA_HTML"><a href="#u4E09_uFF1A_u8F93_u51FA_HTML" class="headerlink" title="三：输出 HTML"></a>三：输出 HTML</h2><p>写入文件我们同样使用 fs 模块，思路是我们先把要展示的内容存到一个 string 中，然后一次写入到 html 文件里，就算完成。具体代码比较简单，这也是之前为什么我要把所有的计算结果都换存起来的原因，方便写入。注意 HTML 输出的格式即可，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'Creating HTML content'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> htmlcontent = <span class="string">'&lt;html&gt;&lt;head&gt;&lt;title&gt;'</span> + filename + <span class="string">' Analysis Result&lt;/title&gt;&lt;head&gt;'</span>;</span><br><span class="line">htmlcontent += <span class="string">'&lt;body&gt;&lt;h1&gt;'</span> + filename + <span class="string">' Analysis Result&lt;/h1&gt;'</span>;</span><br><span class="line">htmlcontent += <span class="string">'&lt;h2&gt;Line Count: '</span> + linecount + <span class="string">'&lt;/h2&gt;'</span>;</span><br><span class="line">htmlcontent += <span class="string">'&lt;h2&gt;Word Count: '</span> + wordcount + <span class="string">'&lt;/h2&gt;'</span>;</span><br><span class="line">htmlcontent += <span class="string">'&lt;h2&gt;Trigram Frequency (Top 10)&lt;/h2&gt;&lt;ol&gt;'</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++)&#123;</span><br><span class="line">   htmlcontent += <span class="string">'&lt;li&gt;'</span> + trigramtop11[j] + <span class="string">'&lt;/li&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line">htmlcontent += <span class="string">'&lt;/ol&gt;&lt;h2&gt;Trigram Edit Distance&lt;/h2&gt;&lt;ol&gt;'</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++)&#123;</span><br><span class="line">   htmlcontent += <span class="string">'&lt;li&gt;'</span> + resultstr[j] + <span class="string">'&lt;/li&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line">htmlcontent += <span class="string">'&lt;/ol&gt;&lt;h2&gt;Word Frequency&lt;/h2&gt;&lt;ul&gt;'</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; indexarr.length; j++)&#123;</span><br><span class="line">   htmlcontent += <span class="string">'&lt;li&gt;'</span> + indexarr[j] + <span class="string">'&lt;/li&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line">htmlcontent += <span class="string">'&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">''</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Generating HTML file'</span>);</span><br><span class="line"><span class="keyword">var</span> filenamearr = filename.split(<span class="string">'.'</span>);</span><br><span class="line"></span><br><span class="line">fs.writeFile(filenamearr[<span class="number">0</span>] + <span class="string">'-result.html'</span>, htmlcontent, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (err)&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">console</span>.error(err);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'Generation Success'</span>);</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'Filename: '</span> + filenamearr[<span class="number">0</span>] + <span class="string">'-result.hmtl'</span>);</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'---------------------'</span>);</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'All Job Done'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="u56DB_uFF1A_u4F20_u5165_u53C2_u6570"><a href="#u56DB_uFF1A_u4F20_u5165_u53C2_u6570" class="headerlink" title="四：传入参数"></a>四：传入参数</h2><p>现在我们读入的内容是写死在代码里的，如果我们需要更灵活，从命令行传入参数的话，还需要对代码做一些改动。现在我们调用 <code>parser.js</code> 的方式是使用 <code>node parser.js</code>，现在需要实现用 <code>node parser.js pg45.txt</code> 这样的方式，可以把代码改为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> filename = process.argv[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (filename == <span class="literal">undefined</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'No input argument, use default file'</span>);</span><br><span class="line">    filename = <span class="string">'pg45.txt'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里也做了一些错误处理以防用户没有输入第二个参数，如果命令是 <code>node parser.js pg45.txt</code>，那么参数实际是 <code>[&#39;node&#39;, &#39;/path/to/parser&#39;, &#39;pg45.txt&#39;]</code></p>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>至此，所有的任务就已经完成了，具体的代码可以在<a href="https://github.com/wdxtub/11601-summary-stat-nodejs" target="_blank" rel="external">这里</a>找到，这个教程不涉及网络，也只使用了 fs 一个模块，但是对于熟悉 javascript 和 nodejs，是一个很好的练习。</p>
+<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html" target="_blank" rel="external">Node.js 命令行程序开发教程</a></li>
+<li><a href="http://www.html-js.com/article/A-day-to-learn-JavaScript-create-commandline-tools-with-Nodejs" target="_blank" rel="external">用Node.js创建命令行工具</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/04/now-or-never/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          第十四周 - Now or Never
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/03/android-map-v2-basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 开发笔记 2 - Google Map V2</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="nodejs-cmd-tutorial" data-title="Node.js 命令行程序实例教程" data-url="http://yoursite.com/2015/12/04/nodejs-cmd-tutorial/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wdxblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 wdxtub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

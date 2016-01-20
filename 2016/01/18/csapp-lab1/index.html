@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>深入理解计算机系统 习题课 1 Datalab | 小土刀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这一讲主要是介绍第一次作业 Datalab 的相关内容以及解法，还包括如何在远程机器上编写代码和测试。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解计算机系统 习题课 1 Datalab">
+<meta property="og:url" content="http://yoursite.com/2016/01/18/csapp-lab1/index.html">
+<meta property="og:site_name" content="小土刀">
+<meta property="og:description" content="这一讲主要是介绍第一次作业 Datalab 的相关内容以及解法，还包括如何在远程机器上编写代码和测试。">
+<meta property="og:image" content="http://yoursite.com/images/csapp28.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp29.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp30.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp31.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp32.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp33.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp34.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp35.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp36.jpg">
+<meta property="og:image" content="http://yoursite.com/images/csapp37.jpg">
+<meta property="og:updated_time" content="2016-01-18T22:46:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解计算机系统 习题课 1 Datalab">
+<meta name="twitter:description" content="这一讲主要是介绍第一次作业 Datalab 的相关内容以及解法，还包括如何在远程机器上编写代码和测试。">
+  
+    <link rel="alternative" href="/atom.xml" title="小土刀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpeg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wdxtub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Agony is my triumph</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">索引</a></li>
+				        
+							<li><a href="/categories/Technique">技术</a></li>
+				        
+							<li><a href="/categories/Reading">读书</a></li>
+				        
+							<li><a href="/categories/Thinking">思考</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/API/" style="font-size: 10.63px;">API</a> <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/AWS/" style="font-size: 11.88px;">AWS</a> <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 10.63px;">Android</a> <a href="/tags/Anroid/" style="font-size: 10px;">Anroid</a> <a href="/tags/Apple/" style="font-size: 11.88px;">Apple</a> <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/CMU/" style="font-size: 20px;">CMU</a> <a href="/tags/COC/" style="font-size: 10px;">COC</a> <a href="/tags/Capcom/" style="font-size: 10px;">Capcom</a> <a href="/tags/CodePlane/" style="font-size: 10px;">CodePlane</a> <a href="/tags/Datalab/" style="font-size: 10px;">Datalab</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IT/" style="font-size: 10px;">IT</a> <a href="/tags/Imaging-Cup/" style="font-size: 10px;">Imaging Cup</a> <a href="/tags/Java/" style="font-size: 11.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10.63px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Overview/" style="font-size: 10px;">Overview</a> <a href="/tags/PS4/" style="font-size: 10px;">PS4</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Swift/" style="font-size: 13.13px;">Swift</a> <a href="/tags/Swift-千金方/" style="font-size: 10.63px;">Swift 千金方</a> <a href="/tags/TOC/" style="font-size: 10px;">TOC</a> <a href="/tags/V2/" style="font-size: 10px;">V2</a> <a href="/tags/YC-创业课/" style="font-size: 10px;">YC 创业课</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 11.25px;">iOS</a> <a href="/tags/iOS-9/" style="font-size: 10px;">iOS 9</a> <a href="/tags/iOS-杂病论/" style="font-size: 10.63px;">iOS 杂病论</a> <a href="/tags/iOS9/" style="font-size: 13.75px;">iOS9</a> <a href="/tags/三观/" style="font-size: 10px;">三观</a> <a href="/tags/世界/" style="font-size: 10px;">世界</a> <a href="/tags/东野圭吾/" style="font-size: 10px;">东野圭吾</a> <a href="/tags/个人发展/" style="font-size: 10px;">个人发展</a> <a href="/tags/中国/" style="font-size: 10px;">中国</a> <a href="/tags/中秋/" style="font-size: 10px;">中秋</a> <a href="/tags/乐趣/" style="font-size: 10px;">乐趣</a> <a href="/tags/习题/" style="font-size: 10px;">习题</a> <a href="/tags/习题课/" style="font-size: 10px;">习题课</a> <a href="/tags/云计算/" style="font-size: 15.63px;">云计算</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/亲情/" style="font-size: 10px;">亲情</a> <a href="/tags/人口/" style="font-size: 10px;">人口</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/人造/" style="font-size: 10px;">人造</a> <a href="/tags/今何在/" style="font-size: 10px;">今何在</a> <a href="/tags/价值/" style="font-size: 10px;">价值</a> <a href="/tags/任天堂/" style="font-size: 10px;">任天堂</a> <a href="/tags/体力/" style="font-size: 10px;">体力</a> <a href="/tags/信息/" style="font-size: 10px;">信息</a> <a href="/tags/做饭/" style="font-size: 10px;">做饭</a> <a href="/tags/健康/" style="font-size: 10px;">健康</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/傅真/" style="font-size: 10px;">傅真</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/兄弟/" style="font-size: 10px;">兄弟</a> <a href="/tags/再而三/" style="font-size: 10px;">再而三</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/削发/" style="font-size: 10px;">削发</a> <a href="/tags/动画/" style="font-size: 10.63px;">动画</a> <a href="/tags/努力/" style="font-size: 10px;">努力</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/匹兹堡/" style="font-size: 10.63px;">匹兹堡</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/博客/" style="font-size: 11.88px;">博客</a> <a href="/tags/原创/" style="font-size: 12.5px;">原创</a> <a href="/tags/叙利亚/" style="font-size: 10px;">叙利亚</a> <a href="/tags/口译/" style="font-size: 10px;">口译</a> <a href="/tags/古希腊/" style="font-size: 10px;">古希腊</a> <a href="/tags/古董/" style="font-size: 10px;">古董</a> <a href="/tags/同性恋/" style="font-size: 10px;">同性恋</a> <a href="/tags/启程/" style="font-size: 10px;">启程</a> <a href="/tags/告别/" style="font-size: 10px;">告别</a> <a href="/tags/周记/" style="font-size: 17.5px;">周记</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/哲学/" style="font-size: 10.63px;">哲学</a> <a href="/tags/回合制/" style="font-size: 10px;">回合制</a> <a href="/tags/回头无岸/" style="font-size: 10px;">回头无岸</a> <a href="/tags/回忆/" style="font-size: 11.88px;">回忆</a> <a href="/tags/因果/" style="font-size: 10px;">因果</a> <a href="/tags/图像分类/" style="font-size: 10px;">图像分类</a> <a href="/tags/图灵/" style="font-size: 10px;">图灵</a> <a href="/tags/土豆/" style="font-size: 10px;">土豆</a> <a href="/tags/圣诞/" style="font-size: 10px;">圣诞</a> <a href="/tags/坚持/" style="font-size: 10px;">坚持</a> <a href="/tags/基础/" style="font-size: 11.25px;">基础</a> <a href="/tags/多元思维模型/" style="font-size: 10px;">多元思维模型</a> <a href="/tags/多看/" style="font-size: 10.63px;">多看</a> <a href="/tags/大一统/" style="font-size: 10px;">大一统</a> <a href="/tags/大圣归来/" style="font-size: 10.63px;">大圣归来</a> <a href="/tags/大学/" style="font-size: 10px;">大学</a> <a href="/tags/大结局/" style="font-size: 10px;">大结局</a> <a href="/tags/字体/" style="font-size: 10px;">字体</a> <a href="/tags/字节/" style="font-size: 10px;">字节</a> <a href="/tags/孙悟空/" style="font-size: 10px;">孙悟空</a> <a href="/tags/孤独/" style="font-size: 10px;">孤独</a> <a href="/tags/学习/" style="font-size: 16.25px;">学习</a> <a href="/tags/学术/" style="font-size: 10px;">学术</a> <a href="/tags/实例/" style="font-size: 10.63px;">实例</a> <a href="/tags/实践/" style="font-size: 10px;">实践</a> <a href="/tags/家庭/" style="font-size: 11.25px;">家庭</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/富勒/" style="font-size: 10px;">富勒</a> <a href="/tags/将军/" style="font-size: 10px;">将军</a> <a href="/tags/小学/" style="font-size: 10px;">小学</a> <a href="/tags/小说/" style="font-size: 10.63px;">小说</a> <a href="/tags/层/" style="font-size: 10px;">层</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/工作/" style="font-size: 10.63px;">工作</a> <a href="/tags/工作流/" style="font-size: 10px;">工作流</a> <a href="/tags/帐篷/" style="font-size: 10px;">帐篷</a> <a href="/tags/度假/" style="font-size: 10px;">度假</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/开学/" style="font-size: 10.63px;">开学</a> <a href="/tags/开篇/" style="font-size: 10.63px;">开篇</a> <a href="/tags/徐州/" style="font-size: 10px;">徐州</a> <a href="/tags/微软/" style="font-size: 10px;">微软</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/心智/" style="font-size: 11.25px;">心智</a> <a href="/tags/心理/" style="font-size: 10px;">心理</a> <a href="/tags/态度/" style="font-size: 10px;">态度</a> <a href="/tags/思考/" style="font-size: 16.25px;">思考</a> <a href="/tags/总体介绍/" style="font-size: 10px;">总体介绍</a> <a href="/tags/总览/" style="font-size: 10px;">总览</a> <a href="/tags/悖论/" style="font-size: 10px;">悖论</a> <a href="/tags/情侣/" style="font-size: 10px;">情侣</a> <a href="/tags/感恩节/" style="font-size: 10.63px;">感恩节</a> <a href="/tags/感情/" style="font-size: 10px;">感情</a> <a href="/tags/愿望/" style="font-size: 10px;">愿望</a> <a href="/tags/成功/" style="font-size: 10px;">成功</a> <a href="/tags/成绩/" style="font-size: 10px;">成绩</a> <a href="/tags/成长/" style="font-size: 11.25px;">成长</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/扩展/" style="font-size: 10px;">扩展</a> <a href="/tags/技巧/" style="font-size: 10.63px;">技巧</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/抱怨/" style="font-size: 10px;">抱怨</a> <a href="/tags/拖延症/" style="font-size: 10.63px;">拖延症</a> <a href="/tags/挫折/" style="font-size: 10px;">挫折</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/改变/" style="font-size: 11.25px;">改变</a> <a href="/tags/改进/" style="font-size: 10px;">改进</a> <a href="/tags/效率/" style="font-size: 10.63px;">效率</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/教育/" style="font-size: 10px;">教育</a> <a href="/tags/教训/" style="font-size: 10px;">教训</a> <a href="/tags/数字/" style="font-size: 10px;">数字</a> <a href="/tags/整型/" style="font-size: 10px;">整型</a> <a href="/tags/整理/" style="font-size: 10.63px;">整理</a> <a href="/tags/文化/" style="font-size: 10.63px;">文化</a> <a href="/tags/文本处理/" style="font-size: 10px;">文本处理</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 10px;">斯坦福 CS193p</a> <a href="/tags/新参者/" style="font-size: 10.63px;">新参者</a> <a href="/tags/新特性/" style="font-size: 10px;">新特性</a> <a href="/tags/方向/" style="font-size: 10px;">方向</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/方法论/" style="font-size: 10px;">方法论</a> <a href="/tags/旅行/" style="font-size: 11.88px;">旅行</a> <a href="/tags/旅途/" style="font-size: 10px;">旅途</a> <a href="/tags/旧金山/" style="font-size: 10.63px;">旧金山</a> <a href="/tags/早起/" style="font-size: 10px;">早起</a> <a href="/tags/时代/" style="font-size: 10px;">时代</a> <a href="/tags/时差/" style="font-size: 10.63px;">时差</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/明智行动的艺术/" style="font-size: 10px;">明智行动的艺术</a> <a href="/tags/智慧/" style="font-size: 10px;">智慧</a> <a href="/tags/暴走/" style="font-size: 10px;">暴走</a> <a href="/tags/朋友/" style="font-size: 12.5px;">朋友</a> <a href="/tags/期末/" style="font-size: 10.63px;">期末</a> <a href="/tags/未来/" style="font-size: 10px;">未来</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/机遇/" style="font-size: 10px;">机遇</a> <a href="/tags/极简/" style="font-size: 10px;">极简</a> <a href="/tags/架构/" style="font-size: 15.63px;">架构</a> <a href="/tags/核心/" style="font-size: 10px;">核心</a> <a href="/tags/格子/" style="font-size: 10px;">格子</a> <a href="/tags/格局/" style="font-size: 10px;">格局</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/概率/" style="font-size: 10px;">概率</a> <a href="/tags/概览/" style="font-size: 10px;">概览</a> <a href="/tags/概述/" style="font-size: 10px;">概述</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/欧洲/" style="font-size: 10px;">欧洲</a> <a href="/tags/步行/" style="font-size: 10px;">步行</a> <a href="/tags/死亡/" style="font-size: 10.63px;">死亡</a> <a href="/tags/比特/" style="font-size: 10px;">比特</a> <a href="/tags/氐惆/" style="font-size: 10px;">氐惆</a> <a href="/tags/民主/" style="font-size: 10px;">民主</a> <a href="/tags/沉默/" style="font-size: 10px;">沉默</a> <a href="/tags/沟通/" style="font-size: 10px;">沟通</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/洞察/" style="font-size: 10px;">洞察</a> <a href="/tags/活动/" style="font-size: 10px;">活动</a> <a href="/tags/浮点数/" style="font-size: 10px;">浮点数</a> <a href="/tags/深度/" style="font-size: 10px;">深度</a> <a href="/tags/清醒思考的艺术/" style="font-size: 10px;">清醒思考的艺术</a> <a href="/tags/游乐场/" style="font-size: 10px;">游乐场</a> <a href="/tags/游戏/" style="font-size: 14.38px;">游戏</a> <a href="/tags/游戏机/" style="font-size: 10px;">游戏机</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/滚动视图/" style="font-size: 10px;">滚动视图</a> <a href="/tags/灵活/" style="font-size: 10px;">灵活</a> <a href="/tags/炸鸡/" style="font-size: 10px;">炸鸡</a> <a href="/tags/烤肉/" style="font-size: 10px;">烤肉</a> <a href="/tags/热血/" style="font-size: 10px;">热血</a> <a href="/tags/照片/" style="font-size: 10px;">照片</a> <a href="/tags/爱情/" style="font-size: 11.25px;">爱情</a> <a href="/tags/父母/" style="font-size: 10px;">父母</a> <a href="/tags/独立博客/" style="font-size: 10px;">独立博客</a> <a href="/tags/玩家/" style="font-size: 10px;">玩家</a> <a href="/tags/环境/" style="font-size: 10px;">环境</a> <a href="/tags/理科生/" style="font-size: 10px;">理科生</a> <a href="/tags/生化危机/" style="font-size: 10px;">生化危机</a> <a href="/tags/生日/" style="font-size: 10.63px;">生日</a> <a href="/tags/生活/" style="font-size: 19.38px;">生活</a> <a href="/tags/电影/" style="font-size: 11.88px;">电影</a> <a href="/tags/男人/" style="font-size: 10px;">男人</a> <a href="/tags/界限/" style="font-size: 10px;">界限</a> <a href="/tags/留学生/" style="font-size: 10px;">留学生</a> <a href="/tags/目标/" style="font-size: 10.63px;">目标</a> <a href="/tags/看图说话/" style="font-size: 10px;">看图说话</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/知识管理/" style="font-size: 10px;">知识管理</a> <a href="/tags/研究/" style="font-size: 10px;">研究</a> <a href="/tags/社交/" style="font-size: 10px;">社交</a> <a href="/tags/社区/" style="font-size: 10px;">社区</a> <a href="/tags/神作/" style="font-size: 10px;">神作</a> <a href="/tags/离别/" style="font-size: 10px;">离别</a> <a href="/tags/科学/" style="font-size: 10px;">科学</a> <a href="/tags/科幻/" style="font-size: 10.63px;">科幻</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/积累/" style="font-size: 12.5px;">积累</a> <a href="/tags/程序员/" style="font-size: 11.25px;">程序员</a> <a href="/tags/穷查理宝典/" style="font-size: 10px;">穷查理宝典</a> <a href="/tags/童话/" style="font-size: 10.63px;">童话</a> <a href="/tags/笔记/" style="font-size: 16.25px;">笔记</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/简洁/" style="font-size: 10px;">简洁</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/类型/" style="font-size: 10px;">类型</a> <a href="/tags/粒度/" style="font-size: 10px;">粒度</a> <a href="/tags/精选/" style="font-size: 11.88px;">精选</a> <a href="/tags/系列/" style="font-size: 10px;">系列</a> <a href="/tags/索尼/" style="font-size: 10px;">索尼</a> <a href="/tags/纽约/" style="font-size: 10.63px;">纽约</a> <a href="/tags/组成原理/" style="font-size: 12.5px;">组成原理</a> <a href="/tags/组织/" style="font-size: 10px;">组织</a> <a href="/tags/经典/" style="font-size: 10px;">经典</a> <a href="/tags/绘制/" style="font-size: 10px;">绘制</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/编辑距离/" style="font-size: 10px;">编辑距离</a> <a href="/tags/羊驼/" style="font-size: 10px;">羊驼</a> <a href="/tags/美剧/" style="font-size: 10px;">美剧</a> <a href="/tags/美国/" style="font-size: 10px;">美国</a> <a href="/tags/翻译/" style="font-size: 13.75px;">翻译</a> <a href="/tags/老朝奉/" style="font-size: 10px;">老朝奉</a> <a href="/tags/自尊/" style="font-size: 10px;">自尊</a> <a href="/tags/自我/" style="font-size: 10.63px;">自我</a> <a href="/tags/节奏/" style="font-size: 10px;">节奏</a> <a href="/tags/苏州/" style="font-size: 10px;">苏州</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/英雄/" style="font-size: 11.25px;">英雄</a> <a href="/tags/英雄联盟/" style="font-size: 10.63px;">英雄联盟</a> <a href="/tags/苹果/" style="font-size: 10px;">苹果</a> <a href="/tags/荒野求生/" style="font-size: 10px;">荒野求生</a> <a href="/tags/萨博/" style="font-size: 10px;">萨博</a> <a href="/tags/落后/" style="font-size: 10px;">落后</a> <a href="/tags/蝴蝶效应/" style="font-size: 10px;">蝴蝶效应</a> <a href="/tags/行动/" style="font-size: 10px;">行动</a> <a href="/tags/西行者/" style="font-size: 10px;">西行者</a> <a href="/tags/观念/" style="font-size: 10px;">观念</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/视图控制器/" style="font-size: 10px;">视图控制器</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/计算机/" style="font-size: 15px;">计算机</a> <a href="/tags/记录/" style="font-size: 10.63px;">记录</a> <a href="/tags/记忆/" style="font-size: 10.63px;">记忆</a> <a href="/tags/讲义/" style="font-size: 10px;">讲义</a> <a href="/tags/许愿/" style="font-size: 10px;">许愿</a> <a href="/tags/论道/" style="font-size: 14.38px;">论道</a> <a href="/tags/设计/" style="font-size: 16.88px;">设计</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访谈/" style="font-size: 10px;">访谈</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/读书/" style="font-size: 18.13px;">读书</a> <a href="/tags/课程/" style="font-size: 10px;">课程</a> <a href="/tags/调整/" style="font-size: 10px;">调整</a> <a href="/tags/足球/" style="font-size: 10.63px;">足球</a> <a href="/tags/跑题/" style="font-size: 10px;">跑题</a> <a href="/tags/路线/" style="font-size: 10px;">路线</a> <a href="/tags/转型/" style="font-size: 10px;">转型</a> <a href="/tags/转换/" style="font-size: 10px;">转换</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/轻量/" style="font-size: 10px;">轻量</a> <a href="/tags/运动/" style="font-size: 10px;">运动</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/运算符重载/" style="font-size: 10px;">运算符重载</a> <a href="/tags/运营/" style="font-size: 10.63px;">运营</a> <a href="/tags/进阶/" style="font-size: 10px;">进阶</a> <a href="/tags/连接/" style="font-size: 10px;">连接</a> <a href="/tags/迷茫/" style="font-size: 10px;">迷茫</a> <a href="/tags/逆向思维/" style="font-size: 10px;">逆向思维</a> <a href="/tags/选择/" style="font-size: 11.25px;">选择</a> <a href="/tags/选课/" style="font-size: 10px;">选课</a> <a href="/tags/透析/" style="font-size: 10px;">透析</a> <a href="/tags/造假/" style="font-size: 10px;">造假</a> <a href="/tags/逻辑/" style="font-size: 10px;">逻辑</a> <a href="/tags/醒醒/" style="font-size: 10px;">醒醒</a> <a href="/tags/闭包/" style="font-size: 10.63px;">闭包</a> <a href="/tags/阅读/" style="font-size: 11.88px;">阅读</a> <a href="/tags/阿拉伯之春/" style="font-size: 10px;">阿拉伯之春</a> <a href="/tags/陌生人/" style="font-size: 10px;">陌生人</a> <a href="/tags/陪伴/" style="font-size: 10px;">陪伴</a> <a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a> <a href="/tags/难民/" style="font-size: 10px;">难民</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/顽皮狗/" style="font-size: 10px;">顽皮狗</a> <a href="/tags/预测/" style="font-size: 10px;">预测</a> <a href="/tags/预言/" style="font-size: 10px;">预言</a> <a href="/tags/马伯庸/" style="font-size: 10px;">马伯庸</a> <a href="/tags/骑行/" style="font-size: 10px;">骑行</a> <a href="/tags/高中/" style="font-size: 10px;">高中</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://illustrationsencouleur.lofter.com/">illustrations</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wdxtub.lofter.com/">wdxtub@lofter</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wdxtub</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wdxtub</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Agony is my triumph</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">索引</a></li>
+		        
+					<li><a href="/categories/Technique">技术</a></li>
+		        
+					<li><a href="/categories/Reading">读书</a></li>
+		        
+					<li><a href="/categories/Thinking">思考</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-csapp-lab1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/18/csapp-lab1/" class="article-date">
+  	<time datetime="2016-01-18T13:01:12.000Z" itemprop="datePublished">2016-01-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      深入理解计算机系统 习题课 1 Datalab
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CMU/">CMU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Datalab/">Datalab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/习题课/">习题课</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机/">计算机</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Technique/">Technique</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一讲主要是介绍第一次作业 Datalab 的相关内容以及解法，还包括如何在远程机器上编写代码和测试。</p>
+<a id="more"></a>
+<hr>
+<p>我们先来看看 Datalab 需要我们做什么。主要是通过这次的作业来熟悉整型及浮点数的位表达形式，简单来说，就是解开一些人工谜题。列表如下：</p>
+<p><img src="/images/csapp28.jpg" alt="csapp28"></p>
+<p><img src="/images/csapp29.jpg" alt="csapp29"></p>
+<p><img src="/images/csapp30.jpg" alt="csapp30"></p>
+<p>一共 13 个需要补充的函数（会在后面分别详细说明），要开始做 lab，有以下四个步骤（针对 CMU 学生）</p>
+<ol>
+<li>从 Autolab 下载 lab 文件和文档</li>
+<li>lab 的代码需要在远程机器上执行，需要解压文件（可能还需要修改权限 <code>chmod xxx filename</code>）</li>
+<li>修改 <code>bits.c</code> 文件，测试的话有三种方式：<code>btest</code>, <code>dlc</code>, 和 <code>BDD checker</code>，另外 <code>driver.pl</code> 是 autolab 将要进行的测试</li>
+<li>有无限次提交，但是不要用 autolab 来当做测试的方式，用 <code>driver.pl</code> 测试，Autolab 需要在网页端提交（使用 <code>tar -cvzf out.tar.gz file1 file2 ...</code> 这样来压缩，可以 tcp 赋复制到自己的电脑中）</li>
+</ol>
+<p>一些小技巧：</p>
+<ul>
+<li>在函数开始时声明所有变量</li>
+<li><code>}</code> 应该在第一列</li>
+<li>注意运算符号的优先级，使用括号确保顺序的正确</li>
+<li>关注 !, 0, TMin 等</li>
+</ul>
+<h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><p>我们先登录到远程机器，命令为 <code>ssh -X dawang@shark.ics.cs.cmu.edu</code>，输入密码后可以看到如下界面</p>
+<p><img src="/images/csapp31.jpg" alt="csapp31"></p>
+<p>然后另开一个终端，把之前下载好的 <code>datalab-handout.tar</code> 传到服务器上，命令是 <code>scp datalab-handout.tar dawang@shark.ics.cs.cmu.edu:</code></p>
+<p><img src="/images/csapp32.jpg" alt="csapp32"></p>
+<p>可以看到上吗有一些我之前课程的内容，我们创建一个新的文件夹 <code>513</code> 并把这个压缩包移动进去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="number">513</span></span><br><span class="line">mv datalab-handout.tar ./<span class="number">513</span></span><br><span class="line">clear <span class="comment"># 让屏幕向后翻一页，看得更清楚一些</span></span><br></pre></td></tr></table></figure>
+<p>这里稍微啰嗦一点，如果想要一边改动文件，然后一边编译测试的话，可以开启两个终端连接到远程机器上，这样就不用切换来切换去了。</p>
+<p>解压这次试验所需的文件： <code>tar xvf datalab-handout.tar</code></p>
+<p><img src="/images/csapp33.jpg" alt="csapp33"></p>
+<p>这次的作业主要是在 <code>bits.c</code> 文件里完成，我们来看看里面的内容 <code>vim bits.c</code></p>
+<p><img src="/images/csapp34.jpg" alt="csapp34"></p>
+<p>任务指引还是比较清晰的，主要有以下一些说明：</p>
+<ol>
+<li>整型的范围是 0 到 255(0xFF)，不允许用更大</li>
+<li>只能包含参数和局部变量</li>
+<li>一元操作符 <code>!</code> <code>~</code></li>
+<li>二元操作符 <code>&amp;</code> <code>|</code> <code>+</code> <code>&lt;&lt;</code> <code>&gt;&gt;</code></li>
+</ol>
+<p>不允许的操作有：</p>
+<ol>
+<li>使用任何条件控制语句</li>
+<li>定义和使用宏</li>
+<li>定义其他的函数</li>
+<li>调用函数</li>
+<li>使用其他的操作符</li>
+<li>使用类型转换</li>
+<li>使用除 int 之外的类型（针对整型）</li>
+<li>使用除 int, unsigned 之外的类型（针对浮点数）</li>
+</ol>
+<p>可以认为机器：</p>
+<ul>
+<li>使用 2’s complent，32位</li>
+<li>执行算术右移</li>
+<li>移动超过字长的位数会出问题</li>
+</ul>
+<p>其他需要注意的事情有：</p>
+<ol>
+<li>使用 dlc(data lab checker) 来检测代码的合法性（有没有使用不给使用的符号语法等等）</li>
+<li>每个函数都有操作数的上限值，注意 <code>=</code> 不算</li>
+<li>使用 btest 来测试结果的正确与否</li>
+<li>使用 BDD checker 来正规测试你的函数</li>
+</ol>
+<h2 id="u9898_u76EE_u53CA_u89E3_u6CD5"><a href="#u9898_u76EE_u53CA_u89E3_u6CD5" class="headerlink" title="题目及解法"></a>题目及解法</h2><h3 id="thirdBits"><a href="#thirdBits" class="headerlink" title="thirdBits"></a>thirdBits</h3><ul>
+<li>题目要求：return word with every third bit (starting from the LSB) set to 1</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：8</li>
+<li>分值：1</li>
+</ul>
+<p>我们返回的结果是：<code>0100 1001 0010 0100 1001 0010 0100 1001</code>，因为题目要求每个变量不可以超过 255，也就是最多 <code>1111 1111</code>，所以只能分步骤来进行组合，如下面代码所示</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Desired output: <span class="number">0100</span> <span class="number">1001</span> <span class="number">0010</span> <span class="number">0100</span> <span class="number">1001</span> <span class="number">0010</span> <span class="number">0100</span> <span class="number">1001</span> </span><br><span class="line">Step <span class="number">1</span>:         <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0100</span> <span class="number">1001</span>  <span class="number">0x49</span></span><br><span class="line">Step <span class="number">2</span>:         <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">1001</span> <span class="number">0010</span> <span class="number">0000</span> <span class="number">0000</span>  Shift &lt;&lt; <span class="number">9</span></span><br><span class="line">Step <span class="number">3</span>:         <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">1001</span> <span class="number">0010</span> <span class="number">0100</span> <span class="number">1001</span>  Add <span class="number">0x49</span></span><br><span class="line">Step <span class="number">4</span>:         <span class="number">0100</span> <span class="number">1001</span> <span class="number">0010</span> <span class="number">0100</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span>  Shift &lt;&lt; <span class="number">18</span></span><br><span class="line">Step <span class="number">5</span>:         <span class="number">0100</span> <span class="number">1001</span> <span class="number">0010</span> <span class="number">0100</span> <span class="number">1001</span> <span class="number">0010</span> <span class="number">0100</span> <span class="number">1001</span>  Add result from step <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">thirdBits</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">0x49</span>;</span><br><span class="line">  <span class="keyword">int</span> b = (a &lt;&lt; <span class="number">9</span>);</span><br><span class="line">  <span class="keyword">int</span> c = b + a;</span><br><span class="line">  <span class="keyword">return</span> (c &lt;&lt; <span class="number">18</span>) + c; <span class="comment">// Steps 4 and 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们来测试一下正确性，先保存代码，然后：<code>make; ./btest</code>，结果如下：</p>
+<p><img src="/images/csapp35.jpg" alt="csapp35"></p>
+<p>可以看到第一个函数已经写对的得到了一分，然后我们再来检测一下有没有用非法的操作符：<code>./dlc -e bits.c</code></p>
+<p><img src="/images/csapp36.jpg" alt="csapp36"></p>
+<p>可以看到没有显示错误信息，<code>-e</code> 会输出操作符的数量，这里也都没有问题。接下来的题目都会用这种方式测试，但是就不会再贴图了。</p>
+<h3 id="isTmin"><a href="#isTmin" class="headerlink" title="isTmin"></a>isTmin</h3><ul>
+<li>题目要求：returns 1 if x is the minimum, two’s complement number, and 0 otherwise</li>
+<li>允许操作：<code>! ~ &amp; ^ | +</code></li>
+<li>操作数限制：10</li>
+<li>分值：1</li>
+</ul>
+<p>根据 2’s complement 的定义，Tmin 的值是 <code>10000000 00000000 00000000 00000000</code>，我们要怎么判断一个数是不是 Tmin 呢，原则上来说，只需要把 x 和 Tmin 做 <code>&amp;</code> 操作，判断即可，但是题目要求不能左移，于是就要想其他的办法了，观察 Tmin 的值，发现如果左移一次，就变成全部为 0，但是全部为零的情况还有另外一种就是本身全部就是 0，所以只要排除第二种情况，就可以判断是否是 Tmin 了，代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前面一部分用于判断左移一位后是否全部为0，后面一部分用来判断 x 值是否为 0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isTmin</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> !(x+x)&amp;!!(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="isNotEqual"><a href="#isNotEqual" class="headerlink" title="isNotEqual"></a>isNotEqual</h3><ul>
+<li>题目要求：return 0 if x == y, and 1 otherwise <ul>
+<li>例如: isNotEqual(5,5) = 0, isNotEqual(4,5) = 1</li>
+</ul>
+</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：6</li>
+<li>分值：2</li>
+</ul>
+<p>这题比较简单，发现可以使用异或操作，那么只需要判断两个数异或后结果是否为 0 即可，这里同样使用了 !! 来把 bit 转换成 boolean 值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isNotEqual</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span>(!!(x ^ y));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="anyOddBit"><a href="#anyOddBit" class="headerlink" title="anyOddBit"></a>anyOddBit</h3><ul>
+<li>题目要求：return 1 if any odd-numbered bit in word set to 1<ul>
+<li>例如： anyOddBit(0x5) = 0, anyOddBit(0x7) = 1</li>
+</ul>
+</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：12</li>
+<li>分值：2</li>
+</ul>
+<p>我们依旧不能超过 0xFF 的限制，所以需要把前面的 24 位都用 <code>|</code> 和 <code>&gt;&gt;</code> 运算符移动到最后八位中，再和 <code>10101010</code> 来做 <code>&amp;</code> 操作，只要不为零，就说明在偶数位上有不为 0 位</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">anyOddBit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !!((x | (x &gt;&gt; <span class="number">8</span>) | (x &gt;&gt; <span class="number">16</span>) | (x &gt;&gt; <span class="number">24</span>)) &amp; <span class="number">0xaa</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="negate"><a href="#negate" class="headerlink" title="negate"></a>negate</h3><ul>
+<li>题目要求：return -x<ul>
+<li>例如：negate(1) = -1. </li>
+</ul>
+</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：5</li>
+<li>分值：2</li>
+</ul>
+<p>第一感觉就是用到取反 <code>~</code> 符号，但需要考虑三种情况：正，零，负</p>
+<ul>
+<li>假设是 <code>0010</code>(2)，取反之后是 <code>1101</code>(-3)</li>
+<li>假设是 <code>1110</code>(-2)，取反之后是 <code>0001</code>(1)</li>
+<li>假设是 <code>0000</code>(0)，取反之后是 <code>1111</code>(-1) </li>
+</ul>
+<p>可以发现一个规律，就是都差 1，为什么呢，就是因为 2’s complement 的定义中是加上了 1 的，所以只要再加一就好。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">negate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">return</span> ~x + <span class="number">1</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="conditional"><a href="#conditional" class="headerlink" title="conditional"></a>conditional</h3><ul>
+<li>题目要求：same as x ? y : z<ul>
+<li>例如：conditional(2,4,5) = 4 </li>
+</ul>
+</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：16</li>
+<li>分值：3</li>
+</ul>
+<p>这一题稍微有一些复杂，我们来看看怎么去想。因为不能用 if 来做流程判断，所以我们返回的表达式例一定要包含 y 和 z，但是可以根据 x 的值来进行变换，所以大概的式子是 <code>(y op expr) | (z op expr)</code>(op 表示操作符， expr 是某个表达式)。</p>
+<p>然后就简单很多了，我们只要想办法做一个 expr，要么为 <code>0x00000000</code>，要么为 <code>0xffffffff</code> 即可，于是表达式 <code>~!x + 1</code> 就可以满足我们的需求，x 为 0 时，表达式为 <code>0xffffffff</code>，不等于 0 时也满足条件，就等于有了答案</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">conditional</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span><br><span class="line">     *if x!=0,mask=0x00000000,so y&amp;~mask==y and z&amp;mask==0</span><br><span class="line">     *if x==0,mask=0xffffffff,so y&amp;~mask = y&amp;0 =0; z&amp;mask=z</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">int</span> mask= ~!x+<span class="number">1</span>; </span><br><span class="line">    <span class="keyword">return</span> (y &amp; ~mask)|(z &amp; mask);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="subOK"><a href="#subOK" class="headerlink" title="subOK"></a>subOK</h3><ul>
+<li>题目要求：Determine if can compute x-y without overflow<ul>
+<li>例如：</li>
+<li>subOK(0x80000000,0x80000000) = 1</li>
+<li>subOK(0x80000000,0x70000000) = 0</li>
+</ul>
+</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：20</li>
+<li>分值：3</li>
+</ul>
+<p>这题也不算轻松，但是我们可以一步一步来搞定，首先，既然是计算 x-y，我们要能够知道结果，由于不给使用减号，那就用倒数（之前的方法），所以 x-y 的结果为 <code>~y+1+x</code>。然后需要怎么判断呢，观察发现，只有在以下这两种情况同时发生的时候，才是 overflow</p>
+<ol>
+<li>x 和 y 符号不同</li>
+<li>x-y 的符号和 x 不同</li>
+</ol>
+<p>可能有点难以理解，overflow 指的是除符号位的最高位进位，也就是说符号会变化，所以需要 x 和 y 的符号不同（这样 x-y 就等同于两个同符号的加法），也就是第一个条件；符号到底有没有变化呢，就要看 x-y 与 x 的符号是否相同，也就是第二个条件。所以代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">subOK</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="comment">/*</span><br><span class="line">   * overflow of sub happens iff </span><br><span class="line">   * 1) x and y have different signs</span><br><span class="line">   * 2) res = x - y has different sign with x</span><br><span class="line">   */</span></span><br><span class="line">  <span class="keyword">int</span> res = x + (~y + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">int</span> sameSign = x ^ y;</span><br><span class="line">  <span class="keyword">int</span> resSign = res ^ x;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> !((sameSign &amp; resSign) &gt;&gt; <span class="number">31</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="isGreater"><a href="#isGreater" class="headerlink" title="isGreater"></a>isGreater</h3><ul>
+<li>题目要求：if x &gt; y  then return 1, else return 0<ul>
+<li>例如：isGreater(4,5) = 0, isGreater(5,4) = 1</li>
+</ul>
+</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：24</li>
+<li>分值：3</li>
+</ul>
+<p>因为要考虑正负号，所以这个问题变成：</p>
+<ol>
+<li>两个数符号相同的情况</li>
+<li>两个数符号不同的情况</li>
+</ol>
+<p>具体可以参见代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isGreater</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">        <span class="comment">// Boolean value indicating sign of x</span></span><br><span class="line">        <span class="comment">// 1 = Negative</span></span><br><span class="line">        <span class="comment">// 0 = Non-Negative</span></span><br><span class="line">        <span class="keyword">int</span> sign_x = x &gt;&gt; <span class="number">31</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Boolean value indicating sign of y</span></span><br><span class="line">        <span class="comment">// 1 = Negative</span></span><br><span class="line">        <span class="comment">// 0 = Non-Negative</span></span><br><span class="line">        <span class="keyword">int</span> sign_y = y &gt;&gt; <span class="number">31</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// if the signs are equal, then</span></span><br><span class="line">	<span class="comment">// if x is larger, sign bit of (~y + x) is 0</span></span><br><span class="line">	<span class="comment">// if y is larger, sign bit of (~y + x) is 1</span></span><br><span class="line">	<span class="keyword">int</span> equal = !(sign_x ^ sign_y) &amp; ((~y + x) &gt;&gt; <span class="number">31</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// if signs are not equal, these principles are reversed.</span></span><br><span class="line">	<span class="keyword">int</span> notEqual = sign_x &amp; !sign_y;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// this | returns 0 when it is x is greater, so you have to negate it.</span></span><br><span class="line">	<span class="keyword">return</span> !( equal | notEqual);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="bitParity"><a href="#bitParity" class="headerlink" title="bitParity"></a>bitParity</h3><ul>
+<li>题目要求：returns 1 if x contains an odd number of 0’s<ul>
+<li>例如：bitParity(5) = 0, bitParity(7) = 1</li>
+</ul>
+</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：20</li>
+<li>分值：4</li>
+</ul>
+<p>这道题要我们统计有有多少个零，这里我们需要利用一个特点，就是堆两个数进行异或操作，不改变奇偶性，所以只需要一步一步来异或就可以了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bitParity</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="comment">/* XORing two numbers returns a number with same bit parity.</span><br><span class="line">     Keep shifting half of our number until reduced to 1 bit simple case.*/</span></span><br><span class="line"></span><br><span class="line">  x = ( x &gt;&gt; <span class="number">16</span> ) ^ x;</span><br><span class="line">  x = ( x &gt;&gt; <span class="number">8</span> ) ^ x;</span><br><span class="line">  x = ( x &gt;&gt; <span class="number">4</span> ) ^ x;</span><br><span class="line">  x = ( x &gt;&gt; <span class="number">2</span> ) ^ x;</span><br><span class="line">  x = ( x &gt;&gt; <span class="number">1</span>) ^ x;</span><br><span class="line">  <span class="keyword">return</span> (x &amp; <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="howManyBits"><a href="#howManyBits" class="headerlink" title="howManyBits"></a>howManyBits</h3><ul>
+<li>题目要求：return the minimum number of bits required to represent x in two’s complement<ul>
+<li>例如：</li>
+<li>howManyBits(12) = 5</li>
+<li>howManyBits(298) = 10</li>
+<li>howManyBits(-5) = 4</li>
+<li>howManyBits(0)  = 1</li>
+<li>howManyBits(-1) = 1</li>
+<li>howManyBits(0x80000000) = 32</li>
+</ul>
+</li>
+<li>允许操作：<code>! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</code></li>
+<li>操作数限制：90</li>
+<li>分值：4</li>
+</ul>
+<p>这题从操作数限制的数目来看就知道比较复杂，但是代码还是比较清晰的，可以直接查看代码中的注释（特别鸣谢：@guojiex）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">howManyBits</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp=x^(x&gt;&gt;<span class="number">31</span>);<span class="comment">//get positive of x;</span></span><br><span class="line">    <span class="keyword">int</span> isZero=!temp;</span><br><span class="line">    <span class="comment">//notZeroMask is 0xffffffff</span></span><br><span class="line">    <span class="keyword">int</span> notZeroMask=(!(!temp)&lt;&lt;<span class="number">31</span>)&gt;&gt;<span class="number">31</span>;</span><br><span class="line">    <span class="keyword">int</span> bit_16,bit_8,bit_4,bit_2,bit_1;</span><br><span class="line">    bit_16=!(!(temp&gt;&gt;<span class="number">16</span>))&lt;&lt;<span class="number">4</span>;</span><br><span class="line">    <span class="comment">//see if the high 16bits have value,if have,then we need at least 16 bits</span></span><br><span class="line">    <span class="comment">//if the highest 16 bits have value,then rightshift 16 to see the exact place of  </span></span><br><span class="line">    <span class="comment">//if not means they are all zero,right shift nothing and we should only consider the low 16 bits</span></span><br><span class="line">    temp=temp&gt;&gt;bit_16;</span><br><span class="line">    bit_8=!(!(temp&gt;&gt;<span class="number">8</span>))&lt;&lt;<span class="number">3</span>;</span><br><span class="line">    temp=temp&gt;&gt;bit_8;</span><br><span class="line">    bit_4=!(!(temp&gt;&gt;<span class="number">4</span>))&lt;&lt;<span class="number">2</span>;</span><br><span class="line">    temp=temp&gt;&gt;bit_4;</span><br><span class="line">    bit_2=!(!(temp&gt;&gt;<span class="number">2</span>))&lt;&lt;<span class="number">1</span>;</span><br><span class="line">    temp=temp&gt;&gt;bit_2;</span><br><span class="line">    bit_1=!(!(temp&gt;&gt;<span class="number">1</span>));</span><br><span class="line">    temp=bit_16+bit_8+bit_4+bit_2+bit_1+<span class="number">2</span>;<span class="comment">//at least we need one bit for 1 to tmax,</span></span><br><span class="line">    <span class="comment">//and we need another bit for sign</span></span><br><span class="line">    <span class="keyword">return</span> isZero|(temp&amp;notZeroMask);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="float_half"><a href="#float_half" class="headerlink" title="float_half"></a>float_half</h3><ul>
+<li>题目要求：Return bit-level equivalent of expression (float) x. Result is returned as unsigned int, but it is to be interpreted as the bit-level representation of a single-precision floating point values.</li>
+<li>允许操作：Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>操作数限制：30</li>
+<li>分值：4</li>
+</ul>
+<p>这个就是考察基本的对于 IEEE 浮点数格式的转换了，思路也比较清晰，就是根据不同的部分来求出对应的值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">float_half</span><span class="params">(<span class="keyword">unsigned</span> uf)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> round, S, E, maskE, maskM, maskS,maskEM, maskSM, tmp;</span><br><span class="line">  round = !((uf&amp;<span class="number">3</span>)^<span class="number">3</span>);</span><br><span class="line">  maskS = <span class="number">0x80000000</span>;</span><br><span class="line">  maskE = <span class="number">0x7F800000</span>;</span><br><span class="line">  maskM = <span class="number">0x007FFFFF</span>;</span><br><span class="line">  maskEM= <span class="number">0x7FFFFFFF</span>;</span><br><span class="line">  maskSM= <span class="number">0x807FFFFF</span>;</span><br><span class="line">  E = uf&amp;maskE;</span><br><span class="line">  S = uf&amp;maskS;</span><br><span class="line">  <span class="comment">//Nan or Infinity</span></span><br><span class="line">  <span class="keyword">if</span> (E==<span class="number">0x7F800000</span>) <span class="keyword">return</span> uf;</span><br><span class="line">  <span class="comment">//E=1 - specialcase</span></span><br><span class="line">  <span class="keyword">if</span> (E==<span class="number">0x00800000</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> S | (round + ((uf &amp; maskEM)&gt;&gt;<span class="number">1</span>)) ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//E=0 - denormalized</span></span><br><span class="line">  <span class="keyword">if</span> (E==<span class="number">0x00000000</span>) &#123;</span><br><span class="line">    tmp = (uf&amp;maskM)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> S | (tmp + round);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//normalized case</span></span><br><span class="line">  <span class="keyword">return</span> (((E&gt;&gt;<span class="number">23</span>)-<span class="number">1</span>)&lt;&lt;<span class="number">23</span>) | (uf &amp; maskSM);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="float_i2f"><a href="#float_i2f" class="headerlink" title="float_i2f"></a>float_i2f</h3><ul>
+<li>题目要求：Return bit-level equivalent of expression (float) x. Result is returned as unsigned int, but it is to be interpreted as the bit-level representation of a single-precision floating point values.</li>
+<li>允许操作：Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>操作数限制：30</li>
+<li>分值：4</li>
+</ul>
+<p>和上题一样，这个就是考察基本的对于 IEEE 浮点数格式的转换了，思路也比较清晰，就是根据不同的部分来求出对应的值（特别鸣谢@guojiex）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">float_i2f</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*int exponent=0;</span><br><span class="line">    return ((sign&lt;&lt;31)|(exponent&lt;&lt;23)|fraction)+flag;*/</span></span><br><span class="line">    <span class="keyword">int</span> sign=x&gt;&gt;<span class="number">31</span>&amp;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> exponent; </span><br><span class="line">    <span class="keyword">int</span> fraction; </span><br><span class="line">    <span class="keyword">int</span> delta;</span><br><span class="line">    <span class="keyword">int</span> fraction_mask;</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="number">0</span>)<span class="comment">//||x==0x8000000)</span></span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x==<span class="number">0x80000000</span>)</span><br><span class="line">        exponent=<span class="number">158</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sign)<span class="comment">//turn negtive to positive</span></span><br><span class="line">            x = -x;</span><br><span class="line">        i = <span class="number">30</span>;</span><br><span class="line">        <span class="keyword">while</span> ( !(x &gt;&gt; i) )<span class="comment">//see how many bits do x have(rightshift until 0) </span></span><br><span class="line">            i--;</span><br><span class="line">        <span class="comment">//printf("%x %d\n",x,i);</span></span><br><span class="line">        exponent = i + <span class="number">127</span>;</span><br><span class="line">        x = x &lt;&lt; (<span class="number">31</span> - i);<span class="comment">//clean all those zeroes of high bits</span></span><br><span class="line">        fraction_mask = <span class="number">0x7fffff</span>;<span class="comment">//(1 &lt;&lt; 23) - 1;</span></span><br><span class="line">        fraction = fraction_mask &amp; (x &gt;&gt; <span class="number">8</span>);<span class="comment">//right shift 8 bits to become the fraction,sign and exp have 8 bits total</span></span><br><span class="line">        x = x &amp; <span class="number">0xff</span>;</span><br><span class="line">        delta = x &gt; <span class="number">128</span> || ((x == <span class="number">128</span>) &amp;&amp; (fraction &amp; <span class="number">1</span>));<span class="comment">//if lowest 8 bits of x is larger than a half,or is 1.5,round up 1</span></span><br><span class="line">        fraction += delta;</span><br><span class="line">        <span class="keyword">if</span>(fraction &gt;&gt; <span class="number">23</span>) &#123;<span class="comment">//if after rounding fraction is larger than 23bits</span></span><br><span class="line">            fraction &amp;= fraction_mask;</span><br><span class="line">            exponent += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (sign&lt;&lt;<span class="number">31</span>)|(exponent&lt;&lt;<span class="number">23</span>)|fraction;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="float_f2i"><a href="#float_f2i" class="headerlink" title="float_f2i"></a>float_f2i</h3><ul>
+<li>题目要求：Return bit-level equivalent of expression (int) f for floating point argument f. Argument is passed as unsigned int, but it is to be interpreted as the bit-level representation of a single-precision floating point value. Anything out of range (including NaN and infinity) should return 0x80000000u.</li>
+<li>允许操作：Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>操作数限制：30</li>
+<li>分值：4</li>
+</ul>
+<p>和上题一样，这个就是考察基本的对于 IEEE 浮点数格式的转换了，思路也比较清晰，就是根据不同的部分来求出对应的值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">float_f2i</span><span class="params">(<span class="keyword">unsigned</span> uf)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> <span class="built_in">exp</span> = (uf &gt;&gt; <span class="number">23</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">  <span class="keyword">int</span> frac = uf &amp; <span class="number">0x007FFFFF</span>;</span><br><span class="line">  <span class="keyword">int</span> sign = uf &amp; <span class="number">0x80000000</span>;</span><br><span class="line">  <span class="keyword">int</span> bias = <span class="built_in">exp</span> - <span class="number">127</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">exp</span> == <span class="number">255</span> || bias &gt; <span class="number">30</span>) &#123;</span><br><span class="line">    <span class="comment">// exponent is 255 (NaN), or number is too large for an int</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0x80000000</span>u;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!<span class="built_in">exp</span> || bias &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// number is very small, round down to 0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// append a 1 to the front to normalize</span></span><br><span class="line">  frac = frac | <span class="number">1</span> &lt;&lt; <span class="number">23</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// float based on the bias</span></span><br><span class="line">  <span class="keyword">if</span> (bias &gt; <span class="number">23</span>) &#123;</span><br><span class="line">    frac = frac &lt;&lt; (bias - <span class="number">23</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    frac = frac &gt;&gt; (<span class="number">23</span> - bias);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (sign) &#123;</span><br><span class="line">    <span class="comment">// original number was negative, make the new number negative</span></span><br><span class="line">    frac = ~(frac) + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> frac;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u68C0_u67E5_u4E0E_u63D0_u4EA4"><a href="#u68C0_u67E5_u4E0E_u63D0_u4EA4" class="headerlink" title="检查与提交"></a>检查与提交</h2><p>全部题目做完之后，就可以检查一下了，这里我们可以用另外一个命令 <code>./driver.pl</code>，结果如下：</p>
+<p><img src="/images/csapp37.jpg" alt="csapp37"></p>
+<p>这样就算完成啦，提交的时候只需要提交 <code>bits.c</code> 所以我们先把它从远程主机复制回来 <code>scp dawang@shark.ics.cs.cmu.edu:513/datalab-handout/bits.c ./</code></p>
+<p>不用压缩，直接提交即可，检查无误之后，至此本次实验完成。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/18/csapp-6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          深入理解计算机系统 第 6 课 Machine Control
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/18/csapp-5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解计算机系统 第 5 课 Machine Basics</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="csapp-lab1" data-title="深入理解计算机系统 习题课 1 Datalab" data-url="http://yoursite.com/2016/01/18/csapp-lab1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wdxblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 wdxtub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

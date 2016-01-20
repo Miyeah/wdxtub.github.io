@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>英雄联盟游戏设计与运营技巧总结 | 小土刀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主要是为了准备腾讯国际游戏管培生而做的思考，首先是网上收集相关资料，然后是结合游戏的几个核心元素来进行分析和改进，针对网上现有的面经来重点准备。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="英雄联盟游戏设计与运营技巧总结">
+<meta property="og:url" content="http://yoursite.com/2015/11/30/lol-analysis/index.html">
+<meta property="og:site_name" content="小土刀">
+<meta property="og:description" content="主要是为了准备腾讯国际游戏管培生而做的思考，首先是网上收集相关资料，然后是结合游戏的几个核心元素来进行分析和改进，针对网上现有的面经来重点准备。">
+<meta property="og:updated_time" content="2015-12-02T01:50:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="英雄联盟游戏设计与运营技巧总结">
+<meta name="twitter:description" content="主要是为了准备腾讯国际游戏管培生而做的思考，首先是网上收集相关资料，然后是结合游戏的几个核心元素来进行分析和改进，针对网上现有的面经来重点准备。">
+  
+    <link rel="alternative" href="/atom.xml" title="小土刀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpeg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wdxtub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Agony is my triumph</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">索引</a></li>
+				        
+							<li><a href="/categories/Technique">技术</a></li>
+				        
+							<li><a href="/categories/Reading">读书</a></li>
+				        
+							<li><a href="/categories/Thinking">思考</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/API/" style="font-size: 10.63px;">API</a> <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/AWS/" style="font-size: 11.88px;">AWS</a> <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 10.63px;">Android</a> <a href="/tags/Anroid/" style="font-size: 10px;">Anroid</a> <a href="/tags/Apple/" style="font-size: 11.88px;">Apple</a> <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/CMU/" style="font-size: 20px;">CMU</a> <a href="/tags/COC/" style="font-size: 10px;">COC</a> <a href="/tags/Capcom/" style="font-size: 10px;">Capcom</a> <a href="/tags/CodePlane/" style="font-size: 10px;">CodePlane</a> <a href="/tags/Datalab/" style="font-size: 10px;">Datalab</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IT/" style="font-size: 10px;">IT</a> <a href="/tags/Imaging-Cup/" style="font-size: 10px;">Imaging Cup</a> <a href="/tags/Java/" style="font-size: 11.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10.63px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Overview/" style="font-size: 10px;">Overview</a> <a href="/tags/PS4/" style="font-size: 10px;">PS4</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Swift/" style="font-size: 13.13px;">Swift</a> <a href="/tags/Swift-千金方/" style="font-size: 10.63px;">Swift 千金方</a> <a href="/tags/TOC/" style="font-size: 10px;">TOC</a> <a href="/tags/V2/" style="font-size: 10px;">V2</a> <a href="/tags/YC-创业课/" style="font-size: 10px;">YC 创业课</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 11.25px;">iOS</a> <a href="/tags/iOS-9/" style="font-size: 10px;">iOS 9</a> <a href="/tags/iOS-杂病论/" style="font-size: 10.63px;">iOS 杂病论</a> <a href="/tags/iOS9/" style="font-size: 13.75px;">iOS9</a> <a href="/tags/三观/" style="font-size: 10px;">三观</a> <a href="/tags/世界/" style="font-size: 10px;">世界</a> <a href="/tags/东野圭吾/" style="font-size: 10px;">东野圭吾</a> <a href="/tags/个人发展/" style="font-size: 10px;">个人发展</a> <a href="/tags/中国/" style="font-size: 10px;">中国</a> <a href="/tags/中秋/" style="font-size: 10px;">中秋</a> <a href="/tags/乐趣/" style="font-size: 10px;">乐趣</a> <a href="/tags/习题/" style="font-size: 10px;">习题</a> <a href="/tags/习题课/" style="font-size: 10px;">习题课</a> <a href="/tags/云计算/" style="font-size: 15.63px;">云计算</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/亲情/" style="font-size: 10px;">亲情</a> <a href="/tags/人口/" style="font-size: 10px;">人口</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/人造/" style="font-size: 10px;">人造</a> <a href="/tags/今何在/" style="font-size: 10px;">今何在</a> <a href="/tags/价值/" style="font-size: 10px;">价值</a> <a href="/tags/任天堂/" style="font-size: 10px;">任天堂</a> <a href="/tags/体力/" style="font-size: 10px;">体力</a> <a href="/tags/信息/" style="font-size: 10px;">信息</a> <a href="/tags/做饭/" style="font-size: 10px;">做饭</a> <a href="/tags/健康/" style="font-size: 10px;">健康</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/傅真/" style="font-size: 10px;">傅真</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/兄弟/" style="font-size: 10px;">兄弟</a> <a href="/tags/再而三/" style="font-size: 10px;">再而三</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/削发/" style="font-size: 10px;">削发</a> <a href="/tags/动画/" style="font-size: 10.63px;">动画</a> <a href="/tags/努力/" style="font-size: 10px;">努力</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/匹兹堡/" style="font-size: 10.63px;">匹兹堡</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/博客/" style="font-size: 11.88px;">博客</a> <a href="/tags/原创/" style="font-size: 12.5px;">原创</a> <a href="/tags/叙利亚/" style="font-size: 10px;">叙利亚</a> <a href="/tags/口译/" style="font-size: 10px;">口译</a> <a href="/tags/古希腊/" style="font-size: 10px;">古希腊</a> <a href="/tags/古董/" style="font-size: 10px;">古董</a> <a href="/tags/同性恋/" style="font-size: 10px;">同性恋</a> <a href="/tags/启程/" style="font-size: 10px;">启程</a> <a href="/tags/告别/" style="font-size: 10px;">告别</a> <a href="/tags/周记/" style="font-size: 17.5px;">周记</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/哲学/" style="font-size: 10.63px;">哲学</a> <a href="/tags/回合制/" style="font-size: 10px;">回合制</a> <a href="/tags/回头无岸/" style="font-size: 10px;">回头无岸</a> <a href="/tags/回忆/" style="font-size: 11.88px;">回忆</a> <a href="/tags/因果/" style="font-size: 10px;">因果</a> <a href="/tags/图像分类/" style="font-size: 10px;">图像分类</a> <a href="/tags/图灵/" style="font-size: 10px;">图灵</a> <a href="/tags/土豆/" style="font-size: 10px;">土豆</a> <a href="/tags/圣诞/" style="font-size: 10px;">圣诞</a> <a href="/tags/坚持/" style="font-size: 10px;">坚持</a> <a href="/tags/基础/" style="font-size: 11.25px;">基础</a> <a href="/tags/多元思维模型/" style="font-size: 10px;">多元思维模型</a> <a href="/tags/多看/" style="font-size: 10.63px;">多看</a> <a href="/tags/大一统/" style="font-size: 10px;">大一统</a> <a href="/tags/大圣归来/" style="font-size: 10.63px;">大圣归来</a> <a href="/tags/大学/" style="font-size: 10px;">大学</a> <a href="/tags/大结局/" style="font-size: 10px;">大结局</a> <a href="/tags/字体/" style="font-size: 10px;">字体</a> <a href="/tags/字节/" style="font-size: 10px;">字节</a> <a href="/tags/孙悟空/" style="font-size: 10px;">孙悟空</a> <a href="/tags/孤独/" style="font-size: 10px;">孤独</a> <a href="/tags/学习/" style="font-size: 16.25px;">学习</a> <a href="/tags/学术/" style="font-size: 10px;">学术</a> <a href="/tags/实例/" style="font-size: 10.63px;">实例</a> <a href="/tags/实践/" style="font-size: 10px;">实践</a> <a href="/tags/家庭/" style="font-size: 11.25px;">家庭</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/富勒/" style="font-size: 10px;">富勒</a> <a href="/tags/将军/" style="font-size: 10px;">将军</a> <a href="/tags/小学/" style="font-size: 10px;">小学</a> <a href="/tags/小说/" style="font-size: 10.63px;">小说</a> <a href="/tags/层/" style="font-size: 10px;">层</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/工作/" style="font-size: 10.63px;">工作</a> <a href="/tags/工作流/" style="font-size: 10px;">工作流</a> <a href="/tags/帐篷/" style="font-size: 10px;">帐篷</a> <a href="/tags/度假/" style="font-size: 10px;">度假</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/开学/" style="font-size: 10.63px;">开学</a> <a href="/tags/开篇/" style="font-size: 10.63px;">开篇</a> <a href="/tags/徐州/" style="font-size: 10px;">徐州</a> <a href="/tags/微软/" style="font-size: 10px;">微软</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/心智/" style="font-size: 11.25px;">心智</a> <a href="/tags/心理/" style="font-size: 10px;">心理</a> <a href="/tags/态度/" style="font-size: 10px;">态度</a> <a href="/tags/思考/" style="font-size: 16.25px;">思考</a> <a href="/tags/总体介绍/" style="font-size: 10px;">总体介绍</a> <a href="/tags/总览/" style="font-size: 10px;">总览</a> <a href="/tags/悖论/" style="font-size: 10px;">悖论</a> <a href="/tags/情侣/" style="font-size: 10px;">情侣</a> <a href="/tags/感恩节/" style="font-size: 10.63px;">感恩节</a> <a href="/tags/感情/" style="font-size: 10px;">感情</a> <a href="/tags/愿望/" style="font-size: 10px;">愿望</a> <a href="/tags/成功/" style="font-size: 10px;">成功</a> <a href="/tags/成绩/" style="font-size: 10px;">成绩</a> <a href="/tags/成长/" style="font-size: 11.25px;">成长</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/扩展/" style="font-size: 10px;">扩展</a> <a href="/tags/技巧/" style="font-size: 10.63px;">技巧</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/抱怨/" style="font-size: 10px;">抱怨</a> <a href="/tags/拖延症/" style="font-size: 10.63px;">拖延症</a> <a href="/tags/挫折/" style="font-size: 10px;">挫折</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/改变/" style="font-size: 11.25px;">改变</a> <a href="/tags/改进/" style="font-size: 10px;">改进</a> <a href="/tags/效率/" style="font-size: 10.63px;">效率</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/教育/" style="font-size: 10px;">教育</a> <a href="/tags/教训/" style="font-size: 10px;">教训</a> <a href="/tags/数字/" style="font-size: 10px;">数字</a> <a href="/tags/整型/" style="font-size: 10px;">整型</a> <a href="/tags/整理/" style="font-size: 10.63px;">整理</a> <a href="/tags/文化/" style="font-size: 10.63px;">文化</a> <a href="/tags/文本处理/" style="font-size: 10px;">文本处理</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 10px;">斯坦福 CS193p</a> <a href="/tags/新参者/" style="font-size: 10.63px;">新参者</a> <a href="/tags/新特性/" style="font-size: 10px;">新特性</a> <a href="/tags/方向/" style="font-size: 10px;">方向</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/方法论/" style="font-size: 10px;">方法论</a> <a href="/tags/旅行/" style="font-size: 11.88px;">旅行</a> <a href="/tags/旅途/" style="font-size: 10px;">旅途</a> <a href="/tags/旧金山/" style="font-size: 10.63px;">旧金山</a> <a href="/tags/早起/" style="font-size: 10px;">早起</a> <a href="/tags/时代/" style="font-size: 10px;">时代</a> <a href="/tags/时差/" style="font-size: 10.63px;">时差</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/明智行动的艺术/" style="font-size: 10px;">明智行动的艺术</a> <a href="/tags/智慧/" style="font-size: 10px;">智慧</a> <a href="/tags/暴走/" style="font-size: 10px;">暴走</a> <a href="/tags/朋友/" style="font-size: 12.5px;">朋友</a> <a href="/tags/期末/" style="font-size: 10.63px;">期末</a> <a href="/tags/未来/" style="font-size: 10px;">未来</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/机遇/" style="font-size: 10px;">机遇</a> <a href="/tags/极简/" style="font-size: 10px;">极简</a> <a href="/tags/架构/" style="font-size: 15.63px;">架构</a> <a href="/tags/核心/" style="font-size: 10px;">核心</a> <a href="/tags/格子/" style="font-size: 10px;">格子</a> <a href="/tags/格局/" style="font-size: 10px;">格局</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/概率/" style="font-size: 10px;">概率</a> <a href="/tags/概览/" style="font-size: 10px;">概览</a> <a href="/tags/概述/" style="font-size: 10px;">概述</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/欧洲/" style="font-size: 10px;">欧洲</a> <a href="/tags/步行/" style="font-size: 10px;">步行</a> <a href="/tags/死亡/" style="font-size: 10.63px;">死亡</a> <a href="/tags/比特/" style="font-size: 10px;">比特</a> <a href="/tags/氐惆/" style="font-size: 10px;">氐惆</a> <a href="/tags/民主/" style="font-size: 10px;">民主</a> <a href="/tags/沉默/" style="font-size: 10px;">沉默</a> <a href="/tags/沟通/" style="font-size: 10px;">沟通</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/洞察/" style="font-size: 10px;">洞察</a> <a href="/tags/活动/" style="font-size: 10px;">活动</a> <a href="/tags/浮点数/" style="font-size: 10px;">浮点数</a> <a href="/tags/深度/" style="font-size: 10px;">深度</a> <a href="/tags/清醒思考的艺术/" style="font-size: 10px;">清醒思考的艺术</a> <a href="/tags/游乐场/" style="font-size: 10px;">游乐场</a> <a href="/tags/游戏/" style="font-size: 14.38px;">游戏</a> <a href="/tags/游戏机/" style="font-size: 10px;">游戏机</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/滚动视图/" style="font-size: 10px;">滚动视图</a> <a href="/tags/灵活/" style="font-size: 10px;">灵活</a> <a href="/tags/炸鸡/" style="font-size: 10px;">炸鸡</a> <a href="/tags/烤肉/" style="font-size: 10px;">烤肉</a> <a href="/tags/热血/" style="font-size: 10px;">热血</a> <a href="/tags/照片/" style="font-size: 10px;">照片</a> <a href="/tags/爱情/" style="font-size: 11.25px;">爱情</a> <a href="/tags/父母/" style="font-size: 10px;">父母</a> <a href="/tags/独立博客/" style="font-size: 10px;">独立博客</a> <a href="/tags/玩家/" style="font-size: 10px;">玩家</a> <a href="/tags/环境/" style="font-size: 10px;">环境</a> <a href="/tags/理科生/" style="font-size: 10px;">理科生</a> <a href="/tags/生化危机/" style="font-size: 10px;">生化危机</a> <a href="/tags/生日/" style="font-size: 10.63px;">生日</a> <a href="/tags/生活/" style="font-size: 19.38px;">生活</a> <a href="/tags/电影/" style="font-size: 11.88px;">电影</a> <a href="/tags/男人/" style="font-size: 10px;">男人</a> <a href="/tags/界限/" style="font-size: 10px;">界限</a> <a href="/tags/留学生/" style="font-size: 10px;">留学生</a> <a href="/tags/目标/" style="font-size: 10.63px;">目标</a> <a href="/tags/看图说话/" style="font-size: 10px;">看图说话</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/知识管理/" style="font-size: 10px;">知识管理</a> <a href="/tags/研究/" style="font-size: 10px;">研究</a> <a href="/tags/社交/" style="font-size: 10px;">社交</a> <a href="/tags/社区/" style="font-size: 10px;">社区</a> <a href="/tags/神作/" style="font-size: 10px;">神作</a> <a href="/tags/离别/" style="font-size: 10px;">离别</a> <a href="/tags/科学/" style="font-size: 10px;">科学</a> <a href="/tags/科幻/" style="font-size: 10.63px;">科幻</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/积累/" style="font-size: 12.5px;">积累</a> <a href="/tags/程序员/" style="font-size: 11.25px;">程序员</a> <a href="/tags/穷查理宝典/" style="font-size: 10px;">穷查理宝典</a> <a href="/tags/童话/" style="font-size: 10.63px;">童话</a> <a href="/tags/笔记/" style="font-size: 16.25px;">笔记</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/简洁/" style="font-size: 10px;">简洁</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/类型/" style="font-size: 10px;">类型</a> <a href="/tags/粒度/" style="font-size: 10px;">粒度</a> <a href="/tags/精选/" style="font-size: 11.88px;">精选</a> <a href="/tags/系列/" style="font-size: 10px;">系列</a> <a href="/tags/索尼/" style="font-size: 10px;">索尼</a> <a href="/tags/纽约/" style="font-size: 10.63px;">纽约</a> <a href="/tags/组成原理/" style="font-size: 12.5px;">组成原理</a> <a href="/tags/组织/" style="font-size: 10px;">组织</a> <a href="/tags/经典/" style="font-size: 10px;">经典</a> <a href="/tags/绘制/" style="font-size: 10px;">绘制</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/编辑距离/" style="font-size: 10px;">编辑距离</a> <a href="/tags/羊驼/" style="font-size: 10px;">羊驼</a> <a href="/tags/美剧/" style="font-size: 10px;">美剧</a> <a href="/tags/美国/" style="font-size: 10px;">美国</a> <a href="/tags/翻译/" style="font-size: 13.75px;">翻译</a> <a href="/tags/老朝奉/" style="font-size: 10px;">老朝奉</a> <a href="/tags/自尊/" style="font-size: 10px;">自尊</a> <a href="/tags/自我/" style="font-size: 10.63px;">自我</a> <a href="/tags/节奏/" style="font-size: 10px;">节奏</a> <a href="/tags/苏州/" style="font-size: 10px;">苏州</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/英雄/" style="font-size: 11.25px;">英雄</a> <a href="/tags/英雄联盟/" style="font-size: 10.63px;">英雄联盟</a> <a href="/tags/苹果/" style="font-size: 10px;">苹果</a> <a href="/tags/荒野求生/" style="font-size: 10px;">荒野求生</a> <a href="/tags/萨博/" style="font-size: 10px;">萨博</a> <a href="/tags/落后/" style="font-size: 10px;">落后</a> <a href="/tags/蝴蝶效应/" style="font-size: 10px;">蝴蝶效应</a> <a href="/tags/行动/" style="font-size: 10px;">行动</a> <a href="/tags/西行者/" style="font-size: 10px;">西行者</a> <a href="/tags/观念/" style="font-size: 10px;">观念</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/视图控制器/" style="font-size: 10px;">视图控制器</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/计算机/" style="font-size: 15px;">计算机</a> <a href="/tags/记录/" style="font-size: 10.63px;">记录</a> <a href="/tags/记忆/" style="font-size: 10.63px;">记忆</a> <a href="/tags/讲义/" style="font-size: 10px;">讲义</a> <a href="/tags/许愿/" style="font-size: 10px;">许愿</a> <a href="/tags/论道/" style="font-size: 14.38px;">论道</a> <a href="/tags/设计/" style="font-size: 16.88px;">设计</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访谈/" style="font-size: 10px;">访谈</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/读书/" style="font-size: 18.13px;">读书</a> <a href="/tags/课程/" style="font-size: 10px;">课程</a> <a href="/tags/调整/" style="font-size: 10px;">调整</a> <a href="/tags/足球/" style="font-size: 10.63px;">足球</a> <a href="/tags/跑题/" style="font-size: 10px;">跑题</a> <a href="/tags/路线/" style="font-size: 10px;">路线</a> <a href="/tags/转型/" style="font-size: 10px;">转型</a> <a href="/tags/转换/" style="font-size: 10px;">转换</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/轻量/" style="font-size: 10px;">轻量</a> <a href="/tags/运动/" style="font-size: 10px;">运动</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/运算符重载/" style="font-size: 10px;">运算符重载</a> <a href="/tags/运营/" style="font-size: 10.63px;">运营</a> <a href="/tags/进阶/" style="font-size: 10px;">进阶</a> <a href="/tags/连接/" style="font-size: 10px;">连接</a> <a href="/tags/迷茫/" style="font-size: 10px;">迷茫</a> <a href="/tags/逆向思维/" style="font-size: 10px;">逆向思维</a> <a href="/tags/选择/" style="font-size: 11.25px;">选择</a> <a href="/tags/选课/" style="font-size: 10px;">选课</a> <a href="/tags/透析/" style="font-size: 10px;">透析</a> <a href="/tags/造假/" style="font-size: 10px;">造假</a> <a href="/tags/逻辑/" style="font-size: 10px;">逻辑</a> <a href="/tags/醒醒/" style="font-size: 10px;">醒醒</a> <a href="/tags/闭包/" style="font-size: 10.63px;">闭包</a> <a href="/tags/阅读/" style="font-size: 11.88px;">阅读</a> <a href="/tags/阿拉伯之春/" style="font-size: 10px;">阿拉伯之春</a> <a href="/tags/陌生人/" style="font-size: 10px;">陌生人</a> <a href="/tags/陪伴/" style="font-size: 10px;">陪伴</a> <a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a> <a href="/tags/难民/" style="font-size: 10px;">难民</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/顽皮狗/" style="font-size: 10px;">顽皮狗</a> <a href="/tags/预测/" style="font-size: 10px;">预测</a> <a href="/tags/预言/" style="font-size: 10px;">预言</a> <a href="/tags/马伯庸/" style="font-size: 10px;">马伯庸</a> <a href="/tags/骑行/" style="font-size: 10px;">骑行</a> <a href="/tags/高中/" style="font-size: 10px;">高中</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://illustrationsencouleur.lofter.com/">illustrations</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wdxtub.lofter.com/">wdxtub@lofter</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wdxtub</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wdxtub</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Agony is my triumph</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">索引</a></li>
+		        
+					<li><a href="/categories/Technique">技术</a></li>
+		        
+					<li><a href="/categories/Reading">读书</a></li>
+		        
+					<li><a href="/categories/Thinking">思考</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-lol-analysis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/30/lol-analysis/" class="article-date">
+  	<time datetime="2015-12-01T03:45:26.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      英雄联盟游戏设计与运营技巧总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乐趣/">乐趣</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游戏/">游戏</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/社区/">社区</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/英雄联盟/">英雄联盟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计/">设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运营/">运营</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Game/">Game</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主要是为了准备腾讯国际游戏管培生而做的思考，首先是网上收集相关资料，然后是结合游戏的几个核心元素来进行分析和改进，针对网上现有的面经来重点准备。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u6838_u5FC3_u6982_u5FF5"><a href="#u6838_u5FC3_u6982_u5FF5" class="headerlink" title="核心概念"></a>核心概念</h2><ul>
+<li>微交易模式<ul>
+<li>影响联盟采用巧妙的微交易设计，这样玩家就不会觉得若自己没付费，体验的就是“局部”游戏，而那些付费的玩家则能够进行吹嘘。</li>
+<li>优化的定价与推销系统始终是针对小型与中型交易模式，而不是出售高价道具</li>
+<li>一些设计微交易的原则：<ul>
+<li>不要让玩家无限次地使用微交易</li>
+<li>要简化价格列表，让初学者一目了然</li>
+<li>提供多种零售价，但须时刻确保你提供的选项维持在一定的数量内</li>
+<li>让玩家通过自己的努力去挣得游戏内容（如果玩家能够先通过自己的努力去争取某些道具再掏腰包，而不是一开始就付费，他们便会觉得自己更有威望。所以开发者最好能够让玩家在购买商品前先自己努力看看）</li>
+<li>虚拟商品的价值会随着时间发展而变化</li>
+<li>推动微交易模式游戏化——只有专家能够使用。将微交易当成是一种战略性决策。你可以限制玩家购买商品的频率，或赋予每个加速道具一定的缺点。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>荣誉系统<ul>
+<li>引导玩家做出良好的行为。每一场比赛之后，玩家们可以给队友或对手荣誉评价，如“乐于助人”、“亲切友好”或“可敬的对手”等。</li>
+<li>及时性和明确性对于创造行为和奖励之间的联系是非常重要的。</li>
+<li>在社交困境类游戏中，为了让人们合作而采取的奖励和惩罚是同样有效的。人类本身和人类互动就是复杂的</li>
+</ul>
+</li>
+<li>避免基于鲸鱼玩家盈利<ul>
+<li>将游戏设计与盈利举措的重心放在长期的价值创造上，即优先考虑免费玩家。</li>
+<li>致力于将更多玩家转变成付费用户（有时会达到针对鲸鱼玩家游戏的10倍）</li>
+<li>玩家能够根据自己在游戏中所投入的时间去决定最终消费，如此便有效地提高了用户留存，取得高效的口口相传结果，并提升了玩家的平均终生价值</li>
+<li>为免费用户开放大部分的游戏内容，并确保在玩家决定付费时能够最大化地向他们传达游戏价值——这便是一种良性循环</li>
+<li>不要轻易让免费玩家遭遇失败</li>
+<li>让玩家成为其他用户眼中树立起独特或仁慈形象具有强大的推动作用，而如果游戏仅在付费时才能体现出乐趣便会挫败他们的兴趣感</li>
+</ul>
+</li>
+<li>霸权商品</li>
+<li>游戏机制动机<ul>
+<li>令人兴奋的游戏首先要有产生冲突的动机，要让双方尽快开战。你在游戏开始之初的力量薄弱，只有获得足够的经验值才能升级，否则就有可能落后他人</li>
+<li>令人兴奋的游戏还需增加游戏状态的熵</li>
+<li>换句话说，就是随着游戏的发展，游戏中任意一方获胜的机率就会越大。原先落后的玩家也会因游戏发展而获得转败为胜的机会</li>
+<li>令人兴奋的游戏必须提供反败为胜的机会。这意味着玩家无需在开始时占据领先优势，也有可能成为最后的赢家</li>
+<li>失败的一方还可以采用“曲线救国”方式扭转颓势。他们不会再去攻击敌方部队，而是直捣对方大本营，在敌人回营之前摧毁基地</li>
+</ul>
+</li>
+</ul>
+<h2 id="u4E3B_u6D41_u73A9_u5BB6_28_u786C_u6838_29_u514D_u8D39_u589E_u503C_u6E38_u620F_u7684_u5FC3_u5F97"><a href="#u4E3B_u6D41_u73A9_u5BB6_28_u786C_u6838_29_u514D_u8D39_u589E_u503C_u6E38_u620F_u7684_u5FC3_u5F97" class="headerlink" title="主流玩家(硬核)免费增值游戏的心得"></a>主流玩家(硬核)免费增值游戏的心得</h2><ul>
+<li>理念<ul>
+<li>要抢占先机，或者具有创意。效仿他人的免费游戏都不会太长寿</li>
+<li>通过提供丰富而复杂的进程系统，尽量留住玩家，以使他们不断向游戏中投入时间和金钱</li>
+<li>发挥创意——为玩家提供独一无二的游戏体验</li>
+<li>提供出色的服务，DLC，增值内容</li>
+<li>核心游戏玩法必须能够支持一系列有意义的变化</li>
+</ul>
+</li>
+<li>制造挫折感<ul>
+<li>挫折感正是促使玩家在“免费”游戏中花钱的动力。这个原理很简单<ul>
+<li>让玩家喜欢上游戏</li>
+<li>通过短期和中期奖励，让玩家从游戏进程中尝到甜头</li>
+<li>持续制造许多并且冗长的新进程</li>
+<li>当他们没有耐心等下去时，他们就会开始掏钱。</li>
+</ul>
+</li>
+<li>游戏必须慷慨提供真正丰富的玩法深度</li>
+<li>游戏系统设计意在基于玩家表现给予奖励，而不是因其勤于玩游戏而奖励。</li>
+<li>硬核免费游戏与休闲免费游戏的关键设计区别。休闲游戏会为玩家简单的游戏操作，而非表现水准提供奖励</li>
+</ul>
+</li>
+<li>如何制造挫折<ul>
+<li>限制操作。让玩家受限于操作次数，基本上是硬核免费游戏所回避的做法</li>
+<li>强制延时。关键动作，例如创建新单位或收获资源，这些都要耗费一定时间</li>
+<li>升级系统。为解琐新功能，玩家需通过积累XP和钱币而升级，这两种东西都需要花时间</li>
+<li>最后一个技巧比较适合硬核玩家。</li>
+<li>如果没有产生受挫感的机制，免费游戏还会可行吗？可能不会</li>
+</ul>
+</li>
+<li>盈利机制：出售具有优势的道具？<ul>
+<li>影响玩法的道具确实是一个趋势</li>
+<li>真正的问题在于，如何避免并没购买这些超能道具的玩家心生不满</li>
+<li>最重要的技巧是设计一个有赖于玩家技能，而非装备或任何可购买东西的游戏玩法<ul>
+<li>不要销售那些明显比免费道具更为强大的道具</li>
+<li>不要根据玩家水平配对，而要根据其持有的道具进行匹配</li>
+<li>出售兼具优缺点的道具</li>
+</ul>
+</li>
+<li>减缓受挫感的道具<ul>
+<li>向玩家出售可以暂时加快其游戏进程的内容</li>
+</ul>
+</li>
+<li>混合道具<ul>
+<li>体现了游戏进行创收的多样化理念</li>
+<li>《军团要塞2》出售允许玩家向完成了某个地图的关卡设计师致谢的图章</li>
+<li>在《战地英雄》中，玩家可以租赁一个专用的服务器</li>
+<li>在《英雄联盟》中，玩家如果想更改自己在游戏中的名称，就必须付费</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>升级系统<ul>
+<li>升级系统是一个能够促使玩家长期体验游戏的关键功能</li>
+<li>奖励玩家的游戏进程，给予玩家短期、中期和长期目标</li>
+<li>通过引进新内容而更新玩家体验</li>
+<li>通过支持玩家试验和发展新战略而极大延长了游戏生命周期</li>
+<li>优秀升级系统的条件<ul>
+<li>提供几个平行的道具解琐系统</li>
+<li>创造进步性的获得曲线。让玩家轻松获得首个道具，之后逐渐加大获取成本</li>
+<li>提供广泛的道具选择。要让玩家在游戏中获得一种好像孩童在探索玩具商店的感觉</li>
+<li>设计与玩法相关的道具</li>
+<li>道具之间要有明显区别。通过使用大量并且有意义的参数可以实现这一目标</li>
+<li>事先就明确呈现系统。必须让玩家清楚游戏中存在升级系统</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多人模式<ul>
+<li>当前获得成功的免费硬核游戏都是围绕稳定的多人模式而设计</li>
+<li>游戏设计侧重于团队合作模式</li>
+</ul>
+</li>
+<li>免费社交游戏的根本区别<ul>
+<li>锁定资深玩家的游戏并不需要高度控制的新手教程</li>
+<li>社交功能问题就在于，它们通常具有干扰性，并且会以“错误”的方式融入游戏玩法</li>
+<li>口头传播是硬核免费游戏引进新玩家的方式，它确实很管用，因为硬核玩家喜欢与好友交流</li>
+<li>最好的策略是远离Facebook。硬核免费游戏的宗旨是为玩家提供原版作品的游戏体验</li>
+</ul>
+</li>
+</ul>
+<h2 id="u82F1_u96C4_u8054_u76DF_u4F53_u9A8C"><a href="#u82F1_u96C4_u8054_u76DF_u4F53_u9A8C" class="headerlink" title="英雄联盟体验"></a>英雄联盟体验</h2><ul>
+<li>首次用户体验（ftue）<ul>
+<li>《英雄联盟》留给玩家的第一印象便是“如果你不知道自己所面对的是什么，你便不属于这里。” </li>
+<li>一：加入一个成熟社区的专门术语。即在此当我保持沉默时，其他玩家竟然能够拼命打出许多有关我有多糟糕的言语</li>
+<li>二：只呈现但却未讲解游戏更深层次的系统。在进入游戏10个小时候，我仍然不清楚如何做出关于该购买怎样的道具的决定</li>
+<li>三：游戏内部本身。当我在蹩脚地游戏时，我不知道自己为何会玩得这么糟糕。我不知道其他玩家到底做了什么才会升级得如此快，而我则总是很快便会被杀死</li>
+<li>对于喜欢《英雄联盟》的玩家来说，这种复杂性将游戏变得更具有魔力。但是对于刚接触这款游戏以及这样类型游戏的玩家来说，这种学习曲线却是不合理的。</li>
+<li>开发者们必须尽可能给玩家留下最好的第一印象。只有通过检查首次用户体验的每一步表现，开发者才能确保是否与玩家奠定了一个成功且长期的关系基础</li>
+</ul>
+</li>
+<li>成功并不是通过从玩家身上榨取巨额的金钱，而是提供给社区所需要的工具并推动社区的发展</li>
+<li>让用户能够自己创造内容，并将其回馈给社区；这些服务都是他们成功的核心组件</li>
+<li>当你拥有一个强大且活跃的社区时，你的玩家将更长时间地待在这里，更频繁地玩你的游戏，并更加忠实于你的品牌</li>
+<li>打造社区的一些方式<ul>
+<li>通过Twitch，YouTube以及游戏内部工具或竞赛等活动去推动玩家进行实时交流和视频分享，这也是他们与社区进行直接交流的主要方法</li>
+<li>Q&amp;A能够有效地留注玩家的兴趣以及对游戏品牌的忠诚</li>
+<li>给予玩家一些模块工具去创造用户生成内容，或提供游戏内部奖励</li>
+</ul>
+</li>
+<li>游戏成功要点<ul>
+<li>社区建设：最重要的原则</li>
+<li>平衡性</li>
+<li>英雄的多样性</li>
+<li>易玩性</li>
+<li>英雄故事</li>
+<li>货币<ul>
+<li>影响力点数（IP），软通货</li>
+<li>Riot点数，硬通货</li>
+</ul>
+</li>
+<li>购买指引：等级达到3时，Riot会赠送400Riot点数给玩家</li>
+<li>奢侈道具：皮肤，额外的符文页面</li>
+<li>新英雄</li>
+<li>消耗性道具：增益道具(IP, XP)，改名，换区</li>
+<li>每周促销</li>
+<li>批量销售</li>
+<li>首胜奖励</li>
+<li>每周英雄试玩<ul>
+<li>留存率：这给玩家一个每周/每日回来尝试新英雄的理由。</li>
+<li>沉浸感：让玩家享受一个他们原本可能不会购买的的英雄。</li>
+<li>转化率：一旦每周试玩结束，玩家也许不想花时间刷IP买这个英雄，而是想立即获得这个英雄，于是他们就会花真钱了。</li>
+</ul>
+</li>
+<li>社区整合</li>
+</ul>
+</li>
+<li>盈利模式建议<ul>
+<li>自定义批量<ul>
+<li>设计一个允许玩家批量购买任何英雄。批量的英雄越多，价格就越便宜（折扣上限30%）。这样，等不及促销的玩家就可以一次性购买多名自己心仪的英雄。根据英雄的成本，批量中的英雄的价值是成比例的，所以这个系统就不会被滥用</li>
+<li>通过把折扣率上限在30%，一般的50%折扣促销就不会受影响，一样能鼓励冲动消费。自定义批量还可以避免玩家购买到自己已经有的英雄</li>
+</ul>
+</li>
+<li>愿望列表<ul>
+<li>对于不太容易被转化的人，希望LOL提供一种类似于Amazon或Steam的愿望列表功能。如果我想要的英雄正在促销，游戏应该通知我。这样就有可能刺激用户去购买了</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复杂度VS难度<ul>
+<li>《LOL》用什么代替反补？它有驱逐。驱逐是一种走位技术，目的是使你的对手就不能发动最后一击（补刀）。假设游戏允许你反补，这时候的你大约也可以轻易地反补掉那些小兵。一定程度上，反补使你可以轻易地压制对手；你只要点击一下鼠标就可以消灭掉他们的小兵。所以，反补可能增加了机制难度（你必须多做一件事），但它其实并没有增加游戏的复杂度</li>
+</ul>
+</li>
+<li>清晰度<ul>
+<li>将不必要的部分控制到最少。这使玩家很容易看出来游戏的状况</li>
+<li>保持游戏操作简单。例如，与《DOTA》相比，游戏中没有惯性；角色可以随意改变方向。但最重要的是，他们始终以清析度为原则设计角色和物品</li>
+<li>效果的清晰度<ul>
+<li>如果游戏机制设计得好，那么玩家只要观看或玩上一两次就知道是怎么回事</li>
+<li>用于刺激玩家学习游戏。带有明确效果的技能可以清楚地反映技能的成功或失败</li>
+</ul>
+</li>
+<li>概念的清晰度<ul>
+<li>如果游戏机制有统一的概念，那就说明设计成功</li>
+<li>以Soraka的W为例。它治疗目标对象并给予一定的护甲。为什么是给护甲而不是给魔抗？这可能有点像随机选择，但在分裂伤害的情况下，这种安排其实是非常有道理的。魔法伤害往往是突发的，而且是用在最前面。而物理伤害通常是连续的（主动攻击），并且贯穿整个战斗过程</li>
+<li>荆棘之甲这个装备的概念就有一些非常糟糕的互动效果。当本体受到普通反攻击时，这件装备必须根据对方释放的伤害来决定反弹比例，而承受了多少伤害。否则，穿上更多装甲（这样你就不会死在AD英雄手下了）反而会让你反弹更少的伤害（那么为什么还穿荆棘之甲？）</li>
+</ul>
+</li>
+<li>选择的清晰度<ul>
+<li>选择必须有意义，必须让玩家产生满足感</li>
+<li>好的选择让玩家想“我要用这种技能做什么？”坏的选择让玩家想“这个技能是做什么的？</li>
+<li>Amumu的绷带牵引可以用于发起攻击，还可以晕眩目标，玩家要选择用这种技能压制敌方的伤害主力还是保护自己的队伍。但是这种选择取决于玩家如何使用这个技能。但这种技能是做什么的（缠住目标，把目标拉到你身边)是很清楚的</li>
+</ul>
+</li>
+<li>一致性<ul>
+<li>一致性也是游戏设计的重要部分。一致性是可以发挥创意的地方，因为玩家知道（大部分）游戏是按照一定方式运行的。如果没有这种预测性，创新就会很困难，因为无法预测。一致性的作用是，让你知道整个游戏是怎么一回事</li>
+</ul>
+</li>
+<li>肉盾的不一致性<ul>
+<li>Vayne就是一个很有意思的角色。她的银弩虽然没有使培养肉盾变得无意义（游戏邦注：她的绝大部分伤害仍然是物理的），但确实使肉盾不那么强了</li>
+<li>乍一看，这似乎不太平衡。但是，Vayne必须经历所有AD Carry中最糟的对线阶段之一。所以，从某种意义上说，她已经因为这个优势付出代价了。这是一个良好的设计，在一方面给英雄优势，但又增加其他弱点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/30/game-design/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          游戏的架构与细节梳理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/30/game-operation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">游戏运营相关思路总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="lol-analysis" data-title="英雄联盟游戏设计与运营技巧总结" data-url="http://yoursite.com/2015/11/30/lol-analysis/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wdxblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 wdxtub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

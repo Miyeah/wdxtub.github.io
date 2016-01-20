@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>云计算 第 0 课 阅读材料 | 小土刀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这一部分内容主要是云计算的理论知识，由于时间缘故使用英文原文，关键要点会作为单独的『课』来进行介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云计算 第 0 课 阅读材料">
+<meta property="og:url" content="http://yoursite.com/2016/01/16/cc-0/index.html">
+<meta property="og:site_name" content="小土刀">
+<meta property="og:description" content="这一部分内容主要是云计算的理论知识，由于时间缘故使用英文原文，关键要点会作为单独的『课』来进行介绍。">
+<meta property="og:image" content="http://yoursite.com/images/14529625854236.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529628961629.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529629235564.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529629323895.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529690211629.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529690849852.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529692293425.jpg">
+<meta property="og:image" content="http://yoursite.com/images/cc19.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529700702878.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529700996814.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529701211775.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529717394416.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529717521135.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529720083304.jpg">
+<meta property="og:image" content="http://yoursite.com/images/14529720330687.jpg">
+<meta property="og:updated_time" content="2016-01-16T19:51:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="云计算 第 0 课 阅读材料">
+<meta name="twitter:description" content="这一部分内容主要是云计算的理论知识，由于时间缘故使用英文原文，关键要点会作为单独的『课』来进行介绍。">
+  
+    <link rel="alternative" href="/atom.xml" title="小土刀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpeg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wdxtub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Agony is my triumph</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">索引</a></li>
+				        
+							<li><a href="/categories/Technique">技术</a></li>
+				        
+							<li><a href="/categories/Reading">读书</a></li>
+				        
+							<li><a href="/categories/Thinking">思考</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/API/" style="font-size: 10.63px;">API</a> <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/AWS/" style="font-size: 11.88px;">AWS</a> <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 10.63px;">Android</a> <a href="/tags/Anroid/" style="font-size: 10px;">Anroid</a> <a href="/tags/Apple/" style="font-size: 11.88px;">Apple</a> <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/CMU/" style="font-size: 20px;">CMU</a> <a href="/tags/COC/" style="font-size: 10px;">COC</a> <a href="/tags/Capcom/" style="font-size: 10px;">Capcom</a> <a href="/tags/CodePlane/" style="font-size: 10px;">CodePlane</a> <a href="/tags/Datalab/" style="font-size: 10px;">Datalab</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IT/" style="font-size: 10px;">IT</a> <a href="/tags/Imaging-Cup/" style="font-size: 10px;">Imaging Cup</a> <a href="/tags/Java/" style="font-size: 11.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10.63px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Overview/" style="font-size: 10px;">Overview</a> <a href="/tags/PS4/" style="font-size: 10px;">PS4</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Swift/" style="font-size: 13.13px;">Swift</a> <a href="/tags/Swift-千金方/" style="font-size: 10.63px;">Swift 千金方</a> <a href="/tags/TOC/" style="font-size: 10px;">TOC</a> <a href="/tags/V2/" style="font-size: 10px;">V2</a> <a href="/tags/YC-创业课/" style="font-size: 10px;">YC 创业课</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 11.25px;">iOS</a> <a href="/tags/iOS-9/" style="font-size: 10px;">iOS 9</a> <a href="/tags/iOS-杂病论/" style="font-size: 10.63px;">iOS 杂病论</a> <a href="/tags/iOS9/" style="font-size: 13.75px;">iOS9</a> <a href="/tags/三观/" style="font-size: 10px;">三观</a> <a href="/tags/世界/" style="font-size: 10px;">世界</a> <a href="/tags/东野圭吾/" style="font-size: 10px;">东野圭吾</a> <a href="/tags/个人发展/" style="font-size: 10px;">个人发展</a> <a href="/tags/中国/" style="font-size: 10px;">中国</a> <a href="/tags/中秋/" style="font-size: 10px;">中秋</a> <a href="/tags/乐趣/" style="font-size: 10px;">乐趣</a> <a href="/tags/习题/" style="font-size: 10px;">习题</a> <a href="/tags/习题课/" style="font-size: 10px;">习题课</a> <a href="/tags/云计算/" style="font-size: 15.63px;">云计算</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/亲情/" style="font-size: 10px;">亲情</a> <a href="/tags/人口/" style="font-size: 10px;">人口</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/人造/" style="font-size: 10px;">人造</a> <a href="/tags/今何在/" style="font-size: 10px;">今何在</a> <a href="/tags/价值/" style="font-size: 10px;">价值</a> <a href="/tags/任天堂/" style="font-size: 10px;">任天堂</a> <a href="/tags/体力/" style="font-size: 10px;">体力</a> <a href="/tags/信息/" style="font-size: 10px;">信息</a> <a href="/tags/做饭/" style="font-size: 10px;">做饭</a> <a href="/tags/健康/" style="font-size: 10px;">健康</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/傅真/" style="font-size: 10px;">傅真</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/兄弟/" style="font-size: 10px;">兄弟</a> <a href="/tags/再而三/" style="font-size: 10px;">再而三</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/削发/" style="font-size: 10px;">削发</a> <a href="/tags/动画/" style="font-size: 10.63px;">动画</a> <a href="/tags/努力/" style="font-size: 10px;">努力</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/匹兹堡/" style="font-size: 10.63px;">匹兹堡</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/博客/" style="font-size: 11.88px;">博客</a> <a href="/tags/原创/" style="font-size: 12.5px;">原创</a> <a href="/tags/叙利亚/" style="font-size: 10px;">叙利亚</a> <a href="/tags/口译/" style="font-size: 10px;">口译</a> <a href="/tags/古希腊/" style="font-size: 10px;">古希腊</a> <a href="/tags/古董/" style="font-size: 10px;">古董</a> <a href="/tags/同性恋/" style="font-size: 10px;">同性恋</a> <a href="/tags/启程/" style="font-size: 10px;">启程</a> <a href="/tags/告别/" style="font-size: 10px;">告别</a> <a href="/tags/周记/" style="font-size: 17.5px;">周记</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/哲学/" style="font-size: 10.63px;">哲学</a> <a href="/tags/回合制/" style="font-size: 10px;">回合制</a> <a href="/tags/回头无岸/" style="font-size: 10px;">回头无岸</a> <a href="/tags/回忆/" style="font-size: 11.88px;">回忆</a> <a href="/tags/因果/" style="font-size: 10px;">因果</a> <a href="/tags/图像分类/" style="font-size: 10px;">图像分类</a> <a href="/tags/图灵/" style="font-size: 10px;">图灵</a> <a href="/tags/土豆/" style="font-size: 10px;">土豆</a> <a href="/tags/圣诞/" style="font-size: 10px;">圣诞</a> <a href="/tags/坚持/" style="font-size: 10px;">坚持</a> <a href="/tags/基础/" style="font-size: 11.25px;">基础</a> <a href="/tags/多元思维模型/" style="font-size: 10px;">多元思维模型</a> <a href="/tags/多看/" style="font-size: 10.63px;">多看</a> <a href="/tags/大一统/" style="font-size: 10px;">大一统</a> <a href="/tags/大圣归来/" style="font-size: 10.63px;">大圣归来</a> <a href="/tags/大学/" style="font-size: 10px;">大学</a> <a href="/tags/大结局/" style="font-size: 10px;">大结局</a> <a href="/tags/字体/" style="font-size: 10px;">字体</a> <a href="/tags/字节/" style="font-size: 10px;">字节</a> <a href="/tags/孙悟空/" style="font-size: 10px;">孙悟空</a> <a href="/tags/孤独/" style="font-size: 10px;">孤独</a> <a href="/tags/学习/" style="font-size: 16.25px;">学习</a> <a href="/tags/学术/" style="font-size: 10px;">学术</a> <a href="/tags/实例/" style="font-size: 10.63px;">实例</a> <a href="/tags/实践/" style="font-size: 10px;">实践</a> <a href="/tags/家庭/" style="font-size: 11.25px;">家庭</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/富勒/" style="font-size: 10px;">富勒</a> <a href="/tags/将军/" style="font-size: 10px;">将军</a> <a href="/tags/小学/" style="font-size: 10px;">小学</a> <a href="/tags/小说/" style="font-size: 10.63px;">小说</a> <a href="/tags/层/" style="font-size: 10px;">层</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/工作/" style="font-size: 10.63px;">工作</a> <a href="/tags/工作流/" style="font-size: 10px;">工作流</a> <a href="/tags/帐篷/" style="font-size: 10px;">帐篷</a> <a href="/tags/度假/" style="font-size: 10px;">度假</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/开学/" style="font-size: 10.63px;">开学</a> <a href="/tags/开篇/" style="font-size: 10.63px;">开篇</a> <a href="/tags/徐州/" style="font-size: 10px;">徐州</a> <a href="/tags/微软/" style="font-size: 10px;">微软</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/心智/" style="font-size: 11.25px;">心智</a> <a href="/tags/心理/" style="font-size: 10px;">心理</a> <a href="/tags/态度/" style="font-size: 10px;">态度</a> <a href="/tags/思考/" style="font-size: 16.25px;">思考</a> <a href="/tags/总体介绍/" style="font-size: 10px;">总体介绍</a> <a href="/tags/总览/" style="font-size: 10px;">总览</a> <a href="/tags/悖论/" style="font-size: 10px;">悖论</a> <a href="/tags/情侣/" style="font-size: 10px;">情侣</a> <a href="/tags/感恩节/" style="font-size: 10.63px;">感恩节</a> <a href="/tags/感情/" style="font-size: 10px;">感情</a> <a href="/tags/愿望/" style="font-size: 10px;">愿望</a> <a href="/tags/成功/" style="font-size: 10px;">成功</a> <a href="/tags/成绩/" style="font-size: 10px;">成绩</a> <a href="/tags/成长/" style="font-size: 11.25px;">成长</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/扩展/" style="font-size: 10px;">扩展</a> <a href="/tags/技巧/" style="font-size: 10.63px;">技巧</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/抱怨/" style="font-size: 10px;">抱怨</a> <a href="/tags/拖延症/" style="font-size: 10.63px;">拖延症</a> <a href="/tags/挫折/" style="font-size: 10px;">挫折</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/改变/" style="font-size: 11.25px;">改变</a> <a href="/tags/改进/" style="font-size: 10px;">改进</a> <a href="/tags/效率/" style="font-size: 10.63px;">效率</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/教育/" style="font-size: 10px;">教育</a> <a href="/tags/教训/" style="font-size: 10px;">教训</a> <a href="/tags/数字/" style="font-size: 10px;">数字</a> <a href="/tags/整型/" style="font-size: 10px;">整型</a> <a href="/tags/整理/" style="font-size: 10.63px;">整理</a> <a href="/tags/文化/" style="font-size: 10.63px;">文化</a> <a href="/tags/文本处理/" style="font-size: 10px;">文本处理</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 10px;">斯坦福 CS193p</a> <a href="/tags/新参者/" style="font-size: 10.63px;">新参者</a> <a href="/tags/新特性/" style="font-size: 10px;">新特性</a> <a href="/tags/方向/" style="font-size: 10px;">方向</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/方法论/" style="font-size: 10px;">方法论</a> <a href="/tags/旅行/" style="font-size: 11.88px;">旅行</a> <a href="/tags/旅途/" style="font-size: 10px;">旅途</a> <a href="/tags/旧金山/" style="font-size: 10.63px;">旧金山</a> <a href="/tags/早起/" style="font-size: 10px;">早起</a> <a href="/tags/时代/" style="font-size: 10px;">时代</a> <a href="/tags/时差/" style="font-size: 10.63px;">时差</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/明智行动的艺术/" style="font-size: 10px;">明智行动的艺术</a> <a href="/tags/智慧/" style="font-size: 10px;">智慧</a> <a href="/tags/暴走/" style="font-size: 10px;">暴走</a> <a href="/tags/朋友/" style="font-size: 12.5px;">朋友</a> <a href="/tags/期末/" style="font-size: 10.63px;">期末</a> <a href="/tags/未来/" style="font-size: 10px;">未来</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/机遇/" style="font-size: 10px;">机遇</a> <a href="/tags/极简/" style="font-size: 10px;">极简</a> <a href="/tags/架构/" style="font-size: 15.63px;">架构</a> <a href="/tags/核心/" style="font-size: 10px;">核心</a> <a href="/tags/格子/" style="font-size: 10px;">格子</a> <a href="/tags/格局/" style="font-size: 10px;">格局</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/概率/" style="font-size: 10px;">概率</a> <a href="/tags/概览/" style="font-size: 10px;">概览</a> <a href="/tags/概述/" style="font-size: 10px;">概述</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/欧洲/" style="font-size: 10px;">欧洲</a> <a href="/tags/步行/" style="font-size: 10px;">步行</a> <a href="/tags/死亡/" style="font-size: 10.63px;">死亡</a> <a href="/tags/比特/" style="font-size: 10px;">比特</a> <a href="/tags/氐惆/" style="font-size: 10px;">氐惆</a> <a href="/tags/民主/" style="font-size: 10px;">民主</a> <a href="/tags/沉默/" style="font-size: 10px;">沉默</a> <a href="/tags/沟通/" style="font-size: 10px;">沟通</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/洞察/" style="font-size: 10px;">洞察</a> <a href="/tags/活动/" style="font-size: 10px;">活动</a> <a href="/tags/浮点数/" style="font-size: 10px;">浮点数</a> <a href="/tags/深度/" style="font-size: 10px;">深度</a> <a href="/tags/清醒思考的艺术/" style="font-size: 10px;">清醒思考的艺术</a> <a href="/tags/游乐场/" style="font-size: 10px;">游乐场</a> <a href="/tags/游戏/" style="font-size: 14.38px;">游戏</a> <a href="/tags/游戏机/" style="font-size: 10px;">游戏机</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/滚动视图/" style="font-size: 10px;">滚动视图</a> <a href="/tags/灵活/" style="font-size: 10px;">灵活</a> <a href="/tags/炸鸡/" style="font-size: 10px;">炸鸡</a> <a href="/tags/烤肉/" style="font-size: 10px;">烤肉</a> <a href="/tags/热血/" style="font-size: 10px;">热血</a> <a href="/tags/照片/" style="font-size: 10px;">照片</a> <a href="/tags/爱情/" style="font-size: 11.25px;">爱情</a> <a href="/tags/父母/" style="font-size: 10px;">父母</a> <a href="/tags/独立博客/" style="font-size: 10px;">独立博客</a> <a href="/tags/玩家/" style="font-size: 10px;">玩家</a> <a href="/tags/环境/" style="font-size: 10px;">环境</a> <a href="/tags/理科生/" style="font-size: 10px;">理科生</a> <a href="/tags/生化危机/" style="font-size: 10px;">生化危机</a> <a href="/tags/生日/" style="font-size: 10.63px;">生日</a> <a href="/tags/生活/" style="font-size: 19.38px;">生活</a> <a href="/tags/电影/" style="font-size: 11.88px;">电影</a> <a href="/tags/男人/" style="font-size: 10px;">男人</a> <a href="/tags/界限/" style="font-size: 10px;">界限</a> <a href="/tags/留学生/" style="font-size: 10px;">留学生</a> <a href="/tags/目标/" style="font-size: 10.63px;">目标</a> <a href="/tags/看图说话/" style="font-size: 10px;">看图说话</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/知识管理/" style="font-size: 10px;">知识管理</a> <a href="/tags/研究/" style="font-size: 10px;">研究</a> <a href="/tags/社交/" style="font-size: 10px;">社交</a> <a href="/tags/社区/" style="font-size: 10px;">社区</a> <a href="/tags/神作/" style="font-size: 10px;">神作</a> <a href="/tags/离别/" style="font-size: 10px;">离别</a> <a href="/tags/科学/" style="font-size: 10px;">科学</a> <a href="/tags/科幻/" style="font-size: 10.63px;">科幻</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/积累/" style="font-size: 12.5px;">积累</a> <a href="/tags/程序员/" style="font-size: 11.25px;">程序员</a> <a href="/tags/穷查理宝典/" style="font-size: 10px;">穷查理宝典</a> <a href="/tags/童话/" style="font-size: 10.63px;">童话</a> <a href="/tags/笔记/" style="font-size: 16.25px;">笔记</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/简洁/" style="font-size: 10px;">简洁</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/类型/" style="font-size: 10px;">类型</a> <a href="/tags/粒度/" style="font-size: 10px;">粒度</a> <a href="/tags/精选/" style="font-size: 11.88px;">精选</a> <a href="/tags/系列/" style="font-size: 10px;">系列</a> <a href="/tags/索尼/" style="font-size: 10px;">索尼</a> <a href="/tags/纽约/" style="font-size: 10.63px;">纽约</a> <a href="/tags/组成原理/" style="font-size: 12.5px;">组成原理</a> <a href="/tags/组织/" style="font-size: 10px;">组织</a> <a href="/tags/经典/" style="font-size: 10px;">经典</a> <a href="/tags/绘制/" style="font-size: 10px;">绘制</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/编辑距离/" style="font-size: 10px;">编辑距离</a> <a href="/tags/羊驼/" style="font-size: 10px;">羊驼</a> <a href="/tags/美剧/" style="font-size: 10px;">美剧</a> <a href="/tags/美国/" style="font-size: 10px;">美国</a> <a href="/tags/翻译/" style="font-size: 13.75px;">翻译</a> <a href="/tags/老朝奉/" style="font-size: 10px;">老朝奉</a> <a href="/tags/自尊/" style="font-size: 10px;">自尊</a> <a href="/tags/自我/" style="font-size: 10.63px;">自我</a> <a href="/tags/节奏/" style="font-size: 10px;">节奏</a> <a href="/tags/苏州/" style="font-size: 10px;">苏州</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/英雄/" style="font-size: 11.25px;">英雄</a> <a href="/tags/英雄联盟/" style="font-size: 10.63px;">英雄联盟</a> <a href="/tags/苹果/" style="font-size: 10px;">苹果</a> <a href="/tags/荒野求生/" style="font-size: 10px;">荒野求生</a> <a href="/tags/萨博/" style="font-size: 10px;">萨博</a> <a href="/tags/落后/" style="font-size: 10px;">落后</a> <a href="/tags/蝴蝶效应/" style="font-size: 10px;">蝴蝶效应</a> <a href="/tags/行动/" style="font-size: 10px;">行动</a> <a href="/tags/西行者/" style="font-size: 10px;">西行者</a> <a href="/tags/观念/" style="font-size: 10px;">观念</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/视图控制器/" style="font-size: 10px;">视图控制器</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/计算机/" style="font-size: 15px;">计算机</a> <a href="/tags/记录/" style="font-size: 10.63px;">记录</a> <a href="/tags/记忆/" style="font-size: 10.63px;">记忆</a> <a href="/tags/讲义/" style="font-size: 10px;">讲义</a> <a href="/tags/许愿/" style="font-size: 10px;">许愿</a> <a href="/tags/论道/" style="font-size: 14.38px;">论道</a> <a href="/tags/设计/" style="font-size: 16.88px;">设计</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访谈/" style="font-size: 10px;">访谈</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/读书/" style="font-size: 18.13px;">读书</a> <a href="/tags/课程/" style="font-size: 10px;">课程</a> <a href="/tags/调整/" style="font-size: 10px;">调整</a> <a href="/tags/足球/" style="font-size: 10.63px;">足球</a> <a href="/tags/跑题/" style="font-size: 10px;">跑题</a> <a href="/tags/路线/" style="font-size: 10px;">路线</a> <a href="/tags/转型/" style="font-size: 10px;">转型</a> <a href="/tags/转换/" style="font-size: 10px;">转换</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/轻量/" style="font-size: 10px;">轻量</a> <a href="/tags/运动/" style="font-size: 10px;">运动</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/运算符重载/" style="font-size: 10px;">运算符重载</a> <a href="/tags/运营/" style="font-size: 10.63px;">运营</a> <a href="/tags/进阶/" style="font-size: 10px;">进阶</a> <a href="/tags/连接/" style="font-size: 10px;">连接</a> <a href="/tags/迷茫/" style="font-size: 10px;">迷茫</a> <a href="/tags/逆向思维/" style="font-size: 10px;">逆向思维</a> <a href="/tags/选择/" style="font-size: 11.25px;">选择</a> <a href="/tags/选课/" style="font-size: 10px;">选课</a> <a href="/tags/透析/" style="font-size: 10px;">透析</a> <a href="/tags/造假/" style="font-size: 10px;">造假</a> <a href="/tags/逻辑/" style="font-size: 10px;">逻辑</a> <a href="/tags/醒醒/" style="font-size: 10px;">醒醒</a> <a href="/tags/闭包/" style="font-size: 10.63px;">闭包</a> <a href="/tags/阅读/" style="font-size: 11.88px;">阅读</a> <a href="/tags/阿拉伯之春/" style="font-size: 10px;">阿拉伯之春</a> <a href="/tags/陌生人/" style="font-size: 10px;">陌生人</a> <a href="/tags/陪伴/" style="font-size: 10px;">陪伴</a> <a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a> <a href="/tags/难民/" style="font-size: 10px;">难民</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/顽皮狗/" style="font-size: 10px;">顽皮狗</a> <a href="/tags/预测/" style="font-size: 10px;">预测</a> <a href="/tags/预言/" style="font-size: 10px;">预言</a> <a href="/tags/马伯庸/" style="font-size: 10px;">马伯庸</a> <a href="/tags/骑行/" style="font-size: 10px;">骑行</a> <a href="/tags/高中/" style="font-size: 10px;">高中</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://illustrationsencouleur.lofter.com/">illustrations</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wdxtub.lofter.com/">wdxtub@lofter</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wdxtub</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wdxtub</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Agony is my triumph</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">索引</a></li>
+		        
+					<li><a href="/categories/Technique">技术</a></li>
+		        
+					<li><a href="/categories/Reading">读书</a></li>
+		        
+					<li><a href="/categories/Thinking">思考</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-cc-0" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/16/cc-0/" class="article-date">
+  	<time datetime="2016-01-16T16:37:56.000Z" itemprop="datePublished">2016-01-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      云计算 第 0 课 阅读材料
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CMU/">CMU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/云计算/">云计算</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/讲义/">讲义</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Technique/">Technique</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一部分内容主要是云计算的理论知识，由于时间缘故使用英文原文，关键要点会作为单独的『课』来进行介绍。</p>
+<a id="more"></a>
+<hr>
+<h1 id="Cloud_Computing_Overview"><a href="#Cloud_Computing_Overview" class="headerlink" title="Cloud Computing Overview"></a>Cloud Computing Overview</h1><p>Welcome to this online course on cloud computing. This domain is emerging and fast-evolving. Here, we will introduce the big picture of cloud computing, as well as explain how it has evolved to its current state. Learning these concepts will give you a better understanding about some of the motivating factors behind cloud computing services and why it is one of the fastest growing technology segments in the industry today.</p>
+<p>In the first unit of the course, we will:</p>
+<ul>
+<li>introduce some of the fundamental ideas behind cloud computing,</li>
+<li>explore the evolution of computing and the emergence of the cloud,</li>
+<li>compare and contrast the different service models and types of clouds,</li>
+<li>discuss some cloud use cases and popular cloud stacks</li>
+</ul>
+<p>Cloud computing can be thought of as an evolved response to the computing needs of today. Our world is increasingly connected and data driven. Users, whether at home or work, generate and consume large amounts of data from various sources. A massive challenge has arisen in terms of managing and exploiting this data. Starting with this module, and throughout the course, you will see how cloud computing plays a central role in meeting this challenge.</p>
+<h2 id="Definition_of_Cloud_Computing"><a href="#Definition_of_Cloud_Computing" class="headerlink" title="Definition of Cloud Computing"></a>Definition of Cloud Computing</h2><p><strong>Cloud Computing</strong></p>
+<p>Cloud computing offers the use of computing resources as a service over the network. A cloud computer is simply a large distributed computing infrastructure that users have access to over a network. Similar to some other domains, cloud computing came about through the maturity of enabling technologies while attempting to satisfy economic needs. In this course, we will provide an introduction to cloud computing and then cover relevant topics, in varying detail, including hardware and software infrastructure, resource management (virtualization), cloud storage, and programming models.</p>
+<p>In the first unit of this course we will start with a simple overview of cloud computing, its definition, motivations, evolutions, building blocks, service models and use cases. We will also discuss economics, risks, benefits and security.</p>
+<p><strong>What is Cloud Computing?</strong></p>
+<blockquote>
+<p>Cloud Computing(definition)<br>The delivery of computing as a service over a network, whereby distributed resources are provided to the end user as a utility.</p>
+</blockquote>
+<p>Information technology (IT) has become an essential requirement for most organizations to function effectively. Typically, and depending on a specific organization’s needs, IT has three components associated with it (Figure 1.1) - application software, development platforms and the underlying infrastructure:</p>
+<p><img src="/images/14529625854236.jpg" alt=""><br>Figure 1.1: Typical Components of Information Technology.</p>
+<p>Traditionally, an organization that needs to deploy a particular IT solution has to procure, setup and maintain the infrastructure and the application; certain organizations may decide to develop their own software, in which case they need to manage development platforms as well. The organization hence “owns” the solution, which allows full control over the solution, including, for example, access security and customization, however, it has some drawbacks:</p>
+<ol>
+<li>Organizations must pay upfront to buy a particular solution, which commits significant capital for long-lived IT resources.</li>
+<li>Organizations are solely responsible for the management of their IT solutions. Organizations must have hardware maintenance contracts for the acquired IT solutions. System administrators will have to be hired to monitor hardware and software which has to be updated and maintained. Organizations also have to pay for power and cooling to keep the hardware running. Therefore, in addition to upfront costs, organizations have to budget for recurring costs.</li>
+<li>The IT solution typically has a fixed size and will have to be modified to scale when the needs grow or shrink. (For example, as the number of employees grows, the organization will have to purchase additional hardware and/or software to keep up with increasing demands).</li>
+<li>Typically IT systems suffer from low average utilization. Utilization refers to the proportion of time (expressed usually as a percentage) that an IT system is being used to capacity. For example, email services in a large organization typically see the most amount of traffic at 8 am, when people sign in and check email. Utilization tapers off towards close of business and is practically nil after hours. Further, since IT systems consume energy, even at idle, they leave a prominent carbon footprint.</li>
+</ol>
+<p>Many of the disadvantages listed above emanate from the ownership of IT. However, with the evolution of computing technology, it is no longer necessary for organizations to own IT systems. Many of the IT needs of organizations can be provided to them as services. Cloud computing is the transformation of owned IT products into services that can be availed from a cloud service provider.</p>
+<p>The transformation of a certain technology from a product to a service is not new. A similar transformation evolved for electricity, which initially had to be produced near the device or service requiring it. The development of large power plants, electric transmission systems and grids has led to the rise of electric power as a utility, (a service that people can obtain and pay for as needed).</p>
+<p>The following video (Video 1.1) discusses the transformation of IT from a product to a service:</p>
+<p><a href="http://youtu.be/HaVqHgg7zv4" target="_blank" rel="external">Video 1.1: Introduction to Cloud Computing</a></p>
+<p>In cloud computing, users or organizations use computing resources as a service and pay for them as a utility, in a pay-as-you-go model. When a request is made for computing resources, the cloud provider typically provisions these resources, in a rapid manner (minutes or hours). As the need for these resources changes, users or organizations can rapidly scale up or down their resources on demand.</p>
+<p>The cloud model offers users and organizations several benefits, including: reduced upfront cost, as IT services can be obtained in a pay-as-you-go model; the convenience of fast resource provisioning, which significantly reduces the time to market for IT solutions; and rapid scalability of computing resources, as they can be scaled up and down on demand. Cloud providers’ resources are shared by multiple users, thereby improving utilization and reducing carbon footprint.</p>
+<p>In spite of all of its advantages, cloud computing is still an emerging and maturing technology and comes with many risks and challenges which will be later covered in this unit.</p>
+<h2 id="Pre-Cloud_Computing_Domains_and_Applications"><a href="#Pre-Cloud_Computing_Domains_and_Applications" class="headerlink" title="Pre-Cloud Computing Domains and Applications"></a>Pre-Cloud Computing Domains and Applications</h2><p><strong>Domains and Application Examples</strong></p>
+<p>Now that we have defined what cloud computing is, let us look at examples of how computing was utilized in different domains such as business computing, scientific computing and personal computing before the emergence of cloud computing.</p>
+<p>Business computing: Examples of traditional management information systems include logistics and operations, enterprise resource planning (ERP), customer relation management (CRM), office productivity and business intelligence (BI). Such tools enabled more streamlined processes that led to improved productivity and reduced cost across a variety of enterprises.</p>
+<p>As an example, CRM software allows companies to collect, store, manage and interpret a variety of data about past, current and potential future customers. CRM software offers an integrated view (in real-time or near real-time) of all organizational interactions with customers. For example, for a manufacturing company, CRM software could be used by a sales team to schedule meetings, tasks and follow-ups with clients. A marketing team could target clients with campaigns based on specific patterns. Billing teams can track quotes and invoices. As such, it is a centralized repository for storing this information. To enable this functionality, a variety of hardware and software technologies are utilized by the organization and sales teams in order to collect the data which needs to be stored and analyzed using various database and analytics systems.</p>
+<p>Scientific computing: Scientific computing uses mathematical models and analysis techniques implemented on computers to attempt to solve scientific problems. A popular example is computer simulation of physical phenomena. This field has disrupted the traditional theoretical and laboratory experimental methods by enabling scientists and engineers to reconstruct known events or to predict future situations through developing programs to simulate and study different systems under different circumstances. Such simulations typically require a very large number of calculations which are often run on expensive supercomputers or distributed computing platforms.</p>
+<p>Personal computing: In personal computing, a user runs various applications on a general-purpose computer. Examples of such applications include office productivity software such as word processing and spreadsheets, or communication such as email clients or entertainment such as video games or playing multimedia files. A personal computing user typically owns, installs and maintains the software and hardware utilized to carry out such tasks.</p>
+<p><strong>Addressing Scale</strong></p>
+<p>hich can provide the necessary upgrades to the service level. In many cases, vertical scaling consists of upgrading or replacing servers and storage systems with newer, faster servers or storage arrays with increased capacity. This process could take months to plan and execute, along with a window where the service might experience some downtime.</p>
+<p>In certain types of systems, scaling is also done horizontally, by increasing the amount of resources dedicated to the system. An example of this is in high-performance computing, where additional servers and storage can be added to improve the performance of the system, thereby leading to a higher number of calculations that can be performed per second, or increasing the storage capacity of the system. Just like vertical scaling, this process can take months to plan and execute, with downtimes also a possibility.</p>
+<p>Since companies owned and maintained their IT equipment, as the cost of addressing scale continued to rise, companies identified other methods to reduce cost. Large companies consolidated the computing needs of different departments into a single large data center whereby they consolidated real estate, power, cooling, and networking in order to reduce cost. On the other hand, small and medium size companies could lease real-estate, network, power, cooling and physical security by placing their IT equipment in a shared data center. This is typically referred to as a co-location service which was adopted by small to medium sized companies who did not want to build their own data centers in-house. Co-location services continues to be adopted in various domains as a cost-effective approach to reduce operational expenses.</p>
+<p>Scale has impacted all aspects of business computing. For example, scale has impacted CRM systems through the increase of clients or through the amount of information that we store and analyse about clients. Business computing has addressed scale through vertical and horizontal scaling as well as consolidation of IT resources to data centers and co-location. In scientific computing, parallel and distributed systems have been adopted in order to scale up the size of the problems and the precision of their numerical simulations. One definition of parallel processing is the use of multiple homogenous computers that share state and function as a single large computer in order to run large scale or high precision calculations. Distributed computing is the use of multiple autonomous computing systems connected by a network in order to partition a large problem into subtasks that are run concurrently and communicate via messages over the network. The scientific community continued to innovate in these domains in order to address scale. In personal computing, scale has impacted it through increased user demands brought on by richer content and diverse applications. Users therefore scale up their owned personal computing device to keep up with these demands.</p>
+<p><strong>Rise of Internet Services</strong></p>
+<p>The late 90s marked a steady increase in the adoption of these computing applications and platforms across domains. Soon, software was expected to not only be functional, but also capable of producing value and insight for business and personal requirements. The use of these applications became collaborative; applications were mixed and matched to feed information to each other. IT was no longer just a cost center for a company, but a source of innovation and efficiency.</p>
+<p><img src="/images/14529628961629.jpg" alt=""><br>Figure 1.2: Comparing Traditional and Internet-Scale Computing.</p>
+<p>The 21st century has been marked by an explosion in the volume and capacity of wireless communications, the World Wide Web, and the Internet. These changes have led to a network- and data-driven society, where producing, disseminating and accessing digitized information is simplified. The Internet is estimated to have created a global marketplace of billions of users, up from 25 million in 1994 (Figure 1.3 (a)) [1] . This rise in data and connections is valuable to businesses. Data creates value in several ways, including by enabling experimentation, segmenting populations and supporting decision-making with automation. [2] By embracing digital technologies, the world’s top 10 economies are expected to increase their output by over a trillion dollars by 2020. [3]</p>
+<p>The increasing number of connections enabled by the Internet has also driven its value. Researchers have hypothesized that the value of a network varies superlinearly as a function of the number of users. Thus, at internet scale, gaining and retaining customers is a priority, and this is done by building reliable and responsive services, and making changes based on observed data patterns.</p>
+<p><img src="/images/14529629235564.jpg" alt=""><br>Figure 1.3 (a): Increasing number of Internet Users per year. [1]</p>
+<p><img src="/images/14529629323895.jpg" alt=""><br>Figure 1.3 (b): Increasing number of data stored per year. [5]</p>
+<p>Some examples of Internet-scale systems include:</p>
+<ol>
+<li>Search engines that crawl, store, index, and search (upto petabyte-sized) large data sets. For instance, Google started as a giant web index that crawled and analyzed web traffic, once every few days and matched these indices to keywords. Now, it updates its indices in near-real-time and is one of the most popular ways to access information on the Internet. Their index has trillions of pages with a size of thousands of terabytes. [4]</li>
+<li>Social networks like Facebook and LinkedIn that allow users to create personal and professional relationships and build communities based on similar interests. Facebook, for instance, now supports over a billion active users per month.</li>
+<li>Online retail services like Amazon maintain a global inventory of millions of products, which are sold to over 200 million customers, with net sale volumes of almost $90 billion annually.</li>
+<li>Rich, streaming multimedia applications allow people to watch and share videos and other forms of rich content. One such example, YouTube, handles uploads of 300 minutes of video per second.</li>
+<li>Real-time communications systems for audio, video and text chatting like Skype which clock more than 50 billion minutes of calls per month.</li>
+<li>Productivity and collaboration suites that serve millions of documents to many concurrent users allowing real-time, persistent updates. For e.g. Office 365 claims to support 50 million monthly active collaborators.</li>
+<li>CRM applications by providers like SalesForce are deployed at over a hundred thousand organizations. Large CRMs now provide intuitive dashboards to track status, analytics to find the customers that generate the most business and revenue forecasting to predict future growth.</li>
+<li>Data mining and business intelligence applications that analyze the usage of other services (like those above) to find inefficiencies and opportunities for monetization.</li>
+</ol>
+<p>Clearly, these systems are expected to deal with a high volume of concurrent users. This requires an infrastructure with the capacity to handle large amounts of network traffic, generate and securely store data, all without any noticeable delays. These services derive their value by providing a constant and reliable standard of quality. They also provide rich user interfaces for mobile devices and web browsers, making them easy to use, but harder to build and maintain.</p>
+<p>We summarize some of the requirements of Internet-scale systems here:</p>
+<ol>
+<li>Ubiquity—being accessible from anywhere at any time, from a multitude of devices. For instance, a salesperson will expect their CRM service to provide timely updates on a mobile device to make visits to clients shorter, faster and more effective. The service should function smoothly under a variety of network connections.</li>
+<li>High-availability—the service must be “always up”. Uptimes are measured in terms of number of nines. Three nines, or 99.9%, implies that a service will be unavailable for 9 hours a year. Five nines (about 6 minutes a year) is a typical threshold for a high-availability service. Even a few minutes of downtime in online retail applications can impact millions of dollars of sales.</li>
+<li>Low latency—fast and responsive access times. Even slightly slower page load times have been shown to significantly reduce the usage of that web page. For instance, increasing search latency from 100 ms to 400 ms decreases the number of searches per user from 0.8% to 0.6%, and the change persisted even after the latency was reduced to original levels.</li>
+<li>Scalability—the ability to deal with seasonality and virality, which causes peaks and troughs in the traffic over long and short periods of time. On days like “Black Friday” and “Cyber Monday”, retailers like Amazon must handle several times the network traffic than on average.</li>
+<li>Cost effectiveness—an Internet-scale service requires much more infrastructure than a traditional application as well as better management. One way to streamline costs is by making services easier to manage, and reducing the number of administrators handling a service. Smaller services can afford to have a low service-to-admin ratio (e.g. 2:1, meaning a single administrator must maintain two services); however, to maintain profitability, services like Microsoft Bing must have high service-to-admin ratio (e.g. 2500:1, meaning a single administrator maintains 2500 services) [6] .</li>
+<li>Interoperability—many of these services are often used together and hence must provide an easy interface for reuse and support standardized mechanisms for importing and exporting data. For example, many other services (like Uber) may integrate Google Maps within their products to provide simplified location and navigation information to users.</li>
+</ol>
+<p>We will now explore some of the early solutions to the various problems above [7] . The first challenge to be tackled was the large round-trip time for early web services that were mostly located in the United States. The earliest mechanisms to deal with the problems of low latency (due to distant servers) and server failure simply relied on redundancy. One technique for achieving this was by “mirroring” content, whereby copies of popular web pages would be stored at different locations around the world. This minimized the amount of load on the central server, reduced the latency perceived by end-users, and allowed traffic to be switched over to another server in case of failures. The downside of this was an increase in complexity to deal with inconsistencies if even one copy of the data were to be modified. Thus, this technique is more useful for static, read-heavy workloads, such as serving images, videos or music. Due to the effectiveness of this technique, most Internet-scale services use content delivery networks (CDNs) to store distributed global caches of popular content. For example, Cable News Network (CNN) now maintains replicas of their videos on multiple “edge” servers at different locations worldwide, with personalized advertising per location.</p>
+<p>Of course, it did not always make sense for individual companies to buy dozens of servers across the world. Cost efficiencies were often gained by using shared hosting services. Here, shares of a single web server would be leased out to multiple tenants, amortizing the cost of server maintenance. Shared hosting services could be highly resource-efficient, as the resources could be over-provisioned under the assumption that not all services would be operating at peak capacity at the same time (an over-provisioned physical server is one where the aggregate capacity of all the tenants is greater than the actual capacity of the server). The downside was that it was nearly impossible to isolate the tenants’ services from those of their neighbors. Thus, a single overloaded or error-prone service could adversely impact all its neighbors. Another problem arose because tenants could often be malicious and try to leverage their co-location advantage to steal data or deny service to other users.</p>
+<p>To counter this, Virtual Private Servers were developed as variants of the shared hosting model. A tenant would be provided with a virtual machine (VM) on a shared physical server (we talk more about virtual machines and their properties later). These VMs were often statically allocated and linked to a single physical machine, thus they were difficult to scale and often needed manual recovery from any failures. Though they could no longer be overprovisioned, they had better performance and security isolation between co-located services than simple resource sharing.</p>
+<p>Another problem of sharing public resources was that it required storing private data on third-party infrastructure. Some of the Internet-scale services we described above could not afford to lose control over data storage, since any disclosure of their customers private data would have disastrous consequences. Hence, these companies needed to build their own global infrastructure. Before the advent of the public cloud, such services could only be deployed by large corporations like Google and Amazon. Each of these companies would build large, homogeneous data centers across the globe using commodity off-the-shelf components, where a data center could be thought of as a single, massive warehouse-scale computer (WSC). A WSC provided an easy abstraction to globally distribute applications and data, while still maintaining ownership.</p>
+<p>Due to the economies of scale, the utilization of a data center could be optimized to reduce costs. This was still not as efficient as publicly sharing resources, these warehouse-scale computers had many desirable properties that served as foundations for building Internet-scale services. The scale of computing applications progressed from serving a fixed user base to serving a dynamic global population. Standardized WSCs allowed large companies to serve such large audiences. An ideal infrastructure would combine the performance and reliability of a WSC, with the sharing hosting model. This would enable even a small corporation to develop and launch a globally competitive application, without the high overhead of building large datacenters.</p>
+<p>Another approach to share resources was Grid Computing, which enabled the sharing of autonomous computing systems across institutions and geographical locations. Several academic and scientific institutions would collaborate and pool together their resources towards a common goal. Each institution would then join a “virtual organization” by dedicating a specific set resources via well-defined sharing rules. Resources would often be heterogeneous and loosely coupled requiring complex programming constructs to stitch together. Grids were geared towards supporting non-commercial research and academic projects and relied on existing open source technologies.</p>
+<p>The cloud was a logical successor that combined many of the features of the solutions above. For example, instead of universities contributing and sharing access to a pool of resources using a Grid, the cloud allows them to lease computing infrastructure that was centrally administered by a Cloud Service Provider (CSP). As the central provider maintained a large resource pool to satisfy all clients, the cloud made it easier to dynamically scale up and down demand within a short period of time. Instead of open standards like the grid, however, cloud computing relies on proprietary protocols and needs the user to place a certain level of trust in the CSP.</p>
+<p>The rest of this unit covers how the cloud evolved to make computing a public utility that could be metered and used.</p>
+<p><strong>References</strong></p>
+<ol>
+<li>Real Time Statistics Project (2015). Internet Live Stats. www.internetlivestats.com/.</li>
+<li>IBM (2015). What is Big Data?. www-01.ibm.com/software/data/bigdata/what-is-big-data.html.</li>
+<li>Accenture (2015). Increased Use of Digital Technologies Could Add $1.36 Trillion to World’s Top 10 Economies in 2020. newsroom.accenture.com/subjects/strategy/increased-use-of-digital-technologies-could-add-over-1-trillion-dollars-to-worlds-top-10-economies-in-2020-according-to-new-study-from-accenture.htm.</li>
+<li>Google Inc. (2015). How Search Works. <a href="https://www.google.com/insidesearch/howsearchworks/thestory/" target="_blank" rel="external">https://www.google.com/insidesearch/howsearchworks/thestory/</a>.</li>
+<li>Hilbert, Martin and Lopez, Priscila (2011). The world’s technological capacity to store, communicate, and compute information.</li>
+<li>Hamilton, James R and others (2007). On Designing and Deploying Internet-Scale Services.</li>
+<li>Brewer, Eric and others (2001). Lessons from giant-scale services.</li>
+</ol>
+<h2 id="Evolution_of_Cloud_Computing"><a href="#Evolution_of_Cloud_Computing" class="headerlink" title="Evolution of Cloud Computing"></a>Evolution of Cloud Computing</h2><p><strong>Events and Innovations</strong></p>
+<p>The cloud-computing concept first appeared during the early 1950s, when several academics, including Herb Grosch, John McCarthy, and Douglas Parkhill, [1] [2] envisioned computing as a utility similar to electric power. Over the next few decades, several emerging technologies laid the foundations for cloud computing (Figure 1.4). More recently, rapid growth of the World Wide Web and the advent of large Internet giants, such as Google and Amazon, finally led to the creation of an economic and business environment that allowed the cloud-computing model to flourish.</p>
+<p><img src="/images/14529690211629.jpg" alt=""><br>Figure 1.4: Evolution of cloud computing.</p>
+<p><strong>Evolution of Computing</strong></p>
+<p>Since the 1960s, some of the earliest forms of computers that were used by organizations were mainframe computers. Multiple users could share and connect to mainframes over basic serial connections using terminals. The mainframe was responsible for all the logic, storage, and processing of data, and the terminals connected to them had limited computational power, if any. These systems continued in widespread use for more than 30 years and, to some degree, continue to exist today.</p>
+<p>With the birth of personal computing, cheaper, smaller, more powerful processors and memory led to a swing in the opposite direction, in which users ran their own software and stored data locally. This situation, in turn, led to issues of ineffective data sharing and rules to maintain order within an organization’s IT environment.</p>
+<p>Gradually, through the development of high-speed network technologies, local area networks (LANs) were born that allowed computers to connect and communicate with each other. Thus, vendors designed systems that could encapsulate the benefits of both personal computers and mainframes, resulting in client-server applications that became popular over LANs. Clients would typically run client software (and process some data) or a terminal (for legacy applications) that connected to a server. The server, in the client-server model, possessed the application, storage, and data logic.</p>
+<p>Eventually, in 1990s, the global information age emerged, with the Internet rapidly being adopted. Network bandwidth improved by many orders of magnitude, from ordinary dial-up access to dedicated fiber connectivity today. In addition, cheaper and more powerful hardware emerged. Furthermore, the evolution of the World Wide Web and dynamic websites necessitated multitier architectures.</p>
+<p>Multitier architectures enabled the modularization of software by separating the application presentation, application logic, and storage as individual entities. With this modularization and decoupling, it was not long before these individual software entities were running on distinct physical servers (typically due to differences in hardware and software requirements). This led to an increase of individual servers in organizations; however, it also led to poor average utilization of server hardware. In 2009, the International Data Corporation (IDC) estimates that the average x86 server has a utilization rate of approximately 5 to 10%. [3]</p>
+<p>Virtual machine technology matured well enough in the 2000s to become available as commercial software. Virtualization enables an entire server to be encapsulated as an image, which can be run seamlessly on hardware and enable multiple virtual servers to run simultaneously and share hardware resources. Virtualization thus enables servers to be consolidated, which accordingly improves system utilization.</p>
+<p>Simultaneously, grid computing gained traction in the scientific community in an effort to solve large-scale problems in a distributed fashion. With grid computing, computer resources from multiple administrative domains work in unison for a common goal. Grid computing brought forth many resource-management tools (e.g., schedulers and load balancers) to manage large-scale computing resources.</p>
+<p>As the various computing technologies evolved, so did the economics of computing. Even during the early days of mainframe-based computing, companies such as IBM offered to host and run computers and software for various organizations, such as banks and airlines. In the Internet Age, third-party Web hosting also become popular. With virtualization, however, providers have unparalleled flexibility in accommodating multiple clients on a single server, sharing hardware and resources between them.</p>
+<p>The development of these technologies, coupled with the economic model of utility computing, is what eventually evolved into cloud computing.</p>
+<p><strong>Enabling Technologies</strong></p>
+<p>Cloud computing has various enabling technologies (Figure 1.5), which include networking, virtualization and resource management, utility computing, programming models, parallel and distributed computing, and storage technologies.</p>
+<p><img src="/images/14529690849852.jpg" alt=""><br>Figure 1.5: The enabling technologies in cloud computing.</p>
+<p>The emergence of high-speed and ubiquitous networking technologies have greatly contributed to cloud computing as a viable paradigm. Modern networks make it possible for computers to communicate in a fast and reliable manner, which is important if we are to use services from a cloud provider. This enabled the user experience with software running in a remote data center to be comparable to the experience of software running on a personal computer. Webmail is a popular example, as is office productivity software. In addition, virtualization is key to enabling cloud computing. As mentioned above, virtualization allows managing the complexity of the cloud via abstracting and sharing its resources across users through multiple virtual machines. Each virtual machine can execute its own operating system and associated application programs. Virtualization for cloud computing is covered in Unit 3.</p>
+<p>Technologies such as large-scale storage systems, distributed file systems, as well as novel database architectures are crucial for managing and storing data in the cloud. Cloud storage technologies are covered in Unit 4.</p>
+<p>Utility computing offers numerous charging structures for the leasing of compute resources. Examples include pay-per-resource-hour, pay-per-guaranteed-throughput, and pay-per-data stored per month etc.</p>
+<p>Parallel and distributed computing allow distributed entities located at networked computers to communicate and coordinate their actions in order to solve certain problems, represented as parallel programs. Writing parallel programs for distributed clusters is inherently difficult. To achieve high programming efficiency and flexibility in the cloud, a programming model is required.</p>
+<p>Programming models for clouds give users the flexibility to express parallel programs as sequential computation units (e.g., functions as in MapReduce and vertices as in GraphLab). Such programming models’ runtime systems typically parallelize, distribute, and schedule computational units, manage inter-unit communication, and tolerate failures. Cloud programming models are covered in Unit 5.</p>
+<p><strong>RReferences</strong></p>
+<ol>
+<li>Simson L. Garfinkel (1999). Architects of the Information Society: Thirty-Five Years of the Laboratory for Computer Science at MIT. MIT Press.</li>
+<li>Douglas J. Parkhill (1966). The Challenge of the Computer Utility. Addison-Wesley Publishing Company, Reading, MA.</li>
+<li>Michelle Bailey (2009). “The Economics of Virtualization: Moving Toward an Application-Based Cost Model.” VMware Sponsored IDC Whitepaper.</li>
+</ol>
+<h2 id="Cloud_Building_Blocks_and_Service_Models"><a href="#Cloud_Building_Blocks_and_Service_Models" class="headerlink" title="Cloud Building Blocks and Service Models"></a>Cloud Building Blocks and Service Models</h2><p><strong>Cloud Building Blocks</strong></p>
+<p>Remember, cloud computing offers the use of computing resources as a service over the network. Before we discuss the service models offered on a cloud, we ought to think about the different layers of hardware and software the are required to build cloud services. Of course, not all service requirements are identical; some cloud users may only desire access to raw infrastructure to build applications on. Others may wish to not deal with the infrastructure at all, but rather, simply develop and deploy applications using an easy-to-use platform. To meet these varied requirements, cloud service providers divide their offerings into various abstract layers.</p>
+<p>Here, we introduce a stacked abstraction of the cloud through presenting typical building blocks and discuss their association with three service models in cloud computing. We present four main building blocks in cloud computing: application software, development platforms, resource sharing, and infrastructure, as shown in Figure 1.6. The infrastructure includes the physical resources in a data center. The resource sharing layer typically entails software and hardware techniques that allow the sharing of the physical resources while offering a certain level of isolation. The development platforms are utilized to develop cloud applications.</p>
+<p><img src="/images/14529692293425.jpg" alt=""><br>Figure 1.6: Cloud computing building blocks.</p>
+<p><strong>Cloud Building Blocks</strong></p>
+<p>Application software: The top layer in the stack is the application software, which normally is the system component that the end user utilizes.</p>
+<p>Development platforms: The next layer, development platforms, allows application developers to write application software in terms of a cloud’s application programming interface (API). Development platforms typically provide specifications that developers can use for routines, data structures, object classes, libraries and variables.</p>
+<p>Resource sharing: Resource sharing mechanisms, the third layer, embody some key cloud ideas:</p>
+<ul>
+<li>Provide software, computation, network and storage services.</li>
+<li>Allow a shared environment whereby multiple hardware images (e.g., virtual machines) and system images (e.g., general-purpose OSs) can run side by side on a single infrastructure along with security, resource, and failure isolations. These isolation properties are provided by a combination of hardware and software techniques that are covered in detail in Unit 3.</li>
+<li>Consolidate physical servers into virtual servers that run on fewer physical servers.</li>
+<li>Deliver agility and elasticity to rapidly respond to users’ resource and service demands.</li>
+</ul>
+<p>These ideas usually are addressed through virtualization, a technology discussed in detail in Unit 3.</p>
+<p>Infrastructure: Physical resources comprise the bottom layer and, in cloud computing, are primarily deployed on the cloud provider’s side. The broad resource classes, detailed in Unit 2, include the following:</p>
+<ul>
+<li>Compute resources, typically servers, which are computers designed for enterprise computing (as opposed to user workstations). They usually are rack mounted to utilize space efficiently.</li>
+<li>Storage resources maintain the cloud’s data, and application storage use usually is charged in terms of capacity usage (e.g., per gigabyte or terabyte usage).</li>
+<li>Network resources enable communication between servers as well as servers and clients.</li>
+<li>Software that manages the compute, network and storage infrastructure.</li>
+</ul>
+<p>Next we will discuss which of these abstractions can be provided as a leased service over a network. For example the services and resources required by a software developer will be different compared to someone who would like to have access to a WebMail application running on the cloud.</p>
+<p><img src="/images/cc19.jpg" alt="c"></p>
+<p><strong>Cloud Computing Services</strong></p>
+<p>In a broad sense, cloud services differ based on the needs of different users. This section reviews three popular types of cloud services:</p>
+<ul>
+<li>Software as a service (SaaS)</li>
+<li>Platform as a service (PaaS)</li>
+<li>Infrastructure as a service (IaaS)</li>
+</ul>
+<p>SaaS is any application in which the end user has access to a software application over the network and pays based on a variety of business models some of which are free. PaaS is the offering of software development platforms as a service which are utilized to develop SaaS applications. Finally, IaaS, is the leasing of virtualized infrastructure over the network. In this last model, the end user has the flexibility to install and use any software they please on the leased infrastructure.</p>
+<p>The following video (Video 1.2) reviews these services:</p>
+<p><a href="http://youtu.be/ltJmJEI0gGA" target="_blank" rel="external">Video 1.2: Service Models in Cloud Computing</a></p>
+<p><strong>The Software-as-a-Service Model</strong></p>
+<blockquote>
+<p>Software as a Service(definition)<br>Software as a service (SaaS) is a software delivery model in which software and associated data are hosted on a cloud. SaaS applications typically are accessed by users using a thin client via a Web browser.</p>
+</blockquote>
+<p>SaaS is one of the most common cloud service models in which the cloud provider delivers software as an Internet service (as discussed in Video 1.3). SaaS users simply use their browsers to access the software, thus eliminating the need to install, run, and maintain (update, patch, reconfigure etc.) the application on the user’s computer. The Web browser loads the SaaS application service dynamically and transparently.</p>
+<p><a href="http://youtu.be/bzfdewWofSU" target="_blank" rel="external">Video 1.3: Software as a Service</a></p>
+<p>SaaS has become a common software delivery model for many business applications, including accounting, collaboration, customer relationship management (CRM), management information systems (MIS), enterprise resource planning (ERP), invoicing, human resource management (HRM), content management (CM) as well as service desk management.</p>
+<p>With SaaS, the provider maintains the software and required infrastructure to run it. The provider routinely develops the software, and enhancements are automatically made available to all users the next time a user logs on to the service. In addition, any application data that results from the use of the service resides on the cloud and is available to the user from any location.</p>
+<p><strong>Characteristics of SaaS</strong></p>
+<p>A vast majority of SaaS solutions are based on what is referred to as multitenant architecture. In this architecture, a single version of the application, with a single configuration, is used for every customer (referred to as a tenant). To enable the service to scale well, it might be installed on several servers at the provider’s side. Dynamic scaling is utilized to allow more users to use the service as it becomes more popular.</p>
+<p>Typical characteristics of SaaS include:</p>
+<ul>
+<li>Web-based access to the software service.</li>
+<li>Software is managed from a central location by the cloud provider.</li>
+<li>Software is delivered in a one-to-many model in which “one” is the cloud provider and “many” are the cloud users.</li>
+<li>The cloud provider handles software upgrades and patches.</li>
+</ul>
+<p><strong>Pricing Models</strong></p>
+<p>Unlike traditional software, which is sold under the software licensing model (with an upfront license cost and an optional ongoing support fee), SaaS providers generally price applications using a monthly or annual subscription fee. This model enables SaaS to fulfill one of the main purported advantages of cloud computing - reducing the capital expenditure or the upfront cost of software. SaaS providers typically charge based on usage parameters, such as the number of users using the application.</p>
+<p><strong>Use Cases for SaaS</strong></p>
+<p>SaaS is a good model for certain types of applications, such as:</p>
+<ul>
+<li>Applications that are fairly standardized and do not require custom solutions. E-mail is a good example of a fairly standardized application.</li>
+<li>Applications that have a significant need for remote/web/mobile access, such as mobile sales management software.</li>
+<li>Applications that have a short-term need, such as collaborative software for a particular project.</li>
+<li>Applications in which demand spikes significantly, such as tax or billing software that is used once a month.</li>
+</ul>
+<p>However, there are situations where SaaS may not be the right choice, such as:</p>
+<ul>
+<li>Applications that require offline access to data.</li>
+<li>Applications that require significant customization.</li>
+<li>Applications in which policies or regulations disallow data from being hosted externally.</li>
+<li>Applications in which existing in-house solutions satisfy all of the organization’s needs.</li>
+</ul>
+<p><strong>Examples of SaaS</strong></p>
+<p>Web mail is one of the early examples of SaaS. Webmail enabled users with a browser and an Internet connection to access their e-mail anywhere at anytime. Offerings from Hotmail, Yahoo!, and Gmail are extremely popular. These services are based on the “freemium” model, wherein basic services are free, and more advanced features are available with a subscription. Furthermore, providers earn revenue mainly from advertisements that are displayed to the users as they use the service.</p>
+<p>Another popular example of SaaS is online office suites, such as Google Drive and Microsoft Office 365, which allow users to create, edit, and share documents online. Google utilizes the freemium model for individual users. Microsoft has a charge model based on the features required and the number of users per month.</p>
+<p><strong>The Platform-as-a-Service Model</strong></p>
+<blockquote>
+<p>Platform as a Service(definition)<br>Platform as a service (PaaS) is a computing platform that allows for the creation of Web applications in a simplified manner without the complexity of purchasing and maintaining any of the underlying software and infrastructure.</p>
+</blockquote>
+<p>PaaS-based offerings allow users to develop, deploy, and scale applications on platforms that are offered by cloud providers (Video 1.4). PaaS is analogous to SaaS, except that, rather than software delivered over the Web, it is a platform for the creation of software that is delivered over the Web.</p>
+<p><a href="http://youtu.be/mxXm5s0hK8A" target="_blank" rel="external">Video 1.4: Platform-as-a-Service</a></p>
+<p><strong>Characteristics of PaaS</strong></p>
+<p>PaaS offerings vary among providers but usually feature some basic functionality, which includes:</p>
+<ul>
+<li>Services to develop, test, deploy, host, and maintain applications in the same integrated development environment (IDE).</li>
+<li>Web-based user interface (UI) creation tools to help create, modify, and test various UI scenarios.</li>
+<li>Multitenant architecture in which multiple concurrent users utilize the same development tools.</li>
+<li>Built-in scaling mechanisms of deployed software that can be handled automatically by the cloud provider by load-balancing and failover mechanisms.</li>
+</ul>
+<p><strong>Pricing Models</strong></p>
+<p>Unlike the SaaS pricing model (which is a subscription or advertisement based model), PaaS usually is priced in terms of usage of the platform. For example, Google App Engine’s <a href="https://cloud.google.com/pricing/" target="_blank" rel="external">charge model</a> accounts for an application’s inbound and outbound bandwidth as well as certain API requests. Consequently, the more an application developed using PaaS gets used, the more the PaaS developer gets charged.</p>
+<p><strong>Use Cases for PaaS</strong></p>
+<p>PaaS is a good model for certain types of applications, such as:</p>
+<ul>
+<li>Rapid application development scenarios.</li>
+<li>Applications that require Web-based infrastructure to handle varying loads from users.</li>
+<li>Applications that may not need redeployment or migration to other platforms in the future.</li>
+</ul>
+<p>There are certain scenarios in which PaaS may not be ideal, such as:</p>
+<ul>
+<li>When the application needs to be highly portable in terms of where it is hosted because PaaS APIs can vary from one PaaS provider to another.</li>
+<li>When proprietary languages or APIs could impact the development process or cause trouble in the future due to vendor lock-in.</li>
+<li>When application performance requires customization of the underlying hardware and software.</li>
+</ul>
+<p><strong>Examples of PaaS</strong></p>
+<p>Google App Engine is an example of a PaaS. Using Google’s APIs, developers can create Web and mobile applications that run on Google’s infrastructure.</p>
+<p><strong>The Infrastructure-as-a-Service Model</strong></p>
+<blockquote>
+<p>Infrastructure as a service(definition)<br>Infrastructure as a service (IaaS) is a cloud computing model in which cloud providers make computing resources available to clients, usually in the form of instances or virtual machines.</p>
+</blockquote>
+<p>In the IaaS model, providers rent out compute resources in the form of instances or virtual machines, which have some form of configurable CPU, memory, disk, and network bandwidth attached to them (Video 1.5). Once provisioned, IaaS users can remotely connect to these instances and configure their choice of platforms and applications. This model offers the most amount of flexibility to the IaaS users in terms of software development and deployment. Rather than purchasing servers, software, data center space, or network equipment, users rent those resources as a fully outsourced service on demand.</p>
+<p><a href="http://youtu.be/sjQSV-5RaLU" target="_blank" rel="external">Video 1.5: Infrastructure-as-a-Service</a></p>
+<p><strong>Characteristics of IaaS</strong></p>
+<p>IaaS has the following characteristics:</p>
+<ul>
+<li>Computing resources are provided to IaaS users as a service.</li>
+<li>IaaS providers provide tools that enable IaaS users to configure the dynamic scaling of resources.</li>
+<li>IaaS providers usually have different resource offerings at different costs and follow a utility pricing model (typically calculated hourly).</li>
+<li>The same physical resources are shared among multiple users.</li>
+</ul>
+<p><strong>Pricing Models</strong></p>
+<p>Unlike the SaaS pricing model (which is a subscription- or advertisement-based model) or the PaaS model (which usually is priced in terms of number of transactions or bandwidth or storage used), IaaS usually is priced on an hourly basis, per instance. For example, Amazon Elastic Compute Cloud (EC2) offers a spectrum of compute resources as virtualized OS instances, which vary in compute, memory, storage, and bandwidth. At the time of writing, the Amazon EC2 t2.micro instance costs about 1.3 cents an hour when provisioned at Amazon’s Northern Virginia data center.</p>
+<p>Cloud providers can also choose to bill on a prorated or non-prorated basis. On a prorated basis, each partial hour is billed partially, while on a non-prorated basis, each partial hour is billed as a full hour. This difference becomes significant when IaaS users need a large number of instances for a short period of time for burst processing. Amazon EC2 instances are billed on a non-prorated basis.</p>
+<p><strong>Use Cases for IaaS</strong></p>
+<p>IaaS makes sense in a number of situations:</p>
+<ul>
+<li>When demand for computing resources is volatile. For example, e-commerce sites experience the most demand during holiday seasons.</li>
+<li>For new organizations that do not have the capital to invest in infrastructure on site.</li>
+<li>When organizations need to grow their IT resources rapidly, such as Internet startup companies.</li>
+<li>For temporary projects or temporary infrastructural needs (when organizations require a large amount of compute power for a limited amount of time).</li>
+</ul>
+<p>IaaS may not be the best option when:</p>
+<ul>
+<li>Regulatory compliance does not allow data to be offshored or outsourced.</li>
+<li>When applications have strict quality-of-service (QoS) requirements.</li>
+<li>When organizations have existing in-house customized infrastructure to meet their IT needs.</li>
+</ul>
+<p><strong>Examples of IaaS</strong></p>
+<p>Amazon Web Services (AWS), Microsoft Azure and Rackspace are cloud service providers that offer IaaS products. Specifically, AWS’s Elastic Compute Cloud (EC2) is one of the first commercially successful IaaS products. AWS EC2 rents out instances from various data center locations scattered around the world. Users can choose from various instance types, from a low-memory, single CPU (which costs about several cents an hour), all the way up to multicore, high-performance, GPU-accelerated instances (which can cost upto several US dollars an hour).</p>
+<h2 id="Cloud_Deployment_Models"><a href="#Cloud_Deployment_Models" class="headerlink" title="Cloud Deployment Models"></a>Cloud Deployment Models</h2><p><strong>Types of Clouds</strong></p>
+<p>There are three well-known deployment models for cloud computing: public, private, and hybrid clouds. A public cloud is owned by a cloud provider but is made available to the public. A private cloud is typically owned by an organization, which also controls the access to the cloud. A hybrid cloud is a combination of public and private clouds. We discuss the different types in terms of ownership, infrastructure, end-user availability, cost, security, and data location.</p>
+<p><strong>Public Cloud</strong></p>
+<p>In a public cloud, the cloud infrastructure is owned by a cloud provider and is accessible to the public over the Internet (Figure 1.7). The cloud provider hosts the cloud infrastructure, and end users can access it remotely without the need to buy and setup a working environment (i.e., buying hardware and software). Public cloud resources are shared among different end users. Public cloud users are typically charged for the duration for which these services are used. However, public cloud charge models vary across providers. The security and terms of use are defined by the provider, and hence, end users must work within the constraints of the provider when using their services.</p>
+<p><img src="/images/14529700702878.jpg" alt=""><br>Figure 1.7: Public cloud.</p>
+<p><strong>Private Cloud</strong></p>
+<p>In this second type of cloud, the cloud infrastructure is owned by an organization (Figure 1.8). The infrastructure is accessible to specific users via the organization’s intranet. The cloud environment needs to be procured, set up, operated, and maintained by the organization itself. The private cloud resources are typically shared amongst an organizations end users. Unlike the public cloud, security and terms of use of a private cloud are defined by the organization. The entire infrastructure is located in the organization, hence, security can be compliant with the organization’s policies.</p>
+<p><img src="/images/14529700996814.jpg" alt=""><br>Figure 1.8: Private cloud.</p>
+<p><strong>Hybrid Cloud</strong></p>
+<p>In a hybrid cloud, the infrastructure includes an owned private cloud and a leased public cloud (Figure 1.9). Hybrid clouds enable the idea of “cloud bursting,” in which an organization uses its private cloud for most of its needs and dynamically provisions resources in the public cloud when utilization exceeds the capacity of its private cloud.</p>
+<p><img src="/images/14529701211775.jpg" alt=""><br>Figure 1.9: Hybrid cloud.</p>
+<p>Other types of clouds continue to emerge, for example, Community Clouds which share infrastructure among different organizations that have common security or other concerns. For example, various non-profit organizations that work closely with government might build and share a community cloud. Another type is Distributed Cloud which provides cloud computing using a set of distributed machines located at different geographical locations. An example is Cloud@Home which leverages volunteered resources as a shared resource.</p>
+<h2 id="Popular_Cloud_Stacks"><a href="#Popular_Cloud_Stacks" class="headerlink" title="Popular Cloud Stacks"></a>Popular Cloud Stacks</h2><p>We will now do a quick run-down of cloud stacks that are currently popular in the market. We will quickly glance over the services offered by the major cloud providers, viz. Amazon Web Services, Microsoft, Google as well as OpenStack, the open cloud computing platform.</p>
+<p><strong>Amazon Web Services (AWS)</strong></p>
+<p>As of 2015, AWS is a market leader in several cloud computing segments, particularly in the IaaS space. Amazon Web Services started by commoditizing and leasing out several services that were developed in-house by Amazon’s engineering team to the wider public. AWS started by offering S3, the object storage service, and then went on to provide EC2, the elastic compute cloud. AWS is currently one of the largest cloud computing companies.</p>
+<p>AWS’s stack primarily consists of the following components:</p>
+<p>Compute: Amazon’s primary compute solution is Elastic Compute Cloud (EC2), which provides users with virtual machines, or instances of various capacities for hourly or longer term rentals. EC2 forms the backbone of the AWS cloud stack in terms of compute infrastructure. EC2 instances can be managed directly through the AWS EC2 APIs, or through other services such as AutoScaling.</p>
+<p>Storage: AWS offers multiple products in this space. Block storage is provided by Elastic Block Storage (EBS) volumes, which can be attached and detached from EC2 instances. Object storage is provided by the simple storage service (S3), which allows for binary large objects (BLOBs) to be stored and retrieved using a simple HTTP service. AWS also offers a varied suite of database services, including RDS which offers a managed SQL service, DyanmoDB, which offers a highly scalable, low-latency key-value store, and ElastiCache, an in-memory database store.</p>
+<p>Networking: Amazon’s Virtual Private Cloud (VPC), Elastic Load Balancer (ELB) and Route 53 are networking services that can be used to manage the connectivity between your instances and services deployed in AWS and the outside world.</p>
+<p>PaaS Products: AWS’s platforms are large and varied to cater to different application needs. AWS provides a suite of analytics platforms such as Elastic MapReduce (EMR), Amazon Kinesis and Redshift. Rapid web application development is possible through AWS Elastic Beanstalk. Amazon also offers many products to manage and control cloud deployments such as CloudFormation, OpsWorks and CodeDeploy.</p>
+<p><strong>Microsoft Azure</strong></p>
+<p>Microsoft Azure is one of the fastest growing cloud services in the market, with impressive growth and an increasingly expanding portfolio of cloud services. Azure also leverages Microsoft’s large data center presence worldwide, as well as CDN sites that are spread across 24 countries. Subsets of Microsoft’s Cloud Platform are available as the Windows Azure Pack, which allows an organization to build a private cloud which can seamlessly connect and interact with the Azure public cloud.</p>
+<p>Compute: Microsoft offers Azure Virtual Machines, which can be configured to run Windows or various flavors of Linux. The virtual machines are managed by Azure Cloud Services, which provides a multi-language cloud management platform. A unique aspect of Azure is the staging environment and simulator, which allows developers to test out a cloud deployment before putting it into production.</p>
+<p>Storage: Azure offers several storage solutions, including: Azure Blobs to store binary large objects; Azure Tables, to store NoSQL tables; and Azure Files, which offer SMB-based storage endpoints (Windows-compatible file servers) to mount and store files in the cloud. Azure also offers managed Relational Database services through the Azure SQL Database; a managed NoSQL document database service, DocumentDB; and high-performance key-value cache through Azure Redis Cache. Microsoft also offers a unique storage appliance called StorSimple, which is an SSD/HDD hybrid storage array deployed at the clients side, and also connects to Azure for backup, analytics and/or cloud deployment.</p>
+<p>Networking: Microsoft also offers virtual private networking services through Azure Virtual Network. Another unique feature of Microsoft’s Azure cloud is the ability to purchase dedicated fiber connectivity to Microsoft’s data centers through ExpressRoute. Azure Traffic Manager can be used to load balance traffic to Azure Virtual Machines.</p>
+<p>PaaS Products: Azure offers several PaaS products: Azure Websites is the primary PaaS platform, which enables developers to deploy scalable web applications on the Azure platform. Azure Mobile Services allow developers to create the infrastructure required to support mobile applications. In the analytics space, Azure offers several products including HDInsight, which is a managed Hadoop cluster service similar to Amazon’s EMR. Microsoft also offers managed Machine Learning and Stream Analytics services to developers.</p>
+<p><strong>Google Cloud Platform</strong></p>
+<p>Google’s Cloud Platform initially offered only PaaS products and APIs into Google’s most powerful products such as the Translate API. The Google Cloud Platform has now diversified into multiple services in response to the offerings of its competitors.</p>
+<p>Compute: Google’s primary compute platform is the Google Compute Engine (GCE), which offers Linux virtual machines of various sizes depending on the application requirements. A unique differentiator of Google’s platform is that instances are billed by the minute, with a minimum charge of 10 minutes.</p>
+<p>Storage: Google offers three primary storage services, namely Cloud Storage, which is an object storage service similar to S3 and Azure Blobs. Google’s Cloud Datastore is the managed NoSQL datastore service that allows users to store non-relational data with high scalability, but optionally supports transactions and SQL queries on your data. In addition, Google offers a traditional managed SQL database service called Cloud SQL.</p>
+<p>Networking: Google offers several networking products to manage the connections between Google’s cloud services and the outside world, namely Load Balancing, Interconnect and DNS services.</p>
+<p>PaaS Products: Google’s primary PaaS offering is Google App Engine (GAE), which allows developers to deploy an application using Google’s SDK. In addition, Google offers data analytics platforms such as BigQuery, which allows users to run SQL-like queries against multi-terabyte datasets. Cloud Endpoints allows developers to create RESTful services accessible from Mobile and browser clients. In addition, Google’s established products such as Prediction and Translate are available as APIs for access to developers to integrate into their own application.</p>
+<p><strong>OpenStack</strong></p>
+<p>All of the stacks we have looked at so far are proprietary stacks hosted by the companies on their public clouds. The OpenStack model is markedly different as it’s an open-source cloud stack that is available for both public and private clouds. OpenStack defines itself as a “cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter, all managed through a dashboard that gives administrators control while empowering their users to provision resources through a web interface”. OpenStack can be deployed on anywhere from a bunch of machines to an entire datacenter. Public clouds that offer OpenStack include Rackspace and HP Helion.</p>
+<p>Compute: OpenStack’s compute offering offers similar services as the public cloud counterparts, with the ability to manage virtualized and commodity server resources, with API-based access. A unique aspect of OpenStack’s compute system (called Nova) is support for a wide range of Hypervisors such as XenServer and KVM, as well as a wide range of hardware support, which includes ARM-based systems.</p>
+<p>Storage: OpenStack offers two types of storage services: an object storage service (called Swift), as well as block storage services (called Cinder). These can be deployed and scaled according to environment and the application needs. Database systems can be deployed on top of virtual machines and storage services, if required, but OpenStack does not use or promote any particular type of database solution. Public clouds that use OpenStack, like Rackspace, offer MySQL, Percona or MariaDB deployed on top of OpenStack VMs as a service.</p>
+<p>Networking: OpenStack offers a pluggable, scalable and API-driven system called Neutron to manage networks, VLANs and IP address pools for virtual machines. A novel feature of OpenStack networking is support for Software Defined Networks such as OpenFlow, which enable fine-grained configuration of networking hardware in response to provisioning or traffic requirements. More information on Software Defined Networks will be covered later.</p>
+<p>PaaS Products: OpenStack itself does not have any PaaS services, but public cloud providers that are built on top of OpenStack have a few. For example, Rackspace provides several platforms for website hosting and managed Hadoop clusters.</p>
+<p><strong>References</strong></p>
+<ol>
+<li>Li Ang, et. al. (2010). CloudCmp: Shopping for a Cloud Made Easy . Proceedings of the 2nd USENIX conference on Hot topics in cloud computing .</li>
+</ol>
+<h2 id="Cloud_Use_Cases"><a href="#Cloud_Use_Cases" class="headerlink" title="Cloud Use Cases"></a>Cloud Use Cases</h2><p><strong>Use Cases for the Cloud</strong></p>
+<p>With the rapid evolution of cloud technologies, there are new use cases emerging every day. In this section, we discuss some of the common cloud use cases.</p>
+<p><strong>Web/Mobile Applications</strong></p>
+<p>A main driver for cloud computing comes from Web hosting. Websites and Web applications typically are hosted on a server with a dedicated internet connection. Older Web hosting services either provided dedicated servers to clients or gave a fraction of a larger UNIX system to multiple clients. Now, with the advent of cloud computing, Web/mobile applications can be built on top of existing IaaS/PaaS or even SaaS services.</p>
+<ul>
+<li>SaaS based: Using the SaaS model, organizations can deploy one-size-fits-all applications on the Web. Common examples include WebMail, social networking sites, and utility websites, such as personal organizers, calendars, and planners.</li>
+<li>PaaS based: Application developers can use a range of online platforms and tools to create SaaS and mobile applications. Platforms such as Google App Engine, Parse, and AppScale are popular platforms on which Web and mobile applications can be built.</li>
+<li>IaaS based: Applications that need even more customization and flexibility can adopt the IaaS model by renting out virtual machines from providers such as EC2 and Rackspace and deploy a fully customized software stack to run the Web application.</li>
+</ul>
+<p>Consider the following scenarios:</p>
+<ul>
+<li>Animoto, an online video slideshow creator, decided to deploy a Facebook application. Traffic to the service surged, which resulted in Animoto scaling up from 50 servers to 3,500 servers in 3 days. Such elastic scalability is made possible through cloud computing.</li>
+<li>Online retail stores that use cloud computing, such as Amazon and Target.com, have been able to size up infrastructure for peak activity (such as the day after Thanksgiving, or Black Friday). Salesforce.com hosts customers ranging from 2 seat to more than 20,000 seat customers, all using the same Web platform.</li>
+</ul>
+<p><strong>Big Data Analytics</strong></p>
+<p>Many organizations have to deal with large amounts of data. This data may emanate from such areas as sensors, experiments, transactional data, and Web page activity. Big data processing usually requires a lot of computational and storage resources but, depending on an organization’s needs, may be periodic or seasonal. For example, Amazon may have business intelligence and analytics jobs setup for the end of the day, which may require a few hours of time from a few hundred servers. In these scenarios, cloud computing makes sense because these resources can be acquired on demand. Many firms even have fully automated analytics pipelines that automatically collect, analyze, and store data, with resources being provisioned on demand. Examples of big data scenarios include the following:</p>
+<ul>
+<li>The Union Pacific Railroad mounts infrared thermometers, microphones, and ultrasound scanners alongside its tracks. These sensors scan every train as it passes and send readings to the railroad’s data centers, in which pattern-matching software identifies equipment at risk of failure.</li>
+<li>Traditional retailers, such as Walmart, Sears, and Kmart, are following in the footsteps of online retailers, such as Amazon, by analyzing consumer spending habits to offer personalized marketing campaigns and offers to individual customers.</li>
+<li>Companies such as Time Warner and Comcast are using big data to track media consumption habits of their subscribers and provide value-added information to advertisers and customers. The video games industry tracks the gameplay habits of millions of console owners. Companies such as Riot Games sift through 500GB of structured data and over 4TB of operational logs every day.</li>
+</ul>
+<p><strong>On-Demand, High-Performance Computing</strong></p>
+<p>Modern science is impossible without high-performance computing (HPC). In addition to physical experimentation, computer-based simulation has become popular in fields ranging from astrophysics, quantum mechanics, and oceanography to biochemistry. Such workloads are computationally demanding and typically are run on dedicated clusters or at supercomputing facilities.</p>
+<p>Scientists are now increasingly looking toward the cloud for HPC resource demands. Amazon EC2 offers extremely powerful instances with more CPU and even GPU-acceleration for HPC use. Scientists find the availability of vast amounts of computational power appealing, particularly for small projects or time-sensitive, bursty analytics, such as experimental runs before submitting research paper deadlines. Examples of HPC on the cloud include the following:</p>
+<ul>
+<li>A 3,809-instance EC2 cluster was set up by Cycle Computing, Inc. for a pharmaceutical company to run molecular modeling jobs. The cluster has a total of 30,472 cores, 26.7TB of RAM, and 2PB of disk storage.</li>
+<li>Companies such as Pfizer, Unilever, Spiral Genetics, Integrated Proteomics Applications, and Bioproximity run bioinformatics and genomics workloads on Amazon EC2 instances.</li>
+<li>NASA JPL uses high-performance Amazon EC2 instances to process high-resolution satellite images.</li>
+</ul>
+<p><strong>Online Storage and Archival</strong></p>
+<p>One of the important resources that is available through cloud computing is storage. From personal storage solutions, such as Dropbox, to large-scale Internet storage systems, such as Amazon S3, online storage is a major cloud computing use case. The online storage options include:</p>
+<ul>
+<li>Web-based object storage: Services such as Amazon S3 allow users to store terabytes of data as simple objects that can be accessed over HTTP. Many websites use Amazon S3 to store static content, such as images.</li>
+<li>Backup and recovery: Services such as CrashPlan and Carbonite provide online backup of customer data, which is a great option as a secure, off-site backup solution.</li>
+<li>Media streaming and content distribution: Services such as Amazon CloudFront not only store large amounts of data but assist in content delivery. Requests to pull data from CloudFront are automatically routed to the nearest server, thereby decreasing latency for time-sensitive media, such as video.</li>
+<li>Personal storage: Services such as Dropbox and Google Drive are popular among users to store personal documents online for anytime, anywhere access.</li>
+</ul>
+<p><strong>Rapid Application Development and Testing</strong></p>
+<p>One of the major advantages of the cloud is the ability to rapidly deploy and test applications. An entire computing environment can be deployed in minutes and then torn down and discarded just as easily after the testing is complete. For many companies, the value is in allowing developers to quickly create enhancements and features and test them without any risk. Specialized hardware and servers do not need to be ordered and installed. Within mere minutes, a virtual server can be spun up on EC2. Applications can also be easily stress/load tested. Existing servers can be cloned to perform scalability studies as well.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Introduction to Cloud Computing Summary</p>
+<ul>
+<li>Cloud computing is the delivery of computing as a service over a network, whereby distributed resources are provided to the end user as a utility.</li>
+<li>The idea of utility computing originated in the 1950s and 1960s, but the enabling technologies evolved decades later and have finally matured to a state in which cloud computing is a viable option for organizations to invest in.</li>
+<li>The enabling technologies of cloud computing are networks, virtualization and resource management, utility computing, programming models, parallel distributed computing, and storage technologies.</li>
+<li>Cloud computing consists of four building blocks: application software, development platforms, resource sharing, and infrastructure.</li>
+<li>Cloud service models exist at various levels in the building blocks.</li>
+<li>Software as a service (SaaS) is at the application software layer and is the delivery of SaaS over the Internet (typically through a Web browser).</li>
+<li>Platform as a service (PaaS) is at the development platform layer and can be defined as a computing platform that allows for the creation of Web applications in a simplified manner without the complexity of purchasing and maintaining any of the underlying software and infrastructure.</li>
+<li>In the Infrastructure as a service (IaaS) model, providers rent out compute resources in the form of instances or virtual machines, which have some form of CPU, memory, disk, and network bandwidth attached to them.</li>
+<li>There are three well-known deployment models for cloud computing: public, private, and hybrid.</li>
+<li>Popular cloud providers include Amazon Web Services, Microsoft Azure, Google Cloud Platform and OpenStack. Each provider typically offers a stack consisting of compute, storage and networking services, among others.</li>
+<li>Some of the most popular use cases for the cloud include: web and mobile applications, big data analytics, on-demand high performance computing, online storage and archival, and rapid application development and testing.</li>
+</ul>
+<hr>
+<h1 id="Economics_2C_Benefits_2C_Risks_2C_Challenges_and_Solutions"><a href="#Economics_2C_Benefits_2C_Risks_2C_Challenges_and_Solutions" class="headerlink" title="Economics, Benefits, Risks, Challenges and Solutions"></a>Economics, Benefits, Risks, Challenges and Solutions</h1><p>Now that we have covered the fundamental ideas behind cloud computing, it is important to explore some of the benefits, risks and ongoing challenges facing cloud computing. Since one of the main drivers of cloud adoption is reducing upfront costs and leveraging the economies of scale, we will then look at the economics behind the cloud from two perspectives- that of cloud users and service providers.</p>
+<p>Since computing has migrated from a product to a service, there should be methods to define relationships between the users and service providers. The cloud has adopted traditional contractual guarantees like Service Level Agreements (SLAs) that meet a cloud user’s Service Level Objectives (SLOs). We will see how Cloud Service Providers define SLAs and SLOs to ensure a level of service to their clients. We will also briefly introduce the concept of cloud service auditing to verify conformity with SLAs.</p>
+<p>Apart from contractual concerns, security and privacy are the biggest challenges that are preventing sensitive applications from moving to the cloud. We will explore some of the unique security challenges raised by the cloud and the controls required to resolve them.</p>
+<p>Although the cloud has benefited from rapid adoption, there is no one-size-fits-all solution that encompasses all IT requirements. Keep in mind that the cloud is an emerging and fast-evolving paradigm with many active research areas exploring its future.</p>
+<h2 id="Benefits_2C_Risks_2C_and_Challenges_of_Cloud_Computing"><a href="#Benefits_2C_Risks_2C_and_Challenges_of_Cloud_Computing" class="headerlink" title="Benefits, Risks, and Challenges of Cloud Computing"></a>Benefits, Risks, and Challenges of Cloud Computing</h2><p><strong>Benefits of the Cloud</strong></p>
+<p>The popularity of cloud computing is driven by its numerous benefits, including improved economics, simplified IT management, scalability, flexibility, improved utilization, and a reduced carbon footprint. The following video (Video 1.6) discusses these benefits.</p>
+<p><a href="http://youtu.be/uKpFLuqOy-o" target="_blank" rel="external">Video 1.6: The benefits of cloud computing</a></p>
+<p>Although presented earlier and in the video above, let us consider the cloud benefits individually:</p>
+<ul>
+<li>Economic model: Organizations typically estimate their IT requirements for a period of 1 to 5 years in advance in a process called capacity planning. Capacity planning leads organizations to estimate IT investments for peak loads, which could lead to either excess capacity at times (underutilized resources) or deficient capacity when loads exceed projections (which could lead to service degradation). With the pay-as-you-go economic model, organizations pay for the resources that they need. Organizations no longer have to pay upfront cost, invest in and procure expensive computing infrastructure, nor do they have to pay recurring costs to manage their infrastructure. This is particularly important for startups because by leasing compute resources they benefit from reduced upfront cost and reduced time to market when creating and making their offerings available to the general public.</li>
+<li>Simplified IT management: Users of cloud services need not allocate time and resources to setup, operate, and maintain their IT resources. The cloud provider, however, competes for clients and hence invests significant resources to manage and maintain their offerings with high reliability.</li>
+<li>Scalability: In a traditional, in-house computing environment, organizations can take anywhere from a few days to several months to procure, set up, and operate IT infrastructure. Cloud service providers provision rented computing resources for their clients in a matter of hours or even minutes. Clients not only can scale up resources on demand but can scale them down during lull periods to save money. Therefore, clouds enable the important property of elasticity, wherein resources can be both provisioned and deprovisioned in a dynamic or programmatic manner to adapt to workload changes. In order to support elasticity, many cloud service providers make automated scaling solutions available to dynamically alter resource provisioning as demand fluctuates.</li>
+<li>Flexibility: For certain cloud services, providers offer their users the flexibility to configure any software platform to run on any available operating system as a virtualized image on custom-provisioned, rented infrastructure. Cloud offers a shift from an organization’s inflexible IT design decisions (that are tied to specific development platforms and infrastructure) to more flexible, elastic, and modular choices.</li>
+<li>Improved utilization: Resource utilization is significantly improved with cloud computing because physical resources are shared across users (multitenancy). Through virtualization, servers are now consolidated as operating system images that are sharing the same system resources. Hence, utilization is improved, which leads to overall savings in power and cooling and reduces the carbon footprint.</li>
+<li>Rapid and Global Deployment: By employing the services of cloud service providers that also have a global data center presence, startups can compete with established players by rapidly rolling out applications and services across a global audience. This is particularly important of social media startups which may see viral growth trends as services become popular across multiple countries.</li>
+</ul>
+<p><strong>Risks of Cloud Computing</strong></p>
+<p>By embracing cloud services, users and organizations can take advantage of the above benefits, however, using these services introduces several risks, such as:</p>
+<ul>
+<li>Vendor lock-in: Cloud computing is slowly becoming standardized. OpenStack is an open source cloud computing platform which aims to standardize the cloud-computing software stack but is not fully compatible with Amazon and is incompatible with current offerings from Microsoft, and Google. Lack of standardization can lead to the situation of vendor lock-in, such as when a client signs up for a nonstandard cloud service, develops applications, and deploys data on it. The lack of standardization makes it unlikely for the client to move to another vendor seamlessly. The client often requires a third-party cloud migration specialist or an additional service to move the application to a different platform.</li>
+<li>Security risks: Because cloud computing with public clouds can result in an organization’s data being shipped beyond its four walls, security becomes a primary risk and concern. For certain domains, it is simply unacceptable for users or organizations to do so, in which case they may have to resort to building a private cloud or own resources with restricted access to meet their needs. However, certain markets that have tight security requirements have niche solutions. An example is Amazon GovCloud, which meets certain US federal government requirements for data security and integrity. GovCloud is physically distinct from other cloud infrastructures that Amazon makes available to the public, thereby reducing exposure.</li>
+<li>Privacy risks: The use of the cloud also raises many privacy-related concerns. Depending on the laws under which a cloud service provider operates, governments may have the power to search and seize data from the provider without the client’s explicit consent or notification. Furthermore, clients cannot be fully assured of data confidentiality when using public clouds. We discuss some of security risks associated with cloud computing later in this module.</li>
+<li>Reliability risks: Clouds are also plagued with reliability issues. In December 2012, Netflix users experienced a service outage due to Amazon’s “connectivity issues and degraded performance” from their servers in Virginia. Amazon EC2’s Northern Virginia data center, one of the most popular public clouds, went down for a few days in 2011, affecting websites such as Reddit and Foursquare. Windows Azure also faced a similar problem, and their services went down for 2½ hours in Western Europe. Public clouds hence are a potential reliability risk that can affect organizations. Clients must design for failures and use features such as Amazon’s multiple availability zones, in which clients can set up failover and redundant infrastructures to take over in case of failure, which comes at a price, of course. Cloud users attempt to mitigate the cloud reliability risk by signing Service Level Agreements (SLAs) that enable compensation when exposed to such events. Since cloud services can only be accessed over the network, any disruption of connectivity will cause the application to fail, leading to a loss of reputation and/or revenue.</li>
+</ul>
+<p>Some of these risks are not specific only to cloud computing, but are typical for any service provider- be they banking or health services. As with any other service, cloud service providers must carefully consider the implications of these risks and design solutions to mitigate them as their credibility and reputation directly impacts their rate of adoption. Cloud adopters who offer their own services must also safeguard their reputation against these risks.</p>
+<p><strong>Challenges in Cloud Computing</strong></p>
+<p>Along with the benefits and risks, there are several challenges associated with the adoption of cloud computing:</p>
+<ul>
+<li>Application engineering and development: A cloud inherently offers the promise of on-demand, dynamically scalable infrastructure. Programming a cloud, however, is more complex than writing code for a single machine. New programming paradigms (such as MapReduce, Spark or GraphLab), coupled with provider APIs to manage infrastructure, help developers manage complexity but still present a steep learning curve. In addition, skilled developers with cloud experience are rare, and both costs and time for application development increase substantially with clouds. Finally, these new cloud programming models and APIs are continually evolving, which may add to recurring engineering and development costs.</li>
+<li>Movement of data: Use of public clouds typically requires connecting to the cloud over the Internet. Because of this requirement, movement of data to and from the cloud is significantly slower than in an organization’s local area network (LAN). Although the cloud allows applications to target large amounts of data (big data), data movement can become a limiting factor for cloud adoption. For example, Amazon allows clients to upload large datasets for free or ship hard disks with data so that they can load them into the required cloud service.</li>
+<li>Quality of service (QoS): As mentioned earlier, cloud infrastructure is typically shared among many users. This sharing presents a challenge for cloud providers to offer QoS assurances to their clients. This challenge could disallow certain performance-sensitive applications from being migrated to the cloud. QoS in clouds is an important area in cloud research. For example, regulating I/O bandwidth to specific virtual machines could offer predictable performance for critical applications. I/O virtualization is covered in Unit 3.</li>
+</ul>
+<h2 id="Business_Case_for_Cloud_Computing__28for_Users_29"><a href="#Business_Case_for_Cloud_Computing__28for_Users_29" class="headerlink" title="Business Case for Cloud Computing (for Users)"></a>Business Case for Cloud Computing (for Users)</h2><p><strong>Evolution of the IT Business Model</strong></p>
+<p>An organization’s IT costs are many-fold, which include expenses for hardware and software as well as expenses for support and management. Typically, these costs fall into two categories:</p>
+<ul>
+<li>Capital expenses (CapEx): The initial investment for a particular IT service or solution. For example, when an organization decides to implement a software solution to address a particular need, say, enterprise resource planning (ERP), CapEx would include all physical hardware and software purchases. CapEx investments are for the lifetime of the long-lived solution. CapEx are an upfront expense, which are either paid as a lump sum or financed with extra charges.</li>
+<li>Operational expenses (OpEx): The recurring costs incurred while operating a particular system. For the ERP case, that would include utility fees (such as power and cooling) to keep the infrastructure running, space leases if the facility is rented, personnel costs to support the system, and software support and license fees. OpEx are typically a monthly recurring charge.</li>
+</ul>
+<p>The business model for IT software has evolved over the years into the following forms:</p>
+<ol>
+<li>Traditional model: An organization purchases licensed software, which it then owns and maintains.</li>
+<li>Open-source model: Software is essentially free, but the organization pays vendor support costs.</li>
+<li>Outsourcing model: An organization hires another company, possibly overseas, to manage and maintain the software.</li>
+<li>Hybrid model: A software vendor sells highly standardized software to many clients, along with software management and support, thereby amortizing costs of expertise, software management, and support over several clients.</li>
+<li>Cloud computing model: Software is developed and delivered over the Internet to many clients at lower costs.</li>
+</ol>
+<p>The following video (Video 1.7) discusses the evolution of these models with examples: </p>
+<p><a href="http://youtu.be/yOTcTwWbEpk" target="_blank" rel="external">Video 1.7: Economics of cloud computing, software service models, and costs</a></p>
+<p><strong>Reducing Capital Expenditure</strong></p>
+<p>Organizations choose to reduce their capital expenditures so that they limit the commitment of large investments for long-lived IT resources. Shifting expenses away from capital expenditures into operational expenditure enables organizations to stretch their IT budgets and limit upfront costs. Specifically, organizations opt to make investments that have a bigger return on investment in the short term rather than investing in long-lived, depreciating IT resources. Operating expenses are pay-as-you-go, meaning organizations pay by the month and get value every month. With cloud computing, they can simply rent the resources and incur little to no capital expenditures.</p>
+<p>The Cloud Computing paradigm offers a transition of the IT Business Model from CapEx to OpEx. CapEx in IT systems is a long-term investment that freezes a large sum of money into a single investment. OpEx, on the other hand, is a recurring expense which could enable the company the agility to utilize the funds in other profit yielding investments.</p>
+<h2 id="Economics_of_Cloud_Computing__28for_Providers_29"><a href="#Economics_of_Cloud_Computing__28for_Providers_29" class="headerlink" title="Economics of Cloud Computing (for Providers)"></a>Economics of Cloud Computing (for Providers)</h2><p><strong>Cloud Service Provider Economics</strong></p>
+<p>Since the cloud user has no longer needs to invest in Capital Expenditures, from a cloud service provider’s perspective, long-term CapEx as well as recurring OpEx costs are unavoidable. An important challenge for cloud service providers is to satisfy the demands of their clients while achieving high-average utilization in order to make a profit, which depends on their ability to build data centers with high efficiency and reliability at manageable costs. Cloud service providers amortize their costs over a large number of users.</p>
+<p>Cloud service providers build large and reliable data centers in order to attract a large number of users in order to improve their profitability. Just like other utility providers, cloud service providers can then procure and maintain hardware and software at significant savings per unit.</p>
+<p><strong>Economies of Scale</strong></p>
+<p>Cloud service providers organize their infrastructure into large data centers, which typically leverage three main areas:</p>
+<ul>
+<li>Supply-side savings: Large-scale data centers lower costs per server.</li>
+<li>Demand-side aggregation: Aggregating demand for computing allows server utilization rates to increase.</li>
+<li>Multitenancy efficiency: When changing to a multitenant application model, increasing the number of tenants (i.e., customers, or users) lowers the application management and server cost per tenant.</li>
+</ul>
+<p>Cloud service providers undertake the difficult task of building and maintaining data centers for users. For this model to be feasible, cloud service providers will have to leverage economies of scale and bring in many users. Providers benefit from economies of scale in the following areas:</p>
+<ul>
+<li>Cost of power: Electricity is rapidly becoming the largest element of total cost of ownership (TCO) in a data center, contributing to approximately 15% to 20% of total costs. Large cloud service providers can place their data centers in locations with lower cost of power and sign bulk purchase agreements with electric providers to reduce electric costs significantly.</li>
+<li>Infrastructure labor costs: Cloud computing enables repetitive management tasks to be automated. In addition, in larger facilities, a single system administrator can service thousands of servers with the use of advanced management software.</li>
+<li>Buying power: Cloud service providers can purchase equipment in bulk from manufacturers, which can lead to major discounts over smaller buyers. In addition, cloud providers standardize their servers and equipment, which helps in lowering purchase and support costs compared to smaller IT departments.</li>
+</ul>
+<p>Technologies in data centers and their design considerations are covered in detail in Unit 2.</p>
+<h2 id="Service_Level_Agreements_and_Objectives"><a href="#Service_Level_Agreements_and_Objectives" class="headerlink" title="Service Level Agreements and Objectives"></a>Service Level Agreements and Objectives</h2><p>In this course so far, we have talked about the fundamental ideas behind cloud computing and some of the service models that have emerged under the cloud computing paradigm. Assuming an organization wants to move their infrastructure and services to a cloud provider, several questions arise. For example, how does an organization:</p>
+<ul>
+<li>define its requirements in terms of the services that they require from the cloud service provider?</li>
+<li>identify the type and quantity of the services that it requires?</li>
+<li>negotiate the level of service and support that it expects from a cloud provider?</li>
+<li>monitor and validate the type and quality of service that was guaranteed by the cloud service provider?</li>
+</ul>
+<p>When an organization needs to formally state its service requirements in business and legal terms, it defines these requirements in terms of service level objectives.</p>
+<blockquote>
+<p>Service Level Objective(definition)<br>A service level objective is defined as a key element that defines some aspect of the service which is expected from the service provider.</p>
+</blockquote>
+<p>A common service level objective with cloud service providers, for example, is an uptime guarantee, where-in a service is guaranteed to be available and running within normal operational parameters for a certain percentage of the time.</p>
+<p>Service level objectives are typically defined and negotiated between the client and a service provider in a larger contract known as the service level agreement.</p>
+<p><strong>Service Level Agreements</strong></p>
+<blockquote>
+<p>Service-Level-Agreement(definition)<br>A service level agreement (SLA) is a contract between a service provider (either internal or external) and the client that defines the level of service expected from the service provider.</p>
+</blockquote>
+<p>Service level agreements exist in many industries in a supplier-customer relationship exists for a service that is provided by the supplier to the customer periodically. Service level agreements in information technology, in their current form, have been used since late 1980s by fixed line telecom operators as part of their contracts with corporate customers.</p>
+<p>A typical SLA may consist of the following segments:</p>
+<ul>
+<li>a definition of services to be provided by the service provider to the client,</li>
+<li>methods to measure performance,</li>
+<li>protocols to manage problems,</li>
+<li>a list of customer duties,</li>
+<li>warranties that need to be honored by the service provider,</li>
+<li>procedures involved for disaster recovery, and</li>
+<li>process and policies regarding the termination of the agreement.</li>
+</ul>
+<p><strong>SLAs in Cloud Computing</strong></p>
+<p>SLAs have evolved over the years to cater to different types of IT services. The evolution of shared infrastructure services such as clouds have necessitated the use of strong service level agreements. SLAs by definition can define any level of service, but a well-structured and negotiated SLA between a cloud service provider and a client will ideally [1] :</p>
+<ul>
+<li>Codify the specific parameters and minimum levels required for each element of the service, as well as remedies for failure to meet those requirements.</li>
+<li>Affirm the client’s ownership of its data stored on the service provider’s system, and specifies the client’s rights to get it back.</li>
+<li>Detail the system infrastructure and security standards to be maintained by the service provider, along with the client’s rights to audit their compliance.</li>
+<li>Specify the client’s rights and cost to continue and discontinue using the cloud service provider’s service.</li>
+</ul>
+<p><strong>Auditing in Cloud Computing</strong></p>
+<p>Although cloud computing provides numerous advantages, one of its main challenges continues to be the reliability of cloud services. A fast evolving approach to address reliability is cloud auditing. Let’s assume that a client has employed one or more cloud services from a cloud service provider. The cloud computing business model abstracts away many aspects of the infrastructure from the client which now become the responsibility of the cloud service provider. The cloud services are managed by the cloud service provider to implement the services agreed upon in the SLA.</p>
+<p>Auditing evaluates whether the cloud services comply with the SLA through monitoring. A third party auditor is requested and trusted by the client to assess the cloud service(s). Hence, public auditability of cloud services is necessary to allow clients to resort to an external auditor to check the integrity of the cloud services. The cloud service provider makes available resource usage and performance monitoring and takes measures to ensure the security of its services to its clients through providing physical security, isolation, authentication, firewalls and APIs. A third party auditor should be able to efficiently audit the cloud services without overloading the client and without adding vulnerabilities to the client’s services.</p>
+<p>Given the nature of cloud services, near real time auditability is becoming necessary. This requires real time monitoring and evaluation in order to trigger a rapid response to safeguard the client’s service and reputation. In public clouds, this has to be achieved while preventing the exposure of client data to other cloud clients. Near real-time auditing is rapidly evolving and becoming a requirement for reliable cloud computing services which will require audit trails and monitoring of service, performance and security metrics among others.</p>
+<p><strong>References</strong></p>
+<ol>
+<li>Thomas Trappler If It’s in the Cloud, Get It on Paper: Cloud Computing Contract Issues . <a href="http://www.educause.edu/ero/article/if-its-cloud-get-it-paper-cloud-computing-contract-issues" target="_blank" rel="external">http://www.educause.edu/ero/article/if-its-cloud-get-it-paper-cloud-computing-contract-issues</a>.</li>
+</ol>
+<h2 id="Cloud_Security_-_Threats"><a href="#Cloud_Security_-_Threats" class="headerlink" title="Cloud Security - Threats"></a>Cloud Security - Threats</h2><p>Now that we understand how the agreement between client and provider is met, let’s take a look at a major concern for cloud service providers and users alike: security.</p>
+<p>As cloud service providers compete for market dominance, their security features have become a key service differentiator.</p>
+<p>At one level, cloud service providers can leverage the economies of scale. By implementing security measures at a large scale, they are able to provide more affordable defensive mechanisms at a lower cost. Typically, this includes network monitoring and filters, patch management, hardening, incident response &amp; forensics, and various types of threat management.</p>
+<p>They also generally provide an accessible interface to modify security settings, allowing secure key rotation, timely updates and patches. Additionally, since all actions are virtualized, these can be regularly snapshotted and analyzed forensically for exploitation using vulnerabilities that are yet unknown (also known as zero-day vulnerabilities).</p>
+<p>Let us look at the cloud from the point of view of a traditional enterprise which used in-house IT infrastructure. Enterprises find that they lose control as a function of asset ownership as they move away from traditional servers towards private clouds and then up the stack from IaaS to SaaS (Figure 1.10). In all three service models, the cloud vendor has full ownership of the underlying infrastructure (networks, storage and hosts). In PaaS, the service provider may additionally claim partial ownership of the application infrastructure. Finally, in the SaaS model, the application infrastructure is fully owned by the service provider.</p>
+<p><img src="/images/14529717394416.jpg" alt=""><br>Figure 1.10 - Enterprises lose control as you move up the public cloud stack</p>
+<p>In all three models, however, the enterprise has full ownership over all its data. Unfortunately, it does not have full control over this data, as it is stored outside the network perimeter. This lack of control over sensitive data storage and transfer is one of the leading inhibitors to large-scale cloud adoption. Two-thirds of potential adopters have placed “data security and privacy” as the biggest risk in cloud computing (Figure 1.11).</p>
+<p><img src="/images/14529717521135.jpg" alt=""><br>Figure 1.11 - Security concerns are the biggest barrier to large-scale cloud adoption</p>
+<p><strong>Threats</strong></p>
+<p>The biggest threats at a high-level are those caused due to vendor lock-in (since applications are not very portable between platforms), compliance risks (e.g. meeting most compliance standards is more complex on public clouds), and a loss of governance (most cloud service providers do not provide SLAs related to data security assurances).</p>
+<p>At a lower level, the threats are due to shared infrastructure, lack of a hard perimeter, and limited control over physical data storage and deletion. It must be noted that attacks against hypervisors and shared hosting are significantly rarer and more difficult than attacks against OSes and networks that plague traditionally deployed applications.</p>
+<p>The Cloud Security Alliance provides a taxonomy of threats, which are summarized here:</p>
+<p><strong>Threat #1: Abuse and Nefarious Use of Cloud Computing</strong>(IaaS, PaaS)</p>
+<p>Criminals can leverage the anonymity provided by public clouds to launch malicious attacks at low cost. Public clouds have been used for Command and Control Botnets, CAPTCHA cracking, rainbow table computation, launching dynamic attacks. Each of these is a malicious action that relies on brute force, which is provided by the data center.</p>
+<p>Vendors have attempted to counter this threat by adding strict registration checks and comprehensively monitoring all network traffic. For instance, a cloud service provider may monitor metadata about all emails originating from it to find out if a customer is misusing it to send spam.</p>
+<p><strong>Threat #2: Insecure Interfaces and APIs</strong>(IaaS, PaaS, SaaS)</p>
+<p>As mentioned earlier, cloud vendors provide easy to use consoles, dashboards, interfaces and web services to interact with the cloud. However, this brings an additional threat to the entire network if any vulnerability exists in these interfaces. Thus, even if the entire cloud infrastructure is designed securely, a single vulnerability in the provider’s website may allow an attacker to take over a customer’s account.</p>
+<p>Most vendors now use strong, multi-factor authentication, detailed logging, anomaly detection and secure defaults to counter this threat. Web interfaces are released to the public only after extremely strict checking for vulnerabilities in the code as well as in the implementation.</p>
+<p><strong>Threat #3: Malicious Insiders</strong>(IaaS, PaaS, SaaS)</p>
+<p>The threat of malicious insiders is expanded when using public clouds. Unlike an in-house IT deployment, Enterprise employees are now not the only ones with access to the datacenter. Since the service runs on an external machine and stores data on the provider’s resources, it is always possible that a disgruntled or motivated employee of the cloud service provider could do something that adversely impacts the provider’s service.</p>
+<p>To counter this threat, cloud service providers enforce strict standards for employees and conduct detailed audits and monitoring. They also contractually define HR and breach notification policies as a part of the service contract.</p>
+<p><strong>Threat #4: Shared Technology Issues</strong>(IaaS)</p>
+<p>This is one of the fundamental “new” threats due to the cloud paradigm. The cloud works by providing multiple tenants (for e.g., you and your classmates) with virtualized access to shared infrastructure. Isolation between co-tenants is provided by a sandbox known as a “hypervisor”, which mediates access between virtual machines and the underlying infrastructure.</p>
+<p>Although co-tenants should be unable to access their neighbors’ details, several exploits over the years have allowed tenants to break out of their sandboxes and steal data from another tenant’s memory, network etc. An example of this could be that as you write code on AWS to solve class projects, a classmate manages to log in to a VM on the same physical machine as you, and then use some properties of the shared physical machine to steal your code. Isolating all users completely is a very hard problem, even with the hypervisors of today.</p>
+<p>To mitigate this, cloud service providers add strong monitoring capabilities, using SLAs to ensure timely vulnerability and patch management, and conducting regular audits. Apart from that, hypervisors must be periodically hardened against any potential new attacks.</p>
+<p>For e.g. <a href="http://xenbits.xen.org/xsa/" target="_blank" rel="external">the xen security advisory page</a> shows security advisories against the Xen hypervisor. Each time an attack becomes known, AWS must patch all their servers so that an attacker cannot use these exploits.</p>
+<p><strong>Threat #5: Data Loss or Leakage</strong>(IaaS, PaaS, SaaS)</p>
+<p>This is another drawback of externally hosted clouds. Often, regulations mandate that an enterprise bear legal responsibility for any sensitive data that is used or stored by their applications.</p>
+<p>Even if this data is encrypted and stored on the cloud, the key must also be on the cloud to decrypt this data.</p>
+<p>New research in encryption technologies has led to the rise of homomorphic and split-key management. Homomorphic keys allow data processing to be carried out on encrypted data. Thus, the key itself does not need to be transferred to the cloud. Split-key solutions work by having a master key (stored securely off-cloud) and several per-application/module slave-keys. As the master is never on the cloud, the threat of data breach is reduced.</p>
+<p>Unfortunately, these techniques are still limited and costly to implement. At a contractual level, it is important to define backup, data retention, data wiping, secure key management and storage processes and sufficient auditing privileges. This implies that a certain set of well-designed standards must be followed, such as the <a href="http://csrc.nist.gov/publications/nistpubs/800-144/SP800-144.pdf" target="_blank" rel="external">NIST Guidelines on Security and Privacy in Public Cloud Computing</a>.</p>
+<p>It is important to also deal with all jurisdictional issues in the contract. Even though data is stored with the cloud service provider, contracts are framed so that any liability in case of a breach is due to the application owner. Hence, most cloud service providers are required to complete ISO 27001, SAS-70 and other region-relevant audits, which indicate the process maturity and the presence of security controls.</p>
+<p><strong>References</strong></p>
+<ol>
+<li>Anthes, Gary (2010). “Security in the Cloud .” Communications of the ACM. Number 53.11. 16-18 Pages.</li>
+<li>Nanavati, Mihir (2014). “Cloud Security: A Gathering Storm .” Communications of the ACM. Number 57.5. 70-79 Pages.</li>
+<li>Top Threats Working Group (2013). The Notorious Nine: Cloud Computing Top Threats in 2013 .</li>
+</ol>
+<h2 id="Cloud_Security_-_Control__26amp_3B_Auditing"><a href="#Cloud_Security_-_Control__26amp_3B_Auditing" class="headerlink" title="Cloud Security - Control &amp; Auditing"></a>Cloud Security - Control &amp; Auditing</h2><p>When running an application on the cloud, different aspects of security must be controlled by different entities. For instance, Figure 1.12 (from AWS) shows the break up of security responsibilities between the provider and the customer.</p>
+<p><img src="/images/14529720083304.jpg" alt=""><br>Figure 1.12 Security Responsibilites in AWS.</p>
+<p>Many classes of applications require different infrastructure, process and security certifications. Most cloud service providers will comply with a majority of the popular certifications and audit requirements followed in the US and Europe. The following table from Putcher et. al. [3] compares the most popular providers (Figure 1.13):</p>
+<p><img src="/images/14529720330687.jpg" alt=""><br>Figure 1.13 Security Responsibilites in AWS.</p>
+<p>Understanding the details of these certifications is not a goal for this course, but Mather [1] provides a good reference for those interested in digging deeper into these aspects.</p>
+<p>To develop an application that passes these compliance checks, both the cloud service providers as well as application developers must apply a minimal set of security controls, which we will explore below. As with the rest of this course, we look at controls from a predominantly IaaS perspective. Obviously, as we move up the stack, the cloud service provider has to ensure the security of the resources it is responsible for.</p>
+<p>For an IaaS cloud, the following table gives an overview of the security controls to be implemented by both parties:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Domain</th>
+<th style="text-align:left">Cloud Service Provider’s Responsibility</th>
+<th style="text-align:left">Customer Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Identity and Access Management</td>
+<td style="text-align:left">A cloud service provider must provide information to customers about who is using the service. This requires that they: (1)Deliver and maintain an authentication service (so that users cannot access resources without explicit privileges) (2)Create a service that allows account management policy configuration (this means that customers can add/remove users, roles) (3)Adopt insider misuse protections (monitor employees, restrict access to sensitive server locations)</td>
+<td style="text-align:left">Using the authentication and access control service provided by the cloud provider, customers must: (1)Define roles, groups and permissions (2)Create and disseminate credentials (3)Use access control logging (this means that the customer will have a log of all sensitive user events) (4)Use Multifactor Authentication where appropriate</td>
+</tr>
+<tr>
+<td style="text-align:left">Availability and Fault-tolerance</td>
+<td style="text-align:left">To ensure that the cloud is resilient to failure, cloud service providers must have: (1)Tape backups and redundancy of storage, compute systems (2)Geo-distributed datacenters</td>
+<td style="text-align:left">The redundancy provided by the cloud service provider has to be leveraged by the customer, who should: (1)Add redundant options for connectivity to all endpoints (2)Use application-layer backups and snapshots of instances, storage state (a snapshot of a VM instance, or a database, stores its state at a fixed moment in time, allowing a recovery to be performed from that point)</td>
+</tr>
+<tr>
+<td style="text-align:left">Patching &amp; Configuration Management</td>
+<td style="text-align:left">(1)Ensure sandboxing of tenants using hypervisors, overlay networks (this will be explained later) (2)Regular vulnerability assessments and penetration testing (when an internal or external team of “hackers” systematically attempts to break into a system) of bare metal, hypervisor and networks</td>
+<td style="text-align:left">(1)Patch OS, machine images with latest security updates (2)Use appropriate user roles with the least privilege for each application (for e.g. when you are running a web server on the cloud, ensure that it does not have access to any infrastructure keys, or even to local “root”. This way, if your website is breached, the rest of your application is isolated) (3)Restrict traffic to instances using firewalls, Virtual Private Clouds, and segment network into zones (block all network traffic from untrusted sources)</td>
+</tr>
+<tr>
+<td style="text-align:left">Monitoring &amp; Detection</td>
+<td style="text-align:left">Verify that customer resources are not being used for nefarious activities (either intentionally or unintentionally), and take appropriate actions</td>
+<td style="text-align:left">(1)Install host-based Intrusion Detection and Anti-Malware systems (these detect any misuse of your cloud network or hosts) (2)Define alerts and response strategies for incidents and breaches (be prepared for attacks and automate a recovery and logging protocol)</td>
+</tr>
+<tr>
+<td style="text-align:left">Data Security</td>
+<td style="text-align:left">(1)Cross-tenant data access controls and privacy safeguards (as described on the previous page, ensure that customers on the same physical infrastructure are isolated) (2)Data integrity verification and repair from redundant data stores (when storing data in several replicas, ensure their consistency and accuracy)</td>
+<td style="text-align:left">(1)Use secure protocols (like SSL/TLS, IPSec) for data in transit (these ensure that your network traffic cannot be read) (2)Encrypt data-at-rest (encrypt all the data you store on the cloud, such that even a rogue employee of the cloud service provider cannot disclose this information)</td>
+</tr>
+<tr>
+<td style="text-align:left">Cryptographic Object Security</td>
+<td style="text-align:left">(1)Support data encryption in all provided storage/file systems/DBs (for e.g. Windows environments could allow Bitlocker implementations) (2)Securely manage customer’s account and access credentials</td>
+<td style="text-align:left">(1)Create and distribute access keys (for cloud service provider APIs) as well as remote connectivity (like SSH, VNC, RDP) (2)Do not store keys on cloud where possible, so that key will not be in the same place as the data.</td>
+</tr>
+</tbody>
+</table>
+<p>Most providers will often build in services simplifying the process for customers to implement security controls. For e.g. AWS provides Security Groups, which is simply an external network firewalls.</p>
+<p>The process of verifying the presence of these controls is known as a security audit. These can be done internally (by hiring a technical consultant) or externally (by a certifying agency). To host sensitive information on the cloud, both the provider and the customer must pass these audits. However, the lack of demarcation of responsibilities in case of a breach have meant that in most cases, applications using sensitive information like bank records or medical data cannot be hosted “on-the-cloud”.</p>
+<p><strong>References</strong></p>
+<ol>
+<li>Mather, Tim et. al. (2009). Cloud security and privacy: an enterprise perspective on risks and compliance.</li>
+<li>Winkler, Vic J.R. (2011). Securing the Cloud: Cloud Computer Security Techniques and Tactics . Elsevier.</li>
+<li>Pucher, Alex et. al. (2012). A Survey on Cloud Provider Security Measures .</li>
+</ol>
+<h2 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h2><p><strong>Cloud Building Blocks Summary</strong></p>
+<ul>
+<li>Cloud computing offers many benefits, including a pay-as-you-go economic model, simplified IT management for users, scalability, flexibility, improved utilization, and a decreased carbon footprint.</li>
+<li>Cloud computing also has many risks and challenges, including vendor lock-in, security risks, privacy-related concerns, developer training and reengineering, evolving tools, and movement of data.</li>
+<li>Cloud computing offers a compelling economic model for businesses through the pay-as-you-go model and can significantly lower management and overall costs of IT.</li>
+<li>Cloud service providers leverage economies of scale to provide services at low costs. They require large data centers and many clients in order to amortize the costs over the entire user base.</li>
+<li>Service-level objectives (SLOs) allow an organization to formally state its service requirements to a service provider</li>
+<li>A Service-level agreement (SLA) is a contract that is negotiated between a service provider and a client that defines the level of service expected from the service provider</li>
+<li>Auditing evaluates whether the cloud services comply with the SLA through monitoring. As with auditing in other fields, a mutually trusted third party is involved in the process to ensure compliance and fairness.</li>
+<li>The shared and public nature of cloud computing introduces new risks in terms of information security. The primary threats are abuse of clouds, insecure interfaces and APIs, malicious insiders, shared technology issues and data loss or leakage.</li>
+<li>The responsibility of securing applications on the cloud is split between the cloud service provider and the client. The provider must make available controls and systems that can be used to secure applications, resources and data on the cloud. The client must make sure that they make full use of the provided controls and systems and follow best security practices when using clouds.</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/16/cc-7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          云计算 第 7 课 AWS 动手玩
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/15/cc-6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">云计算 第 6 课 AWS API</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="cc-0" data-title="云计算 第 0 课 阅读材料" data-url="http://yoursite.com/2016/01/16/cc-0/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wdxblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 wdxtub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

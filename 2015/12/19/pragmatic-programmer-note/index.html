@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【程序员修炼之道】读书笔记 | 小土刀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="之前囫囵吞枣看完了这本书，现在再回首细细看，经过一个学期的历练，的确有完全不一样的感悟。这里是整本书的笔记，具体的感悟会另外再写。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【程序员修炼之道】读书笔记">
+<meta property="og:url" content="http://yoursite.com/2015/12/19/pragmatic-programmer-note/index.html">
+<meta property="og:site_name" content="小土刀">
+<meta property="og:description" content="之前囫囵吞枣看完了这本书，现在再回首细细看，经过一个学期的历练，的确有完全不一样的感悟。这里是整本书的笔记，具体的感悟会另外再写。">
+<meta property="og:updated_time" content="2015-12-19T12:38:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【程序员修炼之道】读书笔记">
+<meta name="twitter:description" content="之前囫囵吞枣看完了这本书，现在再回首细细看，经过一个学期的历练，的确有完全不一样的感悟。这里是整本书的笔记，具体的感悟会另外再写。">
+  
+    <link rel="alternative" href="/atom.xml" title="小土刀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpeg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wdxtub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Agony is my triumph</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/about">索引</a></li>
+				        
+							<li><a href="/categories/Technique">技术</a></li>
+				        
+							<li><a href="/categories/Reading">读书</a></li>
+				        
+							<li><a href="/categories/Thinking">思考</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/API/" style="font-size: 10.63px;">API</a> <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/AWS/" style="font-size: 11.88px;">AWS</a> <a href="/tags/ActionBar/" style="font-size: 10px;">ActionBar</a> <a href="/tags/Android/" style="font-size: 10.63px;">Android</a> <a href="/tags/Anroid/" style="font-size: 10px;">Anroid</a> <a href="/tags/Apple/" style="font-size: 11.88px;">Apple</a> <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/CMU/" style="font-size: 20px;">CMU</a> <a href="/tags/COC/" style="font-size: 10px;">COC</a> <a href="/tags/Capcom/" style="font-size: 10px;">Capcom</a> <a href="/tags/CodePlane/" style="font-size: 10px;">CodePlane</a> <a href="/tags/Datalab/" style="font-size: 10px;">Datalab</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IT/" style="font-size: 10px;">IT</a> <a href="/tags/Imaging-Cup/" style="font-size: 10px;">Imaging Cup</a> <a href="/tags/Java/" style="font-size: 11.25px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10.63px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Overview/" style="font-size: 10px;">Overview</a> <a href="/tags/PS4/" style="font-size: 10px;">PS4</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Swift/" style="font-size: 13.13px;">Swift</a> <a href="/tags/Swift-千金方/" style="font-size: 10.63px;">Swift 千金方</a> <a href="/tags/TOC/" style="font-size: 10px;">TOC</a> <a href="/tags/V2/" style="font-size: 10px;">V2</a> <a href="/tags/YC-创业课/" style="font-size: 10px;">YC 创业课</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 11.25px;">iOS</a> <a href="/tags/iOS-9/" style="font-size: 10px;">iOS 9</a> <a href="/tags/iOS-杂病论/" style="font-size: 10.63px;">iOS 杂病论</a> <a href="/tags/iOS9/" style="font-size: 13.75px;">iOS9</a> <a href="/tags/三观/" style="font-size: 10px;">三观</a> <a href="/tags/世界/" style="font-size: 10px;">世界</a> <a href="/tags/东野圭吾/" style="font-size: 10px;">东野圭吾</a> <a href="/tags/个人发展/" style="font-size: 10px;">个人发展</a> <a href="/tags/中国/" style="font-size: 10px;">中国</a> <a href="/tags/中秋/" style="font-size: 10px;">中秋</a> <a href="/tags/乐趣/" style="font-size: 10px;">乐趣</a> <a href="/tags/习题/" style="font-size: 10px;">习题</a> <a href="/tags/习题课/" style="font-size: 10px;">习题课</a> <a href="/tags/云计算/" style="font-size: 15.63px;">云计算</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/亲情/" style="font-size: 10px;">亲情</a> <a href="/tags/人口/" style="font-size: 10px;">人口</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/人造/" style="font-size: 10px;">人造</a> <a href="/tags/今何在/" style="font-size: 10px;">今何在</a> <a href="/tags/价值/" style="font-size: 10px;">价值</a> <a href="/tags/任天堂/" style="font-size: 10px;">任天堂</a> <a href="/tags/体力/" style="font-size: 10px;">体力</a> <a href="/tags/信息/" style="font-size: 10px;">信息</a> <a href="/tags/做饭/" style="font-size: 10px;">做饭</a> <a href="/tags/健康/" style="font-size: 10px;">健康</a> <a href="/tags/健身/" style="font-size: 10px;">健身</a> <a href="/tags/傅真/" style="font-size: 10px;">傅真</a> <a href="/tags/元组/" style="font-size: 10px;">元组</a> <a href="/tags/兄弟/" style="font-size: 10px;">兄弟</a> <a href="/tags/再而三/" style="font-size: 10px;">再而三</a> <a href="/tags/写作/" style="font-size: 10px;">写作</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/削发/" style="font-size: 10px;">削发</a> <a href="/tags/动画/" style="font-size: 10.63px;">动画</a> <a href="/tags/努力/" style="font-size: 10px;">努力</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/匹兹堡/" style="font-size: 10.63px;">匹兹堡</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/博客/" style="font-size: 11.88px;">博客</a> <a href="/tags/原创/" style="font-size: 12.5px;">原创</a> <a href="/tags/叙利亚/" style="font-size: 10px;">叙利亚</a> <a href="/tags/口译/" style="font-size: 10px;">口译</a> <a href="/tags/古希腊/" style="font-size: 10px;">古希腊</a> <a href="/tags/古董/" style="font-size: 10px;">古董</a> <a href="/tags/同性恋/" style="font-size: 10px;">同性恋</a> <a href="/tags/启程/" style="font-size: 10px;">启程</a> <a href="/tags/告别/" style="font-size: 10px;">告别</a> <a href="/tags/周记/" style="font-size: 17.5px;">周记</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/哲学/" style="font-size: 10.63px;">哲学</a> <a href="/tags/回合制/" style="font-size: 10px;">回合制</a> <a href="/tags/回头无岸/" style="font-size: 10px;">回头无岸</a> <a href="/tags/回忆/" style="font-size: 11.88px;">回忆</a> <a href="/tags/因果/" style="font-size: 10px;">因果</a> <a href="/tags/图像分类/" style="font-size: 10px;">图像分类</a> <a href="/tags/图灵/" style="font-size: 10px;">图灵</a> <a href="/tags/土豆/" style="font-size: 10px;">土豆</a> <a href="/tags/圣诞/" style="font-size: 10px;">圣诞</a> <a href="/tags/坚持/" style="font-size: 10px;">坚持</a> <a href="/tags/基础/" style="font-size: 11.25px;">基础</a> <a href="/tags/多元思维模型/" style="font-size: 10px;">多元思维模型</a> <a href="/tags/多看/" style="font-size: 10.63px;">多看</a> <a href="/tags/大一统/" style="font-size: 10px;">大一统</a> <a href="/tags/大圣归来/" style="font-size: 10.63px;">大圣归来</a> <a href="/tags/大学/" style="font-size: 10px;">大学</a> <a href="/tags/大结局/" style="font-size: 10px;">大结局</a> <a href="/tags/字体/" style="font-size: 10px;">字体</a> <a href="/tags/字节/" style="font-size: 10px;">字节</a> <a href="/tags/孙悟空/" style="font-size: 10px;">孙悟空</a> <a href="/tags/孤独/" style="font-size: 10px;">孤独</a> <a href="/tags/学习/" style="font-size: 16.25px;">学习</a> <a href="/tags/学术/" style="font-size: 10px;">学术</a> <a href="/tags/实例/" style="font-size: 10.63px;">实例</a> <a href="/tags/实践/" style="font-size: 10px;">实践</a> <a href="/tags/家庭/" style="font-size: 11.25px;">家庭</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/富勒/" style="font-size: 10px;">富勒</a> <a href="/tags/将军/" style="font-size: 10px;">将军</a> <a href="/tags/小学/" style="font-size: 10px;">小学</a> <a href="/tags/小说/" style="font-size: 10.63px;">小说</a> <a href="/tags/层/" style="font-size: 10px;">层</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/工作/" style="font-size: 10.63px;">工作</a> <a href="/tags/工作流/" style="font-size: 10px;">工作流</a> <a href="/tags/帐篷/" style="font-size: 10px;">帐篷</a> <a href="/tags/度假/" style="font-size: 10px;">度假</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/开学/" style="font-size: 10.63px;">开学</a> <a href="/tags/开篇/" style="font-size: 10.63px;">开篇</a> <a href="/tags/徐州/" style="font-size: 10px;">徐州</a> <a href="/tags/微软/" style="font-size: 10px;">微软</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/心智/" style="font-size: 11.25px;">心智</a> <a href="/tags/心理/" style="font-size: 10px;">心理</a> <a href="/tags/态度/" style="font-size: 10px;">态度</a> <a href="/tags/思考/" style="font-size: 16.25px;">思考</a> <a href="/tags/总体介绍/" style="font-size: 10px;">总体介绍</a> <a href="/tags/总览/" style="font-size: 10px;">总览</a> <a href="/tags/悖论/" style="font-size: 10px;">悖论</a> <a href="/tags/情侣/" style="font-size: 10px;">情侣</a> <a href="/tags/感恩节/" style="font-size: 10.63px;">感恩节</a> <a href="/tags/感情/" style="font-size: 10px;">感情</a> <a href="/tags/愿望/" style="font-size: 10px;">愿望</a> <a href="/tags/成功/" style="font-size: 10px;">成功</a> <a href="/tags/成绩/" style="font-size: 10px;">成绩</a> <a href="/tags/成长/" style="font-size: 11.25px;">成长</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/扩展/" style="font-size: 10px;">扩展</a> <a href="/tags/技巧/" style="font-size: 10.63px;">技巧</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/抱怨/" style="font-size: 10px;">抱怨</a> <a href="/tags/拖延症/" style="font-size: 10.63px;">拖延症</a> <a href="/tags/挫折/" style="font-size: 10px;">挫折</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/改变/" style="font-size: 11.25px;">改变</a> <a href="/tags/改进/" style="font-size: 10px;">改进</a> <a href="/tags/效率/" style="font-size: 10.63px;">效率</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/教育/" style="font-size: 10px;">教育</a> <a href="/tags/教训/" style="font-size: 10px;">教训</a> <a href="/tags/数字/" style="font-size: 10px;">数字</a> <a href="/tags/整型/" style="font-size: 10px;">整型</a> <a href="/tags/整理/" style="font-size: 10.63px;">整理</a> <a href="/tags/文化/" style="font-size: 10.63px;">文化</a> <a href="/tags/文本处理/" style="font-size: 10px;">文本处理</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 10px;">斯坦福 CS193p</a> <a href="/tags/新参者/" style="font-size: 10.63px;">新参者</a> <a href="/tags/新特性/" style="font-size: 10px;">新特性</a> <a href="/tags/方向/" style="font-size: 10px;">方向</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/方法论/" style="font-size: 10px;">方法论</a> <a href="/tags/旅行/" style="font-size: 11.88px;">旅行</a> <a href="/tags/旅途/" style="font-size: 10px;">旅途</a> <a href="/tags/旧金山/" style="font-size: 10.63px;">旧金山</a> <a href="/tags/早起/" style="font-size: 10px;">早起</a> <a href="/tags/时代/" style="font-size: 10px;">时代</a> <a href="/tags/时差/" style="font-size: 10.63px;">时差</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/明智行动的艺术/" style="font-size: 10px;">明智行动的艺术</a> <a href="/tags/智慧/" style="font-size: 10px;">智慧</a> <a href="/tags/暴走/" style="font-size: 10px;">暴走</a> <a href="/tags/朋友/" style="font-size: 12.5px;">朋友</a> <a href="/tags/期末/" style="font-size: 10.63px;">期末</a> <a href="/tags/未来/" style="font-size: 10px;">未来</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/机遇/" style="font-size: 10px;">机遇</a> <a href="/tags/极简/" style="font-size: 10px;">极简</a> <a href="/tags/架构/" style="font-size: 15.63px;">架构</a> <a href="/tags/核心/" style="font-size: 10px;">核心</a> <a href="/tags/格子/" style="font-size: 10px;">格子</a> <a href="/tags/格局/" style="font-size: 10px;">格局</a> <a href="/tags/概念/" style="font-size: 10px;">概念</a> <a href="/tags/概率/" style="font-size: 10px;">概率</a> <a href="/tags/概览/" style="font-size: 10px;">概览</a> <a href="/tags/概述/" style="font-size: 10px;">概述</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/欧洲/" style="font-size: 10px;">欧洲</a> <a href="/tags/步行/" style="font-size: 10px;">步行</a> <a href="/tags/死亡/" style="font-size: 10.63px;">死亡</a> <a href="/tags/比特/" style="font-size: 10px;">比特</a> <a href="/tags/氐惆/" style="font-size: 10px;">氐惆</a> <a href="/tags/民主/" style="font-size: 10px;">民主</a> <a href="/tags/沉默/" style="font-size: 10px;">沉默</a> <a href="/tags/沟通/" style="font-size: 10px;">沟通</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/洞察/" style="font-size: 10px;">洞察</a> <a href="/tags/活动/" style="font-size: 10px;">活动</a> <a href="/tags/浮点数/" style="font-size: 10px;">浮点数</a> <a href="/tags/深度/" style="font-size: 10px;">深度</a> <a href="/tags/清醒思考的艺术/" style="font-size: 10px;">清醒思考的艺术</a> <a href="/tags/游乐场/" style="font-size: 10px;">游乐场</a> <a href="/tags/游戏/" style="font-size: 14.38px;">游戏</a> <a href="/tags/游戏机/" style="font-size: 10px;">游戏机</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/滚动视图/" style="font-size: 10px;">滚动视图</a> <a href="/tags/灵活/" style="font-size: 10px;">灵活</a> <a href="/tags/炸鸡/" style="font-size: 10px;">炸鸡</a> <a href="/tags/烤肉/" style="font-size: 10px;">烤肉</a> <a href="/tags/热血/" style="font-size: 10px;">热血</a> <a href="/tags/照片/" style="font-size: 10px;">照片</a> <a href="/tags/爱情/" style="font-size: 11.25px;">爱情</a> <a href="/tags/父母/" style="font-size: 10px;">父母</a> <a href="/tags/独立博客/" style="font-size: 10px;">独立博客</a> <a href="/tags/玩家/" style="font-size: 10px;">玩家</a> <a href="/tags/环境/" style="font-size: 10px;">环境</a> <a href="/tags/理科生/" style="font-size: 10px;">理科生</a> <a href="/tags/生化危机/" style="font-size: 10px;">生化危机</a> <a href="/tags/生日/" style="font-size: 10.63px;">生日</a> <a href="/tags/生活/" style="font-size: 19.38px;">生活</a> <a href="/tags/电影/" style="font-size: 11.88px;">电影</a> <a href="/tags/男人/" style="font-size: 10px;">男人</a> <a href="/tags/界限/" style="font-size: 10px;">界限</a> <a href="/tags/留学生/" style="font-size: 10px;">留学生</a> <a href="/tags/目标/" style="font-size: 10.63px;">目标</a> <a href="/tags/看图说话/" style="font-size: 10px;">看图说话</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/知识管理/" style="font-size: 10px;">知识管理</a> <a href="/tags/研究/" style="font-size: 10px;">研究</a> <a href="/tags/社交/" style="font-size: 10px;">社交</a> <a href="/tags/社区/" style="font-size: 10px;">社区</a> <a href="/tags/神作/" style="font-size: 10px;">神作</a> <a href="/tags/离别/" style="font-size: 10px;">离别</a> <a href="/tags/科学/" style="font-size: 10px;">科学</a> <a href="/tags/科幻/" style="font-size: 10.63px;">科幻</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/积累/" style="font-size: 12.5px;">积累</a> <a href="/tags/程序员/" style="font-size: 11.25px;">程序员</a> <a href="/tags/穷查理宝典/" style="font-size: 10px;">穷查理宝典</a> <a href="/tags/童话/" style="font-size: 10.63px;">童话</a> <a href="/tags/笔记/" style="font-size: 16.25px;">笔记</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/简洁/" style="font-size: 10px;">简洁</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/类型/" style="font-size: 10px;">类型</a> <a href="/tags/粒度/" style="font-size: 10px;">粒度</a> <a href="/tags/精选/" style="font-size: 11.88px;">精选</a> <a href="/tags/系列/" style="font-size: 10px;">系列</a> <a href="/tags/索尼/" style="font-size: 10px;">索尼</a> <a href="/tags/纽约/" style="font-size: 10.63px;">纽约</a> <a href="/tags/组成原理/" style="font-size: 12.5px;">组成原理</a> <a href="/tags/组织/" style="font-size: 10px;">组织</a> <a href="/tags/经典/" style="font-size: 10px;">经典</a> <a href="/tags/绘制/" style="font-size: 10px;">绘制</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/编辑距离/" style="font-size: 10px;">编辑距离</a> <a href="/tags/羊驼/" style="font-size: 10px;">羊驼</a> <a href="/tags/美剧/" style="font-size: 10px;">美剧</a> <a href="/tags/美国/" style="font-size: 10px;">美国</a> <a href="/tags/翻译/" style="font-size: 13.75px;">翻译</a> <a href="/tags/老朝奉/" style="font-size: 10px;">老朝奉</a> <a href="/tags/自尊/" style="font-size: 10px;">自尊</a> <a href="/tags/自我/" style="font-size: 10.63px;">自我</a> <a href="/tags/节奏/" style="font-size: 10px;">节奏</a> <a href="/tags/苏州/" style="font-size: 10px;">苏州</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/英语学习/" style="font-size: 10px;">英语学习</a> <a href="/tags/英雄/" style="font-size: 11.25px;">英雄</a> <a href="/tags/英雄联盟/" style="font-size: 10.63px;">英雄联盟</a> <a href="/tags/苹果/" style="font-size: 10px;">苹果</a> <a href="/tags/荒野求生/" style="font-size: 10px;">荒野求生</a> <a href="/tags/萨博/" style="font-size: 10px;">萨博</a> <a href="/tags/落后/" style="font-size: 10px;">落后</a> <a href="/tags/蝴蝶效应/" style="font-size: 10px;">蝴蝶效应</a> <a href="/tags/行动/" style="font-size: 10px;">行动</a> <a href="/tags/西行者/" style="font-size: 10px;">西行者</a> <a href="/tags/观念/" style="font-size: 10px;">观念</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/视图控制器/" style="font-size: 10px;">视图控制器</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/触摸/" style="font-size: 10px;">触摸</a> <a href="/tags/计划/" style="font-size: 10px;">计划</a> <a href="/tags/计算机/" style="font-size: 15px;">计算机</a> <a href="/tags/记录/" style="font-size: 10.63px;">记录</a> <a href="/tags/记忆/" style="font-size: 10.63px;">记忆</a> <a href="/tags/讲义/" style="font-size: 10px;">讲义</a> <a href="/tags/许愿/" style="font-size: 10px;">许愿</a> <a href="/tags/论道/" style="font-size: 14.38px;">论道</a> <a href="/tags/设计/" style="font-size: 16.88px;">设计</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访谈/" style="font-size: 10px;">访谈</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/读书/" style="font-size: 18.13px;">读书</a> <a href="/tags/课程/" style="font-size: 10px;">课程</a> <a href="/tags/调整/" style="font-size: 10px;">调整</a> <a href="/tags/足球/" style="font-size: 10.63px;">足球</a> <a href="/tags/跑题/" style="font-size: 10px;">跑题</a> <a href="/tags/路线/" style="font-size: 10px;">路线</a> <a href="/tags/转型/" style="font-size: 10px;">转型</a> <a href="/tags/转换/" style="font-size: 10px;">转换</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a> <a href="/tags/轻量/" style="font-size: 10px;">轻量</a> <a href="/tags/运动/" style="font-size: 10px;">运动</a> <a href="/tags/运算符/" style="font-size: 10px;">运算符</a> <a href="/tags/运算符重载/" style="font-size: 10px;">运算符重载</a> <a href="/tags/运营/" style="font-size: 10.63px;">运营</a> <a href="/tags/进阶/" style="font-size: 10px;">进阶</a> <a href="/tags/连接/" style="font-size: 10px;">连接</a> <a href="/tags/迷茫/" style="font-size: 10px;">迷茫</a> <a href="/tags/逆向思维/" style="font-size: 10px;">逆向思维</a> <a href="/tags/选择/" style="font-size: 11.25px;">选择</a> <a href="/tags/选课/" style="font-size: 10px;">选课</a> <a href="/tags/透析/" style="font-size: 10px;">透析</a> <a href="/tags/造假/" style="font-size: 10px;">造假</a> <a href="/tags/逻辑/" style="font-size: 10px;">逻辑</a> <a href="/tags/醒醒/" style="font-size: 10px;">醒醒</a> <a href="/tags/闭包/" style="font-size: 10.63px;">闭包</a> <a href="/tags/阅读/" style="font-size: 11.88px;">阅读</a> <a href="/tags/阿拉伯之春/" style="font-size: 10px;">阿拉伯之春</a> <a href="/tags/陌生人/" style="font-size: 10px;">陌生人</a> <a href="/tags/陪伴/" style="font-size: 10px;">陪伴</a> <a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a> <a href="/tags/难民/" style="font-size: 10px;">难民</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/顽皮狗/" style="font-size: 10px;">顽皮狗</a> <a href="/tags/预测/" style="font-size: 10px;">预测</a> <a href="/tags/预言/" style="font-size: 10px;">预言</a> <a href="/tags/马伯庸/" style="font-size: 10px;">马伯庸</a> <a href="/tags/骑行/" style="font-size: 10px;">骑行</a> <a href="/tags/高中/" style="font-size: 10px;">高中</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://illustrationsencouleur.lofter.com/">illustrations</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wdxtub.lofter.com/">wdxtub@lofter</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wdxtub</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk3yi.com1.z0.glb.clouddn.com/avatar.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wdxtub</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Agony is my triumph</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/about">索引</a></li>
+		        
+					<li><a href="/categories/Technique">技术</a></li>
+		        
+					<li><a href="/categories/Reading">读书</a></li>
+		        
+					<li><a href="/categories/Thinking">思考</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="github" target="_blank" href="http://github.com/wdxtub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wdxtub" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wdxtub" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="http://www.douban.com/people/wdx/" title="douban">douban</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wdxtub" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/wdxtubX" title="twitter">twitter</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/wdxtub" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-pragmatic-programmer-note" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/19/pragmatic-programmer-note/" class="article-date">
+  	<time datetime="2015-12-19T12:35:06.000Z" itemprop="datePublished">2015-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【程序员修炼之道】读书笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/方法论/">方法论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序员/">程序员</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高效/">高效</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Reading/">Reading</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前囫囵吞枣看完了这本书，现在再回首细细看，经过一个学期的历练，的确有完全不一样的感悟。这里是整本书的笔记，具体的感悟会另外再写。</p>
+<a id="more"></a>
+<hr>
+<ul>
+<li>序<ul>
+<li>注重实效的程序员的特征</li>
+</ul>
+</li>
+<li>第 1 章 注重实效的哲学 A Pragmatic Philosophy</li>
+<li>第 2 章 注重实效的途径 A Pragmatic Approach</li>
+<li>第 3 章 基本工具 The Basic Tools</li>
+<li>第 4 章 注重实效的偏执 Pragmatic Paranoia</li>
+<li>第 5 章 弯曲，或折断 Bend, or Break</li>
+<li>第 6 章 当你编码时 While You Are Coding</li>
+<li>第 7 章 在项目开始之前 Before the Project</li>
+<li>第 8 章 注重实效的项目 Pragmatic Projects</li>
+<li>提示汇总</li>
+</ul>
+<h2 id="u5E8F"><a href="#u5E8F" class="headerlink" title="序"></a>序</h2><p>编程是注重实效(pragmatism)的，不应该局限于任何特定的技术，而是应该拥有足够广博的背景和经验基础，让你能在特定情况下选择好的解决方案。背景源自对计算机科学的基本原理的理解，经验来自广泛的实际项目，理论与实践的结合使你强大起来。</p>
+<p>调整方法，以适应当前情形与环境。判断对项目有影响的所有因素的相对重要性，并利用经验制定适宜的解决方案。注重实效的程序员不仅要完成工作，而且要完成得漂亮。</p>
+<h3 id="u6CE8_u91CD_u5B9E_u6548_u7684_u7A0B_u5E8F_u5458_u7684_u7279_u5F81"><a href="#u6CE8_u91CD_u5B9E_u6548_u7684_u7A0B_u5E8F_u5458_u7684_u7279_u5F81" class="headerlink" title="注重实效的程序员的特征"></a>注重实效的程序员的特征</h3><ul>
+<li><strong>早期的采纳者/快速的改编者</strong>。具有技术和技巧上的直觉，喜爱试验各种事物。给你一样新东西，你很快就能掌握，并把它与你的知识的其余部分结合在一起。自信源自经验。</li>
+<li><strong>好奇</strong>。喜欢提问，是收集小知识的林鼠(pack rat)，每一条小知识都可能会影响今后几年的某项决策。</li>
+<li><strong>批判的思考者</strong>。不会不首先抓住事实而照搬别人的说法。</li>
+<li><strong>有现实感</strong>。设法理解每个问题的内在本质。这样的现实主义给你良好的感知能力：事情有多困难，需要多长时间？让自己了解某个过程会有困难，或是要用一点时间才能完成，能够给予自己坚持不懈的毅力</li>
+<li><strong>多才多艺</strong>。尽力熟悉广泛的技术和环境，并且努力工作，以与时俱进。尽管你现在的工作也许只要求你成为某方面的专才，你却总是能够转向新的领域和新的挑战</li>
+</ul>
+<blockquote>
+<p>我们，采集的只是石头，却必须时刻展望未来的大教堂。 ——采石工人的信条</p>
+</blockquote>
+<p>持续做出许多小改进，这是一个持续的过程。</p>
+<h2 id="u7B2C_1__u7AE0__u6CE8_u91CD_u5B9E_u6548_u7684_u54F2_u5B66_A_Pragmatic_Philosophy"><a href="#u7B2C_1__u7AE0__u6CE8_u91CD_u5B9E_u6548_u7684_u54F2_u5B66_A_Pragmatic_Philosophy" class="headerlink" title="第 1 章 注重实效的哲学 A Pragmatic Philosophy"></a>第 1 章 注重实效的哲学 A Pragmatic Philosophy</h2><p>注重实效的程序员在寻求解决方案时，能够越出直接的问题去思考，总是设法把问题放在更大的语境中，总是设法注意更大的图景。另外，他们也会对他们所做的每件事负责。</p>
+<blockquote>
+<p>在所有的弱点中，最大的弱点就是害怕暴露弱点</p>
+</blockquote>
+<p>如果你<strong>确实</strong>统一要为某个结果负责，就应该切实负起责任。当你犯错误或是判断失误时，诚实地承认它，并设法给出各种选择。不要责备别人或别的东西，或是拼凑借口。</p>
+<blockquote>
+<p>欲求更好，常把好事变糟</p>
+</blockquote>
+<p>如果你不懂得何时止步，所有的辛苦劳作就会遭到毁坏。如果你一层又一层、细节复细节地添加，绘画就会迷失在绘制之中。不要因为过度修饰和过于求精二毁损完好的程序。</p>
+<blockquote>
+<p>知识上的投资总能得到最好的回报</p>
+</blockquote>
+<p>管理知识资产与管理金融资产非常相似：</p>
+<ol>
+<li>严肃的投资者会将定期投资作为习惯</li>
+<li>多元化是长期成功的关键</li>
+<li>聪明的投资者在保守的投资和高风险、高回报的投资之间平衡他们的资产</li>
+<li>投资者设法低买高卖，以获取最大回报</li>
+<li>应周期性地重新评估和平衡资产</li>
+</ol>
+<p>一些具体的建议</p>
+<ul>
+<li>每年至少学习一种新语言</li>
+<li>每季度阅读一本技术书籍</li>
+<li>也要阅读非技术类书籍</li>
+<li>上课</li>
+<li>参加本地用户组织</li>
+<li>试验不同环境</li>
+<li>跟上潮流</li>
+<li>上网</li>
+</ul>
+<blockquote>
+<p>我相信，被打量比被忽略要好</p>
+</blockquote>
+<ul>
+<li>知道自己想说什么</li>
+<li>了解你的听众</li>
+<li>选择时机</li>
+<li>选择风格</li>
+<li>让文档美观</li>
+<li>让听众参与</li>
+<li>做倾听者</li>
+<li>回复他人</li>
+</ul>
+<h2 id="u7B2C_2__u7AE0__u6CE8_u91CD_u5B9E_u6548_u7684_u9014_u5F84_A_Pragmatic_Approach"><a href="#u7B2C_2__u7AE0__u6CE8_u91CD_u5B9E_u6548_u7684_u9014_u5F84_A_Pragmatic_Approach" class="headerlink" title="第 2 章 注重实效的途径 A Pragmatic Approach"></a>第 2 章 注重实效的途径 A Pragmatic Approach</h2><p><strong>系统中每一项知识都必须具有单一、无歧义、权威的表示</strong></p>
+<p>如果两个或更多事物中的一个发生变化，不会影响其他事物，这些事物就是正交的。非正交系统的改变与控制更复杂是其固有的性质。当任何系统的各组件互相高度依赖时，就不再有局部修正(local fix)这样的事情。如果你编写正交的系统，两个主要好处是：提高生产力与降低风险。</p>
+<p>可以将下面的技术用于维持正交性</p>
+<ul>
+<li><strong>让代码保持解耦</strong>。不会没有必要地向其他模块暴露任何事情，也不依赖其他模块的实现</li>
+<li><strong>避免使用全局数据</strong>。一般而言，如果你把所需的任何语境(context)显式传入模块，你的代码就会更易于理解和维护</li>
+<li><strong>避免编写相似的函数</strong>。养成重构的好习惯</li>
+</ul>
+<blockquote>
+<p>如果某个想法是你唯一的想法，再也没有比这更危险的事情了</p>
+</blockquote>
+<p>曳光弹行之有效，是因为它们与真正的子弹在相同的环境、相同的约束下工作。它们快速飞向目标，所以枪手可以得到即时的反馈。同时，从实践的角度看，这样的解决方案也更便宜。</p>
+<p>原型制作生成用过就扔的代码，曳光弹代码虽然简约，但却是完整的，并且构成了最终系统的骨架的一部分。</p>
+<p>任何带有风险的事物，以前没有试过的事物，或是对于最终系统极端关键的事物；任何未被证明的，实验性的，或有疑问的事物；任何让你觉得不舒服的事物，都应该制作原型：</p>
+<ul>
+<li>架构</li>
+<li>已有系统中的新功能</li>
+<li>外部数据的结构或内容</li>
+<li>第三方工具或组件</li>
+<li>性能问题</li>
+<li>用户界面设计</li>
+</ul>
+<blockquote>
+<p>语言的界限就是一个人的世界的界限 ——维特根斯坦</p>
+</blockquote>
+<p>通过学习估算，并将此技能发展到你对事物的数量级有直觉的程度，就能展现出一种魔法般的能力，确定它们的可行性</p>
+<ul>
+<li>多准确才足够准确</li>
+<li>估算来自哪里</li>
+<li>理解提问内容</li>
+<li>建立系统的模型</li>
+<li>把模型分解为组件</li>
+<li>给每个参数指定值</li>
+<li>计算答案</li>
+<li>追踪你的估算能力</li>
+</ul>
+<p>在被要求进行估算时说什么：<strong>我等会儿回答你</strong>。如果放慢估算的速度，并花一点时间仔细检查各个步骤，几乎总能得到更好的结果</p>
+<h2 id="u7B2C_3__u7AE0__u57FA_u672C_u5DE5_u5177_The_Basic_Tools"><a href="#u7B2C_3__u7AE0__u57FA_u672C_u5DE5_u5177_The_Basic_Tools" class="headerlink" title="第 3 章 基本工具 The Basic Tools"></a>第 3 章 基本工具 The Basic Tools</h2><p>工具放大你的才干，你的工具越好，你越是能更好地掌握它们的用法，你的生产力就越高。从一套基本的通用工具开始，随着经验的获得，随着你遇到一些特殊需求，你将会在其中添加新的工具。要与工匠一样，想着定期增添工具，要总是寻找更好的做事方式。如果遇到某种情况，你觉得现有的工具不能解决问题，记得去寻找可能会有帮助的其他工具或更强大的工具。</p>
+<p>对于操纵文本文件的程序员，工作台就是命令 shell。当然，最好精通一种编辑器，并将其用于所有编辑任务，一些基本能力：</p>
+<ul>
+<li>可配置</li>
+<li>可扩展</li>
+<li>可编程</li>
+<li>其他特性：语法高亮，自动完成，自动缩进，初始代码/文档样板，与帮助系统挂接，类 IDE 特性(编译调试等)</li>
+</ul>
+<blockquote>
+<p>进步远非由变化组成，而是取决于好记性。不能记住过去的人，被判重复过去</p>
+</blockquote>
+<p>源码控制系统追踪你在源码和文档中做出的每一项变动。</p>
+<p>要接受事实：调试就是<strong>解决问题</strong>，要据此发起进攻</p>
+<blockquote>
+<p>最容易欺骗的人是一个人自己</p>
+</blockquote>
+<p>当你遇到让人吃惊的 bug 时，除了只是修正它以外，你还需要确定先前为什么没有找出这个故障。考虑你是否需要改进单元测试或其他测试，以让它们有能力找出这个故障</p>
+<p>被动代码生成器减少敲键次数。它们本质上是参数化木板，根据一组输入生成给定的输出形式，例如：</p>
+<ul>
+<li>创建新的源文件</li>
+<li>在编程语言之间进行一次性转换</li>
+<li>生成查找表及其他在运行时计算很昂贵的资源</li>
+</ul>
+<p>主动代码生成器可以取某项知识的一种表示形式，将其转换成为你的应用需要的所有形式。无论何时你发现自己在设法让两种完全不同的环境一起工作，你都应该考虑使用主动代码生成器。</p>
+<h2 id="u7B2C_4__u7AE0__u6CE8_u91CD_u5B9E_u6548_u7684_u504F_u6267_Pragmatic_Paranoia"><a href="#u7B2C_4__u7AE0__u6CE8_u91CD_u5B9E_u6548_u7684_u504F_u6267_Pragmatic_Paranoia" class="headerlink" title="第 4 章 注重实效的偏执 Pragmatic Paranoia"></a>第 4 章 注重实效的偏执 Pragmatic Paranoia</h2><blockquote>
+<p>当每个人都确实要对你不利时，偏执就是一个好主意</p>
+</blockquote>
+<p>如果有一个错误，就说明非常非常糟糕的事情已经发生了</p>
+<blockquote>
+<p>在自责中有一种满足感，当我们责备自己时，会觉得没人有权责备我们</p>
+</blockquote>
+<p>关于异常的问题之一是知道何时使用它们。异常很少应作为程序的正常流程的一部分使用，异常应保留给意外事件</p>
+<h2 id="u7B2C_5__u7AE0__u5F2F_u66F2_uFF0C_u6216_u6298_u65AD_Bend_2C_or_Break"><a href="#u7B2C_5__u7AE0__u5F2F_u66F2_uFF0C_u6216_u6298_u65AD_Bend_2C_or_Break" class="headerlink" title="第 5 章 弯曲，或折断 Bend, or Break"></a>第 5 章 弯曲，或折断 Bend, or Break</h2><blockquote>
+<p>好篱笆促成好邻居</p>
+</blockquote>
+<p>把你的代码组织成最小组织单位(模块)，并限制它们之间的交互，如果随后出于折中必须替换某个模块，其他模块仍能够继续工作</p>
+<p>德墨忒尔法则：某个对象的任何方法都应该只调用属于以下情形的方法：</p>
+<ul>
+<li>它自身</li>
+<li>传入该方法的任何参数</li>
+<li>它创建的任何对象</li>
+<li>任何直接持有的组件对象</li>
+</ul>
+<p>循序德墨忒尔法则缩小了调用类(calling class)中的响应集的规模，结果以这种方式设计的类的错误也往往更少</p>
+<blockquote>
+<p>再多的天才也无法胜过对细节的专注</p>
+</blockquote>
+<p>我们想让我们的系统变得高度可配置。不仅是像屏幕颜色和提示文本这样的事物，而且也包括诸如算法、数据库产品，中间件技术和用户界面风格之类更深层面的选择。这些选择应该作为配置选项，而不是通过集成或者工程(engineering)实现。</p>
+<p>我们不只是想把元数据用于简单的偏好，我们想尽可能多地通过元数据配置和驱动应用。我们的目标是以声明方式思考（规定要做什么，而不是怎么做），并创建高度灵活和可适应的程序。我们通过采用一条一般准则来做到这一点：为一般情况编写程序，把具体情况放在别处——在编译的代码库之外。</p>
+<p>我们想要推迟大多数细节的定义，直至最后时刻，并且尽可能让细节保持『软和』——尽可能易于改动，通过精心制作允许我们快速做出变更的解决方案。</p>
+<p>我们需要容许并发，并考虑解除任何时间或次序上的依赖。这样做，我们可以获得灵活性，并减少许多开发领域中的任何基于时间的依赖：工作流分析、架构、设计还有部署</p>
+<ul>
+<li>为并发进行设计</li>
+<li>更整洁的接口</li>
+</ul>
+<h2 id="u7B2C_6__u7AE0__u5F53_u4F60_u7F16_u7801_u65F6_While_You_Are_Coding"><a href="#u7B2C_6__u7AE0__u5F53_u4F60_u7F16_u7801_u65F6_While_You_Are_Coding" class="headerlink" title="第 6 章 当你编码时 While You Are Coding"></a>第 6 章 当你编码时 While You Are Coding</h2><p>我们应当避免靠巧合编程——依靠运气和偶然的成功——而要<strong>深思熟虑地编程</strong>。</p>
+<blockquote>
+<p>周遭所见，皆是变易与腐败</p>
+</blockquote>
+<p>无论代码具有下面哪些特征，都应该考虑重构代码；</p>
+<ul>
+<li>重复</li>
+<li>非正交的设计</li>
+<li>过时的知识</li>
+<li>性能</li>
+</ul>
+<p>怎样进行重构：</p>
+<ul>
+<li>不要试图在重构的同时增加功能</li>
+<li>在开始重构之前，确保你拥有良好的测试。尽可能经常运行这些测试。这样，如果你的改动破坏了任何东西，你就能很快知道</li>
+<li>采取短小，深思熟虑的步骤</li>
+</ul>
+<h2 id="u7B2C_7__u7AE0__u5728_u9879_u76EE_u5F00_u59CB_u4E4B_u524D_Before_the_Project"><a href="#u7B2C_7__u7AE0__u5728_u9879_u76EE_u5F00_u59CB_u4E4B_u524D_Before_the_Project" class="headerlink" title="第 7 章 在项目开始之前 Before the Project"></a>第 7 章 在项目开始之前 Before the Project</h2><blockquote>
+<p>完美，不是在没有什么需要增加，而是在没有什么需要去掉时达到的</p>
+</blockquote>
+<p>你必须挑战任何先人之见，并评估它们是否是真实的，必须遵守的约束。问题不在于你是在盒子里面思考，还是在盒子外面思考，而在于找到盒子——确定真正的约束。</p>
+<p>一定有更容易的方法！遇到问题时问问自己：</p>
+<ul>
+<li>有更容易的方法吗？</li>
+<li>是在设计发解决真正的问题，还是被外围的技术问题转移的注意力？</li>
+<li>这件事为什么是一个问题？</li>
+<li>是什么使它如此难以解决？</li>
+<li>它必须以这种方式完成吗？</li>
+<li>它真的必须完成吗？</li>
+</ul>
+<h2 id="u7B2C_8__u7AE0__u6CE8_u91CD_u5B9E_u6548_u7684_u9879_u76EE_Pragmatic_Projects"><a href="#u7B2C_8__u7AE0__u6CE8_u91CD_u5B9E_u6548_u7684_u9879_u76EE_Pragmatic_Projects" class="headerlink" title="第 8 章 注重实效的项目 Pragmatic Projects"></a>第 8 章 注重实效的项目 Pragmatic Projects</h2><p>使项目级活动保持一致和可靠的一个最重要的因素是使你的各种工作流程自动化。</p>
+<p>质量是一个团队问题。最勤勉的开发者如果被派到不在乎质量的团队里，会发现自己很难保持修正琐碎问题所需的热情。</p>
+<p>认为项目的各种活动——分析、设计、编码、测试——会鼓励发生，是一个错误。</p>
+<blockquote>
+<p>文明通过增加我们不假思索就能完成的重要操作数目而取得进步</p>
+</blockquote>
+<p>项目编译是意见应该可靠可重复进行的琐碎工作，包括：</p>
+<ul>
+<li>生成代码</li>
+<li>回归测试</li>
+<li>构建自动化</li>
+</ul>
+<p>需要进行的测试的主要类型有：</p>
+<ul>
+<li>单元测试</li>
+<li>集成测试</li>
+<li>验证和校验(validation and verification)</li>
+<li>资源耗尽、错误及恢复</li>
+<li>性能测试</li>
+<li>可用性测试</li>
+</ul>
+<p>在现实中，项目的成功是由它在多大程度上满足了用户的期望来衡量的。不符合用户语气的项目注定是失败的，不管交付的产品在绝对的意义上有多好。</p>
+<p>如果我们在负责一项设计，或是一段代码，我们是在做可以引以自豪的工作。</p>
+<h2 id="u63D0_u793A_u6C47_u603B"><a href="#u63D0_u793A_u6C47_u603B" class="headerlink" title="提示汇总"></a>提示汇总</h2><p>这些提示描述了什么才是<strong>注重实效的程序员</strong></p>
+<blockquote>
+<p>[1] Care About Your Craft 关心你的技艺</p>
+</blockquote>
+<p>除非你在乎能否漂亮地开发出软件，其他事情都是没有意义的</p>
+<blockquote>
+<p>[2] Think! About Your Work 思考！你的工作</p>
+</blockquote>
+<p>对每一项决策进行评估，不间断思考，实时批判你的工作</p>
+<blockquote>
+<p>[3] Provide Options, Don’t Make Lame Excuses 提供各种选择，不要找蹩脚的借口</p>
+</blockquote>
+<p>不要说事情做不到，要说明能够做什么来挽回局面。不要害怕提出要求，也不要害怕承认你需要帮助</p>
+<blockquote>
+<p>[4] Don’t Live with Broken Windows 不要容忍破窗户</p>
+</blockquote>
+<p>一旦发现低劣的设计、错误的决策或是糟糕的代码，就赶紧修复</p>
+<blockquote>
+<p>[5] Be a Catalyst for Change 做变化的催化剂</p>
+</blockquote>
+<p>人们发现，参与正在发生的成功要更容易。让他们瞥见未来，就能让他们聚集在你周围</p>
+<blockquote>
+<p>[6] Remember the Big Picture 记住大图景</p>
+</blockquote>
+<p>要持续不断地观察周围发生的事情，而不只是你自己在做的事情</p>
+<blockquote>
+<p>[7] Make Quality a Requrements Issue 使质量成为需求问题</p>
+</blockquote>
+<p>如果你给用户某样东西，让他们及早使用，他们的反馈常常会把你引向更好的最终解决方案</p>
+<blockquote>
+<p>[8] Invest Regularly in Your Knowledge Portfolio 定期为你的知识资产投资</p>
+</blockquote>
+<p>这是所有指导方针中最重要也是最简单的，持续投入非常重要</p>
+<blockquote>
+<p>[9] Critically Analyze What You Read and Hear 批判地分析你读到的和听到的</p>
+</blockquote>
+<p>拥有大量知识资产，并把批判的分析应用于你将要阅读的技术出版物的洪流，你将能够理解复杂的答案</p>
+<blockquote>
+<p>[10] It’s Both What You Say and the Way You Say It 你说什么和你怎么说同样重要</p>
+</blockquote>
+<p>交流越有效，你就越有影响力</p>
+<blockquote>
+<p>[11] DRY - Don’t Repeat Yourself 不要重复你自己</p>
+</blockquote>
+<p>这是注重实效的程序员的工具箱里最重要的工具之一</p>
+<blockquote>
+<p>[12] Make It Easy to Reuse 让复用变得容易</p>
+</blockquote>
+<p>你所要做的是营造一种环境，在其中找到并复用已有的东西，比自己编写更容易。如果不容易，大家就不会去复用。而如果不进行复用，你们就会有重复知识的风险</p>
+<blockquote>
+<p>[13] Eliminate Effects Between Unrelated Things 消除无关事物之间的影响</p>
+</blockquote>
+<p>我们想要设计自足(self-contained)的组件：独立，具有单一、良好定义的目的(内聚, cohesion)</p>
+<blockquote>
+<p>[14] There Are No Final Decisions 不存在最终决策</p>
+</blockquote>
+<p>要把决策视为是写在沙滩上的，而不要把它们刻在石头上。大浪随时可能到来，把它们抹去</p>
+<blockquote>
+<p>[15] Use Tracer Bullets to Find the Target 用曳光弹找到目标</p>
+</blockquote>
+<p>为了在代码中获得这样的效果，我们要找到某种东西，让我们能快速，直观和可重复地从需求出发，满足最终系统的某个方面要求</p>
+<blockquote>
+<p>[16] Prototype to Learn 为了学习而制作原型</p>
+</blockquote>
+<p>原型制作是一种学习经验。其价值并不在于所产生的代码，而在于所学到的经验教训，那才是原型制作的要点所在</p>
+<blockquote>
+<p>[17] Program Close to the Problem domain 靠近问题领域编程</p>
+</blockquote>
+<p>无论是用于配置和控制应用程序的简单语言，还是用于指定规则或过程的更为复杂的语言，都应该考虑让你的项目更靠近问题领域。通过在更高的抽象层面上编码，你获得了专心解决领域问题的自由，并且可以忽略琐碎的实现细节</p>
+<blockquote>
+<p>[18] Estimate to Avoid Surprises 估算，以避免发生意外</p>
+</blockquote>
+<p>某种程度来说，所有的解答都是估算。只不过有一些要比其他的更准确</p>
+<blockquote>
+<p>[19] Iterate the Schedule with the Code 通过代码对进度表进行迭代</p>
+</blockquote>
+<p>必须帮助他们了解团队、团队的生产率、还有环境将决定进度</p>
+<blockquote>
+<p>[20] Keep Knowledge in Plain Text 用纯文本保存知识</p>
+</blockquote>
+<p>保证不过时，杠杆作用(计算世界的每一样工具，从源码管理到编译器环境，再到编辑器及独立的过滤器，都能在纯文本上进行操作)，更易于测试</p>
+<blockquote>
+<p>[21] Use the Power of Command Shells 利用命令 shell 的力量</p>
+</blockquote>
+<p>去熟悉 shell，你会发现自己的生产率迅速提高</p>
+<blockquote>
+<p>[22] Use a Single Editor Well 用好一种编辑器</p>
+</blockquote>
+<p>选一种编辑器，彻底了解它，并将其用于所有的编辑任务</p>
+<blockquote>
+<p>[23] Always Use Source Code Control 总是使用源码控制</p>
+</blockquote>
+<p>即使团队只有一个人，项目只有一周，确保每样东西都处在源码控制之下</p>
+<blockquote>
+<p>[24] Fix the Problem, Not the Blame 要修正问题，而不是发出指责</p>
+</blockquote>
+<p>bug 是你的过错还是别人的过错，并不是真的很有关系。它仍然是你的问题</p>
+<blockquote>
+<p>[25] Don’t Panic 不要恐慌</p>
+</blockquote>
+<p>这是调试的第一准则，要总是设法找出问题的根源，而不只是问题的特定表现</p>
+<blockquote>
+<p>[26] “Select” Isn’t Broken “Select” 没有问题</p>
+</blockquote>
+<p>如果你『只改动了一样东西』，系统就停止了工作，那样东西很可能就需要对此负责——直接地或间接地，不管那看起来有多牵强。</p>
+<blockquote>
+<p>[27] Don’t Assume it - Prove It 不要假定，要证明</p>
+</blockquote>
+<p>不要因为你『知道』它能哦你工作而轻易放过与 bug 有牵连的例程或代码，证明它。</p>
+<blockquote>
+<p>[28] Learn a Text Manipulation Language 学习一种文本操纵语言</p>
+</blockquote>
+<p>使用它们快速构建实用程序，为你的想法建立原型</p>
+<blockquote>
+<p>[29] Write Code That Writes Code 编写能编写代码的代码</p>
+</blockquote>
+<p>代码生成器有两种主要类型：被动代码生成器(只运行一次来生成结果)，主动代码生成器(每次需要其结果时被调用)</p>
+<blockquote>
+<p>[30] You Can’t Write Perfect Software 你不可能写出完美的软件</p>
+</blockquote>
+<p>把它视为生活的公理，接受它，拥抱它，庆祝它</p>
+<blockquote>
+<p>[31] Design with Contracts 通过合约进行设计</p>
+</blockquote>
+<p>注意前条件、后条件和类不变项。继承和多态是面向对象语言的基石，是合约可以真正闪耀的领域。</p>
+<blockquote>
+<p>[32] Crash Early 早崩溃</p>
+</blockquote>
+<p>尽早检测问题的好处之一是你可以更早崩溃</p>
+<blockquote>
+<p>[33] If It Can’t Happen, Use Assertions to Ensure That It Won’t 如果它不可能发生，用断言确保它不会发生</p>
+</blockquote>
+<p>无论何时你发现自己在思考『但那当然不可能发生』，增加代码检查它，最容易的方法是使用断言</p>
+<blockquote>
+<p>[34] Use Exceptions for Exceptional Problems 将异常用于异常的情况</p>
+</blockquote>
+<p>异常表示即时的、非局部的控制转移——这是一种级联的(cascading) goto。那些把异常用作其正常处理的一部分的程序，将遭受到经典的诶意大利面条式代码的所有可读性和可维护性问题的折磨。这些程序破坏了封装；通过异常处理，例程和它们的调用者被更紧密地耦合在一起。</p>
+<blockquote>
+<p>[35] Finish What You Start 要有始有终</p>
+</blockquote>
+<p>对于资源分配和解除分配的处理，这是一个简单的提示</p>
+<blockquote>
+<p>[36] Minimize Counpling Between Modules 使模块之间的耦合减至最小</p>
+</blockquote>
+<p>通过编写尽可能遵守德墨忒尔法则的『羞怯』代码</p>
+<blockquote>
+<p>[37] Configure. Don’t Integrate 要配置，不要集成</p>
+</blockquote>
+<p>要用元数据(metadata)描述应用的配置选项：调谐参数，用户偏好(user preference)，安装目录等等</p>
+<blockquote>
+<p>[38] Put Abstractions in Code. Details in Metadata 将抽象放进代码，细节放进元数据</p>
+</blockquote>
+<p>这样做的好处是：</p>
+<ul>
+<li>它迫使你解除你的设计的耦合，从而带来更灵活，可适应性更好的程序</li>
+<li>它迫使你通过推迟细节处理，创建更健壮、更抽象的设计——完全推迟到程序之外</li>
+<li>无需重新编译应用，你就可以对其进行定制。你还可以利用这一层面的定制，轻松绕开正在运行的产品系统中的重大 bug</li>
+<li>与通用的编程语言的情况相比，可以通过一种大为接近问题领域的方式表示元数据</li>
+<li>甚至可以用相同的应用引擎——但是用不同的元数据——实现若干不同的项目</li>
+</ul>
+<blockquote>
+<p>[39] Analyze Workflow to Improve Concurrency 分析工作流，以改善并发性</p>
+</blockquote>
+<p>可以使用动作图，通过找出本来可以，但却没有并行执行的动作，使并行度最大化</p>
+<blockquote>
+<p>[40] Design Using Services 用服务进行设计</p>
+</blockquote>
+<p>实际上我们创建的不是组件，而是服务——位于定义良好的，一致的接口之后的独立，并发的对象</p>
+<blockquote>
+<p>[41] Always Design for Concurrency 总是为并发进行设计</p>
+</blockquote>
+<p>一旦你设计了具有并发要素的架构，对许多并发服务的处理进行思考就会变得更容易：模型变成了普遍的</p>
+<blockquote>
+<p>[42] Separate Views from Models 使视图与模型分离</p>
+</blockquote>
+<p>通过松解模型与视图/控制器之间的耦合，用低廉的代价为自己换来了许多灵活性</p>
+<blockquote>
+<p>[43] Use Blackboards to Coordinate Workflow 用黑板协调工作流</p>
+</blockquote>
+<p>可以用黑板协调完全不同的事实和因素，同时又使各参与方保持独立，甚至隔离</p>
+<blockquote>
+<p>[44] Don’t Program by Coincidence 不要靠巧合编程</p>
+</blockquote>
+<p>怎样深思熟虑地编程：</p>
+<ul>
+<li>总是意识到你在做什么</li>
+<li>不要盲目地编程，视图构建你不完全理解的应用，或是使用你不熟悉的技术，就是希望自己被巧合误导</li>
+<li>按照计划行事</li>
+<li>依靠可靠的事物，不要依靠巧合或假定</li>
+<li>为你的假定建立文档，『按合约编程』有助于澄清你头脑中的假定，并且有助于把它传达给他人</li>
+<li>不要只是测试你的代码，还要测试你的假定，不要猜测，要实际尝试它。编写断言测试你的假定</li>
+<li>为你的工作划分优先级，把时间花在重要的方面</li>
+<li>不要做历史的奴隶，不要让已有的代码支配将来的代码</li>
+</ul>
+<blockquote>
+<p>[45] Estimate the Order of Your Algorithm 估算你的算法的阶</p>
+</blockquote>
+<p>如果不能确定，就试着运行它，变化输入的数量，把结果画成图，来找到答案</p>
+<blockquote>
+<p>[46] Test Your Estimates 测试你的估算</p>
+</blockquote>
+<p>如果要获得准确的计时很棘手，就用代码剖析器(code profiler)</p>
+<blockquote>
+<p>[47] Refactor Early. Refactor Often 早重构，常重构</p>
+</blockquote>
+<p>追踪需要重构的事物，如果你不能立刻重构某样东西，就一定要把它列入计划。确保受到影响的代码的使用者知道该代码计划要重构，以及这可能会怎样影响他们。</p>
+<blockquote>
+<p>[48] Design to Test 为测试而设计</p>
+</blockquote>
+<p>当你设计模块，或是单个例程，应该既设计其合约，也设计测试其合约的代码</p>
+<blockquote>
+<p>[49] Test Your Software, or Your Users Will 测试你的软件，否则你的用户就得测试</p>
+</blockquote>
+<p>测试是技术，但更是文化</p>
+<blockquote>
+<p>[50] Don’t Use Wizard Code You Don’t Understand 不要使用你不理解的向导代码</p>
+</blockquote>
+<p>重点在于理解，否则没有能力维护，在调试时也会遇到很大困难</p>
+<blockquote>
+<p>[51] Don’t Gather Requirements - Dig for Them 不要搜集需求——挖掘它们</p>
+</blockquote>
+<p>需求是对需要完成的某件事情的陈述</p>
+<blockquote>
+<p>[52] Work with a User to Think Like a User 与用户一同工作，以像用户一样思考</p>
+</blockquote>
+<p>开采需求的过程也是开始与用户群建立和谐的关系，了解他们对你正在构建的系统的期许和希望</p>
+<blockquote>
+<p>[53] Abstractions Live Longer than Details 抽象比细节活得更长久</p>
+</blockquote>
+<p>需求不是架构，需求不是设计，也不是用户界面。需求是需要，看远一些</p>
+<blockquote>
+<p>[54] Use a Project Glossary 使用项目词汇表</p>
+</blockquote>
+<p>如果用户和开发者用不同的名称指代同一事物，或是用同一名称指代不同事物，这样的项目很难取得成功</p>
+<blockquote>
+<p>[55] Don’t Think Outside the Box - Find the Box 不要在盒子外面思考——要找到盒子</p>
+</blockquote>
+<p>面对棘手问题时，列出所有在你面前的可能途径。不要排除任何东西，不管听起来多么无用或愚蠢</p>
+<blockquote>
+<p>[56] Listen to Nagging Doubts - Start When You’re Ready 倾听反复出现的疑虑——等你准备好再开始</p>
+</blockquote>
+<p>相信自己的直觉，可能没有办法明确指出问题所在，但是觉得不对劲，就要停下来好好想想</p>
+<blockquote>
+<p>[57] Some Things Are Better Done than Described 对有些事情『做』胜于『描述』</p>
+</blockquote>
+<p>倾向于把需求搜集、设计以及实现视为同一个过程——交付高质量的系统——的不同方面</p>
+<blockquote>
+<p>[58] Don’t Be a Slave to Formal Methods 不要做形式方法的奴隶</p>
+</blockquote>
+<p>盲目采用任何技术，而不把它放进你的开发实践和能力的语境中，肯定会出问题</p>
+<blockquote>
+<p>[59] Expensive Tools Do Not Produce Better Designs 昂贵的工具不一定能制作出更好的设计</p>
+</blockquote>
+<p>应该不断提炼和改善你的开发过程，决不要把方法学的呆板限制当做你世界的边界</p>
+<blockquote>
+<p>[60] Organize Around Functionality, Not Job Functions 围绕功能，而不是工作职务进行组织</p>
+<p>[61] Don’t Use Manual Procedure 不要使用手工流程</p>
+</blockquote>
+<p>人的可重复性并不像计算机那么好，我们也不应该期望人们能那样</p>
+<blockquote>
+<p>[62] Test Early. Test Often. Test Automatically 早测试，常测试，自动测试</p>
+</blockquote>
+<p>一旦我们有了代码，我们就想开始进行测试。bug 被发现得越早，进行修补的成本就越低。</p>
+<blockquote>
+<p>[63] Coding Ain’t Done ‘Til All the Tests Run 要到通过全部测试，编码才算完成</p>
+</blockquote>
+<p>首先，代码从不会真正完成，更重要的是，在它通过所有可用的测试之前，你不能声称它已经可供使用</p>
+<blockquote>
+<p>[64] Use Saboteurs to Test Your Testing 通过『蓄意破坏』测试你的测试</p>
+</blockquote>
+<p>故意引入 bug，并证实测试能抓住它们</p>
+<blockquote>
+<p>[65] Test State Coverage. Not Code Coverage 测试状态覆盖，而不是代码覆盖</p>
+</blockquote>
+<p>即使具有良好的代码覆盖，你用于测试的数据仍然会有巨大的影响，而且，更为重要的是，你遍历代码的<strong>次序</strong>的影响可能是最大的</p>
+<blockquote>
+<p>[66] Find Bugs Once 一个 bug 只抓一次</p>
+</blockquote>
+<p>一旦测试人员找到了某个 bug，这应该是测试人员最后一次发现这个 bug。应该对自动化测试进行修改，从此每次斗殴检查那个特定的 bug</p>
+<blockquote>
+<p>[67] Treat English as Just Another Programming Language 把英语当做又一种编程语言</p>
+</blockquote>
+<p>把文档当做整个开发过程的完整组成部分加以接受</p>
+<blockquote>
+<p>[68] Build Documentation in. Don’t Bolt It On 把文档建在里面，不要拴在外面</p>
+</blockquote>
+<p>一般来说，注释应该讨论为何要做某事，它的目的和目标。代码已经说明了它是怎样完成的，所以再为此加上注释是多余的——而且违反了 DRY 原则</p>
+<blockquote>
+<p>[69] Gently Exceed Your Users’ Expectation 温和地超出用户的期望</p>
+</blockquote>
+<p>交流期望，管理期望，要让用户惊讶，而不是惊吓他们</p>
+<blockquote>
+<p>[70] Sign Your Work 在你的作品上签名</p>
+</blockquote>
+<p>过去时代的手艺人为能在他们的作品上签名而自豪，你也应该如此</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/19/flowers-in-wind/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          第十六周-风花
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/18/swift-tricks-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift 千金方 2 - Stanford CS193p 学习笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="pragmatic-programmer-note" data-title="【程序员修炼之道】读书笔记" data-url="http://yoursite.com/2015/12/19/pragmatic-programmer-note/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wdxblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 wdxtub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
