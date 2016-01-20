@@ -558,87 +558,6 @@
   </entry>
   
   <entry>
-    <title><![CDATA[深入理解计算机系统 第 9 课 Machine Advanced]]></title>
-    <link href="http://yoursite.com/2016/01/18/csapp-9/"/>
-    <id>http://yoursite.com/2016/01/18/csapp-9/</id>
-    <published>2016-01-18T16:16:21.000Z</published>
-    <updated>2016-01-18T23:17:37.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]></content>
-    <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
-    </summary>
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 8 课 Machine Data]]></title>
-    <link href="http://yoursite.com/2016/01/18/csapp-8/"/>
-    <id>http://yoursite.com/2016/01/18/csapp-8/</id>
-    <published>2016-01-18T16:16:14.000Z</published>
-    <updated>2016-01-18T23:17:35.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]></content>
-    <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
-    </summary>
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 7 课 Machine Procedures]]></title>
-    <link href="http://yoursite.com/2016/01/18/csapp-7/"/>
-    <id>http://yoursite.com/2016/01/18/csapp-7/</id>
-    <published>2016-01-18T16:15:37.000Z</published>
-    <updated>2016-01-18T23:17:32.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]></content>
-    <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
-    </summary>
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[深入理解计算机系统 第 6 课 Machine Control]]></title>
     <link href="http://yoursite.com/2016/01/18/csapp-6/"/>
     <id>http://yoursite.com/2016/01/18/csapp-6/</id>
@@ -2582,6 +2501,341 @@
       <category term="API" scheme="http://yoursite.com/tags/API/"/>
     
       <category term="Azure" scheme="http://yoursite.com/tags/Azure/"/>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+    
+      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[云计算 第 4 课 SSH, Linux & Project]]></title>
+    <link href="http://yoursite.com/2016/01/15/cc-4/"/>
+    <id>http://yoursite.com/2016/01/15/cc-4/</id>
+    <published>2016-01-16T01:19:30.000Z</published>
+    <updated>2016-01-16T14:58:55.000Z</updated>
+    <content type="html"><![CDATA[<p>了解了基本的云平台之后，我们现在来学习一下刚才我们用到的 SSH 和 Linux，最后介绍做项目的要求。</p>
+<a id="more"></a>
+<hr>
+<h2 id="Secure_Shell_28SSH_29"><a href="#Secure_Shell_28SSH_29" class="headerlink" title="Secure Shell(SSH)"></a>Secure Shell(SSH)</h2><p>简单来说 SSH 是一个用来进行安全数据通信、远程登录和远程命令执行的网络协议。在 EC2 instance 上使用 SSH 与平时相比有一些小小的变化，将在下面介绍。</p>
+<p><img src="/images/14529074027221.jpg" alt=""><br>（SSH 连接 EC2 的过程）</p>
+<h3 id="u8BBE_u7F6E_SSHD"><a href="#u8BBE_u7F6E_SSHD" class="headerlink" title="设置 SSHD"></a>设置 SSHD</h3><p>在 Linux 上使用 <code>sudo apt-get install openssh-server</code>，配置文件在 <code>/etc/ssh/sshd.config</code> 中。可以使用 <code>sudo /etc/init.d/ssh</code> 或 <code>sudo service sshd [start|stop|restart]</code> 来进行管理</p>
+<h3 id="u9A8C_u8BC1_u673A_u5236"><a href="#u9A8C_u8BC1_u673A_u5236" class="headerlink" title="验证机制"></a>验证机制</h3><p>SSH 支持若干中验证机制。比较常见的是通过密码验证。密码验证的安全性取决于密码的长度和复杂度，由于可以被暴力或者基于字典破解，所以对于公共访问的 EC2 instance 来说是比较危险的。</p>
+<p>为此，所有的 EC2 instance 都使用基于公钥加密的 key-based 验证。一对密钥包含公钥和私钥，由数学方式如 RSA/DSA 生成并链接。只知道一个 key 的话，几乎不可能破解另外一个 key。</p>
+<p>我们也可以生成自己的密钥对，在 Linux 中，密钥对通常存储在 <code>~/.ssh</code> 目录下，通过下面的代码就可以生成密钥对：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generate a new key with your email id as a label</span></span><br><span class="line">ssh-keygen -t rsa -b <span class="number">4096</span> -C <span class="string">"email_id@domain.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enter the file where you want to save the key: (recommended - choose default)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># You will be asked enter a pass-phrase for your key twice.</span></span><br><span class="line"><span class="comment"># (Use a strong pass-phrase. Longer pass-phrases are more secure than shorter ones.)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># After you provide the pass-phrase. The console will print the location of the key and the key fingerprint</span></span><br></pre></td></tr></table></figure>
+<p>然后就可以导入这个密钥并用以连接 EC2，具体的做法可以看<a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#how-to-generate-your-own-key-and-import-it-to-aws" target="_blank" rel="external">这里</a></p>
+<p>举个例子，下面的代码会在远程实例执行 <code>uname -a</code> 命令，这种做法在批量运行远程实例命令的时候非常有用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i private_key_file.pem some-instance.ec2.amazonaws.com <span class="string">'uname –a'</span></span><br></pre></td></tr></table></figure>
+<p>如果遇到 SSH 的 permission-denied 问题，很可能是由于不正确权限所导致，私钥的 unix permission 为 <code>600</code> 且包含私钥的目录的权限应为 <code>700</code></p>
+<p>在执行 SSH 命令时，如果太久没有操作，就会自动断开，执行的脚本也会终止，如果不希望这样，有以下几种方式可以避免 SSH 超时：</p>
+<ol>
+<li><a href="https://docs.oseems.com/general/application/ssh/disable-timeout" target="_blank" rel="external">关闭 SSH 客户端的超时</a></li>
+<li>用 <code>nohup</code> 执行脚本</li>
+<li>通过远程屏幕管理(remote sreen management)来保持 terminal sessions</li>
+</ol>
+<h3 id="Remote_Screen_Management"><a href="#Remote_Screen_Management" class="headerlink" title="Remote Screen Management"></a>Remote Screen Management</h3><p>通常来说我们用 bash shell 来进行远程操作，但是由于网络的缘故，一旦连接断开，所有已经启动的进程都会被终止。为了避免这种情况，使用 <code>nohup</code> 命令就非常有用了，即使连接断开，仍旧会继续运行命令。</p>
+<p>另外一个比较有用的工具是 <code>byobu</code>，是一个多终端管理应用程序，类似于 <code>screen</code> 或者 <code>tmux</code>。具体可以参考下图：</p>
+<p><img src="/images/14529090638274.jpg" alt=""></p>
+<h2 id="Linux__u5FC5_u5907_u6280_u80FD"><a href="#Linux__u5FC5_u5907_u6280_u80FD" class="headerlink" title="Linux 必备技能"></a>Linux 必备技能</h2><p>这门课基本上会在 Linux 环境下工作，所以这里给出一些基本的概念和技巧。下面是一些教程：</p>
+<ol>
+<li><a href="http://tldp.org/LDP/abs/html/" target="_blank" rel="external">The Advanced Bash Scripting Guide</a></li>
+<li><a href="https://github.com/jlevy/the-art-of-command-line" target="_blank" rel="external">The Art of the Command Line</a> <a href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md" target="_blank" rel="external">中文版本</a></li>
+<li><a href="http://www.perl.org/" target="_blank" rel="external">Perl 指南</a></li>
+<li><a href="http://www.python.org/" target="_blank" rel="external">Python 指南</a></li>
+</ol>
+<p>读的时候需要注意下面的内容：</p>
+<ol>
+<li>脚本语法，本地变量和环境变量</li>
+<li>bash 中的 Quoting and back-ticks</li>
+<li>利用 unix 管道进行输入输出重定向</li>
+<li>使用类似 <code>grep</code>, <code>awk</code>, <code>sed</code>, <code>cut</code> 等等来做基本的文本操作</li>
+</ol>
+<h3 id="u5B89_u88C5_u8F6F_u4EF6"><a href="#u5B89_u88C5_u8F6F_u4EF6" class="headerlink" title="安装软件"></a>安装软件</h3><p>用 Ubuntu 的话可以使用强大的 <code>apt-get</code> 来安装软件，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install emacs</span><br><span class="line">sudo apt-get install vim</span><br><span class="line"></span><br><span class="line">sudo apt-get update <span class="comment"># 用来更新包索引</span></span><br><span class="line">sudo apt-get upgrade <span class="comment"># 用来更新包</span></span><br></pre></td></tr></table></figure>
+<h3 id="u6587_u4EF6_u6240_u6709_u8005_u548C_u6743_u9650"><a href="#u6587_u4EF6_u6240_u6709_u8005_u548C_u6743_u9650" class="headerlink" title="文件所有者和权限"></a>文件所有者和权限</h3><p>Linux 的文件权限分为三个用户组：<code>user</code>, <code>group</code> 和 <code>others</code>，每组有三个权限：读(<code>r</code>)，写(<code>w</code>)，执行(<code>x</code>)，具体可以参考下表</p>
+<p><img src="/images/cc8.jpg" alt="c"></p>
+<p>然后我们可以利用 <code>chmod</code> 命令来修改权限，如：<code>chmod 777 filename.txt</code></p>
+<p>不用数字的话，可以用字母，<code>chmod u+x filename.txt</code> 这个命令就给 user 添加了执行权限。</p>
+<p>如果要更改文件所属，使用 <code>chown</code> 命令，具体可以参见 <code>man chown</code></p>
+<h3 id="Linux__u4E2D_u7684_u78C1_u76D8_u64CD_u4F5C"><a href="#Linux__u4E2D_u7684_u78C1_u76D8_u64CD_u4F5C" class="headerlink" title="Linux 中的磁盘操作"></a>Linux 中的磁盘操作</h3><h4 id="u7BA1_u7406_u5206_u533A"><a href="#u7BA1_u7406_u5206_u533A" class="headerlink" title="管理分区"></a>管理分区</h4><p>许多 Linux 应用都可以管理磁盘分区，比如说 <code>parted</code> 和 <code>fdisk</code>。<code>fdisk</code> 是比较老的分区管理工具，现在几乎已经被 <code>parted</code> 取代，因为 <code>parted</code> 支持 GUID 分区表以及大于 2TB 的磁盘，所以我们这里使用 <code>parted</code>。</p>
+<p><code>parted -l</code> 会列出系统中的所有分区。具体的顺序是按照 <code>/dev</code> 下的顺序。在 EC2 实例中，设备是 <code>dev/xvd**</code>，<code>/dev/xvda1</code> 是操作系统分区，<code>/dev/xvdb</code> 是实例的存储分区，注意 RAMDISK 不会出现在 <code>parted</code> 的输出当中。</p>
+<p><code>parted</code> 还可以用来为每个分区设置类型和文件系统，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parted /dev/xvdX mklabel gpt</span><br><span class="line">parted /dev/xvdX mkpart db ext4 <span class="number">0</span>% <span class="number">10</span>G</span><br></pre></td></tr></table></figure>
+<p>如果不加任何参数，<code>parted</code> 就会进入交互模式，这里你可以利用 <code>mkfs</code> 来格式化一个分区，如 <code>mkfs.ext4 /dev/xvdX1</code></p>
+<h4 id="u6302_u8F7D_u5206_u533A"><a href="#u6302_u8F7D_u5206_u533A" class="headerlink" title="挂载分区"></a>挂载分区</h4><p>在分区和格式化之后，如果想要使用就需要把分区挂载在某个挂载点上，通常来说会挂载在 <code>/mnt</code> 或者 <code>/mount</code> 上，可移除的媒介，例如 USB 和 CDROM，会挂载在 <code>/media</code> 上，当然，你可以把分区挂载在任何地方，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /storage/mountpoint</span><br><span class="line">mount /dev/yourdevice /storage/mountpoint</span><br></pre></td></tr></table></figure>
+<h3 id="u914D_u7F6E_u670D_u52A1_u548C_u542F_u52A8"><a href="#u914D_u7F6E_u670D_u52A1_u548C_u542F_u52A8" class="headerlink" title="配置服务和启动"></a>配置服务和启动</h3><p>如果想要开机启动，需要参考应用本身的帮助文档，但是总体来说，服务需要安装在 <code>/etc/init.d</code> 中，这使得这些脚本可以在启动时运行。例如，如果 mysql 脚本在 <code>/etc/init.d</code> 中，那么可以使用这个命令 <code>service mysql [start|stop|restart]</code>。</p>
+<p>想要了解更多，请参阅<a href="http://www.tldp.org/HOWTO/HighQuality-Apps-HOWTO/boot.html" target="_blank" rel="external">这里</a></p>
+<h2 id="u9879_u76EE"><a href="#u9879_u76EE" class="headerlink" title="项目"></a>项目</h2><p>早开始，早学习，多测试，注意截止时间。即使 AWS 或者 Azure 挂掉也不会推迟截止日期，所以最保险的还是提早开始做（其实做什么事情都是这样）。</p>
+<p>可能的情况下尽量用 spot instance，可以给学校省点钱。当然后面的 project 也会有具体的要求，就跟着做即可。</p>
+<h3 id="u7BA1_u7406_u82B1_u8D39"><a href="#u7BA1_u7406_u82B1_u8D39" class="headerlink" title="管理花费"></a>管理花费</h3><p>每个 project 都有花费的限制，可以在 AWS 账户活动页面查看用费状况，如下图所示：</p>
+<p><img src="/images/14529122617926.jpg" alt=""></p>
+<h3 id="u7ED9_AWS__u8D44_u6E90_u6DFB_u52A0_u6807_u7B7E"><a href="#u7ED9_AWS__u8D44_u6E90_u6DFB_u52A0_u6807_u7B7E" class="headerlink" title="给 AWS 资源添加标签"></a>给 AWS 资源添加标签</h3><p>AWS 资源，包括 EC2 实例，S3 Bucket 等都可以通过键值对来打标签，做每个 project 的时候都要打上对应的标签，例如：</p>
+<p><img src="/images/14529125832425.jpg" alt=""></p>
+<p>打标签是必须的，不然会扣分。</p>
+<p>注意 spot 实例创建和 spot 实例请求是两个分开的过程，所以得确保在实例启动的时候单独打赏标签。</p>
+<h3 id="u8BC4_u4EF7_u548C_u6253_u5206"><a href="#u8BC4_u4EF7_u548C_u6253_u5206" class="headerlink" title="评价和打分"></a>评价和打分</h3><p>某些项目中会使用教学人员提供的 AMI，包含所需的所有数据，通常来说会包含两个文件：</p>
+<ol>
+<li><code>runner.sh</code>：bash 脚本，每个问题对应一个函数，完成这些函数并运行脚本来验证答案</li>
+<li><code>submitter</code>：验证答案之后用这个来提交，需要用到 andrewID 和 提交密码，提交密码可以在每个项目页面的顶端找到</li>
+</ol>
+<p>因为只能提交一次，所以确保提交前都弄好。还需要提交对应的源代码，会通过以下的方式来评估：</p>
+<ol>
+<li>完成提到的任务</li>
+<li>效率和性能</li>
+<li>编码风格，可读性，注释，建议参考 <a href="https://github.com/google/styleguide" target="_blank" rel="external">Google Style Guide</a></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>了解了基本的云平台之后，我们现在来学习一下刚才我们用到的 SSH 和 Linux，最后介绍做项目的要求。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="SSH" scheme="http://yoursite.com/tags/SSH/"/>
+    
+      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="项目" scheme="http://yoursite.com/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[云计算 第 3 课 Azure 简介]]></title>
+    <link href="http://yoursite.com/2016/01/15/cc-3/"/>
+    <id>http://yoursite.com/2016/01/15/cc-3/</id>
+    <published>2016-01-15T22:21:49.000Z</published>
+    <updated>2016-01-16T01:05:54.000Z</updated>
+    <content type="html"><![CDATA[<p>现在我们已经了解了 AWS 的基本使用。接下来看看另一个云服务提供商 Microsoft Azure 的基本配置和使用。</p>
+<a id="more"></a>
+<hr>
+<h2 id="Microsoft_Azure"><a href="#Microsoft_Azure" class="headerlink" title="Microsoft Azure"></a>Microsoft Azure</h2><p>简单来说，就是微软提供的云服务，提供 PaaS 和 IaaS 服务，于此同时支持不同的编程语言/工具/框架。在这门课中会设置好 Azure Virtual Machines (VMs) 以及使用其存储服务。</p>
+<p><a href="https://youtu.be/ZNgvZE0MLeo" target="_blank" rel="external">Azure 介绍视频（墙外）</a></p>
+<p>不想看视频的话，我帮大家看了，总结要点如下：</p>
+<ol>
+<li>为什么要用云呢？多快好省</li>
+<li>为什么要用微软的云呢？因为微软大法好，我们自己的服务也就是在 Azure 上</li>
+<li>包括什么呢？应用服务，数据服务，设施服务</li>
+<li>数据中心在哪里呢？美国欧洲中国日本澳大利亚</li>
+<li>我们的用户是谁？遍布世界各地</li>
+<li>『我们好靠谱的大家快来用吧！』</li>
+</ol>
+<p>可以通过访问 <a href="https://portal.azure.com/" target="_blank" rel="external">Azure Portal</a> 或者 <a href="https://manage.windowsazure.com/" target="_blank" rel="external">Azure Manage</a> 来访问 Azure 控制台，其中 Azure Portal 是一个新的控制台，尽量用这个。需要更多信息，可以查看<a href="https://azure.microsoft.com/en-us/documentation/articles/fundamentals-introduction-to-azure" target="_blank" rel="external">这里</a></p>
+<h2 id="Microsoft_Azure_Compute"><a href="#Microsoft_Azure_Compute" class="headerlink" title="Microsoft Azure Compute"></a>Microsoft Azure Compute</h2><p>Azure 计算服务提供了可以配置启动登录安装运行软件的虚拟机，按照以下步骤来创建一个虚拟机：</p>
+<ol>
+<li>登录<a href="https://portal.azure.com/" target="_blank" rel="external">Azure Portal</a></li>
+<li>新建 -&gt; 计算 -&gt; Ubuntu Server 14.04 LTS，选择 <code>资源管理器</code> 作为 <code>部署模型</code></li>
+<li>设置姓名、用户名和密码，新建一个资源组，点击确定</li>
+<li>然后在大小选择中点击查看全部，选择 <code>A0 标准</code>，也就是最便宜的那个</li>
+<li>后面的大部分内容都可以用默认值，然后点击确定就创建完成了</li>
+</ol>
+<p>Azure 有两种不同的部署模型：Azure Service Manager(ASM) 和 Azure Resource Manager(ARM)，后者更新也有更好的 API，所以我们在这门课中尽量会用这一种。</p>
+<p>注意，在一种模型例部署的资源在另一种里看不到，更多信息可以访问<a href="http://blogs.msdn.com/b/cloud_solution_architect/archive/2015/03/17/rbac-and-the-azure-resource-manager.aspx" target="_blank" rel="external">这里</a></p>
+<h3 id="u5B9E_u4F8B_u6559_u7A0B"><a href="#u5B9E_u4F8B_u6559_u7A0B" class="headerlink" title="实例教程"></a>实例教程</h3><p>这里我们对 Azure 做上一讲中对 Amazon EC2 同样的事情：SSH 连接，双向复制文件，并尝试做一些基本操作。</p>
+<p>新建好的虚拟机大概情况是这样：</p>
+<p><img src="/images/7.pic.jpg" alt="7.pi"></p>
+<p>有了这些信息，就可以用 <code>ssh wdxtub@ipaddress</code> 来进行连接，连接成功之后会要求输入密码，密码验证之后就可以看到对应的命令行了。</p>
+<p><img src="/images/cc3.jpg" alt="c"></p>
+<p>同样的，在服务器上新建一个叫做 <code>hello</code> 的文件夹，然后利用 <code>scp hello.sh wdxtub@ipaddress:\hello</code> 把我们的脚本文件上传上去。</p>
+<p><img src="/images/cc4.jpg" alt="c"></p>
+<p>就可以看到我们在脚本中输出的内容了。然后我们新建一个文本文件，随便写点内容，利用 <code>scp wdxtub@ipaddress:\hello/info2.txt ./</code> 就可以把文件复制到本地了</p>
+<p>操作完成之后记得停止虚拟机，不然运行着就不断在花钱的。</p>
+<h2 id="Microsoft_Azure_Storage"><a href="#Microsoft_Azure_Storage" class="headerlink" title="Microsoft Azure Storage"></a>Microsoft Azure Storage</h2><p>类似于 Amazon S3，是一个可拓展的存储系统，有下面四种形态：</p>
+<ol>
+<li>Azure Blobs，类似 Amazon S3 的对象存储系统</li>
+<li>Azure Tables，数据库</li>
+<li>Azure Queues，应用的消息队列</li>
+<li>Azure Files，文件系统</li>
+</ol>
+<p>现在我们主要接触一下 Azure Blobs，首先先要建立一个 Azure Storage 账户，按照下面步骤即可：</p>
+<ol>
+<li>新建 -&gt; 数据+存储器 -&gt; 存储(Storage account)</li>
+<li><code>部署模型</code> 选择 <code>资源管理器</code>，然后指定唯一的名字</li>
+<li>指定一个现有的资源组（刚才新建的那个就可以），然后在类型里选择 <code>L 本地冗余</code>（最便宜那个）</li>
+<li>然后就可以创建了</li>
+</ol>
+<p>等待一段时间部署，部署完成后就可以通过 Azure 命令行工具来进行访问了。</p>
+<p><img src="/images/cc5.jpg" alt="c"></p>
+<p>可以在服务这一栏里看到之前提到的四种类型。</p>
+<h2 id="Microsoft_Azure_CLI"><a href="#Microsoft_Azure_CLI" class="headerlink" title="Microsoft Azure CLI"></a>Microsoft Azure CLI</h2><p>在<a href="https://azure.microsoft.com/en-us/downloads/" target="_blank" rel="external">这里</a> 的 Command-line tools 一栏中选择对应操作系统的版本下载安装，这里我会用 mac 版本。</p>
+<p>安装很简单，下载下来一个 dmg 文件，然后一步步按照提示安装即可，安装完成之后就可以在终端里输入 <code>azure</code> 来使用了，类似下面这样：</p>
+<p><img src="/images/cc6.jpg" alt="c"></p>
+<p>这门课里会使用 ARM/Azure Resource Manager(v2)，所以我们用 <code>azure config mode arm</code> 切换到这个模式，更多信息点击<a href="https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-azurerm-versus-azuresm" target="_blank" rel="external">这里</a></p>
+<p>这一步比较麻烦，首先先要到<a href="https://manage.windowsazure.com" target="_blank" rel="external">另一个控制台</a>进行操作，在 Active<br> Deirectory 页面下新建一个用户，然后会给你一个初始密码。然后再在设置中把刚才的用户添加位管理员。具体参考<a href="https://azure.microsoft.com/en-us/documentation/articles/active-directory-create-users/" target="_blank" rel="external">创建用户</a></p>
+<p>这些都做完之后，才可以用刚才给的帐号密码在<a href="https://manage.windowsazure.com" target="_blank" rel="external">网页版</a>登录，注意第一次需要修改密码，然后才可以用命令行登录，具体命令是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">azure login</span><br></pre></td></tr></table></figure>
+<p>然后会给出一个地址，让你访问来进行验证，如下图所示：</p>
+<p><img src="/images/cc7.jpg" alt="c"></p>
+<p>经过一系列的账户验证后，在命令行中会显示登录成功。就可以正常使用了，比如 <code>azure location list</code> 查看数据中心位置列表，更详细的教程在<a href="https://azure.microsoft.com/en-us/documentation/articles/azure-cli-arm-commands/" target="_blank" rel="external">这里</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>现在我们已经了解了 AWS 的基本使用。接下来看看另一个云服务提供商 Microsoft Azure 的基本配置和使用。</p>]]>
+    
+    </summary>
+    
+      <category term="Azure" scheme="http://yoursite.com/tags/Azure/"/>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+    
+      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[云计算 第 2 课 AWS 简介]]></title>
+    <link href="http://yoursite.com/2016/01/15/cc-2/"/>
+    <id>http://yoursite.com/2016/01/15/cc-2/</id>
+    <published>2016-01-15T15:29:53.000Z</published>
+    <updated>2016-01-16T01:05:46.000Z</updated>
+    <content type="html"><![CDATA[<p>开发过程中最麻烦的往往不是开发本身，而是环境搭建，尤其是调通各种接口和服务。这一讲会介绍 AWS 的基本使用。</p>
+<a id="more"></a>
+<hr>
+<h2 id="Amazon_Web_Services_AWS"><a href="#Amazon_Web_Services_AWS" class="headerlink" title="Amazon Web Services AWS"></a>Amazon Web Services AWS</h2><p>AWS 是目前最广泛应用的云服务，包含各种不同的服务，比如 Amazon Simple Storage Service (S3) 和 Amazon Elastic Compute Cloud (EC2)。在本课程中会使用 Amazon EC2 并且利用 S3 作为永久存储。与此同时也会使用其他的一些技术比如：Elastic Block Store(EBS), CloudWatch 和 DynamoDB。更多的信息请参考 <a href="http://aws.amazon.com/" target="_blank" rel="external">AWS 网站</a></p>
+<p><a href="https://www.youtube.com/watch?v=jOhbTAU4OPI#action=share" target="_blank" rel="external">视频介绍(墙外)</a></p>
+<h3 id="AWS_Authentication"><a href="#AWS_Authentication" class="headerlink" title="AWS Authentication"></a>AWS Authentication</h3><p>除了 AWS 本身的帐号外，访问 API 以及各类 AWS 服务需要使用的一对『钥匙』：<strong>AWS Access Key ID</strong> 以及 <strong>AWS Secret Key</strong>。</p>
+<p>生成『钥匙』可以按照以下步骤：</p>
+<ol>
+<li>登录 AWS 账户</li>
+<li>在右上角的下拉菜单中选择 Security Credentials (安全证书)<ul>
+<li>如果是第一次访问的话会弹出一个提示是继续还是看一下教程，可以根据自己的需要来选择</li>
+</ul>
+</li>
+<li>在 Access Key (访问密钥)那一栏创建一个新的密钥，就会包含 <strong>AWS Access Key ID</strong> 以及 <strong>AWS Secret Key</strong>。</li>
+</ol>
+<p>成功的话如下图所示，请注意：您一次最多可拥有两个访问密钥（活跃或非活跃）。</p>
+<p><img src="/images/2.pic_hd.jpg" alt="2.pic_hd"></p>
+<p>注意！AWS 密钥拥有控制 AWS 帐号的完全权限，所以务必要保存在安全的地方，做到以下几点：</p>
+<ol>
+<li>不要与任何人共享 AWS 密钥</li>
+<li>不要在代码中用明文保存密钥</li>
+<li>不要把包含 AWS 密钥的代码提交到任何库中</li>
+</ol>
+<p>比较安全的做法是利用环境变量来保存密钥：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> AWS_ACCESS_KEY_ID=<span class="string">"YOUR_ACCESS_KEY_HERE"</span></span><br><span class="line"><span class="built_in">export</span> AWS_SECRET_KEY=<span class="string">"YOUR_SECRET_KEY_HERE"</span></span><br></pre></td></tr></table></figure>
+<p>在代码中就可以使用 <code>System.getenv(&quot;AWS_ACCESS_KEY_ID&quot;)</code> 或者 <code>os.environ[&#39;AWS_ACCESS_KEY_ID&#39;]</code> 来访问，不会出现明文，我在自己电脑里用得名字是：<code>AWSAccessKeyId</code> 和 <code>AWSSecretKey</code></p>
+<h3 id="AWS_Managment_Console"><a href="#AWS_Managment_Console" class="headerlink" title="AWS Managment Console"></a>AWS Managment Console</h3><p><a href="https://youtu.be/EfnfcIqq_IU" target="_blank" rel="external">AWS 概览和账单查看视频教程（墙外）</a></p>
+<p>在右上角的下拉菜单中可以查看花费，如下图所示：</p>
+<p><img src="/images/cc1.jpg" alt="c"></p>
+<p>左边的不同选项可以查看不同的信息，这里提示一下，因为之前已经转换为学校付款，所以建议把之前绑定的个人信用卡删除，避免因为操作问题被额外扣钱。</p>
+<h2 id="Elastic_Compute_Cloud__28EC2_29"><a href="#Elastic_Compute_Cloud__28EC2_29" class="headerlink" title="Elastic Compute Cloud (EC2)"></a>Elastic Compute Cloud (EC2)</h2><p>简单来说，EC2 提供计算能力。会为你的服务创建虚拟服务器，因此省去了搭建硬件的过程。可以通过界面或者 API 来启动所需的 instance，配置安全和网络以及管理存储。</p>
+<p>开始使用 Amazon EC2 的时候，需要了解一些和本地机器不大一样的关键概念，可以从下面的是品种了解到</p>
+<p><a href="https://youtu.be/t0Gg0Y1Gz6Q" target="_blank" rel="external">EC2 基础（墙外）</a></p>
+<p>Instance 可以被看做是虚拟机或虚拟服务器，有虚拟 CPU，内存，本地存储和网络带宽，当然运行的时候是要花钱的。具体的配置不能够自定义，只能从几个类型中选择：</p>
+<ul>
+<li><code>t1.micro</code>：1 个虚拟 CPU，1 G 内存，无本地存储，低带宽。这种会提供免费的使用时间，基本也就够用了。</li>
+<li><code>m1.small</code></li>
+<li><code>m1.large</code></li>
+<li><code>c1.xlarge</code></li>
+</ul>
+<p>具体的类型可以参考亚马逊的<a href="http://aws.amazon.com/ec2/instance-types" target="_blank" rel="external">介绍</a>，这里不一一列举。</p>
+<p>花钱也有不同的方式：</p>
+<ul>
+<li>按需：每个 instance 每小时有固定的价钱</li>
+<li>Reserved：预付款模式</li>
+<li>Spot Pricing：Bid for unused capacity，给定一个价格，如果浮动到价格以下，那么就帮你开启，并以当时的价格计价</li>
+</ul>
+<p>instance 的存储会在 Elastic Block Storage(EBS)。</p>
+<p>Amazon Machine Image (AMI) = 操作系统 + 软件。</p>
+<p>一旦一个 instance 启动之后，就有了一个公网的 IP，可以通过 Security Group 来进行访问，比如 22 端口 SSH，80 端口 HTTP，3306 端口 MySQL。</p>
+<p>利用密钥对来访问 EC2 instances。</p>
+<p>总结一下，启动一个 instance 有以下几个步骤：</p>
+<ol>
+<li>选择一个 instance 类型：<code>t1.micro</code></li>
+<li>决定一个计价模型：Spot Pricing</li>
+<li>选择一个 AMI：Ubuntu AMI</li>
+<li>定义一个 Security Group</li>
+<li>使用密钥对来连接</li>
+</ol>
+<h3 id="EC2__u672F_u8BED"><a href="#EC2__u672F_u8BED" class="headerlink" title="EC2 术语"></a>EC2 术语</h3><p>这部分为了保证准确，使用英文原文：</p>
+<p><strong>EC2 Instance</strong>: EC2 instances are virtual servers that you can configure and launch on Amazon EC2. It can be thought of as a copy of a software image, Amazon Machine Image (AMI), that is actively running on the Amazon EC2 cloud. Instances run on host computers at Amazon’s data center, but this is typically transparent to the user. Instances have many parameters including:</p>
+<p>1.<strong>Amazon Machine Image (AMI)</strong>: Is a template that contains a complete software image (operating system, applications, libraries and data). You launch instances using specific AMIs, which are copies of the AMI running as virtual servers in the cloud. You can launch multiple instances of an AMI. </p>
+<p><img src="/images/14528880846285.jpg" alt=""></p>
+<p>2.<strong>Instance Type</strong>: Amazon offers different instance types which have varying amounts of compute and storage available to them. They range from t1.micro to cc2.8xlarge and have different on-demand/reserved and spot prices.</p>
+<p>3.<strong>Regions and Availability Zones</strong>: Instances can be launched across various AWS regions, which are distributed geographically (Virginia/Singapore etc.). Each region has a number of availability zones, which are distinct locations within a data center and are engineered to be isolated from other availability zones in the same region. This allows users to spawn instances in the same region but across availability zones and protect applications from the potential failure of a single availability zone.</p>
+<p><img src="/images/14528881433917.jpg" alt=""></p>
+<p>4.<strong>Pricing</strong>: Instances can be launched using three different pricing models:</p>
+<ul>
+<li>The on-demand pricing is a fixed hourly rate that you pay for the instance. It can range from a few cents to a few dollars per hour depending on the instance type.</li>
+<li>If you want to use an instance for a fixed amount of time, you can purchase reserved instances (which are typically calculated yearly).</li>
+<li>In addition there are spot instances which are described below.</li>
+</ul>
+<p>5.<strong>Spot Instances</strong>: Spot instances are special instances which allow users to bid for unused computing capacity. You can specify an hourly rate that you are willing to pay to use an instance. In addition, for each instance type under each availability zone, Amazon maintains a spot price which reflects the current demand for the instance type. If your bidding price is more than the spot price, an instance will be launched at the current spot price and will continue to run until the spot price exceeds your bid price. Spot instances are volatile but very useful for getting instances for a few hours at prices that are typically much lower than the on-demand prices.</p>
+<p>6.<strong>Instance Limits</strong>: AWS has preset limits on the number of simultaneous instances, per instance type, that an account can provision. You can check what the instance limits are for your account by checking the limits under the EC2 dashboard.</p>
+<h3 id="Amazon_EC2_Storage"><a href="#Amazon_EC2_Storage" class="headerlink" title="Amazon EC2 Storage"></a>Amazon EC2 Storage</h3><p>针对于 EC2 instance，Amazon 提供了不同类型的存储：</p>
+<p><img src="/images/14528883079086.jpg" alt=""></p>
+<p><strong>Amazon EC2 Instance Store</strong>: Instance stores are storage volumes that are present on the host computer that the instances are running on. Instance stores are temporary (ephemeral), block level storage. Instance store data is cleared when an instance is stopped or terminated.</p>
+<p><strong>Amazon Elastic Block Store (EBS)</strong>: EBS is a SAN-style storage system that can be used with EC2 instances. EBS presents volumes to the user that can be created independently of an instance and attached to instances as needed. EBS volumes are persistent and flexible. Multiple EBS volumes can be attached to an instance, and an EBS volume can be detached from an instance and attached to another. EBS incurs additional charges (GB/month) over and above EC2 instance charges. EBS volumes can also be backed up by creating a snapshot, which is stored in Amazon S3.</p>
+<p><strong>Amazon Simple Storage Service (S3)</strong>: Amazon S3 is an object storage service which has a web services interface to store and retrieve data. Instances can access data directly on S3 using the web services interface. Amazon S3 is also used to store snapshots of EBS volumes.</p>
+<h3 id="u542F_u52A8_u5E76_u8FDE_u63A5_u5230_instance"><a href="#u542F_u52A8_u5E76_u8FDE_u63A5_u5230_instance" class="headerlink" title="启动并连接到 instance"></a>启动并连接到 instance</h3><p><a href="https://youtu.be/z-NoOLk2U-g" target="_blank" rel="external">启动 EC2 instance 视频教程（墙外）</a></p>
+<p>具体的步骤如下：</p>
+<ol>
+<li>进入控制台，选择 EC2 控制面板（地区注意选择弗吉尼亚北部，右上角那里）</li>
+<li>点击实例，现在什么都没有，选择创建一个新实例</li>
+<li>之后的 project 中会给出 AMI id，可以在社区 AMI 一栏里搜索选择</li>
+<li>这里我们选择 Amazon Linux AMI，选择 <code>t2.micro</code></li>
+<li>点击下一步进行具体的配置，这里暂时不需要修改</li>
+<li>点击下一步选择存储</li>
+<li>点击下一步可以给 instance 一些标签，注意格式应该是 <code>Project:&lt;Project Number&gt;</code>，如 <code>Project:0</code> 或 <code>Project:1.1</code> 这样</li>
+<li>点击下一步配置 Security Group，这里可以不用修改，但是如果提高安全性的话可以限制可访问的 ip</li>
+<li>然后可以查看各种选项</li>
+<li>需要选择一个连接的密钥对（也可以在这里创建一个新的），是一个pem 文件，同样注意保存好</li>
+<li>这时候就可以启动 instance</li>
+</ol>
+<p>等待一段时间，启动之后就可以连接到这个 instance，具体的步骤如下：</p>
+<ol>
+<li>从面板中得到 Public DNS 地址</li>
+<li>使用 <code>ssh -i key_file.pem ec2-user@ec2-50-19-54-72-compute-1.amazonaws.com</code> 来进行连接</li>
+<li>需要使用 <code>chmod 600 key_file.pem</code> 来修改权限</li>
+<li>如果需要 root，直接 <code>sudo</code> 即可</li>
+</ol>
+<h3 id="Managing_Security_Groups"><a href="#Managing_Security_Groups" class="headerlink" title="Managing Security Groups"></a>Managing Security Groups</h3><p>默认只为 SSH 开放 22 端口，这些都可以在 EC2 的控制面板中进行配置：</p>
+<p><img src="/images/14528910850178.jpg" alt=""></p>
+<h3 id="u5B9E_u4F8B_u6559_u7A0B"><a href="#u5B9E_u4F8B_u6559_u7A0B" class="headerlink" title="实例教程"></a>实例教程</h3><p>假设已经创建好了一个 instance，这里通过一些实例演示，来进行展示和介绍：</p>
+<p><img src="/images/4.pic.jpg" alt="4.pi"></p>
+<p>我们现在本机创建一个 <code>hello.sh</code> 的 shell 脚本，里面只有一句话：<code>echo &#39;Hello Da Wang&#39;</code>，用作等下连接之后的测试</p>
+<p>在初始化完毕后，通过公有 DNS 利用 SSH 来进行连接：</p>
+<p>先把我们刚才写好的脚本文件传到 instance 中：<code>sudo scp -r -i demo.pem hello.sh  ec2-user@publicdns:\hello</code></p>
+<p>然后就可以访问了：</p>
+<p><img src="/images/cc2.jpg" alt="c"></p>
+<p>可以看到已经远程执行了这个脚本，输出了 <code>Hello Da Wang</code></p>
+<p>我们再来试试看从 EC2 拷贝文件到本机，我们在 hello 文件夹里创建一个 <code>info.txt</code>，随便输入点内容，然后用 <code>udo scp -r -i demo.pem ec2-user@publicdns:\hello/info.txt ./</code> 就可以传输回来。</p>
+<p>这些都做完后，我们终止(terminate)这个 EC2 instance</p>
+<h2 id="Simple_Storage_Service_28S3_29"><a href="#Simple_Storage_Service_28S3_29" class="headerlink" title="Simple Storage Service(S3)"></a>Simple Storage Service(S3)</h2><p>Amazon S3 提供了一个简单的用来存储和访问任何数据的 web 服务接口。可以存储的对象数量是无限的，每个对象都可以通过一个唯一的，由开发者指定的 key 来访问。</p>
+<p>和常见的文件系统比较起来，S3 没有文件夹的概念，唯一的容器就是一个 bucket，但是文件名例可以有 <code>/</code> 来标记不同的层级。</p>
+<p><a href="https://youtu.be/1qrjFb0ZTm8" target="_blank" rel="external">Amazon S3 入门视频（墙外）</a></p>
+<p>主要介绍了如何创建/删除 bucket，添加/查看/移动/删除对象。基本的操作都比较简单，这里不介绍。</p>
+<p>可以通过 web 界面，命令行工具和 API 三种方式来访问 S3。假设在 S3 中有一个文件的路径是</p>
+<ul>
+<li><code>s3://wdxtub/dawang.txt</code></li>
+</ul>
+<p>那么可以通过以下两种方式用 http 来访问：</p>
+<ul>
+<li><code>http://s3.amazonaws.com/wdxtub/dawang.txt</code></li>
+<li><code>http://wdxtub.s3.amazonaws.com/dawang.txt</code></li>
+</ul>
+<p>其中 <code>wdxtub</code> 是 bucket 名，必须是全局唯一的。如果想要所有人都能够访问，需要设置一下对应的权限</p>
+<h2 id="AWS_Command_Line_Tool__28aws-cli_29"><a href="#AWS_Command_Line_Tool__28aws-cli_29" class="headerlink" title="AWS Command Line Tool (aws-cli)"></a>AWS Command Line Tool (aws-cli)</h2><p>命令行工具可以最大程度的定制管理 AWS 的各种服务，linux 下的安装和操作可以看：</p>
+<p><a href="https://youtu.be/OSGjoMeHc2A" target="_blank" rel="external">AWS 命令行工具指南（墙外）</a></p>
+<p>在 Mac 下可以直接使用 <code>pip install awscli</code> 来进行安装，具体的教程可以参考<a href="https://aws.amazon.com/cn/cli/" target="_blank" rel="external">官方文档</a></p>
+<h2 id="CloudWatch"><a href="#CloudWatch" class="headerlink" title="CloudWatch"></a>CloudWatch</h2><p>简单来说，CloudWatch 就是一个监控各种云服务的工具，可以参考下面的视频来了解：</p>
+<p><a href="https://youtu.be/cu2_AbfXn2k" target="_blank" rel="external">AWS Cloudwatch</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>开发过程中最麻烦的往往不是开发本身，而是环境搭建，尤其是调通各种接口和服务。这一讲会介绍 AWS 的基本使用。</p>]]>
+    
+    </summary>
+    
+      <category term="AWS" scheme="http://yoursite.com/tags/AWS/"/>
     
       <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
     
