@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-21T03:30:58.000Z</updated>
+  <updated>2016-01-21T14:24:34.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,116 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[深入理解计算机系统 第 7 课 Machine Procedures]]></title>
+    <link href="http://yoursite.com/2016/01/21/csapp-7/"/>
+    <id>http://yoursite.com/2016/01/21/csapp-7/</id>
+    <published>2016-01-21T16:15:37.000Z</published>
+    <updated>2016-01-21T14:24:34.000Z</updated>
+    <content type="html"><![CDATA[<p>之前我们学习了机器是如何利用跳转实现流程控制的，这一讲我们来看一个更加复杂的机制：过程调用（也就是调用函数）具体在 CPU 和内存中是怎么实现了。理解之后，对于递归会有更加清晰的认识。</p>
+<a id="more"></a>
+<hr>
+<p>在过程调用中主要涉及三个重要的方面：</p>
+<ol>
+<li>传递控制：包括如何开始执行过程代码，以及如何返回到开始的地方</li>
+<li>传递数据：包括过程需要的参数以及过程的返回值</li>
+<li>内存管理：如何在过程执行的时候分配内存，以及在返回之后释放内存</li>
+</ol>
+<p>以上这三点，都是凭借机器指令实现的</p>
+<h2 id="Stack_Structure"><a href="#Stack_Structure" class="headerlink" title="Stack Structure"></a>Stack Structure</h2><p>在 x86-64 中，所谓的栈，实际上一块内存区域，这个区域的数据进出满足先进后出的原则。越新入栈的数据，地址越低，所以栈顶的地址是最小的。下图中箭头所指的就是寄存器 %rsp 的值，这个寄存器是栈指针，用来记录栈顶的位置。</p>
+<p><img src="/images/14533820160341.jpg" alt=""></p>
+<p>对于 <code>push</code> 操作，对应的是 <code>pushq Src</code> 指令，具体会完成下面三个步骤：</p>
+<ol>
+<li>从地址 <code>Src</code> 中取出操作数</li>
+<li>把 %rsp 中的地址减去 8（也就是到下一个位置）</li>
+<li>把操作数写入到 %rsp 的新地址中 </li>
+</ol>
+<p>如下图所示：</p>
+<p><img src="/images/14533823825128.jpg" alt=""></p>
+<p>对于 <code>pop</code> 操作，对应的是 <code>popq Dest</code> 指令，具体会完成下面三个步骤：</p>
+<ol>
+<li>从 %rsp 中存储的地址中读入数据</li>
+<li>把 %rsp 中的地址增加 8（回到上一个位置）</li>
+<li>把刚才取出来的值放到 <code>Dest</code> 中（这里必须是一个寄存器）</li>
+</ol>
+<p>如下图所示：</p>
+<p><img src="/images/14533826092815.jpg" alt=""></p>
+<h2 id="Calling_Conventions"><a href="#Calling_Conventions" class="headerlink" title="Calling Conventions"></a>Calling Conventions</h2><p>了解了栈的结构之后，我们先通过一个函数调用的例子，来感受一下（代码中有详细注释，请理解后再继续）：</p>
+<p><img src="/images/14533827066202.jpg" alt=""></p>
+<p>可以看到，过程调用是利用栈来进行的，通过 <code>call label</code> 来进行调用（先把返回地址入栈，然后跳转到对应的 label），返回的地址，将是下一条指令的地址，通过 <code>ret</code> 来进行返回（把地址从栈中弹出，然后跳转到对应地址）</p>
+<p>用上面的代码来做说明：</p>
+<p><img src="/images/14533831060878.jpg" alt=""></p>
+<p>在执行到 400544 那一行的时候 %rsp 指向栈顶（存储着栈顶的地址），%rip 指向当前要执行的指令（也就是 400544）</p>
+<p><img src="/images/14533832007622.jpg" alt=""></p>
+<p>在上一步操作完成之后，因为跳转的关系，%rip 指向 mult2 函数开始的地方（也就是 400550），之前的压栈操作也使得栈顶改变（返回值的位置），于是 %rsp 对应进行改变。</p>
+<p><img src="/images/14533833724077.jpg" alt=""></p>
+<p>接着执行到了 <code>retq</code> 那句，这个时候要做的就是从栈中取出栈顶位置（这样就可以从跳转处继续了），然后对寄存器做对应的修改，最后得到下图：</p>
+<p><img src="/images/14533834735407.jpg" alt=""></p>
+<p>具体的传值我们可以发现，是利用 %rax 来保存过程调用的返回值，以便程序继续运行的。这就是基本的过程调用的控制流程。</p>
+<p>那么过程调用的参数会放在哪里呢？</p>
+<p>如果参数没有超过六个，那么会放在：%rdi, %rsi, %rdx, %rcx, %r8, %r9 中。如果超过了，会另外放在一个栈中。而返回值会放在 %rax 中。</p>
+<p>还是刚才的例子，看看数据的存放：</p>
+<p><img src="/images/14533838086805.jpg" alt=""></p>
+<p>既然是利用栈来进行函数调用，自然而然就可以推广到递归的情况，而对于每个过程调用来说，都会在栈中分配一个帧 Frames。每一帧里需要包含：</p>
+<ul>
+<li>返回信息</li>
+<li>本地存储（如果需要）</li>
+<li>临时空间（如果需要）</li>
+</ul>
+<p>整一帧会在过程调用的时候进行空间分配，然后在返回时进行回收，如下图所示（箭头所指位栈顶）：</p>
+<p><img src="/images/14533842524928.jpg" alt=""></p>
+<p>这里是一个调用的例子：</p>
+<p><img src="/images/14533843491372.jpg" alt=""></p>
+<p>在 x86-64/Linux 中，栈帧的结构是固定的，当前的要执行的栈中包括：</p>
+<ul>
+<li>Argument Build: 需要使用的参数</li>
+<li>如果不能保存在寄存器中，会把一些本地变量放在这里</li>
+<li>已保存的寄存器上下文</li>
+<li>老的栈帧的指针（可选）</li>
+</ul>
+<p>而调用者的栈帧则包括：</p>
+<ul>
+<li>返回地址（因为 <code>call</code> 指令被压入栈的）</li>
+<li>调用所需的参数</li>
+</ul>
+<p>具体如下图所示：</p>
+<p><img src="/images/14533846615880.jpg" alt=""></p>
+<p>下面用一个程序来说明一下，就比较清晰了：</p>
+<p><img src="/images/14533847155070.jpg" alt=""></p>
+<p>在函数调用前，需要移动 %rsp 指针存入调用者的变量压入栈中</p>
+<p><img src="/images/14533848182706.jpg" alt=""></p>
+<p>具体调用的时候，会根据返回值对应修改地址和数据。</p>
+<p>寄存器保存数值的时候也有一些习惯的用法，这里也举个例子说明：</p>
+<p><img src="/images/14533849340898.jpg" alt=""></p>
+<p>这里的 <code>yoo</code> 被称为调用者 caller，<code>who</code> 被称为被调用者 callee。于是就有一个问题，能不能用寄存器（这里是 %rdx）来保存临时变量呢？</p>
+<p>似乎不大可以，因为在两个函数中都进行了修改，所以在这之前需要做一些额外的操作。对于调用者来说，需要把临时变量保存在栈帧中，然后进行调用；对于被调用者来说，可以在栈帧中保存临时变量，但是在返回的时候需要恢复成原来的样子（让调用者继续工作）</p>
+<p>一般来说用法是这样的：</p>
+<p><img src="/images/14533857001617.jpg" alt=""></p>
+<p>这里的变量都会被保存到 caller 的栈帧中（因为可能之后会被修改）</p>
+<p><img src="/images/14533857595809.jpg" alt=""></p>
+<p>除了 %rsp 外，这里都会保存在 callee 的栈帧中，并且在调用完成之后需要恢复成原来的数值。</p>
+<h2 id="u9012_u5F52_u7684_u63CF_u8FF0"><a href="#u9012_u5F52_u7684_u63CF_u8FF0" class="headerlink" title="递归的描述"></a>递归的描述</h2><p>有了前面的的基础，要理解递归就简单很多了，直接上例子</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">pcount_r</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x == <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> (x &amp; <span class="number">1</span>) + pcount_r(x &gt;&gt; <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应的汇编代码为：</p>
+<p><img src="/images/14533859204097.jpg" alt=""></p>
+<p>实际执行的过程中，会不停进行压栈，知道最后返回，所以递归本身就是一个隐式的栈实现，但是系统一般对于栈的深度有限制（每次一都需要保存当前栈帧的各种数据），所以一般来说会把递归转换成显式栈来进行处理以防溢出。</p>
+<p>这一讲的内容就这么多，需要好好理解。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>之前我们学习了机器是如何利用跳转实现流程控制的，这一讲我们来看一个更加复杂的机制：过程调用（也就是调用函数）具体在 CPU 和内存中是怎么实现了。理解之后，对于递归会有更加清晰的认识。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+    
+      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[云计算 第 9 课 Sequential Programming]]></title>
@@ -2878,160 +2988,6 @@
     </summary>
     
       <category term="Azure" scheme="http://yoursite.com/tags/Azure/"/>
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[云计算 第 2 课 AWS 简介]]></title>
-    <link href="http://yoursite.com/2016/01/15/cc-2/"/>
-    <id>http://yoursite.com/2016/01/15/cc-2/</id>
-    <published>2016-01-15T15:29:53.000Z</published>
-    <updated>2016-01-16T01:05:46.000Z</updated>
-    <content type="html"><![CDATA[<p>开发过程中最麻烦的往往不是开发本身，而是环境搭建，尤其是调通各种接口和服务。这一讲会介绍 AWS 的基本使用。</p>
-<a id="more"></a>
-<hr>
-<h2 id="Amazon_Web_Services_AWS"><a href="#Amazon_Web_Services_AWS" class="headerlink" title="Amazon Web Services AWS"></a>Amazon Web Services AWS</h2><p>AWS 是目前最广泛应用的云服务，包含各种不同的服务，比如 Amazon Simple Storage Service (S3) 和 Amazon Elastic Compute Cloud (EC2)。在本课程中会使用 Amazon EC2 并且利用 S3 作为永久存储。与此同时也会使用其他的一些技术比如：Elastic Block Store(EBS), CloudWatch 和 DynamoDB。更多的信息请参考 <a href="http://aws.amazon.com/" target="_blank" rel="external">AWS 网站</a></p>
-<p><a href="https://www.youtube.com/watch?v=jOhbTAU4OPI#action=share" target="_blank" rel="external">视频介绍(墙外)</a></p>
-<h3 id="AWS_Authentication"><a href="#AWS_Authentication" class="headerlink" title="AWS Authentication"></a>AWS Authentication</h3><p>除了 AWS 本身的帐号外，访问 API 以及各类 AWS 服务需要使用的一对『钥匙』：<strong>AWS Access Key ID</strong> 以及 <strong>AWS Secret Key</strong>。</p>
-<p>生成『钥匙』可以按照以下步骤：</p>
-<ol>
-<li>登录 AWS 账户</li>
-<li>在右上角的下拉菜单中选择 Security Credentials (安全证书)<ul>
-<li>如果是第一次访问的话会弹出一个提示是继续还是看一下教程，可以根据自己的需要来选择</li>
-</ul>
-</li>
-<li>在 Access Key (访问密钥)那一栏创建一个新的密钥，就会包含 <strong>AWS Access Key ID</strong> 以及 <strong>AWS Secret Key</strong>。</li>
-</ol>
-<p>成功的话如下图所示，请注意：您一次最多可拥有两个访问密钥（活跃或非活跃）。</p>
-<p><img src="/images/2.pic_hd.jpg" alt="2.pic_hd"></p>
-<p>注意！AWS 密钥拥有控制 AWS 帐号的完全权限，所以务必要保存在安全的地方，做到以下几点：</p>
-<ol>
-<li>不要与任何人共享 AWS 密钥</li>
-<li>不要在代码中用明文保存密钥</li>
-<li>不要把包含 AWS 密钥的代码提交到任何库中</li>
-</ol>
-<p>比较安全的做法是利用环境变量来保存密钥：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> AWS_ACCESS_KEY_ID=<span class="string">"YOUR_ACCESS_KEY_HERE"</span></span><br><span class="line"><span class="built_in">export</span> AWS_SECRET_KEY=<span class="string">"YOUR_SECRET_KEY_HERE"</span></span><br></pre></td></tr></table></figure>
-<p>在代码中就可以使用 <code>System.getenv(&quot;AWS_ACCESS_KEY_ID&quot;)</code> 或者 <code>os.environ[&#39;AWS_ACCESS_KEY_ID&#39;]</code> 来访问，不会出现明文，我在自己电脑里用得名字是：<code>AWSAccessKeyId</code> 和 <code>AWSSecretKey</code></p>
-<h3 id="AWS_Managment_Console"><a href="#AWS_Managment_Console" class="headerlink" title="AWS Managment Console"></a>AWS Managment Console</h3><p><a href="https://youtu.be/EfnfcIqq_IU" target="_blank" rel="external">AWS 概览和账单查看视频教程（墙外）</a></p>
-<p>在右上角的下拉菜单中可以查看花费，如下图所示：</p>
-<p><img src="/images/cc1.jpg" alt="c"></p>
-<p>左边的不同选项可以查看不同的信息，这里提示一下，因为之前已经转换为学校付款，所以建议把之前绑定的个人信用卡删除，避免因为操作问题被额外扣钱。</p>
-<h2 id="Elastic_Compute_Cloud__28EC2_29"><a href="#Elastic_Compute_Cloud__28EC2_29" class="headerlink" title="Elastic Compute Cloud (EC2)"></a>Elastic Compute Cloud (EC2)</h2><p>简单来说，EC2 提供计算能力。会为你的服务创建虚拟服务器，因此省去了搭建硬件的过程。可以通过界面或者 API 来启动所需的 instance，配置安全和网络以及管理存储。</p>
-<p>开始使用 Amazon EC2 的时候，需要了解一些和本地机器不大一样的关键概念，可以从下面的是品种了解到</p>
-<p><a href="https://youtu.be/t0Gg0Y1Gz6Q" target="_blank" rel="external">EC2 基础（墙外）</a></p>
-<p>Instance 可以被看做是虚拟机或虚拟服务器，有虚拟 CPU，内存，本地存储和网络带宽，当然运行的时候是要花钱的。具体的配置不能够自定义，只能从几个类型中选择：</p>
-<ul>
-<li><code>t1.micro</code>：1 个虚拟 CPU，1 G 内存，无本地存储，低带宽。这种会提供免费的使用时间，基本也就够用了。</li>
-<li><code>m1.small</code></li>
-<li><code>m1.large</code></li>
-<li><code>c1.xlarge</code></li>
-</ul>
-<p>具体的类型可以参考亚马逊的<a href="http://aws.amazon.com/ec2/instance-types" target="_blank" rel="external">介绍</a>，这里不一一列举。</p>
-<p>花钱也有不同的方式：</p>
-<ul>
-<li>按需：每个 instance 每小时有固定的价钱</li>
-<li>Reserved：预付款模式</li>
-<li>Spot Pricing：Bid for unused capacity，给定一个价格，如果浮动到价格以下，那么就帮你开启，并以当时的价格计价</li>
-</ul>
-<p>instance 的存储会在 Elastic Block Storage(EBS)。</p>
-<p>Amazon Machine Image (AMI) = 操作系统 + 软件。</p>
-<p>一旦一个 instance 启动之后，就有了一个公网的 IP，可以通过 Security Group 来进行访问，比如 22 端口 SSH，80 端口 HTTP，3306 端口 MySQL。</p>
-<p>利用密钥对来访问 EC2 instances。</p>
-<p>总结一下，启动一个 instance 有以下几个步骤：</p>
-<ol>
-<li>选择一个 instance 类型：<code>t1.micro</code></li>
-<li>决定一个计价模型：Spot Pricing</li>
-<li>选择一个 AMI：Ubuntu AMI</li>
-<li>定义一个 Security Group</li>
-<li>使用密钥对来连接</li>
-</ol>
-<h3 id="EC2__u672F_u8BED"><a href="#EC2__u672F_u8BED" class="headerlink" title="EC2 术语"></a>EC2 术语</h3><p>这部分为了保证准确，使用英文原文：</p>
-<p><strong>EC2 Instance</strong>: EC2 instances are virtual servers that you can configure and launch on Amazon EC2. It can be thought of as a copy of a software image, Amazon Machine Image (AMI), that is actively running on the Amazon EC2 cloud. Instances run on host computers at Amazon’s data center, but this is typically transparent to the user. Instances have many parameters including:</p>
-<p>1.<strong>Amazon Machine Image (AMI)</strong>: Is a template that contains a complete software image (operating system, applications, libraries and data). You launch instances using specific AMIs, which are copies of the AMI running as virtual servers in the cloud. You can launch multiple instances of an AMI. </p>
-<p><img src="/images/14528880846285.jpg" alt=""></p>
-<p>2.<strong>Instance Type</strong>: Amazon offers different instance types which have varying amounts of compute and storage available to them. They range from t1.micro to cc2.8xlarge and have different on-demand/reserved and spot prices.</p>
-<p>3.<strong>Regions and Availability Zones</strong>: Instances can be launched across various AWS regions, which are distributed geographically (Virginia/Singapore etc.). Each region has a number of availability zones, which are distinct locations within a data center and are engineered to be isolated from other availability zones in the same region. This allows users to spawn instances in the same region but across availability zones and protect applications from the potential failure of a single availability zone.</p>
-<p><img src="/images/14528881433917.jpg" alt=""></p>
-<p>4.<strong>Pricing</strong>: Instances can be launched using three different pricing models:</p>
-<ul>
-<li>The on-demand pricing is a fixed hourly rate that you pay for the instance. It can range from a few cents to a few dollars per hour depending on the instance type.</li>
-<li>If you want to use an instance for a fixed amount of time, you can purchase reserved instances (which are typically calculated yearly).</li>
-<li>In addition there are spot instances which are described below.</li>
-</ul>
-<p>5.<strong>Spot Instances</strong>: Spot instances are special instances which allow users to bid for unused computing capacity. You can specify an hourly rate that you are willing to pay to use an instance. In addition, for each instance type under each availability zone, Amazon maintains a spot price which reflects the current demand for the instance type. If your bidding price is more than the spot price, an instance will be launched at the current spot price and will continue to run until the spot price exceeds your bid price. Spot instances are volatile but very useful for getting instances for a few hours at prices that are typically much lower than the on-demand prices.</p>
-<p>6.<strong>Instance Limits</strong>: AWS has preset limits on the number of simultaneous instances, per instance type, that an account can provision. You can check what the instance limits are for your account by checking the limits under the EC2 dashboard.</p>
-<h3 id="Amazon_EC2_Storage"><a href="#Amazon_EC2_Storage" class="headerlink" title="Amazon EC2 Storage"></a>Amazon EC2 Storage</h3><p>针对于 EC2 instance，Amazon 提供了不同类型的存储：</p>
-<p><img src="/images/14528883079086.jpg" alt=""></p>
-<p><strong>Amazon EC2 Instance Store</strong>: Instance stores are storage volumes that are present on the host computer that the instances are running on. Instance stores are temporary (ephemeral), block level storage. Instance store data is cleared when an instance is stopped or terminated.</p>
-<p><strong>Amazon Elastic Block Store (EBS)</strong>: EBS is a SAN-style storage system that can be used with EC2 instances. EBS presents volumes to the user that can be created independently of an instance and attached to instances as needed. EBS volumes are persistent and flexible. Multiple EBS volumes can be attached to an instance, and an EBS volume can be detached from an instance and attached to another. EBS incurs additional charges (GB/month) over and above EC2 instance charges. EBS volumes can also be backed up by creating a snapshot, which is stored in Amazon S3.</p>
-<p><strong>Amazon Simple Storage Service (S3)</strong>: Amazon S3 is an object storage service which has a web services interface to store and retrieve data. Instances can access data directly on S3 using the web services interface. Amazon S3 is also used to store snapshots of EBS volumes.</p>
-<h3 id="u542F_u52A8_u5E76_u8FDE_u63A5_u5230_instance"><a href="#u542F_u52A8_u5E76_u8FDE_u63A5_u5230_instance" class="headerlink" title="启动并连接到 instance"></a>启动并连接到 instance</h3><p><a href="https://youtu.be/z-NoOLk2U-g" target="_blank" rel="external">启动 EC2 instance 视频教程（墙外）</a></p>
-<p>具体的步骤如下：</p>
-<ol>
-<li>进入控制台，选择 EC2 控制面板（地区注意选择弗吉尼亚北部，右上角那里）</li>
-<li>点击实例，现在什么都没有，选择创建一个新实例</li>
-<li>之后的 project 中会给出 AMI id，可以在社区 AMI 一栏里搜索选择</li>
-<li>这里我们选择 Amazon Linux AMI，选择 <code>t2.micro</code></li>
-<li>点击下一步进行具体的配置，这里暂时不需要修改</li>
-<li>点击下一步选择存储</li>
-<li>点击下一步可以给 instance 一些标签，注意格式应该是 <code>Project:&lt;Project Number&gt;</code>，如 <code>Project:0</code> 或 <code>Project:1.1</code> 这样</li>
-<li>点击下一步配置 Security Group，这里可以不用修改，但是如果提高安全性的话可以限制可访问的 ip</li>
-<li>然后可以查看各种选项</li>
-<li>需要选择一个连接的密钥对（也可以在这里创建一个新的），是一个pem 文件，同样注意保存好</li>
-<li>这时候就可以启动 instance</li>
-</ol>
-<p>等待一段时间，启动之后就可以连接到这个 instance，具体的步骤如下：</p>
-<ol>
-<li>从面板中得到 Public DNS 地址</li>
-<li>使用 <code>ssh -i key_file.pem ec2-user@ec2-50-19-54-72-compute-1.amazonaws.com</code> 来进行连接</li>
-<li>需要使用 <code>chmod 600 key_file.pem</code> 来修改权限</li>
-<li>如果需要 root，直接 <code>sudo</code> 即可</li>
-</ol>
-<h3 id="Managing_Security_Groups"><a href="#Managing_Security_Groups" class="headerlink" title="Managing Security Groups"></a>Managing Security Groups</h3><p>默认只为 SSH 开放 22 端口，这些都可以在 EC2 的控制面板中进行配置：</p>
-<p><img src="/images/14528910850178.jpg" alt=""></p>
-<h3 id="u5B9E_u4F8B_u6559_u7A0B"><a href="#u5B9E_u4F8B_u6559_u7A0B" class="headerlink" title="实例教程"></a>实例教程</h3><p>假设已经创建好了一个 instance，这里通过一些实例演示，来进行展示和介绍：</p>
-<p><img src="/images/4.pic.jpg" alt="4.pi"></p>
-<p>我们现在本机创建一个 <code>hello.sh</code> 的 shell 脚本，里面只有一句话：<code>echo &#39;Hello Da Wang&#39;</code>，用作等下连接之后的测试</p>
-<p>在初始化完毕后，通过公有 DNS 利用 SSH 来进行连接：</p>
-<p>先把我们刚才写好的脚本文件传到 instance 中：<code>sudo scp -r -i demo.pem hello.sh  ec2-user@publicdns:\hello</code></p>
-<p>然后就可以访问了：</p>
-<p><img src="/images/cc2.jpg" alt="c"></p>
-<p>可以看到已经远程执行了这个脚本，输出了 <code>Hello Da Wang</code></p>
-<p>我们再来试试看从 EC2 拷贝文件到本机，我们在 hello 文件夹里创建一个 <code>info.txt</code>，随便输入点内容，然后用 <code>udo scp -r -i demo.pem ec2-user@publicdns:\hello/info.txt ./</code> 就可以传输回来。</p>
-<p>这些都做完后，我们终止(terminate)这个 EC2 instance</p>
-<h2 id="Simple_Storage_Service_28S3_29"><a href="#Simple_Storage_Service_28S3_29" class="headerlink" title="Simple Storage Service(S3)"></a>Simple Storage Service(S3)</h2><p>Amazon S3 提供了一个简单的用来存储和访问任何数据的 web 服务接口。可以存储的对象数量是无限的，每个对象都可以通过一个唯一的，由开发者指定的 key 来访问。</p>
-<p>和常见的文件系统比较起来，S3 没有文件夹的概念，唯一的容器就是一个 bucket，但是文件名例可以有 <code>/</code> 来标记不同的层级。</p>
-<p><a href="https://youtu.be/1qrjFb0ZTm8" target="_blank" rel="external">Amazon S3 入门视频（墙外）</a></p>
-<p>主要介绍了如何创建/删除 bucket，添加/查看/移动/删除对象。基本的操作都比较简单，这里不介绍。</p>
-<p>可以通过 web 界面，命令行工具和 API 三种方式来访问 S3。假设在 S3 中有一个文件的路径是</p>
-<ul>
-<li><code>s3://wdxtub/dawang.txt</code></li>
-</ul>
-<p>那么可以通过以下两种方式用 http 来访问：</p>
-<ul>
-<li><code>http://s3.amazonaws.com/wdxtub/dawang.txt</code></li>
-<li><code>http://wdxtub.s3.amazonaws.com/dawang.txt</code></li>
-</ul>
-<p>其中 <code>wdxtub</code> 是 bucket 名，必须是全局唯一的。如果想要所有人都能够访问，需要设置一下对应的权限</p>
-<h2 id="AWS_Command_Line_Tool__28aws-cli_29"><a href="#AWS_Command_Line_Tool__28aws-cli_29" class="headerlink" title="AWS Command Line Tool (aws-cli)"></a>AWS Command Line Tool (aws-cli)</h2><p>命令行工具可以最大程度的定制管理 AWS 的各种服务，linux 下的安装和操作可以看：</p>
-<p><a href="https://youtu.be/OSGjoMeHc2A" target="_blank" rel="external">AWS 命令行工具指南（墙外）</a></p>
-<p>在 Mac 下可以直接使用 <code>pip install awscli</code> 来进行安装，具体的教程可以参考<a href="https://aws.amazon.com/cn/cli/" target="_blank" rel="external">官方文档</a></p>
-<h2 id="CloudWatch"><a href="#CloudWatch" class="headerlink" title="CloudWatch"></a>CloudWatch</h2><p>简单来说，CloudWatch 就是一个监控各种云服务的工具，可以参考下面的视频来了解：</p>
-<p><a href="https://youtu.be/cu2_AbfXn2k" target="_blank" rel="external">AWS Cloudwatch</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>开发过程中最麻烦的往往不是开发本身，而是环境搭建，尤其是调通各种接口和服务。这一讲会介绍 AWS 的基本使用。</p>]]>
-    
-    </summary>
-    
-      <category term="AWS" scheme="http://yoursite.com/tags/AWS/"/>
     
       <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
     
