@@ -452,16 +452,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
-    <lastmod>2015-11-29T22:05:08.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
-    <lastmod>2015-11-29T22:05:05.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2015/11/28/hi-new-york/</loc>
     <lastmod>2015-11-29T03:22:56.000Z</lastmod>
   </url>
