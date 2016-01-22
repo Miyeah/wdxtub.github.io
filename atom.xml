@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-22T04:41:43.000Z</updated>
+  <updated>2016-01-22T16:03:39.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[编程起跑线 第 1 课 总览]]></title>
+    <link href="http://yoursite.com/2016/01/22/programmer-startline-1/"/>
+    <id>http://yoursite.com/2016/01/22/programmer-startline-1/</id>
+    <published>2016-01-22T14:35:39.000Z</published>
+    <updated>2016-01-22T16:03:39.000Z</updated>
+    <content type="html"><![CDATA[<p>学了这么多年计算机和编程，在快要步入社会之前，在不断地碰壁和尝试之后，终于摸到了一点门路。这个系列的文章，更接近于编程入门指南，讲的是从数据结构到算法最终到解决问题的方法和思路。</p>
+<a id="more"></a>
+<hr>
+<p>我想，对于大多数经历过或者正在经历从校园转入社会的人来说，找工作本身就是一个很好的学习过程。如果想要成为一个程序员，尤其是在北美的话，那么刷题（也就是做各种数据结构算法的题目）就是必不可少的了，颇有应试教育的味道。</p>
+<p>学习并不是为了考试，可是分数是简单粗暴评判学习效果的方法；编程并不是为了刷题，可是能否给出解答是简单粗暴评判编程水平的方法。虽然不合理不科学，但是在人力物力有限的条件下，这就是游戏规则。</p>
+<p>在这个过程中，你会发现，聪明人，或者说善于学习的人，很快就会从应试模式转变为探索模式。题目背后是知识，不同的知识点交织成为学科，死记硬背只能解决见过的问题，但是如果在这个过程中培养了逻辑推理的能力，哪怕遇到一个『新』问题，也能通过类比，找到用『旧』方法稍微变化就可以解决的途径。</p>
+<p>如果了解了计算机发展的历史，就会发现，所有现在看起来非常复杂的东西，都是建立在非常简单的基础——零和一——之上的。从最简单的基本类型，到数据结构和算法，通通都是为了解决实际问题而产生的高效解决方案。的确，无论是计算机科学，还是编程，都是非常大的话题，但是并不意味着起跑会很难。在我看来，需要了解的内容，大概有下面这几类（这里参考了 Google 面试指南的部分内容）：</p>
+<ol>
+<li>掌握一门基本的编程语言。最好是强类型，支持面向对象编程（比如 C++/Java/C#）的语言。这里说的掌握，不仅仅是语法，而是对语言本身的一些设计特点和具体实现方式的理解。</li>
+<li>能够以 Big O 的方式去分析一个算法的时间/空间复杂度，这样才有一个标准的方式去分析算法的效率。</li>
+<li>基本数据结构的理解和使用，比如<ul>
+<li>哈希表 Hashtable，及其背后所代表的哈希的思想是如何应用的不同问题的，如果只能用数组来实现，要如何实现</li>
+<li>树 Tree，    树的构建(trie)，遍历和修改。遍历包括 BFS 和 DFS（前序中序后序），及其对应的思想。如果了解至少一种平衡树（及实现方式）就更好了。</li>
+<li>图 Graph，图的三种表达方式及优缺点，基本的遍历算法（还是 BFS 和 DFS），知道这些算法的复杂度以及权衡利弊。如果了解一些如 Dijkstra 和 A* 算法就更好了。</li>
+<li>其他的数据结构：堆栈队列链表</li>
+</ul>
+</li>
+<li>基本算法的理解和使用，比如排序和搜索，以及递归和动态规划。nlogn 时间的排序，logn 时间的搜索。以及了解什么是 NP 问题（旅行商等等）。</li>
+<li>基本的数学知识，排列组合及概率，和一些公式化简。这里可能还可以算上正则表达式。</li>
+<li>操作系统，编译器，及计算机系统的基本知识。比如说进程线程，互斥锁信号量，死锁出现的条件及如何避免，进程线程的资源和上下文切换，多核处理的相关知识。重要的是对计算机相关工具的理解，除了上面提到的，还有 shell 之类的用法。</li>
+<li>基本的设计能力。面向对象设计，代码风格及优化。</li>
+<li>如何清晰表达自己的想法，去快速构建一个问题的解决方案。</li>
+</ol>
+<p>还是那句话，刷题仅仅只是一个效率很低的练习过程，真正的学习是进行『刻意练习』，也是我这个系列文章中想要强调的内容。</p>
+<p>一通百通，悟道之后就会发现，一招一式固然重要，但那些都是基础，更重要的是解决问题的方法和思路，这，可能就需要多动一点脑子了。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>学了这么多年计算机和编程，在快要步入社会之前，在不断地碰壁和尝试之后，终于摸到了一点门路。这个系列的文章，更接近于编程入门指南，讲的是从数据结构到算法最终到解决问题的方法和思路。</p>]]>
+    
+    </summary>
+    
+      <category term="思维" scheme="http://yoursite.com/tags/%E6%80%9D%E7%BB%B4/"/>
+    
+      <category term="技能" scheme="http://yoursite.com/tags/%E6%8A%80%E8%83%BD/"/>
+    
+      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 9 课 Machine Advanced]]></title>
@@ -2818,188 +2865,6 @@
       <category term="API" scheme="http://yoursite.com/tags/API/"/>
     
       <category term="AWS" scheme="http://yoursite.com/tags/AWS/"/>
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[云计算 第 5 课 Azure API]]></title>
-    <link href="http://yoursite.com/2016/01/15/cc-5/"/>
-    <id>http://yoursite.com/2016/01/15/cc-5/</id>
-    <published>2016-01-16T01:19:35.000Z</published>
-    <updated>2016-01-16T19:00:55.000Z</updated>
-    <content type="html"><![CDATA[<p>上一讲介绍了关于 SSH 和 Linux 的相关知识，这一讲我们来看看，如何通过代码，而不是界面或者命令行，来控制 Azure。</p>
-<a id="more"></a>
-<hr>
-<h2 id="Microsoft_Azure"><a href="#Microsoft_Azure" class="headerlink" title="Microsoft Azure"></a>Microsoft Azure</h2><p>在 Azure 中，你没有办法通过 web 控制台来启动一个预先定义好的镜像。这一讲会介绍如何通过 Azure API 来创建一个虚拟机。</p>
-<h3 id="Azure__u9A8C_u8BC1_u548C_u73AF_u5883_u914D_u7F6E"><a href="#Azure__u9A8C_u8BC1_u548C_u73AF_u5883_u914D_u7F6E" class="headerlink" title="Azure 验证和环境配置"></a>Azure 验证和环境配置</h3><p>这里先用 Azure 命令行工具来登录作为体验。</p>
-<p>Azure 使用 Azure Active Directory(Azure AD) 服务来完成身份管理。我们首先需要从 Azure 云服务获取权限，才能使用 Java/Python API。</p>
-<p>Azure 需要一个验证的 token，为了获得这个 token，需要完成以下步骤：</p>
-<ol>
-<li>安装 Azure 命令行工具</li>
-<li>用 Azure 命令行工具登录</li>
-<li>使用 Azure 命令行工具创建一个 AD 应用</li>
-</ol>
-<p>访问<a href="https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/" target="_blank" rel="external">这里</a>来获取对应于不同系统的安装包</p>
-<p>安装完成后就可以登录，前面的步骤和<a href="http://wdxtub.com/2016/01/15/cc-3/" target="_blank" rel="external">云计算 第 3 课 Azure 简介</a> 最后的配置部分是一样的。</p>
-<p>首先切换到 Azure Resource Manager (ARM) 模式来使用新的 API：<code>azure config mode arm</code></p>
-<p>然后用 <code>azure login</code> 登录，登录的时候会让你访问网址并填写对应的验证码，如下图：</p>
-<p><img src="/images/14529146793205.jpg" alt=""></p>
-<p>然后就可以按照下面的步骤来在 Azure AD 中创建一个 AD 应用：</p>
-<p><strong>第一步</strong></p>
-<p>运行 <code>azure ad app create</code> 命令来创建一个新的 Azure AD 应用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">azure ad app create --name &#123;Your Application Display Name&#125; --home-page https://&#123;YourApplicationHomePage&#125; --identifier-uris https://&#123;YouApplicationUri&#125; --password &#123;YourApplicationKey&#125;</span><br></pre></td></tr></table></figure>
-<p>成功的话，可以看到如下的结果：</p>
-<p><img src="/images/cc9.jpg" alt="c"></p>
-<p>记下这里的 <code>AppId</code> 和 <code>Appkey</code>(就是刚才设置的密码)，等下获取 token 的时候要用</p>
-<p><strong>第二步</strong></p>
-<p>一个实例或者是一个 AD 应用被当做是 service principal 来进行引用，所以我们需要创建一个 service principal，使用刚才得到的 <code>AppId</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">azure ad sp create &#123;YourApplicationID&#125;</span><br></pre></td></tr></table></figure>
-<p>成功之后会得到一个 object id，记下来，这个在下一步要用到。</p>
-<p><img src="/images/cc10.jpg" alt="cc10"></p>
-<p>现在这个服务没有任何权限，我们接下来就是要给出权限</p>
-<p><strong>第三步</strong></p>
-<p>这一步需要提供 <code>subscriptionID</code>，可以在下图所示位置找到</p>
-<p><img src="/images/cc11.jpg" alt="c"></p>
-<p>命令如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">azure role assignment create --objectId &#123;objectID&#125; -o Owner -c /subscriptions/&#123;subscriptionId&#125;/</span><br></pre></td></tr></table></figure>
-<p>成功后结果如下图：</p>
-<p><img src="/images/cc12.jpg" alt="c"></p>
-<p><strong>第四步</strong></p>
-<p>每个 Azure AD 应用都有一个独立的 <code>TenantId</code>，使用下面的命令来获取：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">azure account list --json</span><br></pre></td></tr></table></figure>
-<p>如下图所示</p>
-<p><img src="/images/cc13.jpg" alt="c"></p>
-<p>在使用 Java/Python API 时，需要提供的信息是 <code>AppId</code>, <code>AppKey</code>(密码) 和 <code>TenantId</code> 。</p>
-<p>接下来我们需要把系统镜像复制到存储中。</p>
-<p>我们会利用 Azure 命令行工具把系统镜像从课程账户赋值到自己的账户中，这在之后的 Project0 和 Project2 中会非常有用。具体步骤如下：</p>
-<p><strong>第一步</strong></p>
-<p>在资源组页面点击添加，创建一个新的资源组</p>
-<p><img src="/images/14529167646056.jpg" alt=""></p>
-<p><strong>第二步</strong></p>
-<p>起个名字，选择 East US，然后点击创建</p>
-<p><img src="/images/14529169051161.jpg" alt=""></p>
-<p><strong>第三步</strong></p>
-<p>在资源组例添加一个存储(storage account)</p>
-<p><img src="/images/14529169731509.jpg" alt=""></p>
-<p><img src="/images/14529169804085.jpg" alt=""></p>
-<p><strong>第四步</strong></p>
-<p>在部署模型中选择资源管理器，点击创建，并设定以下内容：</p>
-<ul>
-<li>名字</li>
-<li>类型：最便宜那种</li>
-<li>诊断：开启</li>
-<li>资源组：刚才新建的资源组</li>
-<li>位置：East US</li>
-</ul>
-<p><img src="/images/14529170662970.jpg" alt=""></p>
-<p><strong>第五步</strong></p>
-<p>来到刚才的创建的存储账户，点击 Blob</p>
-<p><img src="/images/14529171471889.jpg" alt=""></p>
-<p><strong>第六步</strong></p>
-<p>创建一个名为 <code>system</code> 的容器(container)，注意访问类型是 Blob</p>
-<p><img src="/images/14529172233371.jpg" alt=""></p>
-<p><strong>第七步</strong></p>
-<p>记下在设置/访问密钥里面的访问密钥 KEY1</p>
-<p><img src="/images/14529173037560.jpg" alt=""></p>
-<p><strong>第八步</strong></p>
-<p>现在我们的存储账户中已经有了容器，就可以把系统镜像拷贝过来了。需要复制的原因是只能由位于同一个存储账户中的镜像来创建 osdisk</p>
-<p>执行下面的代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">azure storage blob copy start https://cc15619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/primertest-osDisk.<span class="number">7</span>ec2e680-<span class="number">5</span>a2f-<span class="number">462</span>b-ba77-cd7b707389d4.vhd  --dest-account-name PUT_YOUR_STORAGE_ACCOUNT_NAME_HERE --dest-account-key PUT_YOUR_KEY1_HERE --dest-container system</span><br></pre></td></tr></table></figure>
-<p>如下图所示</p>
-<p><img src="/images/cc14.jpg" alt="c"></p>
-<p><strong>第九步</strong></p>
-<p>大概需要二十分钟，这期间可以通过命令行来查看载入的进度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">azure storage blob copy show --account-name PUT_YOUR_STORAGE_ACCOUNT_NAME_HERE --account-key PUT_YOUR_KEY1_HERE --container system --blob Microsoft.Compute/Images/vhds/primertest-osDisk.<span class="number">7</span>ec2e680-<span class="number">5</span>a2f-<span class="number">462</span>b-ba77-cd7b707389d4.vhd</span><br></pre></td></tr></table></figure>
-<p>当结果从 pending 变成 success 的时候，就可以用这个镜像来创建一台虚拟机了</p>
-<p><strong>第十步</strong></p>
-<p>复制完成后，点击 system 容器，记下镜像的 URL</p>
-<p><img src="/images/14529201199175.jpg" alt=""></p>
-<p>有了镜像 URL，接下来就可以来创建新的虚拟机了。</p>
-<h3 id="Azure_Python_API"><a href="#Azure_Python_API" class="headerlink" title="Azure Python API"></a>Azure Python API</h3><p>为了介绍如何使用 Python API 来创建和管理 Azure 资源，这里通过一个例子来介绍如何通过一个预定义的镜像来创建虚拟机。</p>
-<p>这个例子在之后的项目中非常有用。为了使用 Azure Python API 来创建虚拟机，需要完成以下几个步骤：</p>
-<ul>
-<li>安装 Python SDK</li>
-<li>通过 Python ID 来获取 AD 应用的 token</li>
-<li>把虚拟机镜像从课程账户拷贝到个人账户中</li>
-<li>利用提供的代码来部署一个虚拟机</li>
-</ul>
-<p>首先通过 <code>pip install azure</code> 来安装 SDK。获取 AD 应用 token 需要 appId 和 appKey。在这门课中只需要创建一个 AD 应用。</p>
-<p>如果遇到问题可以使用 <code>sudo -H pip install azure --upgrade --ignore-installed six</code></p>
-<p>其中：</p>
-<p><code>-H</code> set the home directory of the new user in the place of the original user’s home. (without it, $HOME refers to the original user’s home). </p>
-<p>每次执行下面的代码，都会拿到一个新的 token，这个 token 可以被用来创建资源管理对象。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># make sure you configure these three variables correctly before you try to run the code </span></span><br><span class="line">AZURE_ENDPOINT_URL=<span class="string">'https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/oauth2/token'</span></span><br><span class="line">AZURE_APP_ID=YOUR_APP_ID </span><br><span class="line">AZURE_APP_SECRET=YOUR_APP_SECRET</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_token_from_client_credentials</span><span class="params">(endpoint, client_id, client_secret)</span>:</span></span><br><span class="line">    payload = &#123;</span><br><span class="line">        <span class="string">'grant_type'</span>: <span class="string">'client_credentials'</span>,</span><br><span class="line">        <span class="string">'client_id'</span>: client_id,</span><br><span class="line">        <span class="string">'client_secret'</span>: client_secret,</span><br><span class="line">        <span class="string">'resource'</span>: <span class="string">'https://management.core.windows.net/'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    response = requests.post(endpoint, data=payload).json()</span><br><span class="line">    <span class="keyword">return</span> response[<span class="string">'access_token'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># test</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    auth_token = get_token_from_client_credentials(endpoint=AZURE_ENDPOINT_URL,</span><br><span class="line">            client_id=AZURE_APP_ID,</span><br><span class="line">            client_secret=AZURE_APP_SECRET)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> auth_token</span><br></pre></td></tr></table></figure>
-<p>这里我们需要 OAUTH 2.0 的 endpoint URL，到 web 控制台-&gt;浏览-&gt;Active Directory。然后会跳转到另一个控制台，点击应用程序，再点击页面下方的查看端点，如下图所示</p>
-<p><img src="/images/14529493984204.jpg" alt=""></p>
-<p>记录下 OAUTH 2.0 令牌端点的地址。</p>
-<p>前面已经把位于 <code>https://cc15619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/primertest-osDisk.7ec2e680-5a2f-462b-ba77-cd7b707389d4.vhd</code> 的镜像拷贝到了自己的账户中，接下来就可以开始创建了，首先从<a href="https://s3.amazonaws.com/15619public/webcontent/azure_demo_create_vm_from_ami.py" target="_blank" rel="external">这里</a>下载代码，其中的 <code>azure_api.create_vm_from_ami()</code> 函数在之后的 project 中会很有用。</p>
-<p>也可以来参考 <a href="https://azure-sdk-for-python.readthedocs.org/en/latest/index.html" target="_blank" rel="external">Python SDK 文档</a>来找到所需的 API。</p>
-<p>我们提供了一个 <code>demo()</code> 函数来展示如何使用，通过填写对应的参数来用以下代码运行 demo：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python azure_demo_create_vm_from_ami.py STORAGE_ACCOUNT_NAME SUBSCRIPTION_ID ENDPOINT_URI APPLICATION_ID APPLICATION_SECRET_KEY</span><br></pre></td></tr></table></figure>
-<p>这里出现了一些问题，后来发现是 python 的 requests 包版本过低导致的，使用 <code>pip install --upgrade requests</code> 解决。</p>
-<p>运行的时候会有 InsecurePlatformWarning，这个是因为没有安装 <code>security</code> 包，用这条语句来安装 <code>$ pip install requests[security]</code> 或者直接安装 <code>$ pip install pyopenssl ndg-httpsclient pyasn1</code>。这之后 就会自动用加密的请求</p>
-<p><img src="/images/14529531648561.jpg" alt=""></p>
-<p>完成之后就可以通过给出的 IP 地址来访问，用户名是 ubuntu，密码是 Cloud@123，然后就登录完成了</p>
-<p><img src="/images/cc15.jpg" alt="c"></p>
-<p>记得在操作完成之后删除对应的资源。</p>
-<h3 id="Azure_Java_API"><a href="#Azure_Java_API" class="headerlink" title="Azure Java API"></a>Azure Java API</h3><p>为了介绍如何使用 Java API 来创建和管理 Azure 资源，这里通过一个例子来介绍如何通过一个预定义的镜像来创建虚拟机。</p>
-<p>这个例子在之后的项目中非常有用。为了使用 Azure Java API 来创建虚拟机，需要完成以下几个步骤：</p>
-<ul>
-<li>安装 Java SDK</li>
-<li>通过 Java ID 来获取 AD 应用的 token</li>
-<li>把虚拟机镜像从课程账户拷贝到个人账户中</li>
-<li>利用提供的代码来部署一个虚拟机</li>
-</ul>
-<p>我需要以下的 SDK</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">azure-mgmt-compute</span><br><span class="line">azure-mgmt-utility</span><br><span class="line">azure-mgmt-network</span><br><span class="line">azure-mgmt-storage</span><br></pre></td></tr></table></figure>
-<p>按照 Java SDK 的意思是把这些 SDK 包含在项目中，方便起见，可以用<code>maven</code> 来编译和运行样例代码，步骤为：</p>
-<ol>
-<li>在电脑上安装 maven</li>
-<li>切换到 <code>azureDemo</code> 目录</li>
-<li>执行 <code>mvn compile</code> 与 <code>mvn exec:java -Dexec.mainClass=&quot;AzureVMApiDemo&quot; [-Dexec.args=&quot;argument1 argument2 argument3 argument4 argument5&quot;]</code></li>
-</ol>
-<p>和 Python 一样，我们需要获取到 <code>tenantID</code>, <code>applicationID</code>, <code>applicationKey</code> 并且把对应的镜像复制到自己的存储账户中。</p>
-<p>如果之前已经创建过了，现在就可以直接下载代码来运行了。</p>
-<p>因为我的机子上没有安装 maven，所以这里首先要进行安装。</p>
-<p>先下载 <a href="https://maven.apache.org/download.cgi" target="_blank" rel="external">Maven</a>，然后解压到某个目录下，这里我解压到 <code>Users/dawang/apache-maven-3.3.9</code> 中。</p>
-<p>然后打开终端，设置一下 Maven classpath</p>
-<p><code>$ vi ~/.bash_profile</code></p>
-<p>添加</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export M2_HOME=/Users/dawang/apache-maven-<span class="number">3.3</span>.<span class="number">9</span></span><br><span class="line">export PATH=<span class="variable">$PATH</span>:<span class="variable">$M2</span>_HOME/bin</span><br></pre></td></tr></table></figure>
-<p>然后输入 <code>source ~/.bash_profile</code> 让命令生效，并用 <code>mvn -v</code> 来检验是否成功安装，如果出错，基本是因为没有设置 <code>JAVA_HOME</code> 环境变量所导致，重新编辑 <code>bash_profile</code> 增加</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1<span class="number">.8</span><span class="number">.0</span>_60.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
-<p>重新输入 <code>source ~/.bash_profile</code> 让命令生效，就可以看到 maven 成功安装了，如下图：</p>
-<p><img src="/images/cc16.jpg" alt="c"></p>
-<p>然后在<a href="https://s3.amazonaws.com/15619public/webcontent/azureDemo.tar.gz" target="_blank" rel="external">这里</a>下载代码，解压之后通过下面的命令来进行编译执行，注意添加对应的参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile &amp;&amp; mvn <span class="built_in">exec</span>:java -Dexec.mainClass=<span class="string">"AzureVMApiDemo"</span> -Dexec.args=<span class="string">"RESOURCEGROUP STORAGEACCOUNT VHDNAME SUBSCRIPTIONID TENANTID APPLICATIONID APPLICATIONKEY"</span></span><br></pre></td></tr></table></figure>
-<p>其中</p>
-<ul>
-<li>STORAGEACCOUNT, RESOURCEGROUP are corresponding to resources where you put the copied image;</li>
-<li>VHDNAME is the copied disk image name under your account (it must end with a .vhd);</li>
-<li>SUBSCRIPTIONID comes from your Azure account;</li>
-<li>TENANTID, APPLICATIONID, APPLICATIONKEY are generated when you authenticated your service principal;(Please refer to previous sections)</li>
-</ul>
-<p>疯狂下载之后开始配置，等待一段时间后会提示配置成功。这里需要注意 VHDNAME 里前面名字已经配置好了，直接输入文件名即可。</p>
-<p>等一下就发现创建成功：</p>
-<p><img src="/images/cc17.jpg" alt="c"></p>
-<p>完成之后就可以通过给出的 IP 地址来访问，用户名是 ubuntu，密码是 Cloud@123，然后就登录完成了，如下图：</p>
-<p><img src="/images/cc18.jpg" alt="c"></p>
-<p>做完后记得删除对应的资源。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>上一讲介绍了关于 SSH 和 Linux 的相关知识，这一讲我们来看看，如何通过代码，而不是界面或者命令行，来控制 Azure。</p>]]>
-    
-    </summary>
-    
-      <category term="API" scheme="http://yoursite.com/tags/API/"/>
-    
-      <category term="Azure" scheme="http://yoursite.com/tags/Azure/"/>
     
       <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
     
