@@ -3,9 +3,9 @@
   <title><![CDATA[小土刀]]></title>
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
+  <link href="http://wdxtub.com/"/>
   <updated>2016-01-22T19:47:41.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://wdxtub.com/</id>
   
   <author>
     <name><![CDATA[wdxtub]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[第二周 - Welcome]]></title>
-    <link href="http://yoursite.com/2016/01/22/welcome/"/>
-    <id>http://yoursite.com/2016/01/22/welcome/</id>
+    <link href="http://wdxtub.com/2016/01/22/welcome/"/>
+    <id>http://wdxtub.com/2016/01/22/welcome/</id>
     <published>2016-01-22T17:48:32.000Z</published>
     <updated>2016-01-22T19:47:41.000Z</updated>
     <content type="html"><![CDATA[<p>Ain’t no way to shut me down. Or to take the path I’ve taken.</p>
@@ -35,22 +35,22 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="周记" scheme="http://yoursite.com/tags/%E5%91%A8%E8%AE%B0/"/>
+      <category term="周记" scheme="http://wdxtub.com/tags/%E5%91%A8%E8%AE%B0/"/>
     
-      <category term="改变" scheme="http://yoursite.com/tags/%E6%94%B9%E5%8F%98/"/>
+      <category term="改变" scheme="http://wdxtub.com/tags/%E6%94%B9%E5%8F%98/"/>
     
-      <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://wdxtub.com/tags/%E9%9D%A2%E8%AF%95/"/>
     
-      <category term="Gossip" scheme="http://yoursite.com/categories/Gossip/"/>
+      <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[编程起跑线 第 1 课 总览]]></title>
-    <link href="http://yoursite.com/2016/01/22/programmer-startline-1/"/>
-    <id>http://yoursite.com/2016/01/22/programmer-startline-1/</id>
+    <link href="http://wdxtub.com/2016/01/22/programmer-startline-1/"/>
+    <id>http://wdxtub.com/2016/01/22/programmer-startline-1/</id>
     <published>2016-01-22T14:35:39.000Z</published>
     <updated>2016-01-22T20:35:07.000Z</updated>
     <content type="html"><![CDATA[<p>学了这么多年计算机和编程，在快要步入社会之前，在不断地碰壁和尝试之后，终于摸到了一点门路。这个系列的文章，更接近于编程入门指南，讲的是从数据结构到算法最终到解决问题的方法和思路。</p>
@@ -84,20 +84,20 @@
     
     </summary>
     
-      <category term="思维" scheme="http://yoursite.com/tags/%E6%80%9D%E7%BB%B4/"/>
+      <category term="思维" scheme="http://wdxtub.com/tags/%E6%80%9D%E7%BB%B4/"/>
     
-      <category term="技能" scheme="http://yoursite.com/tags/%E6%8A%80%E8%83%BD/"/>
+      <category term="技能" scheme="http://wdxtub.com/tags/%E6%8A%80%E8%83%BD/"/>
     
-      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+      <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 9 课 Machine Advanced]]></title>
-    <link href="http://yoursite.com/2016/01/21/csapp-9/"/>
-    <id>http://yoursite.com/2016/01/21/csapp-9/</id>
+    <link href="http://wdxtub.com/2016/01/21/csapp-9/"/>
+    <id>http://wdxtub.com/2016/01/21/csapp-9/</id>
     <published>2016-01-22T00:16:21.000Z</published>
     <updated>2016-01-22T20:35:42.000Z</updated>
     <content type="html"><![CDATA[<p>这一讲是机器代码的最后一部分，会介绍一些『高级』话题，比如程序在内存中的组织，缓冲区溢出引起的攻防大战，以及 Union 的具体实现方式。</p>
@@ -164,20 +164,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 8 课 Machine Data]]></title>
-    <link href="http://yoursite.com/2016/01/21/csapp-8/"/>
-    <id>http://yoursite.com/2016/01/21/csapp-8/</id>
+    <link href="http://wdxtub.com/2016/01/21/csapp-8/"/>
+    <id>http://wdxtub.com/2016/01/21/csapp-8/</id>
     <published>2016-01-21T16:16:14.000Z</published>
     <updated>2016-01-22T20:35:47.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲我们了解了过程调用是如何用机器代码实现的，这一讲我们来看看基本的数据是如何存储在计算机中的。</p>
@@ -277,20 +277,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 7 课 Machine Procedures]]></title>
-    <link href="http://yoursite.com/2016/01/21/csapp-7/"/>
-    <id>http://yoursite.com/2016/01/21/csapp-7/</id>
+    <link href="http://wdxtub.com/2016/01/21/csapp-7/"/>
+    <id>http://wdxtub.com/2016/01/21/csapp-7/</id>
     <published>2016-01-21T16:15:37.000Z</published>
     <updated>2016-01-22T20:35:51.000Z</updated>
     <content type="html"><![CDATA[<p>之前我们学习了机器是如何利用跳转实现流程控制的，这一讲我们来看一个更加复杂的机制：过程调用（也就是调用函数）具体在 CPU 和内存中是怎么实现了。理解之后，对于递归会有更加清晰的认识。</p>
@@ -387,20 +387,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[云计算 第 9 课 Sequential Programming]]></title>
-    <link href="http://yoursite.com/2016/01/20/cc-9/"/>
-    <id>http://yoursite.com/2016/01/20/cc-9/</id>
+    <link href="http://wdxtub.com/2016/01/20/cc-9/"/>
+    <id>http://wdxtub.com/2016/01/20/cc-9/</id>
     <published>2016-01-20T20:05:54.000Z</published>
     <updated>2016-01-22T20:35:15.000Z</updated>
     <content type="html"><![CDATA[<p>这一讲我们就要开始实际接触一个真实的项目——处理一个大文本数据集了。在云上编程和平时学习的可能有一些不同，这里会尽量写得详细一些。</p>
@@ -435,7 +435,7 @@
 <p>就说明这条记录的产生是因为有人访问了 <code>French Wikibooks</code> 中的 <code>Special:Recherche/All_Mixed_Up</code> 页面 1 次，并且总共传输了 730 个字节。</p>
 <p>这个项目中，我们主要会分析 2015 年 12 月的数据。不过现在我们只需要处理 12 月 1 日的第一个小时的数据。数据在 <code>s3://cmucc-datasets/wikipediatraf/201512/pagecounts-20151201-000000.gz</code>。可以使用 <code>aws-cli</code>, <code>s3cmd</code> 或者 S3 查看器来了解。但是在服务器上，就需要用 <code>wget</code> 来下载了，具体的地址是 <a href="https://cmucc-datasets.s3.amazonaws.com/wikipediatraf/201512/pagecounts-20151201-000000.gz" target="_blank" rel="external">https://cmucc-datasets.s3.amazonaws.com/wikipediatraf/201512/pagecounts-20151201-000000.gz</a></p>
 <p>命令为 <code>wget https://cmucc-datasets.s3.amazonaws.com/wikipediatraf/201512/pagecounts-20151201-000000.gz</code></p>
-<p>如果不是很了解如何访问 Amazon S3，可以回头看看<a href="http://wdxtub.com/2016/01/15/cc-2/" target="_blank" rel="external">云计算 第 2 课 AWS 简介</a></p>
+<p>如果不是很了解如何访问 Amazon S3，可以回头看看<a href="http://wdxtub.com/2016/01/15/cc-2/">云计算 第 2 课 AWS 简介</a></p>
 <h2 id="Data_Filtering"><a href="#Data_Filtering" class="headerlink" title="Data Filtering"></a>Data Filtering</h2><p>简单来说，我们要从维基的访问数据中，用各类数据分析的方法，看看能不能找到些什么有意思的东西。</p>
 <p>我们会先从第一个小时的维基流量日志开始分析，主要关注英文维基的内容。这种从完整数据的一个子集开始测试起并最终应用到全部数据的方法，在之后的项目中会很有用。</p>
 <p>我们先使用 <code>ami-95e9cdff</code>（社区 AMI 中）来创建一个 <code>t1.micro</code> 实例，记得在右上角把地区切换为 <code>弗吉尼亚北部</code>。允许 SSH 和 HTTP 连接（可以使用之前的安全组）。像下面这样：</p>
@@ -511,22 +511,22 @@
     
     </summary>
     
-      <category term="AWS" scheme="http://yoursite.com/tags/AWS/"/>
+      <category term="AWS" scheme="http://wdxtub.com/tags/AWS/"/>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
-      <category term="文本处理" scheme="http://yoursite.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/"/>
+      <category term="文本处理" scheme="http://wdxtub.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 6 课 Machine Control]]></title>
-    <link href="http://yoursite.com/2016/01/20/csapp-6/"/>
-    <id>http://yoursite.com/2016/01/20/csapp-6/</id>
+    <link href="http://wdxtub.com/2016/01/20/csapp-6/"/>
+    <id>http://wdxtub.com/2016/01/20/csapp-6/</id>
     <published>2016-01-20T16:15:32.000Z</published>
     <updated>2016-01-22T20:35:54.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲我们了解了关于机器代码，汇编和 CPU 相关的基础知识，这一讲要来说一下具体机器是怎么实现代码中常见的流程控制的。这一部分涉及的代码和思路稍微有些不容易理解，我会尽量写得详细一些。</p>
@@ -665,20 +665,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[一点微小的工作]]></title>
-    <link href="http://yoursite.com/2016/01/19/a-little-work/"/>
-    <id>http://yoursite.com/2016/01/19/a-little-work/</id>
+    <link href="http://wdxtub.com/2016/01/19/a-little-work/"/>
+    <id>http://wdxtub.com/2016/01/19/a-little-work/</id>
     <published>2016-01-20T04:40:52.000Z</published>
     <updated>2016-01-20T05:35:16.000Z</updated>
     <content type="html"><![CDATA[<p>可能很久之后回忆这段留学的时光，让自己开心的不是绩点和景点，而是朋友，和一点微小的工作。</p>
@@ -693,7 +693,7 @@
 <p>这也是为什么，我想要把这些写下来的原因。</p>
 <p>本来是打算等学期结束再整理分享，但是想到早一些分享，可能就会多一些人参与。虽然可能目前有各种各样的错漏，但是相信在大家的监督点拨下，我们都能做得更好。</p>
 <p>我不大会起那些特别吸引眼球的标题，更多是想踏踏实实把一件事情坚持下来，如果可能的话，做得尽量好一些。也希望能用自己这一点微小的工作，让大家看到，即使是小小的贡献，积累起来也能是大大的改变。</p>
-<p>具体的文章目录可以在<a href="http://wdxtub.com/about/" target="_blank" rel="external">这里</a>查看，欢迎加我的个人微信交流讨论</p>
+<p>具体的文章目录可以在<a href="http://wdxtub.com/about/">这里</a>查看，欢迎加我的个人微信交流讨论</p>
 <p>更希望能帮忙转发一下，让更多人能看到并参与进来。</p>
 <p><img src="/images/me.jpeg" alt="me"></p>
 ]]></content>
@@ -702,22 +702,22 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+      <category term="分享" scheme="http://wdxtub.com/tags/%E5%88%86%E4%BA%AB/"/>
     
-      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+      <category term="学习" scheme="http://wdxtub.com/tags/%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="课程" scheme="http://yoursite.com/tags/%E8%AF%BE%E7%A8%8B/"/>
+      <category term="课程" scheme="http://wdxtub.com/tags/%E8%AF%BE%E7%A8%8B/"/>
     
-      <category term="Gossip" scheme="http://yoursite.com/categories/Gossip/"/>
+      <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 第 8 课 Choosing Connectors]]></title>
-    <link href="http://yoursite.com/2016/01/19/sad-8/"/>
-    <id>http://yoursite.com/2016/01/19/sad-8/</id>
+    <link href="http://wdxtub.com/2016/01/19/sad-8/"/>
+    <id>http://wdxtub.com/2016/01/19/sad-8/</id>
     <published>2016-01-19T13:24:49.000Z</published>
     <updated>2016-01-22T20:35:21.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲中我们了解了连接器的基本概念，这一讲我们来看看，在这么多不同的选项中，如何找到最适合项目的连接器。</p>
@@ -769,20 +769,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
     
-      <category term="设计" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 第 7 课 Software Connectors]]></title>
-    <link href="http://yoursite.com/2016/01/19/sad-7/"/>
-    <id>http://yoursite.com/2016/01/19/sad-7/</id>
+    <link href="http://wdxtub.com/2016/01/19/sad-7/"/>
+    <id>http://wdxtub.com/2016/01/19/sad-7/</id>
     <published>2016-01-19T13:22:16.000Z</published>
     <updated>2016-01-22T20:35:24.000Z</updated>
     <content type="html"><![CDATA[<p>在了解了整体的框架之后，这节课我们来看架构中很重要的一部分——连接器。这里主要是一些概念和设计的介绍。</p>
@@ -840,20 +840,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
     
-      <category term="设计" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 第 6 课 Styles and Greenfield Design]]></title>
-    <link href="http://yoursite.com/2016/01/19/sad-6/"/>
-    <id>http://yoursite.com/2016/01/19/sad-6/</id>
+    <link href="http://wdxtub.com/2016/01/19/sad-6/"/>
+    <id>http://wdxtub.com/2016/01/19/sad-6/</id>
     <published>2016-01-19T13:22:11.000Z</published>
     <updated>2016-01-22T20:35:27.000Z</updated>
     <content type="html"><![CDATA[<p>前一讲了解了简单的架构风格，这节课看一下稍微复杂一点的风格，以及针对 Greenfield 设计（类似于开放式问题）的相关内容。</p>
@@ -912,20 +912,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
     
-      <category term="设计" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 第 5 课 Architectural Styles]]></title>
-    <link href="http://yoursite.com/2016/01/19/sad-5/"/>
-    <id>http://yoursite.com/2016/01/19/sad-5/</id>
+    <link href="http://wdxtub.com/2016/01/19/sad-5/"/>
+    <id>http://wdxtub.com/2016/01/19/sad-5/</id>
     <published>2016-01-19T13:21:57.000Z</published>
     <updated>2016-01-22T20:35:30.000Z</updated>
     <content type="html"><![CDATA[<p>前面我们大致了解了一下整体的系统设计与领域相关知识组合的各种设计阶段，这一讲我们主要来看看架构风格。</p>
@@ -967,20 +967,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
     
-      <category term="设计" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 第 4 课 Designing Architectures]]></title>
-    <link href="http://yoursite.com/2016/01/19/sad-4/"/>
-    <id>http://yoursite.com/2016/01/19/sad-4/</id>
+    <link href="http://wdxtub.com/2016/01/19/sad-4/"/>
+    <id>http://wdxtub.com/2016/01/19/sad-4/</id>
     <published>2016-01-19T13:21:54.000Z</published>
     <updated>2016-01-22T20:35:32.000Z</updated>
     <content type="html"><![CDATA[<p>有了前面的基本概念和第一次作业的练习，这一讲我们主要来看看如何设计架构。</p>
@@ -1151,20 +1151,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
     
-      <category term="设计" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 习题课 1 Datalab]]></title>
-    <link href="http://yoursite.com/2016/01/18/csapp-lab1/"/>
-    <id>http://yoursite.com/2016/01/18/csapp-lab1/</id>
+    <link href="http://wdxtub.com/2016/01/18/csapp-lab1/"/>
+    <id>http://wdxtub.com/2016/01/18/csapp-lab1/</id>
     <published>2016-01-18T13:01:12.000Z</published>
     <updated>2016-01-22T20:35:58.000Z</updated>
     <content type="html"><![CDATA[<p>这一讲主要是介绍第一次作业 Datalab 的相关内容以及解法，还包括如何在远程机器上编写代码和测试。</p>
@@ -1398,22 +1398,22 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="Datalab" scheme="http://yoursite.com/tags/Datalab/"/>
+      <category term="Datalab" scheme="http://wdxtub.com/tags/Datalab/"/>
     
-      <category term="习题课" scheme="http://yoursite.com/tags/%E4%B9%A0%E9%A2%98%E8%AF%BE/"/>
+      <category term="习题课" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98%E8%AF%BE/"/>
     
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 5 课 Machine Basics]]></title>
-    <link href="http://yoursite.com/2016/01/18/csapp-5/"/>
-    <id>http://yoursite.com/2016/01/18/csapp-5/</id>
+    <link href="http://wdxtub.com/2016/01/18/csapp-5/"/>
+    <id>http://wdxtub.com/2016/01/18/csapp-5/</id>
     <published>2016-01-18T13:00:53.000Z</published>
     <updated>2016-01-22T20:36:01.000Z</updated>
     <content type="html"><![CDATA[<p>从这一讲开始，我们接触到更多机器相关的内容，这次要说的是基础知识，为之后更深入讲解打下基础。</p>
@@ -1534,22 +1534,22 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
+      <category term="基础" scheme="http://wdxtub.com/tags/%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="组成原理" scheme="http://yoursite.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 4 课 Floating Point]]></title>
-    <link href="http://yoursite.com/2016/01/18/csapp-4/"/>
-    <id>http://yoursite.com/2016/01/18/csapp-4/</id>
+    <link href="http://wdxtub.com/2016/01/18/csapp-4/"/>
+    <id>http://wdxtub.com/2016/01/18/csapp-4/</id>
     <published>2016-01-18T13:00:49.000Z</published>
     <updated>2016-01-22T20:36:06.000Z</updated>
     <content type="html"><![CDATA[<p>了解了数据在内存中的基本存储形式，同时也知道了整型的表达方法，这一讲我们来看看另一大类别的数字——浮点数——是如何在计算机中表示的。</p>
@@ -1729,20 +1729,20 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="浮点数" scheme="http://yoursite.com/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/"/>
+      <category term="浮点数" scheme="http://wdxtub.com/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/"/>
     
-      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 习题课 1 面向对象复习]]></title>
-    <link href="http://yoursite.com/2016/01/17/sad-r1/"/>
-    <id>http://yoursite.com/2016/01/17/sad-r1/</id>
+    <link href="http://wdxtub.com/2016/01/17/sad-r1/"/>
+    <id>http://wdxtub.com/2016/01/17/sad-r1/</id>
     <published>2016-01-17T12:50:47.000Z</published>
     <updated>2016-01-22T20:36:08.000Z</updated>
     <content type="html"><![CDATA[<p>前面几讲我们了解了一堆概念，这一节课里我们借用 ATM 的例子，来回顾一下面向对象设计的基本知识（注：本『课』由第一次作业拓展而成）</p>
@@ -1818,22 +1818,22 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="习题" scheme="http://yoursite.com/tags/%E4%B9%A0%E9%A2%98/"/>
+      <category term="习题" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98/"/>
     
-      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
     
-      <category term="设计" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[云计算 第 8 课 Azure 动手玩]]></title>
-    <link href="http://yoursite.com/2016/01/16/cc-8/"/>
-    <id>http://yoursite.com/2016/01/16/cc-8/</id>
+    <link href="http://wdxtub.com/2016/01/16/cc-8/"/>
+    <id>http://wdxtub.com/2016/01/16/cc-8/</id>
     <published>2016-01-16T19:41:09.000Z</published>
     <updated>2016-01-22T20:36:11.000Z</updated>
     <content type="html"><![CDATA[<p>上手 AWS 后，这一讲我们继续来看看另一个云服务提供商 Azure 要如何上手。</p>
@@ -1980,14 +1980,14 @@
 <p>在这里我们不能 SSH 连接到这些实例，但是可以通过访问特定的 endpoint 来查看当前的情况，具体步骤如下：</p>
 <p>先要把 load generator 和数据中心的镜像拷贝到自己的存储账户中。地址是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Data Center: https://cc15619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/cc15619p0dcv2-osDisk.b7dbe1d0-<span class="number">782</span>c-<span class="number">43</span>b5<span class="operator">-a</span>7df-<span class="number">1896844377</span>aa.vhd</span><br><span class="line"></span><br><span class="line">Load Generator: https://cc15619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/cc15619p0lgv2-osDisk.<span class="number">838</span>bf28c-ed03-<span class="number">41</span>f9-<span class="number">9810</span>-<span class="number">4</span>cbfa668d22e.vhd</span><br></pre></td></tr></table></figure>
-<p>和 <a href="http://wdxtub.com/2016/01/15/cc-5/" target="_blank" rel="external">云计算 第 5 课 Azure API</a> 的方法是一样的，因为我们之前已经创建了 AD 应用之类的东西，有所需的 AppId, AppKey, TenantId 等内容，所以现在可以直接用之前的命令，但是要拷贝的内容换成上面的地址</p>
+<p>和 <a href="http://wdxtub.com/2016/01/15/cc-5/">云计算 第 5 课 Azure API</a> 的方法是一样的，因为我们之前已经创建了 AD 应用之类的东西，有所需的 AppId, AppKey, TenantId 等内容，所以现在可以直接用之前的命令，但是要拷贝的内容换成上面的地址</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Data Center</span></span><br><span class="line">azure storage blob copy start https://cc15619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/cc15619p0dcv2-osDisk.b7dbe1d0-<span class="number">782</span>c-<span class="number">43</span>b5<span class="operator">-a</span>7df-<span class="number">1896844377</span>aa.vhd  --dest-account-name PUT_YOUR_STORAGE_ACCOUNT_NAME_HERE --dest-account-key PUT_YOUR_KEY1_HERE --dest-container system</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load Generator</span></span><br><span class="line">azure storage blob copy start https://cc15619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/cc15619p0lgv2-osDisk.<span class="number">838</span>bf28c-ed03-<span class="number">41</span>f9-<span class="number">9810</span>-<span class="number">4</span>cbfa668d22e.vhd  --dest-account-name PUT_YOUR_STORAGE_ACCOUNT_NAME_HERE --dest-account-key PUT_YOUR_KEY1_HERE --dest-container system</span><br></pre></td></tr></table></figure>
 <p>也需要一定时间，可以用下面的命令来查看进度</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Data Center</span></span><br><span class="line">azure storage blob copy show --account-name PUT_YOUR_STORAGE_ACCOUNT_NAME_HERE --account-key PUT_YOUR_KEY1_HERE --container system --blob Microsoft.Compute/Images/vhds/cc15619p0dcv2-osDisk.b7dbe1d0-<span class="number">782</span>c-<span class="number">43</span>b5<span class="operator">-a</span>7df-<span class="number">1896844377</span>aa.vhd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load Generator</span></span><br><span class="line">azure storage blob copy show --account-name PUT_YOUR_STORAGE_ACCOUNT_NAME_HERE --account-key PUT_YOUR_KEY1_HERE --container system --blob Microsoft.Compute/Images/vhds/cc15619p0lgv2-osDisk.<span class="number">838</span>bf28c-ed03-<span class="number">41</span>f9-<span class="number">9810</span>-<span class="number">4</span>cbfa668d22e.vhd</span><br></pre></td></tr></table></figure>
 <p>类似下图</p>
 <p><img src="/images/cc14.jpg" alt="c"></p>
 <p>当结果从 pending 变成 success 的时候，就可以用这个镜像来创建一台虚拟机了，具体镜像的 url 可以在存储账户中对应镜像的</p>
-<p>创建镜像同样可以用<a href="http://wdxtub.com/2016/01/15/cc-5/" target="_blank" rel="external">云计算 第 5 课 Azure API</a>中的 python 脚本来创建，我创建了两个新文件：<code>azure_p0_create_lg.py</code> 和 <code>azure_p0_create_dc.py</code></p>
+<p>创建镜像同样可以用<a href="http://wdxtub.com/2016/01/15/cc-5/">云计算 第 5 课 Azure API</a>中的 python 脚本来创建，我创建了两个新文件：<code>azure_p0_create_lg.py</code> 和 <code>azure_p0_create_dc.py</code></p>
 <p>这两个文件基本只需要改动 <code>create_vm_from_ami</code> 这个函数，因为参数默认值只有在参数不够的时候才会启用，所以保险起见，在函数体里面把需要更新的内容都再写一次。</p>
 <p>这里需要注意 <code>machine_size</code> 并没有对应的 D1 类型，所以先随便创建一个，之后去 web 控制台里进行修改</p>
 <p>命令如下：</p>
@@ -2036,22 +2036,22 @@
     
     </summary>
     
-      <category term="Azure" scheme="http://yoursite.com/tags/Azure/"/>
+      <category term="Azure" scheme="http://wdxtub.com/tags/Azure/"/>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
-      <category term="实例" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BE%8B/"/>
+      <category term="实例" scheme="http://wdxtub.com/tags/%E5%AE%9E%E4%BE%8B/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[云计算 第 7 课 AWS 动手玩]]></title>
-    <link href="http://yoursite.com/2016/01/16/cc-7/"/>
-    <id>http://yoursite.com/2016/01/16/cc-7/</id>
+    <link href="http://wdxtub.com/2016/01/16/cc-7/"/>
+    <id>http://wdxtub.com/2016/01/16/cc-7/</id>
     <published>2016-01-16T19:41:04.000Z</published>
     <updated>2016-01-22T20:36:14.000Z</updated>
     <content type="html"><![CDATA[<p>了解了基本的原理和工具后，这一讲我们用一个实际的例子来上手 AWS。</p>
@@ -2229,22 +2229,22 @@
     
     </summary>
     
-      <category term="AWS" scheme="http://yoursite.com/tags/AWS/"/>
+      <category term="AWS" scheme="http://wdxtub.com/tags/AWS/"/>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
-      <category term="实例" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BE%8B/"/>
+      <category term="实例" scheme="http://wdxtub.com/tags/%E5%AE%9E%E4%BE%8B/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[云计算 第 0 课 阅读材料]]></title>
-    <link href="http://yoursite.com/2016/01/16/cc-0/"/>
-    <id>http://yoursite.com/2016/01/16/cc-0/</id>
+    <link href="http://wdxtub.com/2016/01/16/cc-0/"/>
+    <id>http://wdxtub.com/2016/01/16/cc-0/</id>
     <published>2016-01-16T16:37:56.000Z</published>
     <updated>2016-01-22T20:36:19.000Z</updated>
     <content type="html"><![CDATA[<p>这一部分内容主要是云计算的理论知识，由于时间缘故使用英文原文，关键要点会作为单独的『课』来进行介绍。</p>
@@ -2821,13 +2821,13 @@
     
     </summary>
     
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
     
-      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+      <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
-      <category term="讲义" scheme="http://yoursite.com/tags/%E8%AE%B2%E4%B9%89/"/>
+      <category term="讲义" scheme="http://wdxtub.com/tags/%E8%AE%B2%E4%B9%89/"/>
     
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
