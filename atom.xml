@@ -52,7 +52,7 @@
     <link href="http://yoursite.com/2016/01/22/programmer-startline-1/"/>
     <id>http://yoursite.com/2016/01/22/programmer-startline-1/</id>
     <published>2016-01-22T14:35:39.000Z</published>
-    <updated>2016-01-22T16:03:39.000Z</updated>
+    <updated>2016-01-22T20:35:07.000Z</updated>
     <content type="html"><![CDATA[<p>学了这么多年计算机和编程，在快要步入社会之前，在不断地碰壁和尝试之后，终于摸到了一点门路。这个系列的文章，更接近于编程入门指南，讲的是从数据结构到算法最终到解决问题的方法和思路。</p>
 <a id="more"></a>
 <hr>
@@ -99,7 +99,7 @@
     <link href="http://yoursite.com/2016/01/21/csapp-9/"/>
     <id>http://yoursite.com/2016/01/21/csapp-9/</id>
     <published>2016-01-22T00:16:21.000Z</published>
-    <updated>2016-01-22T04:41:43.000Z</updated>
+    <updated>2016-01-22T20:35:42.000Z</updated>
     <content type="html"><![CDATA[<p>这一讲是机器代码的最后一部分，会介绍一些『高级』话题，比如程序在内存中的组织，缓冲区溢出引起的攻防大战，以及 Union 的具体实现方式。</p>
 <a id="more"></a>
 <hr>
@@ -179,7 +179,7 @@
     <link href="http://yoursite.com/2016/01/21/csapp-8/"/>
     <id>http://yoursite.com/2016/01/21/csapp-8/</id>
     <published>2016-01-21T16:16:14.000Z</published>
-    <updated>2016-01-22T01:22:19.000Z</updated>
+    <updated>2016-01-22T20:35:47.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲我们了解了过程调用是如何用机器代码实现的，这一讲我们来看看基本的数据是如何存储在计算机中的。</p>
 <a id="more"></a>
 <hr>
@@ -292,7 +292,7 @@
     <link href="http://yoursite.com/2016/01/21/csapp-7/"/>
     <id>http://yoursite.com/2016/01/21/csapp-7/</id>
     <published>2016-01-21T16:15:37.000Z</published>
-    <updated>2016-01-21T14:24:34.000Z</updated>
+    <updated>2016-01-22T20:35:51.000Z</updated>
     <content type="html"><![CDATA[<p>之前我们学习了机器是如何利用跳转实现流程控制的，这一讲我们来看一个更加复杂的机制：过程调用（也就是调用函数）具体在 CPU 和内存中是怎么实现了。理解之后，对于递归会有更加清晰的认识。</p>
 <a id="more"></a>
 <hr>
@@ -402,7 +402,7 @@
     <link href="http://yoursite.com/2016/01/20/cc-9/"/>
     <id>http://yoursite.com/2016/01/20/cc-9/</id>
     <published>2016-01-20T20:05:54.000Z</published>
-    <updated>2016-01-21T19:44:55.000Z</updated>
+    <updated>2016-01-22T20:35:15.000Z</updated>
     <content type="html"><![CDATA[<p>这一讲我们就要开始实际接触一个真实的项目——处理一个大文本数据集了。在云上编程和平时学习的可能有一些不同，这里会尽量写得详细一些。</p>
 <a id="more"></a>
 <hr>
@@ -528,7 +528,7 @@
     <link href="http://yoursite.com/2016/01/20/csapp-6/"/>
     <id>http://yoursite.com/2016/01/20/csapp-6/</id>
     <published>2016-01-20T16:15:32.000Z</published>
-    <updated>2016-01-20T17:57:01.000Z</updated>
+    <updated>2016-01-22T20:35:54.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲我们了解了关于机器代码，汇编和 CPU 相关的基础知识，这一讲要来说一下具体机器是怎么实现代码中常见的流程控制的。这一部分涉及的代码和思路稍微有些不容易理解，我会尽量写得详细一些。</p>
 <a id="more"></a>
 <hr>
@@ -719,7 +719,7 @@
     <link href="http://yoursite.com/2016/01/19/sad-8/"/>
     <id>http://yoursite.com/2016/01/19/sad-8/</id>
     <published>2016-01-19T13:24:49.000Z</published>
-    <updated>2016-01-20T01:51:10.000Z</updated>
+    <updated>2016-01-22T20:35:21.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲中我们了解了连接器的基本概念，这一讲我们来看看，在这么多不同的选项中，如何找到最适合项目的连接器。</p>
 <a id="more"></a>
 <hr>
@@ -784,7 +784,7 @@
     <link href="http://yoursite.com/2016/01/19/sad-7/"/>
     <id>http://yoursite.com/2016/01/19/sad-7/</id>
     <published>2016-01-19T13:22:16.000Z</published>
-    <updated>2016-01-20T00:53:05.000Z</updated>
+    <updated>2016-01-22T20:35:24.000Z</updated>
     <content type="html"><![CDATA[<p>在了解了整体的框架之后，这节课我们来看架构中很重要的一部分——连接器。这里主要是一些概念和设计的介绍。</p>
 <a id="more"></a>
 <hr>
@@ -855,7 +855,7 @@
     <link href="http://yoursite.com/2016/01/19/sad-6/"/>
     <id>http://yoursite.com/2016/01/19/sad-6/</id>
     <published>2016-01-19T13:22:11.000Z</published>
-    <updated>2016-01-19T23:42:19.000Z</updated>
+    <updated>2016-01-22T20:35:27.000Z</updated>
     <content type="html"><![CDATA[<p>前一讲了解了简单的架构风格，这节课看一下稍微复杂一点的风格，以及针对 Greenfield 设计（类似于开放式问题）的相关内容。</p>
 <a id="more"></a>
 <hr>
@@ -927,7 +927,7 @@
     <link href="http://yoursite.com/2016/01/19/sad-5/"/>
     <id>http://yoursite.com/2016/01/19/sad-5/</id>
     <published>2016-01-19T13:21:57.000Z</published>
-    <updated>2016-01-19T16:47:25.000Z</updated>
+    <updated>2016-01-22T20:35:30.000Z</updated>
     <content type="html"><![CDATA[<p>前面我们大致了解了一下整体的系统设计与领域相关知识组合的各种设计阶段，这一讲我们主要来看看架构风格。</p>
 <a id="more"></a>
 <hr>
@@ -982,7 +982,7 @@
     <link href="http://yoursite.com/2016/01/19/sad-4/"/>
     <id>http://yoursite.com/2016/01/19/sad-4/</id>
     <published>2016-01-19T13:21:54.000Z</published>
-    <updated>2016-01-19T14:32:47.000Z</updated>
+    <updated>2016-01-22T20:35:32.000Z</updated>
     <content type="html"><![CDATA[<p>有了前面的基本概念和第一次作业的练习，这一讲我们主要来看看如何设计架构。</p>
 <a id="more"></a>
 <hr>
@@ -1166,7 +1166,7 @@
     <link href="http://yoursite.com/2016/01/18/csapp-lab1/"/>
     <id>http://yoursite.com/2016/01/18/csapp-lab1/</id>
     <published>2016-01-18T13:01:12.000Z</published>
-    <updated>2016-01-18T22:46:36.000Z</updated>
+    <updated>2016-01-22T20:35:58.000Z</updated>
     <content type="html"><![CDATA[<p>这一讲主要是介绍第一次作业 Datalab 的相关内容以及解法，还包括如何在远程机器上编写代码和测试。</p>
 <a id="more"></a>
 <hr>
@@ -1415,7 +1415,7 @@
     <link href="http://yoursite.com/2016/01/18/csapp-5/"/>
     <id>http://yoursite.com/2016/01/18/csapp-5/</id>
     <published>2016-01-18T13:00:53.000Z</published>
-    <updated>2016-01-19T04:18:15.000Z</updated>
+    <updated>2016-01-22T20:36:01.000Z</updated>
     <content type="html"><![CDATA[<p>从这一讲开始，我们接触到更多机器相关的内容，这次要说的是基础知识，为之后更深入讲解打下基础。</p>
 <a id="more"></a>
 <hr>
@@ -1551,7 +1551,7 @@
     <link href="http://yoursite.com/2016/01/18/csapp-4/"/>
     <id>http://yoursite.com/2016/01/18/csapp-4/</id>
     <published>2016-01-18T13:00:49.000Z</published>
-    <updated>2016-01-18T16:14:14.000Z</updated>
+    <updated>2016-01-22T20:36:06.000Z</updated>
     <content type="html"><![CDATA[<p>了解了数据在内存中的基本存储形式，同时也知道了整型的表达方法，这一讲我们来看看另一大类别的数字——浮点数——是如何在计算机中表示的。</p>
 <a id="more"></a>
 <hr>
@@ -1744,7 +1744,7 @@
     <link href="http://yoursite.com/2016/01/17/sad-r1/"/>
     <id>http://yoursite.com/2016/01/17/sad-r1/</id>
     <published>2016-01-17T12:50:47.000Z</published>
-    <updated>2016-01-17T21:56:16.000Z</updated>
+    <updated>2016-01-22T20:36:08.000Z</updated>
     <content type="html"><![CDATA[<p>前面几讲我们了解了一堆概念，这一节课里我们借用 ATM 的例子，来回顾一下面向对象设计的基本知识（注：本『课』由第一次作业拓展而成）</p>
 <a id="more"></a>
 <hr>
@@ -1835,7 +1835,7 @@
     <link href="http://yoursite.com/2016/01/16/cc-8/"/>
     <id>http://yoursite.com/2016/01/16/cc-8/</id>
     <published>2016-01-16T19:41:09.000Z</published>
-    <updated>2016-01-17T03:04:01.000Z</updated>
+    <updated>2016-01-22T20:36:11.000Z</updated>
     <content type="html"><![CDATA[<p>上手 AWS 后，这一讲我们继续来看看另一个云服务提供商 Azure 要如何上手。</p>
 <a id="more"></a>
 <hr>
@@ -2053,7 +2053,7 @@
     <link href="http://yoursite.com/2016/01/16/cc-7/"/>
     <id>http://yoursite.com/2016/01/16/cc-7/</id>
     <published>2016-01-16T19:41:04.000Z</published>
-    <updated>2016-01-17T02:41:28.000Z</updated>
+    <updated>2016-01-22T20:36:14.000Z</updated>
     <content type="html"><![CDATA[<p>了解了基本的原理和工具后，这一讲我们用一个实际的例子来上手 AWS。</p>
 <a id="more"></a>
 <hr>
@@ -2246,7 +2246,7 @@
     <link href="http://yoursite.com/2016/01/16/cc-0/"/>
     <id>http://yoursite.com/2016/01/16/cc-0/</id>
     <published>2016-01-16T16:37:56.000Z</published>
-    <updated>2016-01-16T19:51:25.000Z</updated>
+    <updated>2016-01-22T20:36:19.000Z</updated>
     <content type="html"><![CDATA[<p>这一部分内容主要是云计算的理论知识，由于时间缘故使用英文原文，关键要点会作为单独的『课』来进行介绍。</p>
 <a id="more"></a>
 <hr>
