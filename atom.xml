@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-22T16:03:39.000Z</updated>
+  <updated>2016-01-22T17:50:10.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[第一周 - Welcom]]></title>
+    <link href="http://yoursite.com/2016/01/22/welcome/"/>
+    <id>http://yoursite.com/2016/01/22/welcome/</id>
+    <published>2016-01-22T17:48:32.000Z</published>
+    <updated>2016-01-22T17:50:10.000Z</updated>
+    <content type="html"><![CDATA[<p>Ain’t no way to shut me down. Or to take the path I’ve taken.</p>
+<a id="more"></a>
+<hr>
+<p>And maybe I’ve been left out. Never let this be mistaken.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Ain’t no way to shut me down. Or to take the path I’ve taken.</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
+    
+      <category term="周记" scheme="http://yoursite.com/tags/%E5%91%A8%E8%AE%B0/"/>
+    
+      <category term="改变" scheme="http://yoursite.com/tags/%E6%94%B9%E5%8F%98/"/>
+    
+      <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Gossip" scheme="http://yoursite.com/categories/Gossip/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[编程起跑线 第 1 课 总览]]></title>
@@ -2793,82 +2821,6 @@
       <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
       <category term="讲义" scheme="http://yoursite.com/tags/%E8%AE%B2%E4%B9%89/"/>
-    
-      <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[云计算 第 6 课 AWS API]]></title>
-    <link href="http://yoursite.com/2016/01/15/cc-6/"/>
-    <id>http://yoursite.com/2016/01/15/cc-6/</id>
-    <published>2016-01-16T01:19:41.000Z</published>
-    <updated>2016-01-16T16:19:40.000Z</updated>
-    <content type="html"><![CDATA[<p>上一讲介绍了通过代码，而不是界面或者命令行，来控制 Azure，整个过程还是比较繁琐的，这一讲我们来看看，如何通过代码来控制 AWS。</p>
-<a id="more"></a>
-<hr>
-<p>AWS 可以通过命令行工具或者 SDK 来访问几乎所有的功能，这一讲主要介绍一些最常用的工具和功能。下面的视频是 AWS SDK 的一个简要介绍，与此同时给出了一个 Java SDK 的例子。</p>
-<h3 id="Java_AWS_SDK"><a href="#Java_AWS_SDK" class="headerlink" title="Java AWS SDK"></a>Java AWS SDK</h3><p><a href="http://aws.amazon.com/cn/sdk-for-java/" target="_blank" rel="external">Java AWS SDK</a> 包括：</p>
-<ul>
-<li>AWS Java Library：总而言之就是所需的各种包，网络请求，验证，错误处理等等</li>
-<li>样例代码</li>
-<li>Eclipse 支持：包含一个插件</li>
-</ul>
-<p><a href="https://youtu.be/6Ru_f9WVIno" target="_blank" rel="external">AWS SDK 视频介绍（墙外）</a></p>
-<p>AWS 使用 RESTful Web API，用 SDK 可以方便一些。</p>
-<p>在<a href="http://aws.amazon.com/tools" target="_blank" rel="external">这里</a>找到对应的工具，找到 SDK 中对应的库。主要过程有三步：</p>
-<ol>
-<li>用密钥初始化 AWS 连接</li>
-<li>使用 API 进行操作</li>
-<li>关闭 AWS 连接</li>
-</ol>
-<p>先下载好 SDK 和 Eclipse 插件（在 eclipse 里安装，Amazon 有给出教程）</p>
-<h3 id="Amazon_EC2_API"><a href="#Amazon_EC2_API" class="headerlink" title="Amazon EC2 API"></a>Amazon EC2 API</h3><p>可以通过 API 做这些事情：</p>
-<ul>
-<li>创建 EC2 密钥对</li>
-<li>位实例创建安全组并且打开端口</li>
-<li>创建启动停止重启和终止 EC2 实例</li>
-</ul>
-<p>下面是 Java 和 Python 的代码</p>
-<p>Java:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Load the Properties File with AWS Credentials</span></span><br><span class="line">Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">properties.load(RunInstance.class.getResourceAsStream(<span class="string">"/AwsCredentials.properties"</span>));</span><br><span class="line">BasicAWSCredentials bawsc = <span class="keyword">new</span> BasicAWSCredentials(properties.getProperty(<span class="string">"accessKey"</span>), properties.getProperty(<span class="string">"secretKey"</span>));</span><br><span class="line"><span class="comment">//Create an Amazon EC2 Client</span></span><br><span class="line">AmazonEC2Client ec2 = <span class="keyword">new</span> AmazonEC2Client(bawsc);</span><br><span class="line"><span class="comment">//Create Instance Request</span></span><br><span class="line">RunInstancesRequest runInstancesRequest = <span class="keyword">new</span> RunInstancesRequest();</span><br><span class="line"><span class="comment">//Configure Instance Request</span></span><br><span class="line">runInstancesRequest.withImageId(<span class="string">"ami-3b44d352"</span>)</span><br><span class="line">.withInstanceType(<span class="string">"t1.micro"</span>)</span><br><span class="line">.withMinCount(<span class="number">1</span>)</span><br><span class="line">.withMaxCount(<span class="number">1</span>)</span><br><span class="line">.withKeyName(<span class="string">"project1_test"</span>)</span><br><span class="line">.withSecurityGroups(<span class="string">"MySecurityGroup"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Launch Instance</span></span><br><span class="line">RunInstancesResult runInstancesResult = ec2.runInstances(runInstancesRequest);   </span><br><span class="line"><span class="comment">//Return the Object Reference of the Instance just Launched</span></span><br><span class="line">Instance instance=runInstancesResult.getReservation().getInstances().get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<p>Python:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> boto.ec2.connection <span class="keyword">import</span> EC2Connection</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a connection</span></span><br><span class="line">conn = boto.ec2.connect_to_region(<span class="string">"us-east-1"</span>)</span><br><span class="line"><span class="comment"># Launching instance</span></span><br><span class="line">reservation = conn.run_instances(<span class="string">"ami-3b44d352"</span>,instance_type = <span class="string">"t1.micro"</span>, </span><br><span class="line">        key_name = <span class="string">"project1_test"</span>, security_groups = <span class="string">"MySecurityGroup"</span>)</span><br><span class="line">instance = reservation.instances[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>我们同样可以通过 EC2 的 API 来查看实例的状态，例如类 <code>DescribeInstanceStatusRequest</code> 的状态：</p>
-<ul>
-<li>Running</li>
-<li>Pending</li>
-<li>Shutting down 等等</li>
-</ul>
-<p>更多的文档参考 <a href="http://aws.amazon.com/documentation/sdk-for-java/" target="_blank" rel="external">AWS SDK for Java Documentation</a> <a href="http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/index.html" target="_blank" rel="external">AWS Java API Reference</a> 和 <a href="http://docs.pythonboto.org/en/latest/" target="_blank" rel="external">boto</a></p>
-<p>Python 的部分这里不做详细介绍，具体可以参考 <a href="https://youtu.be/7IOsOHJKxvY" target="_blank" rel="external">Python SDK 视频（墙外）</a></p>
-<h3 id="Amazon__u547D_u4EE4_u884C_API__u5DE5_u5177"><a href="#Amazon__u547D_u4EE4_u884C_API__u5DE5_u5177" class="headerlink" title="Amazon 命令行 API 工具"></a>Amazon 命令行 API 工具</h3><p>我们同样也可以利用命令行来操作 AWS，主页在<a href="http://aws.amazon.com/cn/cli/" target="_blank" rel="external">这里</a>。如果打算使用命令行，那么需要：</p>
-<ol>
-<li>在实例中下载和安装命令行工具</li>
-<li>通过 <code>aws configure</code> 来设置密钥（注意这里地区要选择 us-east-1，<a href="http://docs.aws.amazon.com/general/latest/gr/rande.html" target="_blank" rel="external">参考链接</a>）</li>
-</ol>
-<p>下面是简单的使用 AWS 命令行工具的视频介绍</p>
-<p><a href="https://youtu.be/OSGjoMeHc2A" target="_blank" rel="external">AWS 命令行工具（墙外）</a></p>
-<p>启动实例之前先要配置，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ aws configure</span><br><span class="line">AWS Access Key ID [None]: YOUR AWS ACCESS KEY</span><br><span class="line">AWS Secret Access Key [None]: YOUR AWS SECRET ACCESS KEY</span><br><span class="line">Default region name [None]: us-east-<span class="number">1</span></span><br><span class="line">Default output format [None]: json</span><br></pre></td></tr></table></figure>
-<p>然后可以用下面的命令来创建安全组，密钥对和角色</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ aws ec2 create-security-group --group-name devenv-sg --description <span class="string">"security group for development environment in EC2"</span></span><br><span class="line">$ aws ec2 authorize-security-group-ingress --group-name devenv-sg --protocol tcp --port <span class="number">22</span> --cidr <span class="number">0.0</span>.<span class="number">0.0</span>/<span class="number">0</span></span><br><span class="line">$ aws ec2 create-key-pair --key-name devenv-key --query <span class="string">'KeyMaterial'</span> --output text &gt; devenv-key.pem</span><br><span class="line">$ chmod <span class="number">400</span> devenv-key.pem</span><br></pre></td></tr></table></figure>
-<p>然后就可以启动并连接实例了，这里需要提供 <code>AMI_ID(ami-xxxxx)</code> 和 安全组(sg-xxxxx)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws ec2 run-instances --image-id YOUR_AMI_ID --security-group-ids SECURITY_GROUP_ID --count <span class="number">1</span> --instance-type t2.micro --key-name devenv-key --query <span class="string">'Instances[0].InstanceId'</span></span><br></pre></td></tr></table></figure>
-<p>Amazon CloudWatch 部分之前有介绍过，详细介绍可以查看<a href="http://aws.amazon.com/documentation/cloudwatch/" target="_blank" rel="external">文档</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>上一讲介绍了通过代码，而不是界面或者命令行，来控制 Azure，整个过程还是比较繁琐的，这一讲我们来看看，如何通过代码来控制 AWS。</p>]]>
-    
-    </summary>
-    
-      <category term="API" scheme="http://yoursite.com/tags/API/"/>
-    
-      <category term="AWS" scheme="http://yoursite.com/tags/AWS/"/>
-    
-      <category term="CMU" scheme="http://yoursite.com/tags/CMU/"/>
-    
-      <category term="云计算" scheme="http://yoursite.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
       <category term="Technique" scheme="http://yoursite.com/categories/Technique/"/>
     
