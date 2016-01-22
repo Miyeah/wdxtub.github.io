@@ -94,7 +94,7 @@
     <link href="http://wdxtub.com/2016/01/22/programmer-startline-2/"/>
     <id>http://wdxtub.com/2016/01/22/programmer-startline-2/</id>
     <published>2016-01-22T20:50:51.000Z</published>
-    <updated>2016-01-22T22:47:02.000Z</updated>
+    <updated>2016-01-22T23:08:08.000Z</updated>
     <content type="html"><![CDATA[<p>前一讲大概了解了这个系列会涉及的内容，这一讲就从最重要的概念，Big O 开始讲起。既然我们要找到效率更高的算法，首先就得知道，怎么样才是高效率。</p>
 <a id="more"></a>
 <hr>
@@ -102,7 +102,7 @@
 <p>我们知道，程序设计中无非是三种形态：顺序，选择和循环，只要能够算清楚这三种形态的复杂度，那么整个算法的复杂度也就不在话下了。</p>
 <p>先来看看顺序结构，因为是顺序执行，所以可以通过求和法则来进行计算。若算法的 2 个部分时间复杂度分别为 $T1(n)=O(f(n))$ 和 $T2(n)=O(g(n))$,则 $T1(n)+T2(n)=O(max(f(n), g(n)))$。如果这两个部分的参数不一样的话，即 $T1(m)=O(f(m))$ 和 $T2(n)=O(g(n))$,则 $T1(m)+T2(n)=O(f(m) + g(n))$</p>
 <p>然后是选择结构，选择本身判断是耗费 O(1) 时间的，但是主要时间还是在执行不同的子句上，所以转换为分析子句的时间复杂度。</p>
-<p>最后来看看循环结构，一般来说可能包括多次循环，所以使用乘法法则。若算法的2个部分时间复杂度分别为 $T1(n)=O(f(n))$ 和 $T2(n)=O(g(n))$,则 $T1<em>T2=O(f(n)</em>g(n))$。</p>
+<p>最后来看看循环结构，一般来说可能包括多次循环，所以使用乘法法则。若算法的2个部分时间复杂度分别为 $T1(n)=O(f(n))$ 和 $T2(n)=O(g(n))$,则 $T1 \times T2=O(f(n) \times g(n))$ 。</p>
 <p>基本上理解了什么时候用求和法则，什么时候用乘法法则，再加上一点点运算，就可以推算出时间复杂度了。</p>
 <h2 id="u9012_u5F52"><a href="#u9012_u5F52" class="headerlink" title="递归"></a>递归</h2><p>递归问题应该算是求复杂度问题中比较麻烦的了，并不像其他非递归的算法可以用上面提到的基本法则来进行分析。一般来说，遇到递归问题，有两种做法：</p>
 <ol>
@@ -111,7 +111,34 @@
 </ol>
 <p>实际上主定理法可以看作是递归树法的一个总结，这里用一个例子来说明，假设我们的递归函数是：$T(n) = T(\frac{n}{3}) + T(\frac{2n}{3}) + n$，那么画出递归树就是：</p>
 <p><img src="/images/14535025616030.jpg" alt=""></p>
-<p>每层都会多出来一个 n，而从根到叶节点的最长路径是：$n \to \frac{2}{3}n \to (\frac{2}{3})^2n \to \dots \to 1$，假设一共有 k 层，因为 $(\frac{2}{3})^kn = 1$，所以 $k=log<em>{3/2}n$，也就是说 $T(n) \le \sum</em>{i=0}^k n = (k+1)n = n(log_{3/2}n+1 )$，即 $T(n) = O(nlog\;n)$</p>
+<p>每层都会多出来一个 n，而从根到叶节点的最长路径是：$n \to \frac{2}{3}n \to (\frac{2}{3})^2n \to \dots \to 1$，假设一共有 k 层，因为 $(\frac{2}{3})^kn = 1$，所以  $k=log_{3/2}n$ ，也就是说  $T(n) \le \sum_{i=0}^k n = (k+1)n = n(log_{3/2}n+1 )$  ，即 $T(n) = O(nlog\;n)$</p>
+<p>我们来看看用主定理方法的话，这个复杂度要怎么算。首先我们要把递推公式转换为如下形式：</p>
+<p>$$f(n)=af(\frac{n}{b}) + d(n)$$</p>
+<p>然后分情况进行讨论：</p>
+<p><img src="/images/14535029849534.jpg" alt=""></p>
+<p>而这题中 $T(n) = T(\frac{n}{3}) + T(\frac{2n}{3}) + n$，化简之后相当于 $a=3,b=3$，于是在第二种情况中找到 $a=b$ 的情况，就得到了最后的结果 $O(nlog\; n)$</p>
+<h2 id="u4F8B_u9898"><a href="#u4F8B_u9898" class="headerlink" title="例题"></a>例题</h2><p>这里主要是提及一些容易出错的地方。</p>
+<blockquote>
+<p>不是出现了树结构，就一定会产生 log 的复杂度</p>
+</blockquote>
+<p>假设代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(Node node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum(node.left) + node.value + sum(node.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为实际上是遍历所有的节点一次，于是复杂度是 O(n)</p>
+<blockquote>
+<p>有的时候可以通过这个代码的做用来进行复杂度判断</p>
+</blockquote>
+<p>来看看下面这两个代码片段：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 片段 1</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">2</span>; x * x &lt;= n; x++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (n % x == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 片段 2</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">permuation</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    permutation(str, <span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">permutation</span><span class="params">(String str, String prefix)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (str.length() == <span class="number">0</span>)&#123;</span><br><span class="line">        System.out.println(prefix);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)&#123;</span><br><span class="line">            String rem = str.substring(<span class="number">0</span>,i) + str.substring(i+<span class="number">1</span>);</span><br><span class="line">            permutation(rem, prefix + str.charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一题比较简单，因为是求质数，在 $\sqrt n$ 时间就可以完成，对应的时间复杂也就是出来了。</p>
+<p>第二题做得是一个全排列，可以从两个思路：What It Means 和 What It Does。</p>
+<ul>
+<li>What It Means：因为是求排列，如果一个字符串有n个字符，那么所有的可能为 <code>n*(n-1)*...*2*1 -&gt; O(n!)</code></li>
+<li>What It Does：设一共有 n 个字符，第一次循环，有 n 次递归调用，第二次有 n-1 次，到最后一共有 <code>n*(n-1)*...*2*1 -&gt; O(n!)</code></li>
+</ul>
+<p>最后再举一个递归的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里每一次递归，都会由原来的一个分成两个，而一共有 n 层，于是时间复杂度为 $O(2^N)$</p>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>当然，很多时候还需要具体问题具体分析，最关键的，是对算法过程的清晰理解和掌握，有了这个，哪怕从头开始一点一点分析，也可以推导出正确答案。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>前一讲大概了解了这个系列会涉及的内容，这一讲就从最重要的概念，Big O 开始讲起。既然我们要找到效率更高的算法，首先就得知道，怎么样才是高效率。</p>]]>
