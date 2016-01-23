@@ -1,7 +1,81 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>编程起跑线 第 5 课 链表 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">编程起跑线 第 5 课 链表</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/about/"><i class="icon-about"> 关于</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">编程起跑线 第 5 课 链表</h1><div class="post-meta">2016-01-22 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/01/22/programmer-startline-5/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u9898_u76EE_u5206_u7C7B"><span class="toc-number">1.</span> <span class="toc-text">题目分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u89E3_u9898_u7B56_u7565"><span class="toc-number">2.</span> <span class="toc-text">解题策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u9644_u5F55"><span class="toc-number">3.</span> <span class="toc-text">附录</span></a></li></ol></div></div><div class="post-content"><p>链表，作为在内存中非连续分配的数据结构，因为其灵活性往往容易出错，这里我们会通过深入理解来教大家一些解决链表问题的基本方法。</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>编程起跑线 第 5 课 链表 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">编程起跑线 第 5 课 链表</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/about/"><i class="icon-about"> 关于</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">编程起跑线 第 5 课 链表</h1><div class="post-meta">2016-01-22 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/01/22/programmer-startline-5/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u89E3_u9898_u7B56_u7565"><span class="toc-number">1.</span> <span class="toc-text">解题策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u94FE_u8868_u7684_u57FA_u672C_u64CD_u4F5C"><span class="toc-number">1.1.</span> <span class="toc-text">链表的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u53CD_u8F6C_u94FE_u8868"><span class="toc-number">1.2.</span> <span class="toc-text">反转链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5220_u9664_u67D0_u4E2A_u8282_u70B9"><span class="toc-number">1.3.</span> <span class="toc-text">删除某个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dummy_Node"><span class="toc-number">1.4.</span> <span class="toc-text">Dummy Node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5FEB_u6162_u6307_u9488"><span class="toc-number">1.5.</span> <span class="toc-text">快慢指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u9644_u5F55"><span class="toc-number">2.</span> <span class="toc-text">附录</span></a></li></ol></div></div><div class="post-content"><p>链表，作为在内存中非连续分配的数据结构，因为其灵活性往往容易出错，这里我们会通过深入理解来教大家一些解决链表问题的基本方法。</p>
 <a id="more"></a>
 <hr>
-<h2 id="u9898_u76EE_u5206_u7C7B"><a href="#u9898_u76EE_u5206_u7C7B" class="headerlink" title="题目分类"></a>题目分类</h2><h2 id="u89E3_u9898_u7B56_u7565"><a href="#u89E3_u9898_u7B56_u7565" class="headerlink" title="解题策略"></a>解题策略</h2><h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
+<h2 id="u89E3_u9898_u7B56_u7565"><a href="#u89E3_u9898_u7B56_u7565" class="headerlink" title="解题策略"></a>解题策略</h2><p>链表(linked list)是一种常见的线性数据结构。对于单向链表(singly linked list)，每个节点有一个 next 指针指向后一个节点，还有一个成员变量用以存储数值；对于双向链表(doubly Linked List)，还有一个 prev 指针指向前一个节点。与数组类似，搜索链表需要O(n)的时间复杂度，但是链表不能通过常数时间 O(1) 读取第k个数据。链表的优势在于能够以较高的效率在任意位置插入或删除一个节点。</p>
+<ul>
+<li>当涉及对头节点的操作，我们不妨考虑创建哑节点</li>
+<li>由于题目涉及在链表中寻找特定位置，我们用两个指针变量以不同的速度遍历该链表</li>
+<li>实现链表的逆转时，循环遍历链表, 每次只处理当前指针的 next 变量</li>
+</ul>
+<h3 id="u94FE_u8868_u7684_u57FA_u672C_u64CD_u4F5C"><a href="#u94FE_u8868_u7684_u57FA_u672C_u64CD_u4F5C" class="headerlink" title="链表的基本操作"></a>链表的基本操作</h3><p>凡是修改单向链表的操作，只需考虑：</p>
+<ol>
+<li>哪个节点的next指针会受到影响，则需要修正该指针；</li>
+<li>如果待删除节点是动态开辟的内存空间，则需要释放这部分空间(C/C++)</li>
+</ol>
+<p>毕竟，一个链表节点，无非是包含value和next这两个成员变量的数据结构而已。对于双向链表，类似的，则只需额外考虑谁的prev指针会受到影响。</p>
+<p>举例如下：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void delNode(<span class="constant">ListNode </span>*prev) &#123;</span><br><span class="line">  <span class="constant">ListNode </span>*curr = prev-&gt;<span class="keyword">next</span>;</span><br><span class="line">  <span class="regexp">//</span> 删除curr节点只会使prev节点的<span class="keyword">next</span>受到影响</span><br><span class="line">  prev-&gt;<span class="keyword">next</span> = curr-&gt;<span class="keyword">next</span>;    </span><br><span class="line">  delete curr;    <span class="regexp">//</span> 清理trash指针</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：操作链表时务必注意边界条件：curr == head, curr == tail 或者 curr == NULL</p>
+<ul>
+<li><strong>两种存储方式</strong><ul>
+<li>顺序存储结构：随机读取，访问时是 O(1)</li>
+<li>链式存储结构：插入和删除 O(1)，访问时最坏是 O(n)</li>
+</ul>
+</li>
+<li>分类（根据指针域）<ul>
+<li>单向链表</li>
+<li>双向链表</li>
+<li>循环链表</li>
+</ul>
+</li>
+</ul>
+<h3 id="u53CD_u8F6C_u94FE_u8868"><a href="#u53CD_u8F6C_u94FE_u8868" class="headerlink" title="反转链表"></a>反转链表</h3><ul>
+<li>访问某个节点 <code>curt.next</code> 时，要检验 <code>curt</code> 是否为 <code>null</code></li>
+<li>要把反转后的最后一个节点（即第一个节点）指向 <code>null</code></li>
+</ul>
+<h3 id="u5220_u9664_u67D0_u4E2A_u8282_u70B9"><a href="#u5220_u9664_u67D0_u4E2A_u8282_u70B9" class="headerlink" title="删除某个节点"></a>删除某个节点</h3><ul>
+<li>由于需要知道前继节点的信息，而前继节点可能会导致表头产生变化，所以需要一些技巧 <code>Dummy Node</code></li>
+<li>链表指针的鲁棒性<ul>
+<li>访问某个节点 <code>curt.next</code> 时，要检验 <code>curt</code> 是否为 <code>null</code></li>
+<li>全部操作结束后，判断是否有环；若有，则置其中一端为 <code>null</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Dummy_Node"><a href="#Dummy_Node" class="headerlink" title="Dummy Node"></a>Dummy Node</h3><ul>
+<li>是一个虚拟节点 <code>dummy.next = head</code></li>
+<li>针对单向链表没有前向指针的问题，保证链表的 <code>head</code> 不会在删除操作中丢失</li>
+<li>也可以用来进行 <code>head</code> 节点（但比较少见）</li>
+<li>当链表的 <code>head</code> 可能有变化时，使用 dummy node 可以简化代码，最后返回 <code>dummy.next</code> 即可</li>
+</ul>
+<h3 id="u5FEB_u6162_u6307_u9488"><a href="#u5FEB_u6162_u6307_u9488" class="headerlink" title="快慢指针"></a>快慢指针</h3><ul>
+<li>快慢指的是指针向前移动的步长，一般来说，快指针每次移动 2，慢指针每次移动 1</li>
+<li>主要有两个应用<ul>
+<li><strong>快速找出未知长度单链表的中间节点</strong><ul>
+<li>设置两个指针 <code>*fast</code> 和 <code>*slow</code> 都指向头节点</li>
+<li><code>*fast</code> 移动速度是 <code>*slow</code> 的两倍</li>
+<li><code>*fast</code> 指向末尾节点时，<code>*slow</code> 正好就在中间</li>
+</ul>
+</li>
+<li><strong>判断单链表是否有环</strong><ul>
+<li>设置两个指针 <code>*fast</code> 和 <code>*slow</code> 都指向头节点</li>
+<li><code>*fast</code> 移动速度是 <code>*slow</code> 的两倍</li>
+<li>如果 <code>*fast == null</code> 说明该单链表不是循环链表</li>
+<li>如果 <code>*fast == *slow</code> 说明该链表是循环链表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>其他应用<ul>
+<li><strong>找倒数第 N 个节点</strong><ul>
+<li>设置两个指针 <code>*fast</code> 和 <code>*slow</code> 都指向头节点</li>
+<li><code>*fast</code> 先移动 N 步，然后两个指针一起前进</li>
+<li><code>*fast</code> 到达末尾时，<code>*slow</code> 即为倒数第 N 个节点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
 <li><a href="http://wdxtub.com/interview/14520597852720.html">Swap Adjacent Node</a></li>
 <li><a href="http://wdxtub.com/interview/14520597852604.html">Start of Circle</a></li>
 <li><a href="http://wdxtub.com/interview/14520597852502.html">Sort List</a></li>
