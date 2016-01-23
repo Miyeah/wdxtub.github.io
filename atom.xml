@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-01-22T23:26:35.000Z</updated>
+  <updated>2016-01-23T04:06:03.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,10 +19,37 @@
     <link href="http://wdxtub.com/2016/01/22/programmer-startline-5/"/>
     <id>http://wdxtub.com/2016/01/22/programmer-startline-5/</id>
     <published>2016-01-22T20:51:05.000Z</published>
-    <updated>2016-01-22T23:26:35.000Z</updated>
+    <updated>2016-01-23T04:06:03.000Z</updated>
     <content type="html"><![CDATA[<p>链表，作为在内存中非连续分配的数据结构，因为其灵活性往往容易出错，这里我们会通过深入理解来教大家一些解决链表问题的基本方法。</p>
 <a id="more"></a>
 <hr>
+<h2 id="u9898_u76EE_u5206_u7C7B"><a href="#u9898_u76EE_u5206_u7C7B" class="headerlink" title="题目分类"></a>题目分类</h2><h2 id="u89E3_u9898_u7B56_u7565"><a href="#u89E3_u9898_u7B56_u7565" class="headerlink" title="解题策略"></a>解题策略</h2><h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
+<li><a href="http://wdxtub.com/interview/14520597852720.html">Swap Adjacent Node</a></li>
+<li><a href="http://wdxtub.com/interview/14520597852604.html">Start of Circle</a></li>
+<li><a href="http://wdxtub.com/interview/14520597852502.html">Sort List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597852382.html">Rotate List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597852276.html">Reversely List Traverse</a></li>
+<li><a href="http://wdxtub.com/interview/14520597852177.html">Reverse Nodes in k-Group</a></li>
+<li><a href="http://wdxtub.com/interview/14520597852065.html">Reverse List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851968.html">Reverse List Range</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851880.html">Reorder List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851782.html">Remove Linked List Elements</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851695.html">Remove Duplicates from Unsorted List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851601.html">Remove Duplicates from Sorted List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851549.html">Remove Duplicates from Sorted List II</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851500.html">Partition Linked List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851449.html">Partitiom List Sorted</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851399.html">Middle of List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851346.html">Merge Two Lists</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851075.html">Merge K Linked List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597851031.html">Kth to Last</a></li>
+<li><a href="http://wdxtub.com/interview/14520597850990.html">Insertion Sort List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597850946.html">Copy List with Random Pointer</a></li>
+<li><a href="http://wdxtub.com/interview/14520597850907.html">Palindrome Linked List</a></li>
+<li><a href="http://wdxtub.com/interview/14520597850871.html">Check Intersection</a></li>
+<li><a href="http://wdxtub.com/interview/14520597850832.html">Check Cycle</a></li>
+<li><a href="http://wdxtub.com/interview/14520597850789.html">Add Two Numbers</a></li>
+</ul>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>链表，作为在内存中非连续分配的数据结构，因为其灵活性往往容易出错，这里我们会通过深入理解来教大家一些解决链表问题的基本方法。</p>]]>
@@ -44,10 +71,24 @@
     <link href="http://wdxtub.com/2016/01/22/programmer-startline-4/"/>
     <id>http://wdxtub.com/2016/01/22/programmer-startline-4/</id>
     <published>2016-01-22T20:51:02.000Z</published>
-    <updated>2016-01-22T23:25:15.000Z</updated>
+    <updated>2016-01-23T03:57:39.000Z</updated>
     <content type="html"><![CDATA[<p>栈和队列，因为其特殊的性质，如果巧妙利用，可以解决许多原本比较复杂的问题，而且还是 BFS 和 DFS 的基础，这一讲我们就来看看对于栈和队列的相关知识。</p>
 <a id="more"></a>
 <hr>
+<h2 id="u9898_u76EE_u5206_u7C7B"><a href="#u9898_u76EE_u5206_u7C7B" class="headerlink" title="题目分类"></a>题目分类</h2><h2 id="u89E3_u9898_u7B56_u7565"><a href="#u89E3_u9898_u7B56_u7565" class="headerlink" title="解题策略"></a>解题策略</h2><h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
+<li><a href="http://wdxtub.com/interview/14520595470575.html">Evaluate Reverse Polish Notation</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685840.html">Implement Stack using Queues</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685720.html">Stack of Plates</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685665.html">Sort Stack</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685606.html">Queue of Stack</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685544.html">Min Stack</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685475.html">Max Stack</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685419.html">Longest Valid Parentheses</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685367.html">In Order Travesal with Stack</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685319.html">Hanoi Tower with Stack</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685269.html">Basic Calculator</a></li>
+<li><a href="http://wdxtub.com/interview/14520606685216.html">Basic Calculator II</a></li>
+</ul>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>栈和队列，因为其特殊的性质，如果巧妙利用，可以解决许多原本比较复杂的问题，而且还是 BFS 和 DFS 的基础，这一讲我们就来看看对于栈和队列的相关知识。</p>]]>
@@ -73,10 +114,115 @@
     <link href="http://wdxtub.com/2016/01/22/programmer-startline-3/"/>
     <id>http://wdxtub.com/2016/01/22/programmer-startline-3/</id>
     <published>2016-01-22T20:50:55.000Z</published>
-    <updated>2016-01-22T23:23:58.000Z</updated>
+    <updated>2016-01-23T03:01:18.000Z</updated>
     <content type="html"><![CDATA[<p>数组和字符串作为最基本的元素，涉及的知识点非常多，许多高级的应用如堆，栈，队列，动态规划等都可以基于数组，这一讲我们主要还是集中在数组本身性质的习题上。</p>
 <a id="more"></a>
 <hr>
+<h2 id="u9898_u76EE_u5206_u7C7B"><a href="#u9898_u76EE_u5206_u7C7B" class="headerlink" title="题目分类"></a>题目分类</h2><h2 id="u89E3_u9898_u7B56_u7565"><a href="#u89E3_u9898_u7B56_u7565" class="headerlink" title="解题策略"></a>解题策略</h2><h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
+<li>次数统计（唯一性，是否出现，个数相等）<ul>
+<li><a href="http://wdxtub.com/interview/14520595481622.html">Unique Character</a></li>
+<li><a href="http://wdxtub.com/interview/14520595480211.html">String Composition</a></li>
+<li><a href="http://wdxtub.com/interview/14520595479999.html">String Comparison</a></li>
+<li><a href="http://wdxtub.com/interview/14520595481118.html">Substring with Concatenation of All Words</a></li>
+<li><a href="http://wdxtub.com/interview/14520595478736.html">01 相等的串</a></li>
+<li><a href="http://wdxtub.com/interview/14520595477318.html">Repeated DNA Sequences</a></li>
+<li><a href="http://wdxtub.com/interview/14520595476547.html">Remove Duplicates from Sorted Array</a></li>
+<li><a href="http://wdxtub.com/interview/14520595476340.html">Remove Duplicates from Sorted Array II</a></li>
+<li><a href="http://wdxtub.com/interview/14520595473349.html">Majority Element</a></li>
+<li><a href="http://wdxtub.com/interview/14520595473082.html">Majority Element II</a></li>
+<li><a href="http://wdxtub.com/interview/14520595473216.html">Majority Element III</a></li>
+<li><a href="http://wdxtub.com/interview/14520595472951.html">Longest Word in Dictionary</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470900.html">Find Anagram</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470471.html">Determine String Permutation</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470004.html">Check Permutation</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469735.html">Check Duplicate</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469566.html">Check Duplicate II</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469610.html">Check Duplicate III</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469690.html">Find Duplicates</a></li>
+</ul>
+</li>
+<li>特定模式（回文串，子串，相差最少）<ul>
+<li><a href="http://wdxtub.com/interview/14520595479135.html">Shortest Palindrome</a></li>
+<li><a href="http://wdxtub.com/interview/14520595480652.html">Implement strStr()</a></li>
+<li><a href="http://wdxtub.com/interview/14520595477901.html">Roman to Integer</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471853.html">Integer to Roman</a></li>
+<li><a href="http://wdxtub.com/interview/14520595475576.html">One Away</a></li>
+<li><a href="http://wdxtub.com/interview/14520595474431.html">Min Difference 2 Array</a></li>
+<li><a href="http://wdxtub.com/interview/14520595479365.html">Simplify File Path</a></li>
+<li><a href="http://wdxtub.com/interview/14520595472570.html">Letter Combinations of a Phone Number</a></li>
+<li><a href="http://wdxtub.com/interview/14520595472084.html">Isomorphic Strings</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471113.html">Gray Code</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469921.html">Palindrome Permutation</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469833.html">Check Palindrome</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469782.html">Palindrome Number</a></li>
+</ul>
+</li>
+<li>区间问题<ul>
+<li><a href="http://wdxtub.com/interview/14520595473959.html">Merge Range</a></li>
+<li><a href="http://wdxtub.com/interview/14520595473642.html">最大间隔问题</a></li>
+<li><a href="http://wdxtub.com/interview/14520595476141.html">Peaks and Valleys</a></li>
+<li><a href="http://wdxtub.com/interview/14520595475403.html">奇偶调序</a></li>
+<li><a href="http://wdxtub.com/interview/14520595474923.html">Move Zeroes</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471966.html">Interleaving Array</a></li>
+<li><a href="http://wdxtub.com/interview/14520595472823.html">Longest Consecutive Sequence</a></li>
+<li><a href="http://wdxtub.com/interview/14520595472695.html">Longest Common Prefix</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471570.html">Insert Range</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469247.html">2 Sum</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469329.html">3 Sum</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469298.html">3 Sum Closest</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469361.html">4 Sum</a></li>
+<li><a href="http://wdxtub.com/interview/14520595472209.html">K Sum II</a></li>
+</ul>
+</li>
+<li>矩阵相关<ul>
+<li><a href="http://wdxtub.com/interview/14520595478930.html">Set Matrix Zero</a></li>
+<li><a href="http://wdxtub.com/interview/14520595479796.html">Spiral Matrix</a></li>
+<li><a href="http://wdxtub.com/interview/14520595479570.html">Spiral Matrix II</a></li>
+<li><a href="http://wdxtub.com/interview/14520595480877.html">Submatrix Sum Zero</a></li>
+<li><a href="http://wdxtub.com/interview/14520595478302.html">Rotate Image</a></li>
+<li><a href="http://wdxtub.com/interview/14520595475941.html">Pascal’s Triangle</a></li>
+<li><a href="http://wdxtub.com/interview/14520595475767.html">Pascal’s Triangle II</a></li>
+<li><a href="http://wdxtub.com/interview/14520595475237.html">二进制矩阵中 1 的个数</a></li>
+<li><a href="http://wdxtub.com/interview/14520595474607.html">Min Triangle Path Sum</a></li>
+<li><a href="http://wdxtub.com/interview/14520595473495.html">Matrix ZigZag Traversal</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471005.html">Game of Life</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470188.html">Check Valid Sudoku</a></li>
+</ul>
+</li>
+<li>逻辑操作（特定格式，旋转，排序，特定元素交换，合并，堆）<ul>
+<li><a href="http://wdxtub.com/interview/14520595481874.html">ZigZag Conversion</a></li>
+<li><a href="http://wdxtub.com/interview/14520595481376.html">Text Justification</a></li>
+<li><a href="http://wdxtub.com/interview/14520595480445.html">String Compression</a></li>
+<li><a href="http://wdxtub.com/interview/14520595478523.html">Rotate String</a></li>
+<li><a href="http://wdxtub.com/interview/14520595478107.html">Rotate Array</a></li>
+<li><a href="http://wdxtub.com/interview/14520595477695.html">Reverse Sentence</a></li>
+<li><a href="http://wdxtub.com/interview/14520595477503.html">Reverse Integer</a></li>
+<li><a href="http://wdxtub.com/interview/14520595477117.html">Reorder String by Case</a></li>
+<li><a href="http://wdxtub.com/interview/14520595476933.html">Reorder Rotated Array</a></li>
+<li><a href="http://wdxtub.com/interview/14520595476748.html">Remove Element</a></li>
+<li><a href="http://wdxtub.com/interview/14520595475077.html">Multiply Strings</a></li>
+<li><a href="http://wdxtub.com/interview/14520595474770.html">Modify String</a></li>
+<li><a href="http://wdxtub.com/interview/14520595474265.html">Merge Two Sorted Array</a></li>
+<li><a href="http://wdxtub.com/interview/14520595474103.html">Sorted Two Sorted Array II</a></li>
+<li><a href="http://wdxtub.com/interview/14520595473794.html">Median of Unsorted Array</a></li>
+<li><a href="http://wdxtub.com/interview/14520595472449.html">Length of Last Word</a></li>
+<li><a href="http://wdxtub.com/interview/14520595472329.html">Largest Number</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471740.html">Integer to English Words</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471461.html">Heapify</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471345.html">H-Index</a></li>
+<li><a href="http://wdxtub.com/interview/14520595471233.html">H-Index II</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470785.html">Excel Sheet Column Title</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470670.html">Excel Sheet Column Number</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470378.html">Count and Say</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470276.html">Compare Version Numbers</a></li>
+<li><a href="http://wdxtub.com/interview/14520595470088.html">Check Valid Number</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469517.html">Candy</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469475.html">Binary to String</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469437.html">Add One</a></li>
+<li><a href="http://wdxtub.com/interview/14520595469400.html">Add Binary</a></li>
+</ul>
+</li>
+</ul>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>数组和字符串作为最基本的元素，涉及的知识点非常多，许多高级的应用如堆，栈，队列，动态规划等都可以基于数组，这一讲我们主要还是集中在数组本身性质的习题上。</p>]]>
@@ -201,7 +347,7 @@
     <link href="http://wdxtub.com/2016/01/22/programmer-startline-1/"/>
     <id>http://wdxtub.com/2016/01/22/programmer-startline-1/</id>
     <published>2016-01-22T14:35:39.000Z</published>
-    <updated>2016-01-22T20:49:30.000Z</updated>
+    <updated>2016-01-23T00:59:34.000Z</updated>
     <content type="html"><![CDATA[<p>学了这么多年计算机和编程，在快要步入社会之前，在不断地碰壁和尝试之后，终于摸到了一点门路。这个系列的文章，更接近于编程入门指南，讲的是从数据结构到算法最终到解决问题的方法和思路。</p>
 <a id="more"></a>
 <hr>
@@ -227,6 +373,12 @@
 </ol>
 <p>还是那句话，刷题仅仅只是一个效率很低的练习过程，真正的学习是进行『刻意练习』，也是我这个系列文章中想要强调的内容。</p>
 <p>一通百通，悟道之后就会发现，一招一式固然重要，但那些都是基础，更重要的是解决问题的方法和思路，这，可能就需要多动一点脑子了。</p>
+<p>最后说一下大概的写作内容的范围：</p>
+<ul>
+<li>正文部分力争简明扼要，说重点，说思想，注意语言逻辑和风格</li>
+<li>不贴大段的代码，而是会在文章最后给出题目分类及对应链接</li>
+<li>会挑选重点，经典题目进行思路讲解</li>
+</ul>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>学了这么多年计算机和编程，在快要步入社会之前，在不断地碰壁和尝试之后，终于摸到了一点门路。这个系列的文章，更接近于编程入门指南，讲的是从数据结构到算法最终到解决问题的方法和思路。</p>]]>
