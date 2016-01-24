@@ -1,6 +1,135 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>编程起跑线 第 10 课 位操作 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">编程起跑线 第 10 课 位操作</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/about/"><i class="icon-about"> 关于</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">编程起跑线 第 10 课 位操作</h1><div class="post-meta">2016-01-23 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/01/23/programmer-startline-10/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div></div></div><div class="post-content"><a id="more"></a>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>编程起跑线 第 10 课 位操作 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">编程起跑线 第 10 课 位操作</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/about/"><i class="icon-about"> 关于</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">编程起跑线 第 10 课 位操作</h1><div class="post-meta">2016-01-23 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/01/23/programmer-startline-10/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u89E3_u9898_u7B56_u7565"><span class="toc-number">1.</span> <span class="toc-text">解题策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u57FA_u672C_u7684_u4F4D_u8FD0_u7B97"><span class="toc-number">1.1.</span> <span class="toc-text">基本的位运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4F4D_u63A9_u7801"><span class="toc-number">1.2.</span> <span class="toc-text">位掩码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XOR__u5F02_u6216"><span class="toc-number">1.3.</span> <span class="toc-text">XOR 异或</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u79FB_u4F4D_u64CD_u4F5C"><span class="toc-number">1.4.</span> <span class="toc-text">移位操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Get_Bit"><span class="toc-number">1.5.</span> <span class="toc-text">Get Bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set_Bit"><span class="toc-number">1.6.</span> <span class="toc-text">Set Bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Clear_Bit"><span class="toc-number">1.7.</span> <span class="toc-text">Clear Bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Update_Bit"><span class="toc-number">1.8.</span> <span class="toc-text">Update Bit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u9644_u5F55"><span class="toc-number">2.</span> <span class="toc-text">附录</span></a></li></ol></div></div><div class="post-content"><p>位运算是一个很多歪门邪道技巧的题目类型，就我感觉来说，很多基本靠脑洞，不过更多的还是比较基本的几个操作组合组合就可以完成了。</p>
+<a id="more"></a>
 <hr>
- 公式 
+<p>对于网络、操作系统、嵌入式系统等职位的面试，位运算也是常见的题目类型之一。所谓的位运算，是指按二进制进行的运算。常见运算包括求反，与运算，或运算，异或运算及位移。</p>
+<p>在C/C++中，基本的位运算符总结如下，其中运算符优先级为从上到下递减，且&lt;&lt;，&gt;&gt;优先级相同：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">~</td>
+<td style="text-align:center">位求反</td>
+<td style="text-align:center">~var</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;&lt;</td>
+<td style="text-align:center">左移(乘法)</td>
+<td style="text-align:center">var &lt;&lt; position</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;&gt;</td>
+<td style="text-align:center">右移(除法)</td>
+<td style="text-align:center">var &gt;&gt; position</td>
+</tr>
+<tr>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">位与</td>
+<td style="text-align:center">var1 &amp; var2</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">位异或</td>
+<td style="text-align:center">var1 ^ var2</td>
+</tr>
+<tr>
+<td style="text-align:center">一条竖线</td>
+<td style="text-align:center">位或</td>
+<td style="text-align:center">var1 竖线 var2</td>
+</tr>
+</tbody>
+</table>
+<p>需要注意的是，位运算符只能用在带符号或无符号的char、short、int与long类型上。在实际应用中，建议用unsigned整型操作数，以免带符号操作数因为不同机器导致的结果不同：无符号数左移／右移默认移入的新比特是0。对于符号数，当最高位是1(代表负数)时，有的机器认为右移移入的新比特是1。此外，复杂的位运算建议都用括号强制计算顺序，而不是依赖于优先级，这样做可以增加可读性并避免错误。</p>
+<p>用十六进制(hex)定义一个变量如下所示：</p>
+<pre><code>unsigned short value = 0xFFFF;
+</code></pre><p>等价于二进制(binary)定义：</p>
+<pre><code>unsigned short value = 0b1111111111111111;
+</code></pre><p>等价于十进制定义：</p>
+<pre><code>unsigned short value = 65535;
+</code></pre><h2 id="u89E3_u9898_u7B56_u7565"><a href="#u89E3_u9898_u7B56_u7565" class="headerlink" title="解题策略"></a>解题策略</h2><h3 id="u57FA_u672C_u7684_u4F4D_u8FD0_u7B97"><a href="#u57FA_u672C_u7684_u4F4D_u8FD0_u7B97" class="headerlink" title="基本的位运算"></a>基本的位运算</h3><p>最基本的操作包括获取位、设置位和清除位。获取位可以利用&amp;1：&amp;(0x1 &lt;&lt; pos) ；设置位可以利用|1: | (0x1 &lt;&lt; pos) ；清除位可以利用&amp;0: &amp;(~(0x1 &lt;&lt; pos))。判断某位是否相同用^：(A &amp; (0x1 &lt;&lt; pos)) ^ (B &amp; (0x1 &lt;&lt; pos))。</p>
+<h3 id="u4F4D_u63A9_u7801"><a href="#u4F4D_u63A9_u7801" class="headerlink" title="位掩码"></a>位掩码</h3><p>选择合适的位掩码(bit mask)，然后与给定的二进制数进行基本位操作。而掩码，通常可以通过对~0，1 进行基本操作和加减法得到。例如，我们要构造一个第i到第j位为0，其他位为1的位掩码，则可以对~0进行左移操作获得形如111…0000的mask，再对~0进行右移操作，获得形如000…111的mask，最后通过位或(此处相当于相加)得到最终的位掩码。</p>
+<p>在寻求得到一个特定的掩码时，还是利用最基本的获取位、设置位或清除位得到所需掩码的形态。另外，应当尽可能避免直接出现常数，比如使用32-i这样的情况(这里默认想要操作一个32bit的整型)，而应当定义一个意义明确的宏，以提高可读性：<code>#define INT_BIT_LENTH (32)</code>。</p>
+<h3 id="XOR__u5F02_u6216"><a href="#XOR__u5F02_u6216" class="headerlink" title="XOR 异或"></a>XOR 异或</h3><blockquote>
+<p>异或：相同为0，不同为1。也可用「不进位加法」来理解。</p>
+</blockquote>
+<p>异或操作的一些特点：</p>
+<pre><code>x ^ 0 = x
+x ^ 1s = ~x // 1s = ~0
+x ^ (~x) = 1s
+x ^ x = 0 // interesting and important!
+a ^ b = c =&gt; a ^ c = b, b ^ c = a // swap
+a ^ b ^ c = a ^ (b ^ c) = (a ^ b) ^ c // associative
+</code></pre><h3 id="u79FB_u4F4D_u64CD_u4F5C"><a href="#u79FB_u4F4D_u64CD_u4F5C" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位操作可近似为乘以/除以2的幂。0b0010 * 0b0110等价于0b0110 &lt;&lt; 2. 下面是一些常见的移位组合操作。</p>
+<ol>
+<li>将x最右边的n位清零 <code>x &amp; (~0 &lt;&lt; n)</code></li>
+<li>获取x的第n位值(0或者1) <code>x &amp; (1 &lt;&lt; n)</code></li>
+<li>获取x的第n位的幂值 <code>(x &gt;&gt; n) &amp; 1</code></li>
+<li>仅将第n位置为1 <code>x | (1 &lt;&lt; n)</code></li>
+<li>仅将第n位置为0 <code>x &amp; (~(1 &lt;&lt; n))</code></li>
+<li>将x最高位至第n位(含)清零 <code>x &amp; ((1 &lt;&lt; n) - 1)</code></li>
+<li>将第n位至第0位(含)清零 <code>x &amp; (~((1 &lt;&lt; (n + 1)) - 1))</code></li>
+<li>仅更新第n位，写入值为v; v为1则更新为1，否则为0 <code>mask = ~(1 &lt;&lt; n); x = (x &amp; mask) | (v &lt;&lt; i)</code></li>
+</ol>
+<hr>
+<ul>
+<li>Two’s Complement - 负数可以看作是最高位的 1 为负，其他位为正，相加得到最后的值<ul>
+<li>例如 -1 = (1111) 最高位的 1 表示 -8， 剩下三位等于 7，相加后等于 -1</li>
+</ul>
+</li>
+<li>logical right shift - put a <code>0</code> in the most significant bit - <code>&gt;&gt;&gt;</code></li>
+<li>arithmetic right shift - put a <code>1</code> in the most significant bit - <code>&gt;&gt;</code></li>
+</ul>
+<h3 id="Get_Bit"><a href="#Get_Bit" class="headerlink" title="Get Bit"></a>Get Bit</h3><p>Shifts 1 over by <code>i</code> bits, creating a value that looks like <code>00010000</code>. AND operation</p>
+<pre><code>boolean getBit(int num, int i){
+    return ((num &amp; (1 &lt;&lt; i)) != 0);
+}
+</code></pre><h3 id="Set_Bit"><a href="#Set_Bit" class="headerlink" title="Set Bit"></a>Set Bit</h3><p>Shifts 1 over by <code>i</code> bits, creating a value like <code>00010000</code>. OR operation</p>
+<pre><code>int setBit(int num, int i){
+    return num | (1 &lt;&lt; i);
+}
+</code></pre><h3 id="Clear_Bit"><a href="#Clear_Bit" class="headerlink" title="Clear Bit"></a>Clear Bit</h3><p>Create a number like <code>11101111</code> by creating the reverse of it (<code>00010000</code>). AND operation.</p>
+<pre><code>int clearBit(int num, int i){
+    int mask = ~(1 &lt;&lt; i);
+    return num &amp; mask;
+}
+</code></pre><p>To clear all bits from the most significant bit through <code>i</code> (inclusive), we create a mask with a <code>1</code> at the ith bit(1 &lt;&lt; i). Then we subtract 1 from it, giving us a sequence of 0s followed by i 1s. AND operation.</p>
+<pre><code>int clearBitsMSBthroughI(int num, int i){
+    int mask = (1 &lt;&lt; i) - 1;
+    return num &amp; mask;
+}
+</code></pre><p>To clear bits from i through 0 (inclusive), we take a sequence of 1s (which is -1) and shift it over by 31 - i bits.</p>
+<pre><code>int clearBitsIthrough0(int num, int i){
+    int mask = ~(-1 &gt;&gt;&gt; (31 - i));
+    return num &amp; mask;
+}
+</code></pre><h3 id="Update_Bit"><a href="#Update_Bit" class="headerlink" title="Update Bit"></a>Update Bit</h3><p>Set the ith bit to a value <code>v</code></p>
+<pre><code>int updateBit(int num, int i, boolean bitIs1){
+    int value = bitIs1 ? 1 : 0;
+    int mask = ~(1 &lt;&lt; i);
+    return (num &amp; mask) | (value &lt;&lt; i);
+}
+</code></pre><h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
+<li><a href="http://wdxtub.com/interview/14520596469127.html">Swap Bits</a></li>
+<li><a href="http://wdxtub.com/interview/14520596469033.html">Square of Two</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468981.html">Single Element</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468879.html">Single Element II</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468931.html">Single Element III</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468825.html">Set Bits</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468781.html">Reverse Bits</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468734.html">Number of One</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468686.html">Next Number</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468613.html">Flip Bits</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468570.html">Draw Line</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468530.html">Divide Two Integers</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468493.html">Check Power of Two</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468456.html">Bitwise AND of Numbers Range</a></li>
+<li><a href="http://wdxtub.com/interview/14520596468418.html">A Plus B</a></li>
+</ul>
 </div><div class="tags"><a href="/tags/位操作/">位操作</a><a href="/tags/思维/">思维</a><a href="/tags/技能/">技能</a><a href="/tags/程序员/">程序员</a></div><div class="post-nav"><a href="/2016/01/23/programmer-startline-11/" class="pre"><i class="icon-previous">编程起跑线 第 11 课 面向对象</i></a><a href="/2016/01/23/programmer-startline-9/" class="next">编程起跑线 第 9 课 数学<i class="icon-next"></i></a></div><div data-thread-key="2016/01/23/programmer-startline-10/" data-title="编程起跑线 第 10 课 位操作" data-url="http://wdxtub.com/2016/01/23/programmer-startline-10/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/01/23/programmer-startline-10/" data-title="编程起跑线 第 10 课 位操作" data-url="http://wdxtub.com/2016/01/23/programmer-startline-10/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="widget-title">标签</div><div class="tagcloud"><a href="/tags/Node-js/" style="font-size: 15px;">Node.js</a> <a href="/tags/今何在/" style="font-size: 15px;">今何在</a> <a href="/tags/氐惆/" style="font-size: 15px;">氐惆</a> <a href="/tags/回头无岸/" style="font-size: 15px;">回头无岸</a> <a href="/tags/电影/" style="font-size: 15px;">电影</a> <a href="/tags/动画/" style="font-size: 15px;">动画</a> <a href="/tags/孙悟空/" style="font-size: 15px;">孙悟空</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/记录/" style="font-size: 15px;">记录</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/思考/" style="font-size: 15px;">思考</a> <a href="/tags/论道/" style="font-size: 15px;">论道</a> <a href="/tags/精选/" style="font-size: 15px;">精选</a> <a href="/tags/早起/" style="font-size: 15px;">早起</a> <a href="/tags/效率/" style="font-size: 15px;">效率</a> <a href="/tags/抱怨/" style="font-size: 15px;">抱怨</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/自尊/" style="font-size: 15px;">自尊</a> <a href="/tags/CMU/" style="font-size: 15px;">CMU</a> <a href="/tags/周记/" style="font-size: 15px;">周记</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/改变/" style="font-size: 15px;">改变</a> <a href="/tags/读书/" style="font-size: 15px;">读书</a> <a href="/tags/教育/" style="font-size: 15px;">教育</a> <a href="/tags/家庭/" style="font-size: 15px;">家庭</a> <a href="/tags/环境/" style="font-size: 15px;">环境</a> <a href="/tags/回合制/" style="font-size: 15px;">回合制</a> <a href="/tags/格子/" style="font-size: 15px;">格子</a> <a href="/tags/模拟经营/" style="font-size: 15px;">模拟经营</a> <a href="/tags/COC/" style="font-size: 15px;">COC</a> <a href="/tags/美剧/" style="font-size: 15px;">美剧</a> <a href="/tags/苏州/" style="font-size: 15px;">苏州</a> <a href="/tags/旅行/" style="font-size: 15px;">旅行</a> <a href="/tags/醒醒/" style="font-size: 15px;">醒醒</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/知识管理/" style="font-size: 15px;">知识管理</a> <a href="/tags/英语学习/" style="font-size: 15px;">英语学习</a> <a href="/tags/透析/" style="font-size: 15px;">透析</a> <a href="/tags/蝴蝶效应/" style="font-size: 15px;">蝴蝶效应</a> <a href="/tags/步行/" style="font-size: 15px;">步行</a> <a href="/tags/Kindle/" style="font-size: 15px;">Kindle</a> <a href="/tags/口译/" style="font-size: 15px;">口译</a> <a href="/tags/徐州/" style="font-size: 15px;">徐州</a> <a href="/tags/原创/" style="font-size: 15px;">原创</a> <a href="/tags/童话/" style="font-size: 15px;">童话</a> <a href="/tags/感情/" style="font-size: 15px;">感情</a> <a href="/tags/心智/" style="font-size: 15px;">心智</a> <a href="/tags/时间/" style="font-size: 15px;">时间</a> <a href="/tags/自我/" style="font-size: 15px;">自我</a> <a href="/tags/感恩节/" style="font-size: 15px;">感恩节</a> <a href="/tags/朋友/" style="font-size: 15px;">朋友</a> <a href="/tags/纽约/" style="font-size: 15px;">纽约</a> <a href="/tags/成绩/" style="font-size: 15px;">成绩</a> <a href="/tags/多看/" style="font-size: 15px;">多看</a> <a href="/tags/访谈/" style="font-size: 15px;">访谈</a> <a href="/tags/游戏/" style="font-size: 15px;">游戏</a> <a href="/tags/英雄联盟/" style="font-size: 15px;">英雄联盟</a> <a href="/tags/笔试/" style="font-size: 15px;">笔试</a> <a href="/tags/改进/" style="font-size: 15px;">改进</a> <a href="/tags/旅途/" style="font-size: 15px;">旅途</a> <a href="/tags/心情/" style="font-size: 15px;">心情</a> <a href="/tags/英雄/" style="font-size: 15px;">英雄</a> <a href="/tags/将军/" style="font-size: 15px;">将军</a> <a href="/tags/回忆/" style="font-size: 15px;">回忆</a> <a href="/tags/清醒思考的艺术/" style="font-size: 15px;">清醒思考的艺术</a> <a href="/tags/明智行动的艺术/" style="font-size: 15px;">明智行动的艺术</a> <a href="/tags/科幻/" style="font-size: 15px;">科幻</a> <a href="/tags/预言/" style="font-size: 15px;">预言</a> <a href="/tags/顽皮狗/" style="font-size: 15px;">顽皮狗</a> <a href="/tags/PS4/" style="font-size: 15px;">PS4</a> <a href="/tags/写作/" style="font-size: 15px;">写作</a> <a href="/tags/技术/" style="font-size: 15px;">技术</a> <a href="/tags/开篇/" style="font-size: 15px;">开篇</a> <a href="/tags/新参者/" style="font-size: 15px;">新参者</a> <a href="/tags/小说/" style="font-size: 15px;">小说</a> <a href="/tags/死亡/" style="font-size: 15px;">死亡</a> <a href="/tags/Swift-千金方/" style="font-size: 15px;">Swift 千金方</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 15px;">斯坦福 CS193p</a> <a href="/tags/教程/" style="font-size: 15px;">教程</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/技巧/" style="font-size: 15px;">技巧</a> <a href="/tags/Apple/" style="font-size: 15px;">Apple</a> <a href="/tags/Swift/" style="font-size: 15px;">Swift</a> <a href="/tags/Overview/" style="font-size: 15px;">Overview</a> <a href="/tags/概览/" style="font-size: 15px;">概览</a> <a href="/tags/ARC/" style="font-size: 15px;">ARC</a> <a href="/tags/扩展/" style="font-size: 15px;">扩展</a> <a href="/tags/协议/" style="font-size: 15px;">协议</a> <a href="/tags/泛型/" style="font-size: 15px;">泛型</a> <a href="/tags/访问控制/" style="font-size: 15px;">访问控制</a> <a href="/tags/运算符重载/" style="font-size: 15px;">运算符重载</a> <a href="/tags/类型/" style="font-size: 15px;">类型</a> <a href="/tags/元组/" style="font-size: 15px;">元组</a> <a href="/tags/运算符/" style="font-size: 15px;">运算符</a> <a href="/tags/控制/" style="font-size: 15px;">控制</a> <a href="/tags/函数/" style="font-size: 15px;">函数</a> <a href="/tags/属性/" style="font-size: 15px;">属性</a> <a href="/tags/继承/" style="font-size: 15px;">继承</a> <a href="/tags/TOC/" style="font-size: 15px;">TOC</a></div></div><div class="widget"><div class="widget-title">最新文章</div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/23/programmer-startline-13/">编程起跑线 第 13 课 总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/23/programmer-startline-12/">编程起跑线 第 12 课 其他知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/23/programmer-startline-11/">编程起跑线 第 11 课 面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/23/programmer-startline-10/">编程起跑线 第 10 课 位操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/23/programmer-startline-9/">编程起跑线 第 9 课 数学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/23/programmer-startline-8/">编程起跑线 第 8 课 排序和搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/23/programmer-startline-7/">编程起跑线 第 7 课 树和图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/23/programmer-startline-6/">编程起跑线 第 6 课 递归与动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/programmer-startline-5/">编程起跑线 第 5 课 链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/programmer-startline-4/">编程起跑线 第 4 课 栈和队列</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
 <script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
 <script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
