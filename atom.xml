@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-01-26T04:26:18.000Z</updated>
+  <updated>2016-01-26T15:37:47.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/01/25/cc-10/"/>
     <id>http://wdxtub.com/2016/01/25/cc-10/</id>
     <published>2016-01-26T00:42:38.000Z</published>
-    <updated>2016-01-26T04:26:18.000Z</updated>
+    <updated>2016-01-26T15:37:47.000Z</updated>
     <content type="html"><![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>
 <a id="more"></a>
 <hr>
@@ -53,7 +53,149 @@
 </blockquote>
 <h2 id="Introduction_to_MapReduce"><a href="#Introduction_to_MapReduce" class="headerlink" title="Introduction to MapReduce"></a>Introduction to MapReduce</h2><p>MapReduce 是用许多机器来进行大数据处理的编程模型。Hadoop 是开源版本的 MapReduce 实现。Hadoop 把 MapReduce 当做一个分析引擎，并使用 Hadoop Distributed File System(HDFS) 来进行存储。HDFS 把数据集分成固定大小的块，分布式存放在不同的节点上。具体要执行的任务可以在不同的机器上并行处理。MapReduce 会把整个大任务分成不同的小的 map 和 reduce 任务。所有的 map 任务都在 map 阶段进行，所有的 reduce 任务都在 reduce 阶段进行。map 阶段可能有 1 个或多个任务，reduce 阶段可以有 0 个或多个 reduce 任务。</p>
 <p><img src="/images/14537775895092.jpg" alt="MapReduce 概览"></p>
-<p>上图</p>
+<p>上图描述了一个简化的，但是完整的 MapReduce 分析引擎。Map 任务在分布式 HDFS 块上执行，reduce 任务在 map 任务的输出上执行（标记为 intermediate output 或 partitions）。每个 map 任务处理一个或多个不同的 HDFS 块，每个 reduce 任务处理一个或多个 partitions。在一个典型的 MapReduce 程序中，在所有 HDFS 块上执行的 map 任务都是一样的，在所有的 partitions 上执行的 reduce 任务也是一样的。</p>
+<p><a href="https://youtu.be/1gBLqlMUQQk" target="_blank" rel="external">MapReduce 视频介绍</a></p>
+<p>要使用集群来进行计算，需要考虑以下问题：</p>
+<ul>
+<li>怎么样切分输入数据？</li>
+<li>怎么样分配不同的工作？</li>
+<li>怎么样协调所有的机器？</li>
+<li>怎么样汇总结果？</li>
+</ul>
+<p>有一些模型可以给我们一些帮助，如 MPI，但是只在消息传递阶段可以给我们帮助。这个时候，就要 MapReduce 出场了。先来看定义：</p>
+<blockquote>
+<p>MapReduce (Definition):<br>Programming model for processing large data sets with a parallel, distributed algorithm on a cluster.</p>
+</blockquote>
+<p>分步骤来描述的话就是：</p>
+<ul>
+<li>Map：提取出关注的数据</li>
+<li>Group by key：对这些数据排序和重组(sort and shuffle)</li>
+<li>Reduce：聚合，汇总，过滤或者转变(Aggregate, summarize, filter or transform)</li>
+<li>最后输出结果</li>
+</ul>
+<p>具体来看看每个阶段的细节。</p>
+<p>在 Map 阶段，需要为 mapper 准备好输入数据，也就是把大数据分割成小块并指派给各个 mapper。然后每个 mapper 就会在分到的数据块上完成指定的工作，之后输出键值对(key-value pair)。这里的键会用于之后的 shuffle 与 merge。Value 是从 mapper 发送到 reducer 的信息。</p>
+<p>在 Shuffle 阶段，会把 mapper 阶段得到的结果根据 key 来进行排序和分组。利用哈希的方式把 key 进行分隔然后指派到不同的 reducers 中，每个 key 只会被指派给 1 个 reducer。</p>
+<p>在 Reduce 阶段，每个 reducer 会处理 1 个或多个 key。这里的输入就是 mapper 的输出，也就是键值对，这里的输出就是我们需要的结果（可以编写不同的聚合逻辑）</p>
+<p>对于程序员来说，使用 MapReduce 这个编程模型，需要提供：</p>
+<ul>
+<li>Map 函数</li>
+<li>Reduce 函数</li>
+<li>输入和输出的位置</li>
+</ul>
+<p>而 MapReduce 框架会处理好：</p>
+<ul>
+<li>分隔输入数据</li>
+<li>在一组机器上运行程序</li>
+<li>执行 Group by key</li>
+<li>处理机器执行失败的情况</li>
+<li>管理必需的机器间交互</li>
+</ul>
+<p>那么所谓的『并行』，体现在哪里呢？首先，mapper 是并行执行的，同时 reducer 也是并行执行的。但是。reducer 必须在 mapper 执行完成之后才可以开始。</p>
+<p>MapReduce 的发展历程大概如下：</p>
+<ul>
+<li>1958: LISP and Lambda Functions in Functional Programming</li>
+<li>1995: Message Passing Interface(MPI) has Gather/Scatter functions</li>
+<li>2004: Google’s MapReduce Paper</li>
+<li>2006-2008: Apache Hadoop v1.0</li>
+<li>2013: YARN (Hadoop 2.0)</li>
+</ul>
+<p>那么要如何使用 Hadoop 的 MapReduce 呢？可以有以下几种方式：</p>
+<ul>
+<li>用 Java 写原生 MapReduce 程序：自定义 mapper 和 reducer</li>
+<li>Streaming  MapReduce 工作：使用任何可执行的程序来作为 mapper 和 reducer</li>
+<li>高层抽象：Pig, Hive 等</li>
+</ul>
+<p>Amazon 的 Elastic MapReduce 是一个 Hadoop 的 PaaS 实现，为的是快速申请 Hadoop 集群并利用 S3 来导入/导出数据。接下来通过一个简单的例子来感受一下 Elastic MapReduce 是怎么回事。</p>
+<h2 id="Example_EMR_Job_Flow_3A_Wordcount"><a href="#Example_EMR_Job_Flow_3A_Wordcount" class="headerlink" title="Example EMR Job Flow: Wordcount"></a>Example EMR Job Flow: Wordcount</h2><p>这里我们用 Java 来进行实现（Python 的就只提供视频地址）：<a href="https://youtu.be/fQAZoZCRqX0" target="_blank" rel="external">Java 版本视频教程</a> / <a href="https://youtu.be/htr6JH7UWNg" target="_blank" rel="external">Python 版本视频教程</a></p>
+<p>整个过程可以用如下的命令来大致描述：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat input | mapper_program | sort | reducer_program &gt; output</span><br></pre></td></tr></table></figure>
+<p>我们的输入是一个文本文件，里面是一篇英文的文章，我们的 mapper 程序如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">wordcountMapper</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">			String input;</span><br><span class="line">			<span class="comment">// While we have input on stdin</span></span><br><span class="line">			<span class="keyword">while</span>((input = br.readline()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">				StringTokenizer tokenizer = <span class="keyword">new</span> StringTokenizer(input);</span><br><span class="line">				<span class="keyword">while</span> (tokenizer.hasMoreTokens())&#123;</span><br><span class="line">					String word = tokenizer.nextToken();</span><br><span class="line">					System.out.println(word + <span class="string">"\t"</span> + <span class="string">"1"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span>(IOException io)&#123;</span><br><span class="line">				io.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们来看看 reducer 程序，这个比 mapper 稍微复杂一点：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">wordcountReducer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">			</span><br><span class="line">			String input;</span><br><span class="line">			String word = <span class="keyword">null</span>;</span><br><span class="line">			String currentWord = <span class="keyword">null</span></span><br><span class="line">			<span class="keyword">int</span> currentCount = <span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span> ((input = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					String[] parts = input.split(<span class="string">"\t"</span>);</span><br><span class="line">					word = parts[<span class="number">0</span>];</span><br><span class="line">					<span class="keyword">int</span> count = Integer.parseInt(parts[<span class="number">1</span>]);</span><br><span class="line">					</span><br><span class="line">					<span class="comment">// We have sorted input, so check if we have the same word</span></span><br><span class="line">					<span class="keyword">if</span> (currentWord != <span class="keyword">null</span> &amp;&amp; currentWord.equals(word))&#123;</span><br><span class="line">						currentCount++;</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123; <span class="comment">// the word has changed</span></span><br><span class="line">						<span class="keyword">if</span> (currentWord != <span class="keyword">null</span>) &#123;</span><br><span class="line">							System.out.println(currentWord + <span class="string">"\t"</span> + currentCount);</span><br><span class="line">						&#125;</span><br><span class="line">						currentWord = word;</span><br><span class="line">						currentCount = count;</span><br><span class="line">					&#125;</span><br><span class="line">						</span><br><span class="line">				&#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> (currentWord != <span class="keyword">null</span> &amp;&amp; currentWord.equals(word)) &#123;</span><br><span class="line">				System.out.println(currentWord + <span class="string">"\t"</span> + currentCount);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span>(IOException io) &#123;</span><br><span class="line">			io.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查看结果的话命令为（注意需要先编译，上面给出的代码不包含头文件）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat input.txt | java wordcoutnMapper | sort | java wordcountReducer &gt; output</span><br></pre></td></tr></table></figure>
+<p>如果代码都准备好了，可以参考下面的视频，<a href="https://youtu.be/qbHs1HXuE1M" target="_blank" rel="external">在 EMR 上运行 Java Streaming Program</a></p>
+<p>从 S3 的 Bucket 获取数据，把 mapper 和 reducer 打包生成 jar 包并上传到 S3。然后到 Analytic 类别下的 EMR 选项。注意，运行 EMR 之前一定要在本地先测试！</p>
+<p>命令行生成 jar 包的过程（假设我们有 <code>wordcountMapper.java</code> 和 <code>wordcountReducer.java</code> 两个文件）：</p>
+<ol>
+<li>先编译 <code>javac wordcountMapper.java</code> 和 <code>javac wordcountReducer.java</code>，然后我们就有了对应的 <code>.class</code> 文件</li>
+<li>然后就可以打包了 <code>jar -cvf wordcount.jar *.class</code>，如果不是这么简单的情况，还是用 IDE 来打包比较方便</li>
+</ol>
+<p>用具体的步骤来描述就是（前面是英文这里参考中文界面）：</p>
+<ol>
+<li>在 AWS 管理控制台选择 <strong>分析</strong> 下的 <strong>EMR(Hadoop 托管框架)</strong></li>
+<li>然后选择 <strong>创建集群</strong>，这里我们不使用快速选项，而是『转到高级选项』</li>
+<li>配置页面要注意以下内容<ul>
+<li>起个名字</li>
+<li>输入 S3 地址，用来存储 log</li>
+<li>开启 logging 和 debugging</li>
+<li>bucket 名字最好值包含小写字母和数字，不要用 <code>.</code>，<code>-</code> 和大写字母</li>
+<li>软件配置中，选择 <code>emr-4.0.0</code>，除了 Hadoop 的那一项其他都可以不选</li>
+<li>硬件配置中，选择 <code>m3.xlarge</code>，1 个 master，2 个 core，不需要 task 节点</li>
+<li>选择一个之前已经创建过的安全组</li>
+<li>没有提到的一般不需要修改</li>
+</ul>
+</li>
+<li>注意要打好对应的标签。竞价实例可能没办法保证 tag，所以需要检查并添加上（当实例真正启动时）</li>
+<li>在添加步骤中，选择流程序，然后进行配置。输入 mapper 和 reducer 的执行命令 <code>java -cp wordcount.jav wordcountMapper</code> 和 <code>java -cp wordcount.jar wordcountReducer</code>。然后配置输入输出的地址（也可以在界面上选），这里注意输出的文件夹最好不存在，不然覆盖的时候可能会失败，在参数里设置 <code>-files s3://address for jar file</code>。最后选择失败时要执行的操作，这里选择 <code>terminate cluster</code> 比较好（省钱）。</li>
+<li>不要选择完成后自动终止，这样我们可以登录到机器上来查看任务详情，但是用完之后务必要手动关闭。</li>
+<li>检查无误后，点击创建实例之后就可以开始等待了。完成之后可以在 S3 里看到对应的输出，多个 reduce 会有多个结果，可能需要下载下来进行合并。</li>
+</ol>
+<h2 id="Writing_your_own_Mappers_and_Reducers"><a href="#Writing_your_own_Mappers_and_Reducers" class="headerlink" title="Writing your own Mappers and Reducers"></a>Writing your own Mappers and Reducers</h2><p>现在我们就来处理维基百科的数据集了，这里需要写自己的 mapper 和 reducer，在整整一个月的输入数据中，完成下面的任务：</p>
+<ol>
+<li>设计一个 MapReduce 的工作流，需要完成<ul>
+<li>根据上一个 project 的规则来过滤元素</li>
+<li>从 mapper 中读取输入的文件名。因为 日期/时间 的信息在文件名当中，所以 Hadoop 流会把文件名放在名为 <code>mapreduce_map_input_file</code> 这个环境变量中，每个 map 任务都可以访问。举个例子，python 中用 <code>os.environ[&quot;mapreduce_map_input_file&quot;]</code>，Java 中用 <code>System.getenv(&quot;mapreduce_map_input_file&quot;)</code></li>
+<li>把每小时的页面浏览记录聚合成每天的页面浏览记录</li>
+<li>计算每篇文章的总浏览记录</li>
+<li>对于浏览次数超过 100,000 的页面，用以下的格式进行输出 <code>[月总浏览量]\t[文章名称]\t[第一个日期的浏览量]\t[第二个日期的浏览量]......</code></li>
+</ul>
+</li>
+<li>设计并测试好了 MapReduce 工作流后，使用 EMR 跑 2015 年 12 月的全部数据<ul>
+<li>数据集可以在 <code>s3://cmucc-datasets/wikipediatraf/201512/</code> 找到</li>
+<li>记录下集群的配置以及运行时间（分钟位单位）</li>
+<li>在 S3 中只使用小写字母和数字，不然会失败</li>
+</ul>
+</li>
+<li>结果处理好之后，启动一个 <code>t1.micro</code> 实例 <code>ami-bcd8f8d6</code> 来提交成绩<ul>
+<li>把结果从 S3 下载到 这个实例中</li>
+<li>把输出融合成一个 output 文件</li>
+<li>用 <code>submitter</code> 来测试 mapper 和 reducer</li>
+</ul>
+</li>
+<li>完成 <code>runner.sh</code> 中的问题</li>
+<li>使用 <code>submitter</code> 来提交最终的答案 </li>
+</ol>
+<p>一些建议：</p>
+<ul>
+<li>用竞价实例很省钱</li>
+<li>只支持 Python 2.7 和 Java 1.7</li>
+<li>输出格式：<ul>
+<li>日期用 <code>yyyymmdd</code> 格式</li>
+<li>日期要按照时间顺序来 <code>20151201</code> 应该在 <code>20151202</code> 之前</li>
+<li>所有的页面浏览数据应该输出到一个文件中</li>
+</ul>
+</li>
+</ul>
+<p>一个简单的例子，每一行都必须有 31 天，即使那一天的访问量是 0：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>   Dopamine    <span class="number">20151201</span>:<span class="number">1</span>    <span class="number">20151202</span>:<span class="number">2</span>    <span class="number">20151203</span>:<span class="number">0</span>    <span class="number">20151204</span>:<span class="number">0</span>    <span class="number">20151205</span>:<span class="number">1</span>    <span class="number">20151206</span>:<span class="number">0</span>    <span class="number">20151207</span>:<span class="number">0</span>    <span class="number">20151208</span>:<span class="number">0</span>    <span class="number">20151209</span>:<span class="number">0</span>    <span class="number">20151210</span>:<span class="number">6</span>    <span class="number">20151211</span>:<span class="number">0</span>    <span class="number">20151212</span>:<span class="number">0</span>    <span class="number">20151213</span>:<span class="number">0</span>    <span class="number">20151214</span>:<span class="number">0</span>	<span class="number">20151215</span>:<span class="number">0</span>    <span class="number">20151216</span>:<span class="number">0</span>    <span class="number">20151217</span>:<span class="number">0</span>    <span class="number">20151218</span>:<span class="number">0</span>    <span class="number">20151219</span>:<span class="number">0</span>    <span class="number">20151220</span>:<span class="number">0</span>    <span class="number">20151221</span>:<span class="number">0</span>    <span class="number">20151222</span>:<span class="number">0</span>    <span class="number">20151223</span>:<span class="number">0</span>    <span class="number">20151224</span>:<span class="number">0</span>    <span class="number">20151225</span>:<span class="number">0</span>    <span class="number">20151226</span>:<span class="number">0</span>    <span class="number">20151227</span>:<span class="number">0</span>    <span class="number">20151228</span>:<span class="number">0</span>    <span class="number">20151229</span>:<span class="number">0</span>    <span class="number">20151230</span>:<span class="number">0</span>    <span class="number">20151231</span>:<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>最后是 <a href="https://youtu.be/H0q5V4ApuU4" target="_blank" rel="external">EMR Troubleshooting</a></p>
+<ul>
+<li>访问 master public DNS:9100 可以访问日志</li>
+</ul>
+<h2 id="Grading"><a href="#Grading" class="headerlink" title="Grading"></a>Grading</h2><p>一些提交步骤的记录：</p>
+<ol>
+<li>文件夹位于 <code>/home/ubuntu/Project1_2</code>，有三个文件，可以编辑 <code>runner.sh</code> 和 <code>references</code></li>
+<li>如果完成了 mapper 和 reducer，可以通过 <code>submitter</code> 提交来测试<ul>
+<li><code>./submitter -a andrewid -l java</code> 或者 java 换成 python </li>
+</ul>
+</li>
+<li>结果中的第一行表示正确的 mapper 和 reducer</li>
+<li>得到结果后聚合成一个文件，名字是 output，然后需要完成 <code>runner.sh</code> 中的题目</li>
+<li>其他的要求和之前一样</li>
+</ol>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>]]>
