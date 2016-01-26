@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-01-26T18:04:42.000Z</updated>
+  <updated>2016-01-26T18:44:10.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/01/25/cc-10/"/>
     <id>http://wdxtub.com/2016/01/25/cc-10/</id>
     <published>2016-01-26T00:42:38.000Z</published>
-    <updated>2016-01-26T18:04:42.000Z</updated>
+    <updated>2016-01-26T18:44:10.000Z</updated>
     <content type="html"><![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>
 <a id="more"></a>
 <hr>
@@ -209,8 +209,10 @@
 <p>文章的标题和访问量就在传入的每一行数据中，这个方便处理，但是日期这里，因为是跟输入文件的文件名有关，所以我们得想个办法获取到。对，就是利用环境变量（前面有提到）：<code>String env = System.getenv(&quot;mapreduce_map_input_file&quot;);</code></p>
 <p>可以通过以下命令查看所有文件（如果配置了 aws cli tool ）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws s3 ls s3://cmucc-datasets/wikipediatraf/<span class="number">201512</span>/</span><br></pre></td></tr></table></figure>
-<p>然后获取到的路径大概是这样的格式：<code>s3://cmucc-datasets/wikipediatraf/201512/pagecounts-20151231-230000.gz</code>，所以需要做一些解析，取出我们需要的 <code>20151231</code> 这样的日期。然后结合之前的项目，过滤后输出即可。</p>
-<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><p>Reducer 要做的工作稍微多一点，比方说要按照规定的格式进行输出，但是本质上和 example 中的逻辑是差不多多少的，毕竟 mapper 中已经把数据过滤得差不多了。这里要注意的就是数值累加即可。</p>
+<p>然后获取到的路径大概是这样的格式：<code>s3://cmucc-datasets/wikipediatraf/201512/pagecounts-20151231-230000.gz</code>，所以需要做一些解析，取出我们需要的 <code>20151231</code> 这样的日期。然后结合之前的项目，过滤后输出即可。我得到的结果大概是这样的（我只用了很小很小的测试集），可以通过下面的命令在裁剪数据集：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -<span class="number">1000000</span> testdata &gt; smalltestdata</span><br></pre></td></tr></table></figure>
+<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><p>Reducer 要做的工作稍微多一点，比方说要按照规定的格式进行输出，但是本质上和 example 中的逻辑是差不多多少的，毕竟 mapper 中已经把数据过滤得差不多了。这里要注意的就是数值累加即可。得到的数据差不多是这样（这里我修改了阈值来查看输出，如果你也是这样做的，请记得测试完改回去）</p>
+<p><img src="/images/14538337031959.jpg" alt=""></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>]]>
