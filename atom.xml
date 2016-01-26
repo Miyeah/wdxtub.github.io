@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-01-24T16:38:24.000Z</updated>
+  <updated>2016-01-26T04:26:18.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[云计算 第 9 课 Parallel Programming using EMR]]></title>
+    <link href="http://wdxtub.com/2016/01/25/cc-10/"/>
+    <id>http://wdxtub.com/2016/01/25/cc-10/</id>
+    <published>2016-01-26T00:42:38.000Z</published>
+    <updated>2016-01-26T04:26:18.000Z</updated>
+    <content type="html"><![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>
+<a id="more"></a>
+<hr>
+<p>这周的主要任务有下面四个：</p>
+<ol>
+<li>探索一个大数据集</li>
+<li>利用 MapReduce 来处理一个大数据集</li>
+<li>使用 EMR(Elastic MapReduce) 在云上运行一个 MapReduce 工作</li>
+<li>理解使用诸如 MapReduce 这样的框架来处理大数据的优势</li>
+</ol>
+<p>注意！EMR 非常贵！所以从小的数据集开始。有两个部分要收钱：per-instance EMR 费用和实际的  EC2 实例费用。使用竞价实例来减小第二部分的花费。</p>
+<blockquote>
+<p>先使用 WordCount 的例子来熟悉如何设置 cluster。</p>
+</blockquote>
+<p>这次的的限额是 <code>$15</code>，大概就是有 2 次跑全数据的测试。</p>
+<p>任务和上一周的类似，用上个月的维基百科页面访问的数据来进行分析。我们先从上个 project 所做的 filtering 开始，然后把所有的 2015 年 12 月的页面访问数据聚合起来。取出那些最重要的记录并输出到一个小的输出文件中，然后做一些处理来得到真正有用的信息。</p>
+<p>上一次我们顺序处理了一个单一文件，但是没办法回答以下这些问题：</p>
+<ul>
+<li>2015 年 12 月最受欢迎的页面是哪个</li>
+<li>某个页面在某一天得到了多少点击</li>
+</ul>
+<p>如果想要回答这两个问题，我们必须：</p>
+<ul>
+<li>把所有的访问次数聚合起来，并且</li>
+<li>对每个我们感兴趣的文章，生成每天的页面访问时间轴</li>
+</ul>
+<p>为了处理这么大的一个数据集（压缩后 65 GB），我们会设置一个 Elastic MapReduce 工作来完成。需要写简单的 Map 和 Reduce 函数/程序。</p>
+<p>开始之前，最好先弄明白 <a href="https://aws.amazon.com/elasticmapreduce/pricing/" target="_blank" rel="external">EMR 怎么收费</a>。</p>
+<blockquote>
+<p>别忘了打上 Project: 1.2 的标签</p>
+</blockquote>
+<h2 id="Introduction_to_MapReduce"><a href="#Introduction_to_MapReduce" class="headerlink" title="Introduction to MapReduce"></a>Introduction to MapReduce</h2><p>MapReduce 是用许多机器来进行大数据处理的编程模型。Hadoop 是开源版本的 MapReduce 实现。Hadoop 把 MapReduce 当做一个分析引擎，并使用 Hadoop Distributed File System(HDFS) 来进行存储。HDFS 把数据集分成固定大小的块，分布式存放在不同的节点上。具体要执行的任务可以在不同的机器上并行处理。MapReduce 会把整个大任务分成不同的小的 map 和 reduce 任务。所有的 map 任务都在 map 阶段进行，所有的 reduce 任务都在 reduce 阶段进行。map 阶段可能有 1 个或多个任务，reduce 阶段可以有 0 个或多个 reduce 任务。</p>
+<p><img src="/images/14537775895092.jpg" alt="MapReduce 概览"></p>
+<p>上图</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>]]>
+    
+    </summary>
+    
+      <category term="AWS" scheme="http://wdxtub.com/tags/AWS/"/>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="EMR" scheme="http://wdxtub.com/tags/EMR/"/>
+    
+      <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="文本处理" scheme="http://wdxtub.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 习题课 2 不同架构风格应用]]></title>
@@ -2685,158 +2745,6 @@ Bob 30
       <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
       <category term="文本处理" scheme="http://wdxtub.com/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 6 课 Machine Control]]></title>
-    <link href="http://wdxtub.com/2016/01/20/csapp-6/"/>
-    <id>http://wdxtub.com/2016/01/20/csapp-6/</id>
-    <published>2016-01-20T16:15:32.000Z</published>
-    <updated>2016-01-22T20:35:54.000Z</updated>
-    <content type="html"><![CDATA[<p>上一讲我们了解了关于机器代码，汇编和 CPU 相关的基础知识，这一讲要来说一下具体机器是怎么实现代码中常见的流程控制的。这一部分涉及的代码和思路稍微有些不容易理解，我会尽量写得详细一些。</p>
-<a id="more"></a>
-<hr>
-<p>我们先来回顾一下 x86-64 处理器中不同的寄存器，这一部分很重要，务必要弄明白：</p>
-<p><img src="/images/14533022194673.jpg" alt=""></p>
-<p>首先要理解的是，寄存器中存储着当前正在执行的程序的相关信息：</p>
-<ul>
-<li>临时数据存放在 (%rax, …)</li>
-<li>运行时栈的地址存储在 (%rsp) 中</li>
-<li>目前的代码控制点存储在 (%rip, …) 中</li>
-<li>目前测试的状态放在 CF, ZF, SF, OF 中</li>
-</ul>
-<h2 id="Condition_Codes"><a href="#Condition_Codes" class="headerlink" title="Condition Codes"></a>Condition Codes</h2><p>最后的四个寄存器（CF, ZF, SF, OF）就是用来辅助程序的流程控制的，意思是：</p>
-<ul>
-<li>CF: Carry Flag (for unsigned)</li>
-<li>ZF: Zero Flag</li>
-<li>SF: Sign Flag (for signed)</li>
-<li>OF: Overflow Flag (for signed)</li>
-</ul>
-<p>可以看到以上这四个寄存器，表示四种不同的状态，举个例子，假如我们有一条诸如 <code>t = a + b</code> 的语句，汇编之后假设用的是 <code>addq Src, Dest</code>，那么根据这个操作结果的不同，会相应设置上面提到的四个寄存器，而因为这个是执行类似操作时顺带尽心设置的，称为隐式设置，例如：</p>
-<ul>
-<li>如果两个数相加，在最高位还需要进位（也就是溢出了），那么 CF 寄存器就会被设置</li>
-<li>如果 t 等于 0，那么 ZF 寄存器会被设置</li>
-<li>如果 t 小于 0，那么 SF 寄存器会被设置</li>
-<li>如果 2’s complement 溢出，那么 OF 寄存器会被设置为 1（溢出的情况是 <code>(a&gt;0 &amp;&amp; b &gt; 0 &amp;&amp; t &lt;0) || (a&lt;0 &amp;&amp; b&lt;0 &amp;&amp; t&gt;=0)</code>）</li>
-</ul>
-<p>这就发现了，其实这四个条件代码，是用来标记上一条命令的结果的各种可能的，是自动会进行设置的。注意，使用 <code>leaq</code> 指令的话不会进行设置。</p>
-<p>除了隐形设置，还可以显式进行设置，具体的方法是使用 <code>cmpq</code> 指令，这里的 q 指的是 64 位的地址。具体来说 <code>cmpq Src2(b), Src1(a)</code> 等同于计算 <code>a-b</code>（注意 a b 顺序是颠倒的），然后利用 <code>a-b</code> 的结果来对应进行条件代码的设置：</p>
-<ul>
-<li>如果在最高位还需要进位（也就是溢出了），那么 CF 寄存器就会被设置</li>
-<li>a 和 b 相等时，也就是 <code>a-b</code> 等于零时，ZF 寄存器会被设置</li>
-<li>如果 a &lt; b，也就是 <code>(a-b)&lt;0</code> 时，那么 SF 寄存器会被设置</li>
-<li>如果 2’s complement 溢出，那么 OF 寄存器会被设置（溢出的情况是 <code>(a&gt;0 &amp;&amp; b &gt; 0 &amp;&amp; t &lt;0) || (a&lt;0 &amp;&amp; b&lt;0 &amp;&amp; t&gt;=0)</code>）</li>
-</ul>
-<p>另一种进行显式设置的方法是使用 <code>testq</code> 指令，具体来说 <code>testq Src2(b), Src1(a)</code> 等同于计算 <code>a&amp;b</code>（注意 a b 顺序是颠倒的），然后利用 <code>a-b</code> 的结果来对应进行条件代码的设置，通常来说会把其中一个操作数作为 mask：</p>
-<ul>
-<li>当 <code>a&amp;b == 0</code> 时，ZF 寄存器会被设置</li>
-<li>当 <code>a&amp;b &lt; 0</code> 时，SF 寄存器会被设置</li>
-</ul>
-<p>有了这四个条件码，就可以通过不同的组合方式，来产生不同的条件判断，例如：</p>
-<p><img src="/images/14533038073018.jpg" alt=""></p>
-<p>具体来说只会设置最右边的一个 byte（也就是 %al 的部分），其他的都不会改变（通过下面的例子会更清晰）</p>
-<p><img src="/images/14533038709749.jpg" alt=""></p>
-<p>举个例子，假设我们有一条这样的语句，用来判断 x 和 y 的大小，转换成汇编之后，有几个需要注意的地方，一是 %rsi 存的是 y，%rdi 存的是 x，这个就是前面说的顺序问题。然后我们设置最右边的一个 byte（也就是 %al 的部分，见上图），最后利用 <code>movzbl</code> 指令把返回值复制到 %eax 寄存器中。</p>
-<p><img src="/images/14533041584630.jpg" alt=""></p>
-<p>这里有一点要进行说明，到底 %eax 寄存器在哪里呢？图上怎么没有？其实 %eax 就是 %rax 寄存器的后 32 位的名称。</p>
-<p>那为什么我们要用 32 位的指令呢，剩下的高位怎么办？这是因为在 x86-64 的架构设计中有一条规则『如果对 64 位寄存器设置 32 位数据，那么高位会被设置为 0』，所以可以通过 32 位的指令对 %eax 进行操作处理（如果忽略这个很容易让人困惑），相当于是处理好了 64 位的 %rax 寄存器。</p>
-<h2 id="Condition_Branch"><a href="#Condition_Branch" class="headerlink" title="Condition Branch"></a>Condition Branch</h2><p>介绍完了条件代码，就可以来看看具体的跳转了，跳转实际上就是根据条件代码的不同，来进行跳转，具体如下：</p>
-<p><img src="/images/14533045268420.jpg" alt=""></p>
-<p>我们先来看一个比较原始的例子（编译器没有进行主要优化）：</p>
-<p><img src="/images/14533045995659.jpg" alt=""></p>
-<p>这里我们是要给出两个数的绝对值的差，所以需要判断谁大谁小，蓝色和红色的部分就分别代表两条分支。考虑到汇编不算特别直观，这里我们用 goto 语句重写一次，基本上就和汇编出来的代码逻辑类似了，方便之后的讲解：</p>
-<p><img src="/images/14533047116967.jpg" alt=""></p>
-<p>我们再看另一种条件语句要如何翻译，比如 <code>val = Test ? Then_Expr : Else_Expr;</code>，重写上面的函数就是：<code>val = x&gt;y ? x-y : y-x;</code></p>
-<p>转换成 goto 形式就是：</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	ntest = <span class="comment">!Test;</span></span><br><span class="line">	<span class="keyword">if</span> (ntest) <span class="keyword">goto</span> <span class="keyword">Else</span>;</span><br><span class="line">	<span class="keyword">value</span> = Then_Expr;</span><br><span class="line">	<span class="keyword">goto</span> Done;</span><br><span class="line"><span class="keyword">Else</span>:</span><br><span class="line">	val = Else_Expr;</span><br><span class="line">Done:</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
-<p>但是实际上汇编出来的代码，并不是这样的，会采用另一种方法来加速分支语句的执行。现在我们先来说一说，为什么分支语句会对性能造成很大的影响。</p>
-<p>我们知道现在的 CPU 都是依靠流水线工作的，比方说执行一系列操作需要 ABCDE 五个步骤，那么在执行 A 的时候，实际上执行 B 所需的数据会在执行 A 的同时加载到寄存器中，这样运算器执行外 A，就可以立刻执行 B 而无须等待数据载入。如果程序一直是顺序的，那么这个过程就可以一直进行下去，效率会很高。但是一旦遇到分支，那么可能执行完 A 下一步要执行的是 C，但是载入的数据是 B，这时候就要把流水线清空（因为后面载入的东西都错了），然后重新载入 C 所需要的数据，这就带来了很大的性能影响。为此人们常常用『分支预测』这一技术来解决（分支预测是另一个话题这里不展开），但是对于这类只需要判断一次的条件语句来说，其实有更好的方法。</p>
-<p>处理器有一条指令支持 <code>if(Test) Dest &lt;- Src</code> 的操作，也就是说可以不用跳转，利用条件代码来进行赋值，于是编译器在可能的时候会把上面的 goto 程序改成如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">result = Then_Expr;</span><br><span class="line">eval = Else_Expr;</span><br><span class="line">nt = !Test;</span><br><span class="line"><span class="keyword">if</span> (nt) result = eval;</span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
-<p>具体的做法是：反正一共就两个分支，我都算出行不行，然后利用上面的条件指令来进行赋值，这样就完美避免了因为分支可能带来的性能问题（需要清空流水线），像下面这样：</p>
-<p><img src="/images/14533057292618.jpg" alt=""></p>
-<p>这个方法好是好，但是也有一些情况并不适用于：</p>
-<ul>
-<li>因为会把两个分支的运算都提前算出来，如果这两个值都需要大量计算的话，就得不偿失了，所以需要分支中的计算尽量简单。</li>
-<li>另外在涉及指针操作的时候，如 <code>val = p ? *p : 0;</code>，因为两个分支都会被计算，所以可能导致奇怪问题出现</li>
-<li>最后一种就是如果分支中的计算是有副作用的，那么就不能这样弄 <code>val = x &gt; 0 ? x*= 7 : x+= 3;</code>，这种情况下，因为都计算了，那么 x 的值肯定就不是我们想要的了。</li>
-</ul>
-<h2 id="Loops"><a href="#Loops" class="headerlink" title="Loops"></a>Loops</h2><p>先来看看并不那么常用的 Do-While 语句：</p>
-<p><img src="/images/14533062342446.jpg" alt=""></p>
-<p>这个函数计算参数 x 中有多少位是 1，翻译成汇编如下：</p>
-<p><img src="/images/14533063334333.jpg" alt=""></p>
-<p>其中 %rdi 中存储的是参数 x，%rax 存储的是返回值。换成更通用的形式：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C Code</span></span><br><span class="line"><span class="function"><span class="keyword">do</span></span><br><span class="line">	Body</span><br><span class="line">	<span class="title">while</span> <span class="params">(Test)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Goto Version</span></span><br><span class="line">loop:</span><br><span class="line">	<span class="function">Body</span><br><span class="line">	<span class="title">if</span> <span class="params">(Test)</span></span><br><span class="line">		<span class="keyword">goto</span> loop</span></span><br></pre></td></tr></table></figure>
-<p>而对于 While 语句的转换，会直接跳到中间，如：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C While version</span></span><br><span class="line"><span class="keyword">while</span> (Test)</span><br><span class="line">	Body</span><br><span class="line"></span><br><span class="line"><span class="comment">// Goto Version</span></span><br><span class="line">	<span class="keyword">goto</span> test;</span><br><span class="line">loop:</span><br><span class="line">	Body</span><br><span class="line">test:</span><br><span class="line">	<span class="keyword">if</span> (Test)</span><br><span class="line">		<span class="keyword">goto</span> loop;</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
-<p>举个具体的例子：</p>
-<p><img src="/images/14533065773830.jpg" alt=""></p>
-<p>如果在编译器中开启 <code>-O1</code> 优化，那么会把 While 先翻译成 Do-While，然后再转换成对应的 Goto 版本：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C While version</span></span><br><span class="line"><span class="keyword">while</span> (Test)</span><br><span class="line">	Body</span><br><span class="line"></span><br><span class="line"><span class="comment">// C Do-While Version</span></span><br><span class="line">	<span class="keyword">if</span> (!Test)</span><br><span class="line">		<span class="keyword">goto</span> done;</span><br><span class="line">	<span class="function"><span class="keyword">do</span></span><br><span class="line">		Body</span><br><span class="line">		<span class="title">while</span><span class="params">(Test)</span></span>;</span><br><span class="line">done:</span><br><span class="line"></span><br><span class="line"><span class="comment">// Goto Version</span></span><br><span class="line">	<span class="keyword">if</span> (!Test)</span><br><span class="line">		<span class="keyword">goto</span> done;</span><br><span class="line">loop:</span><br><span class="line">	<span class="function">Body</span><br><span class="line">	<span class="title">if</span> <span class="params">(Test)</span></span><br><span class="line">		<span class="keyword">goto</span> loop</span>;</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
-<p>具体的例子是：</p>
-<p><img src="/images/14533068824241.jpg" alt=""></p>
-<p>为什么要这样做呢，因为 Do-While 语句执行起来更快，更符合 CPU 的运算模型。</p>
-<p>然后来看看最常用的 For 循环，也可以一步一步转换成 While 的形式，如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// For</span></span><br><span class="line"><span class="keyword">for</span> (Init; Test; Update)</span><br><span class="line">	Body</span><br><span class="line">	</span><br><span class="line"><span class="comment">// While Version</span></span><br><span class="line">Init;</span><br><span class="line"><span class="keyword">while</span> (Test) &#123;</span><br><span class="line">	Body</span><br><span class="line">	Update;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>而在具体转换成 Do-While 模式的时候，会把最初的测试优化去除</p>
-<p><img src="/images/14533070757433.jpg" alt=""></p>
-<h2 id="Switch_Statement"><a href="#Switch_Statement" class="headerlink" title="Switch Statement"></a>Switch Statement</h2><p>最后我们来看看最复杂的 switch 语句，这种类型的语句一次判断会有多种可能的跳转路径（知道 CPU 的分支预测会多抓狂吗）。这里用一个具体的例子来进行讲解：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">switch_eg</span> <span class="params">(<span class="keyword">long</span> x, <span class="keyword">long</span> y, <span class="keyword">long</span> z)</span></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> w = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">switch</span> (x) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			w = y*z;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			w = y/z;</span><br><span class="line">			<span class="comment">// fall through</span></span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			w += z;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">			w -= z;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			w = <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> w;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个例子中包含了大部分比较特殊的情况：</p>
-<ul>
-<li>共享的条件：5 和 6</li>
-<li>fall through：2 也会执行 3 的部分（这个要小心，一般来说不这么搞，如果确定要用，务必写上注释）</li>
-<li>缺失的条件：4</li>
-</ul>
-<p>具体怎么办呢？简单来说，使用跳转表（你会发现表的解决方式在很多地方都有用：虚函数，继承甚至动态规划），如下所示：</p>
-<p><img src="/images/14533075034521.jpg" alt=""></p>
-<p>转换出来如下：</p>
-<p><img src="/images/14533079929851.jpg" alt=""></p>
-<p>这里需要注意，我们先跟 6 进行比较（因为 6 是最大的），然后利用 <code>ja</code> 指令进行跳转，为什么，因为如果是负数的话，<code>ja</code> 是处理无符号数的，所以负数情况肯定大于 6，于是直接利用 <code>ja</code> 跳转到 default 的分支。</p>
-<p><img src="/images/14533081508060.jpg" alt=""></p>
-<p>然后下一句 <code>jmp *.L4(,%rdi, 8) # goto *JTab[x]</code>，是一个间接跳转，通过看上面的跳转列表来进行跳转。</p>
-<p>比如说，直接跳转 <code>jmp .L8</code>，就直接跳到 <code>.L8</code> 所在的标签，也就是 x = 0</p>
-<p>如果是 <code>jmp *.L4(,%rdi,8)</code> 那么就先找到 <code>.L4</code> 然后往后找 8 个字节（或 8 的倍数），于是就是 0~6 的范围。具体的对应关系如下：</p>
-<p><img src="/images/14533122886722.jpg" alt=""></p>
-<p>处理 fall through 的方式：</p>
-<p><img src="/images/14533123220172.jpg" alt=""></p>
-<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>这节课我们学到了</p>
-<ul>
-<li>C 语言的控制流程<ul>
-<li>if-then-else</li>
-<li>do-while</li>
-<li>while, for</li>
-<li>switch</li>
-</ul>
-</li>
-<li>汇编的控制流程<ul>
-<li>条件跳转</li>
-<li>条件转移</li>
-<li>间接跳转（通过跳转表）</li>
-<li>编译器会生成代码序列来实现更加复杂的控制</li>
-</ul>
-</li>
-<li>标准技术<ul>
-<li>把循环转换位 do-while 的形式或者 jump-to-middle 形式</li>
-<li>大的 switch 语句会用跳转表</li>
-<li>处理 switch 语句可能会用到决策树（if-elseif-elseif-else）</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>上一讲我们了解了关于机器代码，汇编和 CPU 相关的基础知识，这一讲要来说一下具体机器是怎么实现代码中常见的流程控制的。这一部分涉及的代码和思路稍微有些不容易理解，我会尽量写得详细一些。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
