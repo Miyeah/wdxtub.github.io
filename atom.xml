@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-01-26T18:44:10.000Z</updated>
+  <updated>2016-01-26T21:03:49.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/01/25/cc-10/"/>
     <id>http://wdxtub.com/2016/01/25/cc-10/</id>
     <published>2016-01-26T00:42:38.000Z</published>
-    <updated>2016-01-26T18:44:10.000Z</updated>
+    <updated>2016-01-26T21:03:49.000Z</updated>
     <content type="html"><![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>
 <a id="more"></a>
 <hr>
@@ -196,7 +196,7 @@
 <li>得到结果后聚合成一个文件，名字是 output，然后需要完成 <code>runner.sh</code> 中的题目</li>
 <li>其他的要求和之前一样</li>
 </ol>
-<h2 id="u9879_u76EE_u65E5_u5FD7"><a href="#u9879_u76EE_u65E5_u5FD7" class="headerlink" title="项目日志"></a>项目日志</h2><h2 id="Mapper"><a href="#Mapper" class="headerlink" title="Mapper"></a>Mapper</h2><p>首先我们要理解清楚这次的任务是什么，说起来很简单，就是用 MapReduce 把上个项目的工作大概再做一次，借此理解 MapReduce 的编程模型。</p>
+<h2 id="u9879_u76EE_u65E5_u5FD7"><a href="#u9879_u76EE_u65E5_u5FD7" class="headerlink" title="项目日志"></a>项目日志</h2><h3 id="Mapper"><a href="#Mapper" class="headerlink" title="Mapper"></a>Mapper</h3><p>首先我们要理解清楚这次的任务是什么，说起来很简单，就是用 MapReduce 把上个项目的工作大概再做一次，借此理解 MapReduce 的编程模型。</p>
 <p>实话说，MapReduce 的模型是比较容易理解的，尤其是我们这个项目所用的流程序，唯一需要弄清楚的就是三个步骤：怎么输入，中间怎么处理，怎么输出。</p>
 <p>输入输出部分之前的 wordcount 的例子都有讲解，看一下代码应该就能弄明白，这里主要说说中间要怎么处理。</p>
 <p>在 MapReduce 中，一切的内容都要转换为键值对，那么我们就需要考虑，键值对的格式是什么，怎么样设计会方便我们处理。</p>
@@ -211,8 +211,24 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws s3 ls s3://cmucc-datasets/wikipediatraf/<span class="number">201512</span>/</span><br></pre></td></tr></table></figure>
 <p>然后获取到的路径大概是这样的格式：<code>s3://cmucc-datasets/wikipediatraf/201512/pagecounts-20151231-230000.gz</code>，所以需要做一些解析，取出我们需要的 <code>20151231</code> 这样的日期。然后结合之前的项目，过滤后输出即可。我得到的结果大概是这样的（我只用了很小很小的测试集），可以通过下面的命令在裁剪数据集：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -<span class="number">1000000</span> testdata &gt; smalltestdata</span><br></pre></td></tr></table></figure>
-<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><p>Reducer 要做的工作稍微多一点，比方说要按照规定的格式进行输出，但是本质上和 example 中的逻辑是差不多多少的，毕竟 mapper 中已经把数据过滤得差不多了。这里要注意的就是数值累加即可。得到的数据差不多是这样（这里我修改了阈值来查看输出，如果你也是这样做的，请记得测试完改回去）</p>
+<h3 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h3><p>Reducer 要做的工作稍微多一点，比方说要按照规定的格式进行输出，但是本质上和 example 中的逻辑是差不多多少的，毕竟 mapper 中已经把数据过滤得差不多了。这里要注意的就是数值累加即可。得到的数据差不多是这样（这里我修改了阈值来查看输出，如果你也是这样做的，请记得测试完改回去）</p>
 <p><img src="/images/14538337031959.jpg" alt=""></p>
+<h3 id="u4EE3_u7801_u6D4B_u8BD5"><a href="#u4EE3_u7801_u6D4B_u8BD5" class="headerlink" title="代码测试"></a>代码测试</h3><p>然后我们可以提交自己的 Mapper.java 和 Reducer.java，测试一下功能正确与否。（注意要把为了本地跑的部分测试代码注释掉，不然就过不了测试，感谢 @jiexing）</p>
+<p>启动一个 <code>t1.micro</code> 实例 <code>ami-bcd8f8d6</code>。记得打标签。</p>
+<ul>
+<li>地址：ec2-54-84-233-246.compute-1.amazonaws.com</li>
+</ul>
+<p>先登录：<code>ssh -i demo.pem ubuntu@ec2-54-84-233-246.compute-1.amazonaws.com</code></p>
+<p>用下面的命令把文件复制到机器里：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ./Mapper.java ubuntu@ec2-<span class="number">54</span>-<span class="number">84</span>-<span class="number">233</span>-<span class="number">246</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Reducer.java ubuntu@ec2-<span class="number">54</span>-<span class="number">84</span>-<span class="number">233</span>-<span class="number">246</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br></pre></td></tr></table></figure>
+<p>然后可以用下面的代码提交：<code>./submitter -a dawang -l java</code>。如果成功的话，应该可以看到第一栏得到 20 分，那么就可以进行下一步了。</p>
+<h3 id="EMR__u6D4B_u8BD5"><a href="#EMR__u6D4B_u8BD5" class="headerlink" title="EMR 测试"></a>EMR 测试</h3><p>首先是把对应的内容上传到 S3 中。当然这之前需要打包一下：<code>jar -cvf dawang.jar Mapper.java Reducer.java *.class</code>，然后准备创建 EMR 集群。如下</p>
+<p><img src="/images/14538412976569.jpg" alt=""></p>
+<p>然后我们多选择一点机器，然后设置一个竞价，如下图：</p>
+<p><img src="/images/14538416282891.jpg" alt=""></p>
+<p>然后设置一下日志和其他设定：</p>
+<p><img src="/images/14538417094574.jpg" alt=""></p>
+<p>然后就可以创建集群来跑一跑看了。这里记得在竞价实例创建之后，要手动给不同的机器打上标签。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>]]>
