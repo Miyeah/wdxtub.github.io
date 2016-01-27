@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-01-26T21:03:49.000Z</updated>
+  <updated>2016-01-27T01:09:53.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/01/25/cc-10/"/>
     <id>http://wdxtub.com/2016/01/25/cc-10/</id>
     <published>2016-01-26T00:42:38.000Z</published>
-    <updated>2016-01-26T21:03:49.000Z</updated>
+    <updated>2016-01-27T01:09:53.000Z</updated>
     <content type="html"><![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>
 <a id="more"></a>
 <hr>
@@ -228,7 +228,34 @@
 <p><img src="/images/14538416282891.jpg" alt=""></p>
 <p>然后设置一下日志和其他设定：</p>
 <p><img src="/images/14538417094574.jpg" alt=""></p>
-<p>然后就可以创建集群来跑一跑看了。这里记得在竞价实例创建之后，要手动给不同的机器打上标签。</p>
+<p>然后就可以创建集群来跑一跑看了。这里记得在竞价实例创建之后，要手动给不同的机器打上标签（如果没有自动生成的话）。</p>
+<p>等待竞价实例启动，就可以监控了，如下图：</p>
+<p><img src="/images/14538425422610.jpg" alt=""></p>
+<p>然后果断失败了，因为我的 Java 版本是 1.8，需要切换到 1.7，具体参考<a href="http://chessman-126-com.iteye.com/blog/2162466" target="_blank" rel="external">这里</a></p>
+<p>简单来说就是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile <span class="comment"># 输入以下内容  </span></span><br><span class="line"><span class="built_in">source</span> .bash_profile <span class="comment"># 生效新配置</span></span><br></pre></td></tr></table></figure>
+<p>内容是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Mac默认 JDK 6（Mac默认自带了一个jdk6版本）</span></span><br><span class="line"><span class="built_in">export</span> JAVA_6_HOME=`/usr/libexec/java_home -v <span class="number">1.6</span>`</span><br><span class="line"><span class="comment"># 设置 JDK 7</span></span><br><span class="line"><span class="built_in">export</span> JAVA_7_HOME=`/usr/libexec/java_home -v <span class="number">1.7</span>`</span><br><span class="line"><span class="comment"># 设置 JDK 8</span></span><br><span class="line"><span class="built_in">export</span> JAVA_8_HOME=`/usr/libexec/java_home -v <span class="number">1.8</span>`</span><br><span class="line"></span><br><span class="line"><span class="comment">#默认JDK 6</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=<span class="variable">$JAVA_6_HOME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#alias命令动态切换JDK版本</span></span><br><span class="line"><span class="built_in">alias</span> jdk6=<span class="string">"export JAVA_HOME=<span class="variable">$JAVA_6_HOME</span>"</span></span><br><span class="line"><span class="built_in">alias</span> jdk7=<span class="string">"export JAVA_HOME=<span class="variable">$JAVA_7_HOME</span>"</span></span><br><span class="line"><span class="built_in">alias</span> jdk8=<span class="string">"export JAVA_HOME=<span class="variable">$JAVA_8_HOME</span>"</span></span><br></pre></td></tr></table></figure>
+<p>直接直接可以用 <code>jdk6</code>, <code>jdk7</code>, <code>jdk8</code> 来切换。</p>
+<p>经过漫长的等待（约 73 分钟），就可以在 S3 中拿到结果，可以用 <code>aws s3 cp s3://project1dawang/output/ ./output/ --recursive</code>，然后用 <code>cat part-* &gt; output</code> 来进行合并。然后就可以来做最后的计算和分析了。</p>
+<p>这里把 instance 上的文件都拷贝到本地来进行测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">84</span>-<span class="number">233</span>-<span class="number">246</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/* ./server/</span><br></pre></td></tr></table></figure>
+<p>然后在下一个阶段完成所有的工作</p>
+<h3 id="Runner"><a href="#Runner" class="headerlink" title="Runner"></a>Runner</h3><p>先把 runner 复制到本地，用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">84</span>-<span class="number">233</span>-<span class="number">246</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/runner.sh ./</span><br></pre></td></tr></table></figure>
+<p>需要回答的问题是：</p>
+<ol>
+<li>output 文件中有多少行，可以用这个命令 <code>wc -l output | awk {&#39;print $1&#39;}</code></li>
+<li>过滤后的输出中最不热门的文章是哪个，获得了多少次访问</li>
+<li>12 月 18 日最热门的文章是哪篇，对应那一天的点击量是多少</li>
+<li>2015 年 12 月最受欢迎的且在 12 月 1 日没有人访问的页面是那个</li>
+<li>这个月有多少天，标题是 <code>Twitter</code> 的页面的访问次数比标题是 <code>Apple_Inc.</code> 的页面的访问次数多。</li>
+<li>给在文件 q6 中出现的电影排序，根据单天最高的浏览量来排（高的在前面），用逗号分隔，没有空格</li>
+<li>给在文件 q7 中出现的操作系统排序，根据月份最高的浏览量来排（高的在前面），用逗号分隔，没有空格</li>
+<li>有多少数据集中的电影也有对应的电视剧？电影名称 <code>&lt;article_name&gt;_([year_]film)</code>，电视剧名称 <code>&lt;article_name&gt;_([year]_TV_series)</code>，也就是说，<code>article_name</code> 必须完全相同，电影和电视剧系列可能跟着一个 4 位数的年份（也就是说可能没有）</li>
+<li>Find out the number of articles with longest number of strictly decreasing sequence of views 最长递减子序列的个数，可以一次做完</li>
+</ol>
+<p>后面四个问题是不评分的，按照实际情况填写就好。我用的都是 <code>m3.xlarge</code> 类型的 instance，然后一共 4 个 core，时间是：</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>]]>
