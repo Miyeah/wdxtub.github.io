@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-01-27T23:35:25.000Z</updated>
+  <updated>2016-01-28T10:35:09.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/01/25/cc-10/"/>
     <id>http://wdxtub.com/2016/01/25/cc-10/</id>
     <published>2016-01-26T00:42:38.000Z</published>
-    <updated>2016-01-27T23:35:25.000Z</updated>
+    <updated>2016-01-28T10:35:09.000Z</updated>
     <content type="html"><![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>
 <a id="more"></a>
 <hr>
@@ -236,7 +236,7 @@
 <p>直接直接可以用 <code>jdk6</code>, <code>jdk7</code>, <code>jdk8</code> 来切换。</p>
 <p>经过漫长的等待（约 73 分钟），就可以在 S3 中拿到结果，可以用 <code>aws s3 cp s3://project1dawang/output/ ./output/ --recursive</code>，然后用 <code>cat part-* &gt; output</code> 来进行合并。然后就可以来做最后的计算和分析了。</p>
 <p>这里把 instance 上的文件都拷贝到本地来进行测试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/* ./server/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">175</span>-<span class="number">116</span>-<span class="number">84</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/* ./server/</span><br></pre></td></tr></table></figure>
 <p>然后在下一个阶段完成所有的工作</p>
 <h3 id="Runner"><a href="#Runner" class="headerlink" title="Runner"></a>Runner</h3><p>先把 runner 复制到本地，用以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/runner.sh ./</span><br></pre></td></tr></table></figure>
@@ -254,9 +254,9 @@
 </ol>
 <p>后面四个问题是不评分的，按照实际情况填写就好。我用的都是 <code>m3.xlarge</code> 类型的 instance，然后一共 4 个 core，时间是：73 min</p>
 <p>因为之前终止了实例，所以需要把之前的工作重新上传：</p>
-<p>先登录：<code>ssh -i demo.pem ubuntu@ec2-54-152-44-36.compute-1.amazonaws.com</code></p>
+<p>先登录：<code>ssh -i demo.pem ubuntu@ec2-54-164-94-23.compute-1.amazonaws.com</code></p>
 <p>用下面的命令把文件复制到机器里：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ./Mapper.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Reducer.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./output ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./runner.sh ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Q8.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Q9.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ./Mapper.java ubuntu@ec2-<span class="number">54</span>-<span class="number">175</span>-<span class="number">116</span>-<span class="number">84</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Reducer.java ubuntu@ec2-<span class="number">54</span>-<span class="number">175</span>-<span class="number">116</span>-<span class="number">84</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./output ubuntu@ec2-<span class="number">54</span>-<span class="number">175</span>-<span class="number">116</span>-<span class="number">84</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./runner.sh ubuntu@ec2-<span class="number">54</span>-<span class="number">175</span>-<span class="number">116</span>-<span class="number">84</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Q4.java ubuntu@ec2-<span class="number">54</span>-<span class="number">164</span>-<span class="number">94</span>-<span class="number">23</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Q7.java ubuntu@ec2-<span class="number">54</span>-<span class="number">164</span>-<span class="number">94</span>-<span class="number">23</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复上次的工作</span></span><br><span class="line">scp -i demo.pem ./server/* ubuntu@ec2-<span class="number">54</span>-<span class="number">164</span>-<span class="number">94</span>-<span class="number">23</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br></pre></td></tr></table></figure>
 <p>然后可以用下面的代码提交：<code>./submitter -a dawang -l java</code>。</p>
 <p>大部分的时间都在为奇奇怪怪又不说清楚的测试集耽误时间，真心觉得这样浪费大家时间没多少意义。差评。</p>
 ]]></content>
