@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-01-27T01:09:53.000Z</updated>
+  <updated>2016-01-27T23:35:25.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/01/25/cc-10/"/>
     <id>http://wdxtub.com/2016/01/25/cc-10/</id>
     <published>2016-01-26T00:42:38.000Z</published>
-    <updated>2016-01-27T01:09:53.000Z</updated>
+    <updated>2016-01-27T23:35:25.000Z</updated>
     <content type="html"><![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>
 <a id="more"></a>
 <hr>
@@ -215,12 +215,9 @@
 <p><img src="/images/14538337031959.jpg" alt=""></p>
 <h3 id="u4EE3_u7801_u6D4B_u8BD5"><a href="#u4EE3_u7801_u6D4B_u8BD5" class="headerlink" title="代码测试"></a>代码测试</h3><p>然后我们可以提交自己的 Mapper.java 和 Reducer.java，测试一下功能正确与否。（注意要把为了本地跑的部分测试代码注释掉，不然就过不了测试，感谢 @jiexing）</p>
 <p>启动一个 <code>t1.micro</code> 实例 <code>ami-bcd8f8d6</code>。记得打标签。</p>
-<ul>
-<li>地址：ec2-54-84-233-246.compute-1.amazonaws.com</li>
-</ul>
-<p>先登录：<code>ssh -i demo.pem ubuntu@ec2-54-84-233-246.compute-1.amazonaws.com</code></p>
+<p>先登录：<code>ssh -i demo.pem ubuntu@ec2-54-152-44-36.compute-1.amazonaws.com</code></p>
 <p>用下面的命令把文件复制到机器里：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ./Mapper.java ubuntu@ec2-<span class="number">54</span>-<span class="number">84</span>-<span class="number">233</span>-<span class="number">246</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Reducer.java ubuntu@ec2-<span class="number">54</span>-<span class="number">84</span>-<span class="number">233</span>-<span class="number">246</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ./Mapper.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Reducer.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br></pre></td></tr></table></figure>
 <p>然后可以用下面的代码提交：<code>./submitter -a dawang -l java</code>。如果成功的话，应该可以看到第一栏得到 20 分，那么就可以进行下一步了。</p>
 <h3 id="EMR__u6D4B_u8BD5"><a href="#EMR__u6D4B_u8BD5" class="headerlink" title="EMR 测试"></a>EMR 测试</h3><p>首先是把对应的内容上传到 S3 中。当然这之前需要打包一下：<code>jar -cvf dawang.jar Mapper.java Reducer.java *.class</code>，然后准备创建 EMR 集群。如下</p>
 <p><img src="/images/14538412976569.jpg" alt=""></p>
@@ -239,10 +236,10 @@
 <p>直接直接可以用 <code>jdk6</code>, <code>jdk7</code>, <code>jdk8</code> 来切换。</p>
 <p>经过漫长的等待（约 73 分钟），就可以在 S3 中拿到结果，可以用 <code>aws s3 cp s3://project1dawang/output/ ./output/ --recursive</code>，然后用 <code>cat part-* &gt; output</code> 来进行合并。然后就可以来做最后的计算和分析了。</p>
 <p>这里把 instance 上的文件都拷贝到本地来进行测试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">84</span>-<span class="number">233</span>-<span class="number">246</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/* ./server/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/* ./server/</span><br></pre></td></tr></table></figure>
 <p>然后在下一个阶段完成所有的工作</p>
 <h3 id="Runner"><a href="#Runner" class="headerlink" title="Runner"></a>Runner</h3><p>先把 runner 复制到本地，用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">84</span>-<span class="number">233</span>-<span class="number">246</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/runner.sh ./</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/runner.sh ./</span><br></pre></td></tr></table></figure>
 <p>需要回答的问题是：</p>
 <ol>
 <li>output 文件中有多少行，可以用这个命令 <code>wc -l output | awk {&#39;print $1&#39;}</code></li>
@@ -251,11 +248,17 @@
 <li>2015 年 12 月最受欢迎的且在 12 月 1 日没有人访问的页面是那个</li>
 <li>这个月有多少天，标题是 <code>Twitter</code> 的页面的访问次数比标题是 <code>Apple_Inc.</code> 的页面的访问次数多。</li>
 <li>给在文件 q6 中出现的电影排序，根据单天最高的浏览量来排（高的在前面），用逗号分隔，没有空格</li>
-<li>给在文件 q7 中出现的操作系统排序，根据月份最高的浏览量来排（高的在前面），用逗号分隔，没有空格</li>
+<li>给在文件 q7 中出现的操作系统排序，根据月份最高的浏览量来排（高的在前面），用逗号分隔，没有空格，数量相同需要用字母降序排序</li>
 <li>有多少数据集中的电影也有对应的电视剧？电影名称 <code>&lt;article_name&gt;_([year_]film)</code>，电视剧名称 <code>&lt;article_name&gt;_([year]_TV_series)</code>，也就是说，<code>article_name</code> 必须完全相同，电影和电视剧系列可能跟着一个 4 位数的年份（也就是说可能没有）</li>
 <li>Find out the number of articles with longest number of strictly decreasing sequence of views 最长递减子序列的个数，可以一次做完</li>
 </ol>
-<p>后面四个问题是不评分的，按照实际情况填写就好。我用的都是 <code>m3.xlarge</code> 类型的 instance，然后一共 4 个 core，时间是：</p>
+<p>后面四个问题是不评分的，按照实际情况填写就好。我用的都是 <code>m3.xlarge</code> 类型的 instance，然后一共 4 个 core，时间是：73 min</p>
+<p>因为之前终止了实例，所以需要把之前的工作重新上传：</p>
+<p>先登录：<code>ssh -i demo.pem ubuntu@ec2-54-152-44-36.compute-1.amazonaws.com</code></p>
+<p>用下面的命令把文件复制到机器里：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scp -i demo.pem ./Mapper.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Reducer.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./output ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./runner.sh ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Q8.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br><span class="line"></span><br><span class="line">scp -i demo.pem ./Q9.java ubuntu@ec2-<span class="number">54</span>-<span class="number">152</span>-<span class="number">44</span>-<span class="number">36</span>.compute-<span class="number">1</span>.amazonaws.com:~/Project1_2/</span><br></pre></td></tr></table></figure>
+<p>然后可以用下面的代码提交：<code>./submitter -a dawang -l java</code>。</p>
+<p>大部分的时间都在为奇奇怪怪又不说清楚的测试集耽误时间，真心觉得这样浪费大家时间没多少意义。差评。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这节课我们来看看，如何利用 AWS 来进行并行处理，完成与上节课类似的文本处理任务。</p>]]>
