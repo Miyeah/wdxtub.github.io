@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-01T18:18:21.000Z</updated>
+  <updated>2016-02-01T21:13:10.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[云计算 第 11 课 Horizontal Scaling and Advanced Resource Scaling]]></title>
+    <link href="http://wdxtub.com/2016/02/01/cc-11/"/>
+    <id>http://wdxtub.com/2016/02/01/cc-11/</id>
+    <published>2016-02-01T19:55:20.000Z</published>
+    <updated>2016-02-01T21:13:10.000Z</updated>
+    <content type="html"><![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u5B66_u4E60_u76EE_u6807"><a href="#u5B66_u4E60_u76EE_u6807" class="headerlink" title="学习目标"></a>学习目标</h2><p>这一次课时间紧任务重，需要掌握的知识和技能有：</p>
+<ol>
+<li>根据需求利用代码通过云 API 来申请所需资源</li>
+<li>能够在故障、花费和性能等限制条件下完成 web 服务的部署</li>
+<li>对比 AWS 和 Azure 在 API 使用上的不同</li>
+<li>能够识别和说明处理资源故障的必要性</li>
+<li>能够解释在所有资源间保证负载均衡的必要性</li>
+<li>在 Azure 的 VM Scale Set 上配置和部署一个负载均衡器 Load Balancer</li>
+<li>在 AWS 的 Auto Scaling Group 上配置和部署一个 Elastic Load Balancer</li>
+<li>完成能够处理资源失败的解决方案</li>
+<li>在申请云资源的时候考虑花费这一限制因素</li>
+<li>分析最大化性能和可靠性与成本之间的权衡</li>
+</ol>
+<p>有一些需要注意的地方</p>
+<ul>
+<li>记得打标签（EC2, ELB, ASG）</li>
+<li>不要在代码里包含 AWS 的密钥</li>
+<li>AWS 中只能使用 <code>m3.medium</code> 或 <code>m3.large</code></li>
+<li>Azure 中只能使用 <code>Standard_A1(DC)</code> 和 <code>Standard_D1(LG)</code></li>
+</ul>
+<h2 id="u57FA_u7840_u77E5_u8BC6"><a href="#u57FA_u7840_u77E5_u8BC6" class="headerlink" title="基础知识"></a>基础知识</h2><p>上一课里，我们使用云来进行了大数据处理和分析，只需要几行代码，就可以启动一个 EMR 集群来进行并行处理运算。但是，类似 EMR 这种服务通常很贵，并且内部具体的运行状况我们很多时候无从得知。另外，虽然 EMR 支持很多不同的应用，但是实际上还是有诸多限制，比方说主要是应用在批处理和分析上。这一次我们会部署一个 web 服务，用来响应各种 web 请求（类似于<a href="http://wdxtub.com/2016/01/16/cc-7">第 7 课 AWS 动手玩</a>）</p>
+<p>在<a href="http://wdxtub.com/2016/01/20/cc-9/">第 9 课 Sequential Programming</a>中，我们故意选择了一个 <code>t1.micro</code> 实例，只有很有限的硬件资源。在这种条件的制约下，就很容易出现运行缓慢，甚至内存不够的问题，于是需要我们去尽可能优化代码。</p>
+<p>但是代码优化总有一个极限，很多时候我们必须指定合适的硬件资源才能更有效率地完成各项任务。在云计算中，调整分配给不同工作/任务/服务的资源的过程称为 scaling。</p>
+<p>Scaling 具体来说，可以分成两类</p>
+<h3 id="Scaling__u7684_u5206_u7C7B"><a href="#Scaling__u7684_u5206_u7C7B" class="headerlink" title="Scaling 的分类"></a>Scaling 的分类</h3><p><strong>Vertical Scaling</strong></p>
+<p>这是最简单的方法，也就是提高系统中资源的容量。例如，改变核心的数量，内存的大小或者处理器的计算速度。我们在之前的课程中也进行过测试。</p>
+<p><strong>Horizontal Scaling</strong></p>
+<p>Horizontal scaling 就复杂很多，因为需要把任务进行切分，然后分配到不同的资源上。一个比较简单的机制就是不断增加相同的资源（实例），这次我们主要以这种方式来完成 horizontal scaling</p>
+<p>在没有云之前，要对资源进行 scaling 是一个很复杂的任务，云的其中一个突出好处就是可以动态添加资源，也就是这节课着重要强调的内容。</p>
+<p>这里我们要做的就是写代码来和云上的资源进行交互，简单来说，就是把各种 API 连起来用正确的顺序进行调用，但是需要注意代码的可靠性和容错性。因为实际上是发送过去一个请求，然后得到一个返回结果，所以需要做好各种可能的预防措施，比如失败的话，可能需要重新申请。</p>
+<h2 id="u5267_u60C5_u6897_u6982"><a href="#u5267_u60C5_u6897_u6982" class="headerlink" title="剧情梗概"></a>剧情梗概</h2><p>设定很有意思，居然强行扯上了<a href="http://www.wikiwand.com/en/Orwellian" target="_blank" rel="external">奥威尔的世界观</a>，简单来说，这个世界观比这门课有意思多啦！《1984》+《动物农场》，你值得拥有。大概是这样的：</p>
+<p><img src="/images/14543608717887.jpg" alt=""></p>
+<h2 id="Azure_Horizontal_Scaling"><a href="#Azure_Horizontal_Scaling" class="headerlink" title="Azure Horizontal Scaling"></a>Azure Horizontal Scaling</h2><ul>
+<li>Scaling out: 从一个 <code>Standard_A1</code> 虚拟机扩展到很多个 <code>Standard_A1</code> 虚拟机</li>
+<li>Scaling in: 减少虚拟机的数量</li>
+</ul>
+<p>这里我们会用到两种不同的实例：</p>
+<ul>
+<li>Load Generator: 产生请求 </li>
+<li>Data Center: 处理和响应请求</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>]]>
+    
+    </summary>
+    
+      <category term="AWS" scheme="http://wdxtub.com/tags/AWS/"/>
+    
+      <category term="Azure" scheme="http://wdxtub.com/tags/Azure/"/>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[How to Write Fast Code 第 2 课 Multicore 编程]]></title>
@@ -3745,180 +3813,6 @@ Bob 30
       <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="队列" scheme="http://wdxtub.com/tags/%E9%98%9F%E5%88%97/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[编程起跑线 第 3 课 数组和字符串]]></title>
-    <link href="http://wdxtub.com/2016/01/22/programmer-startline-3/"/>
-    <id>http://wdxtub.com/2016/01/22/programmer-startline-3/</id>
-    <published>2016-01-22T20:50:55.000Z</published>
-    <updated>2016-01-23T21:47:35.000Z</updated>
-    <content type="html"><![CDATA[<p>数组和字符串作为最基本的元素，涉及的知识点非常多，许多高级的应用如堆，栈，队列，动态规划等都可以基于数组，这一讲我们主要还是集中在数组本身性质的习题上。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u9898_u76EE_u5206_u7C7B_u4E0E_u89E3_u9898_u7B56_u7565"><a href="#u9898_u76EE_u5206_u7C7B_u4E0E_u89E3_u9898_u7B56_u7565" class="headerlink" title="题目分类与解题策略"></a>题目分类与解题策略</h2><p>原本以为这一章内容不会很多，但是整理资料的时候发现，我把不少稍微有些『难度』的题目，也放到了这个类别下，不过也没有问题，万事开头难，熬过这一波就好了。</p>
-<p>我们先来分析一下具体的题目类型，因为很多题目万变不离其宗，只要抓住解题思路，剩下的就是时间问题了（具体的题目列表在最后的附录中），下面是几个大类的问题及对应的思路：</p>
-<h3 id="u6B21_u6570_u7EDF_u8BA1"><a href="#u6B21_u6570_u7EDF_u8BA1" class="headerlink" title="次数统计"></a>次数统计</h3><p>这类题目就是哈希表大显身手的时候了，比方说找唯一出现的字母或数字，或者是统计元素出现的次数，都可以用哈希表来快速完成。因为哈希表可以做到 O(1) 时间的检索，所以效率会很高。看一次这个分类下的题目就会发现，问题的突破口往往就是找到对应的建立哈希表的方式。</p>
-<p>哈希表(Hash Table)几乎是最为重要的数据结构，主要用于基于“键(key)”的查找，存储的基本元素是键-值对(key-value pair)。逻辑上，数组可以作为哈希表 的一个特例：键是一个非负整数。注意，通常哈希表会假设键是数据的唯一标识，相同的键默认表示同一个基本存储元素。</p>
-<p>哈希表的本质是当使用者提供一个键，根据哈希表自身定义的哈希函数(hash function)，映射出一个下标，根据这个下标决定需要把当前的元素存储在什么位置。在一些合理的假设情况下，查找一个元素的平均时间复杂度是O(1)，插入一个元素的平摊(amortized)时间复杂度是O(1)。</p>
-<p>当对于不同的键，哈希函数提供相同的存储地址时，哈希表就遇到了所谓的冲突(collision)。解决冲突的方式有链接法(chaining)和开放地址法(open addressing)两种。简单来说，链接法相当于利用辅助数据结构(比如链表)，将哈希函数映射出相同地址的那些元素链接起来。而开放地址法是指以某种持续的哈希方式继续哈希，直到产生的下标对应尚未被使用的存储地址，然后把当前元素存储在这个地址里。</p>
-<p>通常而言，链接法实现相对简便，但是可能需要附加空间，并且利用当前空间的效率不如开放地址法高。开放地址法更需要合理设计的连续哈希函数，但是可以获得更好的空间使用效率。需要注意的是，过于频繁的冲突会降低哈希表的搜索效率，此时需要哈希表的扩张。</p>
-<p>比较有特点的题目是：</p>
-<ul>
-<li><a href="http://wdxtub.com/interview/14520595478736.html">01 相等的串</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469735.html">Check Duplicate</a></li>
-</ul>
-<h3 id="u7279_u5B9A_u6A21_u5F0F"><a href="#u7279_u5B9A_u6A21_u5F0F" class="headerlink" title="特定模式"></a>特定模式</h3><p>这个类型的题目比较多变化，比方说，找回文串，子串匹配，或者是两个数组中相差最小的两个元素，又或者是字符串按照一定规则变成数字。这类问题有一个特点，就是可以很容易想出暴力解法，但是暴力解法会有很多重复运算，效率不高，于是需要进一步进行优化。具体的优化方式有很多，比方说找回文串，如果比较复杂一点的 manacher 算法没办法保证百分百写对的话，那么以每个字符为中心开始延展的方式，也是不错的做法。</p>
-<p>具体来说，就是一定要清楚地知道，具体在操作的元素是哪个，以及对应的匹配关系，一开始可能会比较慢，但是熟悉了之后就好了。比较有特点的题目是：</p>
-<ul>
-<li><a href="http://wdxtub.com/interview/14520595479135.html">Shortest Palindrome</a></li>
-<li><a href="http://wdxtub.com/interview/14520595475576.html">One Away</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471113.html">Gray Code</a></li>
-</ul>
-<h3 id="u533A_u95F4_u95EE_u9898"><a href="#u533A_u95F4_u95EE_u9898" class="headerlink" title="区间问题"></a>区间问题</h3><p>区间问题的复杂性在于，需要处理多种情况，如果不事先想好的话，很容易出错。另外就是处理区间取数的问题，会涉及到一些动态规划的思想，当然，有些问题也可以用哈希表来解决。解决问题的关键在于，一定要意识到多种情况的可能，并且在代码中做对应的处理。比较有特点的题目是：</p>
-<ul>
-<li><a href="http://wdxtub.com/interview/14520595473642.html">最大间隔问题</a></li>
-<li><a href="http://wdxtub.com/interview/14520595476141.html">Peaks and Valleys</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469247.html">2 Sum</a></li>
-</ul>
-<h3 id="u77E9_u9635_u76F8_u5173"><a href="#u77E9_u9635_u76F8_u5173" class="headerlink" title="矩阵相关"></a>矩阵相关</h3><p>矩阵就是二维数组，具体来说，难度在于，怎么处理好两个维度的问题。具体来说，就是要看题目中有没有给出一些明显的信息，比方说排好序。写关键代码的时候，一定要列好前条件和后条件，保证不出问题。比较有特点的题目是：</p>
-<ul>
-<li><a href="http://wdxtub.com/interview/14520595478930.html">Set Matrix Zero</a></li>
-<li><a href="http://wdxtub.com/interview/14520595479796.html">Spiral Matrix</a></li>
-<li><a href="http://wdxtub.com/interview/14520595474607.html">Min Triangle Path Sum</a></li>
-</ul>
-<h3 id="u903B_u8F91_u64CD_u4F5C"><a href="#u903B_u8F91_u64CD_u4F5C" class="headerlink" title="逻辑操作"></a>逻辑操作</h3><p>这个类别包括的题目千奇百怪，理论上来说很难总结一个普适的规律，因为实际上就是根据特定的逻辑规则来进行操作。比方说以特定格式输出，旋转，排序，交换，合并，堆等等。因为变化太多，所以这里只能给出一个比较通用的建议：列出前条件后条件，注意每一步操作及可能带来的副作用，善于利用数据结构本身的能力。比较有特点的题目有：</p>
-<ul>
-<li><a href="http://wdxtub.com/interview/14520595480445.html">String Compression</a></li>
-<li><a href="http://wdxtub.com/interview/14520595474265.html">Merge Two Sorted Array</a></li>
-<li><a href="http://wdxtub.com/interview/14520595472329.html">Largest Number</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471461.html">Heapify</a></li>
-</ul>
-<h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
-<li>次数统计（唯一性，是否出现，个数相等）<ul>
-<li><a href="http://wdxtub.com/interview/14520595481622.html">Unique Character</a></li>
-<li><a href="http://wdxtub.com/interview/14520595480211.html">String Composition</a></li>
-<li><a href="http://wdxtub.com/interview/14520595479999.html">String Comparison</a></li>
-<li><a href="http://wdxtub.com/interview/14520595481118.html">Substring with Concatenation of All Words</a></li>
-<li><a href="http://wdxtub.com/interview/14520595478736.html">01 相等的串</a></li>
-<li><a href="http://wdxtub.com/interview/14520595477318.html">Repeated DNA Sequences</a></li>
-<li><a href="http://wdxtub.com/interview/14520595476547.html">Remove Duplicates from Sorted Array</a></li>
-<li><a href="http://wdxtub.com/interview/14520595476340.html">Remove Duplicates from Sorted Array II</a></li>
-<li><a href="http://wdxtub.com/interview/14520595473349.html">Majority Element</a></li>
-<li><a href="http://wdxtub.com/interview/14520595473082.html">Majority Element II</a></li>
-<li><a href="http://wdxtub.com/interview/14520595473216.html">Majority Element III</a></li>
-<li><a href="http://wdxtub.com/interview/14520595472951.html">Longest Word in Dictionary</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470900.html">Find Anagram</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470471.html">Determine String Permutation</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469735.html">Check Duplicate</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469566.html">Check Duplicate II</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469610.html">Check Duplicate III</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469690.html">Find Duplicates</a></li>
-</ul>
-</li>
-<li>特定模式（回文串，子串，相差最少）<ul>
-<li><a href="http://wdxtub.com/interview/14520595479135.html">Shortest Palindrome</a></li>
-<li><a href="http://wdxtub.com/interview/14520595480652.html">Implement strStr()</a></li>
-<li><a href="http://wdxtub.com/interview/14520595477901.html">Roman to Integer</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471853.html">Integer to Roman</a></li>
-<li><a href="http://wdxtub.com/interview/14520595475576.html">One Away</a></li>
-<li><a href="http://wdxtub.com/interview/14520595479365.html">Simplify File Path</a></li>
-<li><a href="http://wdxtub.com/interview/14520595472570.html">Letter Combinations of a Phone Number</a></li>
-<li><a href="http://wdxtub.com/interview/14520595472084.html">Isomorphic Strings</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471113.html">Gray Code</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469921.html">Palindrome Permutation</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469833.html">Check Palindrome</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469782.html">Palindrome Number</a></li>
-<li><a href="http://wdxtub.com/interview/14520604914478.html">Longest Palindromic Substring</a></li>
-</ul>
-</li>
-<li>区间问题<ul>
-<li><a href="http://wdxtub.com/interview/14520595473959.html">Merge Range</a></li>
-<li><a href="http://wdxtub.com/interview/14520595473642.html">最大间隔问题</a></li>
-<li><a href="http://wdxtub.com/interview/14520595476141.html">Peaks and Valleys</a></li>
-<li><a href="http://wdxtub.com/interview/14520595475403.html">奇偶调序</a></li>
-<li><a href="http://wdxtub.com/interview/14520595474923.html">Move Zeroes</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471966.html">Interleaving Array</a></li>
-<li><a href="http://wdxtub.com/interview/14520595472695.html">Longest Common Prefix</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471570.html">Insert Range</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469247.html">2 Sum</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469329.html">3 Sum</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469298.html">3 Sum Closest</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469361.html">4 Sum</a></li>
-<li><a href="http://wdxtub.com/interview/14520595472209.html">K Sum II</a></li>
-<li><a href="http://wdxtub.com/interview/14520604916479.html">Minimum Subarray for Sum</a></li>
-<li><a href="http://wdxtub.com/interview/14520604916322.html">Minimum Window Substring</a></li>
-<li><a href="http://wdxtub.com/interview/14520604914788.html">Longest Substring Without Repeating Characters</a></li>
-<li><a href="http://wdxtub.com/interview/14520604914642.html">Longest Substring with K Unique Characters</a></li>
-</ul>
-</li>
-<li>矩阵相关<ul>
-<li><a href="http://wdxtub.com/interview/14520595478930.html">Set Matrix Zero</a></li>
-<li><a href="http://wdxtub.com/interview/14520595479796.html">Spiral Matrix</a></li>
-<li><a href="http://wdxtub.com/interview/14520595479570.html">Spiral Matrix II</a></li>
-<li><a href="http://wdxtub.com/interview/14520595480877.html">Submatrix Sum Zero</a></li>
-<li><a href="http://wdxtub.com/interview/14520595478302.html">Rotate Image</a></li>
-<li><a href="http://wdxtub.com/interview/14520595475941.html">Pascal’s Triangle</a></li>
-<li><a href="http://wdxtub.com/interview/14520595475767.html">Pascal’s Triangle II</a></li>
-<li><a href="http://wdxtub.com/interview/14520595475237.html">二进制矩阵中 1 的个数</a></li>
-<li><a href="http://wdxtub.com/interview/14520595474607.html">Min Triangle Path Sum</a></li>
-<li><a href="http://wdxtub.com/interview/14520595473495.html">Matrix ZigZag Traversal</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471005.html">Game of Life</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470188.html">Check Valid Sudoku</a></li>
-</ul>
-</li>
-<li>逻辑操作（特定格式，旋转，排序，特定元素交换，合并，堆）<ul>
-<li><a href="http://wdxtub.com/interview/14520595481874.html">ZigZag Conversion</a></li>
-<li><a href="http://wdxtub.com/interview/14520595481376.html">Text Justification</a></li>
-<li><a href="http://wdxtub.com/interview/14520595480445.html">String Compression</a></li>
-<li><a href="http://wdxtub.com/interview/14520595478523.html">Rotate String</a></li>
-<li><a href="http://wdxtub.com/interview/14520595478107.html">Rotate Array</a></li>
-<li><a href="http://wdxtub.com/interview/14520595477695.html">Reverse Sentence</a></li>
-<li><a href="http://wdxtub.com/interview/14520595477503.html">Reverse Integer</a></li>
-<li><a href="http://wdxtub.com/interview/14520595477117.html">Reorder String by Case</a></li>
-<li><a href="http://wdxtub.com/interview/14520595476933.html">Reorder Rotated Array</a></li>
-<li><a href="http://wdxtub.com/interview/14520595476748.html">Remove Element</a></li>
-<li><a href="http://wdxtub.com/interview/14520595475077.html">Multiply Strings</a></li>
-<li><a href="http://wdxtub.com/interview/14520595474770.html">Modify String</a></li>
-<li><a href="http://wdxtub.com/interview/14520595474265.html">Merge Two Sorted Array</a></li>
-<li><a href="http://wdxtub.com/interview/14520595474103.html">Sorted Two Sorted Array II</a></li>
-<li><a href="http://wdxtub.com/interview/14520595473794.html">Median of Unsorted Array</a></li>
-<li><a href="http://wdxtub.com/interview/14520595472449.html">Length of Last Word</a></li>
-<li><a href="http://wdxtub.com/interview/14520595472329.html">Largest Number</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471740.html">Integer to English Words</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471461.html">Heapify</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471345.html">H-Index</a></li>
-<li><a href="http://wdxtub.com/interview/14520595471233.html">H-Index II</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470785.html">Excel Sheet Column Title</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470670.html">Excel Sheet Column Number</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470378.html">Count and Say</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470276.html">Compare Version Numbers</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470088.html">Check Valid Number</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469517.html">Candy</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469475.html">Binary to String</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469437.html">Add One</a></li>
-<li><a href="http://wdxtub.com/interview/14520595469400.html">Add Binary</a></li>
-</ul>
-</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>数组和字符串作为最基本的元素，涉及的知识点非常多，许多高级的应用如堆，栈，队列，动态规划等都可以基于数组，这一讲我们主要还是集中在数组本身性质的习题上。</p>]]>
-    
-    </summary>
-    
-      <category term="字符串" scheme="http://wdxtub.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-      <category term="思维" scheme="http://wdxtub.com/tags/%E6%80%9D%E7%BB%B4/"/>
-    
-      <category term="技能" scheme="http://wdxtub.com/tags/%E6%8A%80%E8%83%BD/"/>
-    
-      <category term="数组" scheme="http://wdxtub.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
-      <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
