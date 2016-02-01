@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-01T03:19:54.000Z</updated>
+  <updated>2016-02-01T14:23:15.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[游戏引进评估的一些思考]]></title>
+    <link href="http://wdxtub.com/2016/02/01/game-import/"/>
+    <id>http://wdxtub.com/2016/02/01/game-import/</id>
+    <published>2016-02-01T11:57:08.000Z</published>
+    <updated>2016-02-01T14:23:15.000Z</updated>
+    <content type="html"><![CDATA[<p>最近要面一个游戏引进评估的职位，因为网上的资料实在很少，所以自己总结思考了三个方面。虽然难免流于纸上谈兵，但也比什么都不准备想当然要好得多。</p>
+<a id="more"></a>
+<hr>
+<p>游戏评估算是非技术类职位，因为面试内容不是算法题，所以前期准备的空间很大。这也就意味着，首先需要确定一个整体的思路，不然很容易迷失在繁杂的细节当中。对于任何一场面试，面任何一个职位，从公司发布的职位描述开始，往往不会错。虽然职位描述大多比较宽泛抽象，但至少可以给我们一个大方向。</p>
+<p>例如，我大致浏览了一下不同公司对游戏评估类似职位的描述，主要强调的工作内容和能力有以下几点：</p>
+<ul>
+<li>寻找、评估、谈判，完善甄别评估体系</li>
+<li>了解市面上的游戏，对行业有基本了解</li>
+<li>市场和竞争产品的关注与分析</li>
+</ul>
+<p>游戏评估其实和其他的可行性分析工作一样，需要在确定的大方向下，可以切分出不同的维度，在各个维度上进行调查、研究和分析，对于是否要引进一个游戏来说，主要可以分成这三个维度：</p>
+<ol>
+<li>游戏质量评估：游戏本身的质量如何，涉及到许多关于游戏设计的概念，也是本文着力想要说明的</li>
+<li>游戏运营评估：游戏是否适合本地化运营，包括对应的改动及处理好文化差异</li>
+<li>具体事务评估：这一部分比较杂，是除了质量和运营外的诸多因素的综合考虑，比方说研发团队的从业经历，是否是经典题材，投资方等等</li>
+</ol>
+<p>因为不确定面试时具体要讨论哪方面（当然也可能我想得全 miss），所以这三个方面都会写一下，算是一个思考和总结</p>
+<h2 id="u6E38_u620F_u8D28_u91CF_u8BC4_u4F30"><a href="#u6E38_u620F_u8D28_u91CF_u8BC4_u4F30" class="headerlink" title="游戏质量评估"></a>游戏质量评估</h2><p>对一个游戏进行评估，主要可以从以下五个维度来进行（这些同时也与营销策略的制定密切相关）：</p>
+<ul>
+<li>核心体验：游戏类型，游戏乐趣的主要来源，玩家进行游戏的主要动机</li>
+<li>基础机制：长中短期目标是否明确，规则是否清晰，策略与运气（其实就是数值）是否平衡</li>
+<li>奖惩系统：玩家在胜利和失败时会得到什么，是用什么方式来处理可能产生的挫败感</li>
+<li>长期激励：游戏通过什么方式让玩家愿意持续去进行游戏，荣誉/惊喜/等级/任务/社交/玩法/奖励/活动等等</li>
+<li>美学布局：剧情，画面，界面设计，音乐音效，动画效果，色彩色调及它们对玩家心理的影响</li>
+</ul>
+<p>这里面每一点如果展开，都是几天几夜说不完的，所以简单挑一些比较清晰直白的来进行描述。比方说，如果要分析游戏乐趣从哪里来，那么基本就逃不开下面八种模式：</p>
+<ol>
+<li>竞争：竞速，占领版图等等</li>
+<li>达到目标：比方说达到一定等级或者是拥有某些装备</li>
+<li>战胜：可以是 PVP，PVE，也可以是完成设定好的挑战</li>
+<li>合作：多人副本，公会，社交</li>
+<li>角色扮演：属性成长，剧情带入</li>
+<li>探索和建设：开放世界沙盒类游戏</li>
+<li>收集：一些需要积累的任务，或者是类似偷菜这种以收集为主体的游戏</li>
+<li>解决问题或制定策略：即时战略与益智游戏等等</li>
+</ol>
+<p>我们发现，其实目前许多游戏早已涵盖了几个甚至全部的游戏模式。通过这种大而全的策略来笼络各类玩家。而这些乐趣的来源，实际上是玩家进行游戏的动机的具象化，玩家的动机主要是以下这些：权力、好奇心、独立性、地位、社会联系、复仇、荣誉、理想主义、锻炼身体、浪漫、嫁人、整理、饮食、接受、宁静、存储等等。</p>
+<p>玩家的类型也是多种多样的，评估的时候也需要考虑到游戏的主要受众，比方说：社交家，自由者，成就者，慈善家，玩家（这里指研究游戏系统），破坏者等等。最好根据不同的特点来进行对应的评估。</p>
+<p>最重要的一个部分，可能是文化层面的契合度分析。日韩游戏和我们的理念比较接近，但是欧美的可能就差别比较大了。经济、文化、信息渠道和用户习惯的巨大差异，使得游戏引进需要更加细致的评估。比方说，欧美玩家更加崇尚通过长时间的努力来磨练技艺，而中国玩家则更愿意直接砸钱甩出优越感，这可能就需要对游戏本身的玩法和逻辑进行一定调整了。</p>
+<p>而文化层面的评估，还可以更加细化，如：</p>
+<ul>
+<li>人文：背景、故事、历史、神话、宗教、民俗、语言（不同文化间可能差异巨大）</li>
+<li>视听：画面、布局、声乐、美术、色彩、动画</li>
+<li>资源管理：人口、管理、经济、数值、统计</li>
+<li>空间：建筑、地理、气候、农业、畜牧业、化学</li>
+<li>用户行为：玩家类型、社交、心理、战略</li>
+</ul>
+<p>这里就不展开了。</p>
+<h2 id="u6E38_u620F_u8FD0_u8425_u8BC4_u4F30"><a href="#u6E38_u620F_u8FD0_u8425_u8BC4_u4F30" class="headerlink" title="游戏运营评估"></a>游戏运营评估</h2><p>如果游戏的质量过硬，还需要考虑具体运营的时候，能否顺利进行本土化处理，比方说，处理好文本，表达方式，接受习惯的差异，添加本地化支付方式等。还需要考虑的问题有；</p>
+<ul>
+<li>依赖鲸鱼玩家 vs 依赖众多小额付费玩家（微交易-比方说花一块钱复活）</li>
+<li>性能数据、过程数据、用户数据</li>
+<li>消费者指标、社区指标、玩法指标（可以通过观察不同地区 App Store 排行榜，百度指数，贴吧论坛等的人气变化来进行评估）</li>
+<li>能够让玩家维持多久的游戏时间，这种玩法的接受度有多高</li>
+<li>目标群体（人数，人口特征，消费能力）以及游戏地点（居家休闲，旅途，工作间隙，还是需要专门拿出一段时间来游戏）</li>
+</ul>
+<h2 id="u5177_u4F53_u4E8B_u52A1_u8BC4_u4F30"><a href="#u5177_u4F53_u4E8B_u52A1_u8BC4_u4F30" class="headerlink" title="具体事务评估"></a>具体事务评估</h2><p>这里简单提一些需要注意的问题：</p>
+<ul>
+<li>研发团队的从业经历</li>
+<li>是否源自经典题材的拓展（横向、纵向）</li>
+<li>游戏数据表现</li>
+<li>投资方与并购方</li>
+<li>游戏题材的情怀与玩家共鸣</li>
+<li>与当红游戏进行对比</li>
+<li>是否有明星等进行广泛影响（比方说 Guitar Hero 在北美就有很多大牌明星代言）</li>
+<li>行业竞赛及所得奖项</li>
+</ul>
+<p>具体工作中肯定还会遇到比这个详尽繁杂得多的问题，这里就算是梳理下思路了。</p>
+<h2 id="u9644_u5F55_uFF1A_u817E_u8BAF_u5F15_u8FDB/_u4EE3_u7406_u6E38_u620F_u5217_u8868"><a href="#u9644_u5F55_uFF1A_u817E_u8BAF_u5F15_u8FDB/_u4EE3_u7406_u6E38_u620F_u5217_u8868" class="headerlink" title="附录：腾讯引进/代理游戏列表"></a>附录：腾讯引进/代理游戏列表</h2><p>手游：</p>
+<p>火影忍者 / 奇迹暖暖 / 糖果传奇 / 我叫 MT 2 / 仙剑 / 宫爆老奶奶 / Two Dots / 全民切水果 / 胜利足球 / FIFA ONLINE 3 M / 复仇者联盟</p>
+<p>端游</p>
+<p>剑灵（NCSoft）/ 地下城与勇士 / 寻仙 / 天堂（NCSoft）/ 英雄联盟 / 穿越火线 / NBA 2K OL（Take-Two）/ Call of Duty Online（动视暴雪）/ 自由足球 / 战争前线（Crytek）/ 战地之王（Redduck）/ 超神英雄HON（S2 Games）/ 上古世纪 / 怪物猎人（Capcom）/ 疾风之刃（Allm）/ 兽人必须死（Robot）/ 全职大师（NCSoft）/</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近要面一个游戏引进评估的职位，因为网上的资料实在很少，所以自己总结思考了三个方面。虽然难免流于纸上谈兵，但也比什么都不准备想当然要好得多。</p>]]>
+    
+    </summary>
+    
+      <category term="引进" scheme="http://wdxtub.com/tags/%E5%BC%95%E8%BF%9B/"/>
+    
+      <category term="游戏" scheme="http://wdxtub.com/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+      <category term="评估" scheme="http://wdxtub.com/tags/%E8%AF%84%E4%BC%B0/"/>
+    
+      <category term="面试" scheme="http://wdxtub.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Deadline 与不插电]]></title>
@@ -2657,86 +2753,6 @@ Bob 30
       <category term="技能" scheme="http://wdxtub.com/tags/%E6%8A%80%E8%83%BD/"/>
     
       <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 9 课 Machine Advanced]]></title>
-    <link href="http://wdxtub.com/2016/01/21/csapp-9/"/>
-    <id>http://wdxtub.com/2016/01/21/csapp-9/</id>
-    <published>2016-01-22T00:16:21.000Z</published>
-    <updated>2016-01-22T20:35:42.000Z</updated>
-    <content type="html"><![CDATA[<p>这一讲是机器代码的最后一部分，会介绍一些『高级』话题，比如程序在内存中的组织，缓冲区溢出引起的攻防大战，以及 Union 的具体实现方式。</p>
-<a id="more"></a>
-<hr>
-<p>我们先来看看程序在内存中是如何组织的（x86-64 Linux）：</p>
-<p><img src="/images/14534337498107.jpg" alt=""></p>
-<p>最上面是运行时栈，有 8MB 的大小限制，一般用来保存局部变量。然后是堆，动态的内存分配会在这里处理，例如 <code>malloc()</code>, <code>calloc()</code>, <code>new()</code> 等。然后是数据，指的是静态分配的数据，比如说全局变量，静态变量，常量字符串。最后是共享库等可执行的机器指令，这一部分是只读的。</p>
-<p>看个具体分配的例子：</p>
-<p><img src="/images/14534340388277.jpg" alt=""></p>
-<p>经过观察大概是这样的：</p>
-<p><img src="/images/14534340592122.jpg" alt=""></p>
-<p>这里注意一点，分配堆的时候是两头分配的，到中间相遇的时候就说明没有空间了，具体是怎么在两头分配的呢？老师也表示不知道。</p>
-<h2 id="Buffer_Overflow"><a href="#Buffer_Overflow" class="headerlink" title="Buffer Overflow"></a>Buffer Overflow</h2><p>缓冲区溢出需要注意两个方面，一是为什么会产生这种情况，二是在黑客利用这种漏洞来进行攻击时，能够怎么防范。</p>
-<p>先看看之前提到过的例子：</p>
-<p><img src="/images/14534345803640.jpg" alt=""></p>
-<p>之所以会产生这种错误，是因为访问内存的时候跨过了数组本身的界限修改了 d 的值：</p>
-<p><img src="/images/14534346212614.jpg" alt=""></p>
-<p>你没看错，这是个大问题！#1 technical cause of security vulnerabilities! #1 overall cause is social enginnering / user ignorance!</p>
-<p>如果不检查输入字符串的长度，就很容易出现这种问题，尤其是针对在栈上有界限的字符数组。</p>
-<p>在 Unix 中，<code>gets()</code> 函数的实现是这样的：</p>
-<p><img src="/images/14534348853894.jpg" alt=""></p>
-<p>可以看到并没有去检测最多能读入多少字符（于是很容易出问题），类似的情况还在 <code>strcpy</code>, <code>strcat</code>, <code>scanf</code>, <code>fscanf</code>, <code>sscanf</code> 中出现。比如说</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">echo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> buf[<span class="number">4</span>]; <span class="comment">// 太小</span></span><br><span class="line">	gets(buf);</span><br><span class="line">	<span class="built_in">puts</span>(buf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">call_echo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	echo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们输入一长串，可以看到：</p>
-<p><img src="/images/14534352714657.jpg" alt=""></p>
-<p>为什么命名只给了 4 个 char，居然一开始输入这么多都没问题？我们到汇编代码里去看看：</p>
-<p><img src="/images/14534354107024.jpg" alt=""></p>
-<p>可以看到实际上是给 %rsp 分配了 0x18 的空间的。</p>
-<p><img src="/images/14534362980014.jpg" alt=""></p>
-<p>在调用之前，可以看到内存的摆放是这样的，但是调用了 <code>call_echo</code> 之后，就变成：</p>
-<p><img src="/images/14534363898271.jpg" alt=""></p>
-<p>虽然缓冲区溢出了，但是并没有损害当前的状态，程序还是可以继续运行（也就是没有出现段错误），但是如果再多一点的话：</p>
-<p><img src="/images/14534366083059.jpg" alt=""></p>
-<p>就把返回地址给覆盖掉了，但是段错误之后发现还可以继续运行，是因为返回代码会返回到 <code>main</code> 中，和具体的地址无关：</p>
-<p><img src="/images/14534367016302.jpg" alt=""></p>
-<p>在这个例子中没有问题，但是在下面的例子中，就会出问题了</p>
-<p><img src="/images/14534367347277.jpg" alt=""></p>
-<p>原本函数 P 的返回地址是 A，但是因为 Buffer 一直在被写，直接改到了 P 的栈帧，那么之后跳转就会跳转到奇怪的地方了。</p>
-<p>那么我们现在来看看，怎么处理缓冲区溢出攻击，有几种方式：</p>
-<ol>
-<li>好好写代码，尽量不让缓冲区异常</li>
-<li>程序容易出问题，那么提供系统层级的保护</li>
-<li>编译器也可以来个认证(stack canaries)</li>
-</ol>
-<p>第一种，避免缓冲区溢出，我们用更安全的方法，如：<code>fgets</code>, <code>strncpy</code> 等等。</p>
-<p>第二种，栈的位置不确定，让缓冲区溢出没办法影响到，并且每次位置都不一样，就不怕被暴力破解：</p>
-<p><img src="/images/14534373336480.jpg" alt=""></p>
-<p>并且也可以把一段内存标记为只读，那么就避免因为缓冲区溢出而导致的重写。</p>
-<p>第三种，使用 Stack Canaries。简单来说，就是在超出缓冲区的位置加一个特殊的值，如果发现这个值变化了，那么就知道出问题了。</p>
-<p>但是，除了缓冲区溢出，还有另一种攻击的方式，就是把返回的位置给改了。可以利用修改已有的代码，来绕过系统和编译器的保护机制。这里就不详细展开了。</p>
-<h2 id="Unions"><a href="#Unions" class="headerlink" title="Unions"></a>Unions</h2><p>和结构体对应的一种结构，但是其实我在编程的时候感觉不是非常常见，这里简单了解下实现原理：</p>
-<p><img src="/images/14534375732251.jpg" alt=""></p>
-<p>具体的拜访可以是：</p>
-<p><img src="/images/14534376064591.jpg" alt=""></p>
-<p>下面是三种不同系统上的排布：</p>
-<p><img src="/images/14534376440995.jpg" alt=""></p>
-<p><img src="/images/14534376568110.jpg" alt=""></p>
-<p><img src="/images/14534376658164.jpg" alt=""></p>
-<p>这一讲的内容就到这里，下一讲是非常有趣的关于如何优化代码的内容，我自己都很期待。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这一讲是机器代码的最后一部分，会介绍一些『高级』话题，比如程序在内存中的组织，缓冲区溢出引起的攻防大战，以及 Union 的具体实现方式。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
