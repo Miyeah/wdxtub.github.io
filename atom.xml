@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-01T14:23:15.000Z</updated>
+  <updated>2016-02-01T15:12:42.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[How to Write Fast Code 第 2 课 Multicore 编程]]></title>
+    <link href="http://wdxtub.com/2016/02/01/fastcode-2/"/>
+    <id>http://wdxtub.com/2016/02/01/fastcode-2/</id>
+    <published>2016-02-01T14:51:26.000Z</published>
+    <updated>2016-02-01T15:12:42.000Z</updated>
+    <content type="html"><![CDATA[<p>这一课主要是介绍 Multicore 编程以及 OpenMP 的相关内容，OpenMP 会另外专门做一个配套的教程，稍后共享给大家。</p>
+<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这一课主要是介绍 Multicore 编程以及 OpenMP 的相关内容，OpenMP 会另外专门做一个配套的教程，稍后共享给大家。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="Multicore" scheme="http://wdxtub.com/tags/Multicore/"/>
+    
+      <category term="OpenMP" scheme="http://wdxtub.com/tags/OpenMP/"/>
+    
+      <category term="并行" scheme="http://wdxtub.com/tags/%E5%B9%B6%E8%A1%8C/"/>
+    
+      <category term="编程" scheme="http://wdxtub.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How to Write Fast Code 第 1 课 背景知识]]></title>
+    <link href="http://wdxtub.com/2016/02/01/fastcode-1/"/>
+    <id>http://wdxtub.com/2016/02/01/fastcode-1/</id>
+    <published>2016-02-01T14:51:22.000Z</published>
+    <updated>2016-02-01T15:11:19.000Z</updated>
+    <content type="html"><![CDATA[<p>这一课主要介绍并行编程的背景知识和一些基本的技巧，给大家一个整体的认知</p>
+<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这一课主要介绍并行编程的背景知识和一些基本的技巧，给大家一个整体的认知</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="并行" scheme="http://wdxtub.com/tags/%E5%B9%B6%E8%A1%8C/"/>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="编程" scheme="http://wdxtub.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[游戏引进评估的一些思考]]></title>
@@ -2659,92 +2717,6 @@ Bob 30
 ]]></content>
     <summary type="html">
     <![CDATA[<p>前一讲大概了解了这个系列会涉及的内容，这一讲就从最重要的概念，Big O 开始讲起。既然我们要找到效率更高的算法，首先就得知道，怎么样才是高效率。</p>]]>
-    
-    </summary>
-    
-      <category term="思维" scheme="http://wdxtub.com/tags/%E6%80%9D%E7%BB%B4/"/>
-    
-      <category term="技能" scheme="http://wdxtub.com/tags/%E6%8A%80%E8%83%BD/"/>
-    
-      <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[第二周 - Welcome]]></title>
-    <link href="http://wdxtub.com/2016/01/22/welcome/"/>
-    <id>http://wdxtub.com/2016/01/22/welcome/</id>
-    <published>2016-01-22T17:48:32.000Z</published>
-    <updated>2016-01-22T20:35:00.000Z</updated>
-    <content type="html"><![CDATA[<p>Ain’t no way to shut me down. Or to take the path I’ve taken.</p>
-<a id="more"></a>
-<hr>
-<p>第二周算是完全进入了状态，各项工作都在有条不紊地推进中，去西雅图和三藩的行程确定了下来，准备加入一个 Swift 的翻译小组，甚至还申请当助教，加上之前所说的『微小的工作』，这个学期真的算是有史以来最火力全开的了。</p>
-<p>按照以往的经验，这种高强度的工作通常持续不了太久，不过这周去吃了一次海鲜自助餐，算是大大满足了一番，真是无论如何，美酒美食，不能停止了供应。</p>
-<p>很让自己高兴的一点是慢慢开始从更长远的角度去考虑问题和指定计划了。比方说，高中时候写日志大多是流水账，之后可能稍微有一些主题，但是比较零散，但是现在开始谋划一个大主题，然后分成不同的小主题，逐个写完，组合起来能发挥比以前单篇文章更大的效果。而一个个主题又是为了更大的目标而努力，这种垒积木居然还蛮有意思的。感觉像是散兵游勇终于凑到一起，训练了一两年，成了正规军了。</p>
-<p>但是正规军也不是啥都好，少了些灵气，就我现在来说，还是更喜欢李云龙独立团那种血性，年轻人还是要敢打敢拼一点，可能欠缺些考虑甚至有点鲁莽，那也要比永远留在安全舒适区来得好。</p>
-<p>想做的能做的事情还有很多，摩拳擦掌，蓄势待发。（因为本周末的寒潮+大雪，估计只能在家多发文章了，哈哈）</p>
-<p>And maybe I’ve been left out. Never let this be mistaken.</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Ain’t no way to shut me down. Or to take the path I’ve taken.</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="周记" scheme="http://wdxtub.com/tags/%E5%91%A8%E8%AE%B0/"/>
-    
-      <category term="改变" scheme="http://wdxtub.com/tags/%E6%94%B9%E5%8F%98/"/>
-    
-      <category term="面试" scheme="http://wdxtub.com/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[编程起跑线 第 1 课 总览]]></title>
-    <link href="http://wdxtub.com/2016/01/22/programmer-startline-1/"/>
-    <id>http://wdxtub.com/2016/01/22/programmer-startline-1/</id>
-    <published>2016-01-22T14:35:39.000Z</published>
-    <updated>2016-01-23T00:59:34.000Z</updated>
-    <content type="html"><![CDATA[<p>学了这么多年计算机和编程，在快要步入社会之前，在不断地碰壁和尝试之后，终于摸到了一点门路。这个系列的文章，更接近于编程入门指南，讲的是从数据结构到算法最终到解决问题的方法和思路。</p>
-<a id="more"></a>
-<hr>
-<p>我想，对于大多数经历过或者正在经历从校园转入社会的人来说，找工作本身就是一个很好的学习过程。如果想要成为一个程序员，尤其是在北美的话，那么刷题（也就是做各种数据结构算法的题目）就是必不可少的了，颇有应试教育的味道。</p>
-<p>学习并不是为了考试，可是分数是简单粗暴评判学习效果的方法；编程并不是为了刷题，可是能否给出解答是简单粗暴评判编程水平的方法。虽然不合理不科学，但是在人力物力有限的条件下，这就是游戏规则。</p>
-<p>在这个过程中，你会发现，聪明人，或者说善于学习的人，很快就会从应试模式转变为探索模式。题目背后是知识，不同的知识点交织成为学科，死记硬背只能解决见过的问题，但是如果在这个过程中培养了逻辑推理的能力，哪怕遇到一个『新』问题，也能通过类比，找到用『旧』方法稍微变化就可以解决的途径。</p>
-<p>如果了解了计算机发展的历史，就会发现，所有现在看起来非常复杂的东西，都是建立在非常简单的基础——零和一——之上的。从最简单的基本类型，到数据结构和算法，通通都是为了解决实际问题而产生的高效解决方案。的确，无论是计算机科学，还是编程，都是非常大的话题，但是并不意味着起跑会很难。在我看来，需要了解的内容，大概有下面这几类（这里参考了 Google 面试指南的部分内容）：</p>
-<ol>
-<li>掌握一门基本的编程语言。最好是强类型，支持面向对象编程（比如 C++/Java/C#）的语言。这里说的掌握，不仅仅是语法，而是对语言本身的一些设计特点和具体实现方式的理解。</li>
-<li>能够以 Big O 的方式去分析一个算法的时间/空间复杂度，这样才有一个标准的方式去分析算法的效率。</li>
-<li>基本数据结构的理解和使用，比如<ul>
-<li>哈希表 Hashtable，及其背后所代表的哈希的思想是如何应用的不同问题的，如果只能用数组来实现，要如何实现</li>
-<li>树 Tree，    树的构建(trie)，遍历和修改。遍历包括 BFS 和 DFS（前序中序后序），及其对应的思想。如果了解至少一种平衡树（及实现方式）就更好了。</li>
-<li>图 Graph，图的三种表达方式及优缺点，基本的遍历算法（还是 BFS 和 DFS），知道这些算法的复杂度以及权衡利弊。如果了解一些如 Dijkstra 和 A* 算法就更好了。</li>
-<li>其他的数据结构：堆栈队列链表</li>
-</ul>
-</li>
-<li>基本算法的理解和使用，比如排序和搜索，以及递归和动态规划。nlogn 时间的排序，logn 时间的搜索。以及了解什么是 NP 问题（旅行商等等）。</li>
-<li>基本的数学知识，排列组合及概率，和一些公式化简。这里可能还可以算上正则表达式。</li>
-<li>操作系统，编译器，及计算机系统的基本知识。比如说进程线程，互斥锁信号量，死锁出现的条件及如何避免，进程线程的资源和上下文切换，多核处理的相关知识。重要的是对计算机相关工具的理解，除了上面提到的，还有 shell 之类的用法。</li>
-<li>基本的设计能力。面向对象设计，代码风格及优化。</li>
-<li>如何清晰表达自己的想法，去快速构建一个问题的解决方案。</li>
-</ol>
-<p>还是那句话，刷题仅仅只是一个效率很低的练习过程，真正的学习是进行『刻意练习』，也是我这个系列文章中想要强调的内容。</p>
-<p>一通百通，悟道之后就会发现，一招一式固然重要，但那些都是基础，更重要的是解决问题的方法和思路，这，可能就需要多动一点脑子了。</p>
-<p>最后说一下大概的写作内容的范围：</p>
-<ul>
-<li>正文部分力争简明扼要，说重点，说思想，注意语言逻辑和风格</li>
-<li>不贴大段的代码，而是会在文章最后给出题目分类及对应链接</li>
-<li>会挑选重点，经典题目进行思路讲解</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>学了这么多年计算机和编程，在快要步入社会之前，在不断地碰壁和尝试之后，终于摸到了一点门路。这个系列的文章，更接近于编程入门指南，讲的是从数据结构到算法最终到解决问题的方法和思路。</p>]]>
     
     </summary>
     
