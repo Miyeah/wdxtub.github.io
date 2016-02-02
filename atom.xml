@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-02T17:33:46.000Z</updated>
+  <updated>2016-02-02T20:59:49.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/01/cc-11/"/>
     <id>http://wdxtub.com/2016/02/01/cc-11/</id>
     <published>2016-02-01T19:55:20.000Z</published>
-    <updated>2016-02-02T17:33:46.000Z</updated>
+    <updated>2016-02-02T20:59:49.000Z</updated>
     <content type="html"><![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>
 <a id="more"></a>
 <hr>
@@ -104,10 +104,18 @@
 <p><strong>第二步</strong></p>
 <p>修改样例代码，让它能够启动一个 Load Generator 和一个 Data Center 的虚拟机。然后要去 load generator 那里注册一下 andrewid 和提交密码。地址是</p>
 <p><code>http://[your-load-generator-instance-dns-name]/password?passwd=[your submission password]&amp;andrewid=[your andrew id]</code></p>
-<p>这里我遇到了个问题，就是创建了虚拟机之后却没办法访问页面，好的暂时没办法继续了</p>
+<p>这里我遇到了个问题，就是创建了虚拟机之后却没办法访问页面，好的暂时没办法继续了。</p>
+<p>原因找到了，因为少了一段设置 DNS 的代码（后来更新的，在<a href="https://s3.amazonaws.com/15619public/webcontent/azureDemo.tar.gz" target="_blank" rel="external">这里</a>）</p>
 <p><strong>第三步</strong></p>
-<hr>
-<p>Application的信息 <code>azure ad app list</code></p>
+<p>就是按部就班来完成任务了，不停测试是少不了的，说一些需要注意的地方：</p>
+<ul>
+<li>注意每一步操作之后均需要等待一段时间，这样一来更准确，二来不用反复重试</li>
+<li>整体的逻辑最好先想好，不然写着写着容易乱</li>
+<li>把访问网络的部分封装好，自动处理连接失败的问题，这样就可以避免很多麻烦</li>
+<li>解析 RPS 数值可以使用 ini 解析器，也可以直接处理纯文本，我觉得纯文本比较好处理，就没用 ini 来解析了</li>
+<li>访问 log 需要利用之前开始测试时返回的 log id，需要解析出来之后进行使用。</li>
+<li>确保这一步没错才开始下一步，这样比较保险。</li>
+</ul>
 <h2 id="Azure_Autoscaling"><a href="#Azure_Autoscaling" class="headerlink" title="Azure Autoscaling"></a>Azure Autoscaling</h2><p>Azure 暂时还是不做了</p>
 <h2 id="AWS_Horizontal_Scaling"><a href="#AWS_Horizontal_Scaling" class="headerlink" title="AWS Horizontal Scaling"></a>AWS Horizontal Scaling</h2><p>AWS 的这个部分需要完成的和 Azure 类似，需要注意以下几点：</p>
 <ol>
@@ -120,9 +128,18 @@
 <li>为了通过测试，需要保证 RPS 达到 4000，测试开始之后可以通过发送请求来添加实例：<code>http://[your-load-generator-instance-dns-name]/test/horizontal/add?dns=[your-instance-dns-name]</code></li>
 <li>所有 data center 的规格应该是一样的</li>
 </ol>
-<p>At this point, you should look back and understand the limitations of this method:</p>
-<p>You have a load generator, and several data center instances trying to ingest data from it. Every time you add an instance, you need to inform the load generator, which must perform some computations to begin to distribute the traffic evenly amongst the data center instances. Here, the load generator distributes the traffic equally amongst all target hosts. However, what would happen if you wanted to scale down? Or if an instance failed? How would you even monitor if an instance failed? If the load was not uniform, you would have some data center instances with high utilization and some with low. This is a serious issue that needs to be addressed somehow.</p>
-<p>To be able to address these shortcomings (and for many other benefits), AWS has a service known as Elastic Load Balancing that automatically divides traffic to connected instances and also handles instance failures. Elastic Load Balancing also ties into Autoscaling which can dynamically shrink or grow a set of instances based on some scaling policies that you can define. We will learn more about these services in the next section.</p>
+<p>就是按部就班来完成任务了，不停测试是少不了的，说一些需要注意的地方：</p>
+<ul>
+<li>注意每一步操作之后均需要等待一段时间，这样一来更准确，二来不用反复重试</li>
+<li>整体的逻辑最好先想好，不然写着写着容易乱</li>
+<li>把访问网络的部分封装好，自动处理连接失败的问题，这样就可以避免很多麻烦</li>
+<li>解析 RPS 数值可以使用 ini 解析器，也可以直接处理纯文本，我觉得纯文本比较好处理，就没用 ini 来解析了</li>
+<li>访问 log 需要利用之前开始测试时返回的 log id，需要解析出来之后进行使用。</li>
+<li>确保这一步没错才开始下一步，这样比较保险。</li>
+</ul>
+<p>完成之后，就可以发现现在这种方法的局限：</p>
+<p>我们有一个 Load Generator，若干个 data center 会试着从中获取数据。每次添加实例，都需要通知 load generator，然后需要进行一些计算使得各个 data center 获得相同的流量。但是如果不想要这么多 data center，或者忽然有一个实例挂掉了呢？怎么去监控这个事情呢？怎么保证每个 data center 的负载均衡呢？</p>
+<p>所以 AWS 提供一个叫做 Elastic Load Balancing 的服务，可以自动把流量均分给连接的实例，也能处理好实例挂掉的情况。接下来我们会做一些这个方面的尝试。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>]]>
