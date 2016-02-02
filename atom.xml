@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-01T21:23:37.000Z</updated>
+  <updated>2016-02-02T17:33:46.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/01/cc-11/"/>
     <id>http://wdxtub.com/2016/02/01/cc-11/</id>
     <published>2016-02-01T19:55:20.000Z</published>
-    <updated>2016-02-01T21:23:37.000Z</updated>
+    <updated>2016-02-02T17:33:46.000Z</updated>
     <content type="html"><![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>
 <a id="more"></a>
 <hr>
@@ -65,6 +65,64 @@
 <li>Data Center: 处理和响应请求</li>
 </ul>
 <p>目标也很简单，不断开启实例，直到最终满足能够处理每秒 3000 次的请求(3000 RPS)</p>
+<p><strong>第一步</strong></p>
+<p>因为 Azure 的限制，所以需要把镜像先拷贝到自己的账户中：</p>
+<ul>
+<li>Data Center, <code>Standard_A1</code>, <code>https://cmucc.blob.core.windows.net/public/Microsoft.Compute/Images/vhds/cc15619p21dcv5-osDisk.e27faca3-f177-40ea-a740-9a1838326ae6.vhd</code></li>
+<li>Load Generator, <code>Standard_D1</code>, <code>https://cmucc.blob.core.windows.net/public/Microsoft.Compute/Images/vhds/cc15619p21lgv10-osDisk.f6be8828-8cab-45ae-a611-904aeeef3c9e.vhd</code></li>
+</ul>
+<p>命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 复制</span></span><br><span class="line">azure storage blob copy start https://cmucc.blob.core.windows.net/public/Microsoft.Compute/Images/vhds/cc15619p21dcv5-osDisk.e27faca3<span class="operator">-f</span>177-<span class="number">40</span>ea<span class="operator">-a</span>740-<span class="number">9</span>a1838326ae6.vhd --dest-account-name YOURNAME --dest-account-key YOURKEY --dest-container YOURCONTAINER</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">azure storage blob copy show --account-name YOURNAME --account-key YOURKEY --container system --blob Microsoft.Compute/Images/vhds/cc15619p21dcv5-osDisk.e27faca3<span class="operator">-f</span>177-<span class="number">40</span>ea<span class="operator">-a</span>740-<span class="number">9</span>a1838326ae6.vhd</span><br></pre></td></tr></table></figure>
+<p>大概要等一阵子，可以先来看看具体的测试规则：</p>
+<ol>
+<li>Data Center 必须用 <code>Standard_A1</code>，Load Generator 必须用 <code>Standard_D1</code></li>
+<li>所有的虚拟机都必须通过代码启动，所有的 data center（除了第一个）都必须要在测试开始之后创建</li>
+<li>代码需要完成处理当前每秒的请求并决定是否需要启动另一台虚拟机</li>
+<li>不要 hardcode 虚拟机的数量</li>
+<li>代码不应该连续开启多个 data center 虚拟机</li>
+<li>每开启一个虚拟机，需要等待 100 秒才可以开启下一个虚拟机</li>
+<li>测试一旦开始，除了关机没有其他办法可以停止，所以确定准备好了再开始</li>
+<li>除了复制镜像的部分，程序必须是全自动并且可以容忍错误的。也就是说，从开启虚拟机到提交密码和 andrewid 再到开始测试再到添加需要的虚拟机最后测试完成退出都必须是自动的。</li>
+<li>代码中不需要关闭 load generator，之后还会用到。不过 data center 可以删除（不一定需要在代码中完成）</li>
+</ol>
+<p>再来是给出的一些提示：</p>
+<ol>
+<li>可以利用之前给出的 Azure API 代码来从镜像创建虚拟机</li>
+<li>使用 DNS 而不是 IP 地址</li>
+<li>如果不大清楚程序在做什么，可以用浏览器体验一下整个过程</li>
+<li>如果不熟悉如何通过代码提交请求，看看浏览器是怎么做的</li>
+<li>使用 GET 和 POST 来完成请求</li>
+<li>Horizontal Scaling Test 在达到指定的 RPS 后会结束，可以通过检查 log 来判断测试的状况</li>
+<li>测试文件是 ini 格式的，可能需要用 <code>ConfigParser</code>(Python) 或 <code>ini4j</code>(Java) 来进行解析</li>
+</ol>
+<p>经过漫长的等待，复制完成，我们可以开始这次的任务了。首先是把之前的 Azure Demo 的代码导入到 Eclipse 里面。（代码在<a href="http://wdxtub.com/2016/01/15/cc-5/">第 5 课 Azure API</a>中，感谢 @jiexing 提供的具体步骤）</p>
+<ol>
+<li>eclipse-&gt;help-&gt;install new software-&gt;<a href="http://download.eclipse.org/technology/m2e/releases/" target="_blank" rel="external">http://download.eclipse.org/technology/m2e/releases/</a></li>
+<li>eclipse-&gt;file-&gt;import-&gt;existing maven projects</li>
+<li>在运行设置中，设置命令行参数：<code>RESOURCEGROUP STORAGEACCOUNT VHDNAME SUBSCRIPTIONID TENANTID APPLICATIONID APPLICATIONKEY</code>（和之前启动的一样）</li>
+</ol>
+<p><strong>第二步</strong></p>
+<p>修改样例代码，让它能够启动一个 Load Generator 和一个 Data Center 的虚拟机。然后要去 load generator 那里注册一下 andrewid 和提交密码。地址是</p>
+<p><code>http://[your-load-generator-instance-dns-name]/password?passwd=[your submission password]&amp;andrewid=[your andrew id]</code></p>
+<p>这里我遇到了个问题，就是创建了虚拟机之后却没办法访问页面，好的暂时没办法继续了</p>
+<p><strong>第三步</strong></p>
+<hr>
+<p>Application的信息 <code>azure ad app list</code></p>
+<h2 id="Azure_Autoscaling"><a href="#Azure_Autoscaling" class="headerlink" title="Azure Autoscaling"></a>Azure Autoscaling</h2><p>Azure 暂时还是不做了</p>
+<h2 id="AWS_Horizontal_Scaling"><a href="#AWS_Horizontal_Scaling" class="headerlink" title="AWS Horizontal Scaling"></a>AWS Horizontal Scaling</h2><p>AWS 的这个部分需要完成的和 Azure 类似，需要注意以下几点：</p>
+<ol>
+<li>使用 <code>m3.medium</code> 用 <code>ami-8ac4e9e0</code> 来作为 load generator</li>
+<li>使用 <code>m3.medium</code> 用 <code>ami-349fbb5e</code> 来作为 data center</li>
+<li>用下面的 URL 来提交密码和 andrew id：<code>http://[your-load-generator-instance-dns-name]/password?passwd=[your submission password]&amp;andrewId=[your andrewId]</code></li>
+<li>用下面的 URL 来提交 data center 的 dns 来开始测试：<code>http://[your-load-generator-instance-dns-name]/test/horizontal?dns=[your-instance-dns-name]</code></li>
+<li>打标签需要在代码中完成，要确保 security group 设置所有的端口都打开</li>
+<li>可以通过下面的 URL 来查看 log：<code>http://[your-load-generator-instance-dns-name]/log?name=test.[test-number].log</code></li>
+<li>为了通过测试，需要保证 RPS 达到 4000，测试开始之后可以通过发送请求来添加实例：<code>http://[your-load-generator-instance-dns-name]/test/horizontal/add?dns=[your-instance-dns-name]</code></li>
+<li>所有 data center 的规格应该是一样的</li>
+</ol>
+<p>At this point, you should look back and understand the limitations of this method:</p>
+<p>You have a load generator, and several data center instances trying to ingest data from it. Every time you add an instance, you need to inform the load generator, which must perform some computations to begin to distribute the traffic evenly amongst the data center instances. Here, the load generator distributes the traffic equally amongst all target hosts. However, what would happen if you wanted to scale down? Or if an instance failed? How would you even monitor if an instance failed? If the load was not uniform, you would have some data center instances with high utilization and some with low. This is a serious issue that needs to be addressed somehow.</p>
+<p>To be able to address these shortcomings (and for many other benefits), AWS has a service known as Elastic Load Balancing that automatically divides traffic to connected instances and also handles instance failures. Elastic Load Balancing also ties into Autoscaling which can dynamically shrink or grow a set of instances based on some scaling policies that you can define. We will learn more about these services in the next section.</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>]]>
