@@ -220,7 +220,7 @@
     <link href="http://wdxtub.com/2016/02/01/cc-11/"/>
     <id>http://wdxtub.com/2016/02/01/cc-11/</id>
     <published>2016-02-01T19:55:20.000Z</published>
-    <updated>2016-02-02T20:59:49.000Z</updated>
+    <updated>2016-02-03T23:42:03.000Z</updated>
     <content type="html"><![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>
 <a id="more"></a>
 <hr>
@@ -317,7 +317,99 @@
 <li>访问 log 需要利用之前开始测试时返回的 log id，需要解析出来之后进行使用。</li>
 <li>确保这一步没错才开始下一步，这样比较保险。</li>
 </ul>
-<h2 id="Azure_Autoscaling"><a href="#Azure_Autoscaling" class="headerlink" title="Azure Autoscaling"></a>Azure Autoscaling</h2><p>Azure 暂时还是不做了</p>
+<p>这里我判断重试的逻辑有一点问题，注意 try catch 语句可能引起的特殊流程</p>
+<h2 id="Azure_Autoscaling"><a href="#Azure_Autoscaling" class="headerlink" title="Azure Autoscaling"></a>Azure Autoscaling</h2><p>在前面的任务中，我们做的是 horizontal scaling，利用代码来增加 data center 虚拟机的数量。这种方法的局限性在于：</p>
+<p>整个 scale 的过程需要程序执行，如果程序因为某些原因关闭了，那么就不会再发送 API 请求了。而且，这种情况下负载是不均衡了，每次增加 data center，需要通知 load generator，这之后才能对其发送请求。</p>
+<p>诸如 AWS 和 Azure 的云服务提供商都可以自动进行资源扩展和负载均衡。我们所要做的就是进行一些配置，一旦配置成功，就会自动进行资源调度了。接下来我们会在 Azure 上体验一下</p>
+<h3 id="Virtual_Machine_Scale_Sets"><a href="#Virtual_Machine_Scale_Sets" class="headerlink" title="Virtual Machine Scale Sets"></a>Virtual Machine Scale Sets</h3><p><img src="/images/14545355285392.jpg" alt=""></p>
+<p>Azure 的 Virtual Machine Scale Sets 其实就是一个集群，集群中的每个虚拟机都是一样的。我们可以利用基于 json 的部署脚本，通过 Azure 资源管理器或者命令行工具来进行配置。使用之前我们需要对 json 脚本进行一些配置。</p>
+<ul>
+<li>Virtual Machine Configuration<ul>
+<li>包括虚拟机的镜像文件，虚拟机类型和其他一些虚拟机相关问题。</li>
+</ul>
+</li>
+<li>Virtual Network<ul>
+<li>在 scaling set 中的每一台机器都必须被配置为在特定的虚拟网络中</li>
+</ul>
+</li>
+<li>Load Balancer Configuration<ul>
+<li>负载均衡器通常用 round-robin 方式来发送请求，虽然这种调度方式并不算完美，但是面对来自大量用户的简单请求，已经足够了。</li>
+</ul>
+</li>
+<li>Scaling Policies<ul>
+<li>Scaling policies 决定何时从 scaling set 增加和减少虚拟机</li>
+</ul>
+</li>
+</ul>
+<p>因为是动态资源管理，所以负载均衡器需要对其背后的机器有一些了解。所以通常会定期检查各个主机是否正常运行，如果不正常，就会停止对其发送请求。</p>
+<p>因此，我们的负载均衡器必须配置好 IP 地址，负载均衡规则（决定需要进行转发的琉璃那个），以及探测器（检查实例是否正常运行）</p>
+<h3 id="Configuring_an_Azure_VM_Scaling_Set"><a href="#Configuring_an_Azure_VM_Scaling_Set" class="headerlink" title="Configuring an Azure VM Scaling Set"></a>Configuring an Azure VM Scaling Set</h3><p>这里，我们可以自动进行 scaling，而不需要像第一个任务那样手动申请。Load Generator 会不断增加发送的请求，从一台 data center 虚拟机开始，Azure 会自动增加虚拟机的数量，以便处理更多的请求。</p>
+<p>我们还会用之前的 data center 和 load generator 虚拟机镜像。接着我们会用 JSON 格式的模板来创建 auto scaling set。下载 <a href="https://s3.amazonaws.com/15619public/webcontent/azuredeploy.json" target="_blank" rel="external">Azuredeploy.json</a> 和 <a href="https://s3.amazonaws.com/15619public/webcontent/azuredeploy.parameters.json" target="_blank" rel="external">Azuredeploy.parameters.json</a>。下面是运行部署命令会创建的资源列表：</p>
+<blockquote>
+<p>azuredeploy.json</p>
+</blockquote>
+<ul>
+<li>Virtual Network: All the NICs and IP addresses associated with the virtual machines and load balancers will be deployed in this virtual network.</li>
+<li>IP Address: This will be assigned to the NIC on the load balancer.<ul>
+<li>Note: Azure VM set does not assign IP addresses to the backend machines.</li>
+<li><code>domainNameLabel</code>: This is a DNS prefix for the load balancer DNS name. The load balancer DNS name will thus have the format <code>${prefix}.eastus.cloudapp.azure.com</code>. The provided JSON template currently uses the <code>vmScalingSetName</code> (explained below) as the DNS prefix.</li>
+</ul>
+</li>
+<li>Load Balancer: As the frontend of the VM set, the load balancer will receive HTTP requests and forward them to the backend machines using round robin strategy.<ul>
+<li><code>frontendIPConfigurations</code>: Provide the resource name of the IP Address created above.</li>
+<li><code>backendAddressPools</code>: Configure the backend machines. Azure allows users to put machines in a pool and use this set as a backend for a load balancer. In this JSON template, we will use the VM set as the backend pool of data center VMs.</li>
+<li><code>loadBalancingRules</code>: You can configure the traffic type you want to forward from the frontend to the backend machines. In this template, we will forward TCP traffic from port 80 to port 80, which is typically used for HTTP requests.</li>
+<li><code>probes</code>: This is the health checker for the load balancer. The load balancer will send a request to a user specified path in a fixed interval. If no reply is received from a backend machine within a specified threshold, the load balancer will mark the machine as unhealthy and stop forwarding traffic to it.</li>
+</ul>
+</li>
+<li>Virtual Machine Scale Set: You need to specify the image URL for this Azure VM set. The new machines will be created from this image if necessary.<ul>
+<li><code>sku</code>: You can configure the virtual machine type (<code>Standard_A1</code> in this case) for the data center VMs and the initial number of machines (<code>1</code> in this case).</li>
+<li><code>virtualMachineProfile</code>: Provide a VM image URL in this section, the machines at the backend will be created from this image.</li>
+<li><code>extensionProfile</code>: Here we will configure a <code>LinuxDiagnostic</code> extension for the VM set. This will help us collect the CPU utilization of a VM, which we will use as the basis for triggering any scaling actions.</li>
+</ul>
+</li>
+<li>Auto Scale Setting: In Azure, the autoscale setting policy is used to configure an autoscaling event trigger and action. For example, you can configure the autoScalingSetting section in the JSON file to make the VM set scale up when the CPU Utilization Percentage is above a threshold.<ul>
+<li><code>profiles.rules</code>: You need to configure the scaling policy in this section.</li>
+</ul>
+</li>
+</ul>
+<p>大概了解之后，具体配置的时候需要修改 <code>azuredeploy.json</code> 和 <code>azuredeploy.parameters.json</code> 中的一些参数的内容。在 <code>azuredeploy.json</code> 中只需要修改下面的部分：</p>
+<blockquote>
+<p>azuredeploy.json</p>
+</blockquote>
+<p>The profiles under Microsoft.Insights/autoscaleSettings: You need to consider the capacity and rules.</p>
+<p>在 <code>azuredeploy.parameters.json</code> 中，配置下面的参数：</p>
+<blockquote>
+<p>azuredeploy.parameters.json</p>
+</blockquote>
+<ul>
+<li><code>vmScalingSetName</code>: Name for your Virtual Machine Scaling Set and Load Balancer DNS prefix. Give a global unique name for this. (This name should match <code>^[a-z][a-z0-9-]{1,61}[a-z0-9]$</code>).</li>
+<li><code>storageAccName</code>: Storage Account name where your data center VM image is in.</li>
+<li><code>resourceGroupNameForStorageAcc</code>: Resource Group name where your data center VM image is in.</li>
+<li><code>instanceCount</code>: Leave it at <code>1</code> for this project.</li>
+<li><code>vmSize</code>: Keep it <code>Standard_A1</code> for this project.</li>
+<li><code>location</code>: Keep it <code>East US</code> for this project.</li>
+<li><code>sourceImageVhdUri</code>: The data center VM image URL in your strorage account.</li>
+<li><code>frontEndLBPort</code>: Keep it <code>80</code>. The http request to frontEndLBPort will be forwarded to the backEndLBPort on the data center VMs.</li>
+<li><code>backEndLBPort</code>: Keep it <code>80</code>.</li>
+</ul>
+<p>配置好了对应参数，就可以用下面的命令来创建了，注意需要提供一个新的 <code>RESOURCE_GROUP_NAME</code>（除了虚拟机磁盘，都会在这个资源组创建）以及你的 <code>AZURE_SUBSCRIPTION_ID</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">azure group create  <span class="operator">-f</span> ./azuredeploy.json <span class="operator">-e</span>  ./azuredeploy.parameters.json -n &lt;RESOURCE_GROUP_NAME&gt; <span class="operator">-l</span> <span class="string">"East US"</span> --subscription &lt;AZURE_SUBSCRIPTION_ID&gt;</span><br></pre></td></tr></table></figure>
+<p>之后注意去 web 界面检查下是不是真的开启成功了。</p>
+<h3 id="Running_the_Autoscaling_Test"><a href="#Running_the_Autoscaling_Test" class="headerlink" title="Running the Autoscaling Test"></a>Running the Autoscaling Test</h3><p>部署成功之后就可以进行测试了。具体的任务步骤如下：</p>
+<ol>
+<li>根据之前给出的配置文件，用命令行工具进行部署</li>
+<li>确保部署成功，并且 load generator 正常运行。可以通过访问 <code>http://${vmScalingSetName}.eastus.cloudapp.azure.com/lookup/random</code> 来进行测试（注意修改为自己的地址）</li>
+<li>向 Load Generator 提交负载均衡起的地址以进行测试 <code>http://[your-load-generator-instance-dns-name]/junior?dns=[your-loadbalancer-dns-name]</code>（如果是新开的机器，需要提交密码和 andrewid）</li>
+<li>可以不断刷新网页来查看 log</li>
+</ol>
+<p>测试规则和提示：</p>
+<ul>
+<li>开始测试时只能启动一个 data center 虚拟机来进行测试</li>
+<li>设定的 autoscaling policy 应该在负载加大的时候自动增加机器</li>
+<li>目标是 30 分钟达到 900 rps</li>
+<li>Load Generator 只使用 <code>Standard_D1</code>，Data Center 只使用 <code>Standard_A1</code> </li>
+</ul>
 <h2 id="AWS_Horizontal_Scaling"><a href="#AWS_Horizontal_Scaling" class="headerlink" title="AWS Horizontal Scaling"></a>AWS Horizontal Scaling</h2><p>AWS 的这个部分需要完成的和 Azure 类似，需要注意以下几点：</p>
 <ol>
 <li>使用 <code>m3.medium</code> 用 <code>ami-8ac4e9e0</code> 来作为 load generator</li>
@@ -341,6 +433,10 @@
 <p>完成之后，就可以发现现在这种方法的局限：</p>
 <p>我们有一个 Load Generator，若干个 data center 会试着从中获取数据。每次添加实例，都需要通知 load generator，然后需要进行一些计算使得各个 data center 获得相同的流量。但是如果不想要这么多 data center，或者忽然有一个实例挂掉了呢？怎么去监控这个事情呢？怎么保证每个 data center 的负载均衡呢？</p>
 <p>所以 AWS 提供一个叫做 Elastic Load Balancing 的服务，可以自动把流量均分给连接的实例，也能处理好实例挂掉的情况。接下来我们会做一些这个方面的尝试。</p>
+<h2 id="AWS_Autoscaling"><a href="#AWS_Autoscaling" class="headerlink" title="AWS Autoscaling"></a>AWS Autoscaling</h2><p>Quality of service (QoS) and cost are two very important factors when deploying a web service. One sure way to lose users to the competition is to provide a web service that does not meet acceptable QoS guarantees. Performance, availability, reliability and security are some dimensions of QoS. One can always provide high QoS by over provisioning resources in order to account for most variability in the load or failure scenarios, however cost, and the ability to compete on the cost of the service, becomes an issue. The focus of this task is to provide you with hand-on experience with these issues through three parts.</p>
+<h3 id="Elastic_Load_Balancer"><a href="#Elastic_Load_Balancer" class="headerlink" title="Elastic Load Balancer"></a>Elastic Load Balancer</h3><p>The Elastic Load Balancer acts as a network router that will forward incoming requests to multiple EC2 Instances sitting behind it in a round-robin fashion. Round-robin scheduling is not optimal for all traffic patterns, but it can do an adequate job given a large number of users, each with relatively simple requests. Can you think of any situations in which a load balancer employing round-robin scheduling is not optimal?</p>
+<p>The Instances that ELB points to can be added manually through the web console, programmatically through an API, or dynamically with an Auto Scaling Group (ASG) which in AWS defines a pool of instances. ELB also does a Health Check to see if an instance is alive (if not, it will stop sending requests to it). Currently, using an ELB costs <code>$0.025</code> per hour + <code>$0.008</code> per GB transferred through it. Below is a figure that describes the basic functionality of an ELB and where it fits in a system with a pool of resources. It basically acts as a front end of your web service or system. Also, find below a video that provides an overview of the basics of the AWS Elastic Load Balancer (ELB).</p>
+<p><img src="/images/14545429009811.jpg" alt=""></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>]]>
