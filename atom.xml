@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-03T18:31:33.000Z</updated>
+  <updated>2016-02-04T05:24:49.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[小方]]></title>
+    <link href="http://wdxtub.com/2016/02/03/xiao-fang/"/>
+    <id>http://wdxtub.com/2016/02/03/xiao-fang/</id>
+    <published>2016-02-04T04:44:12.000Z</published>
+    <updated>2016-02-04T05:24:49.000Z</updated>
+    <content type="html"><![CDATA[<p>要知道，一枚连续二十次都抛出反面的硬币，也有它的正面。</p>
+<a id="more"></a>
+<hr>
+<p>奇怪的是，他既没有太多棱角，也没有太多慌张，大家却都叫他小方。每当被问起名字的来由，小方总是笑着说：『之所以方，是因为少了点缘』。但是坊间的传闻可不是这样，每个人都不知道从哪里听说过，小方是因为有反骨，所以才叫小方的。</p>
+<p>这个世界的可怕之处在于，哪怕谁也不知道反骨是什么，又长在哪里，只要大家都这么认为，那你就只能长着反骨，或者稍微好一点，能给自己起个名字，叫小方。</p>
+<p>既然反骨是什么说不清楚，那么一百个人心中，就有一百种反骨。丢了东西，坏了器具，总可以怪罪到小方头上。偶尔也有人好奇，为什么小方从来不去解释和证明自己。小方只是笑笑，因为他们没有意识到，再多的解释和证明，恐怕都无法撼动盘根错节的猜忌和怀疑。</p>
+<p>但是小方也有朋友，可是朋友并不多，甚至一年也见不了几次面，也许只有提到小方时他们明亮的神情，会显露出一丝蛛丝马迹。</p>
+<p>不知道某一年的某一天，小方决定离开，离开这个被『反骨』诅咒的地方。走之前，他抓了一大把硬币，哗啦哗啦甩了一地，人们惊异地发现，这些硬币，竟然都是反面。</p>
+<p>小方离开之后，日子一如既往，该不见的东西还是会不见，该倒霉的人还是会倒霉，只是现在大家再也没有借口去怪罪了。</p>
+<p>一个人踏上旅途的小方，有时候还会拿出一枚硬币，一次次抛着，他总是相信，一枚连续二十次都抛出反面的硬币，也有它的正面。或者说，若无正面，何来反面呢？</p>
+<p>如果你不知道自己讨厌什么，很可能也不太清楚自己喜欢什么。若一时找不到喜欢的方向，那至少可以弄清楚自己讨厌什么，然后尽可能离它们远一些。</p>
+<p>毕竟很多时候我们要的是一个绝对值，如果正向太陡，那么反着走，也能达到一样的效果。或者说，有多大的绝望，才有多大的希望。</p>
+<p>小方就是这样走过来的，正因为体验了残忍，才更珍惜温柔。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>要知道，一枚连续二十次都抛出反面的硬币，也有它的正面。</p>]]>
+    
+    </summary>
+    
+      <category term="反骨" scheme="http://wdxtub.com/tags/%E5%8F%8D%E9%AA%A8/"/>
+    
+      <category term="硬币" scheme="http://wdxtub.com/tags/%E7%A1%AC%E5%B8%81/"/>
+    
+      <category term="英雄" scheme="http://wdxtub.com/tags/%E8%8B%B1%E9%9B%84/"/>
+    
+      <category term="Story" scheme="http://wdxtub.com/categories/Story/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 习题课 2 Bomblab]]></title>
@@ -4052,136 +4087,6 @@ Bob 30
       <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="递归" scheme="http://wdxtub.com/tags/%E9%80%92%E5%BD%92/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[编程起跑线 第 5 课 链表]]></title>
-    <link href="http://wdxtub.com/2016/01/22/programmer-startline-5/"/>
-    <id>http://wdxtub.com/2016/01/22/programmer-startline-5/</id>
-    <published>2016-01-22T20:51:05.000Z</published>
-    <updated>2016-01-23T22:42:12.000Z</updated>
-    <content type="html"><![CDATA[<p>链表，作为在内存中非连续分配的数据结构，因为其灵活性往往容易出错，这里我们会通过深入理解来教大家一些解决链表问题的基本方法。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u89E3_u9898_u7B56_u7565"><a href="#u89E3_u9898_u7B56_u7565" class="headerlink" title="解题策略"></a>解题策略</h2><p>链表(linked list)是一种常见的线性数据结构。对于单向链表(singly linked list)，每个节点有一个 next 指针指向后一个节点，还有一个成员变量用以存储数值；对于双向链表(doubly Linked List)，还有一个 prev 指针指向前一个节点。与数组类似，搜索链表需要O(n)的时间复杂度，但是链表不能通过常数时间 O(1) 读取第k个数据。链表的优势在于能够以较高的效率在任意位置插入或删除一个节点。</p>
-<ul>
-<li>当涉及对头节点的操作，我们不妨考虑创建哑节点</li>
-<li>由于题目涉及在链表中寻找特定位置，我们用两个指针变量以不同的速度遍历该链表</li>
-<li>实现链表的逆转时，循环遍历链表, 每次只处理当前指针的 next 变量</li>
-</ul>
-<h3 id="u94FE_u8868_u7684_u57FA_u672C_u64CD_u4F5C"><a href="#u94FE_u8868_u7684_u57FA_u672C_u64CD_u4F5C" class="headerlink" title="链表的基本操作"></a>链表的基本操作</h3><p>凡是修改单向链表的操作，只需考虑：</p>
-<ol>
-<li>哪个节点的next指针会受到影响，则需要修正该指针；</li>
-<li>如果待删除节点是动态开辟的内存空间，则需要释放这部分空间(C/C++)</li>
-</ol>
-<p>毕竟，一个链表节点，无非是包含value和next这两个成员变量的数据结构而已。对于双向链表，类似的，则只需额外考虑谁的prev指针会受到影响。</p>
-<p>举例如下：</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void delNode(<span class="constant">ListNode </span>*prev) &#123;</span><br><span class="line">  <span class="constant">ListNode </span>*curr = prev-&gt;<span class="keyword">next</span>;</span><br><span class="line">  <span class="regexp">//</span> 删除curr节点只会使prev节点的<span class="keyword">next</span>受到影响</span><br><span class="line">  prev-&gt;<span class="keyword">next</span> = curr-&gt;<span class="keyword">next</span>;    </span><br><span class="line">  delete curr;    <span class="regexp">//</span> 清理trash指针</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注：操作链表时务必注意边界条件：curr == head, curr == tail 或者 curr == NULL</p>
-<ul>
-<li><strong>两种存储方式</strong><ul>
-<li>顺序存储结构：随机读取，访问时是 O(1)</li>
-<li>链式存储结构：插入和删除 O(1)，访问时最坏是 O(n)</li>
-</ul>
-</li>
-<li>分类（根据指针域）<ul>
-<li>单向链表</li>
-<li>双向链表</li>
-<li>循环链表</li>
-</ul>
-</li>
-</ul>
-<h3 id="u53CD_u8F6C_u94FE_u8868"><a href="#u53CD_u8F6C_u94FE_u8868" class="headerlink" title="反转链表"></a>反转链表</h3><ul>
-<li>访问某个节点 <code>curt.next</code> 时，要检验 <code>curt</code> 是否为 <code>null</code></li>
-<li>要把反转后的最后一个节点（即第一个节点）指向 <code>null</code></li>
-</ul>
-<h3 id="u5220_u9664_u67D0_u4E2A_u8282_u70B9"><a href="#u5220_u9664_u67D0_u4E2A_u8282_u70B9" class="headerlink" title="删除某个节点"></a>删除某个节点</h3><ul>
-<li>由于需要知道前继节点的信息，而前继节点可能会导致表头产生变化，所以需要一些技巧 <code>Dummy Node</code></li>
-<li>链表指针的鲁棒性<ul>
-<li>访问某个节点 <code>curt.next</code> 时，要检验 <code>curt</code> 是否为 <code>null</code></li>
-<li>全部操作结束后，判断是否有环；若有，则置其中一端为 <code>null</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="Dummy_Node"><a href="#Dummy_Node" class="headerlink" title="Dummy Node"></a>Dummy Node</h3><ul>
-<li>是一个虚拟节点 <code>dummy.next = head</code></li>
-<li>针对单向链表没有前向指针的问题，保证链表的 <code>head</code> 不会在删除操作中丢失</li>
-<li>也可以用来进行 <code>head</code> 节点（但比较少见）</li>
-<li>当链表的 <code>head</code> 可能有变化时，使用 dummy node 可以简化代码，最后返回 <code>dummy.next</code> 即可</li>
-</ul>
-<h3 id="u5FEB_u6162_u6307_u9488"><a href="#u5FEB_u6162_u6307_u9488" class="headerlink" title="快慢指针"></a>快慢指针</h3><ul>
-<li>快慢指的是指针向前移动的步长，一般来说，快指针每次移动 2，慢指针每次移动 1</li>
-<li>主要有两个应用<ul>
-<li><strong>快速找出未知长度单链表的中间节点</strong><ul>
-<li>设置两个指针 <code>*fast</code> 和 <code>*slow</code> 都指向头节点</li>
-<li><code>*fast</code> 移动速度是 <code>*slow</code> 的两倍</li>
-<li><code>*fast</code> 指向末尾节点时，<code>*slow</code> 正好就在中间</li>
-</ul>
-</li>
-<li><strong>判断单链表是否有环</strong><ul>
-<li>设置两个指针 <code>*fast</code> 和 <code>*slow</code> 都指向头节点</li>
-<li><code>*fast</code> 移动速度是 <code>*slow</code> 的两倍</li>
-<li>如果 <code>*fast == null</code> 说明该单链表不是循环链表</li>
-<li>如果 <code>*fast == *slow</code> 说明该链表是循环链表</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>其他应用<ul>
-<li><strong>找倒数第 N 个节点</strong><ul>
-<li>设置两个指针 <code>*fast</code> 和 <code>*slow</code> 都指向头节点</li>
-<li><code>*fast</code> 先移动 N 步，然后两个指针一起前进</li>
-<li><code>*fast</code> 到达末尾时，<code>*slow</code> 即为倒数第 N 个节点</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
-<li><a href="http://wdxtub.com/interview/14520597852720.html">Swap Adjacent Node</a></li>
-<li><a href="http://wdxtub.com/interview/14520597852604.html">Start of Circle</a></li>
-<li><a href="http://wdxtub.com/interview/14520597852502.html">Sort List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597852382.html">Rotate List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597852276.html">Reversely List Traverse</a></li>
-<li><a href="http://wdxtub.com/interview/14520597852177.html">Reverse Nodes in k-Group</a></li>
-<li><a href="http://wdxtub.com/interview/14520597852065.html">Reverse List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851968.html">Reverse List Range</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851880.html">Reorder List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851782.html">Remove Linked List Elements</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851695.html">Remove Duplicates from Unsorted List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851601.html">Remove Duplicates from Sorted List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851549.html">Remove Duplicates from Sorted List II</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851500.html">Partition Linked List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851449.html">Partitiom List Sorted</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851399.html">Middle of List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851346.html">Merge Two Lists</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851075.html">Merge K Linked List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597851031.html">Kth to Last</a></li>
-<li><a href="http://wdxtub.com/interview/14520597850990.html">Insertion Sort List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597850946.html">Copy List with Random Pointer</a></li>
-<li><a href="http://wdxtub.com/interview/14520597850907.html">Palindrome Linked List</a></li>
-<li><a href="http://wdxtub.com/interview/14520597850871.html">Check Intersection</a></li>
-<li><a href="http://wdxtub.com/interview/14520597850832.html">Check Cycle</a></li>
-<li><a href="http://wdxtub.com/interview/14520597850789.html">Add Two Numbers</a></li>
-<li><a href="http://wdxtub.com/interview/14520607215217.html">Delete Node in a Linked List</a></li>
-<li><a href="http://wdxtub.com/interview/14520607215107.html">Delete Middle Node</a></li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>链表，作为在内存中非连续分配的数据结构，因为其灵活性往往容易出错，这里我们会通过深入理解来教大家一些解决链表问题的基本方法。</p>]]>
-    
-    </summary>
-    
-      <category term="思维" scheme="http://wdxtub.com/tags/%E6%80%9D%E7%BB%B4/"/>
-    
-      <category term="技能" scheme="http://wdxtub.com/tags/%E6%8A%80%E8%83%BD/"/>
-    
-      <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="链表" scheme="http://wdxtub.com/tags/%E9%93%BE%E8%A1%A8/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
