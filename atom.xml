@@ -534,7 +534,7 @@
     <link href="http://wdxtub.com/2016/02/01/cc-11/"/>
     <id>http://wdxtub.com/2016/02/01/cc-11/</id>
     <published>2016-02-01T19:55:20.000Z</published>
-    <updated>2016-02-04T01:39:19.000Z</updated>
+    <updated>2016-02-04T16:48:33.000Z</updated>
     <content type="html"><![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>
 <a id="more"></a>
 <hr>
@@ -749,8 +749,11 @@
 <p>所以 AWS 提供一个叫做 Elastic Load Balancing 的服务，可以自动把流量均分给连接的实例，也能处理好实例挂掉的情况。接下来我们会做一些这个方面的尝试。</p>
 <h2 id="AWS_Autoscaling"><a href="#AWS_Autoscaling" class="headerlink" title="AWS Autoscaling"></a>AWS Autoscaling</h2><p>服务质量（QoS）和花费是部署云服务时非常重要的两个方面。如果不能提供高质量的服务，肯定会损失用户。性能，可用性，可靠性和安全性都是服务质量中很重要的因素。</p>
 <h3 id="Elastic_Load_Balancer"><a href="#Elastic_Load_Balancer" class="headerlink" title="Elastic Load Balancer"></a>Elastic Load Balancer</h3><p>Elastic Load Balancer 像是一个网络路由器，会用 round-robin 的方式转发进入的请求给不同的 EC2 实例。</p>
-<p>ELB 指向的机器可以通过 web 界面手动添加，也可以写代码或者通过 Auto Scaling Group(ASG)，这里 AWS 会有一个实例池。ELB 同时也会检查实例是否正常运行，如果不是的话会停止发送请求。目前，ELB 每小时花费 <code>$0.025</code> 加 <code>$0.008</code> 每 GB 数据传输费。下图大概描述了 ELB 的功能。<a href="https://youtu.be/WsGpj5eZaS4" target="_blank" rel="external">Video</a> 中也对 ELB 有详细的介绍。</p>
+<p>ELB 指向的机器可以通过 web 界面手动添加，也可以写代码或者通过 Auto Scaling Group(ASG)，这里 AWS 会有一个实例池。ELB 同时也会检查实例是否正常运行，如果不是的话会停止发送请求。目前，ELB 每小时花费 <code>$0.025</code> 加 <code>$0.008</code> 每 GB 数据传输费。下图大概描述了 ELB 的功能。<a href="https://youtu.be/Fw0aNoMZesg" target="_blank" rel="external">Video</a> 中也对 ELB 有详细的介绍。</p>
 <p><img src="/images/14545429009811.jpg" alt=""></p>
+<p>You can programmatically interact with an Elastic Load Balancer in different ways, including:</p>
+<p>The AWS Command Line Interface (AWS CLI)<br>The AWS SDK for Java<br>boto for Python<br>We will give you more information about working with these APIs after introducing Auto Scaling in the next section.</p>
+<h3 id="Amazon_Auto_Scaling"><a href="#Amazon_Auto_Scaling" class="headerlink" title="Amazon Auto Scaling"></a>Amazon Auto Scaling</h3><p>The AWS Auto Scaling service automatically adds or removes computing resources allocated to an application by responding to changes in demand. AWS Auto Scaling refers to horizontal scaling, which is the act of increasing or decreasing the compute capacity of an application by changing the number of servers assigned to it. This is in contrast to vertical scaling, which is achieved by changing the size of individual servers in response to demand (such as changing m1.small to m1.large). AWS Auto Scaling offers the functionality to monitor and add or remove identical resources (horizontal scaling). Amazon Auto Scaling can be accessed through command-line tools or through APIs in the SDK. The <a href="https://youtu.be/WsGpj5eZaS4" target="_blank" rel="external">video</a> introduces the AWS AutoScaling</p>
 <p>Amazon’s Auto Scaling provides the following deployment modes on a group of EC2 instances:</p>
 <ul>
 <li>Maintain a fixed number of running EC2 instances at all times, by performing periodic health checks on instances and automatically launching new instances when one or more are unhealthy;</li>
