@@ -534,7 +534,7 @@
     <link href="http://wdxtub.com/2016/02/01/cc-11/"/>
     <id>http://wdxtub.com/2016/02/01/cc-11/</id>
     <published>2016-02-01T19:55:20.000Z</published>
-    <updated>2016-02-04T21:48:49.000Z</updated>
+    <updated>2016-02-04T23:59:37.000Z</updated>
     <content type="html"><![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>
 <a id="more"></a>
 <hr>
@@ -891,7 +891,7 @@
 </ol>
 <p><strong>Hints</strong></p>
 <ul>
-<li>一次完整测试要两个小时，注意时间</li>
+<li>一次完整测试要 48 分钟，注意时间</li>
 <li>可能需要手动运行几次测试</li>
 <li>热身是必须的</li>
 <li>Scaling out 同样有些技巧，找到减轻添加新实例可能带来的影响的方法</li>
