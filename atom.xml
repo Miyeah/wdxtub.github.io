@@ -534,7 +534,7 @@
     <link href="http://wdxtub.com/2016/02/01/cc-11/"/>
     <id>http://wdxtub.com/2016/02/01/cc-11/</id>
     <published>2016-02-01T19:55:20.000Z</published>
-    <updated>2016-02-04T23:59:37.000Z</updated>
+    <updated>2016-02-05T21:39:15.000Z</updated>
     <content type="html"><![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>
 <a id="more"></a>
 <hr>
@@ -908,6 +908,26 @@
 <li><a href="http://awsdocs.s3.amazonaws.com/AutoScaling/latest/as-api.pdf" target="_blank" rel="external">Autoscaling API Guide</a></li>
 <li><a href="http://aws.amazon.com/documentation/cloudwatch/" target="_blank" rel="external">CloudWatch Documentation</a></li>
 <li><a href="http://aws.amazon.com/documentation/elastic-load-balancing/" target="_blank" rel="external">Elastic Load Balancing Documentation</a></li>
+</ul>
+<h2 id="u4E00_u4E9B_u95EE_u9898_u4EE5_u53CA_u5BF9_u7B56"><a href="#u4E00_u4E9B_u95EE_u9898_u4EE5_u53CA_u5BF9_u7B56" class="headerlink" title="一些问题以及对策"></a>一些问题以及对策</h2><ul>
+<li>Load Generator 有时候会发送消息让 Data Center 自杀<ul>
+<li>解决方法是尽快让 ELB 发现挂了的 dc，快速反应重启</li>
+</ul>
+</li>
+<li>ELB warmup 也很重要<ul>
+<li>要注意 warmup 的时间</li>
+</ul>
+</li>
+<li>可能机器提升的数量赶不上实际的峰值<ul>
+<li>长期保持多几台机器，并且让机器减少的速度变慢</li>
+<li>调整 policy 检测的数量</li>
+<li>让 ASG 的 cooldown 减小，快速反应</li>
+<li>5 台 基本是够用的</li>
+<li>可以一开始直接 boost 到最大，然后慢慢滑落，遇到峰值，直接再 boost 到最大</li>
+<li>policy 中的数值都需要是 60 的倍数</li>
+</ul>
+</li>
+<li>要想办法减少开机导致的性能损失</li>
 </ul>
 ]]></content>
     <summary type="html">
