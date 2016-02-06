@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-04T16:39:25.000Z</updated>
+  <updated>2016-02-06T04:48:32.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[第四周 - 鹿港小镇]]></title>
+    <link href="http://wdxtub.com/2016/02/05/small-town/"/>
+    <id>http://wdxtub.com/2016/02/05/small-town/</id>
+    <published>2016-02-06T00:59:05.000Z</published>
+    <updated>2016-02-06T04:48:32.000Z</updated>
+    <content type="html"><![CDATA[<p>有一种预感，路的终点是迷宫。出发啦，不要问那路在哪！</p>
+<a id="more"></a>
+<hr>
+<p>实话说，临近春节的这一周，过得并不算特别好。除了之前去西雅图欠下的一屁股作业之外，一封封拒信也让我倍受打击，说打击可能有点过分，但是自己觉得表现不错却无法得到认同，总是有些伤感。俗话说得好『千里马常有，而伯乐不常有』，即使没有伯乐，也还是要按照千里马的标准去跑，至少不能对不起自己嘛。</p>
+<p>说没有一点动摇，自己都不相信。一直以来按照自己觉得对的的方式去走，开始半接触社会总是有些不适应，无论是待人接物，还是临场应变，都有很多需要学，需要提高的地方。不过这倒不打紧，总是有机会比上次做得更好的嘛。</p>
+<p>随着年龄增长，自我也在慢慢成长，甚至变得有些过分坚硬，虽然刀枪不入，但静静想来，也有点残酷无情。刚体容易出现不可逆的结构性损伤，所以还是要加点弹性，方能百折不挠。</p>
+<p>Kindle 终于在除夕前迎来了本年度最大的升级（界面上），好看了不少，但是我的脚本工具依然停留在上个时代，得找机会把它们都升级一下（估计毕业前没多少时间）。不夸张地说，kindle 在我成长过程中起到了重要作用，从 K6 到 KPW 再到 Voyage ，机器一直在变，但不变的是『阅读富一生』的主题。</p>
+<p>一开始读书，没多少思考，靠着笨办法积累；后来读书，虽然拾人牙慧，但也算有了点自己的新意；现在读书，更像是和作者跨越时间空间讨论着，无论是辨析力和判断力，都有了很大的提高。这带来的一个好处就是，很多时候能够用淡定代替焦虑，或者说，会更加理智用思考去代替本能，因为很多时候本能并不太靠谱。</p>
+<p>举个例子，老师给出了很多阅读材料，和作业题，在时间不算太宽裕也不算太紧张的情况下，应不应该直接做题目呢？很多着急的同学，估计就直接开动了，然后在做题目的过程中磕磕绊绊，最后怪老师坑爹。但实际情况是不是这样的呢？大部分时候不是，反而是如果先进行阅读理解，掌握问题背后的要点所在，那么在做题目的过程中，就可以见招拆招，至少不至于像无头苍蝇一样漫无目的慌张焦虑。</p>
+<p>再仔细思考一下，老师给出的材料，是站在更高的视角给出的更中肯的建议，假如现在让我们重新学习一次我们已经学会的东西，可能自学的顺序以及材料都会和第一次不一样，因为我们有了经验，更知道怎么样的学习路径更加合适和有效率。但是为什么放到学校里，就变成不相信老师给出的材料，而自顾自想当然先开始做题了呢？</p>
+<p>马上就要春节了，祝大家在新的一年里，心想事成万事如意，最重要的，身体健健康康，每天都有好心情。第一次没有和爸爸妈妈一起过年，没有特别的感受，就是两个字——『想家』</p>
+<p>自己想了一个蹩脚的对联，也算是给大家拜个早年啦：</p>
+<blockquote>
+<p>大圣归来，身手不凡飞天外<br>小马奔腾，所向无前事竟成<br>横批：安身立命</p>
+</blockquote>
+<p>迎风向前，是唯一的方法。出发啦，不想问那路在哪！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>有一种预感，路的终点是迷宫。出发啦，不要问那路在哪！</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="周记" scheme="http://wdxtub.com/tags/%E5%91%A8%E8%AE%B0/"/>
+    
+      <category term="峡谷" scheme="http://wdxtub.com/tags/%E5%B3%A1%E8%B0%B7/"/>
+    
+      <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 第 11 课 Service-Oriented Architecture]]></title>
@@ -3830,82 +3868,6 @@ a ^ b ^ c = a ^ (b ^ c) = (a ^ b) ^ c // associative
       <category term="思维" scheme="http://wdxtub.com/tags/%E6%80%9D%E7%BB%B4/"/>
     
       <category term="技能" scheme="http://wdxtub.com/tags/%E6%8A%80%E8%83%BD/"/>
-    
-      <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[编程起跑线 第 9 课 数学]]></title>
-    <link href="http://wdxtub.com/2016/01/23/programmer-startline-9/"/>
-    <id>http://wdxtub.com/2016/01/23/programmer-startline-9/</id>
-    <published>2016-01-23T21:30:05.000Z</published>
-    <updated>2016-01-24T01:00:10.000Z</updated>
-    <content type="html"><![CDATA[<p>虽然说编程中用到的数学都不算特别复杂，但是在具体的实现中，还是有一些技巧和门道的。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u89E3_u9898_u7B56_u7565"><a href="#u89E3_u9898_u7B56_u7565" class="headerlink" title="解题策略"></a>解题策略</h2><p>数学的问题，比较突出的体现在，一些常见的数学形式，比方说：</p>
-<ul>
-<li>排列</li>
-<li>组合</li>
-<li>质数</li>
-<li>开方</li>
-<li>幂次</li>
-</ul>
-<p>还有一些概率的问题，需要一定的概率基础，这里就不再赘述了。具体更多可以参考题目。</p>
-<p>最后一类是脑筋急转弯问题，也就是看脑洞的，这个就随缘了。</p>
-<p>（这一章实在没啥好写的，数学这个东西，懂就是懂，不懂就是不懂，还真没太多技巧）</p>
-<h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
-<li><a href="http://wdxtub.com/interview/14520604913655.html">Kth Permuation</a></li>
-<li><a href="http://wdxtub.com/interview/14520595470004.html">Check Permutation</a></li>
-<li><a href="http://wdxtub.com/interview/14520604917011.html">Nth Prime</a></li>
-<li><a href="http://wdxtub.com/interview/14520604918229.html">Pow(x, n)</a></li>
-<li><a href="http://wdxtub.com/interview/14520604911732.html">Combinations</a></li>
-<li><a href="http://wdxtub.com/interview/14520604910652.html">All Permutation</a></li>
-<li><a href="http://wdxtub.com/interview/14520604910607.html">All Permutations II</a></li>
-<li><a href="http://wdxtub.com/interview/14520606004545.html">Sqrt(x)</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231966.html">Remove Digit</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231831.html">Quick Pow</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231697.html">Previous Permuation</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231576.html">Poison</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231466.html">Permutation Sequence</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231334.html">Perfect Squares</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231230.html">Number of Digit</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231129.html">Number of Digit One</a></li>
-<li><a href="http://wdxtub.com/interview/14520603231017.html">Next Permutation</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230913.html">Max Points on a Line</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230810.html">Jugs of Water</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230712.html">Index of Permuation</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230618.html">Index of Permutation II</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230526.html">The Heavy Pill</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230426.html">Hash Function</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230367.html">Happy Number</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230311.html">Fraction to Recurring Decimal</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230254.html">Factorial Trailing Zeroes</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230202.html">The Egg Drop Problem</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230148.html">Divide Number</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230094.html">均分 01</a></li>
-<li><a href="http://wdxtub.com/interview/14520603230019.html">Count Primes</a></li>
-<li><a href="http://wdxtub.com/interview/14520603229974.html">Cosine Similarity</a></li>
-<li><a href="http://wdxtub.com/interview/14520603229929.html">Basketball</a></li>
-<li><a href="http://wdxtub.com/interview/14520603229887.html">The Apocalypse</a></li>
-<li><a href="http://wdxtub.com/interview/14520603229844.html">Ants on a Triangle</a></li>
-<li><a href="http://wdxtub.com/interview/14520603229804.html">Add Digits</a></li>
-<li><a href="http://wdxtub.com/interview/14520603229761.html">100 Lockers</a></li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>虽然说编程中用到的数学都不算特别复杂，但是在具体的实现中，还是有一些技巧和门道的。</p>]]>
-    
-    </summary>
-    
-      <category term="思维" scheme="http://wdxtub.com/tags/%E6%80%9D%E7%BB%B4/"/>
-    
-      <category term="技能" scheme="http://wdxtub.com/tags/%E6%8A%80%E8%83%BD/"/>
-    
-      <category term="数学" scheme="http://wdxtub.com/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="程序员" scheme="http://wdxtub.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
