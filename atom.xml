@@ -58,11 +58,47 @@
     <link href="http://wdxtub.com/2016/02/04/sad-11/"/>
     <id>http://wdxtub.com/2016/02/04/sad-11/</id>
     <published>2016-02-04T14:51:56.000Z</published>
-    <updated>2016-02-04T16:39:25.000Z</updated>
+    <updated>2016-02-08T01:24:45.000Z</updated>
     <content type="html"><![CDATA[<p>这一课是根据老师的课程安排添加的，之后应该会按照课本的脉络结合老师的思路来进行讲解。</p>
 <a id="more"></a>
 <hr>
-<h2 id="u4EC0_u4E48_u662F_u9762_u5411_u670D_u52A1_u67B6_u6784"><a href="#u4EC0_u4E48_u662F_u9762_u5411_u670D_u52A1_u67B6_u6784" class="headerlink" title="什么是面向服务架构"></a>什么是面向服务架构</h2><p>简单来理解，服务计算就是利用现有的服务，通过逻辑组合和分支，来构造新的应用。这里的服务，是一个可以重用的组件，由服务提供者提供并有服务请求者请求。</p>
+<h2 id="u4EC0_u4E48_u662F_u9762_u5411_u670D_u52A1_u67B6_u6784"><a href="#u4EC0_u4E48_u662F_u9762_u5411_u670D_u52A1_u67B6_u6784" class="headerlink" title="什么是面向服务架构"></a>什么是面向服务架构</h2><p>简单来理解，服务计算就是利用现有的服务，通过逻辑组合和分支，来构造新的应用。这里的服务，是一个可以重用的组件，由服务提供者提供并由服务请求者请求。</p>
+<p>课堂上介绍了很多概念和定义，但是我觉得其实意义不算特别大，理解 SOA 还是要抓住重点，重点其实很简单，一个是强调复用性，一个是强调拓展性。复用性值得是基本功能的模块化标准化，拓展性指的是用户量实际上已经由架构本身的特点进行了高层次的处理，很多是具体面对并发时候的技术细节。</p>
+<p>最为突出的代表是 web 服务了，比方说网站提供一系列 api，我们不需要知道他们是怎么实现的，只要按照一定的规范去使用即可。仔细思考下前面的不同角色和使用场景，就可以得出下面的架构：</p>
+<p><img src="/images/14548907014827.jpg" alt=""></p>
+<p>这里了解两个术语：WSDL(Web Services Description Language) 和 RESTful API(Represnetational State Transfer)，后者的著名代表就是 HTTP Request/Response。服务请求者通过 SOAP(Simple Object Access Protocol) 来和服务提供者沟通。</p>
+<p>沟通就两个字，但是在 web 这里，不知道为什么，复杂度就蹭蹭往上飙，各种协议真是乱花渐欲迷人眼，可以看看下图：</p>
+<p><img src="/images/14548913482297.jpg" alt=""></p>
+<p>这么多不同的子系统组合在一起，实际上就是一个 SOA 的架构，通过松散耦合来构造一个灵活、可拓展的系统。</p>
+<p>不过说到底，SOA 可以说是一种设计思想，既然是思想，就可以应用在不同的层级，比方说</p>
+<ul>
+<li>在编程层级，可以用 SOA 的思想来进行组件设计——称之为 SCA(Service Component Architecture)</li>
+<li>在中间件环节，可以利用 SOA 来指导设计，比方说 ESB(single Enterprise Service Bus)</li>
+<li>在过程层级，SOA 可以用于集成和管理，甚至可以驱动架构设计</li>
+<li>在企业层级，可以通过 SOA 的思想具体把任务细分</li>
+</ul>
+<p>具体到代码上，其实也还是老生常谈的几个概念，无非是重用性，扩展性，合作性，平台无关，语言无关这之类的。用水做例子，以前挖井打水，那么每个不同的部件就千奇百怪了，不同的桶不同的绳子不同的口径，现在直接水成为一种服务，打开水龙头就有，和你在哪里是谁无关，这就是 SOA 的思想。</p>
+<p>也就是因为这种设计思路和不同的抽象层级，就有了 IaaS, PaaS 和 SaaS，这里主要说 Saas(Software as a Service)。举几个例子</p>
+<ul>
+<li>固话 - 多租户</li>
+<li>分时系统 - 多实例</li>
+<li>在线支付 - 多租户</li>
+<li>电子邮件 - 多租户</li>
+</ul>
+<p>但是这两天 LinkedIn 和 Tabluea 被腰斩的股价说明，发展才是硬道理，SaaS 什么的，也就是炒炒概念罢了。</p>
+<p>对于 SaaS 来说，提供定制化服务，实际上就是提供不同的配置方案，也就是说，一个足够灵活的系统，通过不同的配置（默认或定制），来进行统一服务。</p>
+<p>最近的一个同样非常火热的概念就是云计算了，我也在连载对应的课程，可以结合来看看，从思想和工程两个不同的角度，也是很有意思的。比方说下面的几个原则：</p>
+<ul>
+<li>Principle 1: Integrated Ecosystem Management for Cloud</li>
+<li>Principle 2: Virtualization of Cloud Infrastructure</li>
+<li>Principle 3: Service-Orientation for Common Reusable Services</li>
+<li>Principle 4: Extensible Provisioning and Subscrption for Cloud</li>
+<li>Principle 5: Configurable Enablement for Cloud Offerings</li>
+<li>Principle 6: Unified Information Representation and Exchange Framework</li>
+<li>Principle 7: Cloud Quality and Governance</li>
+</ul>
+<p>合起来就是</p>
+<p><img src="/images/14548946708473.jpg" alt=""><br>（一定要用心感受下）</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这一课是根据老师的课程安排添加的，之后应该会按照课本的脉络结合老师的思路来进行讲解。</p>]]>
