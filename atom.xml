@@ -153,7 +153,7 @@
     <link href="http://wdxtub.com/2016/02/08/cc-12/"/>
     <id>http://wdxtub.com/2016/02/08/cc-12/</id>
     <published>2016-02-08T13:09:38.000Z</published>
-    <updated>2016-02-09T02:20:29.000Z</updated>
+    <updated>2016-02-09T20:20:11.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲中我们接触负载均衡器，并且通过一个模拟实验进行了基本的体验，这节课我们通过 Azure 来探索一下负载均衡器的工作原理。</p>
 <a id="more"></a>
 <hr>
@@ -271,29 +271,54 @@
 <li>如果你确定自己的代码是对的，那么开启三个 data center 虚拟机，并在 <code>Main.java</code> 中填写的 <code>http://[your DC DNS]</code> 里填好对应的 DNS 地址</li>
 <li>使用 <code>./run</code> 来执行你的代码</li>
 <li>可以在浏览器中访问 <code>http://[your load balancer DNS]</code> 看到测试 UI</li>
-<li>确定 load balancer 的 round robin 没有问题后，开启一个 load generator 虚拟机</li>
+<li>确定 load balancer 的自定义调度算法没有问题后，开启一个 load generator 虚拟机</li>
 <li>开始 自定义调度算法 测试，目标是达到平均每秒 41 的 RPS</li>
 <li>访问 <code>http://[your DC DNS]:8080/info/cpu</code> 来查看 data center 的 CPU 使用率</li>
 </ol>
 <p>负载是否均衡？在这个测试中，你的算法是一个好的策略吗？</p>
-<h2 id="u76D1_u63A7_Data_Center__u7684_u72B6_u6001"><a href="#u76D1_u63A7_Data_Center__u7684_u72B6_u6001" class="headerlink" title="监控 Data Center 的状态"></a>监控 Data Center 的状态</h2><p>Again, well Done! The MSB was impressed with your new and improved load balancing strategy. However there is still one last hurdle before you can get the final round of interview for the Senior System Architect. In light of the attacks that MSB has witnessed, they want to improve their load balancer so that it can handle failures. Ideally, the MSB wants the load balancer to detect the failure as soon as possible, stop sending requests to that virtual machine, and launch a new virtual machine to replace the failed virtual machine.</p>
-<p>To check if a data center VM is alive, you can generate an HTTP request to one of the URLs that you observe in the tests from the previous week. A 200 response code is the only indication of success. You can choose to mark it as unhealthy based on any criteria that you feel is appropriate.</p>
-<h3 id="u4EFB_u52A1_u5217_u8868-2"><a href="#u4EFB_u52A1_u5217_u8868-2" class="headerlink" title="任务列表"></a>任务列表</h3><ol>
-<li>Launch a new load balancer virtual machine (in-case you terminated it in the previous step, otherwise reuse the same virtual machine).</li>
-<li>SSH into the load balancer AMI and go to /home/ubuntu/Project22</li>
-<li>Implement your health check code in your load balancer. The code should detect virtual machine failure as soon as it happens and stop sending requests to that data center virtual machine. It should then launch a new data center virtual machine to replace the failed one. You can assume that the load in the Health Check Test would be similar to the Round Robin test, except that your data center virtual machines may fail. The load in the Senior Systems Architect test would be much more complicated, and would be similar to the Custom Scheduling test, with the addition of virtual machine failures.</li>
-<li>Once done, compile your code using the command javac *.java.</li>
-<li>Once you are confident that your code is correct, launch three data center virtual machines (in-case you terminated them in the previous step, otherwise reuse the same virtual machines). Enter their public DNS as <a href="http://[your" target="_blank" rel="external">http://[your</a> load balancer DNS] in the placeholders in Main.java.</li>
-<li>Run your code using the executable filerun located in /home/ubuntu/Project22 directory.</li>
-<li>Test your code manually by going to <a href="http://[your" target="_blank" rel="external">http://[your</a> load balancer DNS] on your browser. The data center UI should be visible there.</li>
-<li>Once you are confident that your health check strategy will work, launch a load generator virtual machine (in-case you terminated it in the previous step, otherwise reuse the same virtual machine).</li>
-<li>Start the Health Check Test. Make sure you are able to handle failure in this scenario. If you continue sending requests to a dead data center virtual machine, you will notice that your RPS will drop to very low single digits. Your aim is to achieve an average RPS of 44.</li>
-<li>Once you are confident that your load balancer can now handle failure, now is the time to put everything together and get your promotion. Start the Senior System Architect Test. This will test that your load balancer that can intelligently distribute load as well as handle virtual machine failures at the same time. Your aim is to achieve an average RPS of 30.</li>
+<h3 id="u7591_u96BE_u6742_u75C7"><a href="#u7591_u96BE_u6742_u75C7" class="headerlink" title="疑难杂症"></a>疑难杂症</h3><p>这里我遇到一个问题，就是 RPS 一直徘徊在 21 左右，死活上不去。我觉得可能是以下几个问题：</p>
+<ol>
+<li>Load Generator 发送请求不正常，因为之前强行停止过测试，不知道有没有影响</li>
+<li>Load Balancer 判断的时候花费的时间太长，如果是这样的话需要优化代码</li>
+<li>发送请求的间隔数目可能太小，导致检查过于频繁</li>
 </ol>
-<p>After all tests have been completed successfully, terminate all your virtual machines except the load generator virtual machine. Now is the time to upload the code you used for all tests. You should create a package (it should be a .zip file) with all your code (include all .java files located in /home/ubuntu/Project22) and a references file. Please add a readme file if your code structure is complex or has additional files. Make sure it is clear what code you used for all the different tests, it makes it easier for evaluators at the MSB to judge your solution. As always your code must be properly documented and should have comments describing your methods and complex code areas. Upload your code at <a href="http://[your" target="_blank" rel="external">http://[your</a> load generator DNS]/upload and then terminate your load generator virtual machine.</p>
-<p>Hints</p>
-<p>In your code, you can use “[dns of a virtual machine]/lookup/random” to determine whether an instance is alive and ready for receiving requests or not.</p>
-<p>mvn compile &amp;&amp; mvn exec:java -Dexec.mainClass=”Main”</p>
+<p>我觉得很可能是第二个，因为总是能看到选择的 Data Center 的 CPU 使用率为 0，估计是 Load Generator 分发不够快所致。不过我们还是一个一个来试一次</p>
+<ol>
+<li>重启之后发现并没有什么影响，还是处于比较低的 RPS，所以可以先试试看修改间隔数目</li>
+<li>间隔数目改成 20 之后并没有特别大的改变，所以可以确定是 Load Balancer 的问题</li>
+<li>经过问同学和排查，发现了问题所在，需要在选择最空闲的机器之后，继续使用 round robin 的策略</li>
+</ol>
+<p>然后问题得以解决。</p>
+<h2 id="u76D1_u63A7_Data_Center__u7684_u72B6_u6001"><a href="#u76D1_u63A7_Data_Center__u7684_u72B6_u6001" class="headerlink" title="监控 Data Center 的状态"></a>监控 Data Center 的状态</h2><p>下一步是让我们的 Load Balancer 能够处理某个 Data Center 挂掉的情况。一旦某个虚拟机挂掉，就开启一个新的，用以代替旧的。</p>
+<p>可以通过发送 HTTP 请求来查看 Data Center 的状况，只有返回 200 的时候，才认为它是在工作的。</p>
+<h3 id="u4EFB_u52A1_u5217_u8868-2"><a href="#u4EFB_u52A1_u5217_u8868-2" class="headerlink" title="任务列表"></a>任务列表</h3><ol>
+<li>在 Azure 中启动一台 load balancer 虚拟机</li>
+<li>SSH 到 load balancer 上(用户名 <code>ubuntu</code>, 密码 <code>Cloud@123</code>)，需要做的内容在 <code>/home/ubuntu/Project22/</code> 文件夹中</li>
+<li>实现带有健康检查的负载均衡器，也就是说，能检测出机器挂掉并停止向其发送请求，然后开启一个新的虚拟机，直到它能工作时，就用新的代替旧的。</li>
+<li>完成之后使用 <code>javac *.java</code> 来进行编译</li>
+<li>如果你确定自己的代码是对的，那么开启三个 data center 虚拟机，并在 <code>Main.java</code> 中填写的 <code>http://[your DC DNS]</code> 里填好对应的 DNS 地址</li>
+<li>使用 <code>./run</code> 来执行你的代码</li>
+<li>可以在浏览器中访问 <code>http://[your load balancer DNS]</code> 看到测试 UI</li>
+<li>确定 load balancer 的自定义调度算法以及健康检查没有问题后，开启一个 load generator 虚拟机</li>
+<li>开始 自定义调度算法+健康检查 测试，目标是达到平均每秒 41 的 RPS</li>
+<li>一切完成之后可以进入最后的测试，目标是 30 RPS</li>
+</ol>
+<p>所有测试结束之后，关闭除了 load generator 的其他虚拟机，然后上传代码，包括 <code>/home/ubuntu/Project22</code> 下的所有 java 文件和 <code>references</code> 文件。上传完毕之后可以关闭 load generator</p>
+<blockquote>
+<p>提示</p>
+</blockquote>
+<p>可以用 <code>[dns of a virtual machine]/lookup/random</code> 作为健康检查的链接</p>
+<p>在 <code>pom.xml</code> 中配置好</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">sourceDirectory</span>&gt;</span><span class="tag">&lt;/<span class="title">sourceDirectory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">outputDirectory</span>&gt;</span><span class="tag">&lt;/<span class="title">outputDirectory</span>&gt;</span></span><br><span class="line">        ....</span><br><span class="line"><span class="tag">&lt;<span class="title">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>就可以编译同一层级的文件了，注意要把 <code>run</code> 文件改为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn compile</span><br><span class="line">sudo java -Xmx3g Main</span><br></pre></td></tr></table></figure>
+<p>性能优化考虑：</p>
+<ol>
+<li>去掉测试用的输出语句，会比较影响性能</li>
+<li>Health Check 测试中会挂掉其中两台 DC，其中间隔 6 分钟左右，注意可能出现的异常情况</li>
+<li>一旦发送请求给挂了的机器，因为需要等待 Timeout，所以会占用很多时间，但是其实很难避免发送请求给已挂的机器，除非减少健康检查的间隔</li>
+<li>每次访问实际上会调用两次 <code>start()</code> 函数，注意这里可能会导致一些问题；网络访问有比较多需要处理的异常，注意保证逻辑的一致性</li>
+</ol>
 <h2 id="AWS_Bonus"><a href="#AWS_Bonus" class="headerlink" title="AWS Bonus"></a>AWS Bonus</h2><p>在 AWS 上完成前面的三个任务，这里不再重复任务描述。</p>
 ]]></content>
     <summary type="html">
