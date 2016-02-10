@@ -511,7 +511,7 @@
     <link href="http://wdxtub.com/2016/02/04/sad-11/"/>
     <id>http://wdxtub.com/2016/02/04/sad-11/</id>
     <published>2016-02-04T14:51:56.000Z</published>
-    <updated>2016-02-08T01:24:45.000Z</updated>
+    <updated>2016-02-10T17:07:48.000Z</updated>
     <content type="html"><![CDATA[<p>这一课是根据老师的课程安排添加的，之后应该会按照课本的脉络结合老师的思路来进行讲解。</p>
 <a id="more"></a>
 <hr>
@@ -552,6 +552,137 @@
 </ul>
 <p>合起来就是</p>
 <p><img src="/images/14548946708473.jpg" alt=""><br>（一定要用心感受下）</p>
+<h2 id="SOA_Reference_Architecture__28SOA-RA_29"><a href="#SOA_Reference_Architecture__28SOA-RA_29" class="headerlink" title="SOA Reference Architecture (SOA-RA)"></a>SOA Reference Architecture (SOA-RA)</h2><p>SOA-RA 把一个基于 SOA 的系统分隔成可重用的架构组件。下面是一个 SOA 的抽象分层</p>
+<p><img src="/images/14551174098822.jpg" alt=""></p>
+<p>其他的例子：</p>
+<p><img src="/images/14551174702617.jpg" alt=""></p>
+<p><img src="/images/14551174911905.jpg" alt=""></p>
+<p><img src="/images/14551175074227.jpg" alt=""></p>
+<p>一个更加清晰的描述：</p>
+<p><img src="/images/14551175363986.jpg" alt=""></p>
+<p>加上不同的组件之后就是</p>
+<p><img src="/images/14551176317606.jpg" alt=""></p>
+<p>这样分层的一个好处就是可以极大减少接口的数量，如下图所示：</p>
+<p><img src="/images/14551177297106.jpg" alt=""></p>
+<p>接下来我们来说说 REST 设计，举个例子，某公司部署了一个 web 服务，可以让用户：</p>
+<ul>
+<li>获取部件的列表</li>
+<li>获取某个部件的详细信息</li>
+<li>提交一个购买请求（Purchase Order, PO）</li>
+</ul>
+<p>那么用 REST 的方式来实现就是：</p>
+<p><img src="/images/14551179020138.jpg" alt=""></p>
+<p>这样的实现有什么特点呢：</p>
+<ul>
+<li>客户端和服务器之间是 pull-based 的交互风格，也就是客户端在需要的时候，向服务器端请求数据</li>
+<li>Stateless，从客户端发出的每个请求都包含所需的所有信息，不利用任何存储在服务器端的上下文信息</li>
+<li>可以通过缓存来提高网络的效率</li>
+<li>统一的接口（比如 HTTP GET, POST, PUT, DELETE）</li>
+<li>资源都是命名的（比如使用 URL 命名）</li>
+<li>不同的资源可能相互连接，允许从一个过程跳转到另一个过程（URL 的链接跳转）</li>
+</ul>
+<p>综上所述，我们可以得到 REST web 服务设计的原则：</p>
+<ol>
+<li>找出所有需要通过服务暴露的概念实体（在上个例子中就是 part list, detailed part data 和 purchase order）</li>
+<li>给每个资源创建一个 URL</li>
+<li>把客户端只读的资源（使用 HTTP GET），和客户端可以修改的资源（使用 HTTP POST, PUT, DELETE）分类</li>
+<li>所有通过 HTTP GET 访问的资源都不应该有副作用，不能修改。</li>
+<li>在资源间增加超链接使得客户端可以在不同信息间跳转</li>
+<li>逐渐显示所有的信息，不要在一个响应中展示所有信息</li>
+<li>确定展示数据的 schema（如 DTD, W3C Schema, RelaxNG, Schematron），对于需要 POST 或者 PUT 的内容，也要提供响应的描述</li>
+<li>用 WSDL 文档来描述如何调用这些服务</li>
+</ol>
+<p>整个的生命周期是</p>
+<p><img src="/images/14551192696261.jpg" alt=""></p>
+<p>具体每个阶段及简要介绍</p>
+<ul>
+<li>建模：第一阶段，利用概念建模技术，自顶向下，用基于 WSDL 的分解方法，难点在于如何让方法调用包含更多的语义信息</li>
+<li>开发：包括设计、开发和测试，这一部分是通常的软件开发方法（Ration Unified Process，敏捷开发，瀑布模型），和基于 XML 的协议绑定（如 SOAP）</li>
+<li>发布：如何连接</li>
+<li>探索：从不同的 web 服务中找到最合适的</li>
+</ul>
+<h3 id="u76D1_u63A7_u548C_u7BA1_u7406"><a href="#u76D1_u63A7_u548C_u7BA1_u7406" class="headerlink" title="监控和管理"></a>监控和管理</h3><p>主要包括：</p>
+<ul>
+<li>性能监控：主要是保证其服务质量（Quality of Service, QoS）</li>
+<li>实现 Service Level Agreement(SLA)，是一个服务提供者和服务请求者间的协议，保证提供一定质量的服务</li>
+<li>异常处理</li>
+<li>访问控制</li>
+<li>数据和信息分析</li>
+</ul>
+<h3 id="u91CD_u7528"><a href="#u91CD_u7528" class="headerlink" title="重用"></a>重用</h3><p>重用可以看作是一个循序渐进，甚至有点后期的工作，一个可能的发展阶段是：</p>
+<p><img src="/images/14551199022753.jpg" alt=""></p>
+<p>可以看到随着业务的增长，重用的重要性才慢慢凸现出来。具体的方法有：</p>
+<ul>
+<li>利用面向对象思想重新设计</li>
+<li>重新设计架构</li>
+<li>直接推倒重来</li>
+</ul>
+<h2 id="u4E91_u8BA1_u7B97"><a href="#u4E91_u8BA1_u7B97" class="headerlink" title="云计算"></a>云计算</h2><p>云计算的目标是在用户间共享资源，具体的方式是通过 provisioning（针对服务提供者）和 subscription（服务消费者）。不同层级的资源共享就形成不同的云服务：</p>
+<ul>
+<li>Infrastructure Cloud (e.g. Storage as a service, hardware and IT infrastructure management as a service)</li>
+<li>Software Cloud (e.g. SaaS focusing on middleware as a service or traditional CRM as a service)</li>
+<li>Application Cloud (e.g. Application as a Service, UML modeling tools as a service, social network as a service)</li>
+<li>Business Cloud (e.g. business process as a service)</li>
+</ul>
+<h2 id="Big_Data_as_a_Service"><a href="#Big_Data_as_a_Service" class="headerlink" title="Big Data as a Service"></a>Big Data as a Service</h2><p>大数据的应用及处理的基本流程是：</p>
+<p><img src="/images/14551227915870.jpg" alt=""></p>
+<ul>
+<li>Discover: 主要指大数据的发现及数据清洗<ul>
+<li>Data collection</li>
+<li>Stakeholder communications</li>
+<li>Documentation</li>
+<li>Reverse engineering</li>
+<li>Blind spots</li>
+</ul>
+</li>
+<li>Evaluate: 分析和评估这些数据<ul>
+<li>Diagnosis</li>
+<li>maturity level</li>
+<li>Adoption lifecycle view</li>
+<li>Target state formulation</li>
+<li>Strategization</li>
+</ul>
+</li>
+<li>Evolve: 根据这些数据来进行只能的进化，或者说对于某一特定领域的熟悉<ul>
+<li>Blueprint</li>
+<li>Metrics and criteria</li>
+<li>Technology option screening</li>
+<li>Prioritization</li>
+<li>Tradeoffs</li>
+</ul>
+</li>
+<li>Recommend: 利用新的信息进行信息或者资源的推荐<ul>
+<li>Roadmapping</li>
+<li>Organization model</li>
+<li>Resource and skillset</li>
+<li>PMO governace</li>
+<li>Action plan </li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/14551236654152.jpg" alt=""></p>
+<ul>
+<li>Date Gateway: ActiveMQ, Apache Camel</li>
+<li>Data quality, ELT: OPEN Refine, talend*</li>
+<li>NoSQL Store: HBase, mongoDB</li>
+<li>Analytics: HIVE, Impala</li>
+<li>Reporting: pentaho, R</li>
+<li>Visualization: visual.ly, Quantum4D</li>
+<li>Machine Learning: WEKA, mahout</li>
+<li>Cloud Hosting: Openstack, Amazon EC2</li>
+<li>Monitoring Management: Ganglla, docker, hyperic</li>
+</ul>
+<p>Best Practice</p>
+<ul>
+<li>Iterative</li>
+<li>Holistic</li>
+<li>Pragmatic</li>
+<li>Converged</li>
+<li>Prescriptive</li>
+<li>Incremental</li>
+<li>Disciplined</li>
+<li>Proactive</li>
+</ul>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这一课是根据老师的课程安排添加的，之后应该会按照课本的脉络结合老师的思路来进行讲解。</p>]]>
