@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-11T14:03:07.000Z</updated>
+  <updated>2016-02-12T16:10:01.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -15,10 +15,49 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[不安的终结]]></title>
+    <link href="http://wdxtub.com/2016/02/12/end-of-anxiety/"/>
+    <id>http://wdxtub.com/2016/02/12/end-of-anxiety/</id>
+    <published>2016-02-12T15:05:36.000Z</published>
+    <updated>2016-02-12T16:10:01.000Z</updated>
+    <content type="html"><![CDATA[<p>当一类事情重复足够多次之后，本能会让我们去选择最安全、最中庸的道路。可是消除了痛苦，也就消除了走向辉煌的可能，这又怎么办呢？</p>
+<a id="more"></a>
+<hr>
+<p>最脆弱不安的时刻，往往也是最接近自己的时刻，但观察自己的过程犹如走钢丝，左一分蒸发，右一分凝结。超然物外已经很难，如何抽离自身，更是值得一生探索。在飞机上经历了回忆杀带来的『臆想恐慌症』之后，抛开封闭环境可能带来的问题，我在想，所谓的不安，到底从哪里来，到哪里去呢？</p>
+<p>坏消息是，网上对于不安的讨论，几乎都是『灌鸡汤』；好消息是，我在阿西莫夫的《永恒的终结》中，找到了答案。</p>
+<p>所谓不安，大概是预想的和实际发生的不一致，自己却没有办法找到原因，于是胡思乱想的恶性循环就开始了；直到某个契机出现，发现了一个『未必合理』却足以说服自己的理由，这才算『心安理得』。但凡以后再想起某件事，便可以自己用这个『足够好』的理由去搪塞自己。而胡思乱想恐怕是因为过去的经历形成的心理地貌，即使一次次去想去模拟，让自己的心绪像流水一样涌出，因为地貌的缘故，往往只能得到同一个结果，于是逆向合理化开始启动，一切都是那么顺理成章。</p>
+<p>这样我们就找到不安的根源——失控，胡思乱想使得心态失控，之后给自己洗脑认为现实也已经失控，最终导致心态爆炸。问题就来了，这种失控有没有可能被控制呢？很遗憾，没有，就像《永恒的终结》中一样，用现在去改变过去，其实是没有太多意义的。生活并非永恒不变，现在也不是唯一的归宿，只是未来无限可能的出发点。只有经过严酷的考验，才能不断前进，高速发展。</p>
+<blockquote>
+<p>危险的环境和危机感，才是驱使人类不断进步，不断征服新事物的根本动力</p>
+</blockquote>
+<p>人人都会不安，这是本能，但是本能之上，应该意识到不安的终结并不是避免困难的出现，而是去战胜困难。自信不是把自己当做宠物，当做温室里的花朵来成长，而是相信自己，永远敢于接受下一次的挑战。</p>
+<p>从这个角度来看中国历史，漫长的封建社会就类似于某种重复，每个朝代一开始，都会参考前朝的经验去做新的选择，找到『最好』的现实，于是慢慢向着最安全，最中庸，最稳定的结构演变，也就是所谓的『中央集权』。</p>
+<p>但是这真的就是某种惯性，也许这么多次的重复，只是为了在下一个瞬间，开启另一个时代，那里没有永恒，更无所谓终结。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>当一类事情重复足够多次之后，本能会让我们去选择最安全、最中庸的道路。可是消除了痛苦，也就消除了走向辉煌的可能，这又怎么办呢？</p>]]>
+    
+    </summary>
+    
+      <category term="不安" scheme="http://wdxtub.com/tags/%E4%B8%8D%E5%AE%89/"/>
+    
+      <category term="困难" scheme="http://wdxtub.com/tags/%E5%9B%B0%E9%9A%BE/"/>
+    
+      <category term="循环" scheme="http://wdxtub.com/tags/%E5%BE%AA%E7%8E%AF/"/>
+    
+      <category term="永恒的终结" scheme="http://wdxtub.com/tags/%E6%B0%B8%E6%81%92%E7%9A%84%E7%BB%88%E7%BB%93/"/>
+    
+      <category term="终结" scheme="http://wdxtub.com/tags/%E7%BB%88%E7%BB%93/"/>
+    
+      <category term="Thinking" scheme="http://wdxtub.com/categories/Thinking/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[计算机网络]]></title>
     <link href="http://wdxtub.com/2016/02/10/internet-protocol/"/>
     <id>http://wdxtub.com/2016/02/10/internet-protocol/</id>
-    <published>2016-02-10T20:51:28.000Z</published>
+    <published>2016-02-10T23:51:28.000Z</published>
     <updated>2016-02-11T14:03:07.000Z</updated>
     <content type="html"><![CDATA[<p>这篇文章主要介绍计算机网络的相关知识，因为网络的重要组成不是是协议，所以很大篇幅会是相关协议以及具体的应用。整体的结构基于 <a href="http://www.cnblogs.com/vamei/" target="_blank" rel="external">Vamei</a> 博客中的结构（以及一些配图），加上自己在网络上搜集和日常学习中的一些思考，整理成为本文。</p>
 <a id="more"></a>
@@ -530,7 +569,7 @@ host www.sina.com.cn
     <title><![CDATA[软件架构与设计 第 13 课  Implementing Architecture]]></title>
     <link href="http://wdxtub.com/2016/02/10/sad-13/"/>
     <id>http://wdxtub.com/2016/02/10/sad-13/</id>
-    <published>2016-02-10T17:25:53.000Z</published>
+    <published>2016-02-10T20:25:53.000Z</published>
     <updated>2016-02-10T18:53:00.000Z</updated>
     <content type="html"><![CDATA[<p>上节课我们非常简略地了解了分析架构的大概方法，这节课我们再来看看如何去实现一个架构。</p>
 <a id="more"></a>
@@ -589,7 +628,7 @@ host www.sina.com.cn
     <title><![CDATA[软件架构与设计 第 12 课 Analysis of Software Architectures]]></title>
     <link href="http://wdxtub.com/2016/02/10/sad-12/"/>
     <id>http://wdxtub.com/2016/02/10/sad-12/</id>
-    <published>2016-02-10T17:24:37.000Z</published>
+    <published>2016-02-10T20:24:37.000Z</published>
     <updated>2016-02-10T17:46:24.000Z</updated>
     <content type="html"><![CDATA[<p>这节课我们继续回到课本中，来看看如何对软件架构进行分析，以及一些常见的分析技巧。</p>
 <a id="more"></a>
@@ -675,7 +714,7 @@ host www.sina.com.cn
     <title><![CDATA[深入理解计算机系统 第 10 课 Program Optimization]]></title>
     <link href="http://wdxtub.com/2016/02/08/csapp-10/"/>
     <id>http://wdxtub.com/2016/02/08/csapp-10/</id>
-    <published>2016-02-09T02:24:11.000Z</published>
+    <published>2016-02-09T05:24:11.000Z</published>
     <updated>2016-02-09T04:18:22.000Z</updated>
     <content type="html"><![CDATA[<p>这一讲可谓是全书最实用的部分，介绍如何基于代码执行的机制，去优化我们的代码。</p>
 <a id="more"></a>
@@ -767,7 +806,7 @@ host www.sina.com.cn
     <title><![CDATA[云计算 反思课 1 试验分析的策略与思考]]></title>
     <link href="http://wdxtub.com/2016/02/08/cc-rethink-1/"/>
     <id>http://wdxtub.com/2016/02/08/cc-rethink-1/</id>
-    <published>2016-02-08T13:25:13.000Z</published>
+    <published>2016-02-08T16:25:13.000Z</published>
     <updated>2016-02-08T15:49:40.000Z</updated>
     <content type="html"><![CDATA[<p>学习是一个不断改进方法论的过程，从<a href="http://wdxtub.com/2016/02/01/cc-11/">第 11 课</a>中，我学到了一个很重要的东西，就是要对问题本身进行细致分析，并且找到最基本的指标以衡量工作效果。</p>
 <a id="more"></a>
@@ -809,7 +848,7 @@ host www.sina.com.cn
     <title><![CDATA[云计算 第 12 课 深入负载均衡器及其使用策略]]></title>
     <link href="http://wdxtub.com/2016/02/08/cc-12/"/>
     <id>http://wdxtub.com/2016/02/08/cc-12/</id>
-    <published>2016-02-08T13:09:38.000Z</published>
+    <published>2016-02-08T16:09:38.000Z</published>
     <updated>2016-02-10T19:04:00.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲中我们接触负载均衡器，并且通过一个模拟实验进行了基本的体验，这节课我们通过 Azure 来探索一下负载均衡器的工作原理。</p>
 <a id="more"></a>
@@ -1004,7 +1043,7 @@ host www.sina.com.cn
     <title><![CDATA[【火影忍者】一半良心，一半黑心]]></title>
     <link href="http://wdxtub.com/2016/02/07/naruto-ios/"/>
     <id>http://wdxtub.com/2016/02/07/naruto-ios/</id>
-    <published>2016-02-08T04:17:34.000Z</published>
+    <published>2016-02-08T07:17:34.000Z</published>
     <updated>2016-02-08T06:15:53.000Z</updated>
     <content type="html"><![CDATA[<p>当我们慢慢接受『免费玩家』没人权这样的游戏规则时，火影忍者手游跳出来告诉大家：不多花点钱，你还是没人权。一款制作精良的游戏却处处故意让玩家感到憋屈，先端上来满汉全席，然后故意往里面扔老鼠屎，这个饭店到底是图啥呢？</p>
 <a id="more"></a>
@@ -1093,7 +1132,7 @@ host www.sina.com.cn
     <title><![CDATA[软件架构与设计 习题课 4 面向服务系统架构设计]]></title>
     <link href="http://wdxtub.com/2016/02/07/sad-r4/"/>
     <id>http://wdxtub.com/2016/02/07/sad-r4/</id>
-    <published>2016-02-08T02:28:50.000Z</published>
+    <published>2016-02-08T05:28:50.000Z</published>
     <updated>2016-02-08T04:07:29.000Z</updated>
     <content type="html"><![CDATA[<p>这一次的作业，是结合面向服务架构设计的思想，来优化我们之前的 ATM 设计。这次只需要围绕一个主题来思考，所以会稍微深入一些。</p>
 <a id="more"></a>
@@ -1128,7 +1167,7 @@ host www.sina.com.cn
     <title><![CDATA[第四周 - 鹿港小镇]]></title>
     <link href="http://wdxtub.com/2016/02/05/small-town/"/>
     <id>http://wdxtub.com/2016/02/05/small-town/</id>
-    <published>2016-02-06T00:59:05.000Z</published>
+    <published>2016-02-06T03:59:05.000Z</published>
     <updated>2016-02-06T04:49:58.000Z</updated>
     <content type="html"><![CDATA[<p>有一种预感，路的终点是迷宫。出发啦，不要问那路在哪！</p>
 <a id="more"></a>
@@ -1167,7 +1206,7 @@ host www.sina.com.cn
     <title><![CDATA[软件架构与设计 第 11 课 Service-Oriented Architecture]]></title>
     <link href="http://wdxtub.com/2016/02/04/sad-11/"/>
     <id>http://wdxtub.com/2016/02/04/sad-11/</id>
-    <published>2016-02-04T14:51:56.000Z</published>
+    <published>2016-02-04T17:51:56.000Z</published>
     <updated>2016-02-10T17:07:48.000Z</updated>
     <content type="html"><![CDATA[<p>这一课是根据老师的课程安排添加的，之后应该会按照课本的脉络结合老师的思路来进行讲解。</p>
 <a id="more"></a>
@@ -1360,7 +1399,7 @@ host www.sina.com.cn
     <title><![CDATA[软件架构与设计 第 10 课 Visualizing Software Architectures]]></title>
     <link href="http://wdxtub.com/2016/02/04/sad-10/"/>
     <id>http://wdxtub.com/2016/02/04/sad-10/</id>
-    <published>2016-02-04T14:51:51.000Z</published>
+    <published>2016-02-04T17:51:51.000Z</published>
     <updated>2016-02-04T16:33:25.000Z</updated>
     <content type="html"><![CDATA[<p>前面我们了解了基本的建模概念和方法，现在我们来看看如何把整个模型可视化。</p>
 <a id="more"></a>
@@ -1434,7 +1473,7 @@ host www.sina.com.cn
     <title><![CDATA[软件架构与设计 第 9 课 Introduction to Modeling]]></title>
     <link href="http://wdxtub.com/2016/02/04/sad-9/"/>
     <id>http://wdxtub.com/2016/02/04/sad-9/</id>
-    <published>2016-02-04T14:51:47.000Z</published>
+    <published>2016-02-04T17:51:47.000Z</published>
     <updated>2016-02-04T16:03:43.000Z</updated>
     <content type="html"><![CDATA[<p>既然建模很重要，我们这节课就来了解一下关于建模的基本知识。</p>
 <a id="more"></a>
@@ -1613,7 +1652,7 @@ host www.sina.com.cn
     <title><![CDATA[小方]]></title>
     <link href="http://wdxtub.com/2016/02/03/xiao-fang/"/>
     <id>http://wdxtub.com/2016/02/03/xiao-fang/</id>
-    <published>2016-02-04T04:44:12.000Z</published>
+    <published>2016-02-04T07:44:12.000Z</published>
     <updated>2016-02-04T05:24:49.000Z</updated>
     <content type="html"><![CDATA[<p>要知道，一枚连续二十次都抛出反面的硬币，也有它的正面。</p>
 <a id="more"></a>
@@ -1648,7 +1687,7 @@ host www.sina.com.cn
     <title><![CDATA[深入理解计算机系统 习题课 2 Bomblab]]></title>
     <link href="http://wdxtub.com/2016/02/02/csapp-lab2/"/>
     <id>http://wdxtub.com/2016/02/02/csapp-lab2/</id>
-    <published>2016-02-02T23:32:36.000Z</published>
+    <published>2016-02-03T02:32:36.000Z</published>
     <updated>2016-02-03T18:31:33.000Z</updated>
     <content type="html"><![CDATA[<p>这一讲主要是介绍第二次作业 Bomblab 的相关内容以及解法。</p>
 <a id="more"></a>
@@ -1849,7 +1888,7 @@ host www.sina.com.cn
     <title><![CDATA[云计算 第 11 课 Horizontal Scaling and Advanced Resource Scaling]]></title>
     <link href="http://wdxtub.com/2016/02/01/cc-11/"/>
     <id>http://wdxtub.com/2016/02/01/cc-11/</id>
-    <published>2016-02-01T19:55:20.000Z</published>
+    <published>2016-02-01T22:55:20.000Z</published>
     <updated>2016-02-08T13:11:11.000Z</updated>
     <content type="html"><![CDATA[<p>经过上一节课的『锻炼』，这一次我们要迎来更大的挑战。前面很多时候都是通过 Web 界面来进行云资源的管理，这里我们需要学会如何用代码来申请和控制各种资源。</p>
 <a id="more"></a>
@@ -2267,7 +2306,7 @@ host www.sina.com.cn
     <title><![CDATA[How to Write Fast Code 第 2 课 Multicore 编程]]></title>
     <link href="http://wdxtub.com/2016/02/01/fastcode-2/"/>
     <id>http://wdxtub.com/2016/02/01/fastcode-2/</id>
-    <published>2016-02-01T14:51:26.000Z</published>
+    <published>2016-02-01T17:51:26.000Z</published>
     <updated>2016-02-01T18:18:21.000Z</updated>
     <content type="html"><![CDATA[<p>这一课主要是介绍 Multicore 编程以及 OpenMP 的相关内容，OpenMP 会另外专门做一个配套的教程，稍后共享给大家。</p>
 <a id="more"></a>
@@ -2326,7 +2365,7 @@ host www.sina.com.cn
     <title><![CDATA[How to Write Fast Code 第 1 课 背景知识]]></title>
     <link href="http://wdxtub.com/2016/02/01/fastcode-1/"/>
     <id>http://wdxtub.com/2016/02/01/fastcode-1/</id>
-    <published>2016-02-01T14:51:22.000Z</published>
+    <published>2016-02-01T17:51:22.000Z</published>
     <updated>2016-02-01T17:00:07.000Z</updated>
     <content type="html"><![CDATA[<p>这一课主要介绍并行编程的背景知识和一些基本的技巧，给大家一个整体的认知。</p>
 <a id="more"></a>
@@ -2369,7 +2408,7 @@ host www.sina.com.cn
     <title><![CDATA[How to Write Fast Code 第 0 课 往年笔记与问题集]]></title>
     <link href="http://wdxtub.com/2016/02/01/fastcode-0/"/>
     <id>http://wdxtub.com/2016/02/01/fastcode-0/</id>
-    <published>2016-02-01T14:51:17.000Z</published>
+    <published>2016-02-01T17:51:17.000Z</published>
     <updated>2016-02-01T15:19:50.000Z</updated>
     <content type="html"><![CDATA[<p>本来打算借着当助教，看看这门课有没有什么变化。事实上，没啥变化，所以这里先把当时我的笔记放出来，之后的课程可能会主要集中于代码和项目的思路分析，具体理论的东西不会再重复太多。</p>
 <a id="more"></a>
@@ -3585,7 +3624,7 @@ host www.sina.com.cn
     <title><![CDATA[游戏引进评估的一些思考]]></title>
     <link href="http://wdxtub.com/2016/02/01/game-import/"/>
     <id>http://wdxtub.com/2016/02/01/game-import/</id>
-    <published>2016-02-01T11:57:08.000Z</published>
+    <published>2016-02-01T14:57:08.000Z</published>
     <updated>2016-02-01T14:23:15.000Z</updated>
     <content type="html"><![CDATA[<p>最近要面一个游戏引进评估的职位，因为网上的资料实在很少，所以自己总结思考了三个方面。虽然难免流于纸上谈兵，但也比什么都不准备想当然要好得多。</p>
 <a id="more"></a>
@@ -3674,42 +3713,6 @@ host www.sina.com.cn
       <category term="面试" scheme="http://wdxtub.com/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Deadline 与不插电]]></title>
-    <link href="http://wdxtub.com/2016/01/31/deadline-and-unplug/"/>
-    <id>http://wdxtub.com/2016/01/31/deadline-and-unplug/</id>
-    <published>2016-02-01T02:36:38.000Z</published>
-    <updated>2016-02-01T03:19:54.000Z</updated>
-    <content type="html"><![CDATA[<p>这是一篇很早就想写的文章，在回家的路上捋清了思路。想要说的是：焦虑其实是一种生活方式。但是可能只需要一个简单的动作，就能让一切焕然一新。</p>
-<a id="more"></a>
-<hr>
-<p>这个世界上有两种焦虑，大部分人属于第一种：嘴上的焦虑。另一种属于生理上的『焦虑症』，不懂，所以不妄议，接下来提到的焦虑，都指的是『嘴上的焦虑』。</p>
-<p>在 CMU 听到最多的一句话，就是『我这周有 X 个 Deadline，怎么办要死了』。我很能理解他们的心情，潜台词就是说『但是老子还是顽强活下来了，是不是超级厉害』。所以常常能看到『嘴上焦虑症』患者平日里大把大把浪费时间然后熬几个夜感动一下自己，即使真的没做好也有个退路，『At least I try』。我想说的是，如果没有去想办法提高自己的效率反而是用时间的堆积来告诉自己已经很努力，也就比不做作业稍微好一点点。所谓作业，是让我们在一次次挑战中找到并看清自己，如果一直走的是堆时间而不是增效率的路，那这个学，不能说是白上，只能说『您辛苦了』。</p>
-<p>Deadline 的逻辑，其实和贫穷很像，『贫穷』是经济的『稀缺』，而 Deadline 是时间的『稀缺』，它们带来的问题都是『判断力剥夺』。判断力实际上是一个很玄学的概念，比方说直觉或者是一念之间。但是生活中大部分情况需要的是理性分析判断，这里主要强调的也是这个方面。</p>
-<p>拥有判断力是一个过程，漫长的过程。笨办法，自己一个个坑躺过去；稍微聪明一点的办法，找过来人取经；最有效率的办法，看书。可是，判断对错好坏其实是第二件事，第一件事是，拥有判断（不是想当然的那种判断）。怎么拥有判断又是一个很大的话题，这里就先不展开，姑且假设大家都已经有了一定的判断能力。</p>
-<p>那么这个时候，『稀缺』在某种程度上来说，就是判断力的决定因素了。因为贫穷，所以在判断的时候只去关注短期经济利益，即使每一步都不犯错，最多也只能落入局部最优。因为时间紧，所以在判断的时候，基本就没有了判断（基本就按照 Deadline 的时间顺序来了）。</p>
-<p>乍看起来没有什么问题，但是知识本身有其组织架构，也就是说不同的内容可能之间有路径依赖，那么如果只按照时间顺序来学习，肯定很多时候会因为知识储备不充分的缘故，在很简单的问题上浪费大量的时间。一来没有机会检验调整自己的知识体系，二来分不清轻重缓急，那时间管理注定是一场灾难。</p>
-<p>但 Deadline 的用意绝非如此，反而更应该是一个帮助我们提高效率的工具。举个例子，拔掉笔记本的电源，也就是不插电，只给你一段有限的时间去完成工作，那么在开始之前，是不是会想办法去尽可能利用好这段时间呢？</p>
-<p>在开动之前，知道自己需要什么，有目的；知道自己要怎么做，有步骤；其实就是『谋定而后动』的题中之义。</p>
-<p>所以当我看到插着电坐在桌子前却不知道在做什么的同学，往往都会想：如果把他们的电源拔掉，是不是就能让他们真正开始思考，究竟做什么，才能最有效率地完成手头上的任务。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这是一篇很早就想写的文章，在回家的路上捋清了思路。想要说的是：焦虑其实是一种生活方式。但是可能只需要一个简单的动作，就能让一切焕然一新。</p>]]>
-    
-    </summary>
-    
-      <category term="判断" scheme="http://wdxtub.com/tags/%E5%88%A4%E6%96%AD/"/>
-    
-      <category term="思考" scheme="http://wdxtub.com/tags/%E6%80%9D%E8%80%83/"/>
-    
-      <category term="生活" scheme="http://wdxtub.com/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-      <category term="稀缺" scheme="http://wdxtub.com/tags/%E7%A8%80%E7%BC%BA/"/>
-    
-      <category term="Thinking" scheme="http://wdxtub.com/categories/Thinking/"/>
     
   </entry>
   
