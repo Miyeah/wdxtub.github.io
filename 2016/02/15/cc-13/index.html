@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>云计算 第 13 课 缓存 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">云计算 第 13 课 缓存</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-guestbook"> 技术</i></a><a href="/life/"><i class="icon-about"> 生活</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">云计算 第 13 课 缓存</h1><div class="post-meta">2016-02-15 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/02/15/cc-13/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5B66_u4E60_u76EE_u6807"><span class="toc-number">1.</span> <span class="toc-text">学习目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u7F13_u5B58_u6D4B_u8BD5"><span class="toc-number">2.</span> <span class="toc-text">缓存测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4EFB_u52A1_u5217_u8868"><span class="toc-number">2.1.</span> <span class="toc-text">任务列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u63D0_u793A"><span class="toc-number">2.2.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AWS__u90E8_u5206"><span class="toc-number">2.3.</span> <span class="toc-text">AWS 部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u9879_u76EE_u65E5_u5FD7"><span class="toc-number">3.</span> <span class="toc-text">项目日志</span></a></li></ol></div></div><div class="post-content"><p>前面我们已经了解了如何进行 autoscaling 和自定义负载均衡器，这一课我们来接触另一个在 web 服务中非常重要的概念——缓存。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u5B66_u4E60_u76EE_u6807"><a href="#u5B66_u4E60_u76EE_u6807" class="headerlink" title="学习目标"></a>学习目标</h2><ol>
+<li>了解在 web 服务中缓存所扮演的角色</li>
+<li>比较影响缓存的两个方面：temporal locality 和 spatial locality</li>
+<li>部署一个使用缓存的 web 服务</li>
+<li>比较不同的缓存策略对性能的影响</li>
+</ol>
+<p>先来看看数据格式，保存在 data center 中的数据格式是：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">targetID</span><span class="params">(数字)</span></span>, first_name, last_name, encrypted <span class="function"><span class="title">data</span><span class="params">(文本)</span></span></span><br></pre></td></tr></table></figure>
+<p>而客户端（在这里就是 load generator）发给 data center 的数据格式是：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Target <span class="tag">&lt;<span class="title">targetID</span>&gt;</span> first_name last_name’s encrypted conversations are: <span class="tag">&lt;<span class="title">conversations</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>每个 data center 在同一时间大概能够缓存 10000 条记录，但是面对 load generator 仍然有些力不从心，我们的任务就是利用缓存来提高性能。</p>
+<p>不少互联网应用都需要大量的资源，提高性能的方法很多，其中一个就是我们之前尝试过的 horizontal 和 vertical scaling。这种方式虽然比较方便，但是贵呀，能不能在已有资源限制的情况下，尽可能提高性能呢？两个比较常见的办法是『缓存(caching)』和『复制(replication)』。</p>
+<p>复制、缓存和负载均衡可以在不对数据进行分割的情况下提高性能。很多工具（比如 Varnish, Squid, memcached）可以完成缓存这项任务，把最常用的资源保存下来。这样有两个好处：</p>
+<ol>
+<li>系统不必重复运算，节约计算资源</li>
+<li>可以快速向用户返回结果</li>
+</ol>
+<p>另外一个比较常见的方法是『复制』，通常会与缓存结合使用。系统会保存多个全部数据集的副本，这样系统可以同时访问多个不同资源。使用『复制』方法的时候，需要注意以下几点：</p>
+<ol>
+<li>需要确定一个分配用户请求的策略，可以是内容相关的（即特定请求会重定向至特定机器）或者是内容无关的</li>
+<li>『复制』的实例本身需要实时监控，避免出现负载不均衡的问题</li>
+<li>在进行内容写入的时候，还需要保证数据一致性（但是在这次的作业中不要求）</li>
+</ol>
+<p>这周我们要处理的系统，后端有两个『复制』的数据库。除了可以应对大负载，某种程度上来说也提高了容错性（比如说数据库损坏）。任何时候，只有一个实例在运行，都是很危险的。具体的架构见下图：</p>
+<p><img src="/images/14555365484111.jpg" alt="图 A，从数据库中获取数据；图 B，从前端缓存中获取数据"></p>
+<p>说明以下上图的例子，前端访问数据库需要 1 ms(单向)，从数据库中获取数据需要 10 ms，而直接访问前端获取一次数据需要 2 ms(单向)，同一条记录，如果没有缓存，那么一共需要 16ms 来完成整个操作，而如果有缓存，则只需要 4 ms。</p>
+<ul>
+<li>Temporal locality: 假如一条记录刚刚被用到，那么很可能之后也会被常用到</li>
+<li>Spatial locality: 假如一条记录刚刚被用到，那么很可能它附近的几条记录也会被用到</li>
+</ul>
+<p>另外一个需要注意的是，除了前端这个显式缓存，无论是数据库还是文件系统都会有自己的缓存系统，比方说 data center 会缓存最近的 10000 条记录，我们访问一条没有在前端缓存的记录时，如果它已经被 data center 缓存，那么整个可能寻找数据只需要 6 ms(而不是之前的 10 ms)。</p>
+<p>注意事项</p>
+<ul>
+<li>用 Java 写，Azure 部分就有 100% 的分数，提交的代码中不要出现：    <code>Appid</code>, <code>appkey</code>, <code>storage account key</code> 和 <code>endpoint url</code></li>
+<li>最多只能在前端存储 1000 条记录</li>
+<li>做 AWS 的部分记得打上 <code>Project : 2.3</code> 的标签</li>
+</ul>
+<p>系统镜像 Azure</p>
+<ul>
+<li>Data Center, <code>Standard_D1</code>, <code>https://cc15319619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/cc15619p23dcv5-osDisk.dc552bc1-518d-451e-b856-c0419a6adcdb.vhd</code></li>
+<li>Load Generator, <code>Standard_D1</code>, <code>https://cc15319619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/cc15619p23lgv4-osDisk.40d2443e-9f8c-41ce-9826-e0d7792a6c27.vhd</code></li>
+<li>前端, <code>Standard_A0</code>, <code>https://cc15319619.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/cc15619p23fe-osDisk.8d5f0df8-c94d-43e0-8a11-77ba440e0d8f.vhd</code></li>
+</ul>
+<p>系统镜像 AWS</p>
+<ul>
+<li>Data Center, <code>m3.medium</code>, <code>ami-1b193371</code></li>
+<li>Load Generator, <code>m3.medium</code>, <code>ami-c00134aa</code></li>
+<li>前端, <code>m3.medium</code>, <code>ami-6f2a1f05</code></li>
+</ul>
+<h2 id="u7F13_u5B58_u6D4B_u8BD5"><a href="#u7F13_u5B58_u6D4B_u8BD5" class="headerlink" title="缓存测试"></a>缓存测试</h2><p>研究 trace file 来确定缓存的策略。Data Center 各可以缓存 10000 条记录，并提供以下接口：</p>
+<ul>
+<li><code>/target?targetID=X</code> 返回结果并缓存</li>
+<li><code>/range?start_range=X&amp;end_range=Y</code> 缓存一个范围内的结果（以 <code>;</code> 分隔）并缓存</li>
+</ul>
+<h3 id="u4EFB_u52A1_u5217_u8868"><a href="#u4EFB_u52A1_u5217_u8868" class="headerlink" title="任务列表"></a>任务列表</h3><ol>
+<li>启动一个 <code>Standard_A0</code> 虚拟机作为前端</li>
+<li>SSH 到前端，账户 <code>ubuntu</code> 密码 <code>Cloud@123</code></li>
+<li>文件夹 <code>vertx</code> 中有 <code>MSB.java</code> 和 <code>run_vertx.sh</code></li>
+<li>熟悉 <code>MSB.java</code> 中的代码</li>
+<li>启动两个 <code>Standard_D1</code> 虚拟机作为 data center</li>
+<li>在 <code>MSB.java</code> 文件中，把两个 data center 的 DNS 填写进去，格式为 <code>xxx.eastus.cloudapp.azure.com</code></li>
+<li>修改 <code>retrieveDetails</code> 函数，提高性能，现在代码已经是可以运行的，可以运行来体验下整个过程 </li>
+<li>可以在前端机器上存储 1000 条记录以提高性能。具体用什么数据结构和载入策略都可以自己决定。唯一的限制就是不能超出 1000 条的上限。</li>
+<li>改动完成后可以用下面的命令启动 web 服务：<code>./run_vertx.sh</code></li>
+<li>确定代码没有问题后，可以开启一个 <code>Standard_D1</code> 虚拟机作为 load generator，在浏览器中访问其 DNS 就可以看到界面</li>
+<li>提交密码和 andrew id</li>
+<li>填写前端 DNS 地址以开始 Trace 1 测试，目标是 145 RPS</li>
+<li>填写前端 DNS 地址以开始 Trace 2 测试，目标是 145 RPS</li>
+<li>填写前端 DNS 地址以开始 MSB Trace 测试，目标是 145 RPS </li>
+<li>测试的时候可以在浏览器里查看日志</li>
+</ol>
+<h3 id="u63D0_u793A"><a href="#u63D0_u793A" class="headerlink" title="提示"></a>提示</h3><ul>
+<li>研究清楚 web 服务的代码再开启 load generator 和 data center</li>
+<li>可以随意修改 <code>MSB.java</code>，唯一需要注意的是不能缓存超过 1000 条记录</li>
+<li>统计系统中的不同组件的延迟来找出哪里更加需要优化</li>
+<li>了解 temporal locality 和 spatial locality，思考如何可以在代码中利用这两个特性</li>
+<li>开始 MSB Trace Test 之前确保已经通过了前两个测试</li>
+<li>执行 <code>run_vertx.sh</code> 之后，可以使用 <code>sudo cat nohup.out</code> 来查看日志</li>
+<li>前两个测试可以通过观察请求中的 id 来进行策略设计，但 MSB Trace 测试需要更加复杂的缓存机制</li>
+<li>我们手头上有两台数据相同的 data center，各有不同的缓存，想想如何利用这个特点来提高效率（不同的请求发送给不同的主机，需要分类）</li>
+<li>了解同步和异步请求的概念，data center 提供 web 服务对数据库进行异步请求，看看这部分代码是怎么实现的</li>
+<li>这里只会对数据库进行读取，所以不需要考虑数据一致性的问题</li>
+<li>只需要提交 MSB Trace Test 的代码，把所有代码放到一个 zip 包里，用 load generator 提交</li>
+<li>每当 cache 有 miss 的时候，输出一下，找找规律</li>
+</ul>
+<p><strong>参考资料</strong></p>
+<ul>
+<li>Rabinovich, Michael, and Oliver Spatscheck. Web caching and replication. Boston, USA: Addison-Wesley…”</li>
+<li><a href="http://www.cs.berkeley.edu/~brewer/Giant.pdf" target="_blank" rel="external">Brewer, Eric A. “Lessons from giant-scale services.” Internet Computing, IEEE 5.4 (2001): 46-55</a></li>
+<li><a href="http://www.distributed-systems.net/papers/2007.ic.pdf" target="_blank" rel="external">Sivasubramanian, Swaminathan, et al. “Analysis of caching and replication strategies for web applications.” Internet Computing, IEEE 11.1 (2007): 60-66</a></li>
+<li><a href="http://www.akamai.com/dl/technical_publications/ConsistenHashingandRandomTreesDistributedCachingprotocolsforrelievingHotSpotsontheworldwideweb.pdf" target="_blank" rel="external">Karger, David, et al. “Consistent hashing and random trees: Distributed caching protocols for relieving hot spots on the World Wide Web.” Proceedings of the twenty-ninth annual ACM symposium on Theory of computing. ACM, 1997</a></li>
+<li><a href="http://www.cs.cmu.edu/~hl/papers/loadbal-socc2011.pdf" target="_blank" rel="external">Fan, Bin, et al. “Small cache, big effect: Provable load balancing for randomly partitioned cluster services.” Proceedings of the 2nd ACM Symposium on Cloud Computing. ACM, 2011</a></li>
+</ul>
+<h3 id="AWS__u90E8_u5206"><a href="#AWS__u90E8_u5206" class="headerlink" title="AWS 部分"></a>AWS 部分</h3><p>这一部分是选做的，基本要求一样，有以下需要注意的的：</p>
+<ul>
+<li>安全组中要打开 80 端口</li>
+<li>AWS 的地址格式和 Azure 的稍有不同</li>
+<li>性能的要求是 142 RPS</li>
+</ul>
+<h2 id="u9879_u76EE_u65E5_u5FD7"><a href="#u9879_u76EE_u65E5_u5FD7" class="headerlink" title="项目日志"></a>项目日志</h2><p>Loading….</p>
+</div><div class="tags"><a href="/tags/AWS/">AWS</a><a href="/tags/Azure/">Azure</a><a href="/tags/CMU/">CMU</a><a href="/tags/云计算/">云计算</a><a href="/tags/缓存/">缓存</a></div><div class="post-nav"><a href="/2016/02/14/interview-guide/" class="next">编程起跑线 番外 技术面试感悟<i class="icon-next"></i></a></div><div data-thread-key="2016/02/15/cc-13/" data-title="云计算 第 13 课 缓存" data-url="http://wdxtub.com/2016/02/15/cc-13/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/02/15/cc-13/" data-title="云计算 第 13 课 缓存" data-url="http://wdxtub.com/2016/02/15/cc-13/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="widget-title">标签</div><div class="tagcloud"><a href="/tags/手游/" style="font-size: 15px;">手游</a> <a href="/tags/英雄/" style="font-size: 15px;">英雄</a> <a href="/tags/硬币/" style="font-size: 15px;">硬币</a> <a href="/tags/今何在/" style="font-size: 15px;">今何在</a> <a href="/tags/大圣归来/" style="font-size: 15px;">大圣归来</a> <a href="/tags/氐惆/" style="font-size: 15px;">氐惆</a> <a href="/tags/回头无岸/" style="font-size: 15px;">回头无岸</a> <a href="/tags/电影/" style="font-size: 15px;">电影</a> <a href="/tags/动画/" style="font-size: 15px;">动画</a> <a href="/tags/孙悟空/" style="font-size: 15px;">孙悟空</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/记录/" style="font-size: 15px;">记录</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/思考/" style="font-size: 15px;">思考</a> <a href="/tags/论道/" style="font-size: 15px;">论道</a> <a href="/tags/精选/" style="font-size: 15px;">精选</a> <a href="/tags/早起/" style="font-size: 15px;">早起</a> <a href="/tags/效率/" style="font-size: 15px;">效率</a> <a href="/tags/抱怨/" style="font-size: 15px;">抱怨</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/自尊/" style="font-size: 15px;">自尊</a> <a href="/tags/CMU/" style="font-size: 15px;">CMU</a> <a href="/tags/周记/" style="font-size: 15px;">周记</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/改变/" style="font-size: 15px;">改变</a> <a href="/tags/读书/" style="font-size: 15px;">读书</a> <a href="/tags/教育/" style="font-size: 15px;">教育</a> <a href="/tags/家庭/" style="font-size: 15px;">家庭</a> <a href="/tags/环境/" style="font-size: 15px;">环境</a> <a href="/tags/回合制/" style="font-size: 15px;">回合制</a> <a href="/tags/格子/" style="font-size: 15px;">格子</a> <a href="/tags/模拟经营/" style="font-size: 15px;">模拟经营</a> <a href="/tags/COC/" style="font-size: 15px;">COC</a> <a href="/tags/美剧/" style="font-size: 15px;">美剧</a> <a href="/tags/苏州/" style="font-size: 15px;">苏州</a> <a href="/tags/旅行/" style="font-size: 15px;">旅行</a> <a href="/tags/醒醒/" style="font-size: 15px;">醒醒</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/知识管理/" style="font-size: 15px;">知识管理</a> <a href="/tags/英语学习/" style="font-size: 15px;">英语学习</a> <a href="/tags/透析/" style="font-size: 15px;">透析</a> <a href="/tags/蝴蝶效应/" style="font-size: 15px;">蝴蝶效应</a> <a href="/tags/步行/" style="font-size: 15px;">步行</a> <a href="/tags/Kindle/" style="font-size: 15px;">Kindle</a> <a href="/tags/口译/" style="font-size: 15px;">口译</a> <a href="/tags/徐州/" style="font-size: 15px;">徐州</a> <a href="/tags/原创/" style="font-size: 15px;">原创</a> <a href="/tags/童话/" style="font-size: 15px;">童话</a> <a href="/tags/感情/" style="font-size: 15px;">感情</a> <a href="/tags/心智/" style="font-size: 15px;">心智</a> <a href="/tags/时间/" style="font-size: 15px;">时间</a> <a href="/tags/自我/" style="font-size: 15px;">自我</a> <a href="/tags/感恩节/" style="font-size: 15px;">感恩节</a> <a href="/tags/朋友/" style="font-size: 15px;">朋友</a> <a href="/tags/纽约/" style="font-size: 15px;">纽约</a> <a href="/tags/成绩/" style="font-size: 15px;">成绩</a> <a href="/tags/多看/" style="font-size: 15px;">多看</a> <a href="/tags/访谈/" style="font-size: 15px;">访谈</a> <a href="/tags/游戏/" style="font-size: 15px;">游戏</a> <a href="/tags/英雄联盟/" style="font-size: 15px;">英雄联盟</a> <a href="/tags/笔试/" style="font-size: 15px;">笔试</a> <a href="/tags/改进/" style="font-size: 15px;">改进</a> <a href="/tags/旅途/" style="font-size: 15px;">旅途</a> <a href="/tags/心情/" style="font-size: 15px;">心情</a> <a href="/tags/将军/" style="font-size: 15px;">将军</a> <a href="/tags/回忆/" style="font-size: 15px;">回忆</a> <a href="/tags/清醒思考的艺术/" style="font-size: 15px;">清醒思考的艺术</a> <a href="/tags/明智行动的艺术/" style="font-size: 15px;">明智行动的艺术</a> <a href="/tags/科幻/" style="font-size: 15px;">科幻</a> <a href="/tags/预言/" style="font-size: 15px;">预言</a> <a href="/tags/顽皮狗/" style="font-size: 15px;">顽皮狗</a> <a href="/tags/PS4/" style="font-size: 15px;">PS4</a> <a href="/tags/写作/" style="font-size: 15px;">写作</a> <a href="/tags/技术/" style="font-size: 15px;">技术</a> <a href="/tags/开篇/" style="font-size: 15px;">开篇</a> <a href="/tags/新参者/" style="font-size: 15px;">新参者</a> <a href="/tags/小说/" style="font-size: 15px;">小说</a> <a href="/tags/死亡/" style="font-size: 15px;">死亡</a> <a href="/tags/Swift-千金方/" style="font-size: 15px;">Swift 千金方</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/斯坦福-CS193p/" style="font-size: 15px;">斯坦福 CS193p</a> <a href="/tags/教程/" style="font-size: 15px;">教程</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/技巧/" style="font-size: 15px;">技巧</a> <a href="/tags/Apple/" style="font-size: 15px;">Apple</a> <a href="/tags/Swift/" style="font-size: 15px;">Swift</a> <a href="/tags/Overview/" style="font-size: 15px;">Overview</a> <a href="/tags/概览/" style="font-size: 15px;">概览</a> <a href="/tags/ARC/" style="font-size: 15px;">ARC</a> <a href="/tags/扩展/" style="font-size: 15px;">扩展</a> <a href="/tags/协议/" style="font-size: 15px;">协议</a> <a href="/tags/泛型/" style="font-size: 15px;">泛型</a> <a href="/tags/访问控制/" style="font-size: 15px;">访问控制</a> <a href="/tags/运算符重载/" style="font-size: 15px;">运算符重载</a> <a href="/tags/类型/" style="font-size: 15px;">类型</a> <a href="/tags/元组/" style="font-size: 15px;">元组</a> <a href="/tags/运算符/" style="font-size: 15px;">运算符</a> <a href="/tags/控制/" style="font-size: 15px;">控制</a> <a href="/tags/函数/" style="font-size: 15px;">函数</a> <a href="/tags/属性/" style="font-size: 15px;">属性</a></div></div><div class="widget"><div class="widget-title">最新文章</div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/02/15/cc-13/">云计算 第 13 课 缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/14/interview-guide/">编程起跑线 番外 技术面试感悟</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/14/csapp-lab3/">深入理解计算机系统 习题课 3 Attacklab</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/12/conqueror/">第五周 - Conqueror</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/12/end-of-anxiety/">不安的终结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/internet-protocol/">计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/sad-13/">软件架构与设计 第 13 课  Implementing Architecture</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/sad-12/">软件架构与设计 第 12 课 Analysis of Software Architectures</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/08/csapp-10/">深入理解计算机系统 第 10 课 Program Optimization</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/08/cc-rethink-1/">云计算 反思课 1 试验分析的策略与思考</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
