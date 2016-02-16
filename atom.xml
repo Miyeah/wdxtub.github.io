@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-15T20:44:21.000Z</updated>
+  <updated>2016-02-16T14:10:59.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/15/csapp-12/"/>
     <id>http://wdxtub.com/2016/02/15/csapp-12/</id>
     <published>2016-02-15T15:15:18.000Z</published>
-    <updated>2016-02-15T20:44:21.000Z</updated>
+    <updated>2016-02-16T14:10:59.000Z</updated>
     <content type="html"><![CDATA[<p>上一讲我们了解了存储的相关知识，这节课我们来更加深入研究一下 cache memory 的知识。</p>
 <a id="more"></a>
 <hr>
@@ -27,6 +27,81 @@
 <p><img src="/images/14555689621035.jpg" alt=""></p>
 <h2 id="General_Cache_Organization__28S_2C_E_2C_B_29"><a href="#General_Cache_Organization__28S_2C_E_2C_B_29" class="headerlink" title="General Cache Organization (S, E, B)"></a>General Cache Organization (S, E, B)</h2><p>通常来说，是按照如下图所示的方式来组织的，一定要注意 S/E/B 具体在说什么：</p>
 <p><img src="/images/14555690389309.jpg" alt=""></p>
+<p>实际上可以理解为三种层级关系，对应不同的索引，这样分层的好处在于，通过层级关系简化搜索需要的时间，并且和字节的排布也是一一对应的（之后介绍缓存的时候就体现得更加明显）。</p>
+<h2 id="u8BFB_u5165"><a href="#u8BFB_u5165" class="headerlink" title="读入"></a>读入</h2><p><img src="/images/14556253748808.jpg" alt=""></p>
+<p>具体在从缓存中读取一个地址时，首先我们通过 set index 确定要在哪个 set 中寻找，确定后利用 tag 和同一个 set 中的每个 line 进行比对，找到 tag 相同的那个 line，最后再根据 block offset 确定要从 line 的哪个位置读起（这里的而 line 和 block 是一个意思）。</p>
+<p>当 E=1 时，也就是每个 set 只有 1 个 line 的时候，称之为直接映射缓存(Direct Mapped Cache)。</p>
+<p><img src="/images/14556267189507.jpg" alt=""></p>
+<p>这种情况下，因为每个 set 对应 1 个 line，反过来看，1 个 line 就需要一个 set，所以 set index 的位数就会较多（和之后的多路映射对比）。具体的检索过程就是先通过 set index 确定哪个 set，然后看是否 valid，然后比较那个 set 里唯一 line 的 tag 和地址的 t bits 是否一致，就可以确定是否缓存命中。</p>
+<p><img src="/images/14556274155804.jpg" alt=""></p>
+<p>命中之后根据 block offset 确定偏移量，因为需要读入一个 int，所以会读入 4 5 6 7 这四个字节（假设缓存是 8 个字节）。如果 tag 不匹配的话，这行会被扔掉并放新的数据进来。</p>
+<p>这里举一个具体的例子</p>
+<p><img src="/images/14556275938967.jpg" alt=""></p>
+<p>缓存的大小如图所示，对应就是有 4 个 set，所以需要 2 位的 set index，所以进行读入的时候，会根据中间两位来确定在哪个 set 中查找，其中 8 和 0，因为中间两位相同，会产生冲突，导致连续 miss，这个问题可以用多路映射来解决。</p>
+<p>当 E 大于 1 时，也就是每个 set 有 E 个 line 的时候，称之为 E-way Set Associative Cache。这里用 E = 2 来做例子：</p>
+<p><img src="/images/14556282750323.jpg" alt=""></p>
+<p>跟前面所说的一致，这里每个 set 有两个 line，所以就没有那么多 set，也就是说说 set index 可以少一位（之后的例子可以看到）</p>
+<p><img src="/images/14556285710342.jpg" alt=""></p>
+<p>再简述一下整个过程，先从 set index 确定那个 set，然后看 valid 位，接着利用 t bits 分别和每个 line 的 tag 进行比较，如果匹配则命中，那么返回 4 5 位置的数据，如果不匹配，就需要替换，可以随机替换，也可以用 least recently used(LRU) 来进行替换。下面是一个具体的例子：</p>
+<p><img src="/images/14556295742803.jpg" alt=""></p>
+<p>可以看到因为每个 set 有 2 个 line，所以只有 2 个 set，set index 也只需要 1 位了，这个情况下即使 8 和 0 的 set index 一致，因为一个 set 可以容纳两个数据，所以最后一次访问 0，就不会 miss 了。</p>
+<h2 id="u5199_u5165"><a href="#u5199_u5165" class="headerlink" title="写入"></a>写入</h2><p>在整个 memory hierarchy 中，不同的层级可能会存放同一个数据的不同拷贝（如 L1, L2, L3, 主内存, 硬盘）。如果发生写入命中的时候（也就是要写入的地址在缓存中有），有两种策略：</p>
+<ul>
+<li>Write-through: 命中后更新缓存，同时写入到内存中</li>
+<li>Write-back: 直到这个缓存需要被指环出去，才写入到内存中（需要额外的 dirty bit 来表示缓存中的数据是否和内存中相同，因为可能在其他的时候内存中对应地址的数据已经更新，那么重复写入就会导致原有数据丢失）</li>
+</ul>
+<p>在写入 miss 的时候，同样有两种方式：</p>
+<ul>
+<li>Write-allocate: 载入到缓存中，并更新缓存（如果之后还需要对其操作，这个方式就比较好）</li>
+<li>No-write-allocate: 直接写入到内存中，不载入到缓存 </li>
+</ul>
+<p>这四种策略通常的搭配是：</p>
+<ul>
+<li>Write-through + No-wirte-allocate</li>
+<li>Write-back + Write-allocate</li>
+</ul>
+<p>其中第一种可以保证绝对的数据一致性，第二种效率会比较高（通常情况下）。</p>
+<h2 id="u5B9E_u4F8B_u5B66_u4E60_uFF1AIntel_Core_i7"><a href="#u5B9E_u4F8B_u5B66_u4E60_uFF1AIntel_Core_i7" class="headerlink" title="实例学习：Intel Core i7"></a>实例学习：Intel Core i7</h2><p>Intel Core i7 的 cache hierarchy 如下图所示：</p>
+<p><img src="/images/14556301866362.jpg" alt=""></p>
+<p>我们通常用如下的指标来评价缓存的性能：</p>
+<ul>
+<li>Miss Rate<ul>
+<li>1 - hit rate</li>
+<li>对于 L1 来说一般 3-10%</li>
+<li>对于 L2 来说很小 &lt; 1%</li>
+<li>也就是说大部分时间堆数据的访问都是极快的</li>
+</ul>
+</li>
+<li>Hit Time<ul>
+<li>把 1 个 line 的缓存传输给处理器所用的时间，包括判断其是否在缓存中这个过程</li>
+<li>对于 L1 来说一般 4 个时钟周期</li>
+<li>对于 L2 来说一般 10 个时钟周期</li>
+</ul>
+</li>
+<li>Miss Penalty<ul>
+<li>因为 miss 所需要花费的额外时间</li>
+<li>一般来说需要 50-200 个时钟周期（因为要读内存，而且由于处理器速度越来越快，这个时间还在增长）</li>
+</ul>
+</li>
+</ul>
+<p>从前面的数据中，我们可以看出，hit 和 miss 所需要的时间是天壤之别（只看 L1 和主存的话，可能差 100 倍）。</p>
+<p>还有一个比较有意思的现象是，99% 的命中率，是 97% 的命中率的性能的两倍。举个例子，假设缓存命中时需要 1 个周期，而 miss penalty 是 100 个周期，那么</p>
+<ul>
+<li>97% hits: 1 cycle + 0.03 x 100 cycles = 4 cycles</li>
+<li>99% hits: 1 cycle + 0.01 x 100 cycles = 2 cycles</li>
+</ul>
+<p>这也是为什么我们用 miss rate 而不是 hit rate，因为更能体现出倍数的关系。</p>
+<h2 id="Memory_mountain"><a href="#Memory_mountain" class="headerlink" title="Memory mountain"></a>Memory mountain</h2><p>我们用每秒从内存中读入的字节数目来衡量内存的性能（单位 MB/s），根据 spatial 和 temporal locality 的特性，我们可以画出一幅立体的表现性能走向的图，具体用的测试代码为：</p>
+<p><img src="/images/14556314610621.jpg" alt=""></p>
+<p>可以得到这么一幅图</p>
+<p><img src="/images/14556314890158.jpg" alt=""></p>
+<p>注意，这是根据 Core i7 得出来的图，不同的处理器可能因为不同的设计和架构而有所区别，但是可以通过不同的颜色和层次，看出不同 size 和 stride 对性能的影响。山脚是我们应该尽量避免的，山顶是我们力求达到的，也就是说，尽量一次访问一个 stride，一次读入的数据大小也不宜太大，最好和 L1 缓存数值上吻合。</p>
+<h2 id="u77E9_u9635_u76F8_u4E58"><a href="#u77E9_u9635_u76F8_u4E58" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h2><p>矩阵相乘是学习缓存非常好的例子，这里给出一些条件：</p>
+<ul>
+<li>两个 N x N 的矩阵相乘</li>
+<li>矩阵的每个元素是 double，也就是 8 个字节</li>
+<li>一共需要 $O(n^3)$ 次操作</li>
+</ul>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>上一讲我们了解了存储的相关知识，这节课我们来更加深入研究一下 cache memory 的知识。</p>]]>
