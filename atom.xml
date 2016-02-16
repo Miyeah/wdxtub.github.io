@@ -167,7 +167,7 @@
     <link href="http://wdxtub.com/2016/02/15/cc-13/"/>
     <id>http://wdxtub.com/2016/02/15/cc-13/</id>
     <published>2016-02-15T11:04:35.000Z</published>
-    <updated>2016-02-16T01:40:22.000Z</updated>
+    <updated>2016-02-16T03:22:48.000Z</updated>
     <content type="html"><![CDATA[<p>前面我们已经了解了如何进行 autoscaling 和自定义负载均衡器，这一课我们来接触另一个在 web 服务中非常重要的概念——缓存。</p>
 <a id="more"></a>
 <hr>
@@ -286,6 +286,8 @@
 <li>确定两个 data center 的访问策略</li>
 </ol>
 <p>基本上做好这四个事情，就算是完成任务了。修改完成之后可以把文件传回服务器 <code>scp -r ./MSB.java ubuntu@yourdns.eastus.cloudapp.azure.com:~/vertx/</code></p>
+<p>AWS 部分改动不多，改一下 data center 的地址就好，上传的代码为：<code>scp -i demo.pem ./MSB.java ubuntu@dns.compute-1.amazonaws.com:~/</code>，然后 ssh 过去运行 <code>ssh -i demo.pem ubuntu@dns.compute-1.amazonaws.com</code></p>
+<p>这次的作业比较简单，希望以后也能这么开心。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>前面我们已经了解了如何进行 autoscaling 和自定义负载均衡器，这一课我们来接触另一个在 web 服务中非常重要的概念——缓存。</p>]]>
