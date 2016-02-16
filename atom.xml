@@ -167,7 +167,7 @@
     <link href="http://wdxtub.com/2016/02/15/cc-13/"/>
     <id>http://wdxtub.com/2016/02/15/cc-13/</id>
     <published>2016-02-15T11:04:35.000Z</published>
-    <updated>2016-02-15T13:48:45.000Z</updated>
+    <updated>2016-02-16T01:40:22.000Z</updated>
     <content type="html"><![CDATA[<p>前面我们已经了解了如何进行 autoscaling 和自定义负载均衡器，这一课我们来接触另一个在 web 服务中非常重要的概念——缓存。</p>
 <a id="more"></a>
 <hr>
@@ -270,7 +270,22 @@
 <li>AWS 的地址格式和 Azure 的稍有不同</li>
 <li>性能的要求是 142 RPS</li>
 </ul>
-<h2 id="u9879_u76EE_u65E5_u5FD7"><a href="#u9879_u76EE_u65E5_u5FD7" class="headerlink" title="项目日志"></a>项目日志</h2><p>Loading….</p>
+<h2 id="u9879_u76EE_u65E5_u5FD7"><a href="#u9879_u76EE_u65E5_u5FD7" class="headerlink" title="项目日志"></a>项目日志</h2><p>首先可以直接利用上个项目的代码，用指定的镜像开好四个机器，检查一下是否开机成功，都没问题之后，就可以 ssh 到我们的 Front End 机器：<code>ssh ubuntu@yourdns.eastus.cloudapp.azure.com</code>，然后把所有文件都复制下来方便本地修改：<code>scp -r ubuntu@yourdns.eastus.cloudapp.azure.com:~/vertx/* ./</code>，里面还是有不少文件的，不过我们这次只需要修改一个 <code>MSB.java</code>。</p>
+<p>先来看看具体我们要做什么，观察 <code>MSB.java</code>，会发现这次处理请求的实现方式和之前都不一样，留意以下这一段代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vertx.createHttpServer().requestHandler(<span class="keyword">new</span> Handler&lt;HttpServerRequest&gt;() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(HttpServerRequest req)</span> </span>&#123;</span><br><span class="line">        String query_type = req.path();</span><br><span class="line">        req.response().headers().set(<span class="string">"Content-Type"</span>, <span class="string">"text/plain"</span>);</span><br><span class="line">        <span class="keyword">if</span>(query_type.equals(<span class="string">"/target"</span>)) &#123;</span><br><span class="line">            String key = req.params().get(<span class="string">"targetID"</span>);</span><br><span class="line">            processRequest(key,req);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (query_type.equals(<span class="string">"/range"</span>)) &#123;</span><br><span class="line">            String start = req.params().get(<span class="string">"start_range"</span>);</span><br><span class="line">            String end = req.params().get(<span class="string">"end_range"</span>);</span><br><span class="line">            processRequest(start, end, req);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).listen(<span class="number">80</span>);</span><br></pre></td></tr></table></figure>
+<p>可以看到这里在 80 端口打开了一个监听器，每次遇到请求，就会调用其中的 <code>handle(HttpServerRequest req)</code> 函数，那么这个函数里做了什么事情呢？</p>
+<ol>
+<li>根据不同的请求类型，执行不同的请求</li>
+<li>具体的请求在 <code>retrieveDetail</code> 函数中完成</li>
+</ol>
+<p>所以具体来说，要做好的是以下四个事情：</p>
+<ol>
+<li>确定缓存所使用的数据结构</li>
+<li>确定缓存替换记录的策略</li>
+<li>确定需要缓存多少请求</li>
+<li>确定两个 data center 的访问策略</li>
+</ol>
+<p>基本上做好这四个事情，就算是完成任务了。修改完成之后可以把文件传回服务器 <code>scp -r ./MSB.java ubuntu@yourdns.eastus.cloudapp.azure.com:~/vertx/</code></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>前面我们已经了解了如何进行 autoscaling 和自定义负载均衡器，这一课我们来接触另一个在 web 服务中非常重要的概念——缓存。</p>]]>
