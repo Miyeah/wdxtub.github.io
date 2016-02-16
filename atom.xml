@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-16T15:11:46.000Z</updated>
+  <updated>2016-02-16T15:36:38.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[iOS 游戏简评]]></title>
+    <link href="http://wdxtub.com/2016/02/16/ios-game-short-review/"/>
+    <id>http://wdxtub.com/2016/02/16/ios-game-short-review/</id>
+    <published>2016-02-16T15:34:25.000Z</published>
+    <updated>2016-02-16T15:36:38.000Z</updated>
+    <content type="html"><![CDATA[<p>这个系列主要是记录一下自己玩过的众多 iOS 游戏，因为时间和篇幅所限，每个游戏可能只会用几句话简单评测，当然，某些我觉得值得单独拉出来评测的，还是会专门进行介绍的。</p>
+<p>最后更新 2016.2.16</p>
+<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这个系列主要是记录一下自己玩过的众多 iOS 游戏，因为时间和篇幅所限，每个游戏可能只会用几句话简单评测，当然，某些我觉得值得单独拉出来评测的，还是会专门进行介绍的。</p>
+<p>最后更新 2016.2.16</p>]]>
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://wdxtub.com/tags/iOS/"/>
+    
+      <category term="游戏" scheme="http://wdxtub.com/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+      <category term="评测" scheme="http://wdxtub.com/tags/%E8%AF%84%E6%B5%8B/"/>
+    
+      <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 12 课 Cache Memories]]></title>
@@ -2417,41 +2445,6 @@ host www.sina.com.cn
       <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[小方]]></title>
-    <link href="http://wdxtub.com/2016/02/03/xiao-fang/"/>
-    <id>http://wdxtub.com/2016/02/03/xiao-fang/</id>
-    <published>2016-02-04T04:44:12.000Z</published>
-    <updated>2016-02-04T05:24:49.000Z</updated>
-    <content type="html"><![CDATA[<p>要知道，一枚连续二十次都抛出反面的硬币，也有它的正面。</p>
-<a id="more"></a>
-<hr>
-<p>奇怪的是，他既没有太多棱角，也没有太多慌张，大家却都叫他小方。每当被问起名字的来由，小方总是笑着说：『之所以方，是因为少了点缘』。但是坊间的传闻可不是这样，每个人都不知道从哪里听说过，小方是因为有反骨，所以才叫小方的。</p>
-<p>这个世界的可怕之处在于，哪怕谁也不知道反骨是什么，又长在哪里，只要大家都这么认为，那你就只能长着反骨，或者稍微好一点，能给自己起个名字，叫小方。</p>
-<p>既然反骨是什么说不清楚，那么一百个人心中，就有一百种反骨。丢了东西，坏了器具，总可以怪罪到小方头上。偶尔也有人好奇，为什么小方从来不去解释和证明自己。小方只是笑笑，因为他们没有意识到，再多的解释和证明，恐怕都无法撼动盘根错节的猜忌和怀疑。</p>
-<p>但是小方也有朋友，可是朋友并不多，甚至一年也见不了几次面，也许只有提到小方时他们明亮的神情，会显露出一丝蛛丝马迹。</p>
-<p>不知道某一年的某一天，小方决定离开，离开这个被『反骨』诅咒的地方。走之前，他抓了一大把硬币，哗啦哗啦甩了一地，人们惊异地发现，这些硬币，竟然都是反面。</p>
-<p>小方离开之后，日子一如既往，该不见的东西还是会不见，该倒霉的人还是会倒霉，只是现在大家再也没有借口去怪罪了。</p>
-<p>一个人踏上旅途的小方，有时候还会拿出一枚硬币，一次次抛着，他总是相信，一枚连续二十次都抛出反面的硬币，也有它的正面。或者说，若无正面，何来反面呢？</p>
-<p>如果你不知道自己讨厌什么，很可能也不太清楚自己喜欢什么。若一时找不到喜欢的方向，那至少可以弄清楚自己讨厌什么，然后尽可能离它们远一些。</p>
-<p>毕竟很多时候我们要的是一个绝对值，如果正向太陡，那么反着走，也能达到一样的效果。或者说，有多大的绝望，才有多大的希望。</p>
-<p>小方就是这样走过来的，正因为体验了残忍，才更珍惜温柔。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>要知道，一枚连续二十次都抛出反面的硬币，也有它的正面。</p>]]>
-    
-    </summary>
-    
-      <category term="反骨" scheme="http://wdxtub.com/tags/%E5%8F%8D%E9%AA%A8/"/>
-    
-      <category term="硬币" scheme="http://wdxtub.com/tags/%E7%A1%AC%E5%B8%81/"/>
-    
-      <category term="英雄" scheme="http://wdxtub.com/tags/%E8%8B%B1%E9%9B%84/"/>
-    
-      <category term="Story" scheme="http://wdxtub.com/categories/Story/"/>
     
   </entry>
   
