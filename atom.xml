@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-17T12:01:31.000Z</updated>
+  <updated>2016-02-17T15:47:16.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,16 +19,14 @@
     <link href="http://wdxtub.com/2016/02/17/programming-ios9-translation-9/"/>
     <id>http://wdxtub.com/2016/02/17/programming-ios9-translation-9/</id>
     <published>2016-02-17T11:59:39.000Z</published>
-    <updated>2016-02-17T12:01:31.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
+    <updated>2016-02-17T15:47:16.000Z</updated>
+    <content type="html"><![CDATA[<p>这一章主要讨论 iPad 和 iPhone 在界面特性上的一些不同。Popover 和 split view 是原生为 iPad 设计的界面，在 iOS8 之前都只能在 iPad 上使用，但是现在也可以在 iPhone 上应用。另一个值得注意的是 iPad 多任务功能。</p>
+<a id="more"></a>
 <hr>
- 公式 
-]]></content>
+<h2 id="Popovers"><a href="#Popovers" class="headerlink" title="Popovers"></a>Popovers</h2>]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
+    <![CDATA[<p>这一章主要讨论 iPad 和 iPhone 在界面特性上的一些不同。Popover 和 split view 是原生为 iPad 设计的界面，在 iOS8 之前都只能在 iPad 上使用，但是现在也可以在 iPhone 上应用。另一个值得注意的是 iPad 多任务功能。</p>]]>
+    
     </summary>
     
       <category term="iOS9" scheme="http://wdxtub.com/tags/iOS9/"/>
@@ -50,16 +48,28 @@
     <link href="http://wdxtub.com/2016/02/17/programming-ios9-translation-8/"/>
     <id>http://wdxtub.com/2016/02/17/programming-ios9-translation-8/</id>
     <published>2016-02-17T11:59:34.000Z</published>
-    <updated>2016-02-17T12:00:52.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
+    <updated>2016-02-17T15:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>
+<a id="more"></a>
 <hr>
- 公式 
+<p>除了 cell 本身，table view 还有一些其他特性让其更灵活更有用：</p>
+<ul>
+<li>可以在顶上展示 header，在底部显示 footer</li>
+<li>cell 可以聚合成不同的 section，每个 section 可以有其 header 和 footer，并且没有离开当前 section 的话 header 会保持在屏幕上，也可以自定义列表边缘的索引，方便用户快速跳转</li>
+<li>可以对表格进行操作：添加，删除或者排序</li>
+<li>可以给不同的 cell 分组</li>
+</ul>
+<p>Table view cell 也非常灵活，除了内置的几种类型，可以轻松进行自定义。</p>
+<p>有一个 <code>UIViewController</code> 的子类是 <code>UITableViewController</code>，很方便，但是其实它做得所有事情我们都可以自己做，以下是 <code>UITableViewController</code> 做的事情：</p>
+<ul>
+<li><code>UITableViewController</code> 的 <code>init(style:)</code> 会根据参数创建一个 table view</li>
+<li>视图控制器会自动指定 table view 的 delegate 和 data source</li>
+<li>table view 会被设为视图控制器的 <code>tableView</code> 属性，方便使用</li>
+</ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
+    <![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>]]>
+    
     </summary>
     
       <category term="iOS9" scheme="http://wdxtub.com/tags/iOS9/"/>
