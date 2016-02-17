@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-17T15:47:16.000Z</updated>
+  <updated>2016-02-17T18:34:51.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[深入理解计算机系统 习题课 4 Cachelab]]></title>
+    <link href="http://wdxtub.com/2016/02/17/csapp-lab4/"/>
+    <id>http://wdxtub.com/2016/02/17/csapp-lab4/</id>
+    <published>2016-02-17T17:33:35.000Z</published>
+    <updated>2016-02-17T18:34:51.000Z</updated>
+    <content type="html"><![CDATA[<p>这节课我们来讲讲第四次作业，主要会尽可能利用缓存来加速计算，不过在开始作业之前会先复习一下 C 语言。</p>
+<a id="more"></a>
+<hr>
+<h2 id="C__u8BED_u8A00_u590D_u4E60"><a href="#C__u8BED_u8A00_u590D_u4E60" class="headerlink" title="C 语言复习"></a>C 语言复习</h2><ul>
+<li>注意代码风格，不要写糟糕的代码</li>
+<li>小心隐式类型转换</li>
+<li>小心未定义的行为</li>
+<li>小心内存泄露</li>
+<li>宏和指针计算很容易出错</li>
+</ul>
+<p><strong>例 1</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">foo</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (u &gt; -<span class="number">1</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为 <code>u</code> 是无符号整型，所以在比较的时候 -1 也会按照无符号整型来处理，于是实际的比较相当于 <code>u &gt; int_max</code>，使得这个函数总是会返回 0。</p>
+<p><strong>例 2</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* a = <span class="built_in">malloc</span>(<span class="number">100</span>*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">        a[i] = i / a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里 <code>a</code> 中的值都没有进行初始化，所以 main 函数的行为是未定义的。</p>
+<p><strong>例 3</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> w[strln(<span class="string">"C programming"</span>)];</span><br><span class="line">    <span class="built_in">strcpy</span>(w, <span class="string">"C programming"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, w);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>strlen</code> 返回的长度是不包括最后的 <code>\0</code> 的，写入的时候会越界。</p>
+<p><strong>例 4</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> ht_node &#123;</span><br><span class="line">    <span class="keyword">int</span> key;</span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> ht_node* node;</span><br><span class="line"></span><br><span class="line"><span class="function">node <span class="title">makeNnode</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">    node curr = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(node));</span><br><span class="line">    curr-&gt;key = k;</span><br><span class="line">    curr-&gt;data = e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里把 <code>node</code> 定义为一个指针，并不是指向一个结构体。</p>
+<p><strong>例 5</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strcdup</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> dup[n+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        dup[i] = c;</span><br><span class="line">    dup[i] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">char</span> *A = dup;</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>strcdup</code> 函数返回了一个分配在栈中的指针，函数返回之后地址 <code>A</code> 可能会被抹掉。</p>
+<p><strong>例 6</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> IS_GREATER(a, b) a &gt; b</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">isGreater</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> m1 = IS_GREATER(<span class="number">1</span>, <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> m2 = isGreater(<span class="number">1</span>, <span class="number">0</span>) + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p><code>IS_GREATER</code> 是一个没有带括号的宏，所以 <code>m1</code> 的值相当于 <code>1 &gt; 0+1 = 0</code></p>
+<p><strong>例 7</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> NEXT_BYTE(a) ((char *)(a + <span class="number">1</span>));</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a1 = <span class="number">54</span>; <span class="comment">// &amp;a1 = 0x100</span></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a2 = <span class="number">42</span>; <span class="comment">// &amp;a2 = 0x200</span></span><br><span class="line"><span class="keyword">void</span>* b1 = NEXT_BYTE(&amp;a1);</span><br><span class="line"><span class="keyword">void</span>* b2 = NEXT_BYTE(&amp;a2);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里 <code>b1</code> 指向 <code>0x104</code></li>
+<li>这里 <code>b2</code> 指向 <code>0x208</code></li>
+</ul>
+<p>会根据类型的不同，决定下一个 byte 的起始位置。</p>
+<p>注意提交的代码列数不要超过 80，会人工检查的。</p>
+<p><strong>GDB 命令</strong></p>
+<ul>
+<li><code>gdbtui &lt;binary&gt;</code></li>
+<li><code>layout split</code></li>
+</ul>
+<p><img src="/images/14557338869148.jpg" alt=""></p>
+<p><strong>valgrind</strong></p>
+<p>可以用来查找</p>
+<ul>
+<li>内存泄露</li>
+<li>其他内存错误</li>
+<li>内存损害</li>
+</ul>
+<p>使用 <code>gcc -g</code> 可以列出内存泄露的具体行数</p>
+<p>使用 <code>valgrind --leak-check=full</code> 可以查看全部详细信息</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这节课我们来讲讲第四次作业，主要会尽可能利用缓存来加速计算，不过在开始作业之前会先复习一下 C 语言。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="Cachelab" scheme="http://wdxtub.com/tags/Cachelab/"/>
+    
+      <category term="习题课" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98%E8%AF%BE/"/>
+    
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Programming iOS9 翻译 9 - iPad Interface]]></title>
@@ -2264,41 +2339,6 @@ host www.sina.com.cn
       <category term="网游" scheme="http://wdxtub.com/tags/%E7%BD%91%E6%B8%B8/"/>
     
       <category term="腾讯" scheme="http://wdxtub.com/tags/%E8%85%BE%E8%AE%AF/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[软件架构与设计 习题课 4 面向服务系统架构设计]]></title>
-    <link href="http://wdxtub.com/2016/02/07/sad-r4/"/>
-    <id>http://wdxtub.com/2016/02/07/sad-r4/</id>
-    <published>2016-02-08T02:28:50.000Z</published>
-    <updated>2016-02-08T04:07:29.000Z</updated>
-    <content type="html"><![CDATA[<p>这一次的作业，是结合面向服务架构设计的思想，来优化我们之前的 ATM 设计。这次只需要围绕一个主题来思考，所以会稍微深入一些。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u7CFB_u7EDF_u4E2D_u7684_u5546_u52A1_u670D_u52A1_u4E0E_u53EF_u91CD_u7528_u670D_u52A1"><a href="#u7CFB_u7EDF_u4E2D_u7684_u5546_u52A1_u670D_u52A1_u4E0E_u53EF_u91CD_u7528_u670D_u52A1" class="headerlink" title="系统中的商务服务与可重用服务"></a>系统中的商务服务与可重用服务</h2><p>之前的作业中，我主要是在 ATM 的设计上尝试不同的架构风格。不同的架构风格均有其优势和劣势，经过一些简单的分析，我得到了如下结论：之所以会出现这种情况，是因为各种架构风格都针对某一类具体的问题，并且试图给出完美的解决方案。但是完美常常也是脆弱的，虽然每个组件都是自洽的，但是他们之间没有一个通用的沟通方式（尤其是在需要进行逻辑调整的时候）</p>
-<p>SOA 可以是用另一种不同的思路来解决这个问题。通过把不同的功能切分成不同类别的服务。这些服务可以通过一个通用的协议来进行重组和复用。所以我也视图把我的设计往这个方向上靠。经过这样的改动，可以方便地通过配置文件来修改业务逻辑，而无须对代码进行改动。</p>
-<p>商务服务和可重用的服务主要有：</p>
-<ul>
-<li>用户验证服务</li>
-<li>卡/支票验证服务</li>
-<li>查询服务</li>
-<li>转账服务</li>
-<li>存款服务</li>
-<li>异常处理服务</li>
-<li>打印服务</li>
-<li>等等</li>
-</ul>
-<h2 id="u7CFB_u7EDF_u5206_u5C42_u8BBE_u8BA1"><a href="#u7CFB_u7EDF_u5206_u5C42_u8BBE_u8BA1" class="headerlink" title="系统分层设计"></a>系统分层设计</h2><p>根据上面的说明，大致的分层设计为：</p>
-<p><img src="/images/14549044328044.jpg" alt=""></p>
-<p>我感觉还是比较一目了然的，这里就不再赘述了</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这一次的作业，是结合面向服务架构设计的思想，来优化我们之前的 ATM 设计。这次只需要围绕一个主题来思考，所以会稍微深入一些。</p>]]>
-    
-    </summary>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
