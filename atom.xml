@@ -216,7 +216,7 @@
     <link href="http://wdxtub.com/2016/02/17/programming-ios9-translation-8/"/>
     <id>http://wdxtub.com/2016/02/17/programming-ios9-translation-8/</id>
     <published>2016-02-17T11:59:34.000Z</published>
-    <updated>2016-02-17T15:31:51.000Z</updated>
+    <updated>2016-02-18T15:29:53.000Z</updated>
     <content type="html"><![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>
 <a id="more"></a>
 <hr>
@@ -234,6 +234,51 @@
 <li>视图控制器会自动指定 table view 的 delegate 和 data source</li>
 <li>table view 会被设为视图控制器的 <code>tableView</code> 属性，方便使用</li>
 </ul>
+<h2 id="Table_View_Cells"><a href="#Table_View_Cells" class="headerlink" title="Table View Cells"></a>Table View Cells</h2><p>利用 reuse identifier 来实现重用，只是更换显示的内容，而不重复创建和销毁 cell。因为这个机制，我们需要在使用之前指定好需要展示的数据，也就是哪个位置显示什么，具体位置由 <code>NSIndexPath</code> 确定。</p>
+<p>最简单的创建一个 table view cell 的方式是使用内置的四种 style。使用 <code>init(style:reuseIdentifier:)</code>，可选的 style 有：</p>
+<p><img src="/images/14557985360452.jpg" alt=""></p>
+<p><img src="/images/14557985469035.jpg" alt=""></p>
+<p>使用的时候，有几个函数是很重要的</p>
+<ul>
+<li><code>numberOfSectionsInTableView</code> 返回 section 的个数</li>
+<li><code>numberOfRowsInSection</code> 返回列表的行数</li>
+<li><code>cellForRowAtIndexPath</code> 返回当前位置现在应该显示的 cell</li>
+<li><code>tableview.dequeueReusableCellWithIdentifier</code>  利用这个函数得到一个已经存在 cell（如果返回空则需要我们自己创建），用以重用</li>
+</ul>
+<p>其他一些可以设置的属性：</p>
+<p><img src="/images/14557989567864.jpg" alt=""></p>
+<p>也可以给 <code>cell.imageView</code> 设置 image，比如：</p>
+<p><img src="/images/14557990302124.jpg" alt="事先缩放成所需大小，而不是依赖系统"></p>
+<p>每个 cell 本身也有很多属性，可以进行设置：</p>
+<p><img src="/images/14557990872623.jpg" alt=""></p>
+<p><img src="/images/14557991035763.jpg" alt=""></p>
+<p>最后是 table view 本身的一些属性</p>
+<p><img src="/images/14557991407378.jpg" alt=""></p>
+<h3 id="Registering_a_Cell_Class"><a href="#Registering_a_Cell_Class" class="headerlink" title="Registering a Cell Class"></a>Registering a Cell Class</h3><p>我们可以使用下面两种方式来得到一个重用的 cell:</p>
+<ul>
+<li><code>dequeueReusableCellWithIdentifier:</code></li>
+<li><code>dequeueReusableCellWithIdentifier:forIndexPath</code></li>
+</ul>
+<p>第一种我们之前见过，第二种中的第二个参数应当永远和 <code>tableview:cellForRowAtIndexPath:</code> 的第二个参数保持一致。这两个方法看起来差不多，但其实有很大的不同，第二种有以下三个优点：</p>
+<ol>
+<li>返回值永远不是 <code>nil</code>，如果有可重用的 cell，那么会返回，如果没有，会创建一个并返回</li>
+<li>cell 的大小此时已经确定，因为我们指定了 <code>IndexPath</code>，所以系统可以事先确定好尺寸</li>
+<li>在第一个方法中，可能会因为传错 identifier 导致重用失效，但是在第二个方法中，不会发生这种事情</li>
+</ol>
+<p>使用 <code>dequeueRedusableCellWithIndentifier:forIndexPath:</code> 之前，需要向 table 本身注册一下（除非是从 storyboard 创建的），调用 <code>registerClass:forCellReuseIdentifier:</code> 来完成这个工作。这个方法会把一个 <code>UITableViewCell</code> 和一个字符串 identifier 关联起来。而后 <code>dequeueRedusableCellWithIndentifier:forIndexPath:</code> 会利用这个信息返回对应类型的 cell。</p>
+<ul>
+<li>应该尽早注册，比方说 <code>viewDidLoad</code> 就是不错的地方</li>
+<li>如果想要使用其他的 style，可以使用 <code>UITableViewCell</code> 的子类并重写 <code>init(style:reuseIdentifier)</code> 方法来使用指定的 style</li>
+<li>如何判断返回的是重用的还是新创建的 cell 呢？可以在函数返回 cell 之后对 cell 本身进行一些检查，如果我们已经配置过，那么就是一个重用的，反之则是新创建的</li>
+</ul>
+<h3 id="Custom_Cells"><a href="#Custom_Cells" class="headerlink" title="Custom Cells"></a>Custom Cells</h3><p>很快我们就会发现内置的 style 没办法满足我们的需要，所以就需要进行定制了。至少有四种方式可以完成这个工作：</p>
+<ol>
+<li>用内置的 cell style，但是使用 <code>UITableViewCell</code> 的子类并且重写 <code>layoutSubviews</code> 来改变内置 subview 的 frame</li>
+<li>在 <code>tableView:cellForRowAtIndexPath:</code> 中，在每个 cell 被创建的时候在其 <code>contentView</code> 添加 subview，这个可以和第一个方法结合来用</li>
+<li>在 nib 中设计 cell，并且在 <code>tableView:cellForRowAtIndexPath:</code> 需要创建 cell 的时候从 nib 中载入</li>
+<li>在 storyboard 中设计 cell</li>
+</ol>
+<p><img src="/images/14558093926092.jpg" alt=""></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>]]>
