@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-18T04:27:28.000Z</updated>
+  <updated>2016-02-18T19:22:39.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,186 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[软件架构与设计 第 14 课 Architecture Tradeoff Analysis Method]]></title>
+    <link href="http://wdxtub.com/2016/02/18/sad-14/"/>
+    <id>http://wdxtub.com/2016/02/18/sad-14/</id>
+    <published>2016-02-18T16:03:29.000Z</published>
+    <updated>2016-02-18T19:22:39.000Z</updated>
+    <content type="html"><![CDATA[<p>这节课具体会介绍进行架构分析时候的一些权衡考量的方法，还是非常有用的（至少比前面两课那么『虚』的要好很多）。这里也会综合老师给出的阅读材料，争取给大家一个完整的概念。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u9636_u6BB5_u4E00_Evaluator__26amp_3B_Decision_Maker"><a href="#u9636_u6BB5_u4E00_Evaluator__26amp_3B_Decision_Maker" class="headerlink" title="阶段一 Evaluator &amp; Decision Maker"></a>阶段一 Evaluator &amp; Decision Maker</h2><h3 id="u7B2C_u4E00_u6B65_Present_ATAM"><a href="#u7B2C_u4E00_u6B65_Present_ATAM" class="headerlink" title="第一步 Present ATAM"></a>第一步 Present ATAM</h3><p>使用的技术有：</p>
+<ul>
+<li>Utility tree genration</li>
+<li>Architecture elicitation and analysis</li>
+<li>Scenario brainstorming / mapping</li>
+</ul>
+<p>这个阶段的产出有</p>
+<ul>
+<li>Architectural approaches</li>
+<li>Utility tree</li>
+<li>Scenarios</li>
+<li>Risks and “non-risks”</li>
+<li>sensitivity points and tradeoffs</li>
+</ul>
+<p><img src="/images/14558185071430.jpg" alt="ATAM 过程"></p>
+<h3 id="u7B2C_u4E8C_u6B65_Present_Business_Drivers"><a href="#u7B2C_u4E8C_u6B65_Present_Business_Drivers" class="headerlink" title="第二步 Present Business Drivers"></a>第二步 Present Business Drivers</h3><p>顾客代表会描述：</p>
+<ul>
+<li>系统的商业 context</li>
+<li>高层级的功能需求</li>
+<li>高层级的质量需求</li>
+</ul>
+<blockquote>
+<p>Architectural drivers: quality attributes that “shape” the architecture</p>
+<p>Critical reirements: quality attributes most central to the system’s success</p>
+</blockquote>
+<p>具体来说包括：</p>
+<ul>
+<li>系统的关键功能</li>
+<li>任何技术、管理、经济或政策的限制</li>
+<li>商业目标和贝静</li>
+<li>主要的权益关系着</li>
+<li>主要的质量目标(principla quality attribute, NFP)</li>
+</ul>
+<h3 id="u7B2C_u4E09_u6B65_Present_the_Architecture"><a href="#u7B2C_u4E09_u6B65_Present_the_Architecture" class="headerlink" title="第三步 Present the Architecture"></a>第三步 Present the Architecture</h3><p>展示系统的整体架构，可能包括：</p>
+<ul>
+<li>技术限制：操作系统、硬件、中间件</li>
+<li>其他需要与之交互的系统</li>
+<li>如何选择架构风格来达到质量要求</li>
+</ul>
+<p>这个阶段评估小组开始寻找可能的风险</p>
+<h3 id="u7B2C_u56DB_u6B65_Identify_Architectural_Approaches"><a href="#u7B2C_u56DB_u6B65_Identify_Architectural_Approaches" class="headerlink" title="第四步 Identify Architectural Approaches"></a>第四步 Identify Architectural Approaches</h3><p>开始寻找那些在架构中堆达到质量目标举足轻重的关键点，了解比较常用的架构模型：</p>
+<ul>
+<li>Client-Server</li>
+<li>3-tier</li>
+<li>Proxy</li>
+<li>Publish-Subscribe</li>
+<li>Redundant hardware</li>
+</ul>
+<h3 id="u7B2C_u4E94_u6B65_Generate_Utility_Tree"><a href="#u7B2C_u4E94_u6B65_Generate_Utility_Tree" class="headerlink" title="第五步 Generate Utility Tree"></a>第五步 Generate Utility Tree</h3><p>通过构造 utility tree 来进一步优化改进重要的质量目标</p>
+<ul>
+<li>Utility tree 是一个自顶向下的方法，来驱动属性相关的需求</li>
+<li>高层级节点应当是最重要的质量目标（如 performance, modifiability, security 和 availability）</li>
+<li>场景是 utility tree 的叶子</li>
+</ul>
+<p><img src="/images/14558198859387.jpg" alt="一个 utility tree 的例子"></p>
+<p><strong>Scenarios</strong></p>
+<p>用来展示利益相关者的兴趣所在，便于理解质量需求，应当包括</p>
+<ul>
+<li>Anticipated uses of (use case scenarios)</li>
+<li>Anticipated changes to (growth scenarios)</li>
+<li>Unanticipated stresses (exploratory scenarios)</li>
+</ul>
+<p><img src="/images/14558199929846.jpg" alt="ATAM Scenarios"></p>
+<p><img src="/images/14558200171596.jpg" alt="Scenario 的例子"></p>
+<h3 id="u7B2C_u516D_u6B65_Analyze_Architectural_Approaches"><a href="#u7B2C_u516D_u6B65_Analyze_Architectural_Approaches" class="headerlink" title="第六步 Analyze Architectural Approaches"></a>第六步 Analyze Architectural Approaches</h3><p>评估小组从特定的质量目标的角度入手，了解架构及识别可能的风险：</p>
+<ul>
+<li>找到那些保证质量需求的方法</li>
+<li>提出相关问题</li>
+<li>识别出 risks, non-risks, sensitivity points 和 tradeoffs</li>
+</ul>
+<p>下面是一些例子：</p>
+<p><img src="/images/14558202021169.jpg" alt="可能的问题"></p>
+<p><img src="/images/14558202227194.jpg" alt="Sensitivity &amp; Tradeoffs"></p>
+<p><img src="/images/14558202695271.jpg" alt="Risk &amp; Non-Risks"></p>
+<h3 id="u6700_u540E_u51E0_u6B65"><a href="#u6700_u540E_u51E0_u6B65" class="headerlink" title="最后几步"></a>最后几步</h3><ul>
+<li>第七步 Brainstom &amp; Prioritize Scenarios<ul>
+<li>利益相关者头脑风暴，相关过程</li>
+</ul>
+</li>
+<li>第八步 Analyze Architectural Approaches<ul>
+<li>重复第六步中的工作</li>
+</ul>
+</li>
+<li>第九步 Present ATAM results<ul>
+<li>完整的产出</li>
+<li>Architectural appoaches</li>
+<li>Utility tree</li>
+<li>Scenarios</li>
+<li>Risks and Non-risks</li>
+<li>Sensitivity points and tradeoffs</li>
+</ul>
+</li>
+</ul>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>架构分析既不简单也不便宜</li>
+<li>从长远来看，利大于弊</li>
+<li>关于系统核心特性的早期信息非常重要</li>
+<li>应当使用多种分析技术</li>
+<li>到底需要分析到什么程度？<ul>
+<li>这是架构师最需要琢磨的地方</li>
+<li>分析过多，则会无谓消耗有限的资源</li>
+<li>分析过少，则会面临系统失败的风险</li>
+<li>错误的分析既浪费资源，又可能导致系统失败</li>
+</ul>
+</li>
+</ul>
+<h2 id="u9605_u8BFB_u6750_u6599_u7B14_u8BB0"><a href="#u9605_u8BFB_u6750_u6599_u7B14_u8BB0" class="headerlink" title="阅读材料笔记"></a>阅读材料笔记</h2><ul>
+<li>云计算部分非常简略，建议参考我的云计算课程笔记</li>
+<li>使用 ATAM 来评估一个架构时，目标是理解不同的架构决定对系统质量可能带来的影响，所以可以看作是一个风险识别的方法</li>
+<li>实际上是根据不同的属性和资源提出对应的问题，并找出相互的影响</li>
+<li>三个场景：use case scenarios, growth scenarios, exploratory scenarios</li>
+<li>不同的场景有不同的侧重点和要求，具体可以结合下图的实例来理解体会</li>
+</ul>
+<p><img src="/images/14558122473154.jpg" alt="Use Case Scenarios"></p>
+<p><img src="/images/14558122635076.jpg" alt="Growth Scenarios"></p>
+<p><img src="/images/14558122890374.jpg" alt="Exploratory Scenarios"></p>
+<ul>
+<li>Utility tree 和 Facilitated brainstorm 是两种常见的方式，各有不同的侧重</li>
+</ul>
+<p><img src="/images/14558123943034.jpg" alt="Utility Trees vs. Scenario Brainstorming"></p>
+<p><img src="/images/14558124405619.jpg" alt="一个 Utility Tree 的例子"></p>
+<ul>
+<li>ATAM 过程结束后的产出有<ul>
+<li>Risk and Non-Risks 文档，用来分析各个架构决定的风险性</li>
+<li>Sensitivity and Tradeoff Points 文档，用来具体说明不同权衡的利弊（最重要的部分）</li>
+<li>A Structure for Reasoning 文档，用来说明具体的架构选择及其原因</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/14558126249185.jpg" alt="Concept Interactions"></p>
+<ul>
+<li>评测中的重要属性<ul>
+<li>Availability, Modifiability, Performance, Security, Usability</li>
+<li>Deployment, Locating, Errors, Cost/Effort Estimation, Personalization, Safety</li>
+</ul>
+</li>
+<li>可能的风险来源<ul>
+<li>Risks Due to Unknowns</li>
+<li>Risks Due to Side Effects of Architectural Decisions</li>
+<li>Risks Due to Ignoring Architectural Solutions to Attribute Requirements</li>
+<li>Risks Due to Interaaction with Other Organizations</li>
+</ul>
+</li>
+<li>具体步骤<ul>
+<li>Background</li>
+<li>Business and Mission Drivers</li>
+<li>Architectural Approaches</li>
+<li>Utility Tree</li>
+<li>Scenario Generation and Prioritization</li>
+<li>Analysis Process</li>
+<li>Post-ATAM Activities </li>
+</ul>
+</li>
+</ul>
+<p>感觉还是有点虚，估计作业就是模仿阅读材料完成一次具体的 ATAM 分析，但是老师给出的参考作业的内容又是关于 SOA 的，真的很令人费解。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这节课具体会介绍进行架构分析时候的一些权衡考量的方法，还是非常有用的（至少比前面两课那么『虚』的要好很多）。这里也会综合老师给出的阅读材料，争取给大家一个完整的概念。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 习题课 4 Cachelab]]></title>
@@ -1920,11 +2100,11 @@ host www.sina.com.cn
   </entry>
   
   <entry>
-    <title><![CDATA[软件架构与设计 第 13 课  Implementing Architecture]]></title>
+    <title><![CDATA[软件架构与设计 第 13 课 Implementing Architecture]]></title>
     <link href="http://wdxtub.com/2016/02/10/sad-13/"/>
     <id>http://wdxtub.com/2016/02/10/sad-13/</id>
     <published>2016-02-10T17:25:53.000Z</published>
-    <updated>2016-02-10T18:53:00.000Z</updated>
+    <updated>2016-02-18T16:06:52.000Z</updated>
     <content type="html"><![CDATA[<p>上节课我们非常简略地了解了分析架构的大概方法，这节课我们再来看看如何去实现一个架构。</p>
 <a id="more"></a>
 <hr>
@@ -2388,95 +2568,6 @@ host www.sina.com.cn
       <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
       <category term="负载均衡器" scheme="http://wdxtub.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[【火影忍者】一半良心，一半黑心]]></title>
-    <link href="http://wdxtub.com/2016/02/07/naruto-ios/"/>
-    <id>http://wdxtub.com/2016/02/07/naruto-ios/</id>
-    <published>2016-02-08T04:17:34.000Z</published>
-    <updated>2016-02-08T06:15:53.000Z</updated>
-    <content type="html"><![CDATA[<p>当我们慢慢接受『免费玩家』没人权这样的游戏规则时，火影忍者手游跳出来告诉大家：不多花点钱，你还是没人权。一款制作精良的游戏却处处故意让玩家感到憋屈，先端上来满汉全席，然后故意往里面扔老鼠屎，这个饭店到底是图啥呢？</p>
-<a id="more"></a>
-<hr>
-<p>『火影忍者』对于我来说，与其说是一部漫画作品，一部动画作品，更多是那些年中二的自己留下的回忆。但是在微信的游戏中心里看到『火影忍者』官方授权的手游，我的心情是复杂的。毕竟大家都知道，腾讯的作风基本上可以用六个字总结——『不充值，无游戏』。</p>
-<p>截至今天，我所在的服务最高的等级是 58 级，我作为非 RMB 玩家坚持到了 53 级，应该也有一定的发言权了。至于为什么没有彻底通关后再动笔，实在是因为春节活动『恶心』到我了，『充值有积分，积分换奖品』，罢了，我去买 PS4 上原汁原味的火影忍者好了（过两天发售）。</p>
-<p>看到下面的主界面，大概就能体会到『想钱想疯了』的感觉。体力、金钱旁边的加号是充钱的地方就算了，旁边的 V0（VIP 等级）、活动、招募、商城全都是要玩家花钱的地方，这还不过瘾，直接两个大大的『充值』往上一摆，得了，没钱的咱们不伺候哟！</p>
-<p><img src="/images/IMG_2763.jpg" alt="主界面"></p>
-<p>（但是无论是图标还是整体的界面设计都是非常好的，相信看过动画漫画的朋友都能感受到，这个不黑不吹，顶尖）</p>
-<h2 id="u753B_u9762_u53CA_u58F0_u4E50"><a href="#u753B_u9762_u53CA_u58F0_u4E50" class="headerlink" title="画面及声乐"></a>画面及声乐</h2><p>因为有了官方的授权以及提供的素材，无论是场景动作忍术特效过场动画还是配音音效都是百分百原汁原味，有些剧情限定的关卡真的是让人玩得仿佛回到过去。再加上美术人员细致的加工处理，一招一式，有板有眼。</p>
-<p><img src="/images/IMG_2783.jpg" alt="过场动画"></p>
-<p>可是你若是不充钱，可能就得像我一样每天重复去完成各种各样的任务，提高自己的战斗力，然后才能接着把剧情继续下去。虽然剧情的进展非常缓慢，基本上满级也才刚刚到纲手当上火影的剧情。可是，这也许是唯一让我坚持下去的理由了，可是，原本可以做得更好的，不是吗？</p>
-<h2 id="u5FCD_u8005_u53CA_u6218_u6597"><a href="#u5FCD_u8005_u53CA_u6218_u6597" class="headerlink" title="忍者及战斗"></a>忍者及战斗</h2><p>因为剧情还处于前中期阶段，所以登场的都是大家熟悉的下忍加上几个中坚力量（比如卡卡西）。不过考虑到这是第一部，腾讯之后完全可以出个疾风传什么的新游戏，让大家再来从头充一次钱。</p>
-<p><img src="/images/IMG_2787.jpg" alt="忍者列表"></p>
-<p>不过对于出场的忍者，还原度很高，手感也不错，不会给人只是换个贴图其他都一样的感觉，比方说不同的攻击范围和判定，不同的技能指向和伤害模式。让我觉得很有趣的是雏田的『白眼』技能，开启之后屏幕进入『白眼』模式，并且所有的普攻和技能都百分百暴击。</p>
-<p><img src="/images/IMG_2786.jpg" alt="剧情限定"></p>
-<p>很多传奇忍者，例如上图中的这仨，在剧情限定关卡中，也有机会使用，甚至还有配合召唤兽的战斗，虽然触屏战斗或多或少让人出戏，但是不得不说，我还是要给 9 分，剩下 1 分怕忍者们骄傲。</p>
-<p><img src="/images/IMG_2785.jpg" alt="战斗画面"></p>
-<p>战斗就没有主界面这么拖泥带水了，普通攻击 + 两个基本技能 + 大招 + 卷轴技能 + 召唤兽，就是全部的攻击方式了，当然不想自己这么累，左上角也可以自动。战斗的模式主要有三种，第一种就是图中所示的，抵御 4 波敌人；第二种是在限定时间清除场景中的敌人；最后一种就是和 Boss 单挑了。在单挑模式下会多一个『替身术』的技能（就是用一截木头代替自己吃技能），不过无伤大雅，反正最后都可以自动。</p>
-<p>另外一个值得一提的是组队 PK 模式，但是默认是自动的，如下图（感谢不知道是谁的老瞎眼同学）：</p>
-<p><img src="/images/IMG_2782.jpg" alt="组队战斗"></p>
-<p>自动打自动，赢了加分输了减分，玩家看个热闹，基本就是这样了。当然不同的关卡可能会有一些微小的差异，比如说大石头堵路（可以打爆）或者大雾弥漫，但是总体的模式就三种，并没有脱离传统 PVP/PVE 的设定，没有耐心的玩家，可能上手第二条就会开始全程自动了。</p>
-<p>还有一些属性是和忍者无关的，比方说天赋、装备、通灵术、勾玉、秘卷（也就是卷轴忍术）和神器（主要用来坑钱）。天赋部分比较简单，没啥可选择的，就是剧情过一关可以花一堆金币点一次天赋。装备和勾玉这个黄金搭档则是氪金组合。</p>
-<p><img src="/images/IMG_2765.jpg" alt="装备"></p>
-<p><img src="/images/IMG_2767.jpg" alt="勾玉"></p>
-<p>装备需要材料进行升级和进阶，这些都可以挂机取得，操作很傻瓜，基本就是体力换装备，人民币换体力。比较坑的是这个勾玉，首先勾玉至少有六个等级，每三个低等级的可以合成一个高等级的，但是，注意这个但是，合成之后只提高两倍的属性。</p>
-<p>举个例子，假设你有 3 个加攻击的 1 级红勾玉，每个 +5 点攻击，但是合成变为 2 级红勾玉之后，只 +10 点攻击力。那么问题就来了，如果这样一路升级到 6 级红勾玉，就合成这一项，玩家要被『火耗』多少呢？我们来算一下：</p>
-<ul>
-<li>1 个 6 级红勾玉 = 3 个 5 级红勾玉 = 9 个 4 级红勾玉 = … = 243 个 1 级红勾玉</li>
-<li>1 个 1 级红勾玉 = 5 攻击力（用上面的假设）</li>
-<li>1 个 6 级红勾玉 = 160 攻击力</li>
-<li>243 个 1 级红勾玉 = 1215 攻击力</li>
-</ul>
-<p>也就是说，通过合成，你的攻击力从原本可以加 1215 变成了 160。你™在逗我，真的，不带这么坑的。</p>
-<p>召唤兽和秘卷还算是中规中矩，至少都是拿多少钱办多少事儿，数值也还算合理，至少我这个免费玩家也能比较顺利升级（但是有些高级的就只能用钱买，呵呵）</p>
-<p><img src="/images/IMG_2766.jpg" alt="通灵术"></p>
-<p><img src="/images/IMG_2768.jpg" alt="秘卷"></p>
-<p>最后就是这个『神器』部分了，这个真的是为了坑人才设计出来的，不信我们来看看。</p>
-<p><img src="/images/IMG_2769.jpg" alt="神器"></p>
-<p>首先，原著里什么时候出现过所谓幌金绳，不过我现在明白了，晃的是玩家口袋里的金，真是恶意满满的名字。需要升级不说，升级所用的还是游戏里最贵的资源，然后，每个『神器』有三个可以镶嵌的位置，每个位置有三个属性，这三个属性是可以『洗炼』的，好了，这下玩家们为了更高更快更强，开始砸钱和随机数玩游戏吧。</p>
-<p>我还能说什么？我™都升到 59 级了！</p>
-<h2 id="u6A21_u5F0F"><a href="#u6A21_u5F0F" class="headerlink" title="模式"></a>模式</h2><p>游戏中的模式还是比较丰富的，剧情模式名为冒险副本。旁边的精英副本，是掉落忍者碎片的地方。</p>
-<p><img src="/images/IMG_2773.jpg" alt="冒险副本"></p>
-<p>这个忍者碎片就有讲究了，获得一个 C 级忍者（也就是最差的），要十个碎片，然后升级需要 30 个，再之后是 60。正常免费游戏节奏，大概每天你能获得 4-8 个不同忍者的碎皮，喜欢夕日红？对不起，你得花钱抽，除了普通招募，还有高级招募，反正就是一个字——钱。</p>
-<p><img src="/images/IMG_2774.jpg" alt="精英副本"></p>
-<p>更搞笑的是，花了钱，可能还是不行。比方说限定招募，还必须要要 V7 特权，从特权 V0（也就是我现在），充值到 V7，真是人傻钱多速来，不带这么践踏我对火影的爱的。</p>
-<p><img src="/images/IMG_2771.jpg" alt="忍者招募"></p>
-<p>配套的排行榜和竞技场，也就是给 大RMB 玩家一个殴打免费玩家或者 小RMB 玩家的地方，再加上海外的线路延迟 500ms 以上，基本上我都是不知道发生啥就被打死，这游戏太难玩。</p>
-<p><img src="/images/IMG_2777.jpg" alt="决斗场 PVP"></p>
-<p>剩余的模式基本上就是给玩家一个把时间和金钱转换成游戏中资源的场所，不是为了完成每日任务，我是碰都不会碰的。</p>
-<p><img src="/images/IMG_2776.jpg" alt="忍者组织"></p>
-<p>组织就是类似与部落的地方，有一些额外的副本，和为组织祈福的任务，当然了，总而言之还是那六个字：『无充值，不游戏』</p>
-<p>游戏中的资源其实来来去去大概就三种吧，但是玩着玩着就会发现，不是缺这个就是缺那个。370 万金币那都不是事儿（就是我截图中的金币数目），要知道现在升级一点天赋，就要差不多 20 万，我觉得完全可以去掉『万』字，让玩家知道自己穷得 有多可怜。</p>
-<h2 id="u603B_u8BC4"><a href="#u603B_u8BC4" class="headerlink" title="总评"></a>总评</h2><p>在做游戏上，腾讯旗下的工作室有几把刷子，完成度高，没啥 bug，各个系统和模式大而全，尽量覆盖了所有的玩家类型，但是真的，做游戏是需要钱，但是接着大家的喜爱和情怀，人为恶意制造麻烦不让玩家玩得痛快，迟早会被玩家所抛弃。游戏明明是第九艺术，怎么到了腾讯手里就成了坑钱的法宝呢？</p>
-<p>估计很长一段时间不会再碰腾讯出的手游了，操心，闹心，甚至有点恶心。</p>
-<p>参考 FAMI通 的评分标准</p>
-<ul>
-<li>画面: 9 (原汁原味的火影体验）</li>
-<li>音乐: 7 (就是那些年的味道，但是背景音乐有些单调)</li>
-<li>操作: 5 (作为一个挂机游戏，其实没啥操作好谈的，技能好了就戳，就酱)</li>
-<li>故事: 7 (剧情太慢，故意不让玩家玩剧情，虽然不少地方地处理颇为画龙点睛)</li>
-<li>乐趣: 3 (无充值，不游戏，给 3 分真的已经是看情怀)</li>
-</ul>
-<p>总评: 8 - 4 = 4 (不差钱的话—— 8 分，普通玩家的话—— 4 分，因为最初的乐趣都会被一心朝钱看的嘴啃得渣都不剩)</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>当我们慢慢接受『免费玩家』没人权这样的游戏规则时，火影忍者手游跳出来告诉大家：不多花点钱，你还是没人权。一款制作精良的游戏却处处故意让玩家感到憋屈，先端上来满汉全席，然后故意往里面扔老鼠屎，这个饭店到底是图啥呢？</p>]]>
-    
-    </summary>
-    
-      <category term="人民币玩家" scheme="http://wdxtub.com/tags/%E4%BA%BA%E6%B0%91%E5%B8%81%E7%8E%A9%E5%AE%B6/"/>
-    
-      <category term="手游" scheme="http://wdxtub.com/tags/%E6%89%8B%E6%B8%B8/"/>
-    
-      <category term="火影忍者" scheme="http://wdxtub.com/tags/%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85/"/>
-    
-      <category term="网游" scheme="http://wdxtub.com/tags/%E7%BD%91%E6%B8%B8/"/>
-    
-      <category term="腾讯" scheme="http://wdxtub.com/tags/%E8%85%BE%E8%AE%AF/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
