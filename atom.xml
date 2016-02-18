@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-17T18:34:51.000Z</updated>
+  <updated>2016-02-18T04:27:28.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/17/csapp-lab4/"/>
     <id>http://wdxtub.com/2016/02/17/csapp-lab4/</id>
     <published>2016-02-17T17:33:35.000Z</published>
-    <updated>2016-02-17T18:34:51.000Z</updated>
+    <updated>2016-02-18T04:27:28.000Z</updated>
     <content type="html"><![CDATA[<p>这节课我们来讲讲第四次作业，主要会尽可能利用缓存来加速计算，不过在开始作业之前会先复习一下 C 语言。</p>
 <a id="more"></a>
 <hr>
@@ -71,6 +71,99 @@
 </ul>
 <p>使用 <code>gcc -g</code> 可以列出内存泄露的具体行数</p>
 <p>使用 <code>valgrind --leak-check=full</code> 可以查看全部详细信息</p>
+<h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>先下载好试验的压缩包，然后上传到学校的主机上：<code>scp cachelab-handout.tar dawang@shark.ics.cs.cmu.edu:~/513</code></li>
+<li>接着 ssh 过去：<code>ssh -X dawang@shark.ics.cs.cmu.edu</code></li>
+<li>解压：<code>tar -xvf cachelab-handout.tar</code></li>
+</ul>
+<p>然后就可以看到这次作业的内容了：</p>
+<p><img src="/images/14557441434948.jpg" alt=""></p>
+<p>我们需要修改的是 <code>csim.c</code>（需要自己创建） 和 <code>trans.c</code>。这里我会把这两个文件传回本地进行修改，完成后再传到服务器上进行测试：</p>
+<ul>
+<li>服务器至本地<ul>
+<li><code>scp dawang@shark.ics.cs.cmu.edu:~/513/cachelab-handout/csim.c ./</code></li>
+<li><code>scp dawang@shark.ics.cs.cmu.edu:~/513/cachelab-handout/trans.c ./</code></li>
+</ul>
+</li>
+<li>本地至服务器<ul>
+<li><code>scp csim.c dawang@shark.ics.cs.cmu.edu:~/513/cachelab-handout/</code></li>
+<li><code>scp trans.c dawang@shark.ics.cs.cmu.edu:~/513/cachelab-handout/</code></li>
+</ul>
+</li>
+</ul>
+<p>编译的时候只需要简单 <code>make clean</code> 和 <code>make</code>，然后就可以进行测试了。</p>
+<h2 id="u7B2C_u4E00_u90E8_u5206__u7F13_u5B58_u6A21_u62DF_u5668"><a href="#u7B2C_u4E00_u90E8_u5206__u7F13_u5B58_u6A21_u62DF_u5668" class="headerlink" title="第一部分 缓存模拟器"></a>第一部分 缓存模拟器</h2><p>这里需要注意的是，缓存模拟器并不是缓存！我们不需要存储具体的内存内容，也就是说，块偏移量不重要（也就是最后的 b bits 我们不需要在意），只需要计算 hit, miss 和 eviction 的次数即可。</p>
+<p>这一部分内容具体理解请参阅 <a href="http://wdxtub.com/2016/02/15/csapp-12/">第 12 课 Cache Memories</a>，这里不再赘述，如果弄懂了这篇日志里的内容，应该就没有问题。</p>
+<p>我们的缓存模拟器需要在不同的 s, b, E 设定下正常工作，使用的替换策略是 LRU(Least Recently Used)，这里可以考虑用队列或者时间戳的方式来记录。</p>
+<h3 id="u4EFB_u52A1_u76EE_u6807"><a href="#u4EFB_u52A1_u76EE_u6807" class="headerlink" title="任务目标"></a>任务目标</h3><p>因为这次作业可能重复性比较高，所以这里就不贴代码了。主要讲一下每个步骤以及遇到问题时的解决思路。</p>
+<p>先来了解一下这次用作输入数据的 trace 文件，可以使用 <code>valgrind --log-fd=1 --tool=lackey -v --trace-mem=yes ls -l</code> 来体验一下，具体做的事情，就是把执行 <code>ls -l</code> 这个命令时访问内存的日志输出到终端中，大概是这样的：</p>
+<p><img src="/images/14557449805626.jpg" alt=""></p>
+<p>每一条对内存访问的记录格式是 <code>[空格]操作符 地址,大小</code>，以 <code>I</code> 开头的是载入指令的记录，不算在内存访问中。</p>
+<ul>
+<li>M 表示数据修改，需要一次载入 + 一次存储，也就是相当于两次访问</li>
+<li>S 表示数据存储</li>
+<li>L 表示数据载入</li>
+<li>地址指的是一个 64 位的 16 进制内存地址</li>
+<li>大小表示该操作内存访问的字节数</li>
+</ul>
+<p>我们要做的实际是读入 <code>valgrind</code> 生成的 trace 日志，并统计出 hit, miss 和 eviction 的次数。同时已经给出了一个参考程序 <code>csim-ref</code>，于是任务就变成山寨一个这样的程序，比如：</p>
+<p><img src="/images/14557460323055.jpg" alt="注意两种不同的模式"></p>
+<p>具体用法如下：</p>
+<p><img src="/images/14557462175638.jpg" alt="注意各个参数的含义"></p>
+<p>其他的就是概念的理解和实现了，这里给出几个关键问题，大家可以从这里找到思路：</p>
+<ol>
+<li>如何从命令中拿到所需的参数</li>
+<li>如何从文件中读入内容</li>
+<li>如何进行 cache 的存储</li>
+<li>如何进行错误处理</li>
+<li>如何保证两种模式输出</li>
+</ol>
+<p>因为已经给出了参考输出，所以对着一点一点做，应该没有太多问题。</p>
+<h3 id="u4E00_u4E9B_u63D0_u793A"><a href="#u4E00_u4E9B_u63D0_u793A" class="headerlink" title="一些提示"></a>一些提示</h3><p>我们可以用一个 <code>cache_line</code> 的结构体来保存每个 cache line 的信息，如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> valid;</span><br><span class="line">    <span class="keyword">int</span> tag;</span><br><span class="line">    <span class="keyword">int</span> time_stamp;</span><br><span class="line">&#125; cache_line;</span><br></pre></td></tr></table></figure>
+<p>而对应到我们的缓存模拟器，可以用一个二维数组来存储并模拟，如：<code>cache[S][E]</code>。这里 $S=2^s$，也就是 set 的个数，E 是一个 set 里有多少个 cache line。</p>
+<p>因为这次测试的输入是如下所示的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./csim [-hv] <span class="operator">-s</span> &lt;s&gt; -E &lt;E&gt; -b &lt;b&gt; -t &lt;tracefile&gt;</span><br></pre></td></tr></table></figure>
+<p>也就是说我们的程序需要能够读取命令行参数。这时候可以使用 <code>getopt()</code> 来完成，使用前注意包括 <code>#include &lt;unistd.h&gt;</code>，如果不在 CMU 的机器上运行，还需要加上 <code>#include &lt;getopt.h&gt;</code>。</p>
+<p>具体的使用方法参见 <code>man 3 getopt</code> 或 <a href="http://www.gnu.org/software/libc/manual/html_node/Getopt.html" target="_blank" rel="external">这里</a>。当然，还需要考虑如何处理非法输入。一个简单的例子，对于命令 <code>./foo -x 1 -y 3</code>，可以这样解析：</p>
+<p><img src="/images/14557375929445.jpg" alt=""></p>
+<p>有了命令行参数，我们还需要对应读入 trace 文件的内容，可以使用 <code>fscanf</code> 来完成这个任务，具体的使用可以参考 <code>man fscanf</code> 或 <a href="http://crasseux.com/books/ctutorial/fscanf.html" target="_blank" rel="external">这里</a>，一个例子：</p>
+<p><img src="/images/14557377045267.jpg" alt=""></p>
+<p>因为我们需要根据传入的参数来创建 cache，所以需要动态分配空间，可以使用 <code>malloc</code> 在堆上完成这个任务。但是需要注意 <code>malloc</code> 的内容一定要 <code>free</code> 掉，不然就会造成内存泄露。另外，不是自己 <code>malloc</code> 的内存，也不要去 <code>free</code> 掉。一个例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">some_pointer_you_malloced = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">Free(some_pointer_you_malloced);</span><br></pre></td></tr></table></figure>
+<h2 id="u7B2C_u4E8C_u90E8_u5206__u4F18_u5316_u77E9_u9635_u8F6C_u5236"><a href="#u7B2C_u4E8C_u90E8_u5206__u4F18_u5316_u77E9_u9635_u8F6C_u5236" class="headerlink" title="第二部分 优化矩阵转制"></a>第二部分 优化矩阵转制</h2><h3 id="u4EFB_u52A1_u76EE_u6807-1"><a href="#u4EFB_u52A1_u76EE_u6807-1" class="headerlink" title="任务目标"></a>任务目标</h3><p>测试的矩阵尺寸为：</p>
+<ul>
+<li>32 x 32</li>
+<li>64 x 64</li>
+<li>61 x 67</li>
+</ul>
+<p>缓存的指标：</p>
+<ul>
+<li>有 1KB 大小的缓存</li>
+<li>是 directly mapped，也就是 E=1</li>
+<li>Block size 为 32 字节，也就是 b=5</li>
+<li>一共有 32 个 set，也就是 s=5</li>
+</ul>
+<p>可能出乎大家意料，最困难的其实是 64 x 64，因为对于 miss 数量的要求非常严苛！</p>
+<h3 id="u7F13_u5B58_u5206_u6790"><a href="#u7F13_u5B58_u5206_u6790" class="headerlink" title="缓存分析"></a>缓存分析</h3><p>为了加深印象，还是具体分析一下使用的策略。61 x 67 因为不规则，所以基本的策略就是用不同的分块大小去试验，我一路从 8 测试到 24，最后选了个看起来最顺眼的。这里主要还是分析 32 x 32 和 64 x 64 的。</p>
+<p>根据给出的缓存大小，可以知道，一个 block 可以放 8 个 int 值，那么对于 32 x 32 矩阵，有下面的图：</p>
+<p><img src="/images/14557681819928.jpg" alt="32 x 32"></p>
+<p>这里的数字表示对应的值会存在缓存的哪个 set 中，我们可以看到第九行和第一行会冲突，但是如果我们分成 8 x 8 的小块，就可以保证尽可能利用到缓存的特性（读取第 1 个的时候后面 7 个也已经载入缓存中），于是简单分块就可以解决 32 x 32 的矩阵（要求是 miss 数量不超过 300）</p>
+<p>但是对于 64 x 64，情况就不一样了，首先是 miss 的数量限制得比较严格，不超过 1300，然后是缓存中的排列也有一些变化，如图：</p>
+<p><img src="/images/14557683448384.jpg" alt="64 x 64"></p>
+<p>因为宽度的变化，现在第 5 行就会和第 1 行冲突，所以如果我们还用原来的 8 x 8，肯定是不行的。那么如果用 4 x 4 呢？经过尝试之后，发现超过要求的 1300 还是比较多的。问题在哪里？一是因为每次读取 4 个数字，我们实际只用了 4 个，二是宽度改变带来的 conflict miss 仍旧没有很好解决。</p>
+<p>题目中说不能使用超过 12 个变量，有 4 个需要作为遍历矩阵的索引值，另外八个是不是可以做一点文章呢？答案是肯定的。</p>
+<p>我们依然可以按照原来的 8 x 8 来进行处理，只是在每个 8 x 8 中，还需要进行分块。首先是左上角的 4 x 4，这里没有冲突，都会在缓存中，所以按照正常的分块算法处理。比较有技巧的是右上角和左下角，这里我们会发现重复访问会造成很多的 conflict miss，这个时候就可以利用 4 个本地变量作为 buffer，先存起来，以后再用。这样就利用了每次读入 8 个的优势，并且避开了因为地址冲突而导致的 conflict miss 的问题。</p>
+<h3 id="u4E00_u4E9B_u63D0_u793A-1"><a href="#u4E00_u4E9B_u63D0_u793A-1" class="headerlink" title="一些提示"></a>一些提示</h3><p>矩阵转制并不是特别复杂的操作，但是如何利用缓存来尽可能提高速度，就有很多的优化空间了。和矩阵相乘中使用的 cache blocking 方法一样，在这里我们同样可以利用 blocking 的方法来提高效率，可能需要尝试不同的大小，以找到最合适的尺寸。</p>
+<p>最好在编译的时候加上 <code>-Werror</code>，这样就不会放过任何一个 warning。如果使用的函数缺少头文件，可以通过 <code>man &lt;function-name&gt;</code> 找到相关头文件</p>
+<p>因为只会跑 32x32, 64x64, 61x67 这三个测试，所以可以硬编码来进行检测，针对不同的矩阵大小进行优化。</p>
+<p>都写完之后可以利用 <code>./driver.py</code> 进行完整的测试，最后提交自动打包好的 tar 压缩包到 autolab 即可。</p>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>被汇编语言虐了两周之后，回过头来写 C 语言，真的感觉从地狱到了天堂。虽然降低了语言的复杂度，但是对于概念的理解有了更高的要求。回过头来想想，正因为隐藏了足够多的细节，更高层级的抽象才得以方便实现。</p>
+<p>缓存的整个设计非常精妙，仅仅利用 locality 一个特性，几乎是用最小的成本达到了最好的性能。</p>
+<blockquote>
+<p>The memory hierarcy creates a large pool of storage that costs as much as the cheap storage near the bottom, but that serves data to programs at the rate of the fast storage near the top.</p>
+</blockquote>
+<p>带着镣铐跳舞，精髓。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这节课我们来讲讲第四次作业，主要会尽可能利用缓存来加速计算，不过在开始作业之前会先复习一下 C 语言。</p>]]>
@@ -619,7 +712,7 @@
     <link href="http://wdxtub.com/2016/02/15/csapp-11/"/>
     <id>http://wdxtub.com/2016/02/15/csapp-11/</id>
     <published>2016-02-15T15:13:51.000Z</published>
-    <updated>2016-02-15T19:44:01.000Z</updated>
+    <updated>2016-02-18T04:27:39.000Z</updated>
     <content type="html"><![CDATA[<p>从这一讲开始我们会介绍有关存储的知识（估计前面的汇编已经看得够呛了吧），个人的感觉来说会稍微轻松一些，但是概念比较多，一定要弄清楚再继续。</p>
 <a id="more"></a>
 <hr>
@@ -695,7 +788,7 @@
 <p>这里就涉及到一个技术：缓存。缓存可以看作是把大且缓慢的设备中的数据的一部分拿出来存储到其中的更快的存储设备。在 memory hierarchy 金字塔中，每一层都可以看作是下一层的缓存。利用 locality，程序会更倾向于访问第 k 层的数据，而非第 k+1 层，这样就减少了访问时间。</p>
 <p><img src="/images/14555654345569.jpg" alt=""></p>
 <blockquote>
-<p>The memory hieracy creates a large pool of storage that costs as much as the cheap storage near the bottom, but that serves data to programs at the rate of the fast storage near the top.</p>
+<p>The memory hierarcy creates a large pool of storage that costs as much as the cheap storage near the bottom, but that serves data to programs at the rate of the fast storage near the top.</p>
 </blockquote>
 <p><img src="/images/14555650316337.jpg" alt=""></p>
 <p>在上图中，假如程序请求的是 10，那么 10 正好在缓存中，即 cache hit，就可以节约时间。但是如果程序请求的是 12，因为 12 不在缓存中，即 cache miss，就必须从内存中获取，并替换缓存中的某个数据（具体替换哪一个，由 placement policy 和 replacement policy 决定）</p>

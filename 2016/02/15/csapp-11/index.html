@@ -73,7 +73,7 @@
 <p>这里就涉及到一个技术：缓存。缓存可以看作是把大且缓慢的设备中的数据的一部分拿出来存储到其中的更快的存储设备。在 memory hierarchy 金字塔中，每一层都可以看作是下一层的缓存。利用 locality，程序会更倾向于访问第 k 层的数据，而非第 k+1 层，这样就减少了访问时间。</p>
 <p><img src="/images/14555654345569.jpg" alt=""></p>
 <blockquote>
-<p>The memory hieracy creates a large pool of storage that costs as much as the cheap storage near the bottom, but that serves data to programs at the rate of the fast storage near the top.</p>
+<p>The memory hierarcy creates a large pool of storage that costs as much as the cheap storage near the bottom, but that serves data to programs at the rate of the fast storage near the top.</p>
 </blockquote>
 <p><img src="/images/14555650316337.jpg" alt=""></p>
 <p>在上图中，假如程序请求的是 10，那么 10 正好在缓存中，即 cache hit，就可以节约时间。但是如果程序请求的是 12，因为 12 不在缓存中，即 cache miss，就必须从内存中获取，并替换缓存中的某个数据（具体替换哪一个，由 placement policy 和 replacement policy 决定）</p>
