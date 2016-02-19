@@ -180,7 +180,7 @@
     <link href="http://wdxtub.com/2016/02/18/oh-my-zsh/"/>
     <id>http://wdxtub.com/2016/02/18/oh-my-zsh/</id>
     <published>2016-02-18T22:09:15.000Z</published>
-    <updated>2016-02-19T03:22:36.000Z</updated>
+    <updated>2016-02-19T13:43:58.000Z</updated>
     <content type="html"><![CDATA[<p>新年新气象，打算从 bash 迁移到 zsh 上来。网上教程很多，但是大多比较零散也不够让人知其所以然，而且很多配置也不符合我个人的习惯，于是打算『贪天之功』，写这么一个『全程指南』，希望能给大家带来些帮助。</p>
 <a id="more"></a>
 <hr>
@@ -299,10 +299,6 @@
 <td><code>git diff --cached</code></td>
 </tr>
 <tr>
-<td>glola</td>
-<td><code>git log --graph --pretty = format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit --all</code></td>
-</tr>
-<tr>
 <td>gp</td>
 <td><code>git push</code></td>
 </tr>
@@ -317,10 +313,6 @@
 <tr>
 <td>gup</td>
 <td><code>git pull --rebase</code></td>
-</tr>
-<tr>
-<td>gwip</td>
-<td><code>git add -A; git rm $(git ls-files --deleted) 2&gt; /dev/null; git commit -m &quot;--wip--&quot;</code></td>
 </tr>
 </tbody>
 </table>
@@ -759,7 +751,7 @@
     <link href="http://wdxtub.com/2016/02/17/programming-ios9-translation-8/"/>
     <id>http://wdxtub.com/2016/02/17/programming-ios9-translation-8/</id>
     <published>2016-02-17T11:59:34.000Z</published>
-    <updated>2016-02-18T15:29:53.000Z</updated>
+    <updated>2016-02-19T14:28:25.000Z</updated>
     <content type="html"><![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>
 <a id="more"></a>
 <hr>
@@ -822,7 +814,71 @@
 <li>在 storyboard 中设计 cell</li>
 </ol>
 <p><img src="/images/14558093926092.jpg" alt=""></p>
-]]></content>
+<p><strong>重写 cell 的 subview layout</strong></p>
+<p>不能直接在 <code>tableView:cellForRowAtIndexPath:</code> 中修改，因为之后 cell 自己的 <code>layoutSubviews</code> 会覆盖我们所做的修改，于是解决方法也很简单，直接重写 <code>layoutSubviews</code>。我们创建一个 <code>UITableViewCell</code> 的子类，注意需要在 <code>dequeueReusableCellWithIdentifier:forIndexPath:</code> 中生成我们这个子类的实例，然后重写下面的方法：</p>
+<p><img src="/images/14558847687832.jpg" alt=""></p>
+<p>这样就把 cell 中的图片移到了右边，如下图：</p>
+<p><img src="/images/14558847989080.jpg" alt=""></p>
+<p><strong>在代码中添加 subviews</strong></p>
+<p>除了修改已有的默认 subview，我们还可以给每个 <code>UITableView</code> 添加全新的 view，可以在 <code>tableView:cellForRowAtIndexPath:</code> 完成这个工作，但是有几点需要注意：</p>
+<ul>
+<li>需要增加的 view 必须在创建 cell 的时候就添加进去</li>
+<li>不要给 cell 本身发送 <code>addSubview:</code> 消息，而只应该操作其 <code>contentView</code></li>
+<li>应该给新的 view 合适的 <code>autoresizingMask</code> 或者 constraints，因为可能在屏幕旋转的时候大小会变化</li>
+<li>每个新的 view 都应该有一个 tag，这样可以被识别和重用。</li>
+</ul>
+<p>我们用这个方法来实现上图的效果：</p>
+<p><img src="/images/14558852905252.jpg" alt=""></p>
+<p><img src="/images/14558852992928.jpg" alt=""></p>
+<p><strong>在 nib 中设计 cell</strong></p>
+<p>上面的方法要写一堆代码，所以不如直接用图形界面进行设计。我们先创建一个 <code>.xib</code> 文件，删掉原来的 view 并且添加一个 Table View Cell，然后就可以进行设计了。设计好之后记得给每个部件一个 tag，这样莫问在代码中可以引用它们：</p>
+<p><img src="/images/14558856434855.jpg" alt=""></p>
+<p>那么怎么从 xib 文件读取我们的表格呢，用如下方法即可：</p>
+<p><img src="/images/14558856940231.jpg" alt=""></p>
+<p>是不是超级方便？</p>
+<p><img src="/images/14558857502413.jpg" alt=""></p>
+<p>如果不想一直用 tag 来找部件的话，可以创建一个 <code>UITableViewCell</code> 的子类，连接好对应的 outlet，然后注册对应的子类：</p>
+<p><img src="/images/14558859180063.jpg" alt=""></p>
+<p>这样做完之后就可以直接用名字来调用了：</p>
+<p><img src="/images/14558859429911.jpg" alt=""></p>
+<p><strong>在 Storyboard 中设计 cell</strong></p>
+<p>需要注意的是一定要填写在 cell prototype 中填写好 identifier，然后系统就会自动关联上</p>
+<p><img src="/images/14558862782575.jpg" alt=""></p>
+<h2 id="Table_View_Data"><a href="#Table_View_Data" class="headerlink" title="Table View Data"></a>Table View Data</h2><p>表格中的数据由 <code>dataSource</code> 属性以及配套的 <code>UITableViewDataSource</code> 协议提供。data source 本身会在需要数据的时候调用若干方法来获取所需数据，总结起来是下面三条原则：</p>
+<p><img src="/images/14558865052646.jpg" alt=""></p>
+<p>在 mvc 模型中，data source 可以认为是 controller。作为 data source，需要回答下面这三个问题：</p>
+<p><img src="/images/14558884427561.jpg" alt=""></p>
+<p>对应到具体的代码设计，可能是这样的：</p>
+<p><img src="/images/14558885316385.jpg" alt=""></p>
+<h3 id="Reusing_Cells"><a href="#Reusing_Cells" class="headerlink" title="Reusing Cells"></a>Reusing Cells</h3><p>重用其实很简单，系统已经帮我们实现了，只需要调用 <code>dequeueReusableCellWithIdentifier:forIndexPath:</code></p>
+<p>我们可以用以下代码做个测试</p>
+<p><img src="/images/14558892105796.jpg" alt=""></p>
+<p>通过命令行的输出可以知道，实际上并没有创建 1000 个 cell</p>
+<p><img src="/images/14558892426258.jpg" alt=""></p>
+<p>因为你得到的 cell 可能是新创建的也可能是重用的，所以最好每次都做完整的配置，而不是依赖于具体某种类型。</p>
+<h3 id="Table_View_Sections"><a href="#Table_View_Sections" class="headerlink" title="Table View Sections"></a>Table View Sections</h3><p>header 和 footer 可以包含自定义的 view，所以可以搞出很多花样。</p>
+<p><img src="/images/14558895820319.jpg" alt=""></p>
+<p>具体 section 的个数在 <code>numberOfSectionsInTableView:</code> 中决定，<code>UITableViewHeaderFooterView</code> 是 <code>UIView</code> 的子类，可以重用，有以下属性：</p>
+<p><img src="/images/14558897816852.jpg" alt=""></p>
+<p><img src="/images/14558897960076.jpg" alt=""></p>
+<p>有两种方法来提供 header 或者 footer 的内容，可以都用，但是最好从中选择一种：</p>
+<p><img src="/images/14558898458407.jpg" alt=""></p>
+<p>还有一些更加具体的设置：</p>
+<p><img src="/images/14558898851365.jpg" alt=""></p>
+<p>提供数据的时候，注意好所用的数据结构和索引即可。</p>
+<p>也可以通过如下方法提供快速索引：</p>
+<p><img src="/images/14558900378289.jpg" alt=""></p>
+<p>如果要修改外观，可以用以下方法；</p>
+<p><img src="/images/14558901131758.jpg" alt=""></p>
+<h3 id="Refreshing_Table_View_Data"><a href="#Refreshing_Table_View_Data" class="headerlink" title="Refreshing Table View Data"></a>Refreshing Table View Data</h3><p>因为 table view 并不知道它所显示的数据，所以如果数据有改变，可以通过如下方法进行更新：</p>
+<p><img src="/images/14558909959784.jpg" alt=""></p>
+<p>后面两个方法可以加动画方法，具体的参数是：</p>
+<p><img src="/images/14558912456356.jpg" alt=""></p>
+<p>如果我们只是需要更新 index，可以调用 <code>reloadSectionIndexTitles:</code>，它会调用 data source 的 <code>sectionIndexTitlesForTableView:</code>。</p>
+<p>也可以具体操作某个 cell：</p>
+<p><img src="/images/14558919604494.jpg" alt=""></p>
+<p><img src="/images/14558920720526.jpg" alt=""></p>
+<h3 id="Variable_Row_Heights"><a href="#Variable_Row_Heights" class="headerlink" title="Variable Row Heights"></a>Variable Row Heights</h3>]]></content>
     <summary type="html">
     <![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>]]>
     
