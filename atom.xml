@@ -838,7 +838,7 @@
     <link href="http://wdxtub.com/2016/02/17/programming-ios9-translation-8/"/>
     <id>http://wdxtub.com/2016/02/17/programming-ios9-translation-8/</id>
     <published>2016-02-17T11:59:34.000Z</published>
-    <updated>2016-02-19T14:28:25.000Z</updated>
+    <updated>2016-02-20T14:31:10.000Z</updated>
     <content type="html"><![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>
 <a id="more"></a>
 <hr>
@@ -965,7 +965,58 @@
 <p>也可以具体操作某个 cell：</p>
 <p><img src="/images/14558919604494.jpg" alt=""></p>
 <p><img src="/images/14558920720526.jpg" alt=""></p>
-<h3 id="Variable_Row_Heights"><a href="#Variable_Row_Heights" class="headerlink" title="Variable Row Heights"></a>Variable Row Heights</h3>]]></content>
+<h3 id="Variable_Row_Heights"><a href="#Variable_Row_Heights" class="headerlink" title="Variable Row Heights"></a>Variable Row Heights</h3><p>大多数表格每一行的高度都是一样的，在 table view 的 <code>rowHeight</code> 属性中设置，但是通过 <code>tableView:HeightForRowAtIndexPath:</code> 代理，可以为不同的行指定不同的高度。而后书中介绍了 4 种改变行高的方法，但是现在随着系统的更新，很多方法已经没有太多必要使用了。这里只介绍 iOS 8 中引入的 Automatic row height。</p>
+<p>使用这个机制很简单，使用 autolayout 来确定 <code>contentView</code> 的尺寸，然后设置一下 table view 的 <code>estimatedRowHeight</code> 即可，连 <code>tableView:HeightForRowAtIndexPath:</code> 都不用实现！不过这种方法虽然简单，性能却是最差的，所以如果 table view 遇到了什么性能问题，可能还是要回归到最传统的做法——自己进行计算高度，而不是依赖系统。</p>
+<h2 id="Table_View_Cell_Selection"><a href="#Table_View_Cell_Selection" class="headerlink" title="Table View Cell Selection"></a>Table View Cell Selection</h2><p>每个 table view cell 都有一个正常状态和一个高亮状态（<code>highlighted</code> 属性），以及被选中状态（<code>selected</code> 属性）。可以通过代码直接改变这些状态，也可以带上动画，比如调用 cell 的<code>setHighlighted:animated:</code> 和 <code>setSelected:animated:</code>。但是通常我们是通过操作 table view 来完成状态的改变，而不是直接操作 cell 本身。</p>
+<p>当一个 cell 被选中时，会把高亮状态传递给其子视图的 <code>highlighted</code> 属性（如果有的话）。比方说被选中时，<code>UILabel</code> 的 <code>highlightedTextColor</code> 就会被显示；同样的，<code>UIImageView</code> 的 <code>highlightedImage</code> 也是如此。</p>
+<p>table view 支持单选和多选，被选中时 cell 的背景颜色会改变，可以通过设置 <code>selectedBackgroudView</code> 或者 <code>multipleSelectionBackgroundView</code> 或者 <code>selectionStyle</code> 来进行自定义。</p>
+<p>我们可以通过下面的方法来管理被选中的 cell：</p>
+<p><img src="/images/14559731699807.jpg" alt=""></p>
+<p><img src="/images/14559731806172.jpg" alt=""></p>
+<p>想要取消选择所有已经被选择的 cell，可以给 <code>selectRowAtIndexPath:animated:scrollPosition:</code> 传入一个 <code>nil</code> 作为 index path。重新载入 cell 的数据也可以清除选择，调用 <code>reloadData</code> 会取消选择所有已被选择的行。</p>
+<p>通过下列 table view 的代理方法来实现对用户选择的响应：</p>
+<p><img src="/images/14559737261676.jpg" alt=""></p>
+<p>这里的 <code>will</code> 实际上是 <code>should</code> 的意思，需要返回一个值的：</p>
+<ul>
+<li>如果返回值是 <code>nil</code> 则选择或者取消选择都不会发生</li>
+<li>返回对应的 index path 使选择或者取消选择得以进行，如果返回另外的 index，则另一个 cell 的状态会被改变</li>
+</ul>
+<p>简单总结一下整个的调用流程：</p>
+<p><img src="/images/14559738761048.jpg" alt=""></p>
+<p>下面就是一个例子，我们可以通过重写对应方法，实现用户第一次点击的时候选择，第二次点击的时候取消选择：</p>
+<p><img src="/images/14559739412275.jpg" alt=""></p>
+<p>除了列表选择，table view 另一个很重要的功能就是导航，master-detail 的结构就是一个很有代表性的例子，比如说下面的代码就可以完成从专辑列表到专辑详情的跳转：</p>
+<p><img src="/images/14559743251362.jpg" alt=""></p>
+<p>在 storyboard 中，当我们从 <code>UITableViewCell</code> 连接一个 segue 时，有两种不同的选择：Selection Segue 和 Accessory Action。如果创建了一个 Selection Segue，segue 会在用户选择一个 cell 的时候被触发，可以对应 push 或者 present 另一个视图。</p>
+<p>如果使用的是 <code>UITableViewController</code>，那么默认情况下所有的选择会在 <code>viewWillAppear:</code> 中被清除，，如果不想要这一个效果，可以设置 <code>clearsSelectionOnViewWillAppear</code> 为 <code>false</code>，有些时候会禁用这个特性，因为希望在用户返回列表时还保持之前的选择。</p>
+<p>通常来说，如果对 table view cell 的选择会导致界面切换，cell 应该被给定一个 <code>.DisclosureIndicator</code> 的 <code>accessoryType</code>(UITableViewCellAccessory)。另外两个可能的选择是：</p>
+<p><img src="/images/14559751352611.jpg" alt=""></p>
+<p>对应需要实现 <code>tableView:accessoryButtonTappedForRowWithIndexPaht:</code> 的代理方法，或者在 storyboard 中选择 Accessory Action segue。</p>
+<p>另外一个应用就是类似与 radio button 的效果，使用 group 结构，有一个 <code>.Checkmark</code> 的 <code>accessoryType</code>。通常会与 static table 来进行展示，如下图：</p>
+<p><img src="/images/14559758236052.jpg" alt=""></p>
+<p>对应的代码为：</p>
+<p><img src="/images/14559758750555.jpg" alt=""></p>
+<p><img src="/images/14559758822874.jpg" alt=""></p>
+<p>具体在用户选择之后，可以利用下面代码完成单选的功能：</p>
+<p><img src="/images/14559759470380.jpg" alt=""></p>
+<h2 id="Table_View_Scrolling_and_Layout"><a href="#Table_View_Scrolling_and_Layout" class="headerlink" title="Table View Scrolling and Layout"></a>Table View Scrolling and Layout</h2><p>UITableView 也是一个 UIScrollView，所以对应的操作都可以继续用，而且还提供了两个方便的方法：</p>
+<p><img src="/images/14559763307905.jpg" alt=""></p>
+<p>下面的一些方法可以用来在 table view 中不同的位置定位</p>
+<p><img src="/images/14559763765446.jpg" alt=""></p>
+<h2 id="Table_View_State_Restoration"><a href="#Table_View_State_Restoration" class="headerlink" title="Table View State Restoration"></a>Table View State Restoration</h2><p>如果 UITableView 使用了 saving 和 restoration 功能，那么可以保存所有的选择和滚动的位置，这个过程基本是自动的。</p>
+<p>不过有的时候可能数据在后台改变了，所以可能需要使用下面两个方法来进行调整：</p>
+<p><img src="/images/14559765954511.jpg" alt=""></p>
+<h2 id="Table_View_Searching"><a href="#Table_View_Searching" class="headerlink" title="Table View Searching"></a>Table View Searching</h2><p>通常来说如果我们想让列表可以搜索（通过 UISearchBar），可以利用 UISearchController(UIViewController subclass)。实际上 UISearchController 不仅仅可以用在列表中，返回的格式也不一定要是列表，但是这里利用 table view 来进行讲解。</p>
+<p>配置 UISearchController 有三个方法：</p>
+<p><img src="/images/14559769500936.jpg" alt=""></p>
+<p>我们可以发现 UISearchController 并不会返回搜索结果，也不会管理搜索结果，甚至不会做任何搜索，它拥有一个搜索栏，然后在用户交互的时候会更新 <code>updateSearchResultsForSearchController:</code></p>
+<p>下面是属性是可能会用到的：</p>
+<p><img src="/images/14559778309298.jpg" alt=""></p>
+<p>效果图及代码如下：</p>
+<p><img src="/images/14559784183758.jpg" alt=""></p>
+<p>返回结果的部分也可以自己定义：</p>
+<p><img src="/images/14559786392368.jpg" alt=""></p>
+<h2 id="Table_View_Editing"><a href="#Table_View_Editing" class="headerlink" title="Table View Editing"></a>Table View Editing</h2>]]></content>
     <summary type="html">
     <![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>]]>
     
