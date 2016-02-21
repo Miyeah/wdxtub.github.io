@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-21T12:15:52.000Z</updated>
+  <updated>2016-02-21T16:20:32.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -15,11 +15,111 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[iTerm2 Version3 动手玩]]></title>
+    <link href="http://wdxtub.com/2016/02/21/iterm-v3-preview/"/>
+    <id>http://wdxtub.com/2016/02/21/iterm-v3-preview/</id>
+    <published>2016-02-21T13:53:13.000Z</published>
+    <updated>2016-02-21T16:20:32.000Z</updated>
+    <content type="html"><![CDATA[<p>经过 18 个月的等待，iTerm2 终于迎来了第三个主要版本！虽然现在还在最后的 Beta 测试，不过很多超强功能已经可以体验了。这篇文章就带大家大致浏览下新功能，以及非常强大的 Shell integration。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u4E3B_u8981_u65B0_u7279_u6027"><a href="#u4E3B_u8981_u65B0_u7279_u6027" class="headerlink" title="主要新特性"></a>主要新特性</h2><p>这一部分先概要介绍一下 3.0 中的主要改进（相当令人惊喜）</p>
+<ul>
+<li>全新的界面设计<ul>
+<li>配合最新 OSX 的扁平设计风格，和系统的整体基调更搭，更好看</li>
+</ul>
+</li>
+<li>Shell Integration<ul>
+<li>基本上可以认为是 login script 的超级强化版本，可以做很多超有意思的事情：命令提示符、命令执行完成的通知、拖拽上传和下载文件等等，这一部分会在后面详细介绍</li>
+</ul>
+</li>
+<li>自动切换 profile<ul>
+<li>比方说在 ssh 到远程机器上，或者进入 root 权限，或者进入某些特定的文件夹都可以自动切换 profile（至少可以变个配色）</li>
+</ul>
+</li>
+<li>Session 恢复<ul>
+<li>简单来说就是不用 tmux 的 tmux</li>
+</ul>
+</li>
+<li>内部显示图片<ul>
+<li>可以使用 <code>imgcat</code> 脚本来在 iTerm2 中显示图片（甚至 GIF 都可以），这一部分会在后面详细介绍</li>
+</ul>
+</li>
+<li>Badges<ul>
+<li>这是一个全新的功能！可以在当前的命令行的右上角显示一些相关信息（比如当前的主机名称或者 git 分支名称），这一部分后面会详细介绍</li>
+</ul>
+</li>
+<li>密码管理器<ul>
+<li>内置的密码管理器可以保存密码到 Mac OS 的 keychain 中，甚至可以在需要输入密码的时候自动打开密码管理器</li>
+</ul>
+</li>
+<li>撤销关闭（回到过去）<ul>
+<li>假如不小心关闭了一个窗口，command + z 就可以重新打开它（记得要在 5 秒之内按）</li>
+</ul>
+</li>
+<li>标签栏现在可以放在左边，即使有很多 tab 也不怕了</li>
+<li>动态 Profiles，可以把 profiles 保存在 JSON 文件中</li>
+<li>不会再找不到光标了，可以高亮当前行或者让其他颜色变暗，总而言之就是显眼</li>
+<li>时间戳功能能够让我看到不同命令的执行时间以及错误在何时发生</li>
+<li>捕获输出，基本上来说，可以用这个功能实现部分 IDE 的便捷操作了</li>
+</ul>
+<p>注：虽然我不用 Alfred，但是新版的 iTerm2 也提供了对应支持，具体请查看官网文档。</p>
+<h2 id="u67E5_u770B_u56FE_u7247"><a href="#u67E5_u770B_u56FE_u7247" class="headerlink" title="查看图片"></a>查看图片</h2><p>非常简单，只要使用 <code>imgcat imagename</code> 就可以显示图片，例如：</p>
+<p><img src="/images/14560666426444.jpg" alt=""></p>
+<p>不过使用之前还是需要配置一下：</p>
+<ol>
+<li>下载两个对应插件 <a href="https://raw.github.com/gnachman/iTerm2/master/tests/imgls" target="_blank" rel="external">imgls</a> <a href="https://raw.github.com/gnachman/iTerm2/master/tests/imgcat" target="_blank" rel="external">imgcat</a></li>
+<li>去掉后缀名，把文件拷贝到 <code>/usr/local/bin</code> 中，并修改权限 <code>chmod 755 /usr/local/bin/imgls /usr/local/bin/imgcat</code></li>
+</ol>
+<p>然后就可以使用啦，如上图所示。另外一种用法是 <code>cat avatar.jpg | imgcat</code>，也是同样的效果：</p>
+<h2 id="Badges"><a href="#Badges" class="headerlink" title="Badges"></a>Badges</h2><p>简单来说就是显示当前终端的信息，如下所示</p>
+<p><img src="/images/14560679607791.jpg" alt=""></p>
+<p>具体的设置也很简单，如果要像我这样显示的话，在 <code>Preferences&gt;Profiles&gt;General&gt;Badge</code> 输入 <code>\(session.username)@\(session.hostname)</code> 即可（这个依赖于 Shell Integration 功能）</p>
+<p>更详细的文档可以查阅<a href="https://iterm2.com/badges.html" target="_blank" rel="external">这里</a></p>
+<h2 id="Shell_Integration"><a href="#Shell_Integration" class="headerlink" title="Shell Integration"></a>Shell Integration</h2><p>这个算是重头戏了，不过需要先安装一下（支持 tcsh, zsh, bash 和 fish）。我是直接在菜单栏里选择 <code>iTerm2 &gt; Install Shell Integration</code> 进行安装的，实际上就是执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://iterm2.com/misc/install_shell_integration.sh | bash</span><br></pre></td></tr></table></figure>
+<p>具体详细的文档在<a href="https://iterm2.com/shell_integration.html" target="_blank" rel="external">这里</a>，本文只挑选一些当下对我很有用的功能</p>
+<h3 id="u5386_u53F2_u547D_u4EE4"><a href="#u5386_u53F2_u547D_u4EE4" class="headerlink" title="历史命令"></a>历史命令</h3><p>有四种方式可以查看：</p>
+<ol>
+<li><code>Edit&gt;Open Command History</code> (快捷键 Shift-Cmd-;)</li>
+<li>自动完成功能（快捷键 Cmd-;）</li>
+<li>Toolbet 中可以显示（这个后面介绍）</li>
+<li>代码提示功能（View&gt;开启 Command Completion）</li>
+</ol>
+<p><img src="/images/14560694592327.jpg" alt="历史命令查看"></p>
+<h3 id="Toolbelt"><a href="#Toolbelt" class="headerlink" title="Toolbelt"></a>Toolbelt</h3><p>在菜单栏中可以进行选择，然后就会出现在侧边栏，功能很多，很好用：</p>
+<p><img src="/images/14560695283473.jpg" alt=""></p>
+<p>选择之后的效果大概是：</p>
+<p><img src="/images/14560695539493.jpg" alt=""></p>
+<h3 id="u5BC6_u7801_u7BA1_u7406_u5668"><a href="#u5BC6_u7801_u7BA1_u7406_u5668" class="headerlink" title="密码管理器"></a>密码管理器</h3><p>我们先设置一个 trigger，如下图所示：</p>
+<p><img src="/images/14560715131681.jpg" alt=""></p>
+<p>然后在需要输入密码的时候，密码管理器会自动弹出：</p>
+<p><img src="/images/14560715581287.jpg" alt=""></p>
+<p>选择对应的帐号密码然后点击 Enter Password，就可以免去输入密码的烦恼了。</p>
+<hr>
+<p>还有很多功能没有摸索出来，网上的资料也比较少，以后有机会再慢慢补充吧。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>经过 18 个月的等待，iTerm2 终于迎来了第三个主要版本！虽然现在还在最后的 Beta 测试，不过很多超强功能已经可以体验了。这篇文章就带大家大致浏览下新功能，以及非常强大的 Shell integration。</p>]]>
+    
+    </summary>
+    
+      <category term="Mac" scheme="http://wdxtub.com/tags/Mac/"/>
+    
+      <category term="iTerm2" scheme="http://wdxtub.com/tags/iTerm2/"/>
+    
+      <category term="终端" scheme="http://wdxtub.com/tags/%E7%BB%88%E7%AB%AF/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Objective-C 格致余论 1 - Selector]]></title>
     <link href="http://wdxtub.com/2016/02/20/dive-in-objc-1/"/>
     <id>http://wdxtub.com/2016/02/20/dive-in-objc-1/</id>
     <published>2016-02-21T03:50:09.000Z</published>
-    <updated>2016-02-21T12:15:52.000Z</updated>
+    <updated>2016-02-21T13:50:28.000Z</updated>
     <content type="html"><![CDATA[<p>Selector 作为 Objective-C 中一个非常重要的概念，虽然在 Swift 中几乎已经不见踪影，但是在某些混编的项目中仍旧起到举足轻重的作用，所以仍然有必要深入理解一下。</p>
 <a id="more"></a>
 <hr>
@@ -2563,45 +2663,6 @@
       <category term="新生" scheme="http://wdxtub.com/tags/%E6%96%B0%E7%94%9F/"/>
     
       <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[不安的终结]]></title>
-    <link href="http://wdxtub.com/2016/02/12/end-of-anxiety/"/>
-    <id>http://wdxtub.com/2016/02/12/end-of-anxiety/</id>
-    <published>2016-02-12T12:05:36.000Z</published>
-    <updated>2016-02-12T16:10:01.000Z</updated>
-    <content type="html"><![CDATA[<p>当一类事情重复足够多次之后，本能会让我们去选择最安全、最中庸的道路。可是消除了痛苦，也就消除了走向辉煌的可能，这又怎么办呢？</p>
-<a id="more"></a>
-<hr>
-<p>最脆弱不安的时刻，往往也是最接近自己的时刻，但观察自己的过程犹如走钢丝，左一分蒸发，右一分凝结。超然物外已经很难，如何抽离自身，更是值得一生探索。在飞机上经历了回忆杀带来的『臆想恐慌症』之后，抛开封闭环境可能带来的问题，我在想，所谓的不安，到底从哪里来，到哪里去呢？</p>
-<p>坏消息是，网上对于不安的讨论，几乎都是『灌鸡汤』；好消息是，我在阿西莫夫的《永恒的终结》中，找到了答案。</p>
-<p>所谓不安，大概是预想的和实际发生的不一致，自己却没有办法找到原因，于是胡思乱想的恶性循环就开始了；直到某个契机出现，发现了一个『未必合理』却足以说服自己的理由，这才算『心安理得』。但凡以后再想起某件事，便可以自己用这个『足够好』的理由去搪塞自己。而胡思乱想恐怕是因为过去的经历形成的心理地貌，即使一次次去想去模拟，让自己的心绪像流水一样涌出，因为地貌的缘故，往往只能得到同一个结果，于是逆向合理化开始启动，一切都是那么顺理成章。</p>
-<p>这样我们就找到不安的根源——失控，胡思乱想使得心态失控，之后给自己洗脑认为现实也已经失控，最终导致心态爆炸。问题就来了，这种失控有没有可能被控制呢？很遗憾，没有，就像《永恒的终结》中一样，用现在去改变过去，其实是没有太多意义的。生活并非永恒不变，现在也不是唯一的归宿，只是未来无限可能的出发点。只有经过严酷的考验，才能不断前进，高速发展。</p>
-<blockquote>
-<p>危险的环境和危机感，才是驱使人类不断进步，不断征服新事物的根本动力</p>
-</blockquote>
-<p>人人都会不安，这是本能，但是本能之上，应该意识到不安的终结并不是避免困难的出现，而是去战胜困难。自信不是把自己当做宠物，当做温室里的花朵来成长，而是相信自己，永远敢于接受下一次的挑战。</p>
-<p>从这个角度来看中国历史，漫长的封建社会就类似于某种重复，每个朝代一开始，都会参考前朝的经验去做新的选择，找到『最好』的现实，于是慢慢向着最安全，最中庸，最稳定的结构演变，也就是所谓的『中央集权』。</p>
-<p>但是这真的就是某种惯性，也许这么多次的重复，只是为了在下一个瞬间，开启另一个时代，那里没有永恒，更无所谓终结。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>当一类事情重复足够多次之后，本能会让我们去选择最安全、最中庸的道路。可是消除了痛苦，也就消除了走向辉煌的可能，这又怎么办呢？</p>]]>
-    
-    </summary>
-    
-      <category term="不安" scheme="http://wdxtub.com/tags/%E4%B8%8D%E5%AE%89/"/>
-    
-      <category term="困难" scheme="http://wdxtub.com/tags/%E5%9B%B0%E9%9A%BE/"/>
-    
-      <category term="循环" scheme="http://wdxtub.com/tags/%E5%BE%AA%E7%8E%AF/"/>
-    
-      <category term="永恒的终结" scheme="http://wdxtub.com/tags/%E6%B0%B8%E6%81%92%E7%9A%84%E7%BB%88%E7%BB%93/"/>
-    
-      <category term="终结" scheme="http://wdxtub.com/tags/%E7%BB%88%E7%BB%93/"/>
-    
-      <category term="Thinking" scheme="http://wdxtub.com/categories/Thinking/"/>
     
   </entry>
   
