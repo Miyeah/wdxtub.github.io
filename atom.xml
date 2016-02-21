@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-21T04:34:18.000Z</updated>
+  <updated>2016-02-21T12:15:52.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/20/dive-in-objc-1/"/>
     <id>http://wdxtub.com/2016/02/20/dive-in-objc-1/</id>
     <published>2016-02-21T03:50:09.000Z</published>
-    <updated>2016-02-21T04:34:18.000Z</updated>
+    <updated>2016-02-21T12:15:52.000Z</updated>
     <content type="html"><![CDATA[<p>Selector 作为 Objective-C 中一个非常重要的概念，虽然在 Swift 中几乎已经不见踪影，但是在某些混编的项目中仍旧起到举足轻重的作用，所以仍然有必要深入理解一下。</p>
 <a id="more"></a>
 <hr>
@@ -52,7 +52,7 @@
 <blockquote>
 <p>当然，直接这么做 Xcode 会给出警告的，这里只是用来介绍基本原理，实际开发中除非确实需要，否则不要这么做</p>
 </blockquote>
-<h2 id="Selector__u7528_u5728_u54EA"><a href="#Selector__u7528_u5728_u54EA" class="headerlink" title="Selector 用在哪"></a>Selector 用在哪</h2><h3 id="Target/Action__u6A21_u5F0F"><a href="#Target/Action__u6A21_u5F0F" class="headerlink" title="Target/Action 模式"></a>Target/Action 模式</h3><h3 id="u68C0_u67E5_method__u662F_u5426_u5B58_u5728"><a href="#u68C0_u67E5_method__u662F_u5426_u5B58_u5728" class="headerlink" title="检查 method 是否存在"></a>检查 method 是否存在</h3><h3 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h3><h3 id="NSNotification"><a href="#NSNotification" class="headerlink" title="NSNotification"></a>NSNotification</h3><h3 id="u5728_u7EBF_u7A0B_u4E2D_u6267_u884C_u65B9_u6CD5"><a href="#u5728_u7EBF_u7A0B_u4E2D_u6267_u884C_u65B9_u6CD5" class="headerlink" title="在线程中执行方法"></a>在线程中执行方法</h3><h3 id="u6570_u7EC4_u6392_u5E8F"><a href="#u6570_u7EC4_u6392_u5E8F" class="headerlink" title="数组排序"></a>数组排序</h3><h3 id="u4EE3_u66FF_if_else_/_switch"><a href="#u4EE3_u66FF_if_else_/_switch" class="headerlink" title="代替 if else / switch"></a>代替 if else / switch</h3><h3 id="u8C03_u7528_u79C1_u6709_API"><a href="#u8C03_u7528_u79C1_u6709_API" class="headerlink" title="调用私有 API"></a>调用私有 API</h3><h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<h2 id="Selector__u7528_u5728_u54EA"><a href="#Selector__u7528_u5728_u54EA" class="headerlink" title="Selector 用在哪"></a>Selector 用在哪</h2><h3 id="Target/Action__u6A21_u5F0F"><a href="#Target/Action__u6A21_u5F0F" class="headerlink" title="Target/Action 模式"></a>Target/Action 模式</h3><h3 id="u68C0_u67E5_method__u662F_u5426_u5B58_u5728"><a href="#u68C0_u67E5_method__u662F_u5426_u5B58_u5728" class="headerlink" title="检查 method 是否存在"></a>检查 method 是否存在</h3><h3 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h3><h3 id="NSNotification"><a href="#NSNotification" class="headerlink" title="NSNotification"></a>NSNotification</h3><h3 id="u5728_u7EBF_u7A0B_u4E2D_u6267_u884C_u65B9_u6CD5"><a href="#u5728_u7EBF_u7A0B_u4E2D_u6267_u884C_u65B9_u6CD5" class="headerlink" title="在线程中执行方法"></a>在线程中执行方法</h3><h3 id="u6570_u7EC4_u6392_u5E8F"><a href="#u6570_u7EC4_u6392_u5E8F" class="headerlink" title="数组排序"></a>数组排序</h3><h3 id="u4EE3_u66FF_if_else_/_switch"><a href="#u4EE3_u66FF_if_else_/_switch" class="headerlink" title="代替 if else / switch"></a>代替 if else / switch</h3><h3 id="u8C03_u7528_u79C1_u6709_API_08"><a href="#u8C03_u7528_u79C1_u6709_API_08" class="headerlink" title="调用私有 API"></a>调用私有 API</h3><h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li><a href="https://www.gitbook.com/book/zonble/kkbox-ios-dev/details" target="_blank" rel="external">KKBOX iOS/Mac OS X 基本开发教材</a></li>
 </ol>
 ]]></content>
@@ -1001,7 +1001,7 @@
     <link href="http://wdxtub.com/2016/02/17/programming-ios9-translation-8/"/>
     <id>http://wdxtub.com/2016/02/17/programming-ios9-translation-8/</id>
     <published>2016-02-17T11:59:34.000Z</published>
-    <updated>2016-02-20T14:31:10.000Z</updated>
+    <updated>2016-02-21T12:24:37.000Z</updated>
     <content type="html"><![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>
 <a id="more"></a>
 <hr>
@@ -1179,7 +1179,59 @@
 <p><img src="/images/14559784183758.jpg" alt=""></p>
 <p>返回结果的部分也可以自己定义：</p>
 <p><img src="/images/14559786392368.jpg" alt=""></p>
-<h2 id="Table_View_Editing"><a href="#Table_View_Editing" class="headerlink" title="Table View Editing"></a>Table View Editing</h2>]]></content>
+<h2 id="Table_View_Editing"><a href="#Table_View_Editing" class="headerlink" title="Table View Editing"></a>Table View Editing</h2><p>一个 table view cell 有正常状态和编辑状态，通过 <code>editing</code> 属性控制，通常来说，编辑状态有以下表现形式：</p>
+<p><img src="/images/14560548311069.jpg" alt=""></p>
+<p>注意，在编辑模式同样是可以选中的（<code>allowSelectionDuringEditing</code> 或者 <code>allowMultipleSelectionDuringEditing</code> 设置为 <code>true</code>），但是不算很常见。</p>
+<p>通常来说我们会放一个按钮，让用户点击，之后进入 table view 的编辑模式：</p>
+<p><img src="/images/14560549661669.jpg" alt=""></p>
+<p>然后在进入编辑模式的时候用一个完成的按钮来退出编辑模式，代码如上所示。</p>
+<p>然而！其实这些系统都已经帮我们实现了，使用 <code>editButtonItem</code> 方法即可：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = <span class="keyword">self</span>.editButtonItem()</span><br></pre></td></tr></table></figure>
+<p>进入编辑模式之后，table view 会通过代理的方式来获知 cell 的信息，如下：</p>
+<p><img src="/images/14560551203316.jpg" alt=""></p>
+<p>当用户完成操作的时候，会发送 <code>tableView:commitEditingStyle:forRowAtIndexPath:</code> 给 data source，然后我们可能会需要堆 table view 进行一定的修改，有如下方法：</p>
+<p><img src="/images/14560552110623.jpg" alt=""></p>
+<p>如果你还想在这个过程中做更多的事情，可以在 <code>beginUpdates</code> 和 <code>endUpdates</code> 间弄一个 update block</p>
+<p>删除的过程我们举一个例子来说明，假设我们有一个名称数组(<code>self.sectionNames</code>) 和数据数组（<code>self.sectionData</code>），则可以这样删除：</p>
+<p><img src="/images/14560554888868.jpg" alt=""></p>
+<p>默认来说，在 cell 上左滑可以快速删除一个 cell，甚至都不用进入编辑模式，如果我们不想要这样怎么办呢？如果只想在编辑模式才能左滑删除呢？也很简单，如下：</p>
+<p><img src="/images/14560555881617.jpg" alt=""></p>
+<p>每个 cell 本身实际上是一个水平的 scroll view，我们左滑实际上就是让放在后面的删除按钮显示出来，这部分其实也是可以自定义的，只要实现 <code>tableView:editActionsForRowAtIndexPath:</code> 这个代理方法即可，返回一组 UITableViewRowAction 对象（从右到左），可以通过 <code>init(style:title:handler:)</code> 来进行创建，参数如下：</p>
+<p><img src="/images/14560557947681.jpg" alt=""></p>
+<p>注意，如果想支持滑动出 action button，一定要实现 <code>tableView:commitEditingStyle:forRowAtIndexPath:</code>，即使里面是空的也可以，下面是一个具体的例子，除了默认的删除按钮，又多加了一个名为 <code>Mark</code> 的按钮</p>
+<p><img src="/images/14560559293242.jpg" alt=""></p>
+<p>下面是一些具体操作的样例代码，比较简单，就不赘述了：</p>
+<p><img src="/images/14560560907294.jpg" alt="插入 cell"></p>
+<p><img src="/images/14560561097153.jpg" alt="重新排列 cell"></p>
+<p>书中最后还给出了一个很有趣的例子，利用代理方法在不同情况下返回不同的 cell 数量来做出 section 收缩和展开的效果，注意用一个集合来保存相关信息即可。</p>
+<h2 id="Table_View_Menus"><a href="#Table_View_Menus" class="headerlink" title="Table View Menus"></a>Table View Menus</h2><p>我们也可以给 table view cell 加上 menu，比如说复制粘贴什么的功能，那么就需要实现下面的方法：</p>
+<p><img src="/images/14560564648447.jpg" alt=""></p>
+<p>下面是一个例子及其对应的展示：</p>
+<p><img src="/images/14560564910694.jpg" alt=""></p>
+<p>如果想要添加自定义操作，可以使用下面的代码：</p>
+<p><img src="/images/14560565155740.jpg" alt=""></p>
+<h2 id="Collection_Views"><a href="#Collection_Views" class="headerlink" title="Collection Views"></a>Collection Views</h2><p>UICollectionView 是 UIScrollView 的子类，把 UITableView 的各种操作都通用化了，也就是说，它们俩其实很像，例如：</p>
+<p><img src="/images/14560569513318.jpg" alt=""></p>
+<p>collection view 的 section 同样可以有 header 和 footer，但是不是 view 本身去调用，而是根据 cell 的类型来自行决定，称为 supplementary views（实际上就是一个 <code>UICollectionReusableView</code>，一个 <code>UICollectionViewCell</code> 的子类）：</p>
+<p><img src="/images/14560571077602.jpg" alt=""></p>
+<p>collection view 和 table view 的一个重大区别就是它们如何排布所拥有的元素，table view 只会是竖直排列（宽度定死），但是 collection view 就自由很多：</p>
+<p><img src="/images/14560571917709.jpg" alt=""></p>
+<p>比方说可以实现如下图所示的效果：</p>
+<p><img src="/images/14560572097314.jpg" alt=""></p>
+<p>又或者是像系统的照片 app 一样：</p>
+<p><img src="/images/14560572352360.jpg" alt=""></p>
+<h3 id="Collection_View_Classes"><a href="#Collection_View_Classes" class="headerlink" title="Collection View Classes"></a>Collection View Classes</h3><p>这一部分是相关类的介绍，就直接上图了：</p>
+<p><img src="/images/14560572768133.jpg" alt=""></p>
+<p>对应的方法与 UITableView 中的异同有：</p>
+<p><img src="/images/14560573082144.jpg" alt=""></p>
+<p>其他的类型还有：</p>
+<p><img src="/images/14560573210309.jpg" alt=""></p>
+<p><img src="/images/14560573334969.jpg" alt=""></p>
+<p><img src="/images/14560573442411.jpg" alt=""></p>
+<p><img src="/images/14560573583842.jpg" alt=""></p>
+<p>具体的使用这里不再赘述，因为随着 swift 的大幅进化可能会有一定改动，但是我们需要知道不同 layout 可以动态切换，还可以自定义动画效果。</p>
+<p>这一章的内容就告一段落。</p>
+]]></content>
     <summary type="html">
     <![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>]]>
     
