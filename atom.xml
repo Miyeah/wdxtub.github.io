@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-23T00:28:13.000Z</updated>
+  <updated>2016-02-23T05:56:23.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/22/cc-14/"/>
     <id>http://wdxtub.com/2016/02/22/cc-14/</id>
     <published>2016-02-22T14:46:58.000Z</published>
-    <updated>2016-02-23T00:28:13.000Z</updated>
+    <updated>2016-02-23T05:56:23.000Z</updated>
     <content type="html"><![CDATA[<p>从这一课起，我们要开始使用数据库了。通过数据库和文件的性能对比以及 SQL 与 NoSQL 的对比，学会选择最合适的技术。</p>
 <a id="more"></a>
 <hr>
@@ -154,7 +154,120 @@
 <p>文件更灵活，可以存放结构或非结构数据，并且容易实现和修改；数据库则稍微笨重一些。对于文件来说，安全只能通过文件权限来控制，但是数据库有更加完善的权限管理。对文件的访问没有办法并行，但是数据库访问则可以。其他的不同基本上可以认为数据库有一套完整的管理接口和语法，而文件的话都需要自己实现，下表是一个总结：</p>
 <p><img src="/images/14561824166535.jpg" alt="文件 vs 数据库"></p>
 <p>首先我们把对应的文件复制到本地：<code>scp -i demo.pem ubuntu@dns.compute-1.amazonaws.com:~/Project3_1/MySQLTasks.java ./</code></p>
-<h2 id="u5B58_u50A8_u7684_Vertical_Scaling"><a href="#u5B58_u50A8_u7684_Vertical_Scaling" class="headerlink" title="存储的 Vertical Scaling"></a>存储的 Vertical Scaling</h2><h2 id="HBase__u64CD_u4F5C"><a href="#HBase__u64CD_u4F5C" class="headerlink" title="HBase 操作"></a>HBase 操作</h2><h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<p>然后我们可以用给出的 <code>create_tables.sql</code> 来新建数据表，先进入 MySQL 的命令行：<code>mysql -u root -pdb15319root song_db</code></p>
+<p>然后输入 <code>source ./create_tables.sql</code> 来执行新建表格的命令。接着可以用 <code>DESCRIBE songs;</code> 和 <code>DESCRIBE sales;</code> 来查看是否成功创建（注意一定要最后的分号），如图</p>
+<p><img src="/images/14561876662637.jpg" alt="songs 表"><br><img src="/images/14561876858760.jpg" alt="sales 表"></p>
+<p>然后需要找到合适的命令，把 <code>million_songs_metadata.csv</code> 和 <code>million_songs_sales.csv</code> 导入到 MySQL 中（这里推荐用 <code>mysqlimport</code> 来导入，另一个有点问题）。命令为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要先更改两个 scv 文件的名字，这样才能载入到对应的表中</span></span><br><span class="line">cp million_songs_metadata.csv songs.csv</span><br><span class="line">cp million_songs_sales_data.csv sales.csv</span><br><span class="line"><span class="comment"># 然后进行载入</span></span><br><span class="line">mysqlimport -u root -pdb15319root --local --fields-terminated-by=<span class="string">","</span> --lines-terminated-by=<span class="string">"\n"</span> song_db songs.csv</span><br><span class="line">mysqlimport -u root -pdb15319root --local --fields-terminated-by=<span class="string">","</span> --lines-terminated-by=<span class="string">"\n"</span> song_db sales.csv</span><br></pre></td></tr></table></figure>
+<p>然后我们用下面的命令来看看是否成功（如果不成功，就重新用前面的脚本生成一次对应的表）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> songs <span class="keyword">LIMIT</span> <span class="number">10</span>;</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sales <span class="keyword">LIMIT</span> <span class="number">10</span>;</span></span><br></pre></td></tr></table></figure>
+<p>大概应该看到</p>
+<p><img src="/images/14561903279207.jpg" alt=""></p>
+<p>然后就可以进入写 java 代码的阶段了，先大概看一下已有的代码，发现已经帮我们初始化过了，实际上只要在代码中填写对应的 SQL 语句即可。问题为（第 7-11 题）：</p>
+<ol>
+<li>(7)返回 duration 最长的歌的 trackid</li>
+<li>(8)选择一列作为索引，并建立索引</li>
+<li>(9)返回 duration 最长的歌的 trackid（和第 1 个题目相同，用来比较性能）</li>
+<li>(10)写一条与 <code>grep -P &#39;The Beatles&#39; million_songs_metadata.csv | wc -l</code> 等价的 sql 语句，这里注意大小写的问题，提示：<code>BINARY</code></li>
+<li>(11)哪个 artist 的歌曲数目是第三多的，返回其名字，如果有多个，任意一个都可以</li>
+</ol>
+<p>其实主要就是写出对应的 SQL 语句，执行起来都是一样的，前面也有给出例子。然后就可以上传回服务器：<code>scp -i demo.pem ./MySQLTasks.java ubuntu@ec2-54-175-177-74.compute-1.amazonaws.com:~/Project3_1/</code></p>
+<p>测试的话用 <code>./runner.sh mysql</code>，确定无误后使用 <code>./submitter -a dawang</code> 来进行提交，代码运行完成后输入提交密码即可。</p>
+<h2 id="Vertical_Scaling__u5B58_u50A8"><a href="#Vertical_Scaling__u5B58_u50A8" class="headerlink" title="Vertical Scaling 存储"></a>Vertical Scaling 存储</h2><p>那么问题来了，我们的数据到底保存在哪里呢？当然是物理世界的硬盘上，但是我们之前好像都没有考虑到这个事情，事实上，不同的硬盘对性能也有极大的影响。</p>
+<p>接下来的部分我们会了解一些 Linux 下的磁盘操作命令并且利用 AWS 提供的存储设备来进行 vertical scaling。并且用常见的 benchmarking 工具来进行测试，通过整个过程，应该就能了解为什么实际存储数据的设备也对性能有极大的影响。</p>
+<p>因为大多数命令都需要 root 权限，所以开始之前 <code>sudo su</code> 一下是比较方便的选择。</p>
+<p>这个<a href="https://youtu.be/8Bwg_wUVhkE" target="_blank" rel="external">视频</a>介绍如何在 EC2 实例中使用 EBS</p>
+<ul>
+<li>一般来说在创建 EC2 实例的时候会自动创建一个 EBS 并挂载到 EC2 实例上</li>
+<li>先进入 EBS Volume 页面，Create Volume -&gt; 选择不同的大小 -&gt; 选择 Availablility Zone(要和 EC2 在同一个区域) -&gt; Create</li>
+<li>点击 Action -&gt; Attach Volumn -&gt; 选择已有的实例 -&gt; 填写挂载点 <code>/dev/sdf</code></li>
+<li>ssh 到机器上，输入命令 <code>sudo parted -l</code> 可以发现并没有成功挂载</li>
+<li>我们在磁盘上新建一个文件系统：<code>sudo mkfs.ext4 /dev/xvdf</code></li>
+<li>再次运行 <code>sudo parted -l</code>，发现一切正常</li>
+<li>然后创建文件夹用来挂载 <code>sudo mkdir /mnt/ebs1</code></li>
+<li>接着进行挂载 <code>sudo mount /dev/xvdf /mnt/ebs1</code></li>
+<li>就可以访问对应文件夹了 <code>cd /mnt/ebs1/</code></li>
+<li>最后可以用 <code>df -h</code> 来进行查看</li>
+</ul>
+<p>GNU <code>parted</code> 是用来创建、销毁、改变大小、检查状态、复制分区的命令，可以操作分区表（取代原来的 <code>fdisk</code>），并支持如 GUID Partition Table(GPT) 等的新特性。想要了解更多可以参考<a href="https://www.gnu.org/software/parted/manual/html_chapter/parted_1.html" target="_blank" rel="external">这里</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parted <span class="operator">-l</span></span><br><span class="line">/dev/xvda1 – this is the OS partition</span><br><span class="line">/dev/xvdb – this is the first Ephemeral (instance store) drive</span><br><span class="line">/dev/xvdc – this is the second Ephemeral (instance store) drive</span><br></pre></td></tr></table></figure>
+<p>创建并格式化一个分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/xvdX <span class="comment">#where “X” - is a,b,c..etc (You should use your device’s name)</span></span><br><span class="line">parted /dev/xvdX mklabel gpt</span><br><span class="line">parted /dev/xvdX mkpart db ext4 <span class="number">0</span>% <span class="number">10</span>G</span><br><span class="line">mkfs.ext4 /dev/xvdX1</span><br></pre></td></tr></table></figure>
+<p>对于比较小的 volume，可以直接整个格式化，不用分区</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs<span class="class">.ext4</span> /dev/xvdX</span><br></pre></td></tr></table></figure>
+<p>创建挂载点并挂载</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="regexp">/storage/m</span>ountpoint</span><br><span class="line">mount <span class="regexp">/dev/y</span>ourdevice <span class="regexp">/storage/m</span>ountpoint</span><br></pre></td></tr></table></figure>
+<p>到底用不用挂载点可以自己决定，不过一般来说 Linux 会挂载到 <code>/mnt</code>（EC2 也是这么做的）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount</span><br></pre></td></tr></table></figure>
+<p>不带任何参数的话会显示所有的挂载点，可以用来判断是否挂载成功。</p>
+<h3 id="u89E3_u9898_u653B_u7565-2"><a href="#u89E3_u9898_u653B_u7565-2" class="headerlink" title="解题攻略"></a>解题攻略</h3><p>简单来说就是比较传统硬盘和固态硬盘的性能差别，测试的场景如下：</p>
+<p><img src="/images/14561980518607.jpg" alt=""></p>
+<p>Sysbench 是一个包含多个测试的评测。这里我们使用的评测程序和 sysbench 唯一不同的是可以选择 [SSD|Magnetic]。</p>
+<p>根据下面的指示完成不同配置的测试，记录下不同的 RPS，把数字填写到对应的位置即可。</p>
+<blockquote>
+<p>提示：使用比较慢的硬件时，准备 10GB 的数据可能要花费很长时间，用最好的的机器（比如 large）来准备数据</p>
+</blockquote>
+<p><strong>准备测试数据</strong></p>
+<p>步骤如下</p>
+<ol>
+<li>用 <code>ami-ca685ba0</code> 启动一个 <code>t1.micro</code> 或 <code>m3.large</code> 的实例</li>
+<li>创建一个 20GB 的 EBS volume (磁盘或固态硬盘) 。确保和 EC2 实例在同一个区域</li>
+<li>把 EBS volume 挂载到 EC2 实例上</li>
+<li>SSH 到 EC2 实例，格式化并挂载 EBS volume</li>
+<li>进入挂载文件夹</li>
+<li>用下面的命令生成测试数据 <code>sudo /home/ubuntu/Project3_1/sysbench --test=fileio --file-total-size=10G prepare</code></li>
+</ol>
+<p>上面的命令会在 EBS volume 上生成 10GB 的测试数据，在接下来的步骤中都可以重复使用</p>
+<p><strong>试验 1 (上表中 Scenarios 1 &amp; 2 )</strong></p>
+<p>执行以下步骤：</p>
+<ol>
+<li>启动一个 <code>ami-ca685ba0</code> 的 <code>t1.micro</code> 实例</li>
+<li>挂载上 EBS volume </li>
+<li>确保挂载成功</li>
+<li>执行下面的代码 3 次（中间不要间隔太长时间）<code>sudo /home/ubuntu/Project3_1/sysbench --test=fileio --file-total-size=10G --file-test-mode=rndrw --max-time=300 --max-requests=0 run</code></li>
+<li>把结果写到 <code>runner.sh</code> 中</li>
+<li>使用另外的磁盘类型进行测试</li>
+</ol>
+<blockquote>
+<p>暂时不要删除 EBS volume，之后还有用</p>
+</blockquote>
+<p><strong>试验 2 (上表中 Scenarios 3 &amp; 4 )</strong></p>
+<ol>
+<li>启动一个 <code>ami-ca685ba0</code> 的 <code>m3.large</code> 实例</li>
+<li>挂载上 EBS volume </li>
+<li>确保挂载成功</li>
+<li>执行下面的代码 3 次（中间不要间隔太长时间）<code>sudo /home/ubuntu/Project3_1/sysbench --test=fileio --file-total-size=10G --file-test-mode=rndrw --max-time=300 --max-requests=0 run</code></li>
+<li>把结果写到 <code>runner.sh</code> 中</li>
+<li>使用另外的磁盘类型进行测试</li>
+</ol>
+<p>测试的话用 <code>./runner.sh scaling</code>，确定无误后使用 <code>./submitter -a dawang</code> 来进行提交，代码运行完成后输入提交密码即可。</p>
+<h2 id="HBase__u64CD_u4F5C"><a href="#HBase__u64CD_u4F5C" class="headerlink" title="HBase 操作"></a>HBase 操作</h2><p>Apache HBase is an open-source version of Google’s BigTable distributed storage system and is supported by the Apache Software Foundation. BigTable is a distributed, scalable, high-performance, versioned database. BigTable’s infrastructure is designed to store billions of rows and columns of data in loosely defined tables. Just as traditional RDBMSs are designed to run on top of a local filesystem, HBase is designed to work on top of the Hadoop Distributed File System (HDFS). HDFS is a distributed file system that stores files as replicated blocks across multiple servers. HDFS lends a scalable and reliable file system back end to HBase.</p>
+<p>So, in an HBase table, data are organized as rows and columns as shown in the following figure:</p>
+<p><img src="/images/14562066176431.jpg" alt="HBase table 的典型架构"></p>
+<p>A row in HBase is referenced using a row key which is raw byte array, which can be considered to be the primary key of the table in an RDBMS. The primary key of the table has to be unique and hence references one and only one row. HBase automatically sorts table rows by row key when it stores them. By default, this sort is byte ordered.</p>
+<p>As shown in the above figure, each key consists of the following parts: rowkey, column_family, column and timestamp. Thus the mapping becomes: (rowkey, column family, column, timestamp) -&gt; value. Rowkey and value are simply bytes, so anything that could be serialized into bytes can be stored into a cell. These cells in HBase are sorted lexicographically by rowkey which is a very important property as it allows for quick searching.</p>
+<p>Columns in HBase have a column name, which can be used to refer to a column. Columns can be further grouped into column families. All column family members have a common prefix, so, in the above figure, the columns Metadata:Type and Metadata:Language are both members of the Metadata column family, whereas Content:Data belongs to the Content family. By default, the colon character (:) delimits the column prefix from the family member. The column family prefix must be composed of printable characters. The qualifying tail can be made of any arbitrary bytes.</p>
+<p><strong>HBase Operations</strong></p>
+<p>HBase has four primary operations on the data model: Get, Put, Scan, and Delete.</p>
+<p>A Get operation returns all of the cells for a specified row, which are pointed to by a row key. A Put operation can either add new rows to the table when used with a new key or update a row if the key already exists. Scan is an operation that iterates over multiple rows based on some condition, such as a row key value or a column attribute. A Delete operation removes a row from a table. Get and Scan operations always return data in sorted order. Data are first sorted by row key, then by column family, then by family members, and finally by timestamp (so the latest values appear first).</p>
+<p>By default, Get, Scan, and Delete operations on an HBase table are performed on data that have the latest version. A Put operation always creates a new version of the data that are put into HBase. By default, Delete operations delete an entire row but can also be used to delete specific versions of data in a row. Each operation can be targeted to an explicit version number as well.</p>
+<p><strong>HBase Architecture</strong></p>
+<p>HBase is organized as a cluster of HBase nodes. These nodes are of two types: a master node and one or more slave nodes called RegionServers.</p>
+<p><img src="/images/14562066977793.jpg" alt="HBase 集群架构"></p>
+<p>HBase dynamically distributes the table in order to serve a large number of concurrent accesses. An HBase table is split into several Regions when the table becomes too large. An HBase Region is a subset of an HBase table, but has a continuous range of sorted rowkeys. Each RegionServer can serve several Regions, but one Region can only be served by a specific RegionServer.</p>
+<p>Notes</p>
+<ol>
+<li>Even though an HBase Region can only be served by one RegionServer, this does not mean the data of that Region can only exist in one RegionServer. In fact, due to data replication of HDFS, there will be some exact copies of the data of each Region on another RegionServer.</li>
+<li>For more information about how HBase works, you can refer to <a href="http://hbase.apache.org/book.html" target="_blank" rel="external">HBase Reference Guide</a> and <a href="https://blogs.apache.org/hbase/" target="_blank" rel="external">their blog</a>.</li>
+</ol>
+<p>HBase uses Apache ZooKeeper as a distribution coordination service for the entire HBase cluster. For example, it handles master selection (choosing one of the nodes to be the master node), the lookup for the -ROOT- catalog table, and node registration (when new regionservers are added). The master node that is chosen by ZooKeeper handles such functions as region allocation, failover, and load balancing.</p>
+<p>HBase is designed to use HDFS in the back end but also supports various kinds of file systems, including a local file system and even Amazon S3.</p>
+<p>The following video introduces some basic aspects of HBase that may help you through your tasks. Please note that the video is recorded using an older version of EMR, but that should not affect your use of HBase and EMR in this project.</p>
+<p><a href="https://youtu.be/lUOFLa0DKdc" target="_blank" rel="external">HBase Demo</a></p>
+<blockquote>
+<p>Warning Please remember that EMR can be expensive, you may want to use spot instances to save on cost.</p>
+</blockquote>
+<h3 id="u89E3_u9898_u6B65_u9AA4"><a href="#u89E3_u9898_u6B65_u9AA4" class="headerlink" title="解题步骤"></a>解题步骤</h3><h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li><a href="http://www.runoob.com/linux/linux-comm-join.html" target="_blank" rel="external">Linux join命令</a></li>
 </ol>
 ]]></content>
