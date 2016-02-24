@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-24T15:23:24.000Z</updated>
+  <updated>2016-02-24T16:52:10.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,282 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 10 课 递归]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-10/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-10/</id>
+    <published>2016-02-24T16:51:34.000Z</published>
+    <updated>2016-02-24T16:52:10.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 9 课 有限状态机]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-9/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-9/</id>
+    <published>2016-02-24T16:49:42.000Z</published>
+    <updated>2016-02-24T16:50:16.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 8 课 数据压缩]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-8/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-8/</id>
+    <published>2016-02-24T16:48:25.000Z</published>
+    <updated>2016-02-24T16:48:58.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 7 课 图]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-7/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-7/</id>
+    <published>2016-02-24T16:47:00.000Z</published>
+    <updated>2016-02-24T16:48:05.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 6 课 搜索]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-6/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-6/</id>
+    <published>2016-02-24T16:46:54.000Z</published>
+    <updated>2016-02-24T16:48:01.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 5 课 图]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-5/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-5/</id>
+    <published>2016-02-24T16:45:48.000Z</published>
+    <updated>2016-02-24T16:47:40.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 4 课 树]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-4/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-4/</id>
+    <published>2016-02-24T16:44:36.000Z</published>
+    <updated>2016-02-24T16:45:15.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 3 课 链表、栈和队列]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-3/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-3/</id>
+    <published>2016-02-24T15:58:50.000Z</published>
+    <updated>2016-02-24T16:44:22.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[数据结构与算法 第 2 课 基础知识]]></title>
+    <link href="http://wdxtub.com/2016/02/24/dsa-2/"/>
+    <id>http://wdxtub.com/2016/02/24/dsa-2/</id>
+    <published>2016-02-24T15:35:52.000Z</published>
+    <updated>2016-02-24T16:42:20.000Z</updated>
+    <content type="html"><![CDATA[<p>这一课我们不会涉及具体的数据结构或算法，而是先了解一些分析数据结构和算法的基本知识，如前条件/后条件，时间空间复杂度分析。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u524D_u6761_u4EF6/_u540E_u6761_u4EF6"><a href="#u524D_u6761_u4EF6/_u540E_u6761_u4EF6" class="headerlink" title="前条件/后条件"></a>前条件/后条件</h2><p>建议在写具体的函数之前，都要先想好（写好）前条件和后条件，这样可以确定问题的边界。</p>
+<ul>
+<li>前条件：在函数调用之前一定为真的条件</li>
+<li>后条件：在函数执行完之后为真的条件</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Precondition: x &gt;= 0</span></span><br><span class="line"><span class="comment">// Postcondition: The square root of x has</span></span><br><span class="line"><span class="comment">// been written to the standard output</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeSqrt</span><span class="params">(<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Big_O"><a href="#Big_O" class="headerlink" title="Big O"></a>Big O</h2><p>在具体介绍之前，先来一些基本的数学公式复习</p>
+ $$log_b(x_1·x_2)=log_bx_1+log_bx_2$$ 
+ $$log_b(\frac{x_1}{x_2})=log_bx_1-log_bx_2$$ 
+ $$log_b(x^c)=c·log_bx$$ 
+<p>事实上除了我们常用的 Big O，还有另外两种表示的方法：Big Omega($Big- \Omega$) 和 Big Theta($Big - \theta$)</p>
+<p>这里只介绍它们的差别，具体的定义可以自行查看。</p>
+<p>Big-O 实际上只表示上限，比如说，我们知道 $17n^2\in O(n^2)$，但是同时我们也可以说 $17n^2\in O(n^37)$ 和 $17n^2\in O(2^n)$</p>
+<p>Big omega 则是表示下限，例如 $f(n) = n$，那么下面两个式子都成立 $f(n) \in O(n^2)$ 与 $n^2 \in \Omega(n)$</p>
+<p>总结一下：</p>
+<p><img src="/images/14563304975385.jpg" alt=""></p>
+<p>而 Big theta(Big $\theta$) 则是前面两个的交集：</p>
+<p>$$\theta(f)=O(f) \cap \Omega(f)$$</p>
+<p>举例来说，函数 $f(n) = 4n$，则</p>
+<p>$$f(n)\in O(n)$$</p>
+<p>$$f(n) \in \Omega(n)$$</p>
+<p>所以</p>
+<p>$$f(n)\in \theta(n)$$</p>
+<p>简单来说就是</p>
+<ol>
+<li>Big O 是一个算法最坏情况的度量</li>
+<li>Big Omega 是一个算法最好情况的度量</li>
+<li>Big Theta 表达了一个算法的区间，给定了一个函数的渐近的逼近(asymptotically tight bound)</li>
+</ol>
+<p>但是一般来说用 Big O 也就足够了</p>
+<h2 id="u9762_u5411_u5BF9_u8C61_u7F16_u7A0B"><a href="#u9762_u5411_u5BF9_u8C61_u7F16_u7A0B" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><blockquote>
+<p>Class = Data + Methods</p>
+</blockquote>
+<p>具体要说的话，内容就太多了，需要深入理解『继承』『多态』和『封装』，也不是一篇日志能说清楚的，所以就大概有一个印象，慢慢领悟吧。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这一课我们不会涉及具体的数据结构或算法，而是先了解一些分析数据结构和算法的基本知识，如前条件/后条件，时间空间复杂度分析。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[数据结构与算法 第 1 课 总览]]></title>
@@ -1259,1531 +1535,6 @@
       <category term="疑难杂症" scheme="http://wdxtub.com/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
     
       <category term="高效" scheme="http://wdxtub.com/tags/%E9%AB%98%E6%95%88/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[zsh 全程指南]]></title>
-    <link href="http://wdxtub.com/2016/02/18/oh-my-zsh/"/>
-    <id>http://wdxtub.com/2016/02/18/oh-my-zsh/</id>
-    <published>2016-02-18T22:09:15.000Z</published>
-    <updated>2016-02-19T13:43:58.000Z</updated>
-    <content type="html"><![CDATA[<p>新年新气象，打算从 bash 迁移到 zsh 上来。网上教程很多，但是大多比较零散也不够让人知其所以然，而且很多配置也不符合我个人的习惯，于是打算『贪天之功』，写这么一个『全程指南』，希望能给大家带来些帮助。</p>
-<a id="more"></a>
-<hr>
-<p>工欲善其事，必先利其器。工欲利其器，必先思其行。凡事谋定而后动，得有个基本的目标，才好一步一步细化并实施。实话说，zsh 真的比 bash 好很多吗？从小处着眼，是的，无论是历史记录还是搜索还是自定义插件，zsh 都比 bash 强，但是看看隔壁的 powershell(windows)，才算得上真正现代化面向对象的命令行工具。而且很多时候我们都是连接到远程的机器上进行编程和配置，在那里 bash 可是一统天下的（当然每次都愿意配置折腾一次，zsh 也不是不行）。那么问题就来了，为什么还要折腾呢？</p>
-<p>答案很简单，充分利用高级功能，来提高自己的效率。当然，如果顺带能让界面更漂亮一点的话，何乐不为呢？不过有一点需要注意，如果要用 shell 脚本进行编程的话，最好还是按照 bash 的语法来做，不然把自己绑定到『非标准』的语法上，换个环境就可能导致巨大的问题。</p>
-<p>如果只是想要换个主题弄得花里胡哨的话，那么还不如节省点时间去做有意义的事情，虽然网上都说 zsh 是『终结 shell』，但是其实哪有所谓的『终极』？只有自己成为了大师，才能『飞花落叶皆可伤人』。</p>
-<p>不过既然说是『全程指南』，还是会尽量事无巨细介绍清楚，总体来说选择标准取决于我个人的审美和习惯，这点需要注意。</p>
-<h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
-<li>安装 <a href="http://www.iterm2.com/" target="_blank" rel="external">iTerm2</a>（最近要出新版了，很多新特性还是值得期待的）</li>
-<li>安装完成后可以在 iTerm2 中输入命令安装 <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a><ul>
-<li><code>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh</code> </li>
-<li>因为 zsh 配置比较繁琐，所以这里可以直接用配置好的配置文件的基础上进行使用</li>
-</ul>
-</li>
-<li>安装 <a href="http://powerline.readthedocs.org/en/latest/installation.html" target="_blank" rel="external">Powerline</a> （一个 vim 的插件，随后有用）<ul>
-<li><code>pip install powerline-status</code></li>
-<li>如果没有 <code>pip</code> 命令的话，先把 <code>pip</code> 装上：<code>sudo easy_install pip</code></li>
-</ul>
-</li>
-<li>有些 zsh 中的主题需要使用额外的字体，我们也一并装好，<a href="https://github.com/powerline/fonts" target="_blank" rel="external">下载地址</a>。把所有东西下载下来，然后用命令行进入到 <code>install.sh</code> 所在文件夹，执行 <code>./install.sh</code> 进行安装</li>
-</ol>
-<h2 id="u73AF_u5883_u914D_u7F6E"><a href="#u73AF_u5883_u914D_u7F6E" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="u5B57_u4F53"><a href="#u5B57_u4F53" class="headerlink" title="字体"></a>字体</h3><p>前面我们安装了额外的字体，但是还是需要在 iTerm2 中配置一下，具体的字体选择有很多，只要是后面带有 Powerline 字样的就可以，注意 Regular Font 和 Non-ASCII Font 都需要进行修改</p>
-<p><img src="/images/14558361988595.jpg" alt="Preference -&gt; Profiles -&gt; Text"></p>
-<p>我觉得比较不错的字体有：</p>
-<ul>
-<li>Incosolata-dz for Powerline</li>
-<li>Roboto Mono Light for Powerline</li>
-<li>Ubuntu Mono derivative Powerline</li>
-</ul>
-<p>我自己在用的是</p>
-<ul>
-<li>Regular Font: 18pt Ubuntu Mono derivative Powerline</li>
-<li>Non-ASCII Font: 14pt Roboto Mono for Powerline</li>
-</ul>
-<p><img src="/images/14558366464605.jpg" alt="效果图"></p>
-<h3 id="u914D_u8272"><a href="#u914D_u8272" class="headerlink" title="配色"></a>配色</h3><p>这里就不推荐烂大街的 Solarized 配色了，而是直接给成吨选择，在<a href="http://iterm2colorschemes.com" target="_blank" rel="external">配色页面</a>中下载，然后根据截图自己选择，选择好之后在 Preference -&gt; Profiles -&gt; Colors 里面的 Load Presets 进行导入即可。我比较喜欢的是 Tomorrow Night 这个主题，并且稍微把颜色调亮了一点，显得比较活泼。像下面这样：</p>
-<p><img src="/images/14558402138712.jpg" alt="Tomorrow Night"></p>
-<p>其他我觉得比较不错的还有：</p>
-<ul>
-<li>Argonaut</li>
-<li>Cobalt2</li>
-<li>Molokai</li>
-<li>Monokai Soda</li>
-<li>PaulMillr</li>
-<li>Solarized Dark Higher Contrast</li>
-<li>SpaceGray Eighties</li>
-<li>Thayer Bright</li>
-<li>Tomorrow Night 全系列</li>
-<li>Wez</li>
-</ul>
-<h3 id="u914D_u7F6E_u6587_u4EF6"><a href="#u914D_u7F6E_u6587_u4EF6" class="headerlink" title="配置文件"></a>配置文件</h3><p>大部分配置都可以在配置文件中进行设置，这里我大概翻译一下，以及给出自己的一些使用偏好。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ZSH的环境变量</span></span><br><span class="line"><span class="built_in">export</span> ZSH=/Users/dawang/.oh-my-zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主题设置</span></span><br><span class="line"><span class="comment"># 主题列表在 ~/.oh-my-zsh/themes/</span></span><br><span class="line"><span class="comment"># 如果设置为 "random", 每次开启都会是不同的主题</span></span><br><span class="line">ZSH_THEME=<span class="string">"agnoster"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想要大小写敏感，可以取消注释下面的一行</span></span><br><span class="line"><span class="comment"># CASE_SENSITIVE="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想要连接符不敏感，可以取消注释下面的一行。_ 和 - 将可以互换</span></span><br><span class="line"><span class="comment"># HYPHEN_INSENSITIVE="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果不想要自动更新，可以取消注释下面的一行</span></span><br><span class="line"><span class="comment"># DISABLE_AUTO_UPDATE="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动更新的时间间隔，单位是天，这里设置 30 天更新一次</span></span><br><span class="line"><span class="built_in">export</span> UPDATE_ZSH_DAYS=<span class="number">30</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果不想要 ls 命令输出带颜色，可以取消注释下面的一行</span></span><br><span class="line"><span class="comment"># DISABLE_LS_COLORS="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否禁止更改终端标题,不要禁止,不然所有终端tab只显示zsh了,而不随着目录的改变而改变显示</span></span><br><span class="line"><span class="comment"># DISABLE_AUTO_TITLE="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动纠正命令,不启用,不怎么好用</span></span><br><span class="line"><span class="comment"># ENABLE_CORRECTION="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按tab键补全命令的时候,如果没什么可补全的就会出现三个红点,更人性化显示，这里我们启用</span></span><br><span class="line">COMPLETION_WAITING_DOTS=<span class="string">"true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line if you want to disable marking untracked files</span></span><br><span class="line"><span class="comment"># under VCS as dirty. This makes repository status check for large repositories</span></span><br><span class="line"><span class="comment"># much, much faster.</span></span><br><span class="line"><span class="comment"># 不要在意这些细节，不需要改动</span></span><br><span class="line"><span class="comment"># DISABLE_UNTRACKED_FILES_DIRTY="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 历史命令日期显示格式</span></span><br><span class="line"><span class="comment"># 有三种方式: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"，我比较习惯最后那种</span></span><br><span class="line">HIST_STAMPS=<span class="string">"yyyy-mm-dd"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Would you like to use another custom folder than $ZSH/custom?</span></span><br><span class="line"><span class="comment"># ZSH_CUSTOM=/path/to/new-custom-folder</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)</span></span><br><span class="line"><span class="comment"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span></span><br><span class="line"><span class="comment"># Example format: plugins=(rails git textmate ruby lighthouse)</span></span><br><span class="line"><span class="comment"># 插件设置，如果添加太多启动速度会比较慢</span></span><br><span class="line">plugins=(git autojump)</span><br><span class="line"></span><br><span class="line">[[ <span class="operator">-s</span> ~/.autojump/etc/profile.d/autojump.zsh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 剩下部分比较不常改动 </span></span><br><span class="line"><span class="comment"># User configuration</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"</span></span><br><span class="line"><span class="comment"># export MANPATH="/usr/local/man:$MANPATH"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> <span class="variable">$ZSH</span>/oh-my-zsh.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># You may need to manually set your language environment</span></span><br><span class="line"><span class="comment"># export LANG=en_US.UTF-8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Preferred editor for local and remote sessions</span></span><br><span class="line"><span class="comment"># if [[ -n $SSH_CONNECTION ]]; then</span></span><br><span class="line"><span class="comment">#   export EDITOR='vim'</span></span><br><span class="line"><span class="comment"># else</span></span><br><span class="line"><span class="comment">#   export EDITOR='mvim'</span></span><br><span class="line"><span class="comment"># fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Compilation flags</span></span><br><span class="line"><span class="comment"># export ARCHFLAGS="-arch x86_64"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ssh</span></span><br><span class="line"><span class="comment"># export SSH_KEY_PATH="~/.ssh/dsa_id"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set personal aliases, overriding those provided by oh-my-zsh libs,</span></span><br><span class="line"><span class="comment"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span></span><br><span class="line"><span class="comment"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span></span><br><span class="line"><span class="comment"># For a full list of active aliases, run `alias`.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example aliases</span></span><br><span class="line"><span class="comment"># alias zshconfig="mate ~/.zshrc"</span></span><br><span class="line"><span class="comment"># alias ohmyzsh="mate ~/.oh-my-zsh"</span></span><br></pre></td></tr></table></figure>
-<h2 id="u9AD8_u7EA7_u529F_u80FD"><a href="#u9AD8_u7EA7_u529F_u80FD" class="headerlink" title="高级功能"></a>高级功能</h2><h3 id="u5E38_u7528_u5FEB_u6377_u952E"><a href="#u5E38_u7528_u5FEB_u6377_u952E" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><ul>
-<li>命令历史记录<ul>
-<li>一旦在 shell 敲入正确命令并能执行后，shell 就会存储你所敲入命令的历史记录（存放在<code>~/.zsh_history</code> 文件中），方便再次运行之前的命令。可以按方向键↑和↓来查看之前执行过的命令</li>
-<li>可以用 <code>!!</code>来执行上一条命令</li>
-<li>使用 <code>ctrl-r</code> 来搜索命令历史记录</li>
-</ul>
-</li>
-<li>命令和文件补全(按tab键)</li>
-<li>命令别名<ul>
-<li>可以简化命令输入，在 <code>.zshrc</code> 中添加 <code>alias shortcut=&#39;this is the origin command&#39;</code> 一行就相当于添加了别名</li>
-<li>在命令行中输入 <code>alias</code> 可以查看所有的命令别名</li>
-</ul>
-</li>
-</ul>
-<p>一些比较好用的设置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> cls=<span class="string">'clear'</span></span><br><span class="line"><span class="built_in">alias</span> ll=<span class="string">'ls -l'</span></span><br><span class="line"><span class="built_in">alias</span> la=<span class="string">'ls -a'</span></span><br><span class="line"><span class="built_in">alias</span> grep=<span class="string">"grep --color=auto"</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> html=<span class="string">'vim'</span>   <span class="comment"># 在命令行直接输入后缀为 html 的文件名，会在 Vim 中打开</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> rb=<span class="string">'vim'</span>     <span class="comment"># 在命令行直接输入 ruby 文件，会在 Vim 中打开</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> py=<span class="string">'vim'</span>      <span class="comment"># 在命令行直接输入 python 文件，会用 vim 中打开，以下类似</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> js=<span class="string">'vim'</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> c=<span class="string">'vim'</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> java=<span class="string">'vim'</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> txt=<span class="string">'vim'</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> gz=<span class="string">'tar -xzvf'</span> <span class="comment"># 在命令行直接输入后缀为 gz 的文件名，会自动解压打开</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> tgz=<span class="string">'tar -xzvf'</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> zip=<span class="string">'unzip'</span></span><br><span class="line"><span class="built_in">alias</span> <span class="operator">-s</span> bz2=<span class="string">'tar -xjvf'</span></span><br></pre></td></tr></table></figure>
-<h3 id="u63D2_u4EF6"><a href="#u63D2_u4EF6" class="headerlink" title="插件"></a>插件</h3><p><strong>git</strong></p>
-<p>在进入一个 git 文件夹后会切换显示的模式：</p>
-<p><img src="/images/14558436247342.jpg" alt=""></p>
-<p>自带大部分 git 命令的缩写，命令内容可以参考 <code>~/.oh-my-zsh/plugins/git/git.plugin.zsh</code></p>
-<p>Oh My Zsh 提供了一套系统别名（alias），来达到相同的功能。比如<code>gst</code>作为<code>git status</code>的别名。而且 Git 插件是 Oh My Zsh 默认启用的，相当于你使用了 Oh My Zsh，你就拥有了一套高效率的别名，而且还是全球通用的。是不是棒棒哒？下面是一些我常用的别名：</p>
-<table>
-<thead>
-<tr>
-<th>Alias</th>
-<th>Command</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gapa</td>
-<td><code>git add --patch</code></td>
-</tr>
-<tr>
-<td>gc!</td>
-<td><code>git commit -v --amend</code></td>
-</tr>
-<tr>
-<td>gcl</td>
-<td><code>git clone --recursive</code></td>
-</tr>
-<tr>
-<td>gclean</td>
-<td><code>git reset --hard &amp;&amp; git clean -dfx</code></td>
-</tr>
-<tr>
-<td>gcm</td>
-<td><code>git checkout master</code></td>
-</tr>
-<tr>
-<td>gcmsg</td>
-<td><code>git commit -m</code></td>
-</tr>
-<tr>
-<td>gco</td>
-<td><code>git checkout</code></td>
-</tr>
-<tr>
-<td>gd</td>
-<td><code>git diff</code></td>
-</tr>
-<tr>
-<td>gdca</td>
-<td><code>git diff --cached</code></td>
-</tr>
-<tr>
-<td>gp</td>
-<td><code>git push</code></td>
-</tr>
-<tr>
-<td>grbc</td>
-<td><code>git rebase --continue</code></td>
-</tr>
-<tr>
-<td>gst</td>
-<td><code>git status</code></td>
-</tr>
-<tr>
-<td>gup</td>
-<td><code>git pull --rebase</code></td>
-</tr>
-</tbody>
-</table>
-<p>完整列表请参考：<a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git</a></p>
-<p><strong>osx</strong></p>
-<ul>
-<li>tab - 在一个新标签打开当前目录</li>
-<li>cdf - cd到当前Finder目录</li>
-<li>quick-look - 快速浏览特殊的文件</li>
-<li>man-preview - 在Preview应用打开特定的man page</li>
-<li>trash - 将特定的文件移到垃圾桶</li>
-</ul>
-<p><strong>autojump</strong></p>
-<p>这个插件会记录进入过的文件夹，下次再进入只要输入很少的内容即可，如下图所示：</p>
-<p><img src="/images/14558437933171.jpg" alt=""></p>
-<p><strong>zsh-syntax-highlighting</strong></p>
-<p>这是一个类似 fish 的命令高亮插件，安装也很简单 <code>brew install zsh-syntax-highlighting</code>，需要把 <code>source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</code> 添加到 <code>.zshrc</code> 的最后面。</p>
-<p>其他的<a href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md" target="_blank" rel="external">安装方法</a></p>
-<h3 id="u4F7F_u7528_u6280_u5DE7"><a href="#u4F7F_u7528_u6280_u5DE7" class="headerlink" title="使用技巧"></a>使用技巧</h3><ol>
-<li>连按两次Tab会列出所有的补全列表并直接开始选择，补全项可以使用 ctrl+n/p/f/b上下左右切换</li>
-<li>命令选项补全。在zsh中只需要键入 <code>tar -&lt;tab&gt;</code> 就会列出所有的选项和帮助说明</li>
-<li>命令参数补全。键入 <code>kill &lt;tab&gt;</code> 就会列出所有的进程名和对应的进程号</li>
-<li>更智能的历史命令。在用<ctrl-p>或者方向上键查找历史命令时，zsh支持限制查找。比如，输入<code>ls</code>,然后再按方向上键，则只会查找用过的ls命令。而此时使用<ctrl-p>则会仍然按之前的方式查找，忽略 <code>ls</code></ctrl-p></ctrl-p></li>
-<li>多个终端会话共享历史记录</li>
-<li>智能跳转，安装了 autojump 之后，zsh 会自动记录你访问过的目录，通过 <code>j 目录名</code> 可以直接进行目录跳转，而且目录名支持模糊匹配和自动补全，例如你访问过 hadoop-1.0.0 目录，输入<code>j hado</code> 即可正确跳转。<code>j --stat</code> 可以看你的历史路径库。</li>
-<li>目录浏览和跳转：输入 d，即可列出你在这个会话里访问的目录列表，输入列表前的序号，即可直接跳转。</li>
-<li>在当前目录下输入 <code>..</code> 或 <code>...</code> ，或直接输入当前目录名都可以跳转，你甚至不再需要输入 cd 命令了。在你知道路径的情况下，比如 <code>/usr/local/bin</code> 你可以输入 <code>cd /u/l/b</code> 然后按<tab>进行补全快速输入</tab></li>
-<li>通配符搜索：<code>ls -l **/*.sh</code>，可以递归显示当前目录下的 shell 文件，文件少时可以代替 find。使用 <code>**/</code> 来递归搜索</li>
-<li>扩展环境变量，输入环境变量然后按 <tab> 就可以转换成表达的值</tab></li>
-<li>在 <code>.zshrc</code> 中添加 <code>setopt HIST_IGNORE_DUPS</code> 可以消除重复记录，也可以利用 <code>sort -t &quot;;&quot; -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history</code> 手动清除</li>
-</ol>
-<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://macshuo.com/?p=676" target="_blank" rel="external">终极 Shell</a></li>
-<li><a href="http://hackerxu.com/2014/11/19/ZSH.html" target="_blank" rel="external">Zsh使用指南(译)</a></li>
-<li><a href="http://www.jianshu.com/p/dc4ee939a08d" target="_blank" rel="external">zsh调研(2)配置和使用</a></li>
-<li><a href="http://blog.csdn.net/yangcs2009/article/details/45720193" target="_blank" rel="external">Shell（一）：功能、配置和插件（附iTerm 2(for mac) &amp;&amp; Oh My Zsh教程）</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Zsh_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="external">Zsh (简体中文)</a>)</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>新年新气象，打算从 bash 迁移到 zsh 上来。网上教程很多，但是大多比较零散也不够让人知其所以然，而且很多配置也不符合我个人的习惯，于是打算『贪天之功』，写这么一个『全程指南』，希望能给大家带来些帮助。</p>]]>
-    
-    </summary>
-    
-      <category term="Mac" scheme="http://wdxtub.com/tags/Mac/"/>
-    
-      <category term="bash" scheme="http://wdxtub.com/tags/bash/"/>
-    
-      <category term="zsh" scheme="http://wdxtub.com/tags/zsh/"/>
-    
-      <category term="命令行" scheme="http://wdxtub.com/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[软件架构与设计 第 14 课 Architecture Tradeoff Analysis Method]]></title>
-    <link href="http://wdxtub.com/2016/02/18/sad-14/"/>
-    <id>http://wdxtub.com/2016/02/18/sad-14/</id>
-    <published>2016-02-18T16:03:29.000Z</published>
-    <updated>2016-02-18T20:52:54.000Z</updated>
-    <content type="html"><![CDATA[<p>这节课具体会介绍进行架构分析时候的一些权衡考量的方法，还是非常有用的（至少比前面两课那么『虚』的要好很多）。这里也会综合老师给出的阅读材料，争取给大家一个完整的概念。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u9636_u6BB5_u4E00_Evaluator__26amp_3B_Decision_Maker"><a href="#u9636_u6BB5_u4E00_Evaluator__26amp_3B_Decision_Maker" class="headerlink" title="阶段一 Evaluator &amp; Decision Maker"></a>阶段一 Evaluator &amp; Decision Maker</h2><h3 id="u7B2C_u4E00_u6B65_Present_ATAM"><a href="#u7B2C_u4E00_u6B65_Present_ATAM" class="headerlink" title="第一步 Present ATAM"></a>第一步 Present ATAM</h3><p>使用的技术有：</p>
-<ul>
-<li>Utility tree genration</li>
-<li>Architecture elicitation and analysis</li>
-<li>Scenario brainstorming / mapping</li>
-</ul>
-<p>这个阶段的产出有</p>
-<ul>
-<li>Architectural approaches</li>
-<li>Utility tree</li>
-<li>Scenarios</li>
-<li>Risks and “non-risks”</li>
-<li>sensitivity points and tradeoffs</li>
-</ul>
-<p><img src="/images/14558185071430.jpg" alt="ATAM 过程"></p>
-<h3 id="u7B2C_u4E8C_u6B65_Present_Business_Drivers"><a href="#u7B2C_u4E8C_u6B65_Present_Business_Drivers" class="headerlink" title="第二步 Present Business Drivers"></a>第二步 Present Business Drivers</h3><p>顾客代表会描述：</p>
-<ul>
-<li>系统的商业 context</li>
-<li>高层级的功能需求</li>
-<li>高层级的质量需求</li>
-</ul>
-<blockquote>
-<p>Architectural drivers: quality attributes that “shape” the architecture</p>
-<p>Critical reirements: quality attributes most central to the system’s success</p>
-</blockquote>
-<p>具体来说包括：</p>
-<ul>
-<li>系统的关键功能</li>
-<li>任何技术、管理、经济或政策的限制</li>
-<li>商业目标和背景</li>
-<li>主要的权益关系着</li>
-<li>主要的质量目标(principla quality attribute, NFP)</li>
-</ul>
-<h3 id="u7B2C_u4E09_u6B65_Present_the_Architecture"><a href="#u7B2C_u4E09_u6B65_Present_the_Architecture" class="headerlink" title="第三步 Present the Architecture"></a>第三步 Present the Architecture</h3><p>展示系统的整体架构，可能包括：</p>
-<ul>
-<li>技术限制：操作系统、硬件、中间件</li>
-<li>其他需要与之交互的系统</li>
-<li>如何选择架构风格来达到质量要求</li>
-</ul>
-<p>这个阶段评估小组开始寻找可能的风险</p>
-<h3 id="u7B2C_u56DB_u6B65_Identify_Architectural_Approaches"><a href="#u7B2C_u56DB_u6B65_Identify_Architectural_Approaches" class="headerlink" title="第四步 Identify Architectural Approaches"></a>第四步 Identify Architectural Approaches</h3><p>开始寻找那些在架构中堆达到质量目标举足轻重的关键点，了解比较常用的架构模型：</p>
-<ul>
-<li>Client-Server</li>
-<li>3-tier</li>
-<li>Proxy</li>
-<li>Publish-Subscribe</li>
-<li>Redundant hardware</li>
-</ul>
-<h3 id="u7B2C_u4E94_u6B65_Generate_Utility_Tree"><a href="#u7B2C_u4E94_u6B65_Generate_Utility_Tree" class="headerlink" title="第五步 Generate Utility Tree"></a>第五步 Generate Utility Tree</h3><p>通过构造 utility tree 来进一步优化改进重要的质量目标</p>
-<ul>
-<li>Utility tree 是一个自顶向下的方法，来驱动属性相关的需求</li>
-<li>高层级节点应当是最重要的质量目标（如 performance, modifiability, security 和 availability）</li>
-<li>场景是 utility tree 的叶子</li>
-</ul>
-<p><img src="/images/14558198859387.jpg" alt="一个 utility tree 的例子"></p>
-<p><strong>Scenarios</strong></p>
-<p>用来展示利益相关者的兴趣所在，便于理解质量需求，应当包括</p>
-<ul>
-<li>Anticipated uses of (use case scenarios)</li>
-<li>Anticipated changes to (growth scenarios)</li>
-<li>Unanticipated stresses (exploratory scenarios)</li>
-</ul>
-<p><img src="/images/14558199929846.jpg" alt="ATAM Scenarios"></p>
-<p><img src="/images/14558200171596.jpg" alt="Scenario 的例子"></p>
-<h3 id="u7B2C_u516D_u6B65_Analyze_Architectural_Approaches"><a href="#u7B2C_u516D_u6B65_Analyze_Architectural_Approaches" class="headerlink" title="第六步 Analyze Architectural Approaches"></a>第六步 Analyze Architectural Approaches</h3><p>评估小组从特定的质量目标的角度入手，了解架构及识别可能的风险：</p>
-<ul>
-<li>找到那些保证质量需求的方法</li>
-<li>提出相关问题</li>
-<li>识别出 risks, non-risks, sensitivity points 和 tradeoffs</li>
-</ul>
-<p>下面是一些例子：</p>
-<p><img src="/images/14558202021169.jpg" alt="可能的问题"></p>
-<p><img src="/images/14558202227194.jpg" alt="Sensitivity &amp; Tradeoffs"></p>
-<p><img src="/images/14558202695271.jpg" alt="Risk &amp; Non-Risks"></p>
-<h3 id="u6700_u540E_u51E0_u6B65"><a href="#u6700_u540E_u51E0_u6B65" class="headerlink" title="最后几步"></a>最后几步</h3><ul>
-<li>第七步 Brainstom &amp; Prioritize Scenarios<ul>
-<li>利益相关者头脑风暴，相关过程</li>
-</ul>
-</li>
-<li>第八步 Analyze Architectural Approaches<ul>
-<li>重复第六步中的工作</li>
-</ul>
-</li>
-<li>第九步 Present ATAM results<ul>
-<li>完整的产出</li>
-<li>Architectural appoaches</li>
-<li>Utility tree</li>
-<li>Scenarios</li>
-<li>Risks and Non-risks</li>
-<li>Sensitivity points and tradeoffs</li>
-</ul>
-</li>
-</ul>
-<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>架构分析既不简单也不便宜</li>
-<li>从长远来看，利大于弊</li>
-<li>关于系统核心特性的早期信息非常重要</li>
-<li>应当使用多种分析技术</li>
-<li>到底需要分析到什么程度？<ul>
-<li>这是架构师最需要琢磨的地方</li>
-<li>分析过多，则会无谓消耗有限的资源</li>
-<li>分析过少，则会面临系统失败的风险</li>
-<li>错误的分析既浪费资源，又可能导致系统失败</li>
-</ul>
-</li>
-</ul>
-<h2 id="u9605_u8BFB_u6750_u6599_u7B14_u8BB0"><a href="#u9605_u8BFB_u6750_u6599_u7B14_u8BB0" class="headerlink" title="阅读材料笔记"></a>阅读材料笔记</h2><ul>
-<li>云计算部分非常简略，建议参考我的云计算课程笔记</li>
-<li>使用 ATAM 来评估一个架构时，目标是理解不同的架构决定对系统质量可能带来的影响，所以可以看作是一个风险识别的方法</li>
-<li>实际上是根据不同的属性和资源提出对应的问题，并找出相互的影响</li>
-<li>三个场景：use case scenarios, growth scenarios, exploratory scenarios</li>
-<li>不同的场景有不同的侧重点和要求，具体可以结合下图的实例来理解体会</li>
-</ul>
-<p><img src="/images/14558122473154.jpg" alt="Use Case Scenarios"></p>
-<p><img src="/images/14558122635076.jpg" alt="Growth Scenarios"></p>
-<p><img src="/images/14558122890374.jpg" alt="Exploratory Scenarios"></p>
-<ul>
-<li>Utility tree 和 Facilitated brainstorm 是两种常见的方式，各有不同的侧重</li>
-</ul>
-<p><img src="/images/14558123943034.jpg" alt="Utility Trees vs. Scenario Brainstorming"></p>
-<p><img src="/images/14558124405619.jpg" alt="一个 Utility Tree 的例子"></p>
-<ul>
-<li>ATAM 过程结束后的产出有<ul>
-<li>Risk and Non-Risks 文档，用来分析各个架构决定的风险性</li>
-<li>Sensitivity and Tradeoff Points 文档，用来具体说明不同权衡的利弊（最重要的部分）</li>
-<li>A Structure for Reasoning 文档，用来说明具体的架构选择及其原因</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/14558126249185.jpg" alt="Concept Interactions"></p>
-<ul>
-<li>评测中的重要属性<ul>
-<li>Availability, Modifiability, Performance, Security, Usability</li>
-<li>Deployment, Locating, Errors, Cost/Effort Estimation, Personalization, Safety</li>
-</ul>
-</li>
-<li>可能的风险来源<ul>
-<li>Risks Due to Unknowns</li>
-<li>Risks Due to Side Effects of Architectural Decisions</li>
-<li>Risks Due to Ignoring Architectural Solutions to Attribute Requirements</li>
-<li>Risks Due to Interaaction with Other Organizations</li>
-</ul>
-</li>
-<li>具体步骤<ul>
-<li>Background</li>
-<li>Business and Mission Drivers</li>
-<li>Architectural Approaches</li>
-<li>Utility Tree</li>
-<li>Scenario Generation and Prioritization</li>
-<li>Analysis Process</li>
-<li>Post-ATAM Activities </li>
-</ul>
-</li>
-</ul>
-<p>感觉还是有点虚，估计作业就是模仿阅读材料完成一次具体的 ATAM 分析，但是老师给出的参考作业的内容又是关于 SOA 的，真的很令人费解。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这节课具体会介绍进行架构分析时候的一些权衡考量的方法，还是非常有用的（至少比前面两课那么『虚』的要好很多）。这里也会综合老师给出的阅读材料，争取给大家一个完整的概念。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 习题课 4 Cachelab]]></title>
-    <link href="http://wdxtub.com/2016/02/17/csapp-lab4/"/>
-    <id>http://wdxtub.com/2016/02/17/csapp-lab4/</id>
-    <published>2016-02-17T17:33:35.000Z</published>
-    <updated>2016-02-18T04:27:28.000Z</updated>
-    <content type="html"><![CDATA[<p>这节课我们来讲讲第四次作业，主要会尽可能利用缓存来加速计算，不过在开始作业之前会先复习一下 C 语言。</p>
-<a id="more"></a>
-<hr>
-<h2 id="C__u8BED_u8A00_u590D_u4E60"><a href="#C__u8BED_u8A00_u590D_u4E60" class="headerlink" title="C 语言复习"></a>C 语言复习</h2><ul>
-<li>注意代码风格，不要写糟糕的代码</li>
-<li>小心隐式类型转换</li>
-<li>小心未定义的行为</li>
-<li>小心内存泄露</li>
-<li>宏和指针计算很容易出错</li>
-</ul>
-<p><strong>例 1</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">foo</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (u &gt; -<span class="number">1</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因为 <code>u</code> 是无符号整型，所以在比较的时候 -1 也会按照无符号整型来处理，于是实际的比较相当于 <code>u &gt; int_max</code>，使得这个函数总是会返回 0。</p>
-<p><strong>例 2</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* a = <span class="built_in">malloc</span>(<span class="number">100</span>*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">        a[i] = i / a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里 <code>a</code> 中的值都没有进行初始化，所以 main 函数的行为是未定义的。</p>
-<p><strong>例 3</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> w[strln(<span class="string">"C programming"</span>)];</span><br><span class="line">    <span class="built_in">strcpy</span>(w, <span class="string">"C programming"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, w);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>strlen</code> 返回的长度是不包括最后的 <code>\0</code> 的，写入的时候会越界。</p>
-<p><strong>例 4</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> ht_node &#123;</span><br><span class="line">    <span class="keyword">int</span> key;</span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> ht_node* node;</span><br><span class="line"></span><br><span class="line"><span class="function">node <span class="title">makeNnode</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">    node curr = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(node));</span><br><span class="line">    curr-&gt;key = k;</span><br><span class="line">    curr-&gt;data = e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里把 <code>node</code> 定义为一个指针，并不是指向一个结构体。</p>
-<p><strong>例 5</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strcdup</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> dup[n+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        dup[i] = c;</span><br><span class="line">    dup[i] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">char</span> *A = dup;</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>strcdup</code> 函数返回了一个分配在栈中的指针，函数返回之后地址 <code>A</code> 可能会被抹掉。</p>
-<p><strong>例 6</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> IS_GREATER(a, b) a &gt; b</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">isGreater</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> m1 = IS_GREATER(<span class="number">1</span>, <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> m2 = isGreater(<span class="number">1</span>, <span class="number">0</span>) + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p><code>IS_GREATER</code> 是一个没有带括号的宏，所以 <code>m1</code> 的值相当于 <code>1 &gt; 0+1 = 0</code></p>
-<p><strong>例 7</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> NEXT_BYTE(a) ((char *)(a + <span class="number">1</span>));</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a1 = <span class="number">54</span>; <span class="comment">// &amp;a1 = 0x100</span></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a2 = <span class="number">42</span>; <span class="comment">// &amp;a2 = 0x200</span></span><br><span class="line"><span class="keyword">void</span>* b1 = NEXT_BYTE(&amp;a1);</span><br><span class="line"><span class="keyword">void</span>* b2 = NEXT_BYTE(&amp;a2);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这里 <code>b1</code> 指向 <code>0x104</code></li>
-<li>这里 <code>b2</code> 指向 <code>0x208</code></li>
-</ul>
-<p>会根据类型的不同，决定下一个 byte 的起始位置。</p>
-<p>注意提交的代码列数不要超过 80，会人工检查的。</p>
-<p><strong>GDB 命令</strong></p>
-<ul>
-<li><code>gdbtui &lt;binary&gt;</code></li>
-<li><code>layout split</code></li>
-</ul>
-<p><img src="/images/14557338869148.jpg" alt=""></p>
-<p><strong>valgrind</strong></p>
-<p>可以用来查找</p>
-<ul>
-<li>内存泄露</li>
-<li>其他内存错误</li>
-<li>内存损害</li>
-</ul>
-<p>使用 <code>gcc -g</code> 可以列出内存泄露的具体行数</p>
-<p>使用 <code>valgrind --leak-check=full</code> 可以查看全部详细信息</p>
-<h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li>先下载好试验的压缩包，然后上传到学校的主机上：<code>scp cachelab-handout.tar dawang@shark.ics.cs.cmu.edu:~/513</code></li>
-<li>接着 ssh 过去：<code>ssh -X dawang@shark.ics.cs.cmu.edu</code></li>
-<li>解压：<code>tar -xvf cachelab-handout.tar</code></li>
-</ul>
-<p>然后就可以看到这次作业的内容了：</p>
-<p><img src="/images/14557441434948.jpg" alt=""></p>
-<p>我们需要修改的是 <code>csim.c</code>（需要自己创建） 和 <code>trans.c</code>。这里我会把这两个文件传回本地进行修改，完成后再传到服务器上进行测试：</p>
-<ul>
-<li>服务器至本地<ul>
-<li><code>scp dawang@shark.ics.cs.cmu.edu:~/513/cachelab-handout/csim.c ./</code></li>
-<li><code>scp dawang@shark.ics.cs.cmu.edu:~/513/cachelab-handout/trans.c ./</code></li>
-</ul>
-</li>
-<li>本地至服务器<ul>
-<li><code>scp csim.c dawang@shark.ics.cs.cmu.edu:~/513/cachelab-handout/</code></li>
-<li><code>scp trans.c dawang@shark.ics.cs.cmu.edu:~/513/cachelab-handout/</code></li>
-</ul>
-</li>
-</ul>
-<p>编译的时候只需要简单 <code>make clean</code> 和 <code>make</code>，然后就可以进行测试了。</p>
-<h2 id="u7B2C_u4E00_u90E8_u5206__u7F13_u5B58_u6A21_u62DF_u5668"><a href="#u7B2C_u4E00_u90E8_u5206__u7F13_u5B58_u6A21_u62DF_u5668" class="headerlink" title="第一部分 缓存模拟器"></a>第一部分 缓存模拟器</h2><p>这里需要注意的是，缓存模拟器并不是缓存！我们不需要存储具体的内存内容，也就是说，块偏移量不重要（也就是最后的 b bits 我们不需要在意），只需要计算 hit, miss 和 eviction 的次数即可。</p>
-<p>这一部分内容具体理解请参阅 <a href="http://wdxtub.com/2016/02/15/csapp-12/">第 12 课 Cache Memories</a>，这里不再赘述，如果弄懂了这篇日志里的内容，应该就没有问题。</p>
-<p>我们的缓存模拟器需要在不同的 s, b, E 设定下正常工作，使用的替换策略是 LRU(Least Recently Used)，这里可以考虑用队列或者时间戳的方式来记录。</p>
-<h3 id="u4EFB_u52A1_u76EE_u6807"><a href="#u4EFB_u52A1_u76EE_u6807" class="headerlink" title="任务目标"></a>任务目标</h3><p>因为这次作业可能重复性比较高，所以这里就不贴代码了。主要讲一下每个步骤以及遇到问题时的解决思路。</p>
-<p>先来了解一下这次用作输入数据的 trace 文件，可以使用 <code>valgrind --log-fd=1 --tool=lackey -v --trace-mem=yes ls -l</code> 来体验一下，具体做的事情，就是把执行 <code>ls -l</code> 这个命令时访问内存的日志输出到终端中，大概是这样的：</p>
-<p><img src="/images/14557449805626.jpg" alt=""></p>
-<p>每一条对内存访问的记录格式是 <code>[空格]操作符 地址,大小</code>，以 <code>I</code> 开头的是载入指令的记录，不算在内存访问中。</p>
-<ul>
-<li>M 表示数据修改，需要一次载入 + 一次存储，也就是相当于两次访问</li>
-<li>S 表示数据存储</li>
-<li>L 表示数据载入</li>
-<li>地址指的是一个 64 位的 16 进制内存地址</li>
-<li>大小表示该操作内存访问的字节数</li>
-</ul>
-<p>我们要做的实际是读入 <code>valgrind</code> 生成的 trace 日志，并统计出 hit, miss 和 eviction 的次数。同时已经给出了一个参考程序 <code>csim-ref</code>，于是任务就变成山寨一个这样的程序，比如：</p>
-<p><img src="/images/14557460323055.jpg" alt="注意两种不同的模式"></p>
-<p>具体用法如下：</p>
-<p><img src="/images/14557462175638.jpg" alt="注意各个参数的含义"></p>
-<p>其他的就是概念的理解和实现了，这里给出几个关键问题，大家可以从这里找到思路：</p>
-<ol>
-<li>如何从命令中拿到所需的参数</li>
-<li>如何从文件中读入内容</li>
-<li>如何进行 cache 的存储</li>
-<li>如何进行错误处理</li>
-<li>如何保证两种模式输出</li>
-</ol>
-<p>因为已经给出了参考输出，所以对着一点一点做，应该没有太多问题。</p>
-<h3 id="u4E00_u4E9B_u63D0_u793A"><a href="#u4E00_u4E9B_u63D0_u793A" class="headerlink" title="一些提示"></a>一些提示</h3><p>我们可以用一个 <code>cache_line</code> 的结构体来保存每个 cache line 的信息，如：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> valid;</span><br><span class="line">    <span class="keyword">int</span> tag;</span><br><span class="line">    <span class="keyword">int</span> time_stamp;</span><br><span class="line">&#125; cache_line;</span><br></pre></td></tr></table></figure>
-<p>而对应到我们的缓存模拟器，可以用一个二维数组来存储并模拟，如：<code>cache[S][E]</code>。这里 $S=2^s$，也就是 set 的个数，E 是一个 set 里有多少个 cache line。</p>
-<p>因为这次测试的输入是如下所示的命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./csim [-hv] <span class="operator">-s</span> &lt;s&gt; -E &lt;E&gt; -b &lt;b&gt; -t &lt;tracefile&gt;</span><br></pre></td></tr></table></figure>
-<p>也就是说我们的程序需要能够读取命令行参数。这时候可以使用 <code>getopt()</code> 来完成，使用前注意包括 <code>#include &lt;unistd.h&gt;</code>，如果不在 CMU 的机器上运行，还需要加上 <code>#include &lt;getopt.h&gt;</code>。</p>
-<p>具体的使用方法参见 <code>man 3 getopt</code> 或 <a href="http://www.gnu.org/software/libc/manual/html_node/Getopt.html" target="_blank" rel="external">这里</a>。当然，还需要考虑如何处理非法输入。一个简单的例子，对于命令 <code>./foo -x 1 -y 3</code>，可以这样解析：</p>
-<p><img src="/images/14557375929445.jpg" alt=""></p>
-<p>有了命令行参数，我们还需要对应读入 trace 文件的内容，可以使用 <code>fscanf</code> 来完成这个任务，具体的使用可以参考 <code>man fscanf</code> 或 <a href="http://crasseux.com/books/ctutorial/fscanf.html" target="_blank" rel="external">这里</a>，一个例子：</p>
-<p><img src="/images/14557377045267.jpg" alt=""></p>
-<p>因为我们需要根据传入的参数来创建 cache，所以需要动态分配空间，可以使用 <code>malloc</code> 在堆上完成这个任务。但是需要注意 <code>malloc</code> 的内容一定要 <code>free</code> 掉，不然就会造成内存泄露。另外，不是自己 <code>malloc</code> 的内存，也不要去 <code>free</code> 掉。一个例子：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">some_pointer_you_malloced = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">Free(some_pointer_you_malloced);</span><br></pre></td></tr></table></figure>
-<h2 id="u7B2C_u4E8C_u90E8_u5206__u4F18_u5316_u77E9_u9635_u8F6C_u5236"><a href="#u7B2C_u4E8C_u90E8_u5206__u4F18_u5316_u77E9_u9635_u8F6C_u5236" class="headerlink" title="第二部分 优化矩阵转制"></a>第二部分 优化矩阵转制</h2><h3 id="u4EFB_u52A1_u76EE_u6807-1"><a href="#u4EFB_u52A1_u76EE_u6807-1" class="headerlink" title="任务目标"></a>任务目标</h3><p>测试的矩阵尺寸为：</p>
-<ul>
-<li>32 x 32</li>
-<li>64 x 64</li>
-<li>61 x 67</li>
-</ul>
-<p>缓存的指标：</p>
-<ul>
-<li>有 1KB 大小的缓存</li>
-<li>是 directly mapped，也就是 E=1</li>
-<li>Block size 为 32 字节，也就是 b=5</li>
-<li>一共有 32 个 set，也就是 s=5</li>
-</ul>
-<p>可能出乎大家意料，最困难的其实是 64 x 64，因为对于 miss 数量的要求非常严苛！</p>
-<h3 id="u7F13_u5B58_u5206_u6790"><a href="#u7F13_u5B58_u5206_u6790" class="headerlink" title="缓存分析"></a>缓存分析</h3><p>为了加深印象，还是具体分析一下使用的策略。61 x 67 因为不规则，所以基本的策略就是用不同的分块大小去试验，我一路从 8 测试到 24，最后选了个看起来最顺眼的。这里主要还是分析 32 x 32 和 64 x 64 的。</p>
-<p>根据给出的缓存大小，可以知道，一个 block 可以放 8 个 int 值，那么对于 32 x 32 矩阵，有下面的图：</p>
-<p><img src="/images/14557681819928.jpg" alt="32 x 32"></p>
-<p>这里的数字表示对应的值会存在缓存的哪个 set 中，我们可以看到第九行和第一行会冲突，但是如果我们分成 8 x 8 的小块，就可以保证尽可能利用到缓存的特性（读取第 1 个的时候后面 7 个也已经载入缓存中），于是简单分块就可以解决 32 x 32 的矩阵（要求是 miss 数量不超过 300）</p>
-<p>但是对于 64 x 64，情况就不一样了，首先是 miss 的数量限制得比较严格，不超过 1300，然后是缓存中的排列也有一些变化，如图：</p>
-<p><img src="/images/14557683448384.jpg" alt="64 x 64"></p>
-<p>因为宽度的变化，现在第 5 行就会和第 1 行冲突，所以如果我们还用原来的 8 x 8，肯定是不行的。那么如果用 4 x 4 呢？经过尝试之后，发现超过要求的 1300 还是比较多的。问题在哪里？一是因为每次读取 4 个数字，我们实际只用了 4 个，二是宽度改变带来的 conflict miss 仍旧没有很好解决。</p>
-<p>题目中说不能使用超过 12 个变量，有 4 个需要作为遍历矩阵的索引值，另外八个是不是可以做一点文章呢？答案是肯定的。</p>
-<p>我们依然可以按照原来的 8 x 8 来进行处理，只是在每个 8 x 8 中，还需要进行分块。首先是左上角的 4 x 4，这里没有冲突，都会在缓存中，所以按照正常的分块算法处理。比较有技巧的是右上角和左下角，这里我们会发现重复访问会造成很多的 conflict miss，这个时候就可以利用 4 个本地变量作为 buffer，先存起来，以后再用。这样就利用了每次读入 8 个的优势，并且避开了因为地址冲突而导致的 conflict miss 的问题。</p>
-<h3 id="u4E00_u4E9B_u63D0_u793A-1"><a href="#u4E00_u4E9B_u63D0_u793A-1" class="headerlink" title="一些提示"></a>一些提示</h3><p>矩阵转制并不是特别复杂的操作，但是如何利用缓存来尽可能提高速度，就有很多的优化空间了。和矩阵相乘中使用的 cache blocking 方法一样，在这里我们同样可以利用 blocking 的方法来提高效率，可能需要尝试不同的大小，以找到最合适的尺寸。</p>
-<p>最好在编译的时候加上 <code>-Werror</code>，这样就不会放过任何一个 warning。如果使用的函数缺少头文件，可以通过 <code>man &lt;function-name&gt;</code> 找到相关头文件</p>
-<p>因为只会跑 32x32, 64x64, 61x67 这三个测试，所以可以硬编码来进行检测，针对不同的矩阵大小进行优化。</p>
-<p>都写完之后可以利用 <code>./driver.py</code> 进行完整的测试，最后提交自动打包好的 tar 压缩包到 autolab 即可。</p>
-<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>被汇编语言虐了两周之后，回过头来写 C 语言，真的感觉从地狱到了天堂。虽然降低了语言的复杂度，但是对于概念的理解有了更高的要求。回过头来想想，正因为隐藏了足够多的细节，更高层级的抽象才得以方便实现。</p>
-<p>缓存的整个设计非常精妙，仅仅利用 locality 一个特性，几乎是用最小的成本达到了最好的性能。</p>
-<blockquote>
-<p>The memory hierarcy creates a large pool of storage that costs as much as the cheap storage near the bottom, but that serves data to programs at the rate of the fast storage near the top.</p>
-</blockquote>
-<p>带着镣铐跳舞，精髓。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这节课我们来讲讲第四次作业，主要会尽可能利用缓存来加速计算，不过在开始作业之前会先复习一下 C 语言。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="Cachelab" scheme="http://wdxtub.com/tags/Cachelab/"/>
-    
-      <category term="习题课" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98%E8%AF%BE/"/>
-    
-      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Programming iOS9 翻译 9 - iPad Interface]]></title>
-    <link href="http://wdxtub.com/2016/02/17/programming-ios9-translation-9/"/>
-    <id>http://wdxtub.com/2016/02/17/programming-ios9-translation-9/</id>
-    <published>2016-02-17T11:59:39.000Z</published>
-    <updated>2016-02-17T15:47:16.000Z</updated>
-    <content type="html"><![CDATA[<p>这一章主要讨论 iPad 和 iPhone 在界面特性上的一些不同。Popover 和 split view 是原生为 iPad 设计的界面，在 iOS8 之前都只能在 iPad 上使用，但是现在也可以在 iPhone 上应用。另一个值得注意的是 iPad 多任务功能。</p>
-<a id="more"></a>
-<hr>
-<h2 id="Popovers"><a href="#Popovers" class="headerlink" title="Popovers"></a>Popovers</h2>]]></content>
-    <summary type="html">
-    <![CDATA[<p>这一章主要讨论 iPad 和 iPhone 在界面特性上的一些不同。Popover 和 split view 是原生为 iPad 设计的界面，在 iOS8 之前都只能在 iPad 上使用，但是现在也可以在 iPhone 上应用。另一个值得注意的是 iPad 多任务功能。</p>]]>
-    
-    </summary>
-    
-      <category term="iOS9" scheme="http://wdxtub.com/tags/iOS9/"/>
-    
-      <category term="iPad" scheme="http://wdxtub.com/tags/iPad/"/>
-    
-      <category term="学习" scheme="http://wdxtub.com/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="笔记" scheme="http://wdxtub.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="翻译" scheme="http://wdxtub.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Programming iOS9 翻译 8 - TableViews and Collection Views]]></title>
-    <link href="http://wdxtub.com/2016/02/17/programming-ios9-translation-8/"/>
-    <id>http://wdxtub.com/2016/02/17/programming-ios9-translation-8/</id>
-    <published>2016-02-17T11:59:34.000Z</published>
-    <updated>2016-02-21T12:24:37.000Z</updated>
-    <content type="html"><![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>
-<a id="more"></a>
-<hr>
-<p>除了 cell 本身，table view 还有一些其他特性让其更灵活更有用：</p>
-<ul>
-<li>可以在顶上展示 header，在底部显示 footer</li>
-<li>cell 可以聚合成不同的 section，每个 section 可以有其 header 和 footer，并且没有离开当前 section 的话 header 会保持在屏幕上，也可以自定义列表边缘的索引，方便用户快速跳转</li>
-<li>可以对表格进行操作：添加，删除或者排序</li>
-<li>可以给不同的 cell 分组</li>
-</ul>
-<p>Table view cell 也非常灵活，除了内置的几种类型，可以轻松进行自定义。</p>
-<p>有一个 <code>UIViewController</code> 的子类是 <code>UITableViewController</code>，很方便，但是其实它做得所有事情我们都可以自己做，以下是 <code>UITableViewController</code> 做的事情：</p>
-<ul>
-<li><code>UITableViewController</code> 的 <code>init(style:)</code> 会根据参数创建一个 table view</li>
-<li>视图控制器会自动指定 table view 的 delegate 和 data source</li>
-<li>table view 会被设为视图控制器的 <code>tableView</code> 属性，方便使用</li>
-</ul>
-<h2 id="Table_View_Cells"><a href="#Table_View_Cells" class="headerlink" title="Table View Cells"></a>Table View Cells</h2><p>利用 reuse identifier 来实现重用，只是更换显示的内容，而不重复创建和销毁 cell。因为这个机制，我们需要在使用之前指定好需要展示的数据，也就是哪个位置显示什么，具体位置由 <code>NSIndexPath</code> 确定。</p>
-<p>最简单的创建一个 table view cell 的方式是使用内置的四种 style。使用 <code>init(style:reuseIdentifier:)</code>，可选的 style 有：</p>
-<p><img src="/images/14557985360452.jpg" alt=""></p>
-<p><img src="/images/14557985469035.jpg" alt=""></p>
-<p>使用的时候，有几个函数是很重要的</p>
-<ul>
-<li><code>numberOfSectionsInTableView</code> 返回 section 的个数</li>
-<li><code>numberOfRowsInSection</code> 返回列表的行数</li>
-<li><code>cellForRowAtIndexPath</code> 返回当前位置现在应该显示的 cell</li>
-<li><code>tableview.dequeueReusableCellWithIdentifier</code>  利用这个函数得到一个已经存在 cell（如果返回空则需要我们自己创建），用以重用</li>
-</ul>
-<p>其他一些可以设置的属性：</p>
-<p><img src="/images/14557989567864.jpg" alt=""></p>
-<p>也可以给 <code>cell.imageView</code> 设置 image，比如：</p>
-<p><img src="/images/14557990302124.jpg" alt="事先缩放成所需大小，而不是依赖系统"></p>
-<p>每个 cell 本身也有很多属性，可以进行设置：</p>
-<p><img src="/images/14557990872623.jpg" alt=""></p>
-<p><img src="/images/14557991035763.jpg" alt=""></p>
-<p>最后是 table view 本身的一些属性</p>
-<p><img src="/images/14557991407378.jpg" alt=""></p>
-<h3 id="Registering_a_Cell_Class"><a href="#Registering_a_Cell_Class" class="headerlink" title="Registering a Cell Class"></a>Registering a Cell Class</h3><p>我们可以使用下面两种方式来得到一个重用的 cell:</p>
-<ul>
-<li><code>dequeueReusableCellWithIdentifier:</code></li>
-<li><code>dequeueReusableCellWithIdentifier:forIndexPath</code></li>
-</ul>
-<p>第一种我们之前见过，第二种中的第二个参数应当永远和 <code>tableview:cellForRowAtIndexPath:</code> 的第二个参数保持一致。这两个方法看起来差不多，但其实有很大的不同，第二种有以下三个优点：</p>
-<ol>
-<li>返回值永远不是 <code>nil</code>，如果有可重用的 cell，那么会返回，如果没有，会创建一个并返回</li>
-<li>cell 的大小此时已经确定，因为我们指定了 <code>IndexPath</code>，所以系统可以事先确定好尺寸</li>
-<li>在第一个方法中，可能会因为传错 identifier 导致重用失效，但是在第二个方法中，不会发生这种事情</li>
-</ol>
-<p>使用 <code>dequeueRedusableCellWithIndentifier:forIndexPath:</code> 之前，需要向 table 本身注册一下（除非是从 storyboard 创建的），调用 <code>registerClass:forCellReuseIdentifier:</code> 来完成这个工作。这个方法会把一个 <code>UITableViewCell</code> 和一个字符串 identifier 关联起来。而后 <code>dequeueRedusableCellWithIndentifier:forIndexPath:</code> 会利用这个信息返回对应类型的 cell。</p>
-<ul>
-<li>应该尽早注册，比方说 <code>viewDidLoad</code> 就是不错的地方</li>
-<li>如果想要使用其他的 style，可以使用 <code>UITableViewCell</code> 的子类并重写 <code>init(style:reuseIdentifier)</code> 方法来使用指定的 style</li>
-<li>如何判断返回的是重用的还是新创建的 cell 呢？可以在函数返回 cell 之后对 cell 本身进行一些检查，如果我们已经配置过，那么就是一个重用的，反之则是新创建的</li>
-</ul>
-<h3 id="Custom_Cells"><a href="#Custom_Cells" class="headerlink" title="Custom Cells"></a>Custom Cells</h3><p>很快我们就会发现内置的 style 没办法满足我们的需要，所以就需要进行定制了。至少有四种方式可以完成这个工作：</p>
-<ol>
-<li>用内置的 cell style，但是使用 <code>UITableViewCell</code> 的子类并且重写 <code>layoutSubviews</code> 来改变内置 subview 的 frame</li>
-<li>在 <code>tableView:cellForRowAtIndexPath:</code> 中，在每个 cell 被创建的时候在其 <code>contentView</code> 添加 subview，这个可以和第一个方法结合来用</li>
-<li>在 nib 中设计 cell，并且在 <code>tableView:cellForRowAtIndexPath:</code> 需要创建 cell 的时候从 nib 中载入</li>
-<li>在 storyboard 中设计 cell</li>
-</ol>
-<p><img src="/images/14558093926092.jpg" alt=""></p>
-<p><strong>重写 cell 的 subview layout</strong></p>
-<p>不能直接在 <code>tableView:cellForRowAtIndexPath:</code> 中修改，因为之后 cell 自己的 <code>layoutSubviews</code> 会覆盖我们所做的修改，于是解决方法也很简单，直接重写 <code>layoutSubviews</code>。我们创建一个 <code>UITableViewCell</code> 的子类，注意需要在 <code>dequeueReusableCellWithIdentifier:forIndexPath:</code> 中生成我们这个子类的实例，然后重写下面的方法：</p>
-<p><img src="/images/14558847687832.jpg" alt=""></p>
-<p>这样就把 cell 中的图片移到了右边，如下图：</p>
-<p><img src="/images/14558847989080.jpg" alt=""></p>
-<p><strong>在代码中添加 subviews</strong></p>
-<p>除了修改已有的默认 subview，我们还可以给每个 <code>UITableView</code> 添加全新的 view，可以在 <code>tableView:cellForRowAtIndexPath:</code> 完成这个工作，但是有几点需要注意：</p>
-<ul>
-<li>需要增加的 view 必须在创建 cell 的时候就添加进去</li>
-<li>不要给 cell 本身发送 <code>addSubview:</code> 消息，而只应该操作其 <code>contentView</code></li>
-<li>应该给新的 view 合适的 <code>autoresizingMask</code> 或者 constraints，因为可能在屏幕旋转的时候大小会变化</li>
-<li>每个新的 view 都应该有一个 tag，这样可以被识别和重用。</li>
-</ul>
-<p>我们用这个方法来实现上图的效果：</p>
-<p><img src="/images/14558852905252.jpg" alt=""></p>
-<p><img src="/images/14558852992928.jpg" alt=""></p>
-<p><strong>在 nib 中设计 cell</strong></p>
-<p>上面的方法要写一堆代码，所以不如直接用图形界面进行设计。我们先创建一个 <code>.xib</code> 文件，删掉原来的 view 并且添加一个 Table View Cell，然后就可以进行设计了。设计好之后记得给每个部件一个 tag，这样莫问在代码中可以引用它们：</p>
-<p><img src="/images/14558856434855.jpg" alt=""></p>
-<p>那么怎么从 xib 文件读取我们的表格呢，用如下方法即可：</p>
-<p><img src="/images/14558856940231.jpg" alt=""></p>
-<p>是不是超级方便？</p>
-<p><img src="/images/14558857502413.jpg" alt=""></p>
-<p>如果不想一直用 tag 来找部件的话，可以创建一个 <code>UITableViewCell</code> 的子类，连接好对应的 outlet，然后注册对应的子类：</p>
-<p><img src="/images/14558859180063.jpg" alt=""></p>
-<p>这样做完之后就可以直接用名字来调用了：</p>
-<p><img src="/images/14558859429911.jpg" alt=""></p>
-<p><strong>在 Storyboard 中设计 cell</strong></p>
-<p>需要注意的是一定要填写在 cell prototype 中填写好 identifier，然后系统就会自动关联上</p>
-<p><img src="/images/14558862782575.jpg" alt=""></p>
-<h2 id="Table_View_Data"><a href="#Table_View_Data" class="headerlink" title="Table View Data"></a>Table View Data</h2><p>表格中的数据由 <code>dataSource</code> 属性以及配套的 <code>UITableViewDataSource</code> 协议提供。data source 本身会在需要数据的时候调用若干方法来获取所需数据，总结起来是下面三条原则：</p>
-<p><img src="/images/14558865052646.jpg" alt=""></p>
-<p>在 mvc 模型中，data source 可以认为是 controller。作为 data source，需要回答下面这三个问题：</p>
-<p><img src="/images/14558884427561.jpg" alt=""></p>
-<p>对应到具体的代码设计，可能是这样的：</p>
-<p><img src="/images/14558885316385.jpg" alt=""></p>
-<h3 id="Reusing_Cells"><a href="#Reusing_Cells" class="headerlink" title="Reusing Cells"></a>Reusing Cells</h3><p>重用其实很简单，系统已经帮我们实现了，只需要调用 <code>dequeueReusableCellWithIdentifier:forIndexPath:</code></p>
-<p>我们可以用以下代码做个测试</p>
-<p><img src="/images/14558892105796.jpg" alt=""></p>
-<p>通过命令行的输出可以知道，实际上并没有创建 1000 个 cell</p>
-<p><img src="/images/14558892426258.jpg" alt=""></p>
-<p>因为你得到的 cell 可能是新创建的也可能是重用的，所以最好每次都做完整的配置，而不是依赖于具体某种类型。</p>
-<h3 id="Table_View_Sections"><a href="#Table_View_Sections" class="headerlink" title="Table View Sections"></a>Table View Sections</h3><p>header 和 footer 可以包含自定义的 view，所以可以搞出很多花样。</p>
-<p><img src="/images/14558895820319.jpg" alt=""></p>
-<p>具体 section 的个数在 <code>numberOfSectionsInTableView:</code> 中决定，<code>UITableViewHeaderFooterView</code> 是 <code>UIView</code> 的子类，可以重用，有以下属性：</p>
-<p><img src="/images/14558897816852.jpg" alt=""></p>
-<p><img src="/images/14558897960076.jpg" alt=""></p>
-<p>有两种方法来提供 header 或者 footer 的内容，可以都用，但是最好从中选择一种：</p>
-<p><img src="/images/14558898458407.jpg" alt=""></p>
-<p>还有一些更加具体的设置：</p>
-<p><img src="/images/14558898851365.jpg" alt=""></p>
-<p>提供数据的时候，注意好所用的数据结构和索引即可。</p>
-<p>也可以通过如下方法提供快速索引：</p>
-<p><img src="/images/14558900378289.jpg" alt=""></p>
-<p>如果要修改外观，可以用以下方法；</p>
-<p><img src="/images/14558901131758.jpg" alt=""></p>
-<h3 id="Refreshing_Table_View_Data"><a href="#Refreshing_Table_View_Data" class="headerlink" title="Refreshing Table View Data"></a>Refreshing Table View Data</h3><p>因为 table view 并不知道它所显示的数据，所以如果数据有改变，可以通过如下方法进行更新：</p>
-<p><img src="/images/14558909959784.jpg" alt=""></p>
-<p>后面两个方法可以加动画方法，具体的参数是：</p>
-<p><img src="/images/14558912456356.jpg" alt=""></p>
-<p>如果我们只是需要更新 index，可以调用 <code>reloadSectionIndexTitles:</code>，它会调用 data source 的 <code>sectionIndexTitlesForTableView:</code>。</p>
-<p>也可以具体操作某个 cell：</p>
-<p><img src="/images/14558919604494.jpg" alt=""></p>
-<p><img src="/images/14558920720526.jpg" alt=""></p>
-<h3 id="Variable_Row_Heights"><a href="#Variable_Row_Heights" class="headerlink" title="Variable Row Heights"></a>Variable Row Heights</h3><p>大多数表格每一行的高度都是一样的，在 table view 的 <code>rowHeight</code> 属性中设置，但是通过 <code>tableView:HeightForRowAtIndexPath:</code> 代理，可以为不同的行指定不同的高度。而后书中介绍了 4 种改变行高的方法，但是现在随着系统的更新，很多方法已经没有太多必要使用了。这里只介绍 iOS 8 中引入的 Automatic row height。</p>
-<p>使用这个机制很简单，使用 autolayout 来确定 <code>contentView</code> 的尺寸，然后设置一下 table view 的 <code>estimatedRowHeight</code> 即可，连 <code>tableView:HeightForRowAtIndexPath:</code> 都不用实现！不过这种方法虽然简单，性能却是最差的，所以如果 table view 遇到了什么性能问题，可能还是要回归到最传统的做法——自己进行计算高度，而不是依赖系统。</p>
-<h2 id="Table_View_Cell_Selection"><a href="#Table_View_Cell_Selection" class="headerlink" title="Table View Cell Selection"></a>Table View Cell Selection</h2><p>每个 table view cell 都有一个正常状态和一个高亮状态（<code>highlighted</code> 属性），以及被选中状态（<code>selected</code> 属性）。可以通过代码直接改变这些状态，也可以带上动画，比如调用 cell 的<code>setHighlighted:animated:</code> 和 <code>setSelected:animated:</code>。但是通常我们是通过操作 table view 来完成状态的改变，而不是直接操作 cell 本身。</p>
-<p>当一个 cell 被选中时，会把高亮状态传递给其子视图的 <code>highlighted</code> 属性（如果有的话）。比方说被选中时，<code>UILabel</code> 的 <code>highlightedTextColor</code> 就会被显示；同样的，<code>UIImageView</code> 的 <code>highlightedImage</code> 也是如此。</p>
-<p>table view 支持单选和多选，被选中时 cell 的背景颜色会改变，可以通过设置 <code>selectedBackgroudView</code> 或者 <code>multipleSelectionBackgroundView</code> 或者 <code>selectionStyle</code> 来进行自定义。</p>
-<p>我们可以通过下面的方法来管理被选中的 cell：</p>
-<p><img src="/images/14559731699807.jpg" alt=""></p>
-<p><img src="/images/14559731806172.jpg" alt=""></p>
-<p>想要取消选择所有已经被选择的 cell，可以给 <code>selectRowAtIndexPath:animated:scrollPosition:</code> 传入一个 <code>nil</code> 作为 index path。重新载入 cell 的数据也可以清除选择，调用 <code>reloadData</code> 会取消选择所有已被选择的行。</p>
-<p>通过下列 table view 的代理方法来实现对用户选择的响应：</p>
-<p><img src="/images/14559737261676.jpg" alt=""></p>
-<p>这里的 <code>will</code> 实际上是 <code>should</code> 的意思，需要返回一个值的：</p>
-<ul>
-<li>如果返回值是 <code>nil</code> 则选择或者取消选择都不会发生</li>
-<li>返回对应的 index path 使选择或者取消选择得以进行，如果返回另外的 index，则另一个 cell 的状态会被改变</li>
-</ul>
-<p>简单总结一下整个的调用流程：</p>
-<p><img src="/images/14559738761048.jpg" alt=""></p>
-<p>下面就是一个例子，我们可以通过重写对应方法，实现用户第一次点击的时候选择，第二次点击的时候取消选择：</p>
-<p><img src="/images/14559739412275.jpg" alt=""></p>
-<p>除了列表选择，table view 另一个很重要的功能就是导航，master-detail 的结构就是一个很有代表性的例子，比如说下面的代码就可以完成从专辑列表到专辑详情的跳转：</p>
-<p><img src="/images/14559743251362.jpg" alt=""></p>
-<p>在 storyboard 中，当我们从 <code>UITableViewCell</code> 连接一个 segue 时，有两种不同的选择：Selection Segue 和 Accessory Action。如果创建了一个 Selection Segue，segue 会在用户选择一个 cell 的时候被触发，可以对应 push 或者 present 另一个视图。</p>
-<p>如果使用的是 <code>UITableViewController</code>，那么默认情况下所有的选择会在 <code>viewWillAppear:</code> 中被清除，，如果不想要这一个效果，可以设置 <code>clearsSelectionOnViewWillAppear</code> 为 <code>false</code>，有些时候会禁用这个特性，因为希望在用户返回列表时还保持之前的选择。</p>
-<p>通常来说，如果对 table view cell 的选择会导致界面切换，cell 应该被给定一个 <code>.DisclosureIndicator</code> 的 <code>accessoryType</code>(UITableViewCellAccessory)。另外两个可能的选择是：</p>
-<p><img src="/images/14559751352611.jpg" alt=""></p>
-<p>对应需要实现 <code>tableView:accessoryButtonTappedForRowWithIndexPaht:</code> 的代理方法，或者在 storyboard 中选择 Accessory Action segue。</p>
-<p>另外一个应用就是类似与 radio button 的效果，使用 group 结构，有一个 <code>.Checkmark</code> 的 <code>accessoryType</code>。通常会与 static table 来进行展示，如下图：</p>
-<p><img src="/images/14559758236052.jpg" alt=""></p>
-<p>对应的代码为：</p>
-<p><img src="/images/14559758750555.jpg" alt=""></p>
-<p><img src="/images/14559758822874.jpg" alt=""></p>
-<p>具体在用户选择之后，可以利用下面代码完成单选的功能：</p>
-<p><img src="/images/14559759470380.jpg" alt=""></p>
-<h2 id="Table_View_Scrolling_and_Layout"><a href="#Table_View_Scrolling_and_Layout" class="headerlink" title="Table View Scrolling and Layout"></a>Table View Scrolling and Layout</h2><p>UITableView 也是一个 UIScrollView，所以对应的操作都可以继续用，而且还提供了两个方便的方法：</p>
-<p><img src="/images/14559763307905.jpg" alt=""></p>
-<p>下面的一些方法可以用来在 table view 中不同的位置定位</p>
-<p><img src="/images/14559763765446.jpg" alt=""></p>
-<h2 id="Table_View_State_Restoration"><a href="#Table_View_State_Restoration" class="headerlink" title="Table View State Restoration"></a>Table View State Restoration</h2><p>如果 UITableView 使用了 saving 和 restoration 功能，那么可以保存所有的选择和滚动的位置，这个过程基本是自动的。</p>
-<p>不过有的时候可能数据在后台改变了，所以可能需要使用下面两个方法来进行调整：</p>
-<p><img src="/images/14559765954511.jpg" alt=""></p>
-<h2 id="Table_View_Searching"><a href="#Table_View_Searching" class="headerlink" title="Table View Searching"></a>Table View Searching</h2><p>通常来说如果我们想让列表可以搜索（通过 UISearchBar），可以利用 UISearchController(UIViewController subclass)。实际上 UISearchController 不仅仅可以用在列表中，返回的格式也不一定要是列表，但是这里利用 table view 来进行讲解。</p>
-<p>配置 UISearchController 有三个方法：</p>
-<p><img src="/images/14559769500936.jpg" alt=""></p>
-<p>我们可以发现 UISearchController 并不会返回搜索结果，也不会管理搜索结果，甚至不会做任何搜索，它拥有一个搜索栏，然后在用户交互的时候会更新 <code>updateSearchResultsForSearchController:</code></p>
-<p>下面是属性是可能会用到的：</p>
-<p><img src="/images/14559778309298.jpg" alt=""></p>
-<p>效果图及代码如下：</p>
-<p><img src="/images/14559784183758.jpg" alt=""></p>
-<p>返回结果的部分也可以自己定义：</p>
-<p><img src="/images/14559786392368.jpg" alt=""></p>
-<h2 id="Table_View_Editing"><a href="#Table_View_Editing" class="headerlink" title="Table View Editing"></a>Table View Editing</h2><p>一个 table view cell 有正常状态和编辑状态，通过 <code>editing</code> 属性控制，通常来说，编辑状态有以下表现形式：</p>
-<p><img src="/images/14560548311069.jpg" alt=""></p>
-<p>注意，在编辑模式同样是可以选中的（<code>allowSelectionDuringEditing</code> 或者 <code>allowMultipleSelectionDuringEditing</code> 设置为 <code>true</code>），但是不算很常见。</p>
-<p>通常来说我们会放一个按钮，让用户点击，之后进入 table view 的编辑模式：</p>
-<p><img src="/images/14560549661669.jpg" alt=""></p>
-<p>然后在进入编辑模式的时候用一个完成的按钮来退出编辑模式，代码如上所示。</p>
-<p>然而！其实这些系统都已经帮我们实现了，使用 <code>editButtonItem</code> 方法即可：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = <span class="keyword">self</span>.editButtonItem()</span><br></pre></td></tr></table></figure>
-<p>进入编辑模式之后，table view 会通过代理的方式来获知 cell 的信息，如下：</p>
-<p><img src="/images/14560551203316.jpg" alt=""></p>
-<p>当用户完成操作的时候，会发送 <code>tableView:commitEditingStyle:forRowAtIndexPath:</code> 给 data source，然后我们可能会需要堆 table view 进行一定的修改，有如下方法：</p>
-<p><img src="/images/14560552110623.jpg" alt=""></p>
-<p>如果你还想在这个过程中做更多的事情，可以在 <code>beginUpdates</code> 和 <code>endUpdates</code> 间弄一个 update block</p>
-<p>删除的过程我们举一个例子来说明，假设我们有一个名称数组(<code>self.sectionNames</code>) 和数据数组（<code>self.sectionData</code>），则可以这样删除：</p>
-<p><img src="/images/14560554888868.jpg" alt=""></p>
-<p>默认来说，在 cell 上左滑可以快速删除一个 cell，甚至都不用进入编辑模式，如果我们不想要这样怎么办呢？如果只想在编辑模式才能左滑删除呢？也很简单，如下：</p>
-<p><img src="/images/14560555881617.jpg" alt=""></p>
-<p>每个 cell 本身实际上是一个水平的 scroll view，我们左滑实际上就是让放在后面的删除按钮显示出来，这部分其实也是可以自定义的，只要实现 <code>tableView:editActionsForRowAtIndexPath:</code> 这个代理方法即可，返回一组 UITableViewRowAction 对象（从右到左），可以通过 <code>init(style:title:handler:)</code> 来进行创建，参数如下：</p>
-<p><img src="/images/14560557947681.jpg" alt=""></p>
-<p>注意，如果想支持滑动出 action button，一定要实现 <code>tableView:commitEditingStyle:forRowAtIndexPath:</code>，即使里面是空的也可以，下面是一个具体的例子，除了默认的删除按钮，又多加了一个名为 <code>Mark</code> 的按钮</p>
-<p><img src="/images/14560559293242.jpg" alt=""></p>
-<p>下面是一些具体操作的样例代码，比较简单，就不赘述了：</p>
-<p><img src="/images/14560560907294.jpg" alt="插入 cell"></p>
-<p><img src="/images/14560561097153.jpg" alt="重新排列 cell"></p>
-<p>书中最后还给出了一个很有趣的例子，利用代理方法在不同情况下返回不同的 cell 数量来做出 section 收缩和展开的效果，注意用一个集合来保存相关信息即可。</p>
-<h2 id="Table_View_Menus"><a href="#Table_View_Menus" class="headerlink" title="Table View Menus"></a>Table View Menus</h2><p>我们也可以给 table view cell 加上 menu，比如说复制粘贴什么的功能，那么就需要实现下面的方法：</p>
-<p><img src="/images/14560564648447.jpg" alt=""></p>
-<p>下面是一个例子及其对应的展示：</p>
-<p><img src="/images/14560564910694.jpg" alt=""></p>
-<p>如果想要添加自定义操作，可以使用下面的代码：</p>
-<p><img src="/images/14560565155740.jpg" alt=""></p>
-<h2 id="Collection_Views"><a href="#Collection_Views" class="headerlink" title="Collection Views"></a>Collection Views</h2><p>UICollectionView 是 UIScrollView 的子类，把 UITableView 的各种操作都通用化了，也就是说，它们俩其实很像，例如：</p>
-<p><img src="/images/14560569513318.jpg" alt=""></p>
-<p>collection view 的 section 同样可以有 header 和 footer，但是不是 view 本身去调用，而是根据 cell 的类型来自行决定，称为 supplementary views（实际上就是一个 <code>UICollectionReusableView</code>，一个 <code>UICollectionViewCell</code> 的子类）：</p>
-<p><img src="/images/14560571077602.jpg" alt=""></p>
-<p>collection view 和 table view 的一个重大区别就是它们如何排布所拥有的元素，table view 只会是竖直排列（宽度定死），但是 collection view 就自由很多：</p>
-<p><img src="/images/14560571917709.jpg" alt=""></p>
-<p>比方说可以实现如下图所示的效果：</p>
-<p><img src="/images/14560572097314.jpg" alt=""></p>
-<p>又或者是像系统的照片 app 一样：</p>
-<p><img src="/images/14560572352360.jpg" alt=""></p>
-<h3 id="Collection_View_Classes"><a href="#Collection_View_Classes" class="headerlink" title="Collection View Classes"></a>Collection View Classes</h3><p>这一部分是相关类的介绍，就直接上图了：</p>
-<p><img src="/images/14560572768133.jpg" alt=""></p>
-<p>对应的方法与 UITableView 中的异同有：</p>
-<p><img src="/images/14560573082144.jpg" alt=""></p>
-<p>其他的类型还有：</p>
-<p><img src="/images/14560573210309.jpg" alt=""></p>
-<p><img src="/images/14560573334969.jpg" alt=""></p>
-<p><img src="/images/14560573442411.jpg" alt=""></p>
-<p><img src="/images/14560573583842.jpg" alt=""></p>
-<p>具体的使用这里不再赘述，因为随着 swift 的大幅进化可能会有一定改动，但是我们需要知道不同 layout 可以动态切换，还可以自定义动画效果。</p>
-<p>这一章的内容就告一段落。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>一个 table view(<code>UITableView</code>) 是一个竖直方向的 <code>UIScrollView</code>，其中包含单列的矩形 cell(<code>UITableViewCell</code>)。Table view 是非常重要的，可以用来展示信息、进行选择和导航。</p>]]>
-    
-    </summary>
-    
-      <category term="iOS9" scheme="http://wdxtub.com/tags/iOS9/"/>
-    
-      <category term="学习" scheme="http://wdxtub.com/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="笔记" scheme="http://wdxtub.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="翻译" scheme="http://wdxtub.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="表格" scheme="http://wdxtub.com/tags/%E8%A1%A8%E6%A0%BC/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[【火影忍者究级风暴4】伊邪那美]]></title>
-    <link href="http://wdxtub.com/2016/02/16/yi-xie-na-mei/"/>
-    <id>http://wdxtub.com/2016/02/16/yi-xie-na-mei/</id>
-    <published>2016-02-17T01:32:38.000Z</published>
-    <updated>2016-02-17T03:46:36.000Z</updated>
-    <content type="html"><![CDATA[<p>过去的我们是独孤又渴望爱情，让憎恨逐渐变强的小鬼。各自走上不同的道路，并且彼此对抗。渺小的我们总是互相争执，但是现在已经可以互相理解对方内心的痛楚。 —— 宇智波佐助</p>
-<a id="more"></a>
-<hr>
-<p>当一切的一切最终落幕，所有的波澜壮阔都化为生活中的琐碎时，那一场场殊死战斗才真正有了意义。同样是游戏，同样是火影忍者，每一分每一秒都越发清晰地认识到，这是一群真正爱游戏，真正爱火影，真正爱这个世界并愿意为之付出努力的人倾尽全力想要给这个系列划上圆满的句号。比腾讯的坑钱手游不知道高到哪里去了。</p>
-<p><img src="/images/naruto.jpg" alt="有些东西，是心里只有赚钱的人，永远做不出来的"></p>
-<h2 id="u6E38_u620F_u90E8_u5206"><a href="#u6E38_u620F_u90E8_u5206" class="headerlink" title="游戏部分"></a>游戏部分</h2><p>游戏的战斗系统和前几作相比没有太大的区别，但是在忍术的释放和小队成员即时协作的操作上，利用 QTE 系统迸发出了极强的张力，加上场景和音乐的烘托，整个游戏过程酣畅淋漓，不会有可以为难玩家的数值与关卡设计，反而处处为玩家着想。就拿战斗失败的处理方式来对比，究极风暴4中会给出『坚强』与『不屈』两种选择，分别对应于防御和攻击的提高，表现形式是忍者始祖的『仙人指路』；但是到了腾讯这里，就是明明白白的『一元复活』，说真的，庸俗恶心。</p>
-<p>可使用的角色林林总总有六十多个，从召唤兽到尾兽，从单挑到混战，还结合了射击与跑酷，视觉效果之华丽，气氛营造之到位，让人不禁感叹『游戏才是本体』，动画和漫画都成了配菜。</p>
-<p>美中不足的是，可能因为容量与预算的限制，剧情部分大多是以静态图片加配音的方式展现的。虽然配音演员非常卖力，但是人物不动（或者只有微小的表情变化）总是让人觉得不够过瘾。但是毕竟不是每个游戏都能像《合金装备》那样大段大段塞入过场动画，这种表现形式也算是对于原著漫画与动画的致敬。</p>
-<p>更难能可贵的是，根据关卡设计（主线分支而后汇合，某些章节分为鸣人线和佐助线，在决战时候两条剧情线汇合）和角色性格丰满的需要，游戏改动了部分剧情，使得整个剧情-战斗-剧情的循环非常合理，一气呵成，根本停不下来。</p>
-<p>总而言之，即使是很久没有看火影的老粉丝（比如我），也能一口气把所有的剧情以互动的形式补完，还是最初的少年热血，还是最初的少年情怀，那份为了朋友为了羁绊而不断努力的心情，我相信每一个玩家都能真真切切地感受到。</p>
-<p>没什么好说的，虽然有这样那样的不足，对我来说，这就是满分神作。</p>
-<h2 id="u5267_u60C5_u90E8_u5206"><a href="#u5267_u60C5_u90E8_u5206" class="headerlink" title="剧情部分"></a>剧情部分</h2><p>那些陪伴我们成长的东西，往往因为太过『习以为常』而被忽略，却又在不经意间出现，让人充满力量。那些一直以来的牵绊，那些一代代的传承，总是会在最危急的时刻，成为最可靠的依赖。</p>
-<p>神明为了安定，将世界分为阴阳两极，相反的两种元素互相做用，产生出森罗万象；相反的两种力量互相合作，就能得到真正的幸福。很多东西看似矛盾，其实反而是相互依存的（不由得想起『战争即和平，自由即奴役，无知即力量』）。</p>
-<p>随着剧情的发展，很多从前以为是『坏人』的角色，都忽然洗白了，尤以大蛇丸和兜为代表，一个最叛逆在邪路上走的最远，在看见太多事情之后反而有了更加深刻的理解，坏就坏个彻底，好就好个通透；一个在『伊邪那美』的幻术中一次次重复终于超越了自我的局限，找回了自己。</p>
-<p>剧情深入之后带来的另一个问题就是关于通往幸福的哲学讨论。一种说法认为『目的地既然不明确，又知道是条坎坷的路，就不用特地去走，走了也是增加同伴的牺牲；但是如果有明确目的地，又有捷径的话，任谁都会选择那条路』；另一种说法认为『重要的不是走捷径，而是走过坎坷道路的方法，到底哪条路是捷径，自己走过才知道。所谓火影，就是忍受痛楚，然后走在众人前方的领导者，成为火影没有捷径，想当上火影的人也绝不会逃避』。所谓正确的道路，所谓光明与黑暗，很多时候真的就只是一念之间。不同哲学路线带来了不同的世界观与方法论，也就是一切争斗的根源。</p>
-<p>当然，我还学到了很多其他东西：</p>
-<ul>
-<li>关于伙伴的事，再痛苦我都能忍耐；可是心中没有伙伴，对我来说才是最痛苦的事情</li>
-<li>人会因为思考、烦恼与挫折而成长，所谓幸福，应该是在那前方的东西</li>
-<li>死亡并不是结束</li>
-<li>不要用面具来掩盖自己</li>
-<li>言语掩饰不了真心</li>
-<li>回归到生活本身</li>
-<li>别拘泥于无聊的自尊心</li>
-<li>只要愿意，就看得见</li>
-<li>朋友，就是看你迷茫受苦胡闹，心疼，没有办法丢下不管</li>
-<li>爱不仅是努力帮 ta 遮风挡雨，更是相信 ta 自己的判断</li>
-<li>人们像念珠一样串在一起的信念，会化成强大的力量</li>
-<li>与信念相同的东西铭记在心，使彼此的生命联系在一起；放弃了信念，才是真正杀害了同伴</li>
-</ul>
-<p>不要再隐藏自己了！最后一个问题是：</p>
-<blockquote>
-<p>愿不愿意以一只眼睛的代价，让另一个人得到救赎？</p>
-</blockquote>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>过去的我们是独孤又渴望爱情，让憎恨逐渐变强的小鬼。各自走上不同的道路，并且彼此对抗。渺小的我们总是互相争执，但是现在已经可以互相理解对方内心的痛楚。 —— 宇智波佐助</p>]]>
-    
-    </summary>
-    
-      <category term="兄弟" scheme="http://wdxtub.com/tags/%E5%85%84%E5%BC%9F/"/>
-    
-      <category term="游戏" scheme="http://wdxtub.com/tags/%E6%B8%B8%E6%88%8F/"/>
-    
-      <category term="火影忍者" scheme="http://wdxtub.com/tags/%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85/"/>
-    
-      <category term="结局" scheme="http://wdxtub.com/tags/%E7%BB%93%E5%B1%80/"/>
-    
-      <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[iOS 应用简评]]></title>
-    <link href="http://wdxtub.com/2016/02/16/ios-app-short-review/"/>
-    <id>http://wdxtub.com/2016/02/16/ios-app-short-review/</id>
-    <published>2016-02-16T15:45:49.000Z</published>
-    <updated>2016-02-20T18:08:21.000Z</updated>
-    <content type="html"><![CDATA[<p>这个系列主要是记录一下自己玩过的众多 iOS 应用，因为时间和篇幅所限，每个游戏可能只会用几句话简单评测，当然，某些我觉得值得单独拉出来评测的，还是会专门进行介绍的。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u5199_u5728_u524D_u9762"><a href="#u5199_u5728_u524D_u9762" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>入选标准纯主观</li>
-<li>按自然顺序排列（就是瞎排，没有类别和时间顺序）</li>
-<li>不会有截图，只有图标</li>
-<li>评测标准纯主观，具体评测角度看心情</li>
-<li>一分钱广告费没有拿，没有利益相关</li>
-<li>部分内容可能因为记忆偏差或者应用更新而不一致，不要在意这些细节</li>
-<li>基本都是中国区的应用，例外会特别标出</li>
-<li>想到了再多加几条显得既随性又专业</li>
-</ul>
-<h2 id="16__u5E74_2__u6708_20__u65E5"><a href="#16__u5E74_2__u6708_20__u65E5" class="headerlink" title="16 年 2 月 20 日"></a>16 年 2 月 20 日</h2><p><img src="/images/14559836686902.jpg" alt=""></p>
-<p>Full - Track and measure your time</p>
-<p>统计时间的应用最大的意义就是让我意识到花在统计时间上的时间也不少，平日里闲下来多思考即可</p>
-<hr>
-<p><img src="/images/14559837573330.jpg" alt=""></p>
-<p>Jane</p>
-<p>中文名是『简拼』，不过到最后我发现我连拼都懒得拼，唉</p>
-<hr>
-<p><img src="/images/14559838013423.jpg" alt=""></p>
-<p>Grid Diary</p>
-<p>脱胎于之前风靡一时的九宫格日志，不过现在再看的话，还是有些死板，有思维的人，应该让思维更加自由流动才是</p>
-<hr>
-<p><img src="/images/14559838164869.jpg" alt=""></p>
-<p>最美应用</p>
-<p>我觉得这类应用推荐都免不了『利益相关』，不过应用本身还是很不错的</p>
-<hr>
-<p><img src="/images/14559838343514.jpg" alt=""></p>
-<p>Medium</p>
-<p>分到 News 这一栏也勉强说得过去，不过我觉得更像是一个文字社区，不过中文的社区无一不沦为段子手小清新的根据地，真正的思想讨论在哪里</p>
-<hr>
-<p><img src="/images/14559838483105.jpg" alt=""></p>
-<p>Swifty</p>
-<p>蛮不错的互动语言教学，不过按照 Swift 这个进化速度，这个应用任重道远</p>
-<hr>
-<p><img src="/images/14559838587038.jpg" alt=""></p>
-<p>读读日报</p>
-<p>粉丝向的知乎日报，我个人非常不喜欢这种乱七八糟的信息。</p>
-<hr>
-<p><img src="/images/14559839373786.jpg" alt=""></p>
-<p>TimeShutter</p>
-<p>每天拍一张自己的照片，然后生成一个动画，看看自己的变化，还是挺好玩的</p>
-<hr>
-<p><img src="/images/14559839956993.jpg" alt=""></p>
-<p>Transit App</p>
-<p>半小时一班的公交车，没有这个 APP，就只能走路回家，虽然我总是走路回家</p>
-<hr>
-<p><img src="/images/14559840244294.jpg" alt=""></p>
-<p>字节社</p>
-<p>之所以专门提一下，是因为字节社的字体确实不错，不过创始人总感觉有点不接地气，式微也正常</p>
-<hr>
-<p><img src="/images/14559840570217.jpg" alt=""></p>
-<p>Worktile</p>
-<p>团队协作工具，不过目前学生阶段还是单打独斗多，没有特别的切身体会</p>
-<hr>
-<p><img src="/images/14559840633879.jpg" alt=""></p>
-<p>微信读书</p>
-<p>不大明白是要怎样，不出墨水屏阅读器就搞数字阅读，都是耍流氓</p>
-<hr>
-<p><img src="/images/14559841005840.jpg" alt=""></p>
-<p>GoodReader</p>
-<p>超神阅读器，all-in-one 的最佳选择，本来还有些竞争者，无奈它最持久</p>
-<hr>
-<p><img src="/images/14559841408489.jpg" alt=""></p>
-<p>Union</p>
-<p>意思就是用两个图融成一幅更美的图，不过我至今没学会怎么用</p>
-<hr>
-<p><img src="/images/14559841734501.jpg" alt=""></p>
-<p>Wunderlist</p>
-<p>中文名叫奇妙清单，大版本都更新好多次了，还是一直在进步的，之前好像被微软收了？不是特别有印象了</p>
-<hr>
-<p><img src="/images/14559842045457.jpg" alt=""></p>
-<p>5 coins</p>
-<p>国人出品的记账软件，不过一个单机的记账软件其实效率很低。</p>
-<hr>
-<p><img src="/images/14559842104566.jpg" alt=""></p>
-<p>Musyc</p>
-<p>很有创意的物理 + 音乐创作应用，不过好多都要花钱买，这年头玩音乐，都玩不起了</p>
-<hr>
-<p><img src="/images/14559842665716.jpg" alt=""></p>
-<p>AirPano Travel Book</p>
-<p>超赞超赞超赞的旅行书!!!动画效果一流超一流!!!服！</p>
-<hr>
-<p><img src="/images/14559843462955.jpg" alt=""></p>
-<p>iStudiez Pro</p>
-<p>远古时期用来记课程表的，不过后来我学会了翘课</p>
-<hr>
-<p><img src="/images/14559843568156.jpg" alt=""></p>
-<p>知趣天气</p>
-<p>印象中是第一个把经营养成带入天气应用的应用，虽然我不明白为什么，但是有段时间我还是孜孜不倦在养应用里的花</p>
-<hr>
-<p><img src="/images/14559843756157.jpg" alt=""></p>
-<p>PhotoViva</p>
-<p>作为一个收费应用，三天两头限免，这个 app 说自己是老二，就没有老大。据我观察，妹子们一般用这个来打码。</p>
-<hr>
-<p><img src="/images/14559843990625.jpg" alt=""></p>
-<p>一柱香</p>
-<p>简单来说，就是一个强制自己不玩手机的应用，不过这个计时的方式很中国很传统我很喜欢</p>
-<hr>
-<p><img src="/images/14559844176390.jpg" alt=""></p>
-<p>Expenses OK</p>
-<p>记账软件图标真的都太像了，不信等下又有一个</p>
-<hr>
-<p><img src="/images/14559844283046.jpg" alt=""></p>
-<p>Paint FX</p>
-<p>修图软件，不过感觉对功底有一定要求，所以我就算了</p>
-<hr>
-<p><img src="/images/14559844397929.jpg" alt=""></p>
-<p>Spendee</p>
-<p>看，又一个记账软件，不过这个我还确实是用了一段时间的，发现，我就这么点钱，不用记账软件也知道钱花到哪里去了，唉</p>
-<h2 id="16__u5E74_2__u6708_16__u65E5"><a href="#16__u5E74_2__u6708_16__u65E5" class="headerlink" title="16 年 2 月 16 日"></a>16 年 2 月 16 日</h2><p><img src="/images/14556379936188.jpg" alt=""></p>
-<p>iDaily·每日环球视野</p>
-<p>我基本就看看图，存存壁纸，但是现在我都用默认的壁纸了，也就不用了</p>
-<hr>
-<p><img src="/images/14556380070431.jpg" alt=""></p>
-<p>SuperMemo</p>
-<p>说白了就是记忆卡片，不过我始终静不下心背单词（或者其他），只是稍微尝试了一下，据说背后的算法很牛，不过没怎么体会到就是了。</p>
-<hr>
-<p><img src="/images/14556380356757.jpg" alt=""></p>
-<p>Discovr</p>
-<p>发现音乐的，找到不同歌手的联系，不过感觉对华语乐坛支持比较差，希望外国歌曲的盆友可以搞起</p>
-<hr>
-<p><img src="/images/14556380923184.jpg" alt=""></p>
-<p>myUnit·Global Unit Converter</p>
-<p>单位转换，这类应用基本就是拼界面了，这个因为是四叶草出品的，还是比较有保证的。</p>
-<hr>
-<p><img src="/images/14556381114390.jpg" alt=""></p>
-<p>Forest: Stay focused</p>
-<p>简单来说就是『封印』手机，我的感觉是不必有强迫症，感觉控制不住自己的时候用用就好。</p>
-<hr>
-<p><img src="/images/14556381202296.jpg" alt=""></p>
-<p>Keep - 移动健身教练</p>
-<p>美女帅哥很多，各个身材都比我好，但是人懒起来，就是不运动，你说怎么办！</p>
-<hr>
-<p><img src="/images/14556381707433.jpg" alt=""></p>
-<p>53 Paper - Notes</p>
-<p>非常文艺的画画记笔记软件，看这个介绍就知道跟我没啥关系了，因为我并不会画画。不过动画效果一流，看看还是不错的。</p>
-<hr>
-<p><img src="/images/14556381804646.jpg" alt=""></p>
-<p>CalCube</p>
-<p>立方体计算器，本质还是计算器呗，动画效果特别一些</p>
-<hr>
-<p><img src="/images/14556381980813.jpg" alt=""></p>
-<p>NextDay</p>
-<p>每天一张图一段话，文艺小清新，就是这个意思。</p>
-<hr>
-<p><img src="/images/14556382182817.jpg" alt=""></p>
-<p>食色</p>
-<p>一开始用得比较多，但是后来基本沦为修图软件，再后来图都懒得修了，晒吃总不能天天晒，那么不晒的时候我干嘛要看别人晒折磨自己。</p>
-<hr>
-<p><img src="/images/14556382269782.jpg" alt=""></p>
-<p>The Great Photo App</p>
-<p>手把手教你拍照，互动很不错，专业性也没有什么问题，就是更新太慢</p>
-<hr>
-<p><img src="/images/14556382681077.jpg" alt=""></p>
-<p>图解电影</p>
-<p>标题非常简明扼要，对我来说的好处就是，有些不敢看的恐怖片，可以看静态图过过瘾，毕竟没有那么可怕了</p>
-<hr>
-<p><img src="/images/14556383281179.jpg" alt=""></p>
-<p>Polarr Photo Editor</p>
-<p>总体感觉是功能很强大，但是上手难度太大，我一直就没怎么学会。</p>
-<hr>
-<p><img src="/images/14556383627121.jpg" alt=""></p>
-<p>Light</p>
-<p>网易出品的精选新闻，可以评论某一个段落或者图片什么的，打发时间。</p>
-<hr>
-<p><img src="/images/14556383931838.jpg" alt=""></p>
-<p>DailyCost</p>
-<p>之前自己在用的记账软件，界面比较清晰也挺好用，不过现在感觉还是刷卡的时候让信用卡账单自动记账比较省事儿。</p>
-<hr>
-<p><img src="/images/14556384034802.jpg" alt=""></p>
-<p>Calculator ‘3’</p>
-<p>这年头计算器花样太多，不过我最常用的还是原生自带的，这个功能挺强大的，感兴趣可以试一试。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这个系列主要是记录一下自己玩过的众多 iOS 应用，因为时间和篇幅所限，每个游戏可能只会用几句话简单评测，当然，某些我觉得值得单独拉出来评测的，还是会专门进行介绍的。</p>]]>
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://wdxtub.com/tags/iOS/"/>
-    
-      <category term="应用" scheme="http://wdxtub.com/tags/%E5%BA%94%E7%94%A8/"/>
-    
-      <category term="评测" scheme="http://wdxtub.com/tags/%E8%AF%84%E6%B5%8B/"/>
-    
-      <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[iOS 游戏简评]]></title>
-    <link href="http://wdxtub.com/2016/02/16/ios-game-short-review/"/>
-    <id>http://wdxtub.com/2016/02/16/ios-game-short-review/</id>
-    <published>2016-02-16T15:34:25.000Z</published>
-    <updated>2016-02-20T18:09:14.000Z</updated>
-    <content type="html"><![CDATA[<p>这个系列主要是记录一下自己玩过的众多 iOS 游戏，因为时间和篇幅所限，每个游戏可能只会用几句话简单评测，当然，某些我觉得值得单独拉出来评测的，还是会专门进行介绍的。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u5199_u5728_u524D_u9762"><a href="#u5199_u5728_u524D_u9762" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>入选标准纯主观</li>
-<li>按自然顺序排列（就是瞎排，没有类别和时间顺序）</li>
-<li>不会有截图，只有图标</li>
-<li>评测标准纯主观，具体评测角度看心情</li>
-<li>一分钱广告费没有拿，没有利益相关</li>
-<li>部分内容可能因为记忆偏差或者游戏更新而不一致，不要在意这些细节</li>
-<li>基本都是中国区的游戏，例外会特别标出</li>
-<li>想到了再多加几条显得既随性又专业</li>
-</ul>
-<h2 id="16__u5E74_2__u6708_20__u65E5"><a href="#16__u5E74_2__u6708_20__u65E5" class="headerlink" title="16 年 2 月 20 日"></a>16 年 2 月 20 日</h2><p><img src="/images/14559836509210.jpg" alt=""></p>
-<p>AERENA - Clash of Champions</p>
-<p>画面超级赞的走格子对战游戏，人物动作场景什么都很精美，上乘</p>
-<hr>
-<p><img src="/images/14559836595602.jpg" alt=""></p>
-<p>愤怒的小鸟思黛拉</p>
-<p>出来骗钱的一作，换个颜色难道我就不认识了嘛？</p>
-<hr>
-<p><img src="/images/14559836772410.jpg" alt=""></p>
-<p>Zombie Highway</p>
-<p>路怒症丧尸爱好者福音！根本停不下来，这个题材基本上只有他们一家在做，不过玩久了还是有点无聊——丧尸到后面实在是太强了</p>
-<hr>
-<p><img src="/images/14559837761722.jpg" alt=""></p>
-<p>Bug Princess</p>
-<p>叫『虫姬』就懂了，弹幕游戏扛鼎之作，不黑不吹</p>
-<hr>
-<p><img src="/images/14559837882605.jpg" alt=""></p>
-<p>Wind-up Knight 2</p>
-<p>小小骑士 2，操作简单，玩法也还算多样，不错的休闲游戏</p>
-<hr>
-<p><img src="/images/14559837951722.jpg" alt=""></p>
-<p>jukebeat</p>
-<p>音乐节拍游戏新形态，不得不说，除了心疼屏幕，还真的是好玩，虽然我依然最爱 psp 上的 djmax portable 2</p>
-<hr>
-<p><img src="/images/14559838101240.jpg" alt=""></p>
-<p>Overkill 2</p>
-<p>狙击游戏之一，玩多了同质化明显，ready - steady - shoot!</p>
-<hr>
-<p><img src="/images/14559838244581.jpg" alt=""></p>
-<p>Rayman Jungle Run</p>
-<p>雷曼家族一年一作系列，质量有保证，但是，看多了还是腻歪</p>
-<hr>
-<p><img src="/images/14559838419675.jpg" alt=""></p>
-<p>Sky Gambler Air Supremacy</p>
-<p>苹果推荐的空战游戏，不过实话说，离皇牌空战还是差距比较大，我表示玩不下去</p>
-<hr>
-<p><img src="/images/14559838707926.jpg" alt=""></p>
-<p>LONEWOLF</p>
-<p>又是一个狙击游戏，换换模型换换枪，其他一样</p>
-<hr>
-<p><img src="/images/14559839437614.jpg" alt=""></p>
-<p>Agent Dash</p>
-<p>我觉得画风什么的比 Temple Run 都好，但是毕竟是跟风之作没办法这么火，解锁的妹子角色那叫一个火辣，我喜欢</p>
-<hr>
-<p><img src="/images/14559839515923.jpg" alt=""></p>
-<p>FRAMED</p>
-<p>创意爆炸的游戏，不是年度最佳不科学，真的很想自己也做一个这么独特的游戏</p>
-<hr>
-<p><img src="/images/14559839605619.jpg" alt=""></p>
-<p>Madcoaster</p>
-<p>还是当年的过山车！还是当年的味道！</p>
-<hr>
-<p><img src="/images/14559839698033.jpg" alt=""></p>
-<p>Flight Control Rocket</p>
-<p>把飞机换成了火箭，但是游戏模式还是一个样，所以，还是很容易腻</p>
-<hr>
-<p><img src="/images/14559839792834.jpg" alt=""></p>
-<p>Nuts!: Infinite Forest Run</p>
-<p>一只松鼠一直往上爬，还是基本的跑酷游戏，不知道为啥我玩久了会晕，怪</p>
-<hr>
-<p><img src="/images/14559840043887.jpg" alt=""></p>
-<p>Grimm</p>
-<p>画风诡异的横版过关游戏，推个婴儿车还甩来甩去真的有点难以接受</p>
-<hr>
-<p><img src="/images/14559840156367.jpg" alt=""></p>
-<p>Warhammer Quest</p>
-<p>战锤系列质量一如既往的高，喜欢这个系列</p>
-<hr>
-<p><img src="/images/14559840305175.jpg" alt=""></p>
-<p>Blek</p>
-<p>超级烧脑的益智游戏！人工配音有点恶趣味也有点搞笑！至今未能通关</p>
-<hr>
-<p><img src="/images/14559840404204.jpg" alt=""></p>
-<p>Warhammer 40000</p>
-<p>印象中是第一个用上 3D touch 的游戏，靠谱，引领风潮，而且非常自然不是强行加特性的那种</p>
-<hr>
-<p><img src="/images/14559840709495.jpg" alt=""></p>
-<p>GRAVITY: DON’T LET GO</p>
-<p>很难操作，感觉完美还原了太空中移动的无力感</p>
-<hr>
-<p><img src="/images/14559840836616.jpg" alt=""></p>
-<p>MUJO</p>
-<p>这个游戏看图标保准大部分人猜不出来是干嘛的，结果就是三消</p>
-<hr>
-<p><img src="/images/14559840931099.jpg" alt=""></p>
-<p>Block Fortress</p>
-<p>Minecraft 类似游戏，不过新手指引做得不知所云，没搞懂在玩啥</p>
-<hr>
-<p><img src="/images/14559841080068.jpg" alt=""></p>
-<p>BIT.TRIP RUN!</p>
-<p>画风非常花哨的游戏，亮瞎眼，但是人物设计和动作都很搞笑，赞</p>
-<hr>
-<p><img src="/images/14559841493700.jpg" alt=""></p>
-<p>Rolling Kongs</p>
-<p>蛮有创意的转转消游戏，不过图标太丑</p>
-<hr>
-<p><img src="/images/14559841805459.jpg" alt=""></p>
-<p>Dungeon Hunter 4</p>
-<p>地牢系列第四作，消磨时间杠杠的，基本上中规中矩</p>
-<hr>
-<p><img src="/images/14559841894346.jpg" alt=""></p>
-<p>Temple Run</p>
-<p>洗脑游戏，不过后期有些创新，但是似乎无法复制当时的奇迹，招聘会的时候还见到他们来着，不过只招美国人</p>
-<hr>
-<p><img src="/images/14559841971361.jpg" alt=""></p>
-<p>DEAD TARGET: Zombie</p>
-<p>为什么要拿出来了，真的是图标太丑….</p>
-<hr>
-<p><img src="/images/14559842226821.jpg" alt=""></p>
-<p>Tower Madness 2</p>
-<p>比较好的 3D 塔防，值得玩一玩</p>
-<hr>
-<p><img src="/images/14559842379720.jpg" alt=""></p>
-<p>MAYDAY!</p>
-<p>紧急迫降的游戏，实话说真的不好操控，非常需要熟能生巧</p>
-<hr>
-<p><img src="/images/14559842477229.jpg" alt=""></p>
-<p>Blood Roofs</p>
-<p>这是第一次在手机上见到这么『油腻』的画风，抱着妹子还能在屋顶上跳来跳去，总体来说很重口</p>
-<hr>
-<p><img src="/images/14559842548228.jpg" alt=""></p>
-<p>Save a Rhino</p>
-<p>环保游戏，跑酷中感受犀牛</p>
-<hr>
-<p><img src="/images/14559842737882.jpg" alt=""></p>
-<p>Superbrothers</p>
-<p>非常经典的 RPG，画风独特，剧情一流，虽然我现在还没通关</p>
-<hr>
-<p><img src="/images/14559843263974.jpg" alt=""></p>
-<p>Infinity Blade III</p>
-<p>炫技游戏，主要是展示下引擎，玩法基本来说比较无趣，第三代也是那么无趣</p>
-<hr>
-<p><img src="/images/14559843338055.jpg" alt=""></p>
-<p>Snapimals</p>
-<p>画风有趣，动物很萌，可是收集起来很花时间，给动物拍照还是挺不错的创意</p>
-<hr>
-<p><img src="/images/14559843629122.jpg" alt=""></p>
-<p>EPOCH 2</p>
-<p>类似以前的街机游戏，打打打突突突，还是不错的</p>
-<hr>
-<p><img src="/images/14559843699736.jpg" alt=""></p>
-<p>Twin Shooter - Invaders</p>
-<p>这个游戏告诉我们不坑钱同样能做出好游戏，好的打飞机游戏</p>
-<hr>
-<p><img src="/images/14559844110880.jpg" alt=""></p>
-<p>Jetpack Joyride</p>
-<p>这个超级好玩，half brick 是个靠谱的公司，不过最近更新之后也变得坑钱向了，不能愉快玩耍了。</p>
-<h2 id="16__u5E74_2__u6708_16__u65E5"><a href="#16__u5E74_2__u6708_16__u65E5" class="headerlink" title="16 年 2 月 16 日"></a>16 年 2 月 16 日</h2><p><img src="/images/14556380188112.jpg" alt=""></p>
-<p>3D Badminton</p>
-<p>整体来说手感不错，手指当球拍，划不同区域不同力度就相当于跑位和击球方式了，不过因为我对羽毛球真的是略懂，所以觉得其实和其他球类游戏差别不大，估计改改参数就可以做成乒乓球排球网球，反正只要是有网的竞技体育就行。</p>
-<hr>
-<p><img src="/images/14556380616375.jpg" alt=""></p>
-<p>Flight Control</p>
-<p>经典的上古级游戏，记得当时我还玩得很上瘾，根本停不下来，不过后面因为玩法变化太小玩多了难免有那么一个瞬间觉得『啊这有什么好玩啊』，然后就不继续玩了</p>
-<hr>
-<p><img src="/images/14556380714213.jpg" alt=""></p>
-<p>A Dark Room</p>
-<p>恐怖游戏一直不是我的菜，实在是联想能力太强，晚上果断睡不着觉，不过整体氛围还是不错的。</p>
-<hr>
-<p><img src="/images/14556380782615.jpg" alt=""></p>
-<p>Broken Sword 2</p>
-<p>也是比较早的游戏了，动画片画风略微有点违和，不过习惯了之后感觉还是挺不错的，标准的剧情解密，谜题设计得还算不错，值得玩一玩。</p>
-<hr>
-<p><img src="/images/14556380855019.jpg" alt=""></p>
-<p>Flappy Bird</p>
-<p>洗脑游戏，一句话就可以说清楚玩的感受『看起来这么蠢的游戏我竟然只能得个位数分数，这不科学我不服』</p>
-<hr>
-<p><img src="/images/14556381036144.jpg" alt=""></p>
-<p>OPUS: The Day We Found Earth</p>
-<p>非常文艺的游戏，就是孤独的小机器人在茫茫宇宙中找寻适合人类居住的星球，需要一定情怀和耐心。</p>
-<hr>
-<p><img src="/images/14556381272633.jpg" alt=""></p>
-<p>Burn it Down</p>
-<p>一开始玩感觉还不错，后面进入恐怖模式了，我就又不敢玩了，横版过关。</p>
-<hr>
-<p><img src="/images/14556381549828.jpg" alt=""></p>
-<p>ZENFORMS: Protectors</p>
-<p>既然任天堂不在手机上出宠物小精灵，那么肯定就会有后来者满足大家愿望，这个就是了。</p>
-<hr>
-<p><img src="/images/14556381633213.jpg" alt=""></p>
-<p>Skyward</p>
-<p>看图标就知道，纪念碑谷之后这类画风的游戏就流行起来了，但是玩法和纪念碑谷是万万不同的。</p>
-<hr>
-<p><img src="/images/14556381906331.jpg" alt=""></p>
-<p>Turbo Dismount</p>
-<p>物理学自虐游戏，这个是第二作，花样在马路上作死，发泄起来还是很爽的。</p>
-<hr>
-<p><img src="/images/14556382087935.jpg" alt=""></p>
-<p>Tap ‘n Slash</p>
-<p>非常简单粗暴的小游戏，沿着对角线走走砍砍，熟能生巧，不过像素风格还是比较有趣的</p>
-<hr>
-<p><img src="/images/14556382361373.jpg" alt=""></p>
-<p>Towers Infinite</p>
-<p>从前还是在索爱上玩过的盖楼，现在出了高清无尽版，不过还是怀旧成分比较多。</p>
-<hr>
-<p><img src="/images/14556382432271.jpg" alt=""></p>
-<p>Rayman Fiesta Run</p>
-<p>雷曼系列跑酷，质量一流，收集癖慎玩，很容易发生因为没有收集完在一关死循环的情况。</p>
-<hr>
-<p><img src="/images/14556382529865.jpg" alt=""></p>
-<p>The Sandbo - Build&amp; Create</p>
-<p>沙盒造物主系列，像素风，我个人对这个类型游戏比较一般。</p>
-<hr>
-<p><img src="/images/14556382612517.jpg" alt=""></p>
-<p>rop</p>
-<p>切完糖果可以切绳子！基本来说就是基于物理规则的益智游戏</p>
-<hr>
-<p><img src="/images/14556382759883.jpg" alt=""></p>
-<p>Super Hexagon</p>
-<p>非常考验反应力，而且多边形大色块很容易让人意乱神迷，洗脑游戏 </p>
-<hr>
-<p><img src="/images/14556382823039.jpg" alt=""></p>
-<p>FOTONICA</p>
-<p>第一人称线条型跑酷，超级狂拽酷炫，音乐也是亮点</p>
-<p><img src="/images/14556382896123.jpg" alt=""></p>
-<p>Call of Mini: Dino Hunter</p>
-<p>打完僵尸打恐龙，其实差不多是一个意思，喜欢左右摇杆射击可以试试看。</p>
-<hr>
-<p><img src="/images/14556382987408.jpg" alt=""></p>
-<p>Angry Birds Star Wars II</p>
-<p>愤怒小鸟主题游戏第 N 波，我向来不是特别感冒</p>
-<hr>
-<p><img src="/images/14556383193105.jpg" alt=""></p>
-<p>Assassin’s Creed Pirates</p>
-<p>刺客信条海战系列，总体来说还原得不错，不过从大航海时代我就是海战苦手，过过过。</p>
-<hr>
-<p><img src="/images/14556383343499.jpg" alt=""></p>
-<p>OLO game</p>
-<p>画面清新玩法简单非常适合情侣虐狗的游戏，就是这样。</p>
-<hr>
-<p><img src="/images/14556383492141.jpg" alt=""></p>
-<p>Doodle Jump</p>
-<p>也是上古游戏列表中的知名一员，重力感应跳跳跳，玩久了很容易无聊。</p>
-<hr>
-<p><img src="/images/14556383552948.jpg" alt=""></p>
-<p>Eternity Warriors 3</p>
-<p>可能是 glu 最后一款这样的大作了？只能说在手机上我玩不来这个类型游戏，太累。</p>
-<hr>
-<p><img src="/images/14556383711674.jpg" alt=""></p>
-<p>Assassin’s Creed Recollection</p>
-<p>非常有创意的卡牌对战游戏，我觉得和炉石传说相比一点都不逊色，而且刺客明显更酷嘛。</p>
-<hr>
-<p><img src="/images/14556383809420.jpg" alt=""></p>
-<p>Edge</p>
-<p>又是一个画面洗脑的游戏，看久了不知道为啥就会感觉不大舒服，多边形益智类，你懂的。</p>
-<hr>
-<p><img src="/images/14556383870555.jpg" alt=""></p>
-<p>Skiing Yeti Mountain</p>
-<p>虽然不知道是什么山，但是这个山上出了很多人命是一定的，手感真的非常不错，滑雪控不要错过</p>
-<hr>
-<p><img src="/images/14556384107682.jpg" alt=""></p>
-<p>Radiation Island</p>
-<p>辐射岛，可能是最近玩过的手机平台上最 hard core 的游戏了，不过需要很多心思，没啥时间深入感受</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这个系列主要是记录一下自己玩过的众多 iOS 游戏，因为时间和篇幅所限，每个游戏可能只会用几句话简单评测，当然，某些我觉得值得单独拉出来评测的，还是会专门进行介绍的。</p>]]>
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://wdxtub.com/tags/iOS/"/>
-    
-      <category term="游戏" scheme="http://wdxtub.com/tags/%E6%B8%B8%E6%88%8F/"/>
-    
-      <category term="评测" scheme="http://wdxtub.com/tags/%E8%AF%84%E6%B5%8B/"/>
-    
-      <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 12 课 Cache Memories]]></title>
-    <link href="http://wdxtub.com/2016/02/15/csapp-12/"/>
-    <id>http://wdxtub.com/2016/02/15/csapp-12/</id>
-    <published>2016-02-15T15:15:18.000Z</published>
-    <updated>2016-02-16T15:11:46.000Z</updated>
-    <content type="html"><![CDATA[<p>上一讲我们了解了存储的相关知识，这节课我们来更加深入研究一下 cache memory 的知识。</p>
-<a id="more"></a>
-<hr>
-<p>Cache memory 是由硬件自动管理的 SRAM 内存，CPU 会首先从这里找数据，其所处的位置如下：</p>
-<p><img src="/images/14555689621035.jpg" alt=""></p>
-<p><strong>General Cache Organization(S, E, B)</strong></p>
-<p>通常来说，是按照如下图所示的方式来组织的，一定要注意 S/E/B 具体在说什么：</p>
-<p><img src="/images/14555690389309.jpg" alt=""></p>
-<p>实际上可以理解为三种层级关系，对应不同的索引，这样分层的好处在于，通过层级关系简化搜索需要的时间，并且和字节的排布也是一一对应的（之后介绍缓存的时候就体现得更加明显）。</p>
-<h2 id="u8BFB_u5165"><a href="#u8BFB_u5165" class="headerlink" title="读入"></a>读入</h2><p><img src="/images/14556253748808.jpg" alt=""></p>
-<p>具体在从缓存中读取一个地址时，首先我们通过 set index 确定要在哪个 set 中寻找，确定后利用 tag 和同一个 set 中的每个 line 进行比对，找到 tag 相同的那个 line，最后再根据 block offset 确定要从 line 的哪个位置读起（这里的而 line 和 block 是一个意思）。</p>
-<p>当 E=1 时，也就是每个 set 只有 1 个 line 的时候，称之为直接映射缓存(Direct Mapped Cache)。</p>
-<p><img src="/images/14556267189507.jpg" alt=""></p>
-<p>这种情况下，因为每个 set 对应 1 个 line，反过来看，1 个 line 就需要一个 set，所以 set index 的位数就会较多（和之后的多路映射对比）。具体的检索过程就是先通过 set index 确定哪个 set，然后看是否 valid，然后比较那个 set 里唯一 line 的 tag 和地址的 t bits 是否一致，就可以确定是否缓存命中。</p>
-<p><img src="/images/14556274155804.jpg" alt=""></p>
-<p>命中之后根据 block offset 确定偏移量，因为需要读入一个 int，所以会读入 4 5 6 7 这四个字节（假设缓存是 8 个字节）。如果 tag 不匹配的话，这行会被扔掉并放新的数据进来。</p>
-<p>这里举一个具体的例子</p>
-<p><img src="/images/14556275938967.jpg" alt=""></p>
-<p>缓存的大小如图所示，对应就是有 4 个 set，所以需要 2 位的 set index，所以进行读入的时候，会根据中间两位来确定在哪个 set 中查找，其中 8 和 0，因为中间两位相同，会产生冲突，导致连续 miss，这个问题可以用多路映射来解决。</p>
-<p>当 E 大于 1 时，也就是每个 set 有 E 个 line 的时候，称之为 E-way Set Associative Cache。这里用 E = 2 来做例子：</p>
-<p><img src="/images/14556282750323.jpg" alt=""></p>
-<p>跟前面所说的一致，这里每个 set 有两个 line，所以就没有那么多 set，也就是说说 set index 可以少一位（之后的例子可以看到）</p>
-<p><img src="/images/14556285710342.jpg" alt=""></p>
-<p>再简述一下整个过程，先从 set index 确定那个 set，然后看 valid 位，接着利用 t bits 分别和每个 line 的 tag 进行比较，如果匹配则命中，那么返回 4 5 位置的数据，如果不匹配，就需要替换，可以随机替换，也可以用 least recently used(LRU) 来进行替换。下面是一个具体的例子：</p>
-<p><img src="/images/14556295742803.jpg" alt=""></p>
-<p>可以看到因为每个 set 有 2 个 line，所以只有 2 个 set，set index 也只需要 1 位了，这个情况下即使 8 和 0 的 set index 一致，因为一个 set 可以容纳两个数据，所以最后一次访问 0，就不会 miss 了。</p>
-<h2 id="u5199_u5165"><a href="#u5199_u5165" class="headerlink" title="写入"></a>写入</h2><p>在整个 memory hierarchy 中，不同的层级可能会存放同一个数据的不同拷贝（如 L1, L2, L3, 主内存, 硬盘）。如果发生写入命中的时候（也就是要写入的地址在缓存中有），有两种策略：</p>
-<ul>
-<li>Write-through: 命中后更新缓存，同时写入到内存中</li>
-<li>Write-back: 直到这个缓存需要被指环出去，才写入到内存中（需要额外的 dirty bit 来表示缓存中的数据是否和内存中相同，因为可能在其他的时候内存中对应地址的数据已经更新，那么重复写入就会导致原有数据丢失）</li>
-</ul>
-<p>在写入 miss 的时候，同样有两种方式：</p>
-<ul>
-<li>Write-allocate: 载入到缓存中，并更新缓存（如果之后还需要对其操作，这个方式就比较好）</li>
-<li>No-write-allocate: 直接写入到内存中，不载入到缓存 </li>
-</ul>
-<p>这四种策略通常的搭配是：</p>
-<ul>
-<li>Write-through + No-wirte-allocate</li>
-<li>Write-back + Write-allocate</li>
-</ul>
-<p>其中第一种可以保证绝对的数据一致性，第二种效率会比较高（通常情况下）。</p>
-<h2 id="u5B9E_u4F8B_u5B66_u4E60_uFF1AIntel_Core_i7"><a href="#u5B9E_u4F8B_u5B66_u4E60_uFF1AIntel_Core_i7" class="headerlink" title="实例学习：Intel Core i7"></a>实例学习：Intel Core i7</h2><p>Intel Core i7 的 cache hierarchy 如下图所示：</p>
-<p><img src="/images/14556301866362.jpg" alt=""></p>
-<p>我们通常用如下的指标来评价缓存的性能：</p>
-<ul>
-<li>Miss Rate<ul>
-<li>1 - hit rate</li>
-<li>对于 L1 来说一般 3-10%</li>
-<li>对于 L2 来说很小 &lt; 1%</li>
-<li>也就是说大部分时间堆数据的访问都是极快的</li>
-</ul>
-</li>
-<li>Hit Time<ul>
-<li>把 1 个 line 的缓存传输给处理器所用的时间，包括判断其是否在缓存中这个过程</li>
-<li>对于 L1 来说一般 4 个时钟周期</li>
-<li>对于 L2 来说一般 10 个时钟周期</li>
-</ul>
-</li>
-<li>Miss Penalty<ul>
-<li>因为 miss 所需要花费的额外时间</li>
-<li>一般来说需要 50-200 个时钟周期（因为要读内存，而且由于处理器速度越来越快，这个时间还在增长）</li>
-</ul>
-</li>
-</ul>
-<p>从前面的数据中，我们可以看出，hit 和 miss 所需要的时间是天壤之别（只看 L1 和主存的话，可能差 100 倍）。</p>
-<p>还有一个比较有意思的现象是，99% 的命中率，是 97% 的命中率的性能的两倍。举个例子，假设缓存命中时需要 1 个周期，而 miss penalty 是 100 个周期，那么</p>
-<ul>
-<li>97% hits: 1 cycle + 0.03 x 100 cycles = 4 cycles</li>
-<li>99% hits: 1 cycle + 0.01 x 100 cycles = 2 cycles</li>
-</ul>
-<p>这也是为什么我们用 miss rate 而不是 hit rate，因为更能体现出倍数的关系。</p>
-<h2 id="Memory_mountain"><a href="#Memory_mountain" class="headerlink" title="Memory mountain"></a>Memory mountain</h2><p>我们用每秒从内存中读入的字节数目来衡量内存的性能（单位 MB/s），根据 spatial 和 temporal locality 的特性，我们可以画出一幅立体的表现性能走向的图，具体用的测试代码为：</p>
-<p><img src="/images/14556314610621.jpg" alt=""></p>
-<p>可以得到这么一幅图</p>
-<p><img src="/images/14556314890158.jpg" alt=""></p>
-<p>注意，这是根据 Core i7 得出来的图，不同的处理器可能因为不同的设计和架构而有所区别，但是可以通过不同的颜色和层次，看出不同 size 和 stride 对性能的影响。山脚是我们应该尽量避免的，山顶是我们力求达到的，也就是说，尽量一次访问一个 stride，一次读入的数据大小也不宜太大，最好和 L1 缓存数值上吻合。</p>
-<h2 id="u77E9_u9635_u76F8_u4E58"><a href="#u77E9_u9635_u76F8_u4E58" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h2><p>矩阵相乘是学习缓存非常好的例子，这里给出一些条件：</p>
-<ul>
-<li>两个 N x N 的矩阵相乘，N 非常大，所以可以认为 1/N 等于 0</li>
-<li>矩阵的每个元素是 double，也就是 8 个字节</li>
-<li>一共需要 $O(n^3)$ 次操作</li>
-<li>源矩阵的每个元素需要被读入 N 次</li>
-<li>目标矩阵的每个元素要被写入 N 次（相加），但是可以在寄存器中完成</li>
-<li>缓存中每 1 个 line 的大小是 32 个字节（足够放下 4 个 double）</li>
-<li>缓存可能至多能容纳矩阵的一行（甚至只能是一行的一部分）</li>
-</ul>
-<h3 id="u66F4_u6539_u5FAA_u73AF_u987A_u5E8F_u63D0_u9AD8_spatial_locality"><a href="#u66F4_u6539_u5FAA_u73AF_u987A_u5E8F_u63D0_u9AD8_spatial_locality" class="headerlink" title="更改循环顺序提高 spatial locality"></a>更改循环顺序提高 spatial locality</h3><p>一种算法是这样的</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ijk */</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">        sum = <span class="number">0.0</span>;</span><br><span class="line">        <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">            sum += a[i][k] * b[k][j];</span><br><span class="line">        c[i][j] = sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>观察里面的循环，大概的访问模式是这样的：</p>
-<p><img src="/images/14556324266700.jpg" alt=""></p>
-<p>因为 C 语言是根据行来分配数组内存的，所以按照列的顺序来访问，可以得到最好的 spatial locality。假设我们需要读入 N 个连续的字节，如果缓存的 block 大小为 B 个字节，那么实际上真正需要去内存中访问是 N/B 次（这种时候会 miss）。但是如果按照行来访问，每次都是跳着来，miss rate 就是百分之百。</p>
-<p><img src="/images/14556327200253.jpg" alt=""></p>
-<p>而 <code>ijk</code> 的访问模式，处理矩阵 A 的时候是按列访问的，因为这里设定一个 block 可以存放 4 个 double，读入每四个元素的情况下，我们只会在读入第一个 double 的时候 miss，所以对于矩阵 A 来说，内部的循环（就是 k 的那个循环）每次迭代平均会 miss 0.25 次（就是 1/4 次）。而访问矩阵 B 的时候，因为是按照行访问的，缓存实际上没有任何用，同样的条件下，每次迭代都会 miss。（我们还可以发现 <code>jik</code> 的访问模式和 <code>ijk</code> 很类似，这里略过）</p>
-<p>但是如果换一下顺序，变成 <code>kij</code> 的访问模式，就会有不一样的变化，代码如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* kij */</span></span><br><span class="line"><span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; n; k++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (i =<span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        r = a[i][k];</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">            c[i][j] += r * b[k][j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对应的访问模式：</p>
-<p><img src="/images/14556331411420.jpg" alt=""></p>
-<p>可以看到对于矩阵 B 和 C 来说都是按照列访问的（就是横着），所以内循环中每次迭代只会 miss 0.25 次（<code>ikj</code> 的访问模式也是如此）</p>
-<p>当然还可以使用 <code>jki</code> 或 <code>kji</code> 的访问模式，这种模式下对于矩阵 A 和 C 的访问都是按行访问的（就是竖着），内循环中每次迭代都会 miss 1 次，是很糟糕的</p>
-<p>比较一下：</p>
-<p><img src="/images/14556333212757.jpg" alt=""></p>
-<p>就可以发现不同的访问模式会产生巨大的影响，下面的表格更加能说明问题：</p>
-<p><img src="/images/14556334394809.jpg" alt=""></p>
-<h3 id="u5229_u7528_blocking__u63D0_u9AD8_temporal_locality"><a href="#u5229_u7528_blocking__u63D0_u9AD8_temporal_locality" class="headerlink" title="利用 blocking 提高 temporal locality"></a>利用 blocking 提高 temporal locality</h3><p>还是矩阵相乘的例子，先看代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">c = (<span class="keyword">double</span> *) <span class="built_in">calloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">double</span>), n*n);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multiply n x n matrices a and b */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mmm</span><span class="params">(<span class="keyword">double</span> *a, <span class="keyword">double</span> *b, <span class="keyword">double</span> *c, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, k;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">            <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">                c[i*n + j] += a[i*n + k] * b[k*n + j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们假设矩阵的元素是 double，缓存的每个 line 可以容纳 8 个 double，整个缓存的大小 C 远小于 n。</p>
-<p>对应的访问模式为：</p>
-<p><img src="/images/14556337275150.jpg" alt=""></p>
-<p>进行计算的时候，对于矩阵 a，因为是一行一行读取的，在读取第一个 double 的时候，后面 7 个也会被载入缓存（miss 数目为 n/8），但是对于矩阵 b，因为是一列一列读取的，所以每次都需要更新缓存（miss 数目为 n）</p>
-<p><img src="/images/14556342437811.jpg" alt=""></p>
-<p>所以总的 miss 数目为：$\frac{9n}{8}\times n^2=\frac{9}{8}n^3$</p>
-<p>但是如果我们把矩阵分成一块一块来计算，就会有不一样的效果：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">c = (<span class="keyword">double</span> *) <span class="built_in">calloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">double</span>), n*n);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multiply n x n matrices a and b */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mmm</span><span class="params">(<span class="keyword">double</span> *a, <span class="keyword">double</span> *b, <span class="keyword">double</span> *c, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, k;</span><br><span class="line">    <span class="keyword">int</span> i1, j1, k1;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i+=B)</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; n; j+=B)</span><br><span class="line">            <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; n; k+=B)</span><br><span class="line">            <span class="comment">/* B x B mini matrix multiplications */</span></span><br><span class="line">                <span class="keyword">for</span> (i1 = i; i1 &lt; i+B; i1++)</span><br><span class="line">                    <span class="keyword">for</span> (j1 = j; j1 &lt; j+B; j1++)</span><br><span class="line">                        <span class="keyword">for</span> (k1 = k; k1 &lt; k+B; k1++)</span><br><span class="line">                            c[i1*n+j1] += a[i1*n+k1] * b[k1*n + j1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>也就是如下图所示：</p>
-<p><img src="/images/14556343880865.jpg" alt=""></p>
-<p>这里我们加一个条件，假设缓存中可以放下 3 个 Block，即 $3B^2 &lt; C$。</p>
-<p><img src="/images/14556347788350.jpg" alt=""></p>
-<p>那么在计算的时候，这三个 Block 其实都可以放到缓存中。对于每个 Block 来说，一共有 $B^2$ 个元素，8 个元素会 miss 一次，所以一共会 miss $\frac{B^2}{8}$ 次。而一次完整的计算（指算完整行乘以整列），矩阵 a 和 b 都需要读入 $\frac{n}{B}$ 个 block，所以总的 miss 数目是 $\frac{2n}{B}\times \frac{B^2}{8} = \frac{nB}{4}$（这里的 2n 是因为矩阵 a 和 b 各有 n/B 个 Block）。</p>
-<p>而对于整个矩阵 c 来说，一共有 $(\frac{n}{B})^2$ 个 block，所以整个计算过程的 miss 数目为：</p>
-<p>$$\frac{nB}{4}\times (\frac{n}{B})^2 = \frac{n^3}{4B}$$</p>
-<p>比较一下，一个是 $\frac{9}{8} n^3$，另一个是 $\frac{1}{4B} n^3$，有巨大的差异！，但是需要保证的就是 $3B^2 &lt; C$（所以需要针对机器进行调整）</p>
-<p>总结下</p>
-<ul>
-<li>Cache memories 对性能会有极大的影响</li>
-<li>写代码的时候可以考虑<ul>
-<li>关注内循环，尤其是访问元素的顺序和方向</li>
-<li>以 stride 1 的顺序来访问可以最大化 spatial locality</li>
-<li>尽可能多利用读入的数据（重复使用）来最大化 temporal locality</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>上一讲我们了解了存储的相关知识，这节课我们来更加深入研究一下 cache memory 的知识。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="缓存" scheme="http://wdxtub.com/tags/%E7%BC%93%E5%AD%98/"/>
-    
-      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
