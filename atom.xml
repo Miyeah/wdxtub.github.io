@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-23T18:37:57.000Z</updated>
+  <updated>2016-02-24T00:30:13.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/22/cc-14/"/>
     <id>http://wdxtub.com/2016/02/22/cc-14/</id>
     <published>2016-02-22T14:46:58.000Z</published>
-    <updated>2016-02-23T18:37:57.000Z</updated>
+    <updated>2016-02-24T00:30:13.000Z</updated>
     <content type="html"><![CDATA[<p>从这一课起，我们要开始使用数据库了。通过数据库和文件的性能对比以及 SQL 与 NoSQL 的对比，学会选择最合适的技术。</p>
 <a id="more"></a>
 <hr>
@@ -347,6 +347,33 @@
 <h3 id="u89E3_u9898_u653B_u7565-3"><a href="#u89E3_u9898_u653B_u7565-3" class="headerlink" title="解题攻略"></a>解题攻略</h3><p>这部分的任务就是完成 <code>runner.sh</code> 中的 17-21 题，需要改动的文件是 <code>HBaseTasks.java</code>。可以用下面的代码来运行 demo</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac HBaseTasks.java</span><br><span class="line">java HBaseTasks demo</span><br></pre></td></tr></table></figure>
 <p>会打印出所有 <code>artist_name</code> 以 “The Beatles” 开头的记录（大小写敏感）</p>
+<p>先把需要的文件 scp 到本地 <code>scp -i demo.pem ubuntu@ec2-54-209-165-121.compute-1.amazonaws.com:~/Project3_1/HBaseTasks.java ./</code></p>
+<p>问题列表(17 题开始)：</p>
+<ol>
+<li>(17)找到以 “Total” 开头 “Water 结尾的歌名</li>
+<li>(18)找到 “Kanye West” 的歌曲的歌名，名称以 “Apologies” 或 “Confessions” 开头，大小写敏感</li>
+<li>(19)找到歌手名以 “Bob Marley” 为前缀的一首歌的歌名，长度大于 400，年份是 2000 年之后（包括 2000 年）</li>
+<li>(20)找到歌手名包含 “Consequence” 的一首歌的歌名，歌名包含 “Family” 并且 <code>artist_hotttnesss</code> 要大于 1</li>
+<li>(21)找到歌手名以 “Gwen Guthrie” 为前缀的一首歌的歌名，歌名包含 “Love” 但不包含 “Bitter” 或者 “Never”，年份为 1990</li>
+</ol>
+<p>然后按照前面的指引开一个 EMR，注意一定要开启 SSH，不然开了等于白开，开启之后连接上去 <code>ssh -i demo.pem hadoop@ec2-52-90-21-43.compute-1.amazonaws.com</code></p>
+<p>然后用 <code>hadoop dfsadmin -report</code> 检查状态，不过说已经弃用这种命令写法了，如下：</p>
+<p><img src="/images/14562658234752.jpg" alt=""></p>
+<p>然后我们创建一个文件夹并下载对应的 csv 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir P3_1</span><br><span class="line"><span class="built_in">cd</span> P3_1</span><br><span class="line">wget https://s3.amazonaws.com/<span class="number">15319</span>-p31/million_songs_metadata.csv</span><br></pre></td></tr></table></figure>
+<p>然后创建对应的 HDFS 目录，再把 csv 文件移过去：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /dawang</span><br><span class="line">hadoop fs -mkdir /dawang/csv</span><br><span class="line">hadoop fs -put ./million_songs_metadata.csv /dawang/csv/</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">hadoop fs -ls /dawang/csv/</span><br></pre></td></tr></table></figure>
+<p><img src="/images/14562663033381.jpg" alt="hadoop fs -ls 结果"></p>
+<p>然后进入 HBase Shell 操作 <code>hbase shell</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">001</span>:<span class="number">0</span>&gt; create <span class="string">'songdata'</span>,<span class="string">'data'</span></span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">002</span>:<span class="number">0</span>&gt; list</span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">003</span>:<span class="number">0</span>&gt; describe <span class="string">'songdata'</span></span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">004</span>:<span class="number">0</span>&gt; exit</span><br></pre></td></tr></table></figure>
+<p>结果如下所示：</p>
+<p><img src="/images/14562664950809.jpg" alt=""></p>
+<p>然后就需要具体的导入了，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator=<span class="string">","</span> -Dimporttsv.bulk.output=/hfile_p31 -Dimporttsv.columns=HBASE_ROW_KEY,data:title,data:song_id,data:release,data:artist_id,data:artist_mbid,data:artist_name,data:duration,data:artist_familiarity,data:artist_hotttnesss,data:year songdata /dawang/csv/million_songs_metadata.csv</span><br><span class="line"></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_p31 songdata</span><br></pre></td></tr></table></figure>
+<p>完成之后测试一下 <code>hbase shell</code>：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">001</span>:<span class="number">0</span>&gt; scan <span class="string">'songdata'</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/14562672790636.jpg" alt="结果输出"></p>
+<p>有很多需要注意的地方，尤其是比较字符串的时候，有些坑是一定要踩的（爆炸感谢 @jiexing）。</p>
 <p>测试的话用 <code>./runner.sh hbase</code>，确定无误后使用 <code>./submitter -a dawang</code> 来进行提交，代码运行完成后输入提交密码即可。</p>
 <p>一些需要注意的地方：</p>
 <ol>
