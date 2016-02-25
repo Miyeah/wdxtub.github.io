@@ -279,8 +279,9 @@
     <link href="http://wdxtub.com/2016/02/24/dsa-3/"/>
     <id>http://wdxtub.com/2016/02/24/dsa-3/</id>
     <published>2016-02-24T15:58:50.000Z</published>
-    <updated>2016-02-24T23:24:32.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
+    <updated>2016-02-25T04:32:38.000Z</updated>
+    <content type="html"><![CDATA[<p>链表、栈和队列是非常基本的数据结构，万丈高楼平地起，即使简单，也要认真对待。</p>
+<a id="more"></a>
 <hr>
 <h2 id="u94FE_u8868"><a href="#u94FE_u8868" class="headerlink" title="链表"></a>链表</h2><p>链表是非常基础和常用的一个数据结构，尤其是在解析器(parser)、游戏和搜索算法中。而且很多时候会用来实现下面的 ADT(Abstract Data Type)：</p>
 <ul>
@@ -393,9 +394,8 @@
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
-<h2 id="u94FE_u8868"><a href="#u94FE_u8868" class="headerlink" title="链表"></a>链表</h2><p>链表是非常基础和常用的一个数据结构，尤其是在解析器(par]]>
+    <![CDATA[<p>链表、栈和队列是非常基本的数据结构，万丈高楼平地起，即使简单，也要认真对待。</p>]]>
+    
     </summary>
     
       <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
