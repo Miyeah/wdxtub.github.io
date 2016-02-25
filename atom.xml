@@ -127,16 +127,15 @@
     <link href="http://wdxtub.com/2016/02/24/dsa-6/"/>
     <id>http://wdxtub.com/2016/02/24/dsa-6/</id>
     <published>2016-02-24T16:46:54.000Z</published>
-    <updated>2016-02-24T16:48:01.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
+    <updated>2016-02-25T19:10:27.000Z</updated>
+    <content type="html"><![CDATA[<p>排序和搜索可能是互联网中应用最广泛的算法，大到搜索引擎，小到帖子排序，都离不开算法的帮助。这一课我们会简要了解一下各个常见算法，具体实现还是参考给出的链接，这里主要提算法背后的思想。</p>
+<a id="more"></a>
 <hr>
  公式 
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
+    <![CDATA[<p>排序和搜索可能是互联网中应用最广泛的算法，大到搜索引擎，小到帖子排序，都离不开算法的帮助。这一课我们会简要了解一下各个常见算法，具体实现还是参考给出的链接，这里主要提算法背后的思想。</p>]]>
+    
     </summary>
     
       <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
@@ -154,16 +153,70 @@
     <link href="http://wdxtub.com/2016/02/24/dsa-5/"/>
     <id>http://wdxtub.com/2016/02/24/dsa-5/</id>
     <published>2016-02-24T16:45:48.000Z</published>
-    <updated>2016-02-24T16:47:40.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
+    <updated>2016-02-25T19:09:05.000Z</updated>
+    <content type="html"><![CDATA[<p>前面我们介绍了几种不同类型的树，这一课我们在原来的基础上延伸一下，就能得到图的概念。相对于树，因为不同节点之间的关系更多，无论是表达形式或者是算法细节都会复杂不少，就更需要仔细揣摩。不过究其根本，实际上可以看做是不同矩阵间的信息检索，一定要注意细节。</p>
+<a id="more"></a>
 <hr>
- 公式 
+<h2 id="u57FA_u672C_u4ECB_u7ECD"><a href="#u57FA_u672C_u4ECB_u7ECD" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>图的话，从类别来看可以分为有向图与无向图，而最关键的操作，图的遍历，有深度优先（递归或者栈）和广度优先（队列）。</p>
+<p>图由两类元素组成，一是节点(vertex)，二是边(edge)，下面是一个无向图的例子：</p>
+<p><img src="/images/14564071906087.jpg" alt="无向图，边和节点都有对应标记"></p>
+<p>无向图和有向图都是一个有限的节点集合加上一个有限的边集合，每条边连接两个节点。不同的地方在于，无向图中连接的顺序是无关紧要的，而有向图中连接的顺序是重要的，是从 source 到 target 的方向，下面是一个有向图的例子：</p>
+<p><img src="/images/14564073738319.jpg" alt="有向图的例子，注意箭头的方向"></p>
+<p>其他一些需要知道的术语：</p>
+<ul>
+<li>Loops: edges that connect a vertex to itself</li>
+<li>Paths: sequences of vertices p0, p1, …, pm such that each adjacent pair of vertices are connected by an edge</li>
+<li>Multiple Edges: two nodes may be connected by &gt;1 edge</li>
+<li>Simple Graphs: have no loops and no multiple edges</li>
+</ul>
+<h2 id="u56FE_u7684_u8868_u793A"><a href="#u56FE_u7684_u8868_u793A" class="headerlink" title="图的表示"></a>图的表示</h2><p>这里介绍三种常见的方式，其实还有其他几种自定义的表示法，这里不拓展了</p>
+<h3 id="u90BB_u63A5_u77E9_u9635_Adjacency_Matrix"><a href="#u90BB_u63A5_u77E9_u9635_Adjacency_Matrix" class="headerlink" title="邻接矩阵 Adjacency Matrix"></a>邻接矩阵 Adjacency Matrix</h3><p>用一个二维矩阵来表示点和点之间的连接关系，如果一个图有 N 个节点，那么这个矩阵就是 NxN 的，对于节点 I 和节点 J，如果有一条边连接他们，那么第 I 行第 J 列的值为 true，否则是 false（如果是无向图的话，第 J 行第 I 列的值需要保持一致，也就是说以对角线为轴对称），下面是一个有向图的例子：</p>
+<p><img src="/images/14564128326067.jpg" alt="有向图的邻接矩阵"></p>
+<h3 id="u8FB9_u5217_u8868_Edge_Lists"><a href="#u8FB9_u5217_u8868_Edge_Lists" class="headerlink" title="边列表 Edge Lists"></a>边列表 Edge Lists</h3><p>另外一种表达方式是每个节点有一个链表，表示它所连接的其他节点，如下图所示：</p>
+<p><img src="/images/14564132564620.jpg" alt=""></p>
+<h3 id="u8FB9_u96C6_Edge_Sets"><a href="#u8FB9_u96C6_Edge_Sets" class="headerlink" title="边集 Edge Sets"></a>边集 Edge Sets</h3><p>Edge Lists 中我们主要存储的是节点的信息，而在 Edge sets 中我们保存的是边的信息，包含每条边的 source 和 target。</p>
+<h3 id="u6027_u80FD_u5206_u6790"><a href="#u6027_u80FD_u5206_u6790" class="headerlink" title="性能分析"></a>性能分析</h3><p>这里主要看一下最坏情况</p>
+<ul>
+<li>添加或删除边：<ul>
+<li>adjacency matrix: O(1)</li>
+<li>edge list: O(N)</li>
+<li>edge set: O(logN) - 使用 B-Tree</li>
+</ul>
+</li>
+<li>检查某条边是否存在：<ul>
+<li>adjacency matrix: O(1)</li>
+<li>edge list: O(N)</li>
+<li>edge set: O(logN) - 使用 B-Tree 或 红黑树</li>
+</ul>
+</li>
+<li>遍历某个节点的边：<ul>
+<li>adjacency matrix: O(N)</li>
+<li>edge list: O(E) - 其中 E 是边的数目</li>
+<li>edge set: O(E) - 使用 B-Tree 或 红黑树</li>
+</ul>
+</li>
+</ul>
+<h2 id="u56FE_u7684_u5B9E_u73B0"><a href="#u56FE_u7684_u5B9E_u73B0" class="headerlink" title="图的实现"></a>图的实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Graph</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[][] edges;</span><br><span class="line">    <span class="keyword">private</span> Object[] labels;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Graph</span> <span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        edges = <span class="keyword">new</span> <span class="keyword">boolean</span>[n][n];</span><br><span class="line">        labels = <span class="keyword">new</span> Object[n];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span> <span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        edges[s][t] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getLabel</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> labels[v];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEdge</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> edges[s][t];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] neighbors(<span class="keyword">int</span> v) &#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span> count;</span><br><span class="line">        <span class="keyword">int</span>[] answer;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; labels.length; i++&#123;</span><br><span class="line">            <span class="keyword">if</span> (edges[v][i]) count++;</span><br><span class="line">        &#125;    </span><br><span class="line">        answer = <span class="keyword">new</span> <span class="keyword">int</span>[count];</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; labels.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (edges[v][i]) answer[count++] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeEdge</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        edges[s][t] = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLabel</span><span class="params">(<span class="keyword">int</span> v, Object n)</span></span>&#123;</span><br><span class="line">        labels[v] = n;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> labels.length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u56FE_u7684_u904D_u5386"><a href="#u56FE_u7684_u904D_u5386" class="headerlink" title="图的遍历"></a>图的遍历</h2><p>这个是图问题中比较常见的，一般来说，是从一个特定的节点开始，找到所有可能到达的节点。图和树的区别在于，我们可能会遇到环，所以就需要一种方法来处理这种情况。</p>
+<p>我们可以用一个另外的数组来记录一个节点是否被访问过。</p>
+<ul>
+<li>深度搜索 - Stack</li>
+<li>广度搜索 - Queue</li>
+</ul>
+<p>这一部分比较基础，大家可以自己找一个例子来边输出边测试，这里不再赘述。</p>
+<h2 id="u6700_u77ED_u8DEF_u5F84"><a href="#u6700_u77ED_u8DEF_u5F84" class="headerlink" title="最短路径"></a>最短路径</h2><p>最短路径一般应用在有权有向图，如下所示：</p>
+<p><img src="/images/14564267263106.jpg" alt=""></p>
+<p>我们要找的是路径最短的，但不一定是经过的边最少的，所以 BFS 在这里就不适用了。</p>
+<p>我们可以使用 <a href="https://zh.wikipedia.org/wiki/%E6%88%B4%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95" target="_blank" rel="external">Dijkstra’s 算法</a>来处理，wiki 中有比较详细的说明，这里不再赘述。</p>
+<p>对于比较稀疏的图，我们用堆来表示图会更好；反之，用邻接矩阵比较好。</p>
+<p>另外一个利用动态规划的解法是 <a href="https://zh.wikipedia.org/wiki/Floyd-Warshall%E7%AE%97%E6%B3%95" target="_blank" rel="external">Floyd Warshall 算法</a></p>
+<p>索引中的各类算法也可以对应了解一下：</p>
+<p><img src="/images/14564271316392.jpg" alt=""></p>
+<h2 id="u6700_u5C0F_u751F_u6210_u6811_Minimum_Spanning_Tree__28MST_29"><a href="#u6700_u5C0F_u751F_u6210_u6811_Minimum_Spanning_Tree__28MST_29" class="headerlink" title="最小生成树 Minimum Spanning Tree (MST)"></a>最小生成树 Minimum Spanning Tree (MST)</h2><p>我们一般用 <a href="https://zh.wikipedia.org/wiki/%E6%99%AE%E6%9E%97%E5%A7%86%E7%AE%97%E6%B3%95" target="_blank" rel="external">Prim’s 算法</a>，来寻找最小生成树，是一个贪心算法</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
+    <![CDATA[<p>前面我们介绍了几种不同类型的树，这一课我们在原来的基础上延伸一下，就能得到图的概念。相对于树，因为不同节点之间的关系更多，无论是表达形式或者是算法细节都会复杂不少，就更需要仔细揣摩。不过究其根本，实际上可以看做是不同矩阵间的信息检索，一定要注意细节。</p>]]>
+    
     </summary>
     
       <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
@@ -181,7 +234,7 @@
     <link href="http://wdxtub.com/2016/02/24/dsa-4/"/>
     <id>http://wdxtub.com/2016/02/24/dsa-4/</id>
     <published>2016-02-24T16:44:36.000Z</published>
-    <updated>2016-02-25T04:29:53.000Z</updated>
+    <updated>2016-02-25T13:11:50.000Z</updated>
     <content type="html"><![CDATA[<p>从这一讲开始，慢慢就有点难度了，树的每个节点虽然看起来比较简单，但是不同结点以不同规则进行组合就使得难度指数级增长，后面的红黑树因为涉及到结点的调整，一定要按照前面提到的 5 个步骤来过一次，才能清晰理解。</p>
 <a id="more"></a>
 <hr>
@@ -241,7 +294,7 @@
 <li>节点可以有多于两个子节点</li>
 <li>节点中可以保存多个元素</li>
 </ol>
-<p>因为需要保存不定数量的元素，所以一般用 set 来实现（这种情况下不允许有重复的元素，重复的情况这里暂时不考虑）</p>
+<p>因为需要保存不定数量的元素，所以一般用 set 来实现（这种情况下不允许有重复的元素，重复的情况这里暂时不考虑）。稍微提一下，许多数据库都是用 B-Tree 实现的。</p>
 <p>所有的 B-Tree 都有一个非常重要的常数 MINIMUM，决定了每个节点中需要保存多少元素，具体的规则如下：</p>
 <ol>
 <li>根节点有 0 或 1 个元素，其他的节点至少需要保存 MINIMUM 个元素</li>
@@ -258,6 +311,68 @@
 </ol>
 <p>下图是一个例子，其中 MINIMUM = 1，注意，根节点的每个子节点也是一颗 B-Tree</p>
 <p><img src="/images/14563745325794.jpg" alt="B-Tree 的例子"></p>
+<p>对应的数据结构是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntBalancedSet</span></span>&#123;</span><br><span class="line">    <span class="comment">// constants</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> MINIMUM = <span class="number">200</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> MAXIMUM = <span class="number">2</span> * MINIMUM;</span><br><span class="line">    <span class="comment">// info about root node</span></span><br><span class="line">    <span class="keyword">int</span> dataCount;</span><br><span class="line">    <span class="keyword">int</span>[] data = <span class="keyword">new</span> <span class="keyword">int</span>[MAXIMUM + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> childCount;</span><br><span class="line">    <span class="comment">// info about children</span></span><br><span class="line">    IntBalancedSet[] subset = <span class="keyword">new</span> IntBalancedSet[MAXIMUM+<span class="number">2</span>];</span><br><span class="line">    <span class="comment">// ....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<p><img src="/images/14563980237017.jpg" alt=""></p>
+<p>利用 B-Tree 进行搜索的方法如下：</p>
+<ul>
+<li>找到这样一个 set，满足 <code>data[I] &gt;= target</code> 且 I 尽可能小，如果找不到，则 <code>I = dataCount</code></li>
+<li>如果 <code>data[I] == target</code> 返回 true，如果不等于且没有子节点，返回 false</li>
+<li>如果不等于但是有子节点，则返回 <code>subset[I].contains(target)</code></li>
+</ul>
+<p><img src="/images/14563990361014.jpg" alt="利用 B-Tree 进行搜索的例子"></p>
+<p>一般来说，结构比较复杂的数据结构，进行修改都会比较麻烦（因为结构中内在的约束太多，变动的话需要满足所有约束），在 B-Tree 中添加和删除节点是比较复杂的操作。这里讲详细一些，用一个具体的例子来做说明（MINIMUM=1）</p>
+<p>删除操作的伪代码：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">Delete</span>(<span class="keyword">T</span>, X, <span class="keyword">success</span>)</span><br><span class="line">    // 从树 <span class="keyword">T</span> 中删除 <span class="keyword">key</span> 为 X 的节点，如果没有对应节点，则操作失败</span><br><span class="line">    // 操作结果可以从 <span class="keyword">success</span> 变量中获悉</span><br><span class="line">    </span><br><span class="line">    // 先找到 <span class="keyword">key</span> 为 X 的节点的位置</span><br><span class="line">    <span class="keyword">IF</span> <span class="keyword">I</span> <span class="keyword">is</span> <span class="keyword">present</span> <span class="keyword">THEN</span></span><br><span class="line">        swap item <span class="keyword">I</span> <span class="keyword">into</span> leaf <span class="keyword">L</span> which contains the inorder successor <span class="keyword">of</span> <span class="keyword">I</span></span><br><span class="line">        // 从 leaf <span class="keyword">L</span> 开始删除操作</span><br><span class="line">        <span class="keyword">IF</span> <span class="keyword">L</span> has <span class="keyword">no</span> items <span class="keyword">THEN</span> Fix(<span class="keyword">L</span>)</span><br><span class="line">        <span class="keyword">success</span> := <span class="literal">true</span></span><br><span class="line">    <span class="keyword">ELSE</span></span><br><span class="line">        <span class="keyword">success</span> := <span class="literal">false</span></span></span><br></pre></td></tr></table></figure>
+<p>然后是其中的 Fix 函数，用来处理没有子节点的节点，保证符合 B-Tree 的基本性质</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Fix(N)</span><br><span class="line">    // N 是一个没有子节点的节点</span><br><span class="line">    // 如果 N 是一个 internal node，那么它有一个子节点</span><br><span class="line">    </span><br><span class="line">    Let P be the parent of N. If N is the root, <span class="operator"><span class="keyword">delete</span> it <span class="keyword">and</span> <span class="keyword">return</span>.</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">IF</span> <span class="keyword">some</span> sibling <span class="keyword">of</span> <span class="keyword">N</span> has two items <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">distribute</span> items among <span class="keyword">N</span>, the sibling, <span class="keyword">and</span> <span class="keyword">P</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">IF</span> <span class="keyword">N</span> <span class="keyword">is</span> internal <span class="keyword">THEN</span></span><br><span class="line">            <span class="keyword">move</span> the appropriate <span class="keyword">child</span> <span class="keyword">from</span> the sibling <span class="keyword">to</span> <span class="keyword">N</span></span><br><span class="line">    <span class="keyword">ELSE</span></span><br><span class="line">        // 如果其兄弟没有两个子节点，就必须要进行融合</span><br><span class="line">        <span class="keyword">Choose</span> an adjancent sibling S <span class="keyword">of</span> <span class="keyword">N</span></span><br><span class="line">        </span><br><span class="line">        Bring the appropriate item down <span class="keyword">from</span> <span class="keyword">P</span> <span class="keyword">into</span> S</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">IF</span> <span class="keyword">N</span> <span class="keyword">is</span> internal <span class="keyword">THEN</span></span><br><span class="line">            <span class="keyword">Move</span> <span class="keyword">N</span><span class="string">'s child to S</span><br><span class="line">        </span><br><span class="line">        Delete node N</span><br><span class="line">        </span><br><span class="line">        IF P is now without an item THEN Fix(P)</span></span></span><br></pre></td></tr></table></figure>
+<p>然后我们看看插入操作：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">Insert</span>(<span class="keyword">T</span>, newitem)</span><br><span class="line">    // 把 newitem 插入到树 <span class="keyword">T</span> 中</span><br><span class="line">    Let X be the <span class="keyword">search</span> <span class="keyword">key</span> <span class="keyword">of</span> <span class="keyword">new</span> item</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">Locate</span> the leaf <span class="keyword">L</span> <span class="keyword">in</span> which X belongs</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">Add</span> newitem <span class="keyword">to</span> <span class="keyword">L</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">IF</span> <span class="keyword">L</span> <span class="keyword">now</span> has three items <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">Split</span>(<span class="keyword">L</span>)</span></span><br></pre></td></tr></table></figure>
+<p>继续来看看这里的 Split 函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Split(N)</span><br><span class="line">    // 分割那些有 3 个子节点的节点。注意如果 N 是 internal 的，它可以有 4 个孩子</span><br><span class="line">    Let P be the parent of N</span><br><span class="line">        // 如果 N 是根，那么创建一个新节点 P</span><br><span class="line">        </span><br><span class="line">    <span class="operator"><span class="keyword">Replace</span> node <span class="keyword">N</span> <span class="keyword">by</span> two nodes, N1 <span class="keyword">and</span> N2</span><br><span class="line">    </span><br><span class="line">    Give N1 the item <span class="keyword">in</span> <span class="keyword">N</span> <span class="keyword">with</span> the smallest <span class="keyword">search</span> <span class="keyword">key</span> <span class="keyword">value</span></span><br><span class="line">    Give N2 the item <span class="keyword">in</span> <span class="keyword">N</span> <span class="keyword">with</span> the largest <span class="keyword">search</span> <span class="keyword">key</span> <span class="keyword">value</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">IF</span> <span class="keyword">N</span> <span class="keyword">is</span> an iternal node <span class="keyword">THEN</span></span><br><span class="line">        N1 becomes the <span class="keyword">parent</span> <span class="keyword">of</span> <span class="keyword">N</span><span class="string">'s two leftmost children</span><br><span class="line">        N2 becomes the parent of N'</span>s two rightmost children</span><br><span class="line">    </span><br><span class="line">    Send up <span class="keyword">to</span> <span class="keyword">P</span> the item <span class="keyword">in</span> <span class="keyword">N</span> <span class="keyword">with</span> the middle <span class="keyword">search</span> <span class="keyword">key</span> <span class="keyword">value</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">IF</span> <span class="keyword">P</span> <span class="keyword">now</span> has <span class="number">3</span> items <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">Split</span>(<span class="keyword">P</span>)</span></span><br></pre></td></tr></table></figure>
+<p>我们给定如下一颗 B-Tree</p>
+<p><img src="/images/14564007797015.jpg" alt=""></p>
+<p>插入 39 之后（插入总是在叶节点）为</p>
+<p><img src="/images/14564008049100.jpg" alt="插入 39 之后"></p>
+<p>再插入 38，会发现有一个节点有多于 2 个子节点，需要 split</p>
+<p><img src="/images/14564008689598.jpg" alt="插入 38，split 之前"></p>
+<p>可以看到我们通过 split 操作把 39 提上去了（注意对照前面的 split 函数的伪代码来进行操作和理解）：</p>
+<p><img src="/images/14564009041532.jpg" alt="插入 38，split 之后"></p>
+<p>我们再插入 37 与 36，这会导致树高改变，需要进行更多操作，过程如下：</p>
+<p><img src="/images/14564011447526.jpg" alt="插入 37 与 36"></p>
+<p>插入之后我们发现又出现了非法的节点，依照 split 规则更新之后，上层的节点再次非法，这里属于有四个子节点的情况，左右分开，把中间的 37 移上一层，就成为最后一个形态。</p>
+<p>我们再多插入一些，比如 34，35，36，整个过程如下：</p>
+<p><img src="/images/14564014630573.jpg" alt=""></p>
+<p>最后就得到</p>
+<p><img src="/images/14564015026747.jpg" alt=""></p>
+<p>注意，因为向下传播的关系，高度是从顶层开始增长的。</p>
+<p>然后我们来看看删除操作，还是用刚才的例子，给定：</p>
+<p><img src="/images/14564016695179.jpg" alt=""></p>
+<p>这次我们删除 50，因为是根节点，所以需要找一个节点放到原来根的位置，并且需要把 70 下移以满足条件</p>
+<p><img src="/images/14564016869839.jpg" alt="删除 50"></p>
+<p>我们再删除 100 试试看：</p>
+<p><img src="/images/14564018498766.jpg" alt=""></p>
+<p>同样对照前面的 Fix 函数进行操作即可。然后我们再删除 60，这里需要涉及的变动就会比较多，如下：</p>
+<p><img src="/images/14564020922018.jpg" alt=""></p>
+<p>然后我们再删除 70 看看，就会变成这样：</p>
+<p><img src="/images/14564021367330.jpg" alt="删除 70"></p>
+<p>最后再删除 80，又会进行一次融合</p>
+<p><img src="/images/14564021619408.jpg" alt="删除 80"></p>
+<p>删除操作总是从 leaf 开始的，把要删除的节点和其 inorder successor 换位置。具体的操作如果还不明白，可以找一些视频来看看，这里不赘述了。</p>
+<h2 id="u7EA2_u9ED1_u6811_Red_Black_Tree"><a href="#u7EA2_u9ED1_u6811_Red_Black_Tree" class="headerlink" title="红黑树 Red Black Tree"></a>红黑树 Red Black Tree</h2><p>这里只给出基本性质的说明，具体的细节可以查看<a href="https://zh.wikipedia.org/wiki/%E7%BA%A2%E9%BB%91%E6%A0%91" target="_blank" rel="external">这里</a></p>
+<p>红黑树是每个节点都带有颜色属性的二叉查找树，颜色为红色或黑色。在二叉查找树强制一般要求以外，对于任何有效的红黑树我们增加了如下的额外要求：</p>
+<ol>
+<li>节点是红色或黑色。</li>
+<li>根是黑色。</li>
+<li>所有叶子都是黑色（叶子是NIL节点）。</li>
+<li>每个红色节点必须有两个黑色的子节点。（从每个叶子到根的所有路径上不能有两个连续的红色节点。）</li>
+<li>从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</li>
+</ol>
+<p><img src="/images/14564058100039.jpg" alt="红黑树的例子"></p>
+<p>这些约束确保了红黑树的关键特性：从根到叶子的最长的可能路径不多于最短的可能路径的两倍长。结果是这个树大致上是平衡的。因为操作比如插入、删除和查找某个值的最坏情况时间都要求与树的高度成比例，这个在高度上的理论上限允许红黑树在最坏情况下都是高效的，而不同于普通的二叉查找树。</p>
+<p>还是那句话对于约束较多的数据结构，进行插入和删除都是比较复杂的操作，最好通过例子掌握整个过程。</p>
+<p>最后提一下复杂度，因为树的分叉设计，所以基本来说复杂度都是 log 的，但是需要注意，在最坏情况下，复杂度很可能是 O(n)，</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>从这一讲开始，慢慢就有点难度了，树的每个节点虽然看起来比较简单，但是不同结点以不同规则进行组合就使得难度指数级增长，后面的红黑树因为涉及到结点的调整，一定要按照前面提到的 5 个步骤来过一次，才能清晰理解。</p>]]>
