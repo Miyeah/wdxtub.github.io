@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-26T17:42:18.000Z</updated>
+  <updated>2016-02-26T17:46:29.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/25/cc-p1/"/>
     <id>http://wdxtub.com/2016/02/25/cc-p1/</id>
     <published>2016-02-26T00:35:05.000Z</published>
-    <updated>2016-02-26T17:42:18.000Z</updated>
+    <updated>2016-02-26T17:46:29.000Z</updated>
     <content type="html"><![CDATA[<p>从这次作业开始，就要小组作业和个人作业并行了。这次的项目主要是在云上分析 Twitter 的相关内容，与以前 GB 级数据不一样，这次我们要处理 TB 级的数据，还是很刺激的。另，这是小组作业，在此先感谢我的队友 @leiyu 和 @shushanc</p>
 <a id="more"></a>
 <hr>
@@ -155,8 +155,7 @@
 <li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.61.3268&amp;rep=rep1&amp;type=pdf" target="_blank" rel="external">Banga, Gaurav, and Peter Druschel. “Measuring the Capacity of a Web Server.” USENIX Symposium on Internet Technologies and Systems. 1997.</a></li>
 <li><a href="https://www.mnot.net/blog/2011/05/18/http_benchmark_rules" target="_blank" rel="external">Nottingham, Mark. “On HTTP Load Testing”</a></li>
 </ol>
-<h2 id="u9636_u6BB5_u4E00"><a href="#u9636_u6BB5_u4E00" class="headerlink" title="阶段一"></a>阶段一</h2><p>基本要求</p>
-<ul>
+<h2 id="u57FA_u672C_u8981_u6C42"><a href="#u57FA_u672C_u8981_u6C42" class="headerlink" title="基本要求"></a>基本要求</h2><ul>
 <li>给所有的实例打上 <code>15619project:phase1</code> 的标签</li>
 <li>另外，HBase 实例需要打上 <code>15619backend:hbase</code> 标签；MySQL 实例需要打上 <code>15619backend:mysql</code> 标签</li>
 <li>ETL 部分可以选择任何类型的实例</li>
