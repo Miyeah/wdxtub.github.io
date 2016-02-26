@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-26T17:49:26.000Z</updated>
+  <updated>2016-02-26T21:11:00.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[软件架构与设计 第 18 课 Deployment and Mobility]]></title>
+    <link href="http://wdxtub.com/2016/02/26/sad-18/"/>
+    <id>http://wdxtub.com/2016/02/26/sad-18/</id>
+    <published>2016-02-26T21:06:57.000Z</published>
+    <updated>2016-02-26T21:11:00.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[软件架构与设计 第 17 课 Security and Trust]]></title>
+    <link href="http://wdxtub.com/2016/02/26/sad-17/"/>
+    <id>http://wdxtub.com/2016/02/26/sad-17/</id>
+    <published>2016-02-26T21:06:50.000Z</published>
+    <updated>2016-02-26T21:10:32.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[软件架构与设计 第 16 课 Non-Functional Property]]></title>
+    <link href="http://wdxtub.com/2016/02/26/sad-16/"/>
+    <id>http://wdxtub.com/2016/02/26/sad-16/</id>
+    <published>2016-02-26T21:06:46.000Z</published>
+    <updated>2016-02-26T21:10:05.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[软件架构与设计 第 15 课 Applied Architectures]]></title>
+    <link href="http://wdxtub.com/2016/02/26/sad-15/"/>
+    <id>http://wdxtub.com/2016/02/26/sad-15/</id>
+    <published>2016-02-26T21:06:41.000Z</published>
+    <updated>2016-02-26T21:08:23.000Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<hr>
+ 公式 
+]]>
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[云计算 课程项目 1 搭建高性能数据获取网络服务]]></title>
@@ -2040,356 +2148,6 @@
       <category term="selector" scheme="http://wdxtub.com/tags/selector/"/>
     
       <category term="理解" scheme="http://wdxtub.com/tags/%E7%90%86%E8%A7%A3/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[PS4 游戏简评]]></title>
-    <link href="http://wdxtub.com/2016/02/20/ps4-game-short-review/"/>
-    <id>http://wdxtub.com/2016/02/20/ps4-game-short-review/</id>
-    <published>2016-02-20T21:23:49.000Z</published>
-    <updated>2016-02-20T23:37:29.000Z</updated>
-    <content type="html"><![CDATA[<p>这个系列主要是记录一下自己玩过的众多 PS4 游戏，因为时间和篇幅所限，每个游戏可能只会用几句话简单评测，当然，某些我觉得值得单独拉出来评测的，还是会专门进行介绍的。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u5199_u5728_u524D_u9762"><a href="#u5199_u5728_u524D_u9762" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>入选标准纯主观</li>
-<li>按自然顺序排列（就是瞎排，没有类别和时间顺序）</li>
-<li>评测标准纯主观，具体评测角度看心情</li>
-<li>一分钱广告费没有拿，没有利益相关</li>
-<li>部分内容可能因为记忆偏差或者游戏更新而不一致，不要在意这些细节</li>
-<li>先写列表，然后慢慢补充</li>
-<li>想到了再多加几条显得既随性又专业</li>
-</ul>
-<h2 id="Amplitude"><a href="#Amplitude" class="headerlink" title="Amplitude"></a>Amplitude</h2><p>音乐游戏，除了按键之外，还需要利用方向键切换不同的音轨，总体来说非常不错。</p>
-<ul>
-<li>大小：2.5 GB</li>
-<li>开发商：Harmonix Music Systems, Inc</li>
-<li>价格：$19.99</li>
-<li>发售日：2016.1.5</li>
-</ul>
-<p><img src="/images/14560053059106.jpg" alt=""></p>
-<p>不过键位设计很奇怪，一共三个按键，分别是 L1, R1, R2，因为 R1 和 R2 的键程不一样，所以按起来怪怪的，还是有点不习惯。切换音轨需要大量的提前量预判，而且很容易在最后一个 miss，一 miss 整个 section 的分数都没有，无他，唯手熟耳。</p>
-<p>画面比较科幻，看久了眼睛疼，而且音乐偏电子音乐，我不算特别喜欢。不过作为难得的音乐节拍游戏，还是值得一玩的，多人合作的话应该挺刺激。</p>
-<h2 id="ARSLAN_3A_The_WARRIORS_OF_LEGEND"><a href="#ARSLAN_3A_The_WARRIORS_OF_LEGEND" class="headerlink" title="ARSLAN: The WARRIORS OF LEGEND"></a>ARSLAN: The WARRIORS OF LEGEND</h2><p>光荣开始换着花样出割草游戏了，不过这次的动画画风还是不错的。</p>
-<ul>
-<li>大小：15.5 GB</li>
-<li>开发商：Tecmo KOEI America</li>
-<li>价格：$59.99</li>
-<li>发售日：2016.2.9</li>
-</ul>
-<p><img src="/images/14560059636741.jpg" alt=""></p>
-<p>整体玩起来也没啥特别大的区别，连招还有效果都比较趋同。换句话说，我还不如玩真三呢，至少还有点代入感。这么换个模型就出来骗 60 刀，光荣也是很黑啊。不是很推荐购入，当然铁粉另说。</p>
-<h2 id="Blacklight_3A_Retribution"><a href="#Blacklight_3A_Retribution" class="headerlink" title="Blacklight: Retribution"></a>Blacklight: Retribution</h2><p>标准的美式在线多人射击对战游戏，重点在于免费，不过也使得玩家的技术差距比较大，新手很容易直接被打哭（教程也不是特别友好）</p>
-<ul>
-<li>大小：4.6 GB</li>
-<li>开发商：Hardsuit Labs</li>
-<li>价格：FREE</li>
-<li>发售日：2013.11.15</li>
-</ul>
-<p><img src="/images/14560071072422.jpg" alt=""></p>
-<p>13 年的老游戏了，比较简单粗暴的对战射击，估计是预计玩家都有基本的经验了，所以学习曲线非常陡峭，而且因为是免费游戏，没啥门槛，所以很容易出现挂机的，非常影响体验。不过我一直对射击对战类游戏非常苦手，还是比较喜欢合作或者剧情向的。</p>
-<h2 id="RAINBOW_MOON"><a href="#RAINBOW_MOON" class="headerlink" title="RAINBOW MOON"></a>RAINBOW MOON</h2><p>丑到哭的回合制 RPG，我玩了五分钟就表示阵亡坚持不下去，真的是太复古了。</p>
-<ul>
-<li>大小：1.6 GB</li>
-<li>开发商：EastAsiaSoft</li>
-<li>价格：$14.99</li>
-<li>发售日：2016.2.16</li>
-</ul>
-<p><img src="/images/14560076052824.jpg" alt=""></p>
-<p>战棋走格子 + 回合制 RPG，人设丑出新高度，字体和界面的整体感觉也很奇怪，让人不大舒服。总而言之，不推荐。</p>
-<h2 id="Gems_of_War"><a href="#Gems_of_War" class="headerlink" title="Gems of War"></a>Gems of War</h2><p>三消 + 卡牌 + 回合 = Gems of War，个人感觉有点不伦不类。</p>
-<ul>
-<li>大小：1.6 GB</li>
-<li>开发商：505 Games</li>
-<li>价格：FREE</li>
-<li>发售日：2015.11.13</li>
-</ul>
-<p><img src="/images/14560078541208.jpg" alt=""></p>
-<p>不同颜色代表不同的能力，然后通过消除三个或以上对应元素来进行攻击或者属性增强。就我的感觉来说，要么直接神魔之塔不要太多策略，要么直接炉石传说好好收集卡牌，结合起来不是不可以，但是回合制就有点怪怪了。一次消除四个元素有额外的一轮操作并且还有附加效果，不过因为是回合制，基本上如果对手会玩，是很难有机会四个的。</p>
-<p>另外，手柄玩这类点击类游戏，其实不是特别顺手。不过总体来说算是不错的休闲游戏</p>
-<h2 id="GUNS_UP_21"><a href="#GUNS_UP_21" class="headerlink" title="GUNS UP!"></a>GUNS UP!</h2><p>索尼自己出的休闲即使策略小游戏，画风可爱，操作也很简单明了，不算给第一方丢脸。</p>
-<ul>
-<li>大小：867 MB</li>
-<li>开发商：Sony Computer Entertainment America</li>
-<li>价格：FREE</li>
-<li>发售日：2015.12.5</li>
-</ul>
-<p><img src="/images/14560083740117.jpg" alt=""></p>
-<p>简单来说就是控制进攻方或者防守方，用简单的操作完成指定任务，游戏模式还是很丰富的，整体的艺术风格也很和谐，虽然是战场，但是更多的是欢乐。基本上玩家要做的就是选择生产什么兵种，以及确定轰炸地点之类的技能，算是塔防类型的变体。</p>
-<p>反正免费，干嘛不玩一玩呢？另外难得容量没超过 1G 但是画面也不错，我就好奇其他的『小游戏』到底放了啥在游戏里面。</p>
-<h2 id="Tearaway_Unfolded"><a href="#Tearaway_Unfolded" class="headerlink" title="Tearaway Unfolded"></a>Tearaway Unfolded</h2><p>索尼大法继小小大星球用布娃娃之后，这次直接用纸片弄出了一个新世界，而且还是全 3D 的！百分百值得入手！</p>
-<ul>
-<li>大小：6.8 MB</li>
-<li>开发商：Sony Computer Entertainment America</li>
-<li>价格：$19.99</li>
-<li>发售日：2015.9.8</li>
-</ul>
-<p><img src="/images/14560111893739.jpg" alt=""></p>
-<p>无论是对手柄各种功能的应用（触摸板，声音，动作），还是整个游戏自由开放且独树一帜的艺术风格，都远远甩开 XBOX ONE 第一方游戏几条街，更可怕的是，这还只是一个不到 20 刀的『小品』游戏。</p>
-<p>从小小大星球开始索尼就有点接过任天堂衣钵的感觉，本作一出，任你马里奥再强，耐不住索尼大法一波又一波艺术+创意的攻势。</p>
-<p>会专门为本作写一篇测评，不然没办法表达『索尼大法好』这一题中之义。</p>
-<h2 id="Bloodborne"><a href="#Bloodborne" class="headerlink" title="Bloodborne"></a>Bloodborne</h2><h2 id="DEAD_OR_ALIVE_5_Last_Round"><a href="#DEAD_OR_ALIVE_5_Last_Round" class="headerlink" title="DEAD OR ALIVE 5 Last Round"></a>DEAD OR ALIVE 5 Last Round</h2><h2 id="Destiny"><a href="#Destiny" class="headerlink" title="Destiny"></a>Destiny</h2><h2 id="Dying_Light"><a href="#Dying_Light" class="headerlink" title="Dying Light"></a>Dying Light</h2><h2 id="Fallout_4"><a href="#Fallout_4" class="headerlink" title="Fallout 4"></a>Fallout 4</h2><h2 id="FIFA_16"><a href="#FIFA_16" class="headerlink" title="FIFA 16"></a>FIFA 16</h2><h2 id="Flower"><a href="#Flower" class="headerlink" title="Flower"></a>Flower</h2><h2 id="Indivisible_Prototype"><a href="#Indivisible_Prototype" class="headerlink" title="Indivisible Prototype"></a>Indivisible Prototype</h2><h2 id="Journey"><a href="#Journey" class="headerlink" title="Journey"></a>Journey</h2><h2 id="LEGO_MARVEL_u2019s_Avengers"><a href="#LEGO_MARVEL_u2019s_Avengers" class="headerlink" title="LEGO MARVEL’s Avengers"></a>LEGO MARVEL’s Avengers</h2><h2 id="Life_Is_Strange"><a href="#Life_Is_Strange" class="headerlink" title="Life Is Strange"></a>Life Is Strange</h2><h2 id="Little_Big_Planet_3"><a href="#Little_Big_Planet_3" class="headerlink" title="Little Big Planet 3"></a>Little Big Planet 3</h2><h2 id="Loadout"><a href="#Loadout" class="headerlink" title="Loadout"></a>Loadout</h2><h2 id="METAL_GEAR_SOLID_V_3A_THE_PHANTOM_PAIN"><a href="#METAL_GEAR_SOLID_V_3A_THE_PHANTOM_PAIN" class="headerlink" title="METAL GEAR SOLID V: THE PHANTOM PAIN"></a>METAL GEAR SOLID V: THE PHANTOM PAIN</h2><h2 id="NARUTO_SHIPPUDEN_3A_Ultimate_Ninja_STORM_4"><a href="#NARUTO_SHIPPUDEN_3A_Ultimate_Ninja_STORM_4" class="headerlink" title="NARUTO SHIPPUDEN: Ultimate Ninja STORM 4"></a>NARUTO SHIPPUDEN: Ultimate Ninja STORM 4</h2><h2 id="NBA_LIVE_16"><a href="#NBA_LIVE_16" class="headerlink" title="NBA LIVE 16"></a>NBA LIVE 16</h2><h2 id="RESIDENT_EVIL_REVELATIONS_2"><a href="#RESIDENT_EVIL_REVELATIONS_2" class="headerlink" title="RESIDENT EVIL REVELATIONS 2"></a>RESIDENT EVIL REVELATIONS 2</h2><h2 id="The_Crew"><a href="#The_Crew" class="headerlink" title="The Crew"></a>The Crew</h2><h2 id="Toukiden_3A_Kiwami"><a href="#Toukiden_3A_Kiwami" class="headerlink" title="Toukiden: Kiwami"></a>Toukiden: Kiwami</h2><h2 id="Uncharted_3A_The_Nathan_Drake_Collection"><a href="#Uncharted_3A_The_Nathan_Drake_Collection" class="headerlink" title="Uncharted: The Nathan Drake Collection"></a>Uncharted: The Nathan Drake Collection</h2><h2 id="Warframe"><a href="#Warframe" class="headerlink" title="Warframe"></a>Warframe</h2><h2 id="Farcry_4"><a href="#Farcry_4" class="headerlink" title="Farcry 4"></a>Farcry 4</h2><h2 id="The_Last_of_US"><a href="#The_Last_of_US" class="headerlink" title="The Last of US"></a>The Last of US</h2>]]></content>
-    <summary type="html">
-    <![CDATA[<p>这个系列主要是记录一下自己玩过的众多 PS4 游戏，因为时间和篇幅所限，每个游戏可能只会用几句话简单评测，当然，某些我觉得值得单独拉出来评测的，还是会专门进行介绍的。</p>]]>
-    
-    </summary>
-    
-      <category term="PS4" scheme="http://wdxtub.com/tags/PS4/"/>
-    
-      <category term="游戏" scheme="http://wdxtub.com/tags/%E6%B8%B8%E6%88%8F/"/>
-    
-      <category term="评测" scheme="http://wdxtub.com/tags/%E8%AF%84%E6%B5%8B/"/>
-    
-      <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[第六周 - 曾经的你]]></title>
-    <link href="http://wdxtub.com/2016/02/19/used-to-be/"/>
-    <id>http://wdxtub.com/2016/02/19/used-to-be/</id>
-    <published>2016-02-20T03:13:43.000Z</published>
-    <updated>2016-02-20T04:08:29.000Z</updated>
-    <content type="html"><![CDATA[<p>曾梦想仗剑走天涯，看一看世界的繁华。走在勇往直前的路上，有难过也有精彩。</p>
-<a id="more"></a>
-<hr>
-<p>阿来写过一本书，叫《尘埃落定》，说的是一个傻子少爷，用其特有的观察世界的角度，穿透愚蠢与欲望，一针见血刺出事物的本质，也见证了土司制度的衰亡。这一周，我也算是『随性』而『傻』地做出了『尘埃落定』的决定：买好回国机票，切断所有后路，大踏步继续往前。</p>
-<p>一直觉得，年轻人不要用所谓『大家觉得好』的路，去麻痹和替代自己对未来的思考。喜欢什么，讨厌什么，擅长什么，拙于什么，都应该在不同的体验中增进对自己的了解。对我来说，没有家庭的负担，甚至也没有太多儿女情长的羁绊，所以更希望去做自己真正想要去做的事情。</p>
-<p>回顾自己一路走来的旅程，更多的决定是随性的，或者说是冥冥之中已经决定的，从论文的题目，到学业的选择，从租房的变动，到工作的确定，都是和自己的兴趣爱好有关。一直以来都是那种一旦有个念头就打不起精神做其他事情的人，恐怕全情投入背水一战才是最好的选择。</p>
-<p>前段时间有些迷茫，毕竟身处大环境中，很容易被身边人的焦虑所『感染』，开始去追逐『大家觉得好』的事情，用『大家觉得对』的评判标准来衡量自己。后来想清楚了才意识到，既然一直以来我选择的就是不同的路，不同的标准，那么唯一的标尺，就是这件事情我喜不喜欢，我愿不愿意去做，而不是那些『别人觉得好大家都应该去做』的事情。</p>
-<p>即使有这么一条路，宽敞平坦，直达所谓『终点』，我也并不愿意走。目的地不明确，又可能是坎坷的路，我反而愿意去试试，毕竟，每一步都是经过自己的判断迈出的，走出去才无怨无悔。而且话说回来，到底那条路更艰难，不去试试怎么知道呢？同样是做火影忍者游戏，玩家很短时间就能意识到谁是用心开发谁是为了赚钱，生活学习工作也是这个道理：不要隐藏自己，努力去做自己真正想做的事情。</p>
-<p>随着对课程的适应，基本上进入了比较轻松的阶段，开学前计划的各类事项也在逐步启动。重启翻译计划后，因为对计算机体系的深入理解，很多概念的理解也更加深入了。另外一个好消息是，随着时间的推移，自己的技术博客也逐渐有了一些有价值的互动了，这是我一直想要看到的。既然知道了很多东西中文世界里没人写过，那么我愿意吃点苦流点汗，去做这第一个人（这周的几篇日志应该都是其他地方没有的）。</p>
-<p>身处变革的时代，在中国这样一个『启蒙时代』一切未定型的国家，经济政治社会环境道德文化都有太多太多需要改进的地方，有太多太多让年轻人大展宏图的机会，为什么不趁着年轻去闯一闯呢？假如生活终将归于平静，为什么不在万籁俱寂前发出自己的声音呢？</p>
-<blockquote>
-<p>正义之子面对有悖于常理的世界，会使其天翻地覆</p>
-</blockquote>
-<p>让我们干了这杯酒，好男儿胸怀像大海。总想起身边走在路上的朋友，有多少正在醒来。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>曾梦想仗剑走天涯，看一看世界的繁华。走在勇往直前的路上，有难过也有精彩。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="周记" scheme="http://wdxtub.com/tags/%E5%91%A8%E8%AE%B0/"/>
-    
-      <category term="坚持" scheme="http://wdxtub.com/tags/%E5%9D%9A%E6%8C%81/"/>
-    
-      <category term="转弯" scheme="http://wdxtub.com/tags/%E8%BD%AC%E5%BC%AF/"/>
-    
-      <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[ITA Testing 相关资料]]></title>
-    <link href="http://wdxtub.com/2016/02/19/ita-test/"/>
-    <id>http://wdxtub.com/2016/02/19/ita-test/</id>
-    <published>2016-02-19T15:06:41.000Z</published>
-    <updated>2016-02-19T15:58:35.000Z</updated>
-    <content type="html"><![CDATA[<p>这门语言考试是在 CMU 做助教必须要通过的，虽然『据说』比较轻松，但是还是认真准备一下，算是通过研究考试的方式加深对于语言本身的认识。</p>
-<a id="more"></a>
-<hr>
-<p>简单来说，就是所有母语不是英语的助教，都需要通过这么一个测试。主要考察口语交流能力，整个过程有 4 到 5 个评审，测试包含两部分：</p>
-<ol>
-<li>交流部分，需要讨论自己的学术背景和兴趣</li>
-<li>具体选择一个话题来进行正式的解释（大约五分钟），评审会根据内容来问一些问题。</li>
-</ol>
-<p>主要考察发音、语法、流畅度以及如何去定义一个学术概念，并且解释清楚术语和定义，以及举出相关例子来进行阐述和说明。注意这里的要求不会特别高，所以不用担心，也不会评价专业领域的知识和教学技巧。</p>
-<p>会有四个评价等级：</p>
-<p>Pass, Restricted I, Restricted II, Not Qualified</p>
-<p>这里只贴出前两个等级（毕竟后面两个比较惨）</p>
-<p><img src="/images/14558964554346.jpg" alt=""></p>
-<p>还有一些具体的技巧，我觉得不仅可以用在 ITA 测试上，对于日常的交流也很有帮助。列举如下：</p>
-<ul>
-<li>了解你的听众，他们对各个领域有基本的相关知识，但是可能对特定领域没有很深的认识，所以一定要考虑到听众的接收程度</li>
-<li>解释清楚那些可能对于普通人来说难以理解的技术名词，不要依赖公式和『科学黑话』</li>
-<li>做助教很多时候需要面对没有准备的问题，就是需要测试在这种情况下我们的表现</li>
-<li>如果评审给出的主题不合适，需要说清楚为什么不合适，并且找到一个合适的话题，总体来说就是一个交流的过程</li>
-<li>因为只有五分钟的时间，所以可能评审会打断你的解释，所以把每一句话当做最后一句话，尽力解释清楚</li>
-<li>语速不要太快，注意说话的节奏</li>
-<li>和听众多多交流，确保他们听懂</li>
-<li>可能的话使用黑板，视觉也是学习很重要的输入</li>
-<li>注意使用过渡语言来让听众明白整个介绍的逻辑组织形式</li>
-<li>不要紧张，不要紧张，不要紧张</li>
-</ul>
-<p>基本上是一个考察『硬实力』的测试，正常发挥应该就没有多少问题。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这门语言考试是在 CMU 做助教必须要通过的，虽然『据说』比较轻松，但是还是认真准备一下，算是通过研究考试的方式加深对于语言本身的认识。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="助教" scheme="http://wdxtub.com/tags/%E5%8A%A9%E6%95%99/"/>
-    
-      <category term="测试" scheme="http://wdxtub.com/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Mac 技巧指南]]></title>
-    <link href="http://wdxtub.com/2016/02/18/mac-tips/"/>
-    <id>http://wdxtub.com/2016/02/18/mac-tips/</id>
-    <published>2016-02-19T03:05:09.000Z</published>
-    <updated>2016-02-19T03:33:37.000Z</updated>
-    <content type="html"><![CDATA[<p>这里主要整理一些一直以来使用 Mac 的技巧以及构建高效开发学习环境的指南。主要是按照个人的使用习惯，所以所用的工具和软件都比较偏写代码一些。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u6280_u5DE7_u7BC7"><a href="#u6280_u5DE7_u7BC7" class="headerlink" title="技巧篇"></a>技巧篇</h2><p>遇到一些疑难杂症，可以试试看。</p>
-<h3 id="u5207_u6362_shell"><a href="#u5207_u6362_shell" class="headerlink" title="切换 shell"></a>切换 shell</h3><p>nano 编辑器中</p>
-<ul>
-<li>ctrl 表示 ^</li>
-<li>F3保存，F2退出</li>
-</ul>
-<p>具体步骤</p>
-<ol>
-<li><code>sudo nano /etc/shells</code></li>
-<li>把 <code>/usr/local/bin/fish</code> 添加进去（这里以添加 fish shell 为例子）</li>
-<li><code>chsh -s /usr/local/bin/fish</code> （平时切换只需要用这句即可）</li>
-</ol>
-<h3 id="u6279_u91CF_u5220_u9664_u6307_u5B9A_u7C7B_u578B_u7684_u6587_u4EF6"><a href="#u6279_u91CF_u5220_u9664_u6307_u5B9A_u7C7B_u578B_u7684_u6587_u4EF6" class="headerlink" title="批量删除指定类型的文件"></a>批量删除指定类型的文件</h3><p>可以使用这条命令</p>
-<p><code>find . -name &quot;.Ulysses-Group.plist&quot; -exec rm -Rf {} \;</code></p>
-<h3 id="u6E05_u9664_u4E0D_u5FC5_u8981_u7684_u670D_u52A1"><a href="#u6E05_u9664_u4E0D_u5FC5_u8981_u7684_u670D_u52A1" class="headerlink" title="清除不必要的服务"></a>清除不必要的服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">launchctl list 查看服务列表</span><br><span class="line">launchctl remove xxxx 删除xxxxx服务的自启动</span><br></pre></td></tr></table></figure>
-<h3 id="u5173_u95ED_Rootless"><a href="#u5173_u95ED_Rootless" class="headerlink" title="关闭 Rootless"></a>关闭 Rootless</h3><p>Rootless 是 OSX 10.11 中为了增强安全性而增加的特性，不过对于开发者来说，不能访问根目录下的某些文件夹实在是很恼人的事情。下面是关闭的方法：</p>
-<ul>
-<li>开机按住 Command＋R，进入恢复模式，打开 terminal，键入：</li>
-<li><code>csrutil disable</code></li>
-<li>回车，重新启动即可。</li>
-<li>要恢复 rootless ，只需将 disable 改为 enable</li>
-</ul>
-<h3 id="u91CD_u5EFA_Mail__u7D22_u5F15"><a href="#u91CD_u5EFA_Mail__u7D22_u5F15" class="headerlink" title="重建 Mail 索引"></a>重建 Mail 索引</h3><p>当邮箱出现问题时，您可能会看到提醒信息说“邮件”需要通过重新索引邮件来修复邮箱。在其他时候，您可能想要自己重新索引邮件，例如，使用“主题”、“收件人”或“发件人”搜索邮箱时未返回正确结果时。</p>
-<ul>
-<li>如果“邮件”已打开，请退出它。</li>
-<li>在“User/资源库/Mail/V3/MailData”中，删除任何以“Envelope Index”开头的文件，如 Envelope Index 或 Envelope Index-shm。</li>
-<li>默认情况下，您的“资源库”个人文件夹处于隐藏状态。若要显示它，请选取 Finder &gt;“前往文件夹”，然后输入“~/资源库”。</li>
-<li>打开“邮件”。</li>
-<li>“邮件”将创建新 Envelope Index 文件。此过程可能需要几分钟，取决于“邮件”要重新索引的邮件数量。</li>
-</ul>
-<h3 id="u6E05_u9664_PRAM"><a href="#u6E05_u9664_PRAM" class="headerlink" title="清除 PRAM"></a>清除 PRAM</h3><p>(只适用于英特尔的苹果电脑)</p>
-<p>这个方法不是根本的解决方法，但是可以除去一些不必要的开机设置。因而也节省了时间。方法是：重启你的电脑，同时按下 command + option + p + r 直到听到 3 到 4 声启动铃响之后松手。</p>
-<h3 id="u6E05_u9664PMU"><a href="#u6E05_u9664PMU" class="headerlink" title="清除PMU"></a>清除PMU</h3><p>(iMac不适用)</p>
-<p>对于Macbook, Macbook Pro用户，方法是：</p>
-<ol>
-<li>确保Macbook关闭.</li>
-<li>去掉电源适配器和电池.</li>
-<li>按下电源开关并保持5 秒钟，放开.</li>
-<li>接上电源适配器和电池.</li>
-<li>打开电源开关.</li>
-</ol>
-<h3 id="u663E_u793A/_u9690_u85CF__u9690_u85CF_u6587_u4EF6"><a href="#u663E_u793A/_u9690_u85CF__u9690_u85CF_u6587_u4EF6" class="headerlink" title="显示/隐藏 隐藏文件"></a>显示/隐藏 隐藏文件</h3><p>使用下面的命令即可分别测试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -bool <span class="literal">true</span></span><br><span class="line">defaults write com.apple.finder AppleShowAllFiles -bool <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="u8FD8_u539F_F1-F12"><a href="#u8FD8_u539F_F1-F12" class="headerlink" title="还原 F1-F12"></a>还原 F1-F12</h3><p>默认情况下，F1-F12 都是特殊功能，比如调节屏幕亮度。而当你需要键入 F1-F12 时（比如在使用 IntelliJ IDEA 的快捷键时），需要同时按住 Fn。这对于开发人员来说是非常不方便的。</p>
-<p>把 F1-F12 改成标准功能键：选择 <code>System Preferences</code> &gt; <code>Keyboard</code>，在<code>Keyboard</code>标签页中选中<code>Use all F1, F2, etc. keys as standard function keys</code>。</p>
-<h3 id="u5229_u7528_u8BED_u97F3_u529F_u80FD"><a href="#u5229_u7528_u8BED_u97F3_u529F_u80FD" class="headerlink" title="利用语音功能"></a>利用语音功能</h3><p>OS X 自带了语音功能，可以用<code>say</code>命令让 Mac 开口说话：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">say hello</span><br></pre></td></tr></table></figure>
-<p>可以和<code>&amp;&amp;</code>或者<code>;</code>配合使用来提示你某任务已经完成：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update &amp;&amp; brew upgrade &amp;&amp; brew cleanup ; say mission complete</span><br></pre></td></tr></table></figure>
-<p>通过命令行来听取发音还是有点麻烦。其实我们几乎可以在任何地方选中单词，然后使用快捷键 <code>⌥+ESC</code> 发音。仅仅需要这样设置一下：选择 <code>System Preferences</code> &gt; <code>Dictation &amp; Speech</code>，在<code>Text to Speech</code>标签页中选中<code>Speak selected text when the key is pressed</code>。</p>
-<h3 id="u5728_Finder__u7A97_u53E3_u663E_u793A_u66F4_u591A_u4FE1_u606F"><a href="#u5728_Finder__u7A97_u53E3_u663E_u793A_u66F4_u591A_u4FE1_u606F" class="headerlink" title="在 Finder 窗口显示更多信息"></a>在 Finder 窗口显示更多信息</h3><p>打开任意 Finder 窗口。前往并打开「显示」－「显示路径栏」、「显示」－「显示状态栏」和「显示」－「显示预览」三项。</p>
-<p>路径栏通常是从磁盘分区开始的，没改过名字的就叫做「Macintosh HD」，接下来是「用户」，可是路径信息的这两个项目几乎没什么作用，我们需要看的一般都是从个人账户开始后面的路径。下面我们就来尝试删除这两个路径选项：</p>
-<p>打开终端，输入以下命令：</p>
-<pre><code>defaults write com.apple.finder PathBarRootAtHome -bool TRUE;killall Finder
-</code></pre><p>回车后 Finder 会重启一下，改变即可见。</p>
-<p>恢复默认：打开终端，输入如下代码并回车就可以恢复原样：</p>
-<pre><code>defaults delete com.apple.finder PathBarRootAtHome;killall Finder
-</code></pre><h3 id="u8BA9_u6587_u4EF6_u6269_u5C55_u540D_u59CB_u7EC8_u663E_u793A"><a href="#u8BA9_u6587_u4EF6_u6269_u5C55_u540D_u59CB_u7EC8_u663E_u793A" class="headerlink" title="让文件扩展名始终显示"></a>让文件扩展名始终显示</h3><p>当你看到一个文件但是不知道它的格式的时候，会不会困惑？每次都要去简介页面查看文件是 .jpg 还是 .png 是不是很繁琐？哦，还有 CMD－i 快捷键？但是这些都比默认就显示来得慢。</p>
-<p>打开 Finder 偏好设置，选中「高级」标签，然后在「始终显示文件扩展名」前面打勾即可。</p>
-<h3 id="u4F7F_Finder__u9ED8_u8BA4_u663E_u793A_u81EA_u5B9A_u4E49_u76EE_u5F55"><a href="#u4F7F_Finder__u9ED8_u8BA4_u663E_u793A_u81EA_u5B9A_u4E49_u76EE_u5F55" class="headerlink" title="使 Finder 默认显示自定义目录"></a>使 Finder 默认显示自定义目录</h3><p>「我的所有文件」是一个非常实用的功能。但是这对于那些需要按照目录来显示文件的用户来说，每次都需要进行一次额外的操作才能打开用户目录或者其他文件夹。让我们取消默认显示「我的所有文件」功能：</p>
-<p>打开 Finder 偏好设置，选中「通用」标签，然后在「开启新 Finder 窗口时打开」项下选择你喜欢的目录即可。</p>
-<h3 id="u5728_u4FA7_u8FB9_u680F_u663E_u793A_u7528_u6237_u76EE_u5F55"><a href="#u5728_u4FA7_u8FB9_u680F_u663E_u793A_u7528_u6237_u76EE_u5F55" class="headerlink" title="在侧边栏显示用户目录"></a>在侧边栏显示用户目录</h3><p>在 Mac 系统中，绝大多数用户文件，例如音乐、照片等都存储在用户目录下，所以在 Finder 侧边栏一直显示用户目录的内容是一个好主意。设置起来同样很简单：</p>
-<p>打开 Finder 偏好设置，选中「边栏」标签，然后记得勾选你的用户名。</p>
-<h3 id="u5728_Finder__u6807_u9898_u680F_u663E_u793A_u5B8C_u6574_u8DEF_u5F84"><a href="#u5728_Finder__u6807_u9898_u680F_u663E_u793A_u5B8C_u6574_u8DEF_u5F84" class="headerlink" title="在 Finder 标题栏显示完整路径"></a>在 Finder 标题栏显示完整路径</h3><p>众所周知 Finder 是不显示路径的，你进入某个文件夹只会显示当前文件夹的名字而已。虽然你可以通过上文中的方法将路径栏调出来，但是这样也增加了 Finder 窗口的高度，对小屏幕机器尤为不利。那么，让我们更进一步，将 Finder 的完整路径显示在标题栏如何？</p>
-<p>打开终端，输入以下命令并回车：</p>
-<pre><code>defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
-</code></pre><p>然后把 Finder 窗口关了再打开，你会发现路径栏变样子了：</p>
-<p>其实呢，对着路径最左边的小图标点右键，就能快速访问路径中的任意一层：</p>
-<p>恢复</p>
-<pre><code>defaults write com.apple.finder _FXShowPosixPathInTitle -bool NO
-</code></pre><h3 id="u59CB_u7EC8_u663E_u793A_u7528_u6237_u300C_u8D44_u6599_u5E93_u300D"><a href="#u59CB_u7EC8_u663E_u793A_u7528_u6237_u300C_u8D44_u6599_u5E93_u300D" class="headerlink" title="始终显示用户「资料库」"></a>始终显示用户「资料库」</h3><p>用户资料库是用来储存配置文件、缓存和用户数据的目录（路径：~/Library/），由于 OS X 设置了系统文件保护，资料库在 Finder 中被设置为默认不显示。然而，通过终端执行一个简单的命令，就可以让它始终显示了。</p>
-<p>打开终端，运行以下命令：</p>
-<pre><code>chflags nohidden ~/Library/
-</code></pre><p>回车即可。</p>
-<h3 id="u663E_u793A_u6587_u4EF6_uFF08_u5939_uFF09_u7684_u4FE1_u606F"><a href="#u663E_u793A_u6587_u4EF6_uFF08_u5939_uFF09_u7684_u4FE1_u606F" class="headerlink" title="显示文件（夹）的信息"></a>显示文件（夹）的信息</h3><p>Finder 可以告诉你一些关于文件和文件夹的非常实用的信息，比如选中的文件夹内有多少个文件、照片的分辨率（这个笔者最喜欢）等等。对于笔者这种重度截图党来说，这几乎是一个「必选」的设置。</p>
-<p>在桌面点击鼠标右键，选择「查看显示选项」，选中「显示项目简介」项，现在看看，你的文件、文件夹有什么变化？</p>
-<h2 id="u5E94_u7528_u8F6F_u4EF6"><a href="#u5E94_u7528_u8F6F_u4EF6" class="headerlink" title="应用软件"></a>应用软件</h2><p>付费软件：</p>
-<ul>
-<li>1Password：密码管理；</li>
-<li>BetterZip2：解压缩；</li>
-<li>Parallels Desktop：虚拟机</li>
-<li>CleanMyMac 3：垃圾清理</li>
-</ul>
-<p>免费软件：</p>
-<ul>
-<li>Alferd：提高效率的神器</li>
-<li>MPlayerX：视频播放器，播放各种格式视频</li>
-<li>iTerm2：命令行终端</li>
-<li>SiteSucker：网站备份工具</li>
-<li>LICEcap：截取GIF动态图</li>
-<li>ImageAlpha(Pngyu)：png图片压缩</li>
-</ul>
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><p>现在 OS X 都不会自带 JDK 了，所以进行 Java 开发的话，需要下载 JDK。在 brew-cask 之前，我们需要从 <a href="https://developer.apple.com/downloads/" target="_blank" rel="external">https://developer.apple.com/downloads/</a> 或者 Oracle 网站上下载。还有更麻烦的－－卸载 JDK 和升级 JDK。</p>
-<p>JDK 安装文件是 pkg 格式，卸载和<code>.app</code>不一样，且没有自动卸载方式。</p>
-<p>而 brew-cask 提供了自动安装和卸载功能，能够自动从官网上下载并安装 JDK 8。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install java</span><br></pre></td></tr></table></figure>
-<p>如果你需要安装 JDK 7 或者 JDK 6，可以使用<code>homebrew-cask-versions</code>：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap caskroom/versions</span><br><span class="line">brew cask install java6</span><br></pre></td></tr></table></figure>
-<p>在 OS X 上，你可以同时安装多个版本的 JDK。你可以通过命令<code>/usr/libexec/java_home -V</code>来查看安装了哪几个 JDK。</p>
-<p>那问题来了，当你运行<code>java</code>或者 Java 程序时使用的是哪个 JDK 呢？在 OS X 下，<code>java</code>也就是<code>/usr/bin/java</code>在默认情况下指向的是已经安装的最新版本。但是你可以设置环境变量<code>JAVA_HOME</code>来更改其指向：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ java -version</span><br><span class="line">java version <span class="string">"1.8.0_60"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build <span class="number">1.8</span>.<span class="number">0</span>_60-b27)</span><br><span class="line">Java HotSpot(TM) <span class="number">64</span>-Bit Server VM (build <span class="number">25.60</span>-b23, mixed mode)</span><br><span class="line">$ JAVA_HOME=/Library/Java/JavaVirtualMachines/<span class="number">1.6</span>.<span class="number">0</span>.jdk/Contents/Home java -version</span><br><span class="line">java version <span class="string">"1.6.0_65"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build <span class="number">1.6</span>.<span class="number">0</span>_65-b14-<span class="number">466.1</span>-<span class="number">11</span>M4716)</span><br><span class="line">Java HotSpot(TM) <span class="number">64</span>-Bit Server VM (build <span class="number">20.65</span>-b04-<span class="number">466.1</span>, mixed mode)</span><br></pre></td></tr></table></figure>
-<p>其中<code>JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home</code>可以用<code>JAVA_HOME=`/usr/libexec/java_home -v 1.6` </code>这种更加通用的方式代替。</p>
-<h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><p>Mac OS X是基于Unix的操作系统，可以安装大部分为Unix/Linux开发的软件。然而，如果只是以使用为目的，对每个软件都进行手工编译不是很方便，也不利于管理已安装的软件，于是出现了类似于Linux中APT、Yum等类似的软件包管理系统，其中最著名的有MacPorts、Fink、Homebrew等。</p>
-<p>Homebrew 尽可能地利用系统自带的各种库，使得软件包的编译时间大为缩短；同时由于几乎不会造成冗余，软件包的管理也清晰、灵活了许多。Homebrew的另一个特点是使用Ruby定义软件包安装配置（叫做formula），定制非常简单。</p>
-<p>Homebrew的安装非常简单，在终端程序中输入以下命令即可。</p>
-<pre><code>ruby -e &quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;
-</code></pre><p>由于Homebrew的安装地址可能变化，请到官方网站查看最新的安装方法。</p>
-<p>Homebrew的可执行命令是brew，其基本使用方法如下（以wget为例）。</p>
-<ul>
-<li>查找软件包 <code>brew search wget</code></li>
-<li>安装软件包 <code>brew install wget</code></li>
-<li>列出已安装的软件包 <code>brew list</code></li>
-<li>删除软件包 <code>brew remove wget</code></li>
-<li>查看软件包信息 <code>brew info wget</code></li>
-<li>列出软件包的依赖关系 <code>brew deps wget</code></li>
-<li>更新 <code>brew update</code></li>
-<li>列出过时的软件包（已安装但不是最新版本）<code>brew outdated</code></li>
-<li>更新过时的软件包（全部或指定）<code>brew upgrade</code> 或 <code>brew upgrade wget</code></li>
-</ul>
-<h3 id="Homebrew_Cask"><a href="#Homebrew_Cask" class="headerlink" title="Homebrew Cask"></a><a href="http://caskroom.io" target="_blank" rel="external">Homebrew Cask</a></h3><p>brew-cask 允许你使用命令行安装 OS X 应用。比如你可以这样安装 Chrome：<code>brew cask install google-chrome</code>。还有 Evernote、Skype、Sublime Text、VirtualBox 等都可以用 brew-cask 安装。</p>
-<p>brew-cask 是社区驱动的，如果你发现 brew-cask 上的应用不是最新版本，或者缺少你某个应用，你可以自己提交 pull request。</p>
-<p>安装：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install caskroom/cask/brew-cask</span><br></pre></td></tr></table></figure>
-<p>应用也可以通过 App Store 安装，而且有些应用只能通过 App Store 安装，比如 Xcode 等一些 Apple 的应用。App Store 没有对应的命令行工具，还需要 Apple ID。倒是更新起来很方便。</p>
-<p>几乎所有常用的应用都可以通过 brew-cask 安装，所以你要安装新的应用时，建议用 brew-cask 安装。如果你不知道应用在 brew-cask 中的 ID，可以先用<code>brew cask search</code>命令搜索。</p>
-<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://github.com/macdao/ocds-guide-to-setting-up-mac" target="_blank" rel="external">如何配置一个高效的 Mac 工作环境</a></li>
-<li><a href="http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac" target="_blank" rel="external">Hacker’s Guide to Setting up Your Mac</a></li>
-<li><a href="https://mattstauffer.co/blog/setting-up-a-new-os-x-development-machine-part-1-core-files-and-custom-shell" target="_blank" rel="external">Setting up a new (OS X) development machine</a></li>
-<li><a href="http://www.xialeizhou.com/?p=71" target="_blank" rel="external">高效 MacBook 工作环境配置</a></li>
-<li><a href="http://www.zhihu.com/question/20873070" target="_blank" rel="external">程序员如何优雅地使用 Mac？</a></li>
-<li><a href="http://sspai.com/27403" target="_blank" rel="external">少数派1</a></li>
-<li><a href="http://sspai.com/28385" target="_blank" rel="external">少数派2</a></li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这里主要整理一些一直以来使用 Mac 的技巧以及构建高效开发学习环境的指南。主要是按照个人的使用习惯，所以所用的工具和软件都比较偏写代码一些。</p>]]>
-    
-    </summary>
-    
-      <category term="Mac" scheme="http://wdxtub.com/tags/Mac/"/>
-    
-      <category term="技巧" scheme="http://wdxtub.com/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-      <category term="疑难杂症" scheme="http://wdxtub.com/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
-    
-      <category term="高效" scheme="http://wdxtub.com/tags/%E9%AB%98%E6%95%88/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
