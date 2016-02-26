@@ -225,7 +225,7 @@
 <ol>
 <li>文本切分：把推文分隔成一个一个词，注意，这里堆单词的定义是：one or more consecutive alphanumeric characters ([a-zA-Z0-9]+) separated by non-alphanumeric character(s) ([^a-zA-Z0-9])</li>
 <li>计算情感得分：简单来说，就是有一个小写字母的英文单词情感词典，只要推文中的某个词在这个词典里，就加上这个词的情感得分（初始分为零），情感词典来自 <a href="http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010" target="_blank" rel="external">AFINN</a> 数据集，在<a href="https://cmucc-datasets.s3.amazonaws.com/15619/f15/afinn.txt" target="_blank" rel="external">这里</a>下载 <ul>
-<li>例如：”I love Cloud Computing” 这句话的得分是 3，因为 “love” 这个单词在情感词典中，且分值为 3</li>
+<li>例如：”I love Cloud Computing” 这句话的得分是 3，因为 love 这个单词在情感词典中，且分值为 3</li>
 </ul>
 </li>
 <li>计算有效词数量：也就是过滤掉 stop words。所谓 Effective Word Count(EWC) 可以这样计算 EWC = 总单词数目 - 停止词的数目<ul>

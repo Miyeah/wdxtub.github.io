@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-26T17:46:29.000Z</updated>
+  <updated>2016-02-26T17:49:26.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/25/cc-p1/"/>
     <id>http://wdxtub.com/2016/02/25/cc-p1/</id>
     <published>2016-02-26T00:35:05.000Z</published>
-    <updated>2016-02-26T17:46:29.000Z</updated>
+    <updated>2016-02-26T17:49:26.000Z</updated>
     <content type="html"><![CDATA[<p>从这次作业开始，就要小组作业和个人作业并行了。这次的项目主要是在云上分析 Twitter 的相关内容，与以前 GB 级数据不一样，这次我们要处理 TB 级的数据，还是很刺激的。另，这是小组作业，在此先感谢我的队友 @leiyu 和 @shushanc</p>
 <a id="more"></a>
 <hr>
@@ -247,7 +247,7 @@
 <ol>
 <li>文本切分：把推文分隔成一个一个词，注意，这里堆单词的定义是：one or more consecutive alphanumeric characters ([a-zA-Z0-9]+) separated by non-alphanumeric character(s) ([^a-zA-Z0-9])</li>
 <li>计算情感得分：简单来说，就是有一个小写字母的英文单词情感词典，只要推文中的某个词在这个词典里，就加上这个词的情感得分（初始分为零），情感词典来自 <a href="http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010" target="_blank" rel="external">AFINN</a> 数据集，在<a href="https://cmucc-datasets.s3.amazonaws.com/15619/f15/afinn.txt" target="_blank" rel="external">这里</a>下载 <ul>
-<li>例如：”I love Cloud Computing” 这句话的得分是 3，因为 “love” 这个单词在情感词典中，且分值为 3</li>
+<li>例如：”I love Cloud Computing” 这句话的得分是 3，因为 love 这个单词在情感词典中，且分值为 3</li>
 </ul>
 </li>
 <li>计算有效词数量：也就是过滤掉 stop words。所谓 Effective Word Count(EWC) 可以这样计算 EWC = 总单词数目 - 停止词的数目<ul>
