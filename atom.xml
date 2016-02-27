@@ -46,16 +46,15 @@
     <link href="http://wdxtub.com/2016/02/26/sad-17/"/>
     <id>http://wdxtub.com/2016/02/26/sad-17/</id>
     <published>2016-02-26T21:06:50.000Z</published>
-    <updated>2016-02-26T21:10:32.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
+    <updated>2016-02-27T01:13:43.000Z</updated>
+    <content type="html"><![CDATA[<p>安全和信任，同样也是系统设计中不可以获取的一部分，这节课我们来了解一下常见的解决方案和应用场景。</p>
+<a id="more"></a>
 <hr>
  公式 
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
+    <![CDATA[<p>安全和信任，同样也是系统设计中不可以获取的一部分，这节课我们来了解一下常见的解决方案和应用场景。</p>]]>
+    
     </summary>
     
       <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
@@ -73,16 +72,132 @@
     <link href="http://wdxtub.com/2016/02/26/sad-16/"/>
     <id>http://wdxtub.com/2016/02/26/sad-16/</id>
     <published>2016-02-26T21:06:46.000Z</published>
-    <updated>2016-02-26T21:10:05.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
+    <updated>2016-02-27T01:09:34.000Z</updated>
+    <content type="html"><![CDATA[<p>虽然非功能属性不会直接体现在具体的实现上，但仍然会对如何实现各种功能产生巨大的影响，这节课我们就来具体了解一下。</p>
+<a id="more"></a>
 <hr>
- 公式 
+<p>非功能属性指的是那些比较『虚』的，但是对整个系统又有举足轻重影响的概念，比如：</p>
+<ul>
+<li>Efficiency</li>
+<li>Complexity</li>
+<li>Scalability</li>
+<li>Heterogeneity</li>
+<li>Adaptability</li>
+<li>Dependability</li>
+</ul>
+<p>产品设计之初，都是根据其功能属性来决定的，但是确定合适的功能并不简单，市场需求、竞争对手等各种条件的限制。可是系统的最终成败，还是由非功能属性决定的，比方说反应速度、稳定性等等</p>
+<h2 id="u6548_u7387_Efficiency_u3002"><a href="#u6548_u7387_Efficiency_u3002" class="headerlink" title="效率 Efficiency。"></a>效率 Efficiency。</h2><p>效率，简单来说，就是用最小的代价做最多的事情，我们要强调的是，对效率的追求，是从设计架构时开始的！</p>
+<p>对于组件来说</p>
+<ul>
+<li>做『小』的组件</li>
+<li>保持组件的接口简单和紧凑</li>
+<li>为同一个功能提供多个接口</li>
+<li>隔离数据组件和运算组件</li>
+<li>隔离数据和元数据</li>
+</ul>
+<p>对于连接器来说</p>
+<ul>
+<li>仔细选择连接器</li>
+<li>小心运用广播机制的</li>
+<li>可能的话多利用异步机制来交互</li>
+<li>Use location/distribution transparency judiciously（翻译不能）</li>
+</ul>
+<p>对于架构来说</p>
+<ul>
+<li>经常交互的组件应该更紧密</li>
+<li>仔细选择连接器</li>
+<li>考虑不同架构对效率的影响</li>
+</ul>
+<h2 id="u590D_u6742_u5EA6_Complexity"><a href="#u590D_u6742_u5EA6_Complexity" class="headerlink" title="复杂度 Complexity"></a>复杂度 Complexity</h2><p>复杂度，简单来说，就是整个系统在完成指定功能的前提下，有多简洁多清晰。</p>
+<p>对于组件来说</p>
+<ul>
+<li>不同的特性放到不同的组件中</li>
+<li>组件只负责功能本身</li>
+<li>负责处理的组件应该不受数据格式变化的影响</li>
+<li>组件应该能够轻松结合起来</li>
+</ul>
+<p>对于连接器来说</p>
+<ul>
+<li>显式处理连接器</li>
+<li>连接器只负责交互</li>
+<li>不同的特性放到不同的连接器中</li>
+</ul>
+<p>对于架构来说</p>
+<ul>
+<li>去掉不必要的依赖</li>
+<li>显式管理所有的依赖</li>
+<li>运用层级继承结构</li>
+</ul>
+<h2 id="u4F38_u7F29_u6027_Scalability"><a href="#u4F38_u7F29_u6027_Scalability" class="headerlink" title="伸缩性 Scalability"></a>伸缩性 Scalability</h2><p>伸缩性，简单来说，就是在不同平台，用不同数量的机器运行时，需不需要改动很多。</p>
+<p>对于组件来说</p>
+<ul>
+<li>每个组件有单一且清晰定义的目的</li>
+<li>每个组件有单一且容易理解的接口</li>
+<li>组件不应该负责交互</li>
+<li>避免不必要的多样性</li>
+<li>需要的时候复制数据</li>
+</ul>
+<p>对于连接器来说</p>
+<ul>
+<li>使用显式连接器</li>
+<li>每个连接器有清晰定义的责任</li>
+<li>选择满足要求的最简单的连接器</li>
+<li>注意直接/间接依赖</li>
+<li>避免在连接器中放功能相关的代码</li>
+</ul>
+<p>对于架构来说</p>
+<ul>
+<li>避免系统瓶颈</li>
+<li>利用并行处理能力</li>
+<li>数据源靠近数据消费者</li>
+<li>使用合适的架构风格</li>
+<li>Try to make distribution transparent</li>
+</ul>
+<h2 id="u9002_u5E94_u6027_Adaptablity"><a href="#u9002_u5E94_u6027_Adaptablity" class="headerlink" title="适应性 Adaptablity"></a>适应性 Adaptablity</h2><p>适应性，简单来说，就是在面对环境和需求变更时，是否需要改动很多。</p>
+<p>对于组件来说</p>
+<ul>
+<li>每个组件有单一且清晰定义的目的</li>
+<li>最小化组件间的相互依赖</li>
+<li>组件不应该负责交互</li>
+<li>处理和数据隔离</li>
+<li>数据和元数据隔离</li>
+</ul>
+<p>对连接器来说</p>
+<ul>
+<li>每个连接器有清晰定义的责任</li>
+<li>让连接器足够灵活</li>
+<li>支持连接器组合</li>
+</ul>
+<p>对于架构来说</p>
+<ul>
+<li>使用显示连接器</li>
+<li>使用合适的架构风格</li>
+<li>Try to make distribution transparent</li>
+</ul>
+<h2 id="u53EF_u9760_u6027_Dependability"><a href="#u53EF_u9760_u6027_Dependability" class="headerlink" title="可靠性 Dependability"></a>可靠性 Dependability</h2><p>可靠性，简单来说，就是下面这几个词：Reliability, Availability, Robustness, Fault-tolerant, Survivability, Safety</p>
+<p>对于组件来说</p>
+<ul>
+<li>仔细控制外部组件的依赖</li>
+<li>令组件支持 reflection</li>
+<li>组件包含异常处理机制</li>
+<li>Specify the components’ key state invariants</li>
+</ul>
+<p>对于连接器来说</p>
+<ul>
+<li>严格控制组件的依赖</li>
+<li>保证组件的合理交互</li>
+</ul>
+<p>对于架构来说</p>
+<ul>
+<li>避免单点失败</li>
+<li>关键的功能和数据要有备份机制</li>
+<li>支持系统监控</li>
+<li>支持动态适应</li>
+</ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
+    <![CDATA[<p>虽然非功能属性不会直接体现在具体的实现上，但仍然会对如何实现各种功能产生巨大的影响，这节课我们就来具体了解一下。</p>]]>
+    
     </summary>
     
       <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
@@ -100,16 +215,92 @@
     <link href="http://wdxtub.com/2016/02/26/sad-15/"/>
     <id>http://wdxtub.com/2016/02/26/sad-15/</id>
     <published>2016-02-26T21:06:41.000Z</published>
-    <updated>2016-02-26T21:08:23.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
+    <updated>2016-02-27T00:09:39.000Z</updated>
+    <content type="html"><![CDATA[<p>上节课我们了解了具体分析不同架构的方法，这节课我们主要来看看，如何应用不同的架构。</p>
+<a id="more"></a>
 <hr>
- 公式 
+<h2 id="u5206_u5E03_u5F0F/_u7F51_u7EDC_u67B6_u6784"><a href="#u5206_u5E03_u5F0F/_u7F51_u7EDC_u67B6_u6784" class="headerlink" title="分布式/网络架构"></a>分布式/网络架构</h2><p>类似『没有摩擦力』的小滑块，分布式架构是『乐观』建立在如下『完美』假设之上的，很多时候都难以满足：</p>
+<ul>
+<li>网络是可靠的</li>
+<li>延迟是没有的</li>
+<li>带宽是无限的</li>
+<li>网络是安全的</li>
+<li>拓扑结构是不变的</li>
+<li>只有一个管理员</li>
+<li>传输数据是不要钱的</li>
+<li>网络是多种多样的</li>
+</ul>
+<p>虽然我们知道这些假设都是『美好的愿望』，不过我们还是借此建立起了一个庞大的分布式系统，也就是—— WWW（万维网）。作为一个分布式、去中心化的超媒体，整个 Web 的架构和代码是完全分离的，或者说，其实没有任何的代码去实现这个架构。我们有的，只是对于这个架构中不同组件的不同实现（比如说不同的浏览器）。</p>
+<p>从架构的角度来看，就会发现互联网可能是这个世界上最成功的应用，更神器的是，居然没有任何代码去实现所谓『架构』！</p>
+<p>所以我们知道，架构并不一定是一个有形的需要实现的东西，可能本身只是一种思想一种约定，不同的组件组合起来，就成为了架构。</p>
+<h3 id="REST"><a href="#REST" class="headerlink" title="REST"></a>REST</h3><p>我们总是能看到 RESTful API 这个词，但是到底是个什么意思？不妨从最基本的规则开始</p>
+<ol>
+<li>最关键的一步是把信息抽象成为以 URL 命名的资源。只要是能被命名的信息，就可以是一个资源</li>
+<li>资源的表示方法是一系列字节，加上自描述的 metadata，具体的表示形式可以由不同的 REST 组件协调确定</li>
+<li>所有的交互都是上下文无关的，每次交互都包含所需所有信息，不依赖于之前的请求</li>
+<li>每个组件只执行预定义好的方法，处理完成之后把资源传递给其他组件</li>
+<li>使用幂等操作和表达形式来支持缓存和重用</li>
+<li>The presence of intermediaries is promoted. Filtering or redirection intermediaries may also use both the metadata and the representations within requests or responses to augment, restrict, or modify requests and responses in a manner that is transparent to both the user agent and the origin server.(不知道怎么翻译)</li>
+</ol>
+<p>下面是一个例子：</p>
+<p><img src="/images/14565259010138.jpg" alt="REST 的一个实例"></p>
+<p>在 REST 中的数据元素包含下面的内容：</p>
+<ul>
+<li>Resource</li>
+<li>Resource ID</li>
+<li>Representation: Data + metadata</li>
+<li>Representation metadata</li>
+<li>Resource metadata</li>
+<li>Control data</li>
+</ul>
+<p>而具体的连接器有以下例子：</p>
+<ul>
+<li>client: libwww, libwww-perl</li>
+<li>server: libwww, Apache API, NASPI</li>
+<li>cache: brower cache, Akamai cache network</li>
+<li>resolver: bind (DNS lookup library)</li>
+<li>tunnel: SOCKS, SSL after HTTP CONNECT</li>
+</ul>
+<p>最后是组件的例子</p>
+<ul>
+<li>User agent: brower</li>
+<li>Origin server: Apache Server, Microsoft IIS</li>
+<li>Proxy: Selected by client</li>
+<li>Gateway: Squid, CGI, Reverse proxy(Controlled by server)</li>
+</ul>
+<h2 id="u53BB_u4E2D_u5FC3_u5316_u67B6_u6784"><a href="#u53BB_u4E2D_u5FC3_u5316_u67B6_u6784" class="headerlink" title="去中心化架构"></a>去中心化架构</h2><p>所谓去中心化架构，实际上可以看成是某种意义上的『自治』与『分权』，网络中的不同组件可以有不同的行为，计算的过程也是分布式的。就好像我们现实生活中的合作一样。</p>
+<p>比较有代表性了两个架构，就是我们下面要说的点对点和 web 服务。</p>
+<h3 id="u70B9_u5BF9_u70B9"><a href="#u70B9_u5BF9_u70B9" class="headerlink" title="点对点"></a>点对点</h3><p>去中心化的资源发现与共享，如 Napster 与 Gnutell，Skype 与 BitTorrent，也就是说没有一个所谓的『主服务器』来存储各种信息，每一台机子既可以看做是『客户端』，也可以认为是『服务端』。</p>
+<ul>
+<li>每个组件是相互独立的，有其自己的状态与控制线程。</li>
+<li>连接器：通常是自定义的网络协议</li>
+<li>数据元素：网络消息</li>
+<li>拓扑结构：动态随机有重复连接的网络</li>
+</ul>
+<p>这种结构通过控制流和资源分布支持去中心化计算。即使有节点出现问题，也不会受到很大影响。</p>
+<p>后面的内容比较常规（因为课本比较老 PS 老师年纪不大怎么也这么老派），大部分内容维基上的内容都比较详细了，这里不赘述，具体可以参考：</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/Web%E6%9C%8D%E5%8A%A1" target="_blank" rel="external">Web服务</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6" target="_blank" rel="external">机器人学</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E9%A3%9B%E8%A1%8C%E6%A8%A1%E6%93%AC%E5%99%A8" target="_blank" rel="external">飞行模拟器</a></li>
+</ul>
+<h2 id="u5982_u4F55_u5904_u7406_u590D_u6742_u6027"><a href="#u5982_u4F55_u5904_u7406_u590D_u6742_u6027" class="headerlink" title="如何处理复杂性"></a>如何处理复杂性</h2><p>虽然前面没有介绍飞行模拟器，但是因为需要比较现实的『模拟』，所以可以想到整个系统肯定是比较复杂的。于是我们怎么样能通过设计来减小复杂度呢？</p>
+<ul>
+<li>首先可以采用结构化建模的方法，基于面向对象设计来处理子系统和组件，目标是提高可维护性，集成性与可拓展性。</li>
+<li>软件部分，预先给不同的功能集合分簇，限制不合理的数据流与控制流，尽量减少数据类型。</li>
+<li>最后，每个组件保证封装性，计算不带副作用，不同组件之间要有交流和同步。</li>
+</ul>
+<p>总结起来有以下四条</p>
+<ol>
+<li>好的架构是成功的一半</li>
+<li>好的架构源于对问题领域的深入理解</li>
+<li>好的架构可能是若干简单架构的结合</li>
+<li>开发新架构需要话很大力气，也要很小心。不过通常来说都不需要这么做。</li>
+</ol>
 ]]></content>
     <summary type="html">
-    <![CDATA[<a id="more"></a>
-<hr>
- 公式 
-]]>
+    <![CDATA[<p>上节课我们了解了具体分析不同架构的方法，这节课我们主要来看看，如何应用不同的架构。</p>]]>
+    
     </summary>
     
       <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
