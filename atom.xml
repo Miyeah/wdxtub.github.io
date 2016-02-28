@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-27T23:52:35.000Z</updated>
+  <updated>2016-02-28T02:41:31.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[第 7 周 - 假行僧]]></title>
+    <link href="http://wdxtub.com/2016/02/27/fake-sadhu/"/>
+    <id>http://wdxtub.com/2016/02/27/fake-sadhu/</id>
+    <published>2016-02-28T01:41:16.000Z</published>
+    <updated>2016-02-28T02:41:31.000Z</updated>
+    <content type="html"><![CDATA[<p>我要从南走到北，我还要从白走到黑，我要人们都看到我，却不知道我是谁。</p>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>深秋，夕阳，酒馆。偌大的厅堂，除了三三两两坐在角落窃窃私语的人，有这么一个人，坐在酒馆正中。衣衫褴褛，大义凛然，手里拿着一壶酒，一饮而尽。</p>
+<p>起身，回头，默念。去吧，朋友，你的灵魂与我同在。</p>
+</blockquote>
+<p>不知道为什么，无论是暗黑破坏神中的武僧，还是英雄联盟中的盲僧，又或是金庸笔下的虚竹，古龙笔下的无花，都着实出彩，也倍受大家喜爱。</p>
+<p>对我来说，僧人的形象是两面的，既有悲天悯人苦海慈航，也有明心见性不二法门，一为外，一为内。再加一点，恐怕要数『酒肉穿肠过』这般洒脱。僧人讲究修行讲究开悟，这两个事情都需要漫长的积累和隐忍，还得心无杂念，想法太多，往往也就看不清自己。一个人心里光是太急切想去做一件事，就难免会做错了。</p>
+<p>武功本就是入世的，只要你肯用心，无论做什么事的时候，都一样可以锻炼你的武功。武学的精义只有四个字——专心、苦练。其实这四个字也同样适于世上的每一件事。无论你做什么，若要想出人头地，就只有专心、苦练。</p>
+<p>前些天和爸爸妈妈打电话，一直被教导『去做自己喜欢的事情』。首先得要知道自己喜欢什么，然后再努力去做，这恐怕就是所谓『成功』的秘笈了。这些天有师弟师妹来咨询相关经验，其实我倒是觉得，很多事情不必弄得一清二楚才敢去做，要相信自己能兵来将挡水来土掩。如果硬要给些什么经验，一句话也能说清楚：</p>
+<blockquote>
+<p>不要感动自己，要成为自己</p>
+</blockquote>
+<p>还有就是作业重要，考试重要，但是朋友和伙伴比这些都重要。所谓友情不是嘴上说说而已，更是应该在朋友需要的时候，出现在你最该出现的地方——朋友身边。这些才是最值得去做的事情。</p>
+<p>往西岸跑了这么多趟，虽然没有实际去工作体验过，但是也借着面试的机会，近距离观察了小公司大公司。最终得到的结论就是：不合适，不喜欢。拿到 offer 当然开心，毕竟也是一种肯定，不过还是得像之前拒绝其他 offer 一样，甩下一句『大丈夫居于天地间，岂能久居人下』了。</p>
+<p>假设我有十成功力，那么写代码可能只是其中的两成，虽然说这两成对于程序员日常工作已经绰绰有余了，可是我更想在一个我能恣意发挥的地方，向所有人展示我能做的，而不只是在屏幕前完成一个又一个需求，改好一个又一个 bug。</p>
+<p>当然，人各有志，无论什么选择，只要是自己喜欢的，作为朋友，我定当全力支持。</p>
+<p>你把我当朋友，我不能让你丢人。我有这双脚，我有这双腿，我有这千山和万水。我要这所有的所有，但不要恨和悔。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>我要从南走到北，我还要从白走到黑，我要人们都看到我，却不知道我是谁。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="周记" scheme="http://wdxtub.com/tags/%E5%91%A8%E8%AE%B0/"/>
+    
+      <category term="独立" scheme="http://wdxtub.com/tags/%E7%8B%AC%E7%AB%8B/"/>
+    
+      <category term="自我" scheme="http://wdxtub.com/tags/%E8%87%AA%E6%88%91/"/>
+    
+      <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 第 19 课 People, Role, Teams]]></title>
@@ -2447,106 +2490,6 @@
       <category term="category" scheme="http://wdxtub.com/tags/category/"/>
     
       <category term="iOS" scheme="http://wdxtub.com/tags/iOS/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[iTerm2 Version3 动手玩]]></title>
-    <link href="http://wdxtub.com/2016/02/21/iterm-v3-preview/"/>
-    <id>http://wdxtub.com/2016/02/21/iterm-v3-preview/</id>
-    <published>2016-02-21T13:53:13.000Z</published>
-    <updated>2016-02-21T16:20:32.000Z</updated>
-    <content type="html"><![CDATA[<p>经过 18 个月的等待，iTerm2 终于迎来了第三个主要版本！虽然现在还在最后的 Beta 测试，不过很多超强功能已经可以体验了。这篇文章就带大家大致浏览下新功能，以及非常强大的 Shell integration。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u4E3B_u8981_u65B0_u7279_u6027"><a href="#u4E3B_u8981_u65B0_u7279_u6027" class="headerlink" title="主要新特性"></a>主要新特性</h2><p>这一部分先概要介绍一下 3.0 中的主要改进（相当令人惊喜）</p>
-<ul>
-<li>全新的界面设计<ul>
-<li>配合最新 OSX 的扁平设计风格，和系统的整体基调更搭，更好看</li>
-</ul>
-</li>
-<li>Shell Integration<ul>
-<li>基本上可以认为是 login script 的超级强化版本，可以做很多超有意思的事情：命令提示符、命令执行完成的通知、拖拽上传和下载文件等等，这一部分会在后面详细介绍</li>
-</ul>
-</li>
-<li>自动切换 profile<ul>
-<li>比方说在 ssh 到远程机器上，或者进入 root 权限，或者进入某些特定的文件夹都可以自动切换 profile（至少可以变个配色）</li>
-</ul>
-</li>
-<li>Session 恢复<ul>
-<li>简单来说就是不用 tmux 的 tmux</li>
-</ul>
-</li>
-<li>内部显示图片<ul>
-<li>可以使用 <code>imgcat</code> 脚本来在 iTerm2 中显示图片（甚至 GIF 都可以），这一部分会在后面详细介绍</li>
-</ul>
-</li>
-<li>Badges<ul>
-<li>这是一个全新的功能！可以在当前的命令行的右上角显示一些相关信息（比如当前的主机名称或者 git 分支名称），这一部分后面会详细介绍</li>
-</ul>
-</li>
-<li>密码管理器<ul>
-<li>内置的密码管理器可以保存密码到 Mac OS 的 keychain 中，甚至可以在需要输入密码的时候自动打开密码管理器</li>
-</ul>
-</li>
-<li>撤销关闭（回到过去）<ul>
-<li>假如不小心关闭了一个窗口，command + z 就可以重新打开它（记得要在 5 秒之内按）</li>
-</ul>
-</li>
-<li>标签栏现在可以放在左边，即使有很多 tab 也不怕了</li>
-<li>动态 Profiles，可以把 profiles 保存在 JSON 文件中</li>
-<li>不会再找不到光标了，可以高亮当前行或者让其他颜色变暗，总而言之就是显眼</li>
-<li>时间戳功能能够让我看到不同命令的执行时间以及错误在何时发生</li>
-<li>捕获输出，基本上来说，可以用这个功能实现部分 IDE 的便捷操作了</li>
-</ul>
-<p>注：虽然我不用 Alfred，但是新版的 iTerm2 也提供了对应支持，具体请查看官网文档。</p>
-<h2 id="u67E5_u770B_u56FE_u7247"><a href="#u67E5_u770B_u56FE_u7247" class="headerlink" title="查看图片"></a>查看图片</h2><p>非常简单，只要使用 <code>imgcat imagename</code> 就可以显示图片，例如：</p>
-<p><img src="/images/14560666426444.jpg" alt=""></p>
-<p>不过使用之前还是需要配置一下：</p>
-<ol>
-<li>下载两个对应插件 <a href="https://raw.github.com/gnachman/iTerm2/master/tests/imgls" target="_blank" rel="external">imgls</a> <a href="https://raw.github.com/gnachman/iTerm2/master/tests/imgcat" target="_blank" rel="external">imgcat</a></li>
-<li>去掉后缀名，把文件拷贝到 <code>/usr/local/bin</code> 中，并修改权限 <code>chmod 755 /usr/local/bin/imgls /usr/local/bin/imgcat</code></li>
-</ol>
-<p>然后就可以使用啦，如上图所示。另外一种用法是 <code>cat avatar.jpg | imgcat</code>，也是同样的效果：</p>
-<h2 id="Badges"><a href="#Badges" class="headerlink" title="Badges"></a>Badges</h2><p>简单来说就是显示当前终端的信息，如下所示</p>
-<p><img src="/images/14560679607791.jpg" alt=""></p>
-<p>具体的设置也很简单，如果要像我这样显示的话，在 <code>Preferences&gt;Profiles&gt;General&gt;Badge</code> 输入 <code>\(session.username)@\(session.hostname)</code> 即可（这个依赖于 Shell Integration 功能）</p>
-<p>更详细的文档可以查阅<a href="https://iterm2.com/badges.html" target="_blank" rel="external">这里</a></p>
-<h2 id="Shell_Integration"><a href="#Shell_Integration" class="headerlink" title="Shell Integration"></a>Shell Integration</h2><p>这个算是重头戏了，不过需要先安装一下（支持 tcsh, zsh, bash 和 fish）。我是直接在菜单栏里选择 <code>iTerm2 &gt; Install Shell Integration</code> 进行安装的，实际上就是执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://iterm2.com/misc/install_shell_integration.sh | bash</span><br></pre></td></tr></table></figure>
-<p>具体详细的文档在<a href="https://iterm2.com/shell_integration.html" target="_blank" rel="external">这里</a>，本文只挑选一些当下对我很有用的功能</p>
-<h3 id="u5386_u53F2_u547D_u4EE4"><a href="#u5386_u53F2_u547D_u4EE4" class="headerlink" title="历史命令"></a>历史命令</h3><p>有四种方式可以查看：</p>
-<ol>
-<li><code>Edit&gt;Open Command History</code> (快捷键 Shift-Cmd-;)</li>
-<li>自动完成功能（快捷键 Cmd-;）</li>
-<li>Toolbet 中可以显示（这个后面介绍）</li>
-<li>代码提示功能（View&gt;开启 Command Completion）</li>
-</ol>
-<p><img src="/images/14560694592327.jpg" alt="历史命令查看"></p>
-<h3 id="Toolbelt"><a href="#Toolbelt" class="headerlink" title="Toolbelt"></a>Toolbelt</h3><p>在菜单栏中可以进行选择，然后就会出现在侧边栏，功能很多，很好用：</p>
-<p><img src="/images/14560695283473.jpg" alt=""></p>
-<p>选择之后的效果大概是：</p>
-<p><img src="/images/14560695539493.jpg" alt=""></p>
-<h3 id="u5BC6_u7801_u7BA1_u7406_u5668"><a href="#u5BC6_u7801_u7BA1_u7406_u5668" class="headerlink" title="密码管理器"></a>密码管理器</h3><p>我们先设置一个 trigger，如下图所示：</p>
-<p><img src="/images/14560715131681.jpg" alt=""></p>
-<p>然后在需要输入密码的时候，密码管理器会自动弹出：</p>
-<p><img src="/images/14560715581287.jpg" alt=""></p>
-<p>选择对应的帐号密码然后点击 Enter Password，就可以免去输入密码的烦恼了。</p>
-<hr>
-<p>还有很多功能没有摸索出来，网上的资料也比较少，以后有机会再慢慢补充吧。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>经过 18 个月的等待，iTerm2 终于迎来了第三个主要版本！虽然现在还在最后的 Beta 测试，不过很多超强功能已经可以体验了。这篇文章就带大家大致浏览下新功能，以及非常强大的 Shell integration。</p>]]>
-    
-    </summary>
-    
-      <category term="Mac" scheme="http://wdxtub.com/tags/Mac/"/>
-    
-      <category term="iTerm2" scheme="http://wdxtub.com/tags/iTerm2/"/>
-    
-      <category term="终端" scheme="http://wdxtub.com/tags/%E7%BB%88%E7%AB%AF/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
