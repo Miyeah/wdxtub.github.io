@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-28T05:12:56.000Z</updated>
+  <updated>2016-02-28T13:37:44.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[深入理解计算机系统 期中考试复习]]></title>
+    <link href="http://wdxtub.com/2016/02/28/csapp-midterm-review/"/>
+    <id>http://wdxtub.com/2016/02/28/csapp-midterm-review/</id>
+    <published>2016-02-28T13:08:37.000Z</published>
+    <updated>2016-02-28T13:37:44.000Z</updated>
+    <content type="html"><![CDATA[<p>这一次我们主要来回顾一下重要的知识点，以及讲解一些往年试题中容易混淆的概念。</p>
+<a id="more"></a>
+<hr>
+<p>范围是 Chapter 1-3 &amp; Chapter 6</p>
+<p>especially cache memories, stack discipline, floating point, and assembly.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这一次我们主要来回顾一下重要的知识点，以及讲解一些往年试题中容易混淆的概念。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="复习" scheme="http://wdxtub.com/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 期中考试复习]]></title>
@@ -2473,97 +2502,6 @@
       <category term="文件" scheme="http://wdxtub.com/tags/%E6%96%87%E4%BB%B6/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[How to Speak]]></title>
-    <link href="http://wdxtub.com/2016/02/22/how-to-speak/"/>
-    <id>http://wdxtub.com/2016/02/22/how-to-speak/</id>
-    <published>2016-02-22T14:14:09.000Z</published>
-    <updated>2016-02-22T14:27:35.000Z</updated>
-    <content type="html"><![CDATA[<p>因为要当助教的缘故，需要进行语言培训，其中一部分就是如何做展示，这篇日志主要介绍相关的技巧，主要来源自 MIT 的 Patrick Winston 的『How to Speak』小课程。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u5982_u4F55_u5F00_u59CB"><a href="#u5982_u4F55_u5F00_u59CB" class="headerlink" title="如何开始"></a>如何开始</h2><ul>
-<li>了解知识本身加上练习，可以弥补大部分天赋上的差距</li>
-<li>不要用讲笑话来开头，因为听众其实还没有准备好 </li>
-<li>可以用一个承诺来开头，比方说告诉听众，听完我的演讲你们会得到很多有用的东西，这能让听众意识到你要说的内容的价值，并更加认真去听</li>
-<li>列出大纲，第一告诉大家演讲要开始了，第二用清晰的结构让听众意识到现在所处的位置</li>
-</ul>
-<h2 id="u56DB_u5927_u65B9_u6CD5"><a href="#u56DB_u5927_u65B9_u6CD5" class="headerlink" title="四大方法"></a>四大方法</h2><ul>
-<li>Cycling：重复去说一个事情，一次一次又一次<ul>
-<li>从心理学角度来看，重复有助于形成长期记忆</li>
-<li>从概率角度来看，重复可以让之前走神没听到的听众听到</li>
-</ul>
-</li>
-<li>Verbal punctuation：用明确的分隔词来界定架构（首先，其次，等等）<ul>
-<li>能够让因为走神不知道听到哪里的人重新跟上节奏</li>
-</ul>
-</li>
-<li>Near-Miss：在解释复杂概念的时候，用具体的类似的例子，来清晰界定概念的范围<ul>
-<li>比如说要介绍正方形的话，可以顺带介绍长方形，并指出为什么长方形不是正方形，这样就有了明确的区分条件</li>
-</ul>
-</li>
-<li>Ask Quesitions：用常见且易于回答的问题来引导听众<ul>
-<li>一般来说等待 5 秒钟，虽然对于演讲者来说感觉很长，但其实对于回答问题的来说很短    </li>
-<li>注意，目的不是刁难人，而是让大家跟上演讲的节奏</li>
-</ul>
-</li>
-</ul>
-<h2 id="u65F6_u95F4_u548C_u5730_u70B9"><a href="#u65F6_u95F4_u548C_u5730_u70B9" class="headerlink" title="时间和地点"></a>时间和地点</h2><ul>
-<li>最佳时间是早上十点半，如果要在下午三点之后进行演讲，最好准备些吃的，帮助听众补充能量，集中精神</li>
-<li>要足够明亮，如果灯光太暗的话，听众容易睡着</li>
-<li>尽量要选择人能坐满的地方，空着的位置很影响效果</li>
-</ul>
-<h2 id="u4F7F_u7528_u9ED1_u677F"><a href="#u4F7F_u7528_u9ED1_u677F" class="headerlink" title="使用黑板"></a>使用黑板</h2><ul>
-<li>除了语言系统，视觉系统也是我们学习理解新知识非常重要的输入，利用黑板可以增加视觉上的冲击，帮助听众更好地理解内容</li>
-<li>可以在黑板上写写画画，可以列表用作大纲，更重要的是，不用担心手放在哪里了，可以指着黑板上具体的内容进行讲述，就很自然</li>
-</ul>
-<h2 id="u4F7F_u7528_u6295_u5F71_u4EEA"><a href="#u4F7F_u7528_u6295_u5F71_u4EEA" class="headerlink" title="使用投影仪"></a>使用投影仪</h2><ul>
-<li>应该…<ul>
-<li>具体列出每一部分的标题</li>
-<li>使用不同的颜色</li>
-</ul>
-</li>
-<li>不应该…<ul>
-<li>纯粹读 PPT（听众认字儿）</li>
-<li>站到一边（你才是演讲的中心，而不是 PPT，要让观众把注意力集中在你身上）</li>
-<li>把指点棒甩来甩去，分散注意力，所以干脆直接用手就好</li>
-<li>遮住部分内容然后再掀开，这会让部分观众不爽</li>
-</ul>
-</li>
-</ul>
-<h2 id="u9053_u5177"><a href="#u9053_u5177" class="headerlink" title="道具"></a>道具</h2><ul>
-<li>使用道具来增加演示效果，但是注意不要喧宾夺主</li>
-</ul>
-<h2 id="u98CE_u683C"><a href="#u98CE_u683C" class="headerlink" title="风格"></a>风格</h2><ul>
-<li>从成功的演讲者身上学到适合自己的方法，而不是照搬</li>
-<li>可以考虑的：用自己的特质（个性化装束）以及讲故事来吸引听众</li>
-</ul>
-<h2 id="u5982_u4F55_u7ED3_u5C3E"><a href="#u5982_u4F55_u7ED3_u5C3E" class="headerlink" title="如何结尾"></a>如何结尾</h2><ul>
-<li>不要长篇大论说谢谢</li>
-<li>可以用玩笑来结尾</li>
-<li>提醒听众开头所提到的承诺，点题</li>
-<li>Salute the audience</li>
-</ul>
-<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="https://vimeo.com/101543862" target="_blank" rel="external">How to Speak: Lecture Tips from Patrick Winston</a></li>
-<li><a href="http://sixminutes.dlugan.com/speaking-tips-patrick-henry-winston-speak/" target="_blank" rel="external">How to Speak: 7 Speaking Tips from Patrick Henry Winston</a></li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>因为要当助教的缘故，需要进行语言培训，其中一部分就是如何做展示，这篇日志主要介绍相关的技巧，主要来源自 MIT 的 Patrick Winston 的『How to Speak』小课程。</p>]]>
-    
-    </summary>
-    
-      <category term="技巧" scheme="http://wdxtub.com/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-      <category term="演讲" scheme="http://wdxtub.com/tags/%E6%BC%94%E8%AE%B2/"/>
-    
-      <category term="英语" scheme="http://wdxtub.com/tags/%E8%8B%B1%E8%AF%AD/"/>
-    
-      <category term="Thinking" scheme="http://wdxtub.com/categories/Thinking/"/>
     
   </entry>
   
