@@ -19,7 +19,7 @@
 <p>缓存的大小如图所示，对应就是有 4 个 set，所以需要 2 位的 set index，所以进行读入的时候，会根据中间两位来确定在哪个 set 中查找，其中 8 和 0，因为中间两位相同，会产生冲突，导致连续 miss，这个问题可以用多路映射来解决。</p>
 <p>当 E 大于 1 时，也就是每个 set 有 E 个 line 的时候，称之为 E-way Set Associative Cache。这里用 E = 2 来做例子：</p>
 <p><img src="/images/14556282750323.jpg" alt=""></p>
-<p>跟前面所说的一致，这里每个 set 有两个 line，所以就没有那么多 set，也就是说说 set index 可以少一位（之后的例子可以看到）</p>
+<p>跟前面所说的一致，这里每个 set 有两个 line，所以就没有那么多 set，也就是说 set index 可以少一位（之后的例子可以看到）</p>
 <p><img src="/images/14556285710342.jpg" alt=""></p>
 <p>再简述一下整个过程，先从 set index 确定那个 set，然后看 valid 位，接着利用 t bits 分别和每个 line 的 tag 进行比较，如果匹配则命中，那么返回 4 5 位置的数据，如果不匹配，就需要替换，可以随机替换，也可以用 least recently used(LRU) 来进行替换。下面是一个具体的例子：</p>
 <p><img src="/images/14556295742803.jpg" alt=""></p>
