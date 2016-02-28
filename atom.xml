@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-28T04:44:31.000Z</updated>
+  <updated>2016-02-28T05:12:56.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/27/sad-midterm-review/"/>
     <id>http://wdxtub.com/2016/02/27/sad-midterm-review/</id>
     <published>2016-02-28T03:10:51.000Z</published>
-    <updated>2016-02-28T04:44:31.000Z</updated>
+    <updated>2016-02-28T05:12:56.000Z</updated>
     <content type="html"><![CDATA[<p>这一部分是根据老师给出的复习提纲总结的部分相关内容，但是由于架构这个东西太抽象，所以只能尽力去理解一下了。</p>
 <a id="more"></a>
 <hr>
@@ -27,30 +27,57 @@
 <blockquote>
 <p>Why software architecture is important?</p>
 </blockquote>
-<p>很大的题目，不知道老师想看啥，我感觉</p>
+<p>自己的一些思考，之所以重要是因为：</p>
+<ul>
+<li>软件架构影响到传统软件开发的每一个环节</li>
+<li>清晰的软件架构是项目正常推进的指引</li>
+<li>方便重用与修改</li>
+<li>易于分析和测试</li>
+</ul>
 <blockquote>
 <p>Various view points</p>
 </blockquote>
-<p>这个需要看 PPT</p>
+<p>这里应该就是<a href="http://wdxtub.com/2016/01/31/sad-r3/">习题课 3 从不同视角描述系统</a>的内容，几个视角是：</p>
+<ul>
+<li>Function View: 各个模块图，包括接口和依赖</li>
+<li>Information View: 展示 schema，数据模型和数据流，用状态机图来描述系统的信息模型</li>
+<li>Concurrency View: 软件的组件需要在哪里部署和运行</li>
+<li>Deployment View: 主要的软件包是什么</li>
+<li>Development View: 在不同地方运行时，系统是如何运行的。你会如何保证数据一致性？</li>
+</ul>
 <blockquote>
 <p>What does it mean by architecture through software lifecycle?</p>
 </blockquote>
-<p>这个问题本身我都有点不理解</p>
+<p>这个题目在问什么我都有点迷糊，是不是说软件架构在软件的生命周期中的作用？还是其他什么的，大概分下面几个阶段：</p>
+<ul>
+<li>Requirements</li>
+<li>Design </li>
+<li>Coding</li>
+<li>Testing</li>
+</ul>
+<p>不同的过程都会由架构来指引并且对架构的设计和演化有影响</p>
 <blockquote>
 <p>Will architecture design allow creativity</p>
 </blockquote>
-<p>这个也是开放性问题</p>
+<p>这个是开放性问题，我觉得需要回答的要点是：</p>
+<ul>
+<li>允许创新</li>
+<li>但是更要尊重前人的经验</li>
+<li>大部分情况下不需要全新的架构，需要在已有的基础上提高改进</li>
+</ul>
 <blockquote>
 <p>Canonical elements of software architecture</p>
 </blockquote>
+<p>这题就是概念题了，不过之前接触了这么多次，应该有一些印象，主要最后的 configuration 可能比较容易忘</p>
 <ul>
 <li>Component: computation</li>
 <li>Connector: communication / coordination</li>
-<li>Cofiguration: topology and constraints</li>
+<li>Configuration: topology and constraints</li>
 </ul>
 <blockquote>
 <p>Architectural styles vs Architectural patterns</p>
 </blockquote>
+<p>这是我一直比较迷糊的概念，会着重解释一下。</p>
 <ul>
 <li>Architectural styles: Codify key constraints and architectural elements (components, connectors, configurations) found effective used in a family of software systems over a given time period<ul>
 <li>Client/Server, P2P, Object Oriented, Layered, Data-Flow, Pipe and Filter, Blackboard, Rule Based</li>
