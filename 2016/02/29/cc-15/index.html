@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>云计算 第 15 课 分区和复制 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">云计算 第 15 课 分区和复制</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-guestbook"> 技术</i></a><a href="/life/"><i class="icon-about"> 生活</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">云计算 第 15 课 分区和复制</h1><div class="post-meta">2016-02-29 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/02/29/cc-15/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5B66_u4E60_u76EE_u6807"><span class="toc-number">1.</span> <span class="toc-text">学习目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u80CC_u666F_u77E5_u8BC6"><span class="toc-number">2.</span> <span class="toc-text">背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Replication"><span class="toc-number">2.1.</span> <span class="toc-text">Replication</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sharding"><span class="toc-number">2.2.</span> <span class="toc-text">Sharding</span></a></li></ol></li></ol></div></div><div class="post-content"><p>之前我们做的是计算能力的伸缩拓展，这次我们也要对数据库做类似的事情，并且通过具体的场景，来了解键值对存储的应用特点。</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>云计算 第 15 课 分区和复制 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">云计算 第 15 课 分区和复制</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-guestbook"> 技术</i></a><a href="/life/"><i class="icon-about"> 生活</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">云计算 第 15 课 分区和复制</h1><div class="post-meta">2016-02-29 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/02/29/cc-15/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5B66_u4E60_u76EE_u6807"><span class="toc-number">1.</span> <span class="toc-text">学习目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u80CC_u666F_u77E5_u8BC6"><span class="toc-number">2.</span> <span class="toc-text">背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Replication"><span class="toc-number">2.1.</span> <span class="toc-text">Replication</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sharding"><span class="toc-number">2.2.</span> <span class="toc-text">Sharding</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u80CC_u666F_u8BBE_u5B9A"><span class="toc-number">3.</span> <span class="toc-text">背景设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Coordinator"><span class="toc-number">4.</span> <span class="toc-text">Coordinator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4EFB_u52A1_u7B80_u4ECB"><span class="toc-number">5.</span> <span class="toc-text">任务简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5F3A_u4E00_u81F4_u590D_u5236_u673A_u5236"><span class="toc-number">6.</span> <span class="toc-text">强一致复制机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5E73_u5747_u5206_u914D_u5206_u533A_u673A_u5236"><span class="toc-number">7.</span> <span class="toc-text">平均分配分区机制</span></a></li></ol></div></div><div class="post-content"><p>之前我们做的是计算能力的伸缩拓展，这次我们也要对数据库做类似的事情，并且通过具体的场景，来了解键值对存储的应用特点。</p>
 <a id="more"></a>
 <hr>
 <h2 id="u5B66_u4E60_u76EE_u6807"><a href="#u5B66_u4E60_u76EE_u6807" class="headerlink" title="学习目标"></a>学习目标</h2><ol>
@@ -68,6 +68,204 @@
 </table>
 <h3 id="Sharding"><a href="#Sharding" class="headerlink" title="Sharding"></a>Sharding</h3><p>对于分区机制来说，可以直接用下图来描述与复制机制的区别（比较简单这里不详细介绍）</p>
 <p><img src="/images/14567501863377.jpg" alt="三种方式的对比"></p>
+<h2 id="u80CC_u666F_u8BBE_u5B9A"><a href="#u80CC_u666F_u8BBE_u5B9A" class="headerlink" title="背景设定"></a>背景设定</h2><p>简单来说就是要做一个支持 <code>PUT</code> 和 <code>GET</code> 的分布式键值对存储系统，保存以下两种数据：</p>
+<ol>
+<li>销售记录：保存支付密码等关键交易信息，一定要非常安全，不能轻易丢失。用户也会频繁访问购买历史，所以会有很多 <code>GET</code> 的操作，于是会采用复制机制</li>
+<li>匿名日志：包含页面访问及歌曲收听记录等匿名日志，只会在用户行为分析的时候使用，并且对于安全性的要求没那么高，反而是会有很多 <code>PUT</code> 的操作，所以会利用分区机制。</li>
+</ol>
+<p>整个系统的设计如下：</p>
+<p><img src="/images/14567578576946.jpg" alt=""></p>
+<p>每个 datastore 已经帮我们配置好了，所以不必修改，我们需要做的就是折腾好 <code>Coordinator</code> 部分，也就是接收请求并转发给合适的 datastore</p>
+<h2 id="Coordinator"><a href="#Coordinator" class="headerlink" title="Coordinator"></a>Coordinator</h2><p>具体的实现包含两个部分，分别对应前面提到的两种不同的需求。具体的需求如下</p>
+<ul>
+<li>并发执行<ul>
+<li>利用多线程来并行处理不同的请求，已经提供了框架代码</li>
+</ul>
+</li>
+<li>确定的行为<ul>
+<li>不会出现竞争条件，利用各种保证并行安全的技术来实现</li>
+</ul>
+</li>
+<li>非阻塞 <code>PUT</code> 操作<ul>
+<li>具体参考下面的图示</li>
+</ul>
+</li>
+<li>严格排序<ul>
+<li>根据请求到来的顺序处理请求，已有的代码是包含时间戳的</li>
+</ul>
+</li>
+<li>无缓存 Coordinator<ul>
+<li>在处理请求的过程中临时保存请求是可以的，但是不能有持久的缓存</li>
+</ul>
+</li>
+<li>动态策略<ul>
+<li>Coordinator 应该支持后端的变动</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/14567593452426.jpg" alt="错误！阻塞了请求"></p>
+<p><img src="/images/14567593813304.jpg" alt="正确！非阻塞机制"></p>
+<h2 id="u4EFB_u52A1_u7B80_u4ECB"><a href="#u4EFB_u52A1_u7B80_u4ECB" class="headerlink" title="任务简介"></a>任务简介</h2><ul>
+<li>打上标签：<code>Project: 3.2</code></li>
+<li>Datastore: <code>ami-83ba8ae9</code>, <code>t1.micro</code></li>
+<li>Coordinator:  <code>ami-17a4947d</code>, <code>t1.micro</code></li>
+<li>Client:  <code>ami-a05d60ca</code>, <code>m1.small</code></li>
+</ul>
+<p>具体步骤</p>
+<ol>
+<li>开启 3 个 datastore 实例，注意允许 8080 端口的访问</li>
+<li>在浏览器中访问 <code>http://[DATASTORE-DNS]:8080/test</code> 来测试 datastore 是否正常运行</li>
+<li>开启 1  个 coordinator 实例，在 <code>/home/ubuntu/Project3_2/vertx/bin/</code> 可以看到一个 <code>Coordinator.java</code> 文件，我们主要会在这里完成代码</li>
+<li>使用命令 <code>./vertx run Coordinator.java</code> 来启动 coordinator</li>
+<li>第一部分工作我们需要拓展 <code>Coordinator.java</code> 来完成复制机制</li>
+<li>第二部分工作我们需要完成分区机制</li>
+</ol>
+<p>访问接口</p>
+<ul>
+<li><code>http://[Coordinator-DNS]:8080/storage?storage=TYPE_OF_STORAGE</code><ul>
+<li>指定需要支持的存储类型（复制与分区），用来设置具体不同的模式</li>
+</ul>
+</li>
+<li><code>http://[Coordinator-DNS]:8080/put?key=KEY&amp;value=VALUE</code><ul>
+<li>接收键值对并保存在 datastore 实例中</li>
+</ul>
+</li>
+<li><code>http://[Coordinator-DNS]:8080/get?key=KEY&amp;loc=LOCATION</code><ul>
+<li>接收需要查询的 key，并包含指定的获取位置（1/2/3 为对应的序号），在分区机制中，如果指定的实例没有对应的 value，那么返回 0，如果没有指定获取位置，那么就根据哈希的结果从对应的实例中获取</li>
+</ul>
+</li>
+</ul>
+<p>我们还提供了一个辅助类 <code>KeyValueLib</code>，可以在 <code>Coordinator.java</code> 中访问：</p>
+<ul>
+<li><code>KeyValueLib.PUT(String datastoreDNS, String key, String value)</code><ul>
+<li>把键值对保存到对应的实例中</li>
+</ul>
+</li>
+<li><code>KeyValueLib.GET(String datastoreDNS, String key)</code><ul>
+<li>从指定的实例中得到对应 key 的 value</li>
+</ul>
+</li>
+<li>这两个方法都是同步的，不同线程可以同时访问</li>
+</ul>
+<p>在设计 Coordinator 时，可以认为：</p>
+<ul>
+<li>GET 操作的延时是可以忽略的</li>
+<li>可以认为 datastore 实例不会出现崩溃的状况，一旦 <code>KeyValueLib.PUT</code> 方法执行完成，那么对应的实例上的操作也完成，所以需要的同步机制不会太复杂。提示：不需要实现 <a href="http://en.wikipedia.org/wiki/Two-phase_commit_protocol" target="_blank" rel="external">Two-Phase Commit (2PC)</a> 机制</li>
+</ul>
+<h2 id="u5F3A_u4E00_u81F4_u590D_u5236_u673A_u5236"><a href="#u5F3A_u4E00_u81F4_u590D_u5236_u673A_u5236" class="headerlink" title="强一致复制机制"></a>强一致复制机制</h2><p>在分布式应用中，一致性是非常重要的，这里我们简要介绍一下</p>
+<p><img src="/images/14567642451622.jpg" alt="一个银行系统的数据存储"></p>
+<p>如果没有保证强一致性，那么上图中所示的场景可能就会出问题，如果同时取出 <code>$50</code>，那么可能最后的结果是两边都变成 <code>$950</code>，而不是正确的 <code>$900</code>，所以正确的做法是只能让一边完成操作，然后当数据库同步完成后，另一个操作才可以执行。</p>
+<p>根据这个要求，我们的 Coordinator 还需要满足如下的强一致性需求：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">强一致性</td>
+<td style="text-align:center">任何时候从任何复制节点中相同的 key 对应相同的 value</td>
+</tr>
+<tr>
+<td style="text-align:center">严格排序</td>
+<td style="text-align:center">按时间顺序处理请求</td>
+</tr>
+<tr>
+<td style="text-align:center">原子操作</td>
+<td style="text-align:center">所有的操作都应该是原子的，不能同时更新</td>
+</tr>
+<tr>
+<td style="text-align:center">访问控制</td>
+<td style="text-align:center">一个 key 在被更新时其他节点中的对应 key 不能访问</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提示</p>
+</blockquote>
+<ol>
+<li>如果对并行编程不熟悉，需要复习多线程，线程安全和保证执行顺序的策略等相关内容</li>
+<li>需要在给 PUT 排序的时候执行显式同步。注意可能引起的<a href="http://stackoverflow.com/questions/34510/what-is-a-race-condition" target="_blank" rel="external">竞争条件</a></li>
+<li>有若干中方法来处理锁与竞争条件，可以参考<a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html" target="_blank" rel="external">这里</a>以及<a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html" target="_blank" rel="external">同步</a>的详细信息</li>
+<li>使用时间戳来进行排序，<a href="https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html" target="_blank" rel="external">优先队列</a>会很有用</li>
+<li>需要重设 datastore 时，可以访问 <code>http://[Datastore-DNS]:8080/flush</code></li>
+<li>刚连上远程实例的时候会有比较大的延迟，请耐心等待，不要 <code>ctrl+c</code>，不然会出问题</li>
+<li>早点开始，并行编程可能会比想象中要麻烦得多</li>
+</ol>
+<blockquote>
+<p>提交方式</p>
+</blockquote>
+<ol>
+<li>启动一个 <code>m1.small</code>(<code>ami-a05d60ca</code>) 客户端实例</li>
+<li>进入 <code>/home/ubuntu/Project3_2/</code>，包含 <code>storage_checker</code>, <code>config.prop</code>, <code>submitter</code> 和 <code>references</code></li>
+<li>可以用 <code>storage_checker</code> 来检测正确性，但是使用之前需要先填写 <code>config.prop</code>（注意里面 datastore 的顺序要和 <code>Coordinator.java</code> 中的保持一致）</li>
+<li>填写完成后可以使用 <code>./storage_checker.sh replication</code> 来进行测试。</li>
+</ol>
+<h2 id="u5E73_u5747_u5206_u914D_u5206_u533A_u673A_u5236"><a href="#u5E73_u5747_u5206_u914D_u5206_u533A_u673A_u5236" class="headerlink" title="平均分配分区机制"></a>平均分配分区机制</h2><p>在分区机制中最重要的就是哈希函数，使用哈希的话，不可避免会出现<a href="https://en.wikipedia.org/wiki/Collision_(computer_science" target="_blank" rel="external">冲突</a>)的情况，所以评价一个哈希函数好不好，主要看能否使用这个哈希函数把输入尽可能平均分摊到不同的 key 中。</p>
+<p>举个例子，假设我们的输入是 1-6 六个数字，有如下两个哈希函数</p>
+<ul>
+<li>函数 A<ul>
+<li>1,2,3: -&gt; 0</li>
+<li>4,5,6: -&gt; 1</li>
+</ul>
+</li>
+<li>函数 B<ul>
+<li>1,2,3,4,5: -&gt; 0</li>
+<li>6        : -&gt; 1</li>
+</ul>
+</li>
+</ul>
+<p>因为函数 A 使得分布更平均，于是在这个场景中，函数 A 更好。在这个项目中，哈希函数用来决定数据应该存放在哪个数据库实例中，所以我们的目标是设计一个尽可能平均分配请求的哈希函数</p>
+<p>具体的需求如下：</p>
+<ul>
+<li>一致性分区<ul>
+<li>对于给定的 key，只会被分配到同一个实例上，同一个 key 只能存在与一个实例中</li>
+</ul>
+</li>
+<li>一致性哈希<ul>
+<li>对于给定的输入，每次哈希得到的值是一致的</li>
+</ul>
+</li>
+<li>独立数据中心锁<ul>
+<li>对于一个实例的请求不会令其他实例上锁</li>
+</ul>
+</li>
+<li>非阻塞 PUT 操作<ul>
+<li>对于一个实例的请求阻塞其他请求</li>
+</ul>
+</li>
+<li>严格顺序<ul>
+<li>要保持请求的顺序</li>
+</ul>
+</li>
+</ul>
+<p>其他需要注意的地方</p>
+<ul>
+<li>key “a” 必须放在 datastore 1 中</li>
+<li>key “b” 必须放在 datastore 2 中</li>
+<li>key “c” 必须放在 datastore 3 中</li>
+<li>其他的 key 应该尽可能平均分配</li>
+<li>不允许使用 <code>.hashCode()</code> 方法</li>
+</ul>
+<blockquote>
+<p>提示</p>
+</blockquote>
+<ol>
+<li>上一节的提示也适用于这一节</li>
+<li>可以通过数学方法来得到哈希函数，也可以记录下 key 的分布对应来设计</li>
+<li>当一致性模式改变的时候，注意清空你使用的数据结构</li>
+<li>早点开始</li>
+</ol>
+<blockquote>
+<p>提交方式</p>
+</blockquote>
+<ol>
+<li>可以用 <code>storage_checker</code> 来检测正确性，使用之前需要先填写 <code>config.prop</code>（注意里面 datastore 的顺序要和 <code>Coordinator.java</code> 中的保持一致），然后使用 <code>./storage_checker.sh sharding</code> 来测试</li>
+<li>测试完成之后，需要把 <code>Coordinator.java</code> 移动到客户端实例的 <code>/home/ubuntu/Project3_2</code> 文件夹中，对应填写 <code>references</code></li>
+<li>TA 会人工给代码打分，尤其是可能的竞争条件，还要注意代码风格</li>
+</ol>
 </div><div class="tags"><a href="/tags/CMU/">CMU</a><a href="/tags/云计算/">云计算</a><a href="/tags/数据库/">数据库</a></div><div class="post-nav"><a href="/2016/02/28/csapp-midterm-review/" class="next">深入理解计算机系统 期中考试复习<i class="icon-next"></i></a></div><div data-thread-key="2016/02/29/cc-15/" data-title="云计算 第 15 课 分区和复制" data-url="http://wdxtub.com/2016/02/29/cc-15/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/02/29/cc-15/" data-title="云计算 第 15 课 分区和复制" data-url="http://wdxtub.com/2016/02/29/cc-15/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
 <script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
 <script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
@@ -79,4 +277,34 @@
     (document.getElementsByTagName('head')[0]
         || document.getElementsByTagName('body')[0]).appendChild(ds);
 })();
-</script></div></body></html>
+</script></div><!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body></html>
