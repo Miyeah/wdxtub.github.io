@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wdxtub.com/about/index.html</loc>
+    <lastmod>2016-02-29T13:11:32.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/02/29/cc-15/</loc>
-    <lastmod>2016-02-29T12:54:38.000Z</lastmod>
+    <lastmod>2016-02-29T13:11:09.000Z</lastmod>
   </url>
   
   <url>
@@ -14,11 +19,6 @@
   <url>
     <loc>http://wdxtub.com/2016/02/15/csapp-12/</loc>
     <lastmod>2016-02-28T15:35:44.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/about/index.html</loc>
-    <lastmod>2016-02-28T13:43:47.000Z</lastmod>
   </url>
   
   <url>

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-29T12:54:38.000Z</updated>
+  <updated>2016-02-29T13:11:09.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[云计算 第 14 课 分区和复制]]></title>
+    <title><![CDATA[云计算 第 15 课 分区和复制]]></title>
     <link href="http://wdxtub.com/2016/02/29/cc-15/"/>
     <id>http://wdxtub.com/2016/02/29/cc-15/</id>
     <published>2016-02-29T12:01:54.000Z</published>
-    <updated>2016-02-29T12:54:38.000Z</updated>
+    <updated>2016-02-29T13:11:09.000Z</updated>
     <content type="html"><![CDATA[<p>之前我们做的是计算能力的伸缩拓展，这次我们也要对数据库做类似的事情，并且通过具体的场景，来了解键值对存储的应用特点。</p>
 <a id="more"></a>
 <hr>
@@ -61,7 +61,7 @@
 <p><img src="/images/14567497209474.jpg" alt="有 3 个复制节点的数据库"></p>
 <p>在复制的情况下，主要的优化机制是提供不同级别的一致性保证。在一个数据库节点的某条记录被修改时，其他数据库中对应的记录是不可访问的，直到三个数据库的数据完全同步之后才可以，如下：</p>
 <p><img src="/images/14567498771413.jpg" alt="强一致性保证"></p>
-<p>并且，操作的不同顺序也会以时间戳的方式进行记录和排序，为了保证强一致性，需要保证任何时候从任何复制节点读取的数据都是一样的，具体的规则如下表所示（为了保证概念准确性，用英文原文）</p>
+<p>并且，操作的不同顺序也会以时间戳的方式进行记录和排序，为了保证强一致性，需要保证任何时候从任何复制节点读取的数据都是一样的，具体的规则如下表所示</p>
 <table>
 <thead>
 <tr>
@@ -71,20 +71,20 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Strict Consistency</td>
-<td style="text-align:center">At any point in time to the client’s perspective, the same key must have the same value across all datastore replicas</td>
+<td style="text-align:center">强一致性</td>
+<td style="text-align:center">任何时候从任何复制节点中相同的 key 对应相同的 value</td>
 </tr>
 <tr>
-<td style="text-align:center">Strict Ordering</td>
-<td style="text-align:center">The order in which requests arrive at the coordinator must be the order in which they are fulfilled</td>
+<td style="text-align:center">严格排序</td>
+<td style="text-align:center">按时间顺序处理请求</td>
 </tr>
 <tr>
-<td style="text-align:center">Atomic Operations</td>
-<td style="text-align:center">All requests must be atomic. If one datastore fails to update while the others do, then strong consistency is violated</td>
+<td style="text-align:center">原子操作</td>
+<td style="text-align:center">所有的操作都应该是原子的，不能同时更新</td>
 </tr>
 <tr>
-<td style="text-align:center">Controlled Access</td>
-<td style="text-align:center">While a write request is being fulfilled for a key, no other requests for that key can be done for any datastore until the pending request is completed. Control for each key should be managed separately, so operations for two different keys should proceed unhindered by each other</td>
+<td style="text-align:center">访问控制</td>
+<td style="text-align:center">一个 key 在被更新时其他节点中的对应 key 不能访问，但是不同的 key 不受影响</td>
 </tr>
 </tbody>
 </table>
