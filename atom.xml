@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-02-28T21:54:33.000Z</updated>
+  <updated>2016-02-29T01:03:59.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/02/28/csapp-midterm-review/"/>
     <id>http://wdxtub.com/2016/02/28/csapp-midterm-review/</id>
     <published>2016-02-28T13:08:37.000Z</published>
-    <updated>2016-02-28T21:54:33.000Z</updated>
+    <updated>2016-02-29T01:03:59.000Z</updated>
     <content type="html"><![CDATA[<p>这一次我们主要来回顾一下重要的知识点，以及讲解一些往年试题中容易混淆的概念。</p>
 <a id="more"></a>
 <hr>
@@ -335,6 +335,13 @@
 </ul>
 <p>有了这些线索，就可以『翻译』对应的汇编代码了，答案如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">4</span>;   </span><br><span class="line">    <span class="keyword">switch</span>(a) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            result = c - <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            result = c * <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            result = <span class="number">0x15213</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            c = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">            b = b &amp; c;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            result = b + <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u6808_u7684_u5E94_u7528"><a href="#u6808_u7684_u5E94_u7528" class="headerlink" title="栈的应用"></a>栈的应用</h3><p>这一题主要考察函数调用时候压栈出栈以及栈指针和返回地址的理解，C 代码和对应的汇编代码为：</p>
+<p><img src="/images/14567011035267.jpg" alt=""></p>
+<p>我们需要画出栈中的数据存放表示，具体的函数是 <code>foo(3, 4, 5)</code>，注意要标志出 <code>%ebp</code> 的值</p>
+<p>在调用 <code>foo</code> 函数时 <code>%ebp</code> 的值为 <code>0xffffd858</code>，调用 <code>foo</code> 的函数的返回地址是 <code>0x080483c9</code></p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stack      The diagram starts with theaddresss   arguments for foo()</span><br><span class="line">           +-----------------------------------+0xffffd850 |<span class="string">                5                  </span>|           +-----------------------------------+0xffffd84c |<span class="string">                4                  </span>|           +-----------------------------------+0xffffd848 |<span class="string">                3                  </span>|           +-----------------------------------+0xffffd844 |<span class="string">      return addr 0x080483c9       </span>|           +-----------------------------------+0xffffd840 |<span class="string">        old ebp 0xffffd858         </span>|           +-----------------------------------+0xffffd83c |<span class="string">                3                  </span>|           +-----------------------------------+0xffffd838 |<span class="string">                4                  </span>|           +-----------------------------------+0xffffd834 |<span class="string">      return addr 0x08048397       </span>|           +-----------------------------------+0xffffd830 |<span class="string">        old ebp 0xffffd858         </span>|           +-----------------------------------+</span><br></pre></td></tr></table></figure>
+<p>我们来看看这题要怎么做。首先，老师还是很贴心的给出了第一个参数在栈中的位置，不过开始之前还是先要弄明白我们到底需要在栈中放什么东西。首先是函数的参数（倒着放，这样第一个参数才能先弹出来），然后是返回值地址和旧的 <code>%ebp</code> 指针，这俩是为了告诉指令该去哪，以及栈要去哪的。</p>
+<p>所以答案就呼之欲出了，前三个简单，543 一路下来即可；接下来是返回地址，也就是题目给出的初始条件；再下来是题目给出的初始 ebp；接着是调用 <code>bar</code> 函数的栈排列，也还是参数，但是这里题目是换了顺序的，所以先 3 后 4；然后是返回值地址，找到汇编代码中 call 的下一句，就是它了；最后一句可有可无，不过为了清晰 ebp 的做用，还是写上，应该指向旧的 ebp 地址，也就是 <code>0xffffd840</code>，至此，题目完成。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这一次我们主要来回顾一下重要的知识点，以及讲解一些往年试题中容易混淆的概念。</p>]]>
