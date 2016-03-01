@@ -1,175 +1,116 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>深入理解计算机系统 第 4 课 Floating Point | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">深入理解计算机系统 第 4 课 Floating Point</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-guestbook"> 技术</i></a><a href="/life/"><i class="icon-about"> 生活</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">深入理解计算机系统 第 4 课 Floating Point</h1><div class="post-meta">2016-01-18 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/01/18/csapp-4/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IEEE_Floating_Point"><span class="toc-number">1.</span> <span class="toc-text">IEEE Floating Point</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Normalized_Values"><span class="toc-number">1.1.</span> <span class="toc-text">Normalized Values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Denormalized_Values"><span class="toc-number">1.2.</span> <span class="toc-text">Denormalized Values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Special_Values"><span class="toc-number">1.3.</span> <span class="toc-text">Special Values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5C0F_u7ED3"><span class="toc-number">1.4.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rounding"><span class="toc-number">1.5.</span> <span class="toc-text">Rounding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u6D6E_u70B9_u6570_u4E58_u6CD5"><span class="toc-number">1.6.</span> <span class="toc-text">浮点数乘法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u6D6E_u70B9_u6570_u52A0_u6CD5"><span class="toc-number">1.7.</span> <span class="toc-text">浮点数加法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C__u8BED_u8A00_u4E2D_u7684_u6D6E_u70B9_u6570"><span class="toc-number">1.8.</span> <span class="toc-text">C 语言中的浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Puzzles"><span class="toc-number">1.9.</span> <span class="toc-text">Puzzles</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="post-content"><p>了解了数据在内存中的基本存储形式，同时也知道了整型的表达方法，这一讲我们来看看另一大类别的数字——浮点数——是如何在计算机中表示的。</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>深入理解计算机系统 第 4 课 Machine Basics | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">深入理解计算机系统 第 4 课 Machine Basics</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-guestbook"> 技术</i></a><a href="/life/"><i class="icon-about"> 生活</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">深入理解计算机系统 第 4 课 Machine Basics</h1><div class="post-meta">2016-01-18 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/01/18/csapp-4/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Intel__u5904_u7406_u5668_u7B80_u53F2"><span class="toc-number">1.</span> <span class="toc-text">Intel 处理器简史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C__u8BED_u8A00_uFF0C_u6C47_u7F16_u548C_u673A_u5668_u4EE3_u7801"><span class="toc-number">2.</span> <span class="toc-text">C 语言，汇编和机器代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u6C47_u7F16_u57FA_u7840"><span class="toc-number">3.</span> <span class="toc-text">汇编基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u79FB_u52A8_u6570_u636E"><span class="toc-number">3.1.</span> <span class="toc-text">移动数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5BFB_u5740"><span class="toc-number">3.2.</span> <span class="toc-text">寻址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u7B97_u672F_u8FD0_u7B97_u4E0E_u903B_u8F91_u8FD0_u7B97"><span class="toc-number">4.</span> <span class="toc-text">算术运算与逻辑运算</span></a></li></ol></div></div><div class="post-content"><p>从这一讲开始，我们接触到更多机器相关的内容，这次要说的是基础知识，为之后更深入讲解打下基础。</p>
 <a id="more"></a>
 <hr>
-<p>二进制浮点数的表示，其实和我们日常生活中常见的十进制的方式是一致的，都是相当于每一位的系数，乘以每一位的数值，然后把结果加起来，如下图所示：</p>
-<p><img src="/images/csapp13.jpg" alt="csapp13"></p>
-<p>所以我们其实可以用一个统一的公式来表达：</p>
-<p>$$ \sum_{k=-j}^ib_k\times 2^k $$</p>
-<p>例如</p>
-<p>$$ 5\frac{3}{4}=101.11_2 \;,\; 2\frac{7}{8}=10.111_2 \;,\; 1\frac{7}{16}=1.0111_2 $$</p>
-<p>可以看到除以二就相当于右移，并且可以横跨小数点。注意 $0.111…_2$ 非常接近于 1，因为 </p>
-<p>$$ 1/2 + 1/4 + 1/8 + … + 1/2^i + … \to 1.0$$</p>
-<p>通常用 $1.0-\epsilon$ 来表示这个值。</p>
-<p>细心的同学就会发现，这种表达方式其实是比较明显的限制的，比如说，只有形为 $\frac{x}{2^k}$ 的小数部分可以被精确表示，其他的数字会变成循环的小数，例如：$\frac{1}{3}=0.0101010101[01]…_2$。</p>
-<p>除此之外，另一个问题在于，如果给定了 w 个比特，能够表达的数字其实是有限的。</p>
-<h2 id="IEEE_Floating_Point"><a href="#IEEE_Floating_Point" class="headerlink" title="IEEE Floating Point"></a>IEEE Floating Point</h2><p>实话说，这个标准更多是从数值角度来建立的，对于舍入，上溢出和下溢出都有比较好的处理方法，但与此同时，给硬件优化带来了比较大的困难。从理解的角度来看，也不够直观，但是好在主流的 CPU 都支持浮点数，所以我们不必过多涉及这方面的细节，但是了解定义本身还是很重要的。</p>
-<p>我们用下面的公式来表达浮点数：</p>
-<p>$$(-1)^s \; M \; 2^E$$</p>
-<p>其中 s 是符号位，决定正负；M 通常是一个值在 [1.0, 2.0) 的小数；E 是次方数。具体编码的时候是这样的：</p>
-<p><img src="/images/csapp14.jpg" alt="csapp14"></p>
-<p>其中 s 对应着符号位，exp 对应着 E（注意，不一定等于 E，因为位数限制表达能力有限），frac 对应着 M（注意，不一定等于 M，因为位数限制表达能力有限）。</p>
-<p>不同的位数就代表了不同的表示能力，也就是单精度，双精度，扩展精度的来源，具体的位数表示如下：</p>
-<p><img src="/images/csapp15.jpg" alt="csapp15"></p>
-<h3 id="Normalized_Values"><a href="#Normalized_Values" class="headerlink" title="Normalized Values"></a>Normalized Values</h3><p>在 $exp \ne 000…0$ 和 $exp \ne 111…1$ 时，表示的其实都是规范化的值，为什么说是规范化呢？这里只需要大概知道因为实数轴上原来连续的值会被规范到有限的定值上并且这些定值之间的间距也是不一样的，具体可以通过后面给出的例子来理解（所以现在不明白也不用担心）</p>
-<p>$$v=(-1)^s \; M \; 2^E$$</p>
-<p>这里的 E 是一个偏移的值 $$E=Exp-Bias$$，其中</p>
+<h2 id="Intel__u5904_u7406_u5668_u7B80_u53F2"><a href="#Intel__u5904_u7406_u5668_u7B80_u53F2" class="headerlink" title="Intel 处理器简史"></a>Intel 处理器简史</h2><p>这一讲的部分内容在我之前上过的 18640 Foundation of Computer Architecture 中也有涉及，但是重点不同，这里会结合这两门课的内容做一个简单的介绍。</p>
+<p>首先介绍的就是处理器，作为计算机的大脑，虽然有很多种，这里只介绍 Intel x86 架构的处理器。课堂上介绍了 Intel 处理器的大致发展历史和特点，我简要说明一下。</p>
+<p>作为统治笔记本桌面电脑服务器市场的处理器，x86 处理器是一个一直在进化的产品，甚至兼容 1978年的 8086 的指令集。值得注意的是，x86 采用的是 Complex instruction set computer(CISC)，之所以称为复杂指令，是因为有许许多多不同格式的不同指令（对应的是 RISC）</p>
+<p>整个 Intel x86 的发展史很长，这里提几个关键的时间节点和对应产品：</p>
 <ul>
-<li>Exp: 是 exp 编码区域的无符号数值</li>
-<li>Bias：值为 $2^{k-1} - 1$ 的偏移量，其中 k 是 exp 编码的位数，也就是说<ul>
-<li>单精度：127（Exp: 1…254, E: -126…127）</li>
-<li>双精度：1023（Exp: 1…2046, E: -1022…1023）</li>
+<li>1978 年：8086，第一个 16 位处理器，主要为 IBM PC 和 DOS 设计，有 1MB 的地址空间</li>
+<li>1985 年：386，第一个 32 位 Intel 处理器(IA32)，添加了 flat addressing，使得可以运行 Unix</li>
+<li>2004 年：Pentium 4E，第一个 64 位 Intel 处理器(x86-64)</li>
+<li>2006 年：Core 2，第一个 多核 Intel 处理器</li>
+<li>2008 年：Core i7，四核（也就是我们做实验用的机器）</li>
+</ul>
+<p><img src="/images/14531672465886.jpg" alt=""></p>
+<p>随着时代和科技的发展，除了最基本的运算指令集，还有一些其他的特性：</p>
+<ul>
+<li>增加了支持多媒体操作处理的指令</li>
+<li>启用了更加高效的执行条件操作的指令</li>
+<li>从 32 位迁移的 64 位</li>
+<li>更多的运算核心</li>
+</ul>
+<p>一个另外的趋势是集成，比如说 2015 年的 Core i7 Broadwell，可以从下图看到处理器芯片中加入了原来主板才有的许多部件，如 PCIe, SATA, DDR3 等等。</p>
+<p><img src="/images/14531674473247.jpg" alt=""></p>
+<p>顺带说一下千年老二 AMD，主打性价比，研发的 Opteron 系列是 Pentium 4 的强劲对手，并且开发了自己的 64 位拓展 x86-64。但是近年来 Intel 重新找回厂子，AMD 开始打酱油。</p>
+<p>Intel 在 64 位处理器的发展并不算顺风顺水，2001 年本打算使用全新的架构快速从 IA32 转换到 IA64，但是糟糕的性能反倒给了 AMD 机会。后者在 2003 年发布的 x86-64(现在叫 AMD64) 架构明显更厉害，搞得 Intel 疲于应战，最后在 2004 年搞出来一个叫 EM64T 的东西，其实几乎和 AMD64 一样。现在除了某些低端的处理器，几乎都支持 x86-64，这也是这门课主要要讲的内容。</p>
+<h2 id="C__u8BED_u8A00_uFF0C_u6C47_u7F16_u548C_u673A_u5668_u4EE3_u7801"><a href="#C__u8BED_u8A00_uFF0C_u6C47_u7F16_u548C_u673A_u5668_u4EE3_u7801" class="headerlink" title="C 语言，汇编和机器代码"></a>C 语言，汇编和机器代码</h2><p>先介绍一些定义：</p>
+<blockquote>
+<p>Architecture: (also ISA, instruction set architecture) The parts of a processor design that one needs to understand or write assembly/machine code. (Examples: instruction set specification, registers)</p>
+<p>Microarchitecture: Implementation of the architecture. (Examples: cache sizes and core frequency)</p>
+</blockquote>
+<ul>
+<li>Code Forms:<ul>
+<li>Machine Code: The byte-level programs that a processor executes</li>
+<li>Assembly Code: A text prepresentation of machine code</li>
+</ul>
+</li>
+<li>Example ISAs:<ul>
+<li>Intel: x86, IA32, Itanium, x86-64</li>
+<li>ARM: Used in almost all mobile phones</li>
 </ul>
 </li>
 </ul>
-<p>之所以需要采用一个偏移量，是为了保证 exp 编码只需要以无符号数来处理。</p>
-<p>而对于 M，一定是以 1 开头的：也就是 $M=1.xxx…x_2$。其中 xxx 的部分就是 frac 的编码部分，当 frac=000.00 的时候值最小（$M=1.0$），当 frac=111。。。1 的时候值最大（$M=2.0-\epsilon$），也就是说开头的 1 是『免费附送的』，并不需要实际的编码位。</p>
-<p>举个例子，<code>float F = 15213.0;</code>，那么</p>
-<p>$$15213_{10}=11101101101101_2=1.1101101101101_2 \times 2^13$$</p>
-<p>于是 frac 部分的值就是小数点后面的数值，而 Exp = E + Bias = 13 + 127 = 140 = $10001100_2$，于是编码出来的浮点数是这样的：</p>
-<p><img src="/images/csapp16.jpg" alt="csapp16"></p>
-<h3 id="Denormalized_Values"><a href="#Denormalized_Values" class="headerlink" title="Denormalized Values"></a>Denormalized Values</h3><p>当 $exp = 000…0$ 的时候，值是非规范化的，意思是，虽然实数轴上原来连续的值会被规范到有限的定值上，但是并些定值之间的间距也是一样的，具体可以通过后面给出的例子来理解（所以现在不明白也不用担心）</p>
-<p>$$v=(-1)^s \; M \; 2^E$$</p>
-<p>和前面不同的是 </p>
-<p>$$E = 1 - Bias$$</p>
-<p>而且 $M=0.xxx…x_2$，不是以 1 开头了。</p>
-<p>当 exp=000…0 且 frac = 000…0 时，表示 0，而且因为符号位的缘故，实际上是有 +0 和 -0 两种的。</p>
-<p>而在 exp=000..0 且 $frac \ne 000…0$ 时，数值是接近 0 的，并且间距是一致的</p>
-<h3 id="Special_Values"><a href="#Special_Values" class="headerlink" title="Special Values"></a>Special Values</h3><p>还有一种特殊情况，就是 $exp = 111…1$ 时，表示一些特殊值。</p>
-<p>当 exp=111…1 且 frac = 000…0 时，表示 $\infty$，而且因为符号位的缘故，实际上是有 $+\infty$ 和 $-\infty$ 两种的。那些会溢出的操作就会用这个来表示，比如 $1.0/0.0=-1.0/0.0=+\infty\;,\;1.0/-0.0=-\infty$</p>
-<p>而在 exp=111…1 且 $frac \ne 000…0$ 时，我们认为这不是一个数值（Not-a-Number，NaN），用来表示那些没办法确定的值，比如 $sqrt(-1),\infty-\infty,\infty\times 0$</p>
-<h3 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h3><p>可能通过文字描述还是不够清晰，我们来看看上面各种情况对应到数轴中是怎么样的：</p>
-<p><img src="/images/csapp17.jpg" alt="csapp17"><br>（对应理解一下上面所说的内容）</p>
-<p>接下来举一个实际的例子，我们的编码形式是这样的：</p>
-<p><img src="/images/csapp18.jpg" alt="csapp18"></p>
-<p>简单起见，我们用 8 个 bit 来做演示，exp 部分是 4 位，所以 bias=7，后三位用来编码小数。下面列出正数部分的表格：</p>
-<p><img src="/images/csapp19.jpg" alt="csapp19"></p>
-<p>观察上表，我们可以发现如下一些比较有意思的规律：</p>
+<p><img src="/images/14531688992654.jpg" alt=""></p>
+<p>现在简单介绍下几个比较重要的部分：</p>
 <ul>
-<li>在 exp=0000 时，也就是 denorm 的情况，间距是一致的，都是 1/8</li>
-<li>因为位数的限制，从零到一之间的数字只能以 1/8 为最小单位来表示，且相邻数字间间距一样</li>
-<li>在 norm 的部分，可以发现由于 exp 部分的不同，所以相邻数字间的间隔也是不同的，比方说最接近 1 的数字是 15/16 和 9/8，分别相差 1/16 和 1/8，这也是由于 IEEE 浮点数表示法的公式决定的</li>
+<li>PC: Program counter，里面存着下一条指令的地址，在 x86-64 中称为 RIP</li>
+<li>Register: 寄存器，用来存储数据以便操作</li>
+<li>Codition codes: 条件代码，通常保存最近的算术或逻辑操作的信息，用来做条件跳转</li>
+<li>Memory: 内存，有地址数组，代码和用户数据，以及栈</li>
 </ul>
-<p>从上面的例子大概了解了值的范围，我们再缩小一点，用 6-bit，来看看具体数值的分布</p>
-<p><img src="/images/csapp20.jpg" alt="csapp20"></p>
-<p>这里因为 exp 有 3 位，所以 Bias = 3，分布如下</p>
-<p><img src="/images/csapp21.jpg" alt="csapp21"></p>
-<p>拉近一点（主要是 0 附近）</p>
-<p><img src="/images/csapp22.jpg" alt="csapp22"></p>
-<p>总结起来，IEEE 编码有以下一些需要注意的性质</p>
+<p>我们知道机器只能执行机器代码，我们写的 C 语言代码是如何成为机器代码的呢？可以参见下图：</p>
+<p><img src="/images/14531691105504.jpg" alt=""></p>
+<p>这里的 <code>-Og</code> <code>-S</code> 是编译器的参数，意思是进行不那么优化的优化（这样我们才能看得懂编译出来的汇编语言）以及汇编完输出汇编结果。</p>
+<p>我们有如左图所示的代码，使用命令 <code>gcc -Og -S sum.c</code> 就可以产生 <code>sum.s</code> 文件，我们来对比看一下。（注意不同的平台不同的编译器不同的参数会有不同的结果，和下图可能差别很大）</p>
+<p><img src="/images/14531692047447.jpg" alt=""></p>
+<p>这里先不展开讲每条指令是做什么的，先来说说汇编语言的数据类型</p>
 <ul>
-<li>浮点数的 0 和整型的 0 一样，所有位都是 0</li>
-<li>可以使用无符号整型的比较方法来比较大小<ul>
-<li>必须先比较符号位</li>
-<li>必须考虑 -0=0 的情况</li>
-<li>注意 NaN 的情况</li>
-<li>其他时候都是没有问题的</li>
+<li>整型：有 1，2，4，8 个字节，可以存数据，也可以存地址（地址是无类型的指针）</li>
+<li>浮点数：有 4，8，10 个字节，和整型分不同的寄存器</li>
+<li>代码：由一系列指令编码而成的字节序列</li>
+<li>注意，是没有类似数组和结构体这种组合的，这些其实都只是在内存中连续分配的字节</li>
 </ul>
-</li>
-</ul>
-<h3 id="Rounding"><a href="#Rounding" class="headerlink" title="Rounding"></a>Rounding</h3><p>对于浮点数的加法和乘法来说，基本的思路如下：</p>
+<p>能够执行的操作也很有限：</p>
 <ul>
-<li>先计算出准确值</li>
-<li>然后转换到合适的精度<ul>
-<li>可能会溢出</li>
-<li>可能需要舍入来满足 frac 的精度</li>
+<li>对寄存器或者内存中的数据执行算术运算</li>
+<li>在内存和寄存器之间传输数据</li>
+<li>传输控制（非条件跳转和条件分支）</li>
 </ul>
-</li>
-</ul>
-<p>舍入的方式有很多种，举个例子：</p>
-<p><img src="/images/csapp23.jpg" alt="csapp23"></p>
-<p>舍入到最近的偶数比较特别，中心思想是：舍入之后最右边的值要是偶数，从下面一个例子就可以明白：</p>
-<p><img src="/images/csapp24.jpg" alt="csapp24"></p>
-<p>对于二进制数也是类似的</p>
-<p><img src="/images/csapp25.jpg" alt="csapp25"></p>
-<h3 id="u6D6E_u70B9_u6570_u4E58_u6CD5"><a href="#u6D6E_u70B9_u6570_u4E58_u6CD5" class="headerlink" title="浮点数乘法"></a>浮点数乘法</h3><p>$$(-1)^{s1}\; M1 \; 2^{E1} \times (-1)^{s2}\; M2 \; 2^{E2}$$</p>
-<p>结果是 $(-1)^{s}\; M \; 2^{E}$，其中 s= s1 ^ s2, M = M1 * M2, E = E1 + E2</p>
+<p><img src="/images/14531700919485.jpg" alt=""></p>
+<p>汇编器会把 <code>.s</code> 文件转换成 <code>.o</code>，把每条指令转换成二进制代码，基本上就是可以执行的代码了，除了不同文件的连接之外。</p>
+<p>连接器会把不同文件之间的引用处理好，顺带也会吧静态库给连接进去（例如 <code>malloc</code> <code>printf</code> 的代码），注意，有些代码是动态连接的，也就是在执行时才连接，这样就可以减少一些编译出来的文件大小。</p>
+<p>举个例子</p>
+<p><img src="/images/14531703812373.jpg" alt=""></p>
+<p>除了汇编，还可以反汇编，<code>objdum -d sum</code> 比如：</p>
+<p><img src="/images/14531704316866.jpg" alt=""></p>
+<p>反汇编有什么用呢：</p>
 <ul>
-<li>如果 M 大于等于 2，那么把 M 右移，并增加 E 的值。</li>
-<li>如果 E 超出了可以表示的范围，溢出</li>
-<li>把 M 舍入到 frac 的精度</li>
+<li>检查代码</li>
+<li>分析指令的结构模式</li>
+<li>生成近似的汇编代码</li>
+<li>可以对 <code>a.out</code> 或者 <code>.o</code> 文件进行反汇编</li>
+<li>注意，有些软件的用户协议里说明是不能反编译的，例如：windows</li>
 </ul>
-<p>基本性质</p>
-<ul>
-<li>相乘可能产生 infinity 或者 NaN</li>
-<li>满足交换率</li>
-<li>不满足结合律（因为舍入会造成精度损失）</li>
-<li>乘以 1 等于原来的数</li>
-<li>不满足分配率 <code>1e20*(1e20-1e20)=0.0</code> 但 <code>1e20*1e20-1e20*1e20=NaN</code></li>
-<li>除了 infinity 和 NaN，满足单调性，即 $a\ge b \to a\times c \ge a\times b$</li>
-</ul>
-<h3 id="u6D6E_u70B9_u6570_u52A0_u6CD5"><a href="#u6D6E_u70B9_u6570_u52A0_u6CD5" class="headerlink" title="浮点数加法"></a>浮点数加法</h3><p>$$(-1)^{s1}\; M1 \; 2^{E1} + (-1)^{s2}\; M2 \; 2^{E2}$$，这里假设 E1 &gt; E2</p>
-<p><img src="/images/csapp26.jpg" alt="csapp26"></p>
-<p>结果是 $(-1)^{s}\; M \; 2^{E}$，其中 s= s1 ^ s2, M = M1 + M2, E = E1</p>
-<ul>
-<li>如果 M 大于等于 2，那么把 M 右移，并增加 E 的值</li>
-<li>如果 M 小于 1，把 M 左移 k 位，E 减少 k</li>
-<li>如果 E 超出了可以表示的范围，溢出</li>
-<li>把 M 舍入到 frac 的精度</li>
-</ul>
-<p>基本性质</p>
-<ul>
-<li>相加可能产生 infinity 或者 NaN</li>
-<li>满足交换率</li>
-<li>不满足结合律（因为舍入会造成精度损失，如 <code>3.14+1e10)-1e10=0</code>，但 <code>3.14+(1e10-1e10)=3.14</code>）</li>
-<li>加上 0 等于原来的数</li>
-<li>除了 infinity 和 NaN，每个元素都有对应的倒数</li>
-<li>除了 infinity 和 NaN，满足单调性，即 $a\ge b \to a+c \ge a+b$</li>
-</ul>
-<h3 id="C__u8BED_u8A00_u4E2D_u7684_u6D6E_u70B9_u6570"><a href="#C__u8BED_u8A00_u4E2D_u7684_u6D6E_u70B9_u6570" class="headerlink" title="C 语言中的浮点数"></a>C 语言中的浮点数</h3><p>保证两种精度：float(单精度)，double(双精度)</p>
-<p>在 int, float, double 间转换会改变其 bit </p>
-<ul>
-<li>double/float 到 int<ul>
-<li>去掉小数部分</li>
-<li>类似与向 0 舍入</li>
-<li>当值是 NaN 时没有定义，一般来说会设置为 TMin</li>
-</ul>
-</li>
-<li>int 到 double<ul>
-<li>精确转换，只要 int 的字长不超过 53 bit</li>
-</ul>
-</li>
-<li>int 到 float<ul>
-<li>可能需要舍入</li>
-</ul>
-</li>
-</ul>
-<h3 id="Puzzles"><a href="#Puzzles" class="headerlink" title="Puzzles"></a>Puzzles</h3><p>声明下面变量</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = ...;</span><br><span class="line"><span class="keyword">float</span> f = ...;</span><br><span class="line"><span class="keyword">double</span> d = ...;</span><br></pre></td></tr></table></figure>
-<p>判断下面的表达式是否正确</p>
-<ul>
-<li><code>x == (int)(float)x</code> 错误，可能会损失精度，因为 float 的位数不足以表达所有可能的 int</li>
-<li><code>x == (int)(double)x</code> 正确，int 到 double 是精确转换</li>
-<li><code>f == (float)(double)f</code> 正确</li>
-<li><code>d == (double)(float)d</code> 错误，可能会损失精度</li>
-<li><code>f == -(-f)</code> 正确，只是改变符号位</li>
-<li><code>2/3 == 2/3.0</code> 错误，前面会舍入到 0，后面是一个小数</li>
-<li><code>d &lt; 0.0</code> 推出 <code>(d*2) &lt; 0.0</code> 正确，即使溢出，也是负无穷</li>
-<li><code>d &gt; f</code> 推出 <code>-f &gt; -d</code> 正确</li>
-<li><code>d * d &gt;= 0.0</code> 正确</li>
-<li><code>(d+f)-d == f</code> 错误，可能会因为舍入损失精度</li>
-</ul>
-<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>IEEE 浮点数有明确的数学性质</li>
-<li>使用 $M\times 2^E$ 的形式来表达数值</li>
-<li>操作实际上是与实现方式无关的，因为需要满足同样的数学规律，具体怎么实现不重要</li>
-<li>和实际的数学有一些不同<ul>
-<li>不满足结合律和分配率</li>
-<li>给编译器和需要高精度的运算程序带来了很大困扰</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/csapp27.jpg" alt="csapp27"></p>
-</div><div class="tags"><a href="/tags/CMU/">CMU</a><a href="/tags/浮点数/">浮点数</a><a href="/tags/计算机/">计算机</a></div><div class="post-nav"><a href="/2016/01/18/csapp-5/" class="pre"><i class="icon-previous">深入理解计算机系统 第 5 课 Machine Basics</i></a><a href="/2016/01/17/sad-r1/" class="next">软件架构与设计 习题课 1 面向对象复习<i class="icon-next"></i></a></div><div data-thread-key="2016/01/18/csapp-4/" data-title="深入理解计算机系统 第 4 课 Floating Point" data-url="http://wdxtub.com/2016/01/18/csapp-4/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/01/18/csapp-4/" data-title="深入理解计算机系统 第 4 课 Floating Point" data-url="http://wdxtub.com/2016/01/18/csapp-4/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<h2 id="u6C47_u7F16_u57FA_u7840"><a href="#u6C47_u7F16_u57FA_u7840" class="headerlink" title="汇编基础"></a>汇编基础</h2><p>先来看看 x86-64 的整型寄存器</p>
+<p><img src="/images/14531710081185.jpg" alt=""></p>
+<p>发现其实大的里面还包含小的（灰色部分），为什么呢？看看 IA32 的架构就明白了</p>
+<p><img src="/images/14531716085778.jpg" alt=""></p>
+<p>发现没有？%rsp 里面包含 %esp，%esp 里面又包含 %sp，这样就保证了可以从 64 位兼容 32 位再到最初的 16 位，是不是很精妙的设计？</p>
+<h3 id="u79FB_u52A8_u6570_u636E"><a href="#u79FB_u52A8_u6570_u636E" class="headerlink" title="移动数据"></a>移动数据</h3><p>操作数主要有三种类型，一种是立即数，也就是直接给的一个数字，第二种是寄存器，第三种是内存</p>
+<p><img src="/images/14531723678160.jpg" alt=""></p>
+<h3 id="u5BFB_u5740"><a href="#u5BFB_u5740" class="headerlink" title="寻址"></a>寻址</h3><p>普通模式，(R)，相当于 <code>Mem[Reg[R]]</code>，也就是说寄存器 R 指定内存地址，类似于 C 语言中的指针，语法为：<code>movq (%rcx), %rax</code> 也就是说以 %rcx 寄存器中存储的地址去内存里找对应的数据，存到寄存器 %rax 中</p>
+<p>移位模式，D(R)，相当于 <code>Mem[Reg[R]+D]</code>，寄存器 R 给出起始的内存地址，然后 D 是偏移量，语法为：<code>movq 8(%rbp),%rdx</code> 也就是说以 %rbp 寄存器中存储的地址再加上 8 个偏移量去内存里找对应的数据，存到寄存器 %rdx 中</p>
+<p>举个交换两个数字的例子</p>
+<p><img src="/images/14531730491322.jpg" alt=""></p>
+<p>前面的两种属于简单模式，完整的更通用的模式是这样的：</p>
+<p><img src="/images/14531733075157.jpg" alt=""></p>
+<p>举个例子：%rdx 的存着的地址是 0xf000；%rcx 的存着的地址是 0x0100，那么有：</p>
+<p><img src="/images/14531733728296.jpg" alt=""></p>
+<h2 id="u7B97_u672F_u8FD0_u7B97_u4E0E_u903B_u8F91_u8FD0_u7B97"><a href="#u7B97_u672F_u8FD0_u7B97_u4E0E_u903B_u8F91_u8FD0_u7B97" class="headerlink" title="算术运算与逻辑运算"></a>算术运算与逻辑运算</h2><p>一条比较重要的指令是 <code>leaq Src, Dst</code>，其中 <code>Src</code> 是地址的表达式，然后把计算的值存入 <code>Dst</code> 指定的寄存器，也就是说，无须内存引用就可以计算，类似于 <code>p = &amp;x[i];</code></p>
+<p>举个例子：</p>
+<p><img src="/images/14531767663611.jpg" alt=""></p>
+<p>可以看到是直接对 %rdi 寄存器中存的地址所对应的内存例的数据进行操作。</p>
+<p>一些常见的算术运算指令如下，注意参数的顺序，而且对于有符号和无符号数都是一样的：</p>
+<p><img src="/images/14531768882688.jpg" alt=""></p>
+<p><img src="/images/14531768992534.jpg" alt=""></p>
+<p>更多的信息可以参考书籍和对应的文档。</p>
+<p>再来看一个例子：</p>
+<p><img src="/images/14531769425822.jpg" alt=""></p>
+<p>对应的语句和寄存器的值如下（确保弄明白整个过程）：</p>
+<p><img src="/images/14531769778782.jpg" alt=""></p>
+<p>这一讲的内容到这里就这么多，其实还是需要比较多基础知识才好理解，尤其是汇编这部分，可以去网上找一下可视化的寄存器及内存数据交换过程看看，增加了解。</p>
+</div><div class="tags"><a href="/tags/CMU/">CMU</a><a href="/tags/基础/">基础</a><a href="/tags/组成原理/">组成原理</a><a href="/tags/计算机/">计算机</a></div><div class="post-nav"><a href="/2016/01/18/csapp-lab1/" class="pre"><i class="icon-previous">深入理解计算机系统 习题课 1 Datalab</i></a><a href="/2016/01/18/csapp-3/" class="next">深入理解计算机系统 第 3 课 Floating Point<i class="icon-next"></i></a></div><div data-thread-key="2016/01/18/csapp-4/" data-title="深入理解计算机系统 第 4 课 Machine Basics" data-url="http://wdxtub.com/2016/01/18/csapp-4/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/01/18/csapp-4/" data-title="深入理解计算机系统 第 4 课 Machine Basics" data-url="http://wdxtub.com/2016/01/18/csapp-4/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
 <script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
 <script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
 (function() {
@@ -180,34 +121,4 @@
     (document.getElementsByTagName('head')[0]
         || document.getElementsByTagName('body')[0]).appendChild(ds);
 })();
-</script></div><!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-</body></html>
+</script></div></body></html>

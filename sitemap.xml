@@ -2,8 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wdxtub.com/about/index.html</loc>
+    <lastmod>2016-03-01T02:43:31.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/02/15/csapp-10/</loc>
+    <lastmod>2016-03-01T02:40:45.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/01/21/csapp-6/</loc>
+    <lastmod>2016-03-01T02:40:26.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/02/15/csapp-11/</loc>
+    <lastmod>2016-03-01T02:40:20.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/01/20/csapp-5/</loc>
+    <lastmod>2016-03-01T02:40:11.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/02/08/csapp-9/</loc>
+    <lastmod>2016-03-01T02:39:58.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/01/18/csapp-4/</loc>
+    <lastmod>2016-03-01T02:39:55.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/01/18/csapp-3/</loc>
+    <lastmod>2016-03-01T02:39:44.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/01/13/csapp-2/</loc>
+    <lastmod>2016-03-01T02:39:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/01/21/csapp-7/</loc>
+    <lastmod>2016-03-01T02:39:20.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/2016/01/21/csapp-8/</loc>
+    <lastmod>2016-03-01T02:39:11.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/02/25/cc-p1/</loc>
-    <lastmod>2016-03-01T02:12:06.000Z</lastmod>
+    <lastmod>2016-03-01T02:34:42.000Z</lastmod>
   </url>
   
   <url>
@@ -17,18 +72,8 @@
   </url>
   
   <url>
-    <loc>http://wdxtub.com/about/index.html</loc>
-    <lastmod>2016-02-29T15:29:46.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://wdxtub.com/2016/02/28/csapp-midterm-review/</loc>
     <lastmod>2016-02-29T03:22:04.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/2016/02/15/csapp-12/</loc>
-    <lastmod>2016-02-28T15:35:44.000Z</lastmod>
   </url>
   
   <url>
@@ -207,11 +252,6 @@
   </url>
   
   <url>
-    <loc>http://wdxtub.com/2016/02/15/csapp-11/</loc>
-    <lastmod>2016-02-18T04:27:39.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://wdxtub.com/2016/02/17/csapp-lab4/</loc>
     <lastmod>2016-02-18T04:27:28.000Z</lastmod>
   </url>
@@ -274,11 +314,6 @@
   <url>
     <loc>http://wdxtub.com/2016/02/04/sad-11/</loc>
     <lastmod>2016-02-10T17:07:48.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/2016/02/08/csapp-10/</loc>
-    <lastmod>2016-02-09T04:18:22.000Z</lastmod>
   </url>
   
   <url>
@@ -522,11 +557,6 @@
   </url>
   
   <url>
-    <loc>http://wdxtub.com/2016/01/13/csapp-2and3/</loc>
-    <lastmod>2016-01-22T20:36:49.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://wdxtub.com/2016/01/13/sad-1/</loc>
     <lastmod>2016-01-22T20:36:46.000Z</lastmod>
   </url>
@@ -582,38 +612,8 @@
   </url>
   
   <url>
-    <loc>http://wdxtub.com/2016/01/18/csapp-4/</loc>
-    <lastmod>2016-01-22T20:36:06.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/2016/01/18/csapp-5/</loc>
-    <lastmod>2016-01-22T20:36:01.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://wdxtub.com/2016/01/18/csapp-lab1/</loc>
     <lastmod>2016-01-22T20:35:58.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/2016/01/20/csapp-6/</loc>
-    <lastmod>2016-01-22T20:35:54.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/2016/01/21/csapp-7/</loc>
-    <lastmod>2016-01-22T20:35:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/2016/01/21/csapp-8/</loc>
-    <lastmod>2016-01-22T20:35:47.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/2016/01/21/csapp-9/</loc>
-    <lastmod>2016-01-22T20:35:42.000Z</lastmod>
   </url>
   
   <url>
