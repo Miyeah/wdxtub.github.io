@@ -210,6 +210,12 @@
 <li><code>test</code> 指令和 <code>and</code> 指令一样，只设置 flag 不改变结果</li>
 <li>在一个 32 位的 Linux 系统中，<code>long</code> 的大小为 <code>4 bytes</code></li>
 <li>在一个 64 位的 Linux 系统中，并不是所有的参数都在栈上传递</li>
+<li><code>mov</code> 和 <code>lea</code> 指令的不同在于 <code>mov</code> 会 dereferences an address，也就是说 <code>mov</code> 是取值，<code>lea</code> 是地址</li>
+<li>先调用函数，然后压入 <code>%ebp</code></li>
+<li>一个 8 位浮点数（1 sign, 3 exp, 4 frac），则 0 111 1111 表示 NaN</li>
+<li>每次执行完一条语句，<code>%rsp</code> 的值减 8 </li>
+<li>二维数组在内存中以 row-major 方式存储</li>
+<li><code>%rdi</code> 保存着函数调用的第一个参数</li>
 </ul>
 <h3 id="u6D6E_u70B9_u6570_u7F16_u7801"><a href="#u6D6E_u70B9_u6570_u7F16_u7801" class="headerlink" title="浮点数编码"></a>浮点数编码</h3><p>这里我们考虑两种 6 位数的 IEEE 浮点数格式</p>
 <ul>
