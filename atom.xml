@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-01T20:47:02.000Z</updated>
+  <updated>2016-03-01T20:52:52.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[云计算 Twitter 语料分析 3 Undertow 配置部署]]></title>
+    <title><![CDATA[云计算 Twitter 语料分析 3 Vert.x 配置部署]]></title>
     <link href="http://wdxtub.com/2016/03/01/cc-p3/"/>
     <id>http://wdxtub.com/2016/03/01/cc-p3/</id>
     <published>2016-03-01T20:42:05.000Z</published>
-    <updated>2016-03-01T20:47:02.000Z</updated>
+    <updated>2016-03-01T20:52:52.000Z</updated>
     <content type="html"><![CDATA[<p>我们需要比较两个不同的 web 框架的性能，于是也选择了当下比较热门的 Vert.x 框架来做比较，网上的中文资源还是比较少的，这里同样记录一下如何在 EC2 上搭建和部署 Vert.x。</p>
 <a id="more"></a>
 <hr>
