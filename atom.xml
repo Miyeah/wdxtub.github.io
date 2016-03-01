@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-01T18:49:49.000Z</updated>
+  <updated>2016-03-01T20:47:02.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[云计算 Twitter 语料分析 3 Undertow 配置部署]]></title>
+    <link href="http://wdxtub.com/2016/03/01/cc-p3/"/>
+    <id>http://wdxtub.com/2016/03/01/cc-p3/</id>
+    <published>2016-03-01T20:42:05.000Z</published>
+    <updated>2016-03-01T20:47:02.000Z</updated>
+    <content type="html"><![CDATA[<p>我们需要比较两个不同的 web 框架的性能，于是也选择了当下比较热门的 Vert.x 框架来做比较，网上的中文资源还是比较少的，这里同样记录一下如何在 EC2 上搭建和部署 Vert.x。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u73AF_u5883_u914D_u7F6E"><a href="#u73AF_u5883_u914D_u7F6E" class="headerlink" title="环境配置"></a>环境配置</h2><p>先启动一个标准的 Ubuntu 镜像（因为有 apt-get 安装软件比较方便）</p>
+<p>我们需要安装 java 和 maven，并配置好对应的路径，具体参考下面的命令，这里和之前不同的是需要安装 Java 8：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 java,maven</span></span><br><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br><span class="line">sudo apt-get install maven2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置默认 jdk</span></span><br><span class="line">sudo update-alternatives --config java</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 Java Home 编辑 ~/.bashrc</span></span><br><span class="line">JAVA_HOME=/usr/</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>我们需要比较两个不同的 web 框架的性能，于是也选择了当下比较热门的 Vert.x 框架来做比较，网上的中文资源还是比较少的，这里同样记录一下如何在 EC2 上搭建和部署 Vert.x。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="Vertx" scheme="http://wdxtub.com/tags/Vertx/"/>
+    
+      <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="服务" scheme="http://wdxtub.com/tags/%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[云计算 Twitter 语料分析 2 Undertow 配置部署]]></title>
@@ -2709,51 +2739,6 @@
     </summary>
     
       <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="算法" scheme="http://wdxtub.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[数据结构与算法 第 1 课 总览]]></title>
-    <link href="http://wdxtub.com/2016/02/24/dsa-1/"/>
-    <id>http://wdxtub.com/2016/02/24/dsa-1/</id>
-    <published>2016-02-24T14:59:07.000Z</published>
-    <updated>2016-02-24T15:23:24.000Z</updated>
-    <content type="html"><![CDATA[<p>数据结构与算法是编程中基础中的基础，重要的不是具体某个结构或者算法本身，而是通过理解数据结构和算法在解决问题中发挥的作用，掌握如何用计算机解决问题的方法，进而练就一套自己观察问题，思考问题，解决问题的招式。</p>
-<a id="more"></a>
-<hr>
-<p>网上相关的资料其实蛮多的，之所以打算『重复造轮子』，一是之前的<a href="http://wdxtub.com/2016/01/22/programmer-startline-1/">编程起跑线系列</a>有很多具体的算法思想没有详细说明，二是借着课程的体系重新梳理一下自己的思路。所以整个系列可能会给出大量的参考链接，用于说明基本的概念，而对于数据结构和算法背后的思想，则是我想要着重讨论的。</p>
-<p>这门课的编程语言是 Java（CMU 感觉啥课都是 Java），学习目标是：</p>
-<ol>
-<li>根据特定问题设计或选择合适的算法</li>
-<li>根据特定问题设计或选择合适的数据结构</li>
-<li>在程序中使用：stacks, queues, linked lists, trees, graphs, 以及 hash tables. </li>
-<li>能够用 Big O, Big Omega, 和 Big Theta 分析程序的性能</li>
-<li>理解 worse case, best case, average case</li>
-<li>理解程序正确性和性能的差异</li>
-<li>理解 NP-completeness 理论</li>
-<li>能够区分出哪里问题是可以通过计算解决的，哪些不是</li>
-</ol>
-<p>参考书目：</p>
-<ul>
-<li>《Data Structures &amp; Other Objects Using Java》 Michael Main, Fourth Edition (Addison-Wesley Longman, ISBN-13 978-0132576246)</li>
-<li>《Introduction to Algorithms》Corman, et al., 1990, MIT Press, ISBN 0262031418</li>
-</ul>
-<p>总体来看是比较中规中矩的一门课，老师给出的课件也是比较凌乱，我会按照自己的理解重新进行组织。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>数据结构与算法是编程中基础中的基础，重要的不是具体某个结构或者算法本身，而是通过理解数据结构和算法在解决问题中发挥的作用，掌握如何用计算机解决问题的方法，进而练就一套自己观察问题，思考问题，解决问题的招式。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="信息处理" scheme="http://wdxtub.com/tags/%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86/"/>
     
       <category term="数据结构" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
