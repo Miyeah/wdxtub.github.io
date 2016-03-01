@@ -110,6 +110,36 @@
 <p><img src="/images/14567966154182.jpg" alt="Fortunes"></p>
 <p><img src="/images/14567966534438.jpg" alt="Data updates"></p>
 <p><img src="/images/14567966771945.jpg" alt="Plaintext"></p>
+<p>综合一下来看，性能比较好的是：</p>
+<ul>
+<li>sabina</li>
+<li>jetty</li>
+<li>undertow</li>
+<li>gemini</li>
+</ul>
+<p>因为我们需要分别对 MySQL 和 HBase 进行操作，所以最好需要有对应的接口（不用自己写太多工具代码，不过其实 Java 都可以方便调用对应的连接器，所以还好），不过在此之前，因为这几个我都没听过，所以大概了解一下。</p>
+<ul>
+<li><a href="http://there4.co/sabina/" target="_blank" rel="external">Sabina</a>: A Sinatra inspired micro web framework for quickly creating web applications in Java with minimal effort<ul>
+<li>性能不错，但是因为是 Java 8 的框架，而且不算太热门（意味着除了问题难以得到社区支持），所以不考虑</li>
+</ul>
+</li>
+<li><a href="http://www.eclipse.org/jetty/" target="_blank" rel="external">Jetty</a>:<br>A Web server and javax.servlet container, plus support for HTTP/2, WebSocket, OSGi, JMX, JNDI, JAAS and many other integrations<ul>
+<li>HBase 在产品中还包含了 Jetty，在 HBase 启动时采用嵌入式的方式来启动 Jetty（刚好了）</li>
+<li>其实和 tomcat 很类似（从文件的组织方式也可以看出来）</li>
+</ul>
+</li>
+<li><a href="http://undertow.io/" target="_blank" rel="external">undertow</a>: A flexible performant web server written in java, providing both blocking and non-blocking API’s based on NIO<ul>
+<li>轻量级，比较简单和灵活</li>
+<li>感觉很适合，至少没有 tomcat 一样一上来就一堆不知道干嘛的文件和文件夹</li>
+</ul>
+</li>
+<li><a href="http://www.eclipse.org/gemini/" target="_blank" rel="external">gemini</a><ul>
+<li>企业级应用，感觉太重量级了，暂时不考虑 </li>
+</ul>
+</li>
+</ul>
+<p>根据以上分析，决定采用 <a href="http://undertow.io/" target="_blank" rel="external">undertow</a> 作为主要的开发框架。</p>
+<p>因为还需要再选择一个框架作为对比（只需要对比一次性能），所以打算选择 tomcat 这个大家都比较熟悉的服务器/框架。</p>
 <h3 id="ETL"><a href="#ETL" class="headerlink" title="ETL"></a>ETL</h3><p>这部分的工作，需要使用 extract, transform and load (ETL) 把 Twitter 的数据集载入到数据仓库中。先从 S3 中获取大约 200 million tweets，然后把数据存储到目标数据库中，具体的操作取决于数据库设计。最好使用竞价实例，不然很可能会超支。</p>
 <p>我们需要使用 AWS 精心设计 ETL 过程，选择合适的实例数量来完成这个工作，完成这个工作后，最好把数据库备份起来，不然每次都要做一次非常浪费钱，使用 EMR 的话，可以用下面这条命令把 HBase 备份到 S3 中</p>
 <p><code>aws emr create-hbase-backup --cluster-id j-3AEXXXXXX16F2 --dir s3://mybucket/backups/j-3AEXXXXXX16F2 --consistent</code></p>
