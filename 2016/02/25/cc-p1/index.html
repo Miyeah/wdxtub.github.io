@@ -85,6 +85,31 @@
 <p>最好考虑使用 auto-scaling，因为测试的过程中会有波动。设计前端的时候要考虑到开销，并且写好测试脚本，不然每次都要部署一次很麻烦。</p>
 <p>不同的 web 框架的性能也很不一样，如果一开始就选择了比较慢的框架，就相当于选择了 hard 模式，所以开始之前不妨看看主流框架的对比，详情参阅 <a href="https://www.techempower.com/benchmarks/" target="_blank" rel="external">Techempower</a></p>
 <p>还有一个需要考虑的问题是，选择的前端框架最好有支持 MySQL 和  HBase 的 API，不然可能后面会很麻烦。在报告中注意写清楚为什么选择用某个框架。</p>
+<p><strong>选择思路</strong></p>
+<p>打开前面给出的 <a href="https://www.techempower.com/benchmarks/" target="_blank" rel="external">Techempower</a> 网站，可以看到不同框架在不同机器上进行不同测试的成绩，因为我们是在 AWS 上进行部署，所以主要看 EC2 的测试结果（最新的结果是 Round 11 - 2015.11.23 的测试结果）</p>
+<p>分为六种测试：</p>
+<ol>
+<li>JSON 序列化</li>
+<li>单次查询</li>
+<li>多次查询</li>
+<li>Fortunes 测试（其实就是随机从数据库中返回一句话）</li>
+<li>数据更新</li>
+<li>纯文本</li>
+</ol>
+<p>因为之前的课程一直都是在用 Java 写，所以就直接只在 Java 框架中选择了，其他的一些过滤条件是：</p>
+<ul>
+<li>应用操作系统: Linux</li>
+<li>语言: Java</li>
+<li>数据库: MongoDB, MySQL</li>
+<li>数据库操作系统: Linux</li>
+</ul>
+<p>这样过滤一下，其实选择就少很多了，我们看看不同框架在这六个测试中的表现（只选取性能较好的一部分）：</p>
+<p><img src="/images/14567964930323.jpg" alt="JSON serialization"></p>
+<p><img src="/images/14567965454003.jpg" alt="Single query"></p>
+<p><img src="/images/14567965837212.jpg" alt="Multiple queries"></p>
+<p><img src="/images/14567966154182.jpg" alt="Fortunes"></p>
+<p><img src="/images/14567966534438.jpg" alt="Data updates"></p>
+<p><img src="/images/14567966771945.jpg" alt="Plaintext"></p>
 <h3 id="ETL"><a href="#ETL" class="headerlink" title="ETL"></a>ETL</h3><p>这部分的工作，需要使用 extract, transform and load (ETL) 把 Twitter 的数据集载入到数据仓库中。先从 S3 中获取大约 200 million tweets，然后把数据存储到目标数据库中，具体的操作取决于数据库设计。最好使用竞价实例，不然很可能会超支。</p>
 <p>我们需要使用 AWS 精心设计 ETL 过程，选择合适的实例数量来完成这个工作，完成这个工作后，最好把数据库备份起来，不然每次都要做一次非常浪费钱，使用 EMR 的话，可以用下面这条命令把 HBase 备份到 S3 中</p>
 <p><code>aws emr create-hbase-backup --cluster-id j-3AEXXXXXX16F2 --dir s3://mybucket/backups/j-3AEXXXXXX16F2 --consistent</code></p>
