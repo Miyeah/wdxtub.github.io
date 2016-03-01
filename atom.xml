@@ -1536,7 +1536,7 @@
     <link href="http://wdxtub.com/2016/02/25/cc-p1/"/>
     <id>http://wdxtub.com/2016/02/25/cc-p1/</id>
     <published>2016-02-26T00:35:05.000Z</published>
-    <updated>2016-03-01T18:50:10.000Z</updated>
+    <updated>2016-03-01T19:09:33.000Z</updated>
     <content type="html"><![CDATA[<p>项目名称：Twitter Analytics on the Cloud</p>
 <p>从这次作业开始，就要小组作业和个人作业并行了。这次的项目主要是在云上分析 Twitter 的相关内容，与以前 GB 级数据不一样，这次我们要处理 TB 级的数据，还是很刺激的。另，这是小组作业，在此先感谢我的队友 @leiyu 和 @shushanc</p>
 <a id="more"></a>
@@ -1678,7 +1678,7 @@
 </li>
 </ul>
 <p>根据以上分析，决定采用 <a href="http://undertow.io/" target="_blank" rel="external">undertow</a> 作为主要的开发框架。</p>
-<p>因为还需要再选择一个框架作为对比（只需要对比一次性能），所以打算选择 tomcat 这个大家都比较熟悉的服务器/框架。</p>
+<p>因为还需要再选择一个框架作为对比（只需要对比一次性能），为了熟悉框架，打算采用 vert.x 来进行测试。</p>
 <h3 id="ETL"><a href="#ETL" class="headerlink" title="ETL"></a>ETL</h3><p>这部分的工作，需要使用 extract, transform and load (ETL) 把 Twitter 的数据集载入到数据仓库中。先从 S3 中获取大约 200 million tweets，然后把数据存储到目标数据库中，具体的操作取决于数据库设计。最好使用竞价实例，不然很可能会超支。</p>
 <p>我们需要使用 AWS 精心设计 ETL 过程，选择合适的实例数量来完成这个工作，完成这个工作后，最好把数据库备份起来，不然每次都要做一次非常浪费钱，使用 EMR 的话，可以用下面这条命令把 HBase 备份到 S3 中</p>
 <p><code>aws emr create-hbase-backup --cluster-id j-3AEXXXXXX16F2 --dir s3://mybucket/backups/j-3AEXXXXXX16F2 --consistent</code></p>
