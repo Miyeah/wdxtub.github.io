@@ -1031,7 +1031,7 @@
     <link href="http://wdxtub.com/2016/02/27/sad-midterm-review/"/>
     <id>http://wdxtub.com/2016/02/27/sad-midterm-review/</id>
     <published>2016-02-28T03:10:51.000Z</published>
-    <updated>2016-02-28T05:12:56.000Z</updated>
+    <updated>2016-03-03T17:26:41.000Z</updated>
     <content type="html"><![CDATA[<p>这一部分是根据老师给出的复习提纲总结的部分相关内容，但是由于架构这个东西太抽象，所以只能尽力去理解一下了。</p>
 <a id="more"></a>
 <hr>
@@ -1091,34 +1091,61 @@
 </blockquote>
 <p>这是我一直比较迷糊的概念，会着重解释一下。</p>
 <ul>
-<li>Architectural styles: Codify key constraints and architectural elements (components, connectors, configurations) found effective used in a family of software systems over a given time period<ul>
+<li>Architectural styles<ul>
+<li>Codify key constraints and architectural elements (components, connectors, configurations) found effective used in a family of software systems over a given time period</li>
 <li>Client/Server, P2P, Object Oriented, Layered, Data-Flow, Pipe and Filter, Blackboard, Rule Based</li>
 </ul>
 </li>
-<li>Architectural patterns: A set of architectural design decisions that are applicable to a recurring design problem, and parameterized to account for different software development contexts in which that problem appears.<ul>
+<li>Architectural patterns<ul>
+<li>A set of architectural design decisions that are applicable to a recurring design problem, and parameterized to account for different software development contexts in which that problem appears.</li>
 <li>3-tier (Stage-Logic-Display), MVC, Sense Compute Control</li>
 </ul>
 </li>
 </ul>
 <p>Compared to styles, architectural patterns are at a coarser level of granularity (design decisions versus actual architectural elements) and are inherently more domain specific</p>
+<p>简单来说就是 style 会有更多的细节，涉及到具体的数据、对象、管道、客户端、服务器端什么的。pattern 的话就比较虚一点，具体的界限感觉也没有多么清晰，自圆其说即可</p>
 <blockquote>
 <p>Methods of evaluating design methods like styles and patterns</p>
 </blockquote>
-<p>Vocabulary, structural patterns, computational model, invariants, common examples, disadvantages, specializations</p>
+<ul>
+<li>Vocabulary,</li>
+<li>structural patterns</li>
+<li>computational model</li>
+<li>invariants</li>
+<li>common examples</li>
+<li>disadvantages</li>
+<li>specializations</li>
+</ul>
+<p>我估计记不住，总体来说就是从概念，定义，模型，优势，劣势等说明，注意逻辑。</p>
 <blockquote>
 <p>Methods of design</p>
 </blockquote>
 <p>Greenfield design (entirely fresh start, no baggage)</p>
-<p>Analogy searching, Brainstorming, Literature searching, Morphological Charts, Removing Mental Blocks, Insight from requirements/implementation</p>
+<ul>
+<li>Analogy searching</li>
+<li>Brainstorming</li>
+<li>Literature searching</li>
+<li>Morphological Charts</li>
+<li>Removing Mental Blocks</li>
+<li>Insight from requirements/implementation</li>
+</ul>
+<p>按照自己写作业的思路来回答即可</p>
 <blockquote>
 <p>Software Connectors</p>
 </blockquote>
 <p>4 main roles: Communication, Conversion, Facilitation, Coordination</p>
 <p>8 main types: Event, Stream, Procedure Call, Arbitrator, Data Access, Distributor, Linkage, Adaptor</p>
+<p>这个我真心背不下来，随缘</p>
 <blockquote>
 <p>Benefits of first-class connectors</p>
 </blockquote>
-<p>Software evolution, separation of concerns, modularity, pluggability</p>
+<ul>
+<li>Software evolution</li>
+<li>separation of concerns</li>
+<li>modularity</li>
+<li>pluggability</li>
+</ul>
+<p>显式连接器其实是解耦的好方法，带来的好处自然就是更灵活，但是可能会有性能影响</p>
 <blockquote>
 <p>Architectural Modeling</p>
 </blockquote>
@@ -1153,7 +1180,8 @@
 </blockquote>
 <p>Desired skills</p>
 <ul>
-<li>Software development expertise •  Domain expertise</li>
+<li>Software development expertise</li>
+<li>Domain expertise</li>
 <li>Communicator</li>
 <li>Strategist</li>
 <li>Consultant</li>
