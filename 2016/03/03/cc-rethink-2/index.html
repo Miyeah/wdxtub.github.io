@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>云计算 反思课 2 并发编程的策略与思考 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">云计算 反思课 2 并发编程的策略与思考</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-guestbook"> 技术</i></a><a href="/life/"><i class="icon-about"> 生活</i></a><a href="/archives/"><i class="icon-archive"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">云计算 反思课 2 并发编程的策略与思考</h1><div class="post-meta">2016-03-03 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/03/03/cc-rethink-2/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5E94_u7528_u573A_u666F"><span class="toc-number">1.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u6211_u9519_u4E86"><span class="toc-number">2.</span> <span class="toc-text">我错了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E00_u4E9B_u601D_u8003"><span class="toc-number">3.</span> <span class="toc-text">一些思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E00_u4E9B_u5BF9_u7B56"><span class="toc-number">4.</span> <span class="toc-text">一些对策</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u53C2_u8003_u8D44_u6599"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div><div class="post-content"><p>学习是一个不断改进方法论的过程，<a href="http://wdxtub.com/2016/02/29/cc-15/">第 15 课</a>中，因为自己缺乏对并发编程的基本认识，走了很多弯路。吃一堑长一智，本文着重讲三点：一是为什么我会犯错，二是对并发编程的一些思考，三是结合 Java 语言来探索相关细节。（感谢节瓜 @jiexing 的耐心指导）</p>
+<a id="more"></a>
+<hr>
+<h2 id="u5E94_u7528_u573A_u666F"><a href="#u5E94_u7528_u573A_u666F" class="headerlink" title="应用场景"></a>应用场景</h2><p>因为涉及到具体的问题，所以先大概说明一下应用场景，方便之后的叙述。事情大概是这样的：</p>
+<ul>
+<li>后端有三台数据库服务器</li>
+<li>需要支持两种不同的存储策略（复制机制与分区机制，详情参考<a href="http://wdxtub.com/2016/02/29/cc-15/">这里</a>）</li>
+<li>由前端来接收和处理请求（不使用任何缓存）</li>
+<li>请求有两种：GET（从数据库读取数据）与 PUT（向数据库写入数据）</li>
+<li>数据的格式是键值对</li>
+<li>保证数据的强一致性</li>
+<li>按照请求的顺序返回响应（按照时间戳来排序）</li>
+</ul>
+<p>难点在于，每来一个请求，服务器都会新开一个线程来进行处理，多个线程的访问需要保证数据一致性及顺序，如果没有真正理解场景本身，很容易陷入无谓的复杂度，写出冗长却不完备的代码。</p>
+<h2 id="u6211_u9519_u4E86"><a href="#u6211_u9519_u4E86" class="headerlink" title="我错了"></a>我错了</h2><p>写代码之前，我花了很多时间，试图找到一个合理的满足一致性和顺序的机制。根据文档的提示，用锁来保证一致性，用优先队列来保证顺序，万万没想到这就是一切复杂度的开端，最后我折腾出来的机制大概是这样的：</p>
+<ul>
+<li>每个 key 有自己的锁和优先队列</li>
+<li>每来一个请求，把它加入到对应 key 的优先队列中</li>
+<li>然后开一个线程，取出优先队列的队头进行处理</li>
+<li>具体线程之间的同步由锁完成（在停止尝试之前已经变得很复杂，这里不详细展开，总的来说我试图利用三个状态手动控制线程的执行）</li>
+<li>因为不同的线程可能需要访问同一个数据结构（这里我用 HashMap 来存储），也要考虑线程同步的问题，于是我决定依赖于『线程安全』的数据结构自动处理好访问冲突</li>
+</ul>
+<p>看起来还行，但是实际测试的时候既不能保证强一致性也没办法按顺序，甚至还引入了新的问题，这是为什么呢？我总结的原因如下：</p>
+<ul>
+<li>每次接收请求，新开的线程不一定执行这个请求对应的内容，而是执行队列头，让新线程做太复杂的工作</li>
+<li>为了保证逻辑一致性被迫设计状态判断的机制，但是没办法穷举出所有的可能</li>
+<li>控制线程时利用自动数据结构+手动逻辑控制，并没有得到半自动冲锋枪突突突的效果，而是乱成了一锅粥</li>
+</ul>
+<p>后来在瓜瓜的指引下找到了简单且有效的方法，关键点在于：</p>
+<ul>
+<li>要自动就全自动，要手动就全手动，不要依赖于自己并不完全理解的容器或者数据结构，因为很可能会和自己预期的表现不一样</li>
+<li>每个线程应该就处理好传入的请求，而不是可能执行另外的请求（我之前的机制这种情况是可能出现的）</li>
+<li>不要想当然去『控制』线程以达到最优性能，很多串行编程的思维在这里并不适用。</li>
+</ul>
+<p>从这样的思路拓展开去，就可以意识到自己之前的思路有多么『想当然』了。</p>
+<h2 id="u4E00_u4E9B_u601D_u8003"><a href="#u4E00_u4E9B_u601D_u8003" class="headerlink" title="一些思考"></a>一些思考</h2><blockquote>
+<p>Intuition is frequently wrong - be data intensive. [《Real-World Concurrency》 from ACM-Queue]</p>
+</blockquote>
+<p>如果要给云计算这门课一个关键词，当属 tradeoff。所谓权衡的艺术，从不同的角度来看，有不同的表现：</p>
+<ul>
+<li>从实现的角度，尽量以最小的代码换取最大的性能</li>
+<li>从架构的角度，尽量以简洁的架构满足需求，减少复杂性</li>
+<li>从经济的角度，尽力以最小的花费提供最好的服务质量</li>
+</ul>
+<p>同样的，对于并发编程，也是如此。</p>
+<blockquote>
+<p>Multi-threading is easy. Correct synchronization is hard</p>
+</blockquote>
+<p>最难的当属思维的转换，很多比较复杂的算法（或者说依赖比较多的算法），在并行环境中往往表现不好，比如说动态规划问题，原本是重复利用子问题的解，但是在多线程的条件下，子问题都不知道飞哪里去了；反而是分治算法，因为子问题独立，反而更适合并行。</p>
+<p>而提到并发编程，就不得不提 OpenMP 了，这个学期当助教，我主要负责这一部分的内容，所以也算是有一些理解。OpenMP 的思路是利用尽可能少的代价，把串行代码弄成并行的，核心的机制是共享内存，然后利用线程执行不同的子问题，可能只需要几条 OpenMP 预编译指令，就可以带来明显的性能提升效果。</p>
+<p>但是仔细想想，这种改进真的很大吗？在串行代码开发中，程序控制有一个清晰的流程。我们知道数据被访问和更改的方式，并了解其中的依赖关系。究其根本，OpenMP 依赖数据资源的锁定，和串行编程的思路是一样的，只是利用多核进行了简单的并行处理（相当于多叫几个人完成同一个工作，而不是大家做不同的工作）。如果使用不慎，除了带来性能问题之外，还可能造成数据不一致的问题。</p>
+<p>而真正的并行程序中，有多个状态会同时发生和改变，依赖关系也会发生变化。必须思考如何同时执行多个指令，以及这些指令会对你的数据结构、变量、算法及其它一切产生什么影响。</p>
+<p>总结一下：</p>
+<ul>
+<li>单线程逻辑设计的思路<ul>
+<li>所有数据结构的生存期，以及对这些数据结构的访问都在同一个线程，不存在竞争条件，耗时的操作都给其他线程（IO线程、定时器线程，数据库线程等）做，做完之后向事件队列（多线程安全的队列，其他线程是生产者，逻辑线程是消费者）发送事件</li>
+</ul>
+</li>
+<li>多线程逻辑设计的思路<ul>
+<li>所有数据结构的生存期，以及对这些数据结构的访问不一定在同一个线程。需要考虑数据结构的竞争条件。网络事件、定时器事件唤醒工作线程（比方说 <code>notifyAll</code>）执行所有工作，一般不需要交换到其他线程</li>
+</ul>
+</li>
+</ul>
+<p>我们可以看出，最关键的就是如何访问数据的问题！线程执行和访问数据的时间没有确定的顺序。操作系统负责对线程进行调度，而它对于数据访问模式一无所知。并行程序中唯一的顺序是我们利用同步方法明确创建的（前面我把这部分工作交给自己并不熟悉的并行库来做，导致出问题）。最重要的是要牢牢记住所有并发线程，这样才能够创建更简单更有约束性的结构来限制并发情况。还有一个需要记得的点是，可能最优化的串行算法并不是好的并行算法。</p>
+<p>最后的最后，并发编程真的是一门『纸上得来终觉浅』的艺术，最佳途径就是实践，实践，再实践。</p>
+<h2 id="u4E00_u4E9B_u5BF9_u7B56"><a href="#u4E00_u4E9B_u5BF9_u7B56" class="headerlink" title="一些对策"></a>一些对策</h2><p>这里结合了 CMU 18645 How to Write Fast Code 课程上的一些思路，虽然对于具体场景不算特别适用，不过总体原则放到哪里都能用。</p>
+<p>先说说优化并行部分的三个层面：</p>
+<ul>
+<li>逻辑层面：减少数据共享<ul>
+<li>这一部分需要注意 false sharing 的问题，不然反而会造成大量的缓存浪费</li>
+<li>解决方法也不算太难：线程本地存储 + 内存对齐，不过需要根据不同的机器不同处理</li>
+</ul>
+</li>
+<li>编码层面：减少锁粒度<ul>
+<li>同一个模块中，对不总是同时访问的数据，使用不同的锁（固定加锁顺序，防止死锁）</li>
+<li>使用锁（临界区）来保护数据，而不是操作</li>
+<li>将可能耗时的操作移到临界区外面（特别是 IO）</li>
+<li>避免在临界区中调用未知代码 </li>
+<li>谨慎使用读写锁，实现复杂，效率低下</li>
+</ul>
+</li>
+<li>工具层面：使用轻量同步机制<ul>
+<li>有些需要深入到内核态进行同步，对于基本的操作来说其实没必要这么兴师动众</li>
+</ul>
+</li>
+</ul>
+<p>换一个视角，可以总结出如下四条原则：</p>
+<ol>
+<li>单一职责：分离并发相关代码和其他代码（并发相关代码有自己的开发、修改和调优生命周期）</li>
+<li>限制数据作用域：两个线程修改共享对象的同一字段时可能会相互干扰，导致不可预期的行为，解决方案之一是构造临界区，但是必须限制临界区的数量</li>
+<li>使用数据副本：数据副本是避免共享数据的好方法，复制出来的对象只是以只读的方式对待</li>
+<li>线程应尽可能独立：让线程存在于自己的世界中，不与其他线程共享数据。Servlet 就是以单实例多线程的方式工作，和每个请求相关的数据都是通过 Servlet 子类的 service 方法（或者是 doGet 或 doPost 方法）的参数传入的。只要 Servlet 中的代码只使用局部变量，Servlet 就不会导致同步问题</li>
+</ol>
+<p>在搜索资料的时候发现一个不错的提纲，不过因为刚接触，很多概念理解得不算特别清楚这里列出来，作为一个索引，感兴趣的同学可以按图索骥去深入了解下（参考资料中第二项）：</p>
+<ul>
+<li>资源并发访问的策略<ul>
+<li>悲观策略<ul>
+<li>lock based concurrency(theory)</li>
+<li>java.util.concurrent (framework)</li>
+<li>锁还是不锁，这是个问题， 锁多还是锁少，也是个问题(practice)</li>
+</ul>
+</li>
+<li>乐观策略<ul>
+<li>lock free concurrency(theory) : CAS</li>
+<li>disruptor (framework)</li>
+<li>并发度高，还是并发度低的时候使用，这是个问题(practice)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>我拆我拆我拆拆拆（逻辑上拆分任务）<ul>
+<li>task-based concurrency (theory)<ul>
+<li>Runnable | Callable(model)</li>
+<li>Executor | ExecutorService(framework)</li>
+</ul>
+</li>
+<li>data-based concurrency(theory)<ul>
+<li>Actor (model)</li>
+<li>Akka(framework)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>从单机到分布式<ul>
+<li>divide and conquer<ul>
+<li>map reduce pattern</li>
+<li>master-worker pattern</li>
+</ul>
+</li>
+<li>swarm framework(move computation instead of data)</li>
+</ul>
+</li>
+<li>从软件到硬件<ul>
+<li>GPU<ul>
+<li>CUDA, jcuda, scuda</li>
+<li>floating point computation, e.g. image reader and processing</li>
+</ul>
+</li>
+<li>PPU<ul>
+<li>物理计算</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>看了这么多，唯一的感受就是</p>
+<blockquote>
+<p>路漫漫其修远兮，吾将上下而求索。</p>
+</blockquote>
+<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://www.jianshu.com/p/053943a425c3" target="_blank" rel="external">Java并发编程的总结与思考</a></li>
+<li><a href="http://afoo.me/posts/2013-03-12-concurrency_theory_frameworks_and_practices.html" target="_blank" rel="external">并发编程： 理论，框架与实践</a></li>
+<li><a href="http://blog.csdn.net/lantian0802/article/details/19285937" target="_blank" rel="external">java并发编程学习总结（基础篇）</a></li>
+</ul>
+</div><div class="tags"><a href="/tags/CMU/">CMU</a><a href="/tags/云计算/">云计算</a><a href="/tags/多线程/">多线程</a><a href="/tags/思考/">思考</a></div><div class="post-nav"><a href="/2016/03/01/cc-p3/" class="next">云计算 Twitter 语料分析 3 Vert.x 配置部署<i class="icon-next"></i></a></div><div data-thread-key="2016/03/03/cc-rethink-2/" data-title="云计算 反思课 2 并发编程的策略与思考" data-url="http://wdxtub.com/2016/03/03/cc-rethink-2/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/03/03/cc-rethink-2/" data-title="云计算 反思课 2 并发编程的策略与思考" data-url="http://wdxtub.com/2016/03/03/cc-rethink-2/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
