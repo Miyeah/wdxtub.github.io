@@ -160,8 +160,8 @@
     <link href="http://wdxtub.com/2016/02/29/cc-15/"/>
     <id>http://wdxtub.com/2016/02/29/cc-15/</id>
     <published>2016-02-29T12:01:54.000Z</published>
-    <updated>2016-03-03T00:02:49.000Z</updated>
-    <content type="html"><![CDATA[<p>之前我们做的是计算能力的伸缩拓展，这次我们也要对数据库做类似的事情，并且通过具体的场景，来了解键值对存储的应用特点。</p>
+    <updated>2016-03-03T04:45:39.000Z</updated>
+    <content type="html"><![CDATA[<p>之前我们做的是计算能力的伸缩拓展，这次我们也要对数据库做类似的事情，并且通过具体的场景，来了解键值对存储的应用特点。特别鸣谢瓜瓜 @jiexing 的点拨，不然我就卡在自己脑洞里出不来了。</p>
 <a id="more"></a>
 <hr>
 <h2 id="u5B66_u4E60_u76EE_u6807"><a href="#u5B66_u4E60_u76EE_u6807" class="headerlink" title="学习目标"></a>学习目标</h2><ol>
@@ -315,7 +315,7 @@
 <li>GET 操作的延时是可以忽略的</li>
 <li>可以认为 datastore 实例不会出现崩溃的状况，一旦 <code>KeyValueLib.PUT</code> 方法执行完成，那么对应的实例上的操作也完成，所以需要的同步机制不会太复杂。提示：不需要实现 <a href="http://en.wikipedia.org/wiki/Two-phase_commit_protocol" target="_blank" rel="external">Two-Phase Commit (2PC)</a> 机制</li>
 </ul>
-<h2 id="u7EBF_u7A0B_u540C_u6B65_u7B56_u7565"><a href="#u7EBF_u7A0B_u540C_u6B65_u7B56_u7565" class="headerlink" title="线程同步策略"></a>线程同步策略</h2><p>整个项目中最重要的是两个事情：数据一致性与严格顺序。严格顺序比较好完成，利用时间戳做评测标准使用优先队列来处理即可，因为需要保证非阻塞，所以针对复制机制，大概的流程如下（不一定对，比较绕，还没测试过）：</p>
+<h2 id="u7EBF_u7A0B_u540C_u6B65_u7B56_u7565"><a href="#u7EBF_u7A0B_u540C_u6B65_u7B56_u7565" class="headerlink" title="线程同步策略"></a>线程同步策略</h2><p>整个项目中最重要的是两个事情：数据一致性与严格顺序。严格顺序比较好完成，利用时间戳做评测标准使用优先队列来处理即可，因为需要保证非阻塞，所以针对复制机制，大概的流程如下（这个思路是不对的，或者说增加了无谓的复杂度，具体会另开一个反思课说明）：</p>
 <ol>
 <li>每个 key 都应该有自己的优先队列，来缓存可能需要等待的请求，并借此保证顺序（队列的操作应该是线程安全的，需要上锁）</li>
 <li>每来一个请求，就会根据请求类型的不同在不同的 <code>handle</code> 方法中处理</li>
@@ -326,7 +326,7 @@
 <li>如果是读取的话，因为读锁是允许并发的，所以不需要为三个不同的数据库设计保存不同的锁，没有指定那个数据库的话，就随便访问一个即可</li>
 <li>如果获取的时候没有对应的 key，返回 0</li>
 </ol>
-<p>针对分区机制，大概的流程如下（不一定对，比较绕，还没测试过）：</p>
+<p>针对分区机制，大概的流程如下（这个思路是不对的，或者说增加了无谓的复杂度，具体会另开一个反思课说明）：</p>
 <ol>
 <li>每个请求需要根据 key 来进行哈希，确定所在的数据库编号</li>
 <li>每来一个请求，就会根据请求类型的不同在不同的 <code>handle</code> 方法中处理</li>
@@ -396,10 +396,6 @@
 <li>可以用 <code>storage_checker</code> 来检测正确性，但是使用之前需要先填写 <code>config.prop</code>（注意里面 datastore 的顺序要和 <code>Coordinator.java</code> 中的保持一致）</li>
 <li>填写完成后可以使用 <code>./storage_checker.sh replication</code> 来进行测试。</li>
 </ol>
-<h3 id="u64CD_u4F5C_u65E5_u5FD7"><a href="#u64CD_u4F5C_u65E5_u5FD7" class="headerlink" title="操作日志"></a>操作日志</h3><ul>
-<li>申请 EC2 实例：<code>ami-17a4947d</code>(<code>t1.micro</code>)，注意打开所有端口。</li>
-<li>把要修改的文件复制到本地 <code>scp -i demo.pem ubuntu@ec2-52-201-255-24.compute-1.amazonaws.com:~/Project3_2/vertx/bin/Coordinator.java ./</code></li>
-</ul>
 <h2 id="u5E73_u5747_u5206_u914D_u5206_u533A_u673A_u5236"><a href="#u5E73_u5747_u5206_u914D_u5206_u533A_u673A_u5236" class="headerlink" title="平均分配分区机制"></a>平均分配分区机制</h2><p>在分区机制中最重要的就是哈希函数，使用哈希的话，不可避免会出现<a href="https://en.wikipedia.org/wiki/Collision_(computer_science" target="_blank" rel="external">冲突</a> )的情况，所以评价一个哈希函数好不好，主要看能否使用这个哈希函数把输入尽可能平均分摊到不同的 key 中。</p>
 <p>举个例子，假设我们的输入是 1-6 六个数字，有如下两个哈希函数</p>
 <ul>
@@ -460,16 +456,33 @@
 </blockquote>
 <ol>
 <li>可以用 <code>storage_checker</code> 来检测正确性，使用之前需要先填写 <code>config.prop</code>（注意里面 datastore 的顺序要和 <code>Coordinator.java</code> 中的保持一致），然后使用 <code>./storage_checker.sh sharding</code> 来测试</li>
-<li>测试完成之后，需要把 <code>Coordinator.java</code> 移动到客户端实例的 <code>/home/ubuntu/Project3_2</code> 文件夹中，对应填写 <code>references</code></li>
+<li>测试完成之后，需要把 <code>Coordinator.java</code> 移动到客户端实例的 <code>/home/ubuntu/</code> 文件夹中，对应填写 <code>references</code></li>
+<li>用 <code>./submitter.sh</code> 进行提交</li>
 <li>TA 会人工给代码打分，尤其是可能的竞争条件，还要注意代码风格</li>
 </ol>
+<h2 id="u64CD_u4F5C_u65E5_u5FD7"><a href="#u64CD_u4F5C_u65E5_u5FD7" class="headerlink" title="操作日志"></a>操作日志</h2><ul>
+<li>申请 EC2 实例：<code>ami-17a4947d</code>(<code>t1.micro</code>)，注意打开所有端口。</li>
+<li>把要修改的文件复制到本地 <code>scp -i demo.pem ubuntu@dns.compute-1.amazonaws.com:~/Project3_2/vertx/bin/Coordinator.java ./</code></li>
+<li>修改完成后传回服务器 <code>scp -i demo.pem ./Coordinator.java ubuntu@dns.compute-1.amazonaws.com:~/Project3_2/vertx/bin/</code></li>
+<li>使用命令 <code>./vertx run Coordinator.java</code> 来启动 coordinator（也可以用来检查语法错误）</li>
+<li>启动三个 datastore： <code>ami-83ba8ae9</code>(<code>t1.micro</code>)，注意打开所有端口</li>
+<li>启动一个 <code>m1.small</code>(<code>ami-a05d60ca</code>) 客户端实例</li>
+<li>分别把地址写到 <code>Coordinator.java</code> 和 <code>config.prop</code> 中</li>
+<li>把 <code>config.prop</code> 复制到本地 <code>scp -i demo.pem ubuntu@dns.compute-1.amazonaws.com:~/config.prop ./</code></li>
+<li>添加完之后复制回去 <code>scp -i demo.pem ./config.prop ubuntu@dns.compute-1.amazonaws.com:~/</code></li>
+<li>使用 <code>./storage_checker.sh replication</code> 来进行测试</li>
+<li>完成第一部分后，使用 <code>./storage_checker.sh sharding</code> 来测试第二部分</li>
+<li>填写 <code>references</code> 以及把 <code>Coordinator.java</code> 上传到客户端实例 <code>scp -i demo.pem ./Coordinator.java ubuntu@dns.compute-1.amazonaws.com:~/</code></li>
+<li>然后就提交 <code>./submitter.sh</code></li>
+</ul>
 <h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li><a href="http://blog.csdn.net/lzm1340458776/article/details/27964243" target="_blank" rel="external">Java多线程中读写锁ReadWriteLock的使用</a></li>
 <li><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/PriorityBlockingQueue.html" target="_blank" rel="external">Class PriorityBlockingQueue<e></e></a></li>
+<li><a href="http://www.cnblogs.com/techyc/p/3272321.html" target="_blank" rel="external">Java的wait(), notify()和notifyAll()使用小结</a></li>
 </ol>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>之前我们做的是计算能力的伸缩拓展，这次我们也要对数据库做类似的事情，并且通过具体的场景，来了解键值对存储的应用特点。</p>]]>
+    <![CDATA[<p>之前我们做的是计算能力的伸缩拓展，这次我们也要对数据库做类似的事情，并且通过具体的场景，来了解键值对存储的应用特点。特别鸣谢瓜瓜 @jiexing 的点拨，不然我就卡在自己脑洞里出不来了。</p>]]>
     
     </summary>
     
