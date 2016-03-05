@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-05T20:38:26.000Z</updated>
+  <updated>2016-03-05T20:40:37.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/03/05/maupassant-icon-config/"/>
     <id>http://wdxtub.com/2016/03/05/maupassant-icon-config/</id>
     <published>2016-03-05T17:08:20.000Z</published>
-    <updated>2016-03-05T20:38:26.000Z</updated>
+    <updated>2016-03-05T20:40:37.000Z</updated>
     <content type="html"><![CDATA[<p>折腾主题恐怕是搭建独立博客最痛并快乐的事情了。尤其是对我这种前端菜鸟来说，很多东西明明知道对应资源文件在哪里，却愣是不知道从何下手。今天我们说说，如何给 Hexo 主题 maupassant 换上自己喜欢的图标。</p>
 <a id="more"></a>
 <hr>
