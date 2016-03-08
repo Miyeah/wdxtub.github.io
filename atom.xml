@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-08T18:45:12.000Z</updated>
+  <updated>2016-03-08T19:54:01.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[深入理解计算机系统 习题课 5 Shelllab]]></title>
+    <link href="http://wdxtub.com/2016/03/08/csapp-lab5/"/>
+    <id>http://wdxtub.com/2016/03/08/csapp-lab5/</id>
+    <published>2016-03-08T18:47:44.000Z</published>
+    <updated>2016-03-08T19:54:01.000Z</updated>
+    <content type="html"><![CDATA[<p>这次的作业，我们需要自己完成一个简单的 shell 程序，通过具体的实现，我们可以更加深入地计算机运行的机制（尤其是 Exceptional Control Flow 和进程）。</p>
+<a id="more"></a>
+<hr>
+<p>man 2 execve</p>
+<p>man 3 sleep</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这次的作业，我们需要自己完成一个简单的 shell 程序，通过具体的实现，我们可以更加深入地计算机运行的机制（尤其是 Exceptional Control Flow 和进程）。</p>]]>
+    
+    </summary>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 15 课 System Level I/O]]></title>
@@ -2977,62 +2998,6 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这节课我们来讲讲人在整个系统开发过程中所发挥的重要作用，或者再简单一点，就是成为一个架构师，到底需要什么特质以及在团队中扮演什么角色。<br>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[软件架构与设计 第 18 课 Deployment and Mobility]]></title>
-    <link href="http://wdxtub.com/2016/02/26/sad-18/"/>
-    <id>http://wdxtub.com/2016/02/26/sad-18/</id>
-    <published>2016-02-26T21:06:57.000Z</published>
-    <updated>2016-02-27T19:58:49.000Z</updated>
-    <content type="html"><![CDATA[<p>当软件开发接近尾声，部署和灵活性就成为了重要的考量，这一课我们简要了解一下大概的流程和步骤，具体可能要工作之后实际接触生产环境才有更多领悟。</p>
-<a id="more"></a>
-<hr>
-<p>部署指的是把软件放到硬件主机上的过程，改变部署的方式称为迁移或者重新拿部署，这属于系统灵活性的范畴，即灵活性可以看做是部署的超集。但是因为部署和灵活性涉及到诸多可控不可控因素，所以还是有很多挑战的，如：</p>
-<ul>
-<li>可能有不同的处理器</li>
-<li>不同的处理器在不同的设备中</li>
-<li>不同的软件组件需要不同的硬件配置</li>
-<li>系统的生命周期可能会维持数十年</li>
-<li>软件系统在不断进化（需要重新部署）</li>
-<li>灵活的代码使得重新部署的时候不会花太多功夫</li>
-</ul>
-<h2 id="u8F6F_u4EF6_u67B6_u6784_u4E0E_u90E8_u7F72"><a href="#u8F6F_u4EF6_u67B6_u6784_u4E0E_u90E8_u7F72" class="headerlink" title="软件架构与部署"></a>软件架构与部署</h2><p>一个系统可能需要部署到不同的主机或站点上，它们会提供下面的资源（可以是独占或者共享的）：</p>
-<ul>
-<li>硬件</li>
-<li>网络</li>
-<li>外围设备</li>
-<li>系统软件</li>
-<li>应用软件</li>
-<li>数据源</li>
-</ul>
-<p>具体的部署活动包括；</p>
-<ul>
-<li>Planning</li>
-<li>Modeling</li>
-<li>Analysis</li>
-<li>Implementation</li>
-</ul>
-<p>下面分别用图片来介绍：</p>
-<p><img src="/images/14566028050423.jpg" alt="Deployment Planning"></p>
-<p><img src="/images/14566030361624.jpg" alt="Deployment Modeling"></p>
-<p><img src="/images/14566030595938.jpg" alt="Deployment Analysis"></p>
-<p><img src="/images/14566030856276.jpg" alt="Software Deployment Life Cycle"></p>
-<p>这一部分感觉讲得太宽泛了，以后应该会出另一个系列详细说明</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>当软件开发接近尾声，部署和灵活性就成为了重要的考量，这一课我们简要了解一下大概的流程和步骤，具体可能要工作之后实际接触生产环境才有更多领悟。</p>]]>
     
     </summary>
     
