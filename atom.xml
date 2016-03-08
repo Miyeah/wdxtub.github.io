@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-08T19:54:01.000Z</updated>
+  <updated>2016-03-08T23:45:48.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,17 +19,67 @@
     <link href="http://wdxtub.com/2016/03/08/csapp-lab5/"/>
     <id>http://wdxtub.com/2016/03/08/csapp-lab5/</id>
     <published>2016-03-08T18:47:44.000Z</published>
-    <updated>2016-03-08T19:54:01.000Z</updated>
+    <updated>2016-03-08T23:45:48.000Z</updated>
     <content type="html"><![CDATA[<p>这次的作业，我们需要自己完成一个简单的 shell 程序，通过具体的实现，我们可以更加深入地计算机运行的机制（尤其是 Exceptional Control Flow 和进程）。</p>
 <a id="more"></a>
 <hr>
-<p>man 2 execve</p>
-<p>man 3 sleep</p>
+<h2 id="u57FA_u7840_u77E5_u8BC6"><a href="#u57FA_u7840_u77E5_u8BC6" class="headerlink" title="基础知识"></a>基础知识</h2><p>在具体开始这次的试验之前，先复习一下基本概念（具体的细节可以参考前面的几课）。</p>
+<h3 id="u5F02_u6B65_u5F02_u5E38_28_u4E2D_u65AD_29"><a href="#u5F02_u6B65_u5F02_u5E38_28_u4E2D_u65AD_29" class="headerlink" title="异步异常(中断)"></a>异步异常(中断)</h3><p><img src="/images/14574791971112.jpg" alt="Asynchronous Exceptions(Interrupts)"></p>
+<h3 id="u540C_u6B65_u5F02_u5E38"><a href="#u540C_u6B65_u5F02_u5E38" class="headerlink" title="同步异常"></a>同步异常</h3><p><img src="/images/14574792452633.jpg" alt="Synchronous Exceptions"></p>
+<h3 id="u8FDB_u7A0B"><a href="#u8FDB_u7A0B" class="headerlink" title="进程"></a>进程</h3><p><img src="/images/14574793369863.jpg" alt="Definition"></p>
+<p><img src="/images/14574793444040.jpg" alt="Four basic States"></p>
+<p><img src="/images/14574793738605.jpg" alt="Control States"></p>
+<p>fork 函数详细介绍：</p>
+<p><img src="/images/14574794567977.jpg" alt="fork"></p>
+<p><img src="/images/14574794700303.jpg" alt="fork"></p>
+<p>exec 函数详细介绍</p>
+<p><img src="/images/14574794860146.jpg" alt="exec"></p>
+<p>exit 函数详细介绍</p>
+<p><img src="/images/14574795006407.jpg" alt=""></p>
+<p>wait 函数详细介绍</p>
+<p><img src="/images/14574795185122.jpg" alt=""></p>
+<h3 id="u7B80_u5355_u7684_u8FDB_u7A0B_u4F8B_u5B50"><a href="#u7B80_u5355_u7684_u8FDB_u7A0B_u4F8B_u5B50" class="headerlink" title="简单的进程例子"></a>简单的进程例子</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> status;</span><br><span class="line"><span class="keyword">pid_t</span> child_pid = fork();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (child_pid == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="comment">// 这部分只有子进程执行</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Child!\n"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 父进程通过下面这句等待子进程完成，才继续执行</span></span><br><span class="line">    waitpid(child_pid, &amp;status, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Parent!\n"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一个使用 execvc 的例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> status;</span><br><span class="line"><span class="keyword">pid_t</span> child_pid = fork();</span><br><span class="line"><span class="keyword">char</span>* argv[] = &#123;<span class="string">"/bin/ls"</span>, <span class="string">"-l"</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line"><span class="keyword">char</span>* env[] = &#123;..., <span class="literal">NULL</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (child_pid == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="comment">// 这部分只有子进程执行</span></span><br><span class="line">    execve(<span class="string">"/bin/ls"</span>, argv, env);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 因为已经被取代，所以 execve 之后的语句将不会被执行</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 父进程通过下面这句等待子进程完成，才继续执行</span></span><br><span class="line">    waitpid(child_pid, &amp;status, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// 等待子进程结束之后继续执行父线程</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Parent!\n"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u4FE1_u53F7"><a href="#u4FE1_u53F7" class="headerlink" title="信号"></a>信号</h3><p><img src="/images/14574798651564.jpg" alt="Three possible ways to react"></p>
+<p><img src="/images/14574798879407.jpg" alt="Ohter Reaction Options"></p>
+<h2 id="u8BD5_u9A8C_u4ECB_u7ECD"><a href="#u8BD5_u9A8C_u4ECB_u7ECD" class="headerlink" title="试验介绍"></a>试验介绍</h2><ul>
+<li>提供了很多辅助函数，确定先读懂已有代码再开始（注意代码风格）</li>
+<li>这次的任务不简单！</li>
+</ul>
+<p>需要仔细查看的 man pages：</p>
+<ul>
+<li><code>sigemptyset()</code></li>
+<li><code>sigaddset()</code></li>
+<li><code>sigprocmask()</code></li>
+<li><code>sigsuspend()</code></li>
+<li><code>waitpid()</code></li>
+<li><code>open()</code></li>
+<li><code>dup2()</code></li>
+<li><code>setpgid()</code></li>
+<li><code>kill()</code></li>
+</ul>
+<p>需要注意的地方：</p>
+<ul>
+<li>不要使用 <code>sleep()</code> 来同步</li>
+<li>竞争条件</li>
+<li>僵尸进程回收（注意竞争条件以及正确处理信号）</li>
+<li>等待前台任务（仔细思考怎么样才是好的方式）</li>
+</ul>
+<p>同样提供一个 <code>tshref</code> 参考程序来作为比对输出（除了进程 id 之外其他需要一模一样），具体是通过 <code>runtrace</code> 文件来测试，每个 trace 文件会测试一个特性</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这次的作业，我们需要自己完成一个简单的 shell 程序，通过具体的实现，我们可以更加深入地计算机运行的机制（尤其是 Exceptional Control Flow 和进程）。</p>]]>
     
     </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="Shelllab" scheme="http://wdxtub.com/tags/Shelllab/"/>
+    
+      <category term="习题课" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98%E8%AF%BE/"/>
+    
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
