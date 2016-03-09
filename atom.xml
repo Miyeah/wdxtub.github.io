@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-08T23:45:48.000Z</updated>
+  <updated>2016-03-09T04:37:59.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[云计算 Twitter 语料分析 4 Heartbeat 与 Authetication]]></title>
+    <link href="http://wdxtub.com/2016/03/08/cc-p4/"/>
+    <id>http://wdxtub.com/2016/03/08/cc-p4/</id>
+    <published>2016-03-09T01:44:19.000Z</published>
+    <updated>2016-03-09T04:37:59.000Z</updated>
+    <content type="html"><![CDATA[<p>前面两课我们已经配置好了基本的环境，之后的任务都会在前面的基础上完成。因为主要会使用 undertow，所以我们制作了自己的镜像，用于对比的 vertx 则仍旧会以手动的方式进行配置。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><p>因为没有制作对应的镜像，所以需要重新配置一次，不过这次为了性能考虑，直接开启一个 <code>m4.large</code>，注意需要打上 <code>15619project:phase1</code> 标签。正常开启（记得要用小组的帐号）之后我们用<a href="http://wdxtub.com/2016/03/01/cc-p3/">Vert.x 配置部署</a>的步骤配置好基本的环境并检测运行，确认无误后可以继续。</p>
+<p>这一部分的任务比较简单：每个请求都包含 key <code>Y</code> 和一段由 key <code>Z</code> 加密的文本，我们进行解密之后返回指定格式的内容（具体可以参考<a href="http://wdxtub.com/2016/02/25/cc-p1/#Query_1__28Heartbeat_and_Authentication_29">这里</a>）</p>
+<h2 id="u9879_u76EE_u65E5_u5FD7"><a href="#u9879_u76EE_u65E5_u5FD7" class="headerlink" title="项目日志"></a>项目日志</h2><p>大概说一下步骤以及需要注意的地方：</p>
+<p>要弄清楚 vert.x 如何处理诸如 <code>address/q1?key=40845969093821&amp;message=URYEXYBJB</code> 的请求，并在代码中获取到这两个参数：</p>
+<p><img src="/images/14574935033615.jpg" alt="获取参数"></p>
+<p>然后需要生成一个时间戳，并按照<a href="http://wdxtub.com/2016/02/25/cc-p1/#Query_1__28Heartbeat_and_Authentication_29">这里</a> 介绍的解密步骤还原出具体信息。</p>
+<p>我们组把这部分功能代码封装成了一个类，使用的时候只需要传入 key 和 message 即可，而不用操心具体的算法问题（其实就类似于一个面试的算法题）。</p>
+<p>然后我们按照具体的返回格式返回即可，类似下图</p>
+<p><img src="/images/14574936621579.jpg" alt="返回结果"></p>
+<p>这里有一点需要注意，每次会发送两次 GET 请求（其中一次是请求 favicon 的），要注意做一下错误处理，不然会报错，这还挺奇怪的，我用 safari 就没事，但是用 chrome 就不行，chrome 第二次请求就不带参数了，但是 safari 会带。</p>
+<p>后来这个问题改成 80 端口即可，不过需要先 <code>sudo su</code> 才能监听。</p>
+<p>因为这部分只是用来对比评测，所以没有进一步优化，大概能跑到 2W RPS 左右，而且是纯单线程，延迟会比较大，不过之后主要会在 undertow 上做，所以这里就不进一步优化了。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>前面两课我们已经配置好了基本的环境，之后的任务都会在前面的基础上完成。因为主要会使用 undertow，所以我们制作了自己的镜像，用于对比的 vertx 则仍旧会以手动的方式进行配置。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="Vertx" scheme="http://wdxtub.com/tags/Vertx/"/>
+    
+      <category term="云计算" scheme="http://wdxtub.com/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="服务" scheme="http://wdxtub.com/tags/%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 习题课 5 Shelllab]]></title>
@@ -2822,242 +2861,6 @@
       <category term="自我" scheme="http://wdxtub.com/tags/%E8%87%AA%E6%88%91/"/>
     
       <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[软件架构与设计 第 19 课 People, Role, Teams]]></title>
-    <link href="http://wdxtub.com/2016/02/27/sad-19/"/>
-    <id>http://wdxtub.com/2016/02/27/sad-19/</id>
-    <published>2016-02-27T20:01:42.000Z</published>
-    <updated>2016-02-27T23:52:35.000Z</updated>
-    <content type="html"><![CDATA[<p>这节课我们来讲讲人在整个系统开发过程中所发挥的重要作用，或者再简单一点，就是成为一个架构师，到底需要什么特质以及在团队中扮演什么角色。<br><a id="more"></a></p>
-<hr>
-<p>注：跳过了课本中我觉得部分『过时』或者『维基』上都有的常识性内容，这一章其实是本书的最后一章，但是课程其实才刚刚过半，后面的内容应该会和课程结合更紧密，我也会结合一些互联网公司的具体架构实践，来详细介绍背后的道理。</p>
-<p>一个架构师需要什么技能呢？至少有以下几点：</p>
-<ul>
-<li>Software development expertise</li>
-<li>Domain expertise</li>
-<li>Communicator</li>
-<li>Strategist</li>
-<li>Consultant</li>
-<li>Leader</li>
-<li>Technologist</li>
-<li>Cost estimator</li>
-<li>Cheerleader</li>
-<li>Politician</li>
-<li>Salesperson</li>
-</ul>
-<p>具体的能力需求，根据不同的项目和不同的领域，也会有细微的不同，下面按照不同的角色，来进行响应的介绍</p>
-<h2 id="u4F5C_u4E3A_u8F6F_u4EF6_u5F00_u53D1_u4E13_u5BB6"><a href="#u4F5C_u4E3A_u8F6F_u4EF6_u5F00_u53D1_u4E13_u5BB6" class="headerlink" title="作为软件开发专家"></a>作为软件开发专家</h2><ul>
-<li>必须理解软件开发的细微差别<ul>
-<li>准则</li>
-<li>方法和技术</li>
-<li>方法论</li>
-<li>工具</li>
-</ul>
-</li>
-<li>不一定要是世界级的软件开发者</li>
-<li>应该理解不同架构选择的后果<ul>
-<li>不要活在象牙塔中</li>
-<li>理解架构选择会限制实现的方式</li>
-<li>有些具体的实现技术也会限制架构选择</li>
-</ul>
-</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u9886_u57DF_u4E13_u5BB6"><a href="#u4F5C_u4E3A_u9886_u57DF_u4E13_u5BB6" class="headerlink" title="作为领域专家"></a>作为领域专家</h2><ul>
-<li>只有软件工程方面的经验是不够的</li>
-<li>理解问题领域的细微差别<ul>
-<li>成熟度</li>
-<li>稳定性</li>
-<li>系统用户档案 </li>
-</ul>
-</li>
-<li>可能会极大影响架构选择<ul>
-<li>分布</li>
-<li>规模</li>
-<li>可进化性</li>
-</ul>
-</li>
-<li>需要为问题空间建模</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u4EA4_u6D41_u8005"><a href="#u4F5C_u4E3A_u4EA4_u6D41_u8005" class="headerlink" title="作为交流者"></a>作为交流者</h2><ul>
-<li>至少一半的时间应该花在沟通上</li>
-<li>听取权益相关者的意见</li>
-<li>解释架构</li>
-<li>协商折中实现</li>
-<li>需要良好的沟通技能<ul>
-<li>写作</li>
-<li>说话</li>
-<li>展示 </li>
-</ul>
-</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u7B56_u7565_u5BB6"><a href="#u4F5C_u4E3A_u7B56_u7565_u5BB6" class="headerlink" title="作为策略家"></a>作为策略家</h2><ul>
-<li>开发优雅的架构是不够的<ul>
-<li>技术只是一小部分</li>
-<li>架构必须放到更大的场景中也适用</li>
-</ul>
-</li>
-<li>架构必须满足公司的<ul>
-<li>商业策略</li>
-<li>商业实践</li>
-<li>计划周期</li>
-</ul>
-</li>
-<li>也需要考虑对手的<ul>
-<li>产品</li>
-<li>策略</li>
-<li>开发过程</li>
-</ul>
-</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u54A8_u8BE2_u5E08"><a href="#u4F5C_u4E3A_u54A8_u8BE2_u5E08" class="headerlink" title="作为咨询师"></a>作为咨询师</h2><ul>
-<li>开发人员是首要的『客户』</li>
-<li>对于开发人员来说<ul>
-<li>目标和架构师不同</li>
-<li>甚至可能不关心架构本身，而是</li>
-<li>满足功能、质量和调度需求</li>
-<li>所负责的子系统</li>
-</ul>
-</li>
-<li>必须说服开发者<ul>
-<li>理解和关注架构</li>
-<li>对架构相关的改动进行文档记录</li>
-</ul>
-</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u9886_u5BFC"><a href="#u4F5C_u4E3A_u9886_u5BFC" class="headerlink" title="作为领导"></a>作为领导</h2><ul>
-<li>必须是技术领导者<ul>
-<li>基于学识和成就</li>
-<li>根据想法、专业经验、学识来下达命令</li>
-<li>不要依赖于『等级权力』</li>
-</ul>
-</li>
-<li>保证大家遵守设计决定、指引和规则</li>
-<li>为了保证产品质量，需要引入<ul>
-<li>新的想法，解决方案和技术</li>
-<li>带领新人</li>
-</ul>
-</li>
-<li>做关键决定</li>
-<li>帮助完成实现</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u6280_u672F_u4EBA_u5458"><a href="#u4F5C_u4E3A_u6280_u672F_u4EBA_u5458" class="headerlink" title="作为技术人员"></a>作为技术人员</h2><ul>
-<li>理解软件开发的方法</li>
-<li>理解基本的技术，如<ul>
-<li>操作系统</li>
-<li>网络</li>
-<li>中间件</li>
-<li>安全</li>
-<li>数据库</li>
-<li>图形用户界面</li>
-</ul>
-</li>
-<li>跟随技术潮流（不是盲从）</li>
-<li>在下面领域是专家<ul>
-<li>系统建模</li>
-<li>架构平衡分析</li>
-<li>把架构方案和系统需求结合在一起</li>
-</ul>
-</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u5F00_u9500_u8BC4_u4F30_u8005"><a href="#u4F5C_u4E3A_u5F00_u9500_u8BC4_u4F30_u8005" class="headerlink" title="作为开销评估者"></a>作为开销评估者</h2><ul>
-<li>理解不同架构选择的在经济上的影响<ul>
-<li>Green-field vs. Brown-field development</li>
-<li>Cost of COTS adoption</li>
-<li>Cost of development for reuse</li>
-<li>Company’s financial stability &amp; position in marketpalce</li>
-</ul>
-</li>
-<li>技术上最优的方案可能在经济上不一定是最优的</li>
-<li>简单快速的开销评估通常已经足够 </li>
-</ul>
-<h2 id="u4F5C_u4E3A_u5566_u5566_u961F_u961F_u957F"><a href="#u4F5C_u4E3A_u5566_u5566_u961F_u961F_u957F" class="headerlink" title="作为啦啦队队长"></a>作为啦啦队队长</h2><ul>
-<li>在长期、大型的复杂项目中很有用<ul>
-<li>不同的开发小组负责不同的子项目</li>
-<li>管理人员可能会忘记总体的项目目标</li>
-<li>顾客可能没办法接受漫长的等待</li>
-</ul>
-</li>
-<li>必须<ul>
-<li>在必要的细节基础上维护高层视野</li>
-<li>说服不同的权益相关者关于架构的<ul>
-<li>Beauty</li>
-<li>Utility</li>
-<li>Adaptability</li>
-<li>Technological impact</li>
-<li>Financial impact</li>
-</ul>
-</li>
-<li>让大家情绪高涨</li>
-</ul>
-</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u653F_u6CBB_u5BB6"><a href="#u4F5C_u4E3A_u653F_u6CBB_u5BB6" class="headerlink" title="作为政治家"></a>作为政治家</h2><ul>
-<li>必须找到组织中的关键人物</li>
-<li>必须持续<ul>
-<li>倾听</li>
-<li>维持网络</li>
-<li>善于表达</li>
-<li>兜售愿景</li>
-<li>从多个角度思考问题</li>
-</ul>
-</li>
-</ul>
-<h2 id="u4F5C_u4E3A_u9500_u552E_u4EBA_u5458"><a href="#u4F5C_u4E3A_u9500_u552E_u4EBA_u5458" class="headerlink" title="作为销售人员"></a>作为销售人员</h2><p>兜售</p>
-<ul>
-<li>总体愿景</li>
-<li>技术解决方案</li>
-<li>架构的关键属性</li>
-<li>系统的关键属性</li>
-<li>开销计划</li>
-<li>保证架构的实现</li>
-</ul>
-<h2 id="u5173_u4E8E_u67B6_u6784_u5C0F_u7EC4"><a href="#u5173_u4E8E_u67B6_u6784_u5C0F_u7EC4" class="headerlink" title="关于架构小组"></a>关于架构小组</h2><ul>
-<li>由架构师组成</li>
-<li>通常有不同的层级</li>
-<li>随着进展进展人数会变动</li>
-<li>架构师可能会成为<ul>
-<li>子系统的开发组长</li>
-<li>调去其他的项目</li>
-</ul>
-</li>
-<li>定义软件架构</li>
-<li>维护架构</li>
-<li>评估技术风险</li>
-<li>协调不同小组</li>
-<li>辅助项目管理</li>
-<li>辅助产品定义</li>
-<li>确定主要设计的主要元素</li>
-<li>确定系统的组织或架构</li>
-<li>确定主要元素的交互方式</li>
-<li>与系统工程师和开发小组合作</li>
-</ul>
-<h2 id="u67B6_u6784_u5C0F_u7EC4_u53EF_u80FD_u7684_u98CE_u9669"><a href="#u67B6_u6784_u5C0F_u7EC4_u53EF_u80FD_u7684_u98CE_u9669" class="headerlink" title="架构小组可能的风险"></a>架构小组可能的风险</h2><ul>
-<li>技能短板<ul>
-<li>缺乏软件开发经验</li>
-<li>缺乏领域相关经验</li>
-</ul>
-</li>
-<li>缺乏权威</li>
-<li>活在象牙塔中</li>
-<li>混淆不同的工具、技术和方法</li>
-<li>拖延</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这节课我们来讲讲人在整个系统开发过程中所发挥的重要作用，或者再简单一点，就是成为一个架构师，到底需要什么特质以及在团队中扮演什么角色。<br>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
