@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-11T11:36:49.000Z</updated>
+  <updated>2016-03-11T11:41:39.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,12 +19,13 @@
     <link href="http://wdxtub.com/2016/03/11/cc-p6/"/>
     <id>http://wdxtub.com/2016/03/11/cc-p6/</id>
     <published>2016-03-11T11:10:38.000Z</published>
-    <updated>2016-03-11T11:36:49.000Z</updated>
+    <updated>2016-03-11T11:41:39.000Z</updated>
     <content type="html"><![CDATA[<p>完成了数据处理，我们就可以把清洗之后的数据导入数据库了，需要分别针对 MySQL 和 HBase 写两套代码。具体我们可以把数据库与前端分离，只要配置好能让前端来连接即可。</p>
 <a id="more"></a>
 <hr>
 <h2 id="u6570_u636E_u5E93_u8BBE_u8BA1"><a href="#u6570_u636E_u5E93_u8BBE_u8BA1" class="headerlink" title="数据库设计"></a>数据库设计</h2><p>我们需要做的很简单，就是返回某个用户用指定的 hashtag 发的 tweet，具体请求和响应的格式为：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">请求格式</span><br><span class="line"><span class="constant">GET</span> /q2?userid=uid&amp;hashtag=hashtag</span><br><span class="line"></span><br><span class="line">响应格式（如果有对应的推文）</span><br><span class="line"><span class="constant">TEAMID</span>,<span class="constant">TEAM_AWS_ACCOUNT_ID</span>\n</span><br><span class="line"><span class="constant">Sentiment_density1</span><span class="symbol">:Tweet_time1</span><span class="symbol">:Tweet_id1</span><span class="symbol">:Cencored_text1</span>\n</span><br><span class="line"><span class="constant">Sentiment_density2</span><span class="symbol">:Tweet_time2</span><span class="symbol">:Tweet_id2</span><span class="symbol">:Cencored_text2</span>\n</span><br><span class="line"><span class="constant">Sentiment_density3</span><span class="symbol">:Tweet_time3</span><span class="symbol">:Tweet_id3</span><span class="symbol">:Cencored_text3</span>\n</span><br><span class="line"></span><br><span class="line">响应格式（如果没有对应的推文）</span><br><span class="line"></span><br><span class="line"><span class="constant">TEAMID</span>,<span class="constant">TEAM_AWS_ACCOUNT_ID</span>\n</span><br><span class="line">\n</span><br></pre></td></tr></table></figure>
+<p>可以看到，实际要在数据库中检索的内容，就是 <code>userid</code> 和 <code>hashtag</code>，其他的列只需要按照格式建立对应的列即可（后面需要用来排序）。</p>
 <h3 id="MySQL_Schema"><a href="#MySQL_Schema" class="headerlink" title="MySQL Schema"></a>MySQL Schema</h3><h3 id="HBase_Table"><a href="#HBase_Table" class="headerlink" title="HBase Table"></a>HBase Table</h3><h2 id="u5BFC_u5165_u6570_u636E"><a href="#u5BFC_u5165_u6570_u636E" class="headerlink" title="导入数据"></a>导入数据</h2><h3 id="u5BFC_u5165_MySQL"><a href="#u5BFC_u5165_MySQL" class="headerlink" title="导入 MySQL"></a>导入 MySQL</h3><h3 id="u5BFC_u5165_HBase"><a href="#u5BFC_u5165_HBase" class="headerlink" title="导入 HBase"></a>导入 HBase</h3><h2 id="u524D_u7AEF_u8BBE_u8BA1"><a href="#u524D_u7AEF_u8BBE_u8BA1" class="headerlink" title="前端设计"></a>前端设计</h2><h3 id="u540E_u7AEF_u4E3A_MySQL"><a href="#u540E_u7AEF_u4E3A_MySQL" class="headerlink" title="后端为 MySQL"></a>后端为 MySQL</h3><h3 id="u540E_u7AEF_u4E3A_HBase"><a href="#u540E_u7AEF_u4E3A_HBase" class="headerlink" title="后端为 HBase"></a>后端为 HBase</h3>]]></content>
     <summary type="html">
     <![CDATA[<p>完成了数据处理，我们就可以把清洗之后的数据导入数据库了，需要分别针对 MySQL 和 HBase 写两套代码。具体我们可以把数据库与前端分离，只要配置好能让前端来连接即可。</p>]]>
