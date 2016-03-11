@@ -40,6 +40,11 @@
 </ol>
 <p>这里我们用提供的 reference 来进行导入测试，注意需要先清理掉没有 hashtag 的内容，并且把数据组织成我们需要的形式（注意 hashtag 最后的 <code>\n</code>）。</p>
 <p>这里可以下载下来本地跑，或者新开一个服务器来处理。</p>
+<ul>
+<li>根据设计的表来处理数据</li>
+<li>用 awk 排序</li>
+<li>合并数据，直接得到答案</li>
+</ul>
 <p>开启之后连接上去 <code>ssh -i group2 hadoop@dns.compute-1.amazonaws.com</code></p>
 <p>然后用 <code>hadoop dfsadmin -report</code> 检查状态，一切正常之后就可以上传数据了，用如下命令即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir Q2</span><br><span class="line"><span class="built_in">cd</span> Q2</span><br><span class="line">scp -i group2.pem ./cdata hadoop@ec2-<span class="number">52</span>-<span class="number">91</span>-<span class="number">183</span>-<span class="number">102</span>.compute-<span class="number">1</span>.amazonaws.com:~/Q2/</span><br></pre></td></tr></table></figure>
@@ -48,7 +53,7 @@
 <p>然后进入 HBase Shell 操作 <code>hbase shell</code></p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">001</span>:<span class="number">0</span>&gt; create <span class="string">'twitterdata'</span>,<span class="string">'data'</span></span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">002</span>:<span class="number">0</span>&gt; list</span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">003</span>:<span class="number">0</span>&gt; describe <span class="string">'twitterdata'</span></span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">004</span>:<span class="number">0</span>&gt; exit</span><br></pre></td></tr></table></figure>
 <p>然后就需要具体的导入了，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以 \t 为分隔符的话就不需要设定，这是默认的</span></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/hfile_groupt4 -Dimporttsv.columns=HBASE_ROW_KEY,data:tweetid,data:time,data:score,data:content twitterdata /housailei/csv/cdata</span><br><span class="line"></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_groupt4 twitterdata</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以 \t 为分隔符的话就不需要设定，这是默认的</span></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/hfile_groupt4 -Dimporttsv.columns=HBASE_ROW_KEY,data:useridtag,data:tweetid,data:time,data:score,data:content twitterdata /housailei/csv/cdata</span><br><span class="line"></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_groupt4 twitterdata</span><br></pre></td></tr></table></figure>
 <p>完成之后测试一下 <code>hbase shell</code>：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">001</span>:<span class="number">0</span>&gt; scan <span class="string">'twitterdata'</span></span><br></pre></td></tr></table></figure>
 <p>如果导入错误的话，可以在 hbase shell 中 <code>disable &#39;twitterdata&#39;</code> 之后 <code>drop &#39;twitterdata&#39;</code> 来删除这个表，还要原来的 shell 中删除原来的数据文件 <code>hadoop fs -rm /housailei/csv/cdata</code></p>
@@ -58,6 +63,7 @@
 <li>HBase 直接在 EMR 上做完，所以直接连接即可，不需要怎么配置</li>
 <li>MySQL 就需要自己安装和配置了</li>
 </ul>
+<p>需要把换行符换回来</p>
 <h2 id="u4F18_u5316_u6280_u5DE7"><a href="#u4F18_u5316_u6280_u5DE7" class="headerlink" title="优化技巧"></a>优化技巧</h2><h3 id="MySQL__u90E8_u5206"><a href="#MySQL__u90E8_u5206" class="headerlink" title="MySQL 部分"></a>MySQL 部分</h3><blockquote>
 <p>为查询缓存优化你的查询</p>
 </blockquote>
