@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-11T11:41:39.000Z</updated>
+  <updated>2016-03-11T15:20:40.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,14 +19,67 @@
     <link href="http://wdxtub.com/2016/03/11/cc-p6/"/>
     <id>http://wdxtub.com/2016/03/11/cc-p6/</id>
     <published>2016-03-11T11:10:38.000Z</published>
-    <updated>2016-03-11T11:41:39.000Z</updated>
+    <updated>2016-03-11T15:20:40.000Z</updated>
     <content type="html"><![CDATA[<p>完成了数据处理，我们就可以把清洗之后的数据导入数据库了，需要分别针对 MySQL 和 HBase 写两套代码。具体我们可以把数据库与前端分离，只要配置好能让前端来连接即可。</p>
 <a id="more"></a>
 <hr>
 <h2 id="u6570_u636E_u5E93_u8BBE_u8BA1"><a href="#u6570_u636E_u5E93_u8BBE_u8BA1" class="headerlink" title="数据库设计"></a>数据库设计</h2><p>我们需要做的很简单，就是返回某个用户用指定的 hashtag 发的 tweet，具体请求和响应的格式为：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">请求格式</span><br><span class="line"><span class="constant">GET</span> /q2?userid=uid&amp;hashtag=hashtag</span><br><span class="line"></span><br><span class="line">响应格式（如果有对应的推文）</span><br><span class="line"><span class="constant">TEAMID</span>,<span class="constant">TEAM_AWS_ACCOUNT_ID</span>\n</span><br><span class="line"><span class="constant">Sentiment_density1</span><span class="symbol">:Tweet_time1</span><span class="symbol">:Tweet_id1</span><span class="symbol">:Cencored_text1</span>\n</span><br><span class="line"><span class="constant">Sentiment_density2</span><span class="symbol">:Tweet_time2</span><span class="symbol">:Tweet_id2</span><span class="symbol">:Cencored_text2</span>\n</span><br><span class="line"><span class="constant">Sentiment_density3</span><span class="symbol">:Tweet_time3</span><span class="symbol">:Tweet_id3</span><span class="symbol">:Cencored_text3</span>\n</span><br><span class="line"></span><br><span class="line">响应格式（如果没有对应的推文）</span><br><span class="line"></span><br><span class="line"><span class="constant">TEAMID</span>,<span class="constant">TEAM_AWS_ACCOUNT_ID</span>\n</span><br><span class="line">\n</span><br></pre></td></tr></table></figure>
 <p>可以看到，实际要在数据库中检索的内容，就是 <code>userid</code> 和 <code>hashtag</code>，其他的列只需要按照格式建立对应的列即可（后面需要用来排序）。</p>
-<h3 id="MySQL_Schema"><a href="#MySQL_Schema" class="headerlink" title="MySQL Schema"></a>MySQL Schema</h3><h3 id="HBase_Table"><a href="#HBase_Table" class="headerlink" title="HBase Table"></a>HBase Table</h3><h2 id="u5BFC_u5165_u6570_u636E"><a href="#u5BFC_u5165_u6570_u636E" class="headerlink" title="导入数据"></a>导入数据</h2><h3 id="u5BFC_u5165_MySQL"><a href="#u5BFC_u5165_MySQL" class="headerlink" title="导入 MySQL"></a>导入 MySQL</h3><h3 id="u5BFC_u5165_HBase"><a href="#u5BFC_u5165_HBase" class="headerlink" title="导入 HBase"></a>导入 HBase</h3><h2 id="u524D_u7AEF_u8BBE_u8BA1"><a href="#u524D_u7AEF_u8BBE_u8BA1" class="headerlink" title="前端设计"></a>前端设计</h2><h3 id="u540E_u7AEF_u4E3A_MySQL"><a href="#u540E_u7AEF_u4E3A_MySQL" class="headerlink" title="后端为 MySQL"></a>后端为 MySQL</h3><h3 id="u540E_u7AEF_u4E3A_HBase"><a href="#u540E_u7AEF_u4E3A_HBase" class="headerlink" title="后端为 HBase"></a>后端为 HBase</h3>]]></content>
+<h3 id="MySQL_Schema"><a href="#MySQL_Schema" class="headerlink" title="MySQL Schema"></a>MySQL Schema</h3><p>一个可能的表格</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`q2`</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`q2`</span> (</span><br><span class="line">  <span class="string">`tweet_id`</span> <span class="built_in">BIGINT</span>(<span class="number">20</span>) <span class="keyword">UNSIGNED</span></span><br><span class="line">	<span class="string">`user_id`</span> <span class="built_in">BIGINT</span>(<span class="number">20</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	<span class="string">`time`</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, </span><br><span class="line">	<span class="string">`content`</span> <span class="built_in">varchar</span>(<span class="number">140</span>),</span><br><span class="line">	<span class="string">`score`</span> <span class="built_in">REAL</span>,</span><br><span class="line">	<span class="string">`hashtag`</span> <span class="built_in">varchar</span>(<span class="number">14</span>),</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>索引要怎么建立</li>
+<li>导入数据时可以使用 MyISAM engine，导入数据时较快，增加 <code>key_buffer_size</code></li>
+</ul>
+<p>创建的时候可以直接命令执行（直接用的之前的命令，注意对应改）</p>
+<p><code>mysql -u root -pdb15319root song_db &lt; create_tables.sql</code></p>
+<h3 id="HBase_Table"><a href="#HBase_Table" class="headerlink" title="HBase Table"></a>HBase Table</h3><p>HBase 的设计主要是需要决定具体的 rowkey 是什么（需要是唯一的），可以考虑用不同的项拼成一个 rowkey，然后剩下的数据放在 column family 中。</p>
+<p>一个可能的设计是用 <code>tweet_id+user_id+hashtag</code> 作为 rowkey，具体怎么弄还要测试</p>
+<ul>
+<li>增加 BlockCache size</li>
+<li>增加第二个索引: Phoenix -&gt; converted index</li>
+</ul>
+<h2 id="u5BFC_u5165_u6570_u636E"><a href="#u5BFC_u5165_u6570_u636E" class="headerlink" title="导入数据"></a>导入数据</h2><h3 id="u5BFC_u5165_MySQL"><a href="#u5BFC_u5165_MySQL" class="headerlink" title="导入 MySQL"></a>导入 MySQL</h3><p>大概的语法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date</span><br><span class="line">mysqlimport --local --fields-terminated-by=<span class="string">'\t'</span> --lines-terminated-by=<span class="string">'\n'</span> -uroot -proot --default-character-set=utf8mb4 dbname filename</span><br><span class="line">date</span><br></pre></td></tr></table></figure>
+<p>建立索引</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date</span><br><span class="line">mysql -uroot -proot dbname <span class="operator">-e</span> <span class="string">"create index iname on tablename (column1, column2,..)"</span></span><br><span class="line">date</span><br></pre></td></tr></table></figure>
+<h3 id="u5BFC_u5165_HBase"><a href="#u5BFC_u5165_HBase" class="headerlink" title="导入 HBase"></a>导入 HBase</h3><p>需要使用 EMR 进行导入，具体参考 <a href="http://wdxtub.com/2016/02/22/cc-14/">云计算 第 14 课 文件 vs 数据库</a></p>
+<h2 id="u524D_u7AEF_u8BBE_u8BA1"><a href="#u524D_u7AEF_u8BBE_u8BA1" class="headerlink" title="前端设计"></a>前端设计</h2><p>其实只需要写两个连接器用来连接对应的数据库，然后在 Undertow 的 handler 中对应调用即可。具体访问的方式同样可以参考 <a href="http://wdxtub.com/2016/02/22/cc-14/">云计算 第 14 课 文件 vs 数据库</a></p>
+<ul>
+<li>HBase 直接在 EMR 上做完，所以直接连接即可，不需要怎么配置</li>
+<li>MySQL 就需要自己安装和配置了</li>
+</ul>
+<h2 id="u4F18_u5316_u6280_u5DE7"><a href="#u4F18_u5316_u6280_u5DE7" class="headerlink" title="优化技巧"></a>优化技巧</h2><h3 id="MySQL__u90E8_u5206"><a href="#MySQL__u90E8_u5206" class="headerlink" title="MySQL 部分"></a>MySQL 部分</h3><blockquote>
+<p>为查询缓存优化你的查询</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询缓存不开启</span></span><br><span class="line">$r = mysql_query(<span class="string">"SELECT username FROM user WHERE signup_date &gt;= CURDATE()"</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 开启查询缓存</span></span><br><span class="line">$today = date(<span class="string">"Y-m-d"</span>);</span><br><span class="line">$r = mysql_query(<span class="string">"SELECT username FROM user WHERE signup_date &gt;= '$today'"</span>);</span><br></pre></td></tr></table></figure>
+<p>上面两条SQL语句的差别就是 CURDATE() ，MySQL的查询缓存对这个函数不起作用。所以，像 NOW() 和 RAND() 或是其它的诸如此类的SQL函数都不会开启查询缓存，因为这些函数的返回是会不定的易变的。所以，你所需要的就是用一个变量来代替MySQL的函数，从而开启缓存。</p>
+<blockquote>
+<p>为搜索字段建索引</p>
+</blockquote>
+<p>索引并不一定就是给主键或是唯一的字段。如果在你的表中，有某个字段你总要会经常用来做搜索，那么，请为其建立索引吧。具体建立索引的方法前面有提过，这里不赘述。</p>
+<blockquote>
+<p>从 PROCEDURE ANALYSE() 取得建议</p>
+</blockquote>
+<p><a href="http://dev.mysql.com/doc/refman/5.0/en/procedure-analyse.html" target="_blank" rel="external">PROCEDURE ANALYSE()</a> 会让 MySQL 帮你去分析你的字段和其实际的数据，并会给你一些有用的建议。只有表中有实际的数据，这些建议才会变得有用，因为要做一些大的决定是需要有数据作为基础的。</p>
+<p>例如，如果你创建了一个 INT 字段作为你的主键，然而并没有太多的数据，那么，PROCEDURE ANALYSE()会建议你把这个字段的类型改成 MEDIUMINT 。或是你使用了一个 VARCHAR 字段，因为数据不多，你可能会得到一个让你把它改成 ENUM 的建议。这些建议，都是可能因为数据不够多，所以决策做得就不够准。</p>
+<p>一定要注意，这些只是建议，只有当你的表里的数据越来越多时，这些建议才会变得准确。一定要记住，你才是最终做决定的人。</p>
+<blockquote>
+<p>选择正确的存储引擎</p>
+</blockquote>
+<p>在 MySQL 中有两个存储引擎 MyISAM 和 InnoDB，每个引擎都有利有弊。</p>
+<p>MyISAM 适合于一些需要大量查询的应用，但其对于有大量写操作并不是很好。甚至你只是需要update一个字段，整个表都会被锁起来，而别的进程，就算是读进程都无法操作直到读操作完成。另外，MyISAM 对于 <code>SELECT COUNT(*)</code> 这类的计算是超快无比的。</p>
+<p>InnoDB 的趋势会是一个非常复杂的存储引擎，对于一些小的应用，它会比 MyISAM 还慢。他是它支持“行锁” ，于是在写操作比较多的时候，会更优秀。并且，他还支持更多的高级应用，比如：事务。</p>
+<blockquote>
+<p>参数配置</p>
+</blockquote>
+<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://coolshell.cn/articles/1846.html" target="_blank" rel="external">MySQL性能优化的最佳20+条经验</a></li>
+<li><a href="http://dev.mysql.com/doc/refman/5.1/en/myisam-storage-engine.html" target="_blank" rel="external">target=”_blank”MyISAM Storage Engine</a></li>
+<li><a href="http://dev.mysql.com/doc/refman/5.1/en/innodb.html" target="_blank" rel="external">InnoDB Storage Engine</a></li>
+</ul>
+]]></content>
     <summary type="html">
     <![CDATA[<p>完成了数据处理，我们就可以把清洗之后的数据导入数据库了，需要分别针对 MySQL 和 HBase 写两套代码。具体我们可以把数据库与前端分离，只要配置好能让前端来连接即可。</p>]]>
     
