@@ -59,7 +59,7 @@
     <link href="http://wdxtub.com/2016/03/11/cc-p6/"/>
     <id>http://wdxtub.com/2016/03/11/cc-p6/</id>
     <published>2016-03-11T11:10:38.000Z</published>
-    <updated>2016-03-13T18:58:53.000Z</updated>
+    <updated>2016-03-13T22:39:45.000Z</updated>
     <content type="html"><![CDATA[<p>完成了数据处理，我们就可以把清洗之后的数据导入数据库了，需要分别针对 MySQL 和 HBase 写两套代码。具体我们可以把数据库与前端分离，只要配置好能让前端来连接即可。</p>
 <a id="more"></a>
 <hr>
@@ -258,6 +258,7 @@
 <li><a href="http://5434718.blog.51cto.com/5424718/1207526" target="_blank" rel="external">MySQL性能优化之参数配置</a></li>
 <li><a href="https://blog.linuxeye.com/379.html" target="_blank" rel="external">MySQL性能调优my.cnf详解</a></li>
 <li><a href="https://www.ibm.com/developerworks/cn/java/j-lo-HBase/" target="_blank" rel="external">HBase 数据库检索性能优化策略</a></li>
+<li><a href="http://blog.csdn.net/u010967382/article/details/38046821" target="_blank" rel="external">【甘道夫】HBase连接池 – HTablePool被Deprecated之后</a></li>
 </ul>
 ]]></content>
     <summary type="html">
