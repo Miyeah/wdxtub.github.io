@@ -59,7 +59,7 @@
     <link href="http://wdxtub.com/2016/03/11/cc-p6/"/>
     <id>http://wdxtub.com/2016/03/11/cc-p6/</id>
     <published>2016-03-11T11:10:38.000Z</published>
-    <updated>2016-03-13T04:42:17.000Z</updated>
+    <updated>2016-03-13T18:58:53.000Z</updated>
     <content type="html"><![CDATA[<p>完成了数据处理，我们就可以把清洗之后的数据导入数据库了，需要分别针对 MySQL 和 HBase 写两套代码。具体我们可以把数据库与前端分离，只要配置好能让前端来连接即可。</p>
 <a id="more"></a>
 <hr>
@@ -110,9 +110,9 @@
 </ul>
 </li>
 <li>清洗数据 userid+hashtag 一致的项目<ul>
-<li>把 \n \” 这些都还原了</li>
-<li>把写好的文件传上去 <code>scp -i group2.pem ./Wash.java ubuntu@ec2-54-173-116-116.compute-1.amazonaws.com:~/</code></li>
-<li>取一小部分到本地测试 <code>scp -i group2.pem ubuntu@ec2-54-173-116-116.compute-1.amazonaws.com:~/test ./</code></li>
+<li>把 \” 这些都还原了</li>
+<li>把写好的文件传上去 <code>scp -i group2.pem ./Wash.java ubuntu@ec2-52-23-186-7.compute-1.amazonaws.com:~/</code></li>
+<li>取一小部分到本地测试 <code>scp -i group2.pem ubuntu@ec2-52-23-186-7.compute-1.amazonaws.com:~/test ./</code></li>
 </ul>
 </li>
 </ol>
@@ -122,6 +122,7 @@
 <ul>
 <li><code>aws s3 cp ./hbasedata s3://housailei15619/alloutput/</code></li>
 </ul>
+<p>测试之后发现可能会有重复的记录，可以用 <code>grep</code> 来看到底出了什么问题 <code>grep &quot;1000001233&quot; hbasedata | grep &quot;BabyyO&quot;</code></p>
 <h3 id="u5BFC_u5165_MySQL"><a href="#u5BFC_u5165_MySQL" class="headerlink" title="导入 MySQL"></a>导入 MySQL</h3><p>大概的语法是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date</span><br><span class="line">mysqlimport --local --fields-terminated-by=<span class="string">'\t'</span> --lines-terminated-by=<span class="string">'\n'</span> -uroot -proot --default-character-set=utf8mb4 dbname filename</span><br><span class="line">date</span><br></pre></td></tr></table></figure>
 <p>建立索引</p>
@@ -156,7 +157,7 @@
 <p>然后进入 HBase Shell 操作 <code>hbase shell</code></p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">001</span>:<span class="number">0</span>&gt; create <span class="string">'twitterdata'</span>,<span class="string">'data'</span></span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">002</span>:<span class="number">0</span>&gt; list</span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">003</span>:<span class="number">0</span>&gt; describe <span class="string">'twitterdata'</span></span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">004</span>:<span class="number">0</span>&gt; exit</span><br></pre></td></tr></table></figure>
 <p>然后就需要具体的导入了，可能会遇到数据太大放不进去的问题，这时候放到挂载的目录下 <code>/mnt</code> 才行，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line">wget http://s3.amazonaws.com/housailei15619/alloutput/hbasedata</span><br><span class="line"></span><br><span class="line">hadoop fs -put ./hbasedata /housailei/csv/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里是处理完全部数据导入的时候的命令</span></span><br><span class="line"><span class="comment"># rowkey 直接是 userid+hashtag：</span></span><br><span class="line"><span class="comment"># 以 \t 为分隔符的话就不需要设定，这是默认的</span></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/hfile_groupt1 -Dimporttsv.columns=HBASE_ROW_KEY,data:text twitterdata /housailei/csv/hbasedata</span><br><span class="line"></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_groupt1 twitterdata</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line">wget http://s3.amazonaws.com/housailei15619/alloutput/hbasedata</span><br><span class="line">aws s3 cp s3://housailei15619/alloutput/hbasedata ./</span><br><span class="line"></span><br><span class="line">hadoop fs -put ./hbasedata /housailei/csv/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里是处理完全部数据导入的时候的命令</span></span><br><span class="line"><span class="comment"># rowkey 直接是 userid+hashtag：</span></span><br><span class="line"><span class="comment"># 以 \t 为分隔符的话就不需要设定，这是默认的</span></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/hfile_groupt1 -Dimporttsv.columns=HBASE_ROW_KEY,data:t twitterdata /housailei/csv/hbasedata</span><br><span class="line"></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_groupt1 twitterdata</span><br></pre></td></tr></table></figure>
 <p>完成之后测试一下 <code>hbase shell</code>：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">001</span>:<span class="number">0</span>&gt; scan <span class="string">'twitterdata'</span></span><br></pre></td></tr></table></figure>
 <p>如果导入错误的话，可以在 hbase shell 中 <code>disable &#39;twitterdata&#39;</code> 之后 <code>drop &#39;twitterdata&#39;</code> 来删除这个表，还要原来的 shell 中删除原来的数据文件 <code>hadoop fs -rm /housailei/csv/cdata</code></p>
@@ -175,11 +176,11 @@
 <li>各种字符 + 多行输出：<a href="http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000003579&amp;hashtag=niigata" target="_blank" rel="external">http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000003579&amp;hashtag=niigata</a></li>
 <li>各种字符 + 单行输出：<a href="http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000034468&amp;hashtag=الشباب" target="_blank" rel="external">http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000034468&amp;hashtag=الشباب</a></li>
 </ul>
-<p>更新前端命令：<code>scp -i ../group2.pem -r ./* ubuntu@ec2-52-90-3-89.compute-1.amazonaws.com:~/undertow-server/</code></p>
+<p>更新前端命令：<code>scp -i ../group.pem -r ./* ubuntu@ec2-52-91-245-255.compute-1.amazonaws.com:~/undertow-server/</code></p>
 <p>注意 pom 文件的版本要正确，并且不能在本地连接，要在 ec2 上连接。</p>
 <p>杀掉当前在跑的进程 <code>ps -ef | grep mvn</code> 然后 <code>kill pid</code>，然后去 <code>/etc/init.d</code> 文件夹下把开机启动脚本删除（因为队友建的镜像默认是开机启动的，不方便调试）</p>
 <p>启动 server <code>sudo mvn exec:java</code></p>
-<h2 id="u4F18_u5316_u6280_u5DE7"><a href="#u4F18_u5316_u6280_u5DE7" class="headerlink" title="优化技巧"></a>优化技巧</h2><h3 id="MySQL__u90E8_u5206"><a href="#MySQL__u90E8_u5206" class="headerlink" title="MySQL 部分"></a>MySQL 部分</h3><blockquote>
+<h2 id="u4F18_u5316_u6280_u5DE7"><a href="#u4F18_u5316_u6280_u5DE7" class="headerlink" title="优化技巧"></a>优化技巧</h2><h3 id="MySQL__u4F18_u5316"><a href="#MySQL__u4F18_u5316" class="headerlink" title="MySQL 优化"></a>MySQL 优化</h3><blockquote>
 <p>为查询缓存优化你的查询</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询缓存不开启</span></span><br><span class="line">$r = mysql_query(<span class="string">"SELECT username FROM user WHERE signup_date &gt;= CURDATE()"</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 开启查询缓存</span></span><br><span class="line">$today = date(<span class="string">"Y-m-d"</span>);</span><br><span class="line">$r = mysql_query(<span class="string">"SELECT username FROM user WHERE signup_date &gt;= '$today'"</span>);</span><br></pre></td></tr></table></figure>
@@ -223,12 +224,40 @@
 </ul>
 </li>
 </ul>
+<h3 id="HBase__u4F18_u5316"><a href="#HBase__u4F18_u5316" class="headerlink" title="HBase 优化"></a>HBase 优化</h3><p>HBase 不能支持 where 条件、Order by 查询，只支持按照主键 Rowkey 和主键的 range 来查询，但是可以通过 HBase 提供的 API 进行条件过滤。</p>
+<p>HBase 的 Rowkey 是数据行的唯一标识，必须通过它进行数据行访问，目前有三种方式，单行键访问、行键范围访问、全表扫描访问。数据按行键的方式排序存储，依次按位比较，数值较大的排列在后，例如 int 方式的排序：1，10，100，11，12，2，20…，906，…。</p>
+<p>ColumnFamily 是“列族”，属于 schema 表，在建表时定义，每个列属于一个列族，列名用列族作为前缀“ColumnFamily：qualifier”，访问控制、磁盘和内存的使用统计都是在列族层面进行的。<br>Cell 是通过行和列确定的一个存储单元，值以字节码存储，没有类型。</p>
+<p>Timestamp 是区分不同版本 Cell 的索引，64 位整型。不同版本的数据按照时间戳倒序排列，最新的数据版本排在最前面。</p>
+<p>Hbase 在行方向上水平划分成 N 个 Region，每个表一开始只有一个 Region，数据量增多，Region 自动分裂为两个，不同 Region 分布在不同 Server 上，但同一个不会拆分到不同 Server。</p>
+<p>Region 按 ColumnFamily 划分成 Store，Store 为最小存储单元，用于保存一个列族的数据，每个 Store 包括内存中的 memstore 和持久化到 disk 上的 HFile。</p>
+<blockquote>
+<p>分配合适的内存给 RegionServer 服务</p>
+</blockquote>
+<p>在不影响其他服务的情况下，越大越好。例如在 HBase 的 conf 目录下的 hbase-env.sh 的最后添加 export HBASE_REGIONSERVER_OPTS=”-Xmx16000m $HBASE_REGIONSERVER_OPTS”<br>其中 16000m 为分配给 RegionServer 的内存大小。</p>
+<blockquote>
+<p>RegionServer 的请求处理 IO 线程数</p>
+</blockquote>
+<p>较少的 IO 线程适用于处理单次请求内存消耗较高的 Big Put 场景 (大容量单次 Put 或设置了较大 cache 的 Scan，均属于 Big Put) 或 ReigonServer 的内存比较紧张的场景。<br>较多的 IO 线程，适用于单次请求内存消耗低，TPS 要求 (每秒事务处理量 (TransactionPerSecond)) 非常高的场景。设置该值的时候，以监控内存为主要参考。<br>在 hbase-site.xml 配置文件中配置项为 hbase.regionserver.handler.count。</p>
+<p>200</p>
+<blockquote>
+<p>调整 Block Cache</p>
+</blockquote>
+<p>hfile.block.cache.size：RS的block cache的内存大小限制，默认值0.25，在偏向读的业务中，可以适当调大该值，具体配置时需试hbase集群服务的业务特征，结合memstore的内存占比进行综合考虑。</p>
+<blockquote>
+<p>名称优化</p>
+</blockquote>
+<p>列族名称尽量短，比如：“f”，并且尽量只有一个列族；</p>
+<blockquote>
+<p>硬件优化</p>
+</blockquote>
+<p>增加数据节点</p>
 <h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://coolshell.cn/articles/1846.html" target="_blank" rel="external">MySQL性能优化的最佳20+条经验</a></li>
 <li><a href="http://dev.mysql.com/doc/refman/5.1/en/myisam-storage-engine.html" target="_blank" rel="external">target=”_blank”MyISAM Storage Engine</a></li>
 <li><a href="http://dev.mysql.com/doc/refman/5.1/en/innodb.html" target="_blank" rel="external">InnoDB Storage Engine</a></li>
 <li><a href="http://5434718.blog.51cto.com/5424718/1207526" target="_blank" rel="external">MySQL性能优化之参数配置</a></li>
 <li><a href="https://blog.linuxeye.com/379.html" target="_blank" rel="external">MySQL性能调优my.cnf详解</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-lo-HBase/" target="_blank" rel="external">HBase 数据库检索性能优化策略</a></li>
 </ul>
 ]]></content>
     <summary type="html">
