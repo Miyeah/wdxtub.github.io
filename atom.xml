@@ -59,7 +59,7 @@
     <link href="http://wdxtub.com/2016/03/11/cc-p6/"/>
     <id>http://wdxtub.com/2016/03/11/cc-p6/</id>
     <published>2016-03-11T11:10:38.000Z</published>
-    <updated>2016-03-11T22:53:25.000Z</updated>
+    <updated>2016-03-13T04:42:17.000Z</updated>
     <content type="html"><![CDATA[<p>完成了数据处理，我们就可以把清洗之后的数据导入数据库了，需要分别针对 MySQL 和 HBase 写两套代码。具体我们可以把数据库与前端分离，只要配置好能让前端来连接即可。</p>
 <a id="more"></a>
 <hr>
@@ -80,7 +80,49 @@
 <li>增加 BlockCache size</li>
 <li>增加第二个索引: Phoenix -&gt; converted index</li>
 </ul>
-<h2 id="u5BFC_u5165_u6570_u636E"><a href="#u5BFC_u5165_u6570_u636E" class="headerlink" title="导入数据"></a>导入数据</h2><h3 id="u5BFC_u5165_MySQL"><a href="#u5BFC_u5165_MySQL" class="headerlink" title="导入 MySQL"></a>导入 MySQL</h3><p>大概的语法是：</p>
+<h2 id="u5BFC_u5165_u6570_u636E"><a href="#u5BFC_u5165_u6570_u636E" class="headerlink" title="导入数据"></a>导入数据</h2><h3 id="u9884_u5904_u7406"><a href="#u9884_u5904_u7406" class="headerlink" title="预处理"></a>预处理</h3><p>这里我们需要把 MapReduce 得到的结果合并、排序并处理成我们需要的形式。</p>
+<p>首先是把数据下载到机器（本地或者 EC2 都可以）上，我们的结果放在 <code>s3://housailei15619/alloutput/</code> 中，直接 <code>wget</code> 应该就可以：</p>
+<ul>
+<li><code>wget http://s3.amazonaws.com/housailei15619/alloutput/part-00000</code></li>
+<li><code>wget http://s3.amazonaws.com/housailei15619/alloutput/part-00001</code></li>
+<li><code>wget http://s3.amazonaws.com/housailei15619/alloutput/part-00002</code></li>
+</ul>
+<p>或者 aws s3 命令：</p>
+<ul>
+<li><code>aws s3 cp s3://housailei15619/alloutput/part-00000 ./</code></li>
+<li><code>aws s3 cp s3://housailei15619/alloutput/part-00001 ./</code></li>
+<li><code>aws s3 cp s3://housailei15619/alloutput/part-00002 ./</code></li>
+</ul>
+<p>这里也说一下如何配置 awscli（ubuntu 镜像，如果使用 Amazon Linux AMI 则已经预装）</p>
+<ul>
+<li>先安装 pip <code>sudo apt-get install python-pip</code></li>
+<li>然后安装 awscli <code>pip install awscli</code>（也可以直接 <code>sudo apt-get install awscli</code>）</li>
+<li>然后使用 <code>aws configure</code> 来进行配置，地区选择 us-east-1</li>
+</ul>
+<p>接下来需要做的事情如下：</p>
+<ol>
+<li>合并数据(bash)<ul>
+<li>比较简单，直接 <code>cat part-00000 part-00001 part-00002 &gt; origindata</code></li>
+</ul>
+</li>
+<li>按照指定列排序(bash)<ul>
+<li>需要用 sort 命令 <code>sort -t$&#39;\t&#39; -k2 origindata &gt; sorteddata</code></li>
+</ul>
+</li>
+<li>清洗数据 userid+hashtag 一致的项目<ul>
+<li>把 \n \” 这些都还原了</li>
+<li>把写好的文件传上去 <code>scp -i group2.pem ./Wash.java ubuntu@ec2-54-173-116-116.compute-1.amazonaws.com:~/</code></li>
+<li>取一小部分到本地测试 <code>scp -i group2.pem ubuntu@ec2-54-173-116-116.compute-1.amazonaws.com:~/test ./</code></li>
+</ul>
+</li>
+</ol>
+<p>开 <code>m4.large</code> 性能还算不错，处理五千多万条记录大概的时间是：</p>
+<p><img src="/images/14578035746426.jpg" alt="清洗数据耗时"></p>
+<p>得到的文件可能会变大，然后通过 aws s3 把处理好的文件放回去 s3，方便其他机器用</p>
+<ul>
+<li><code>aws s3 cp ./hbasedata s3://housailei15619/alloutput/</code></li>
+</ul>
+<h3 id="u5BFC_u5165_MySQL"><a href="#u5BFC_u5165_MySQL" class="headerlink" title="导入 MySQL"></a>导入 MySQL</h3><p>大概的语法是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date</span><br><span class="line">mysqlimport --local --fields-terminated-by=<span class="string">'\t'</span> --lines-terminated-by=<span class="string">'\n'</span> -uroot -proot --default-character-set=utf8mb4 dbname filename</span><br><span class="line">date</span><br></pre></td></tr></table></figure>
 <p>建立索引</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date</span><br><span class="line">mysql -uroot -proot dbname <span class="operator">-e</span> <span class="string">"create index iname on tablename (column1, column2,..)"</span></span><br><span class="line">date</span><br></pre></td></tr></table></figure>
@@ -88,8 +130,7 @@
 <ol>
 <li>启动 EMR 集群：1 master &amp; 1 core <ul>
 <li>在创建页面中选择 “Go to advanced options”</li>
-<li>确保所有的实例都是 m1.large</li>
-<li>确保 EMR 集群和存放 <code>runner.sh</code> 的实例在同一个区域</li>
+<li>确保所有的实例都是 m4.large</li>
 <li>选择 AMI version 3.11.0 (hadoop version 2).</li>
 <li>移除所有的已有服务(Pig &amp; Hive)并选择安装 HBase version 0.94.</li>
 <li>指定 key-pair 以便 SSH 到 master 实例，ssh 的时候注意用户名是 hadoop</li>
@@ -108,24 +149,36 @@
 <li>合并数据，直接得到答案</li>
 </ul>
 <p>开启之后连接上去 <code>ssh -i group2 hadoop@dns.compute-1.amazonaws.com</code></p>
-<p>然后用 <code>hadoop dfsadmin -report</code> 检查状态，一切正常之后就可以上传数据了，用如下命令即可</p>
+<p>然后用 <code>hdfs dfsadmin -report</code> 检查状态，一切正常之后就可以上传数据了，用如下命令即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir Q2</span><br><span class="line"><span class="built_in">cd</span> Q2</span><br><span class="line">scp -i group2.pem ./cdata hadoop@ec2-<span class="number">52</span>-<span class="number">91</span>-<span class="number">183</span>-<span class="number">102</span>.compute-<span class="number">1</span>.amazonaws.com:~/Q2/</span><br></pre></td></tr></table></figure>
 <p>然后创建对应的 HDFS 目录，再把 csv 文件移过去：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /housailei</span><br><span class="line">hadoop fs -mkdir /housailei/csv</span><br><span class="line">hadoop fs -put ./cdata /housailei/csv/</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">hadoop fs -ls /housailei/csv/</span><br></pre></td></tr></table></figure>
 <p>然后进入 HBase Shell 操作 <code>hbase shell</code></p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">001</span>:<span class="number">0</span>&gt; create <span class="string">'twitterdata'</span>,<span class="string">'data'</span></span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">002</span>:<span class="number">0</span>&gt; list</span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">003</span>:<span class="number">0</span>&gt; describe <span class="string">'twitterdata'</span></span><br><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">004</span>:<span class="number">0</span>&gt; exit</span><br></pre></td></tr></table></figure>
-<p>然后就需要具体的导入了，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以 \t 为分隔符的话就不需要设定，这是默认的</span></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/hfile_groupt4 -Dimporttsv.columns=HBASE_ROW_KEY,data:useridtag,data:tweetid,data:time,data:score,data:content twitterdata /housailei/csv/cdata</span><br><span class="line"></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_groupt4 twitterdata</span><br></pre></td></tr></table></figure>
+<p>然后就需要具体的导入了，可能会遇到数据太大放不进去的问题，这时候放到挂载的目录下 <code>/mnt</code> 才行，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line">wget http://s3.amazonaws.com/housailei15619/alloutput/hbasedata</span><br><span class="line"></span><br><span class="line">hadoop fs -put ./hbasedata /housailei/csv/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里是处理完全部数据导入的时候的命令</span></span><br><span class="line"><span class="comment"># rowkey 直接是 userid+hashtag：</span></span><br><span class="line"><span class="comment"># 以 \t 为分隔符的话就不需要设定，这是默认的</span></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/hfile_groupt1 -Dimporttsv.columns=HBASE_ROW_KEY,data:text twitterdata /housailei/csv/hbasedata</span><br><span class="line"></span><br><span class="line">hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_groupt1 twitterdata</span><br></pre></td></tr></table></figure>
 <p>完成之后测试一下 <code>hbase shell</code>：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">hbase</span><span class="params">(main)</span></span>:<span class="number">001</span>:<span class="number">0</span>&gt; scan <span class="string">'twitterdata'</span></span><br></pre></td></tr></table></figure>
 <p>如果导入错误的话，可以在 hbase shell 中 <code>disable &#39;twitterdata&#39;</code> 之后 <code>drop &#39;twitterdata&#39;</code> 来删除这个表，还要原来的 shell 中删除原来的数据文件 <code>hadoop fs -rm /housailei/csv/cdata</code></p>
 <p>重新导入的时候需要注意输出文件夹不能已存在，每次换新的就好。注意需要确保没有 <code>BAD_LINE</code> 才能继续。</p>
+<p>在 HBase 的 master node 中备份（注意需要创建好对应的文件夹）：<code>aws emr create-hbase-backup --cluster-id j-3CU55C20WQ5E4 --dir s3://housailei15619/backups/j-3CU55C20WQ5E4 --consistent</code> </p>
 <h2 id="u524D_u7AEF_u8BBE_u8BA1"><a href="#u524D_u7AEF_u8BBE_u8BA1" class="headerlink" title="前端设计"></a>前端设计</h2><p>其实只需要写两个连接器用来连接对应的数据库，然后在 Undertow 的 handler 中对应调用即可。具体访问的方式同样可以参考 <a href="http://wdxtub.com/2016/02/22/cc-14/">云计算 第 14 课 文件 vs 数据库</a></p>
 <ul>
 <li>HBase 直接在 EMR 上做完，所以直接连接即可，不需要怎么配置</li>
 <li>MySQL 就需要自己安装和配置了</li>
 </ul>
 <p>需要把换行符换回来</p>
+<p>get ‘twitterdata’,’1000001233BabyyO’</p>
+<p>一些不错的测试用例：</p>
+<ul>
+<li>各种字符 + 多行输出：<a href="http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000001233&amp;hashtag=BabyyO" target="_blank" rel="external">http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000001233&amp;hashtag=BabyyO</a></li>
+<li>各种字符 + 多行输出：<a href="http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000003579&amp;hashtag=niigata" target="_blank" rel="external">http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000003579&amp;hashtag=niigata</a></li>
+<li>各种字符 + 单行输出：<a href="http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000034468&amp;hashtag=الشباب" target="_blank" rel="external">http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000034468&amp;hashtag=الشباب</a></li>
+</ul>
+<p>更新前端命令：<code>scp -i ../group2.pem -r ./* ubuntu@ec2-52-90-3-89.compute-1.amazonaws.com:~/undertow-server/</code></p>
+<p>注意 pom 文件的版本要正确，并且不能在本地连接，要在 ec2 上连接。</p>
+<p>杀掉当前在跑的进程 <code>ps -ef | grep mvn</code> 然后 <code>kill pid</code>，然后去 <code>/etc/init.d</code> 文件夹下把开机启动脚本删除（因为队友建的镜像默认是开机启动的，不方便调试）</p>
+<p>启动 server <code>sudo mvn exec:java</code></p>
 <h2 id="u4F18_u5316_u6280_u5DE7"><a href="#u4F18_u5316_u6280_u5DE7" class="headerlink" title="优化技巧"></a>优化技巧</h2><h3 id="MySQL__u90E8_u5206"><a href="#MySQL__u90E8_u5206" class="headerlink" title="MySQL 部分"></a>MySQL 部分</h3><blockquote>
 <p>为查询缓存优化你的查询</p>
 </blockquote>
@@ -2684,13 +2737,13 @@
     <link href="http://wdxtub.com/2016/03/01/cc-p2/"/>
     <id>http://wdxtub.com/2016/03/01/cc-p2/</id>
     <published>2016-03-01T14:41:11.000Z</published>
-    <updated>2016-03-01T21:04:27.000Z</updated>
+    <updated>2016-03-13T04:27:55.000Z</updated>
     <content type="html"><![CDATA[<p>因为项目有一定的性能要求，所以我们选择 Undertow 这个微框架来降低框架本身带来的性能影响，但是因为比较小众，所以网上很多资料都不全，这里记录下具体在 EC2 上如何配置和部署 Undertow。</p>
 <a id="more"></a>
 <hr>
 <h2 id="u73AF_u5883_u914D_u7F6E"><a href="#u73AF_u5883_u914D_u7F6E" class="headerlink" title="环境配置"></a>环境配置</h2><p>先启动一个标准的 Ubuntu 镜像（因为有 apt-get 安装软件比较方便）</p>
 <p>我们需要安装 java 和 maven，并配置好对应的路径，具体参考下面的命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 java,maven</span></span><br><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java7-installer</span><br><span class="line">sudo apt-get install maven2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置默认 jdk</span></span><br><span class="line">sudo update-alternatives --config java</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 Java Home 编辑 ~/.bashrc</span></span><br><span class="line">JAVA_HOME=/usr/</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 java,maven</span></span><br><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java7-installer</span><br><span class="line"><span class="comment"># 可能需要先删除原来的 maven2</span></span><br><span class="line">sudo apt-get remove maven2</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install maven <span class="comment"># 安装 maven3，2 在之后会有 bug</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置默认 jdk</span></span><br><span class="line">sudo update-alternatives --config java</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 Java Home 编辑 ~/.bashrc</span></span><br><span class="line">JAVA_HOME=/usr/</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
 <p>如果一切正常的话，使用 <code>java -version</code> 可以看到：</p>
 <p><img src="/images/14568475090854.jpg" alt="java -version"></p>
 <h2 id="Hello_World"><a href="#Hello_World" class="headerlink" title="Hello World"></a>Hello World</h2><p>我们创建一个项目来搭建服务器，因为 undertow 是使用 maven 来管理包和依赖的，所以我们也直接用 maven 来创建项目</p>
