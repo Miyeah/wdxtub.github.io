@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>云计算 反思课 3 提高 Web 服务性能的策略与思考 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">云计算 反思课 3 提高 Web 服务性能的策略与思考</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">云计算 反思课 3 提高 Web 服务性能的策略与思考</h1><div class="post-meta">2016-03-15 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/03/15/cc-rethink-3/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5E94_u7528_u573A_u666F"><span class="toc-number">1.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E00_u4E9B_u601D_u8003"><span class="toc-number">2.</span> <span class="toc-text">一些思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E00_u4E9B_u7B56_u7565"><span class="toc-number">3.</span> <span class="toc-text">一些策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="post-content"><p>学习是一个不断改进方法论的过程，<a href="http://wdxtub.com/2016/03/11/cc-p6/">课程项目 6 MySQL 和 HBase 配置及测试</a>，因为自己对于搭建基于 NoSQL 数据库的 Web 服务缺乏足够的经验，在具体对前后端进行优化的时候走了很多弯路，也意识到了没有目的的优化很可能是劣化，这里主要整理一下自己对于优化问题的思考。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u5E94_u7528_u573A_u666F"><a href="#u5E94_u7528_u573A_u666F" class="headerlink" title="应用场景"></a>应用场景</h2><p>因为涉及到具体的问题，所以先大概说明一下应用场景，方便之后的叙述。事情大概是这样的：</p>
+<ul>
+<li>数据是 5100W 条左右带 tag 的 tweet</li>
+<li>这些 tweet 有各种语言</li>
+<li>只有读请求，每次需要返回指定用户用指定 tag 发送的 tweet</li>
+<li>前端使用 Undertow，后端是部署在 Amazon EMR 的 HBase</li>
+<li>有一定的预算限制（不能开多台机器来凑）</li>
+</ul>
+<p>难点在于，优化问题其实是一个涉及多层级多组件的『复杂』问题，需要考虑的东西很多，更纠结的是，整个系统是符合『木桶理论』的，也就是最短板决定了系统的整体性能。那么就牵扯出两个关键问题：短板在哪里？短板怎么解决。</p>
+<h2 id="u4E00_u4E9B_u601D_u8003"><a href="#u4E00_u4E9B_u601D_u8003" class="headerlink" title="一些思考"></a>一些思考</h2><p>对于 Web 服务来说，所谓优化，可以简单粗暴分为两个子类，一是增加吞吐量，二是增加并发数。优化的整体思路，按照实施的顺序来看，大概是这样的：</p>
+<ol>
+<li>充分理解应用场景<ul>
+<li>服务具体接收的请求的格式和具体需要返回的内容是什么</li>
+<li>是偏向于读，还是偏向于写，亦或者是读写比较均衡</li>
+<li>数据量大概是多少，分布式集群（如果要用）的基本配置是什么</li>
+</ul>
+</li>
+<li>数据格式设计<ul>
+<li>根据具体的场景，需要思考具体数据库的设计</li>
+<li>如果是读比较多，可以考虑对数据进行预处理，用空间换时间</li>
+<li>如果是写比较多，则需要尽可能减少冗余，减少改动时需要同步更新的记录</li>
+</ul>
+</li>
+<li>分析服务瓶颈（慢在哪里）<ul>
+<li>使用什么工具，监控什么指标来寻找瓶颈</li>
+<li>根据输出的日志（这里需要自己决定输出什么）来找寻请求的规律</li>
+<li>根据日志的数据统计，找到短板所在</li>
+<li>这一步其实并不简单，更可怕的是，如果在这里分析错误，就会把整个优化带入死胡同（去优化并不需要优化的问题）</li>
+</ul>
+</li>
+<li>充分利用硬件资源<ul>
+<li>在预算限制下有没有开够机器</li>
+<li>对于每台机器，其 CPU，内存，带宽等资源有没有尽可能使用</li>
+<li>如果没有尽量利用，就说明钱没有花在刀刃上，可以考虑更换不同类型的机器，Amazon 提供了『通用』，『内存优化』和『计算优化』这几种不同的机器，可以根据监控的数据，根据前后端不同的任务来决定具体使用什么类型的机器</li>
+</ul>
+</li>
+<li>解决木桶效应，不同层优化<ul>
+<li>算法 + 数据结构优化</li>
+<li>事务处理逻辑优化，尽可能减少单次请求需要的资源（包括计算、内存和带宽资源）</li>
+<li>硬件优化，vertical scaling 或者 horizontal scaling</li>
+<li>分布式结构优化，采用 ELB 或 Hadoop</li>
+</ul>
+</li>
+</ol>
+<h2 id="u4E00_u4E9B_u7B56_u7565"><a href="#u4E00_u4E9B_u7B56_u7565" class="headerlink" title="一些策略"></a>一些策略</h2><p>前面从总体的思路切入，这里因为涉及到具体的指标要求，所以会从细节方面切入。</p>
+<p>首先要意识到从我们在浏览器中输入网址，到最后看到显示的内容之间发生了什么。因为这里不是网络分析课（Amazon 的网络我们能调优的范围也有限），所以 DNS 路由之类的内容这里不提，具体可以参考<a href="http://wdxtub.com/2016/02/10/internet-protocol/">计算机网络</a>一文。</p>
+<p>那么到底中间的过程是什么呢？其实就 3 步：</p>
+<ol>
+<li>页面模板根据实际内容渲染成网页。这部分我们不需要考虑，并没有用任何渲染引擎，就是单纯返回一段数据而已</li>
+<li>业务逻辑部分。显示内容之前做的预处理，对应配套的缓存，连接池等等内容。这部分理论上是需要考虑的，但是在具体的测试中，影响不算特别大（和后面相比）</li>
+<li>数据库与网络传输部分。这部分是主要的瓶颈所在，接下来会细说。</li>
+</ol>
+<p>网络部分优化，其实是比较简单粗暴的，因为是只读操作，所以不需要考虑一致性问题，努力增加并发数即可，另一个角度则是减少每次传输所需要的带宽，综合来看，有下面的策略：</p>
+<ul>
+<li>使用 ELB 增加多台前端，多台机器并发请求</li>
+<li>每台机器增加线程数（当然要在内存的允许范围内），但是加到一定程度也就足够了（毕竟带宽是有限的）</li>
+<li>在后端对数据进行压缩，在前端进行解压缩，这样就减少了需要网络传输的数据</li>
+</ul>
+<p>（这部分策略我还没有具体尝试，因为用下面的方法已经满足要求了）</p>
+<p>后台数据库和前台缓存实际上类似于 Memory Hierarchy，需要利用看似不大存在的 Locality 来获得最快的访问速度（经过测试如果缓存命中基本上可以认为是无延迟）。这里的 Locality，可以认为是具体流量模式的 Locality，而并非是在数据库中顺序访问。</p>
+<p>有缓存，那么肯定就有预热，预热的重要性在于，把常用的记录缓存下来，具体缓存要多大呢？我也不知道，反正可能情况下，越大是越好的（这就是为啥最好开一个内存优化的机器，比其他系列多一倍内存）</p>
+<p>最后说一下数据库的参数优化，不知道是不是 Amazon EMR 本身根据不同的配置会进行一定的优化，我并没有改动 HBase 的任何设置。这里的问题在于，因为刚接触 HBase，很多内容不熟悉，所以看着网上的教程瞎折腾很容易弄巧成拙，在优化的时候，一定要确定每一步都清楚自己在干嘛，不然就会出现自己以为正确的错误，而这种错误往往是最难解决的（因为自己压根不知道错了）</p>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>总体来说，这次的任务还是很有趣的，我也已经意识到了优化真心是一个牵一发动全身的问题，还是要有更加清晰的大局观和思路，才不至于迷失方向。不过话说回来，遇到不懂的问题，最好的方法是停下来，把相关的概念都捋一遍（比方说官方文档就不错），思考具体的问题所在，大胆假设小心验证，才更能找到令自己满意的答案。</p>
+<p>另外，对于分析 web 服务的各类工具一头雾水（甚至都不知道有啥），还是得抽空研究一下，不然依靠手动输出计算时间效率太低，得到的数据可能也不准确。</p>
+</div><div class="tags"><a href="/tags/CMU/">CMU</a><a href="/tags/云计算/">云计算</a><a href="/tags/优化/">优化</a><a href="/tags/思考/">思考</a></div><div class="post-nav"><a href="/2016/03/14/presentation-basics-1/" class="next">Presentation Basics 1 理解美国式演讲风格<i class="icon-next"></i></a></div><div data-thread-key="2016/03/15/cc-rethink-3/" data-title="云计算 反思课 3 提高 Web 服务性能的策略与思考" data-url="http://wdxtub.com/2016/03/15/cc-rethink-3/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/03/15/cc-rethink-3/" data-title="云计算 反思课 3 提高 Web 服务性能的策略与思考" data-url="http://wdxtub.com/2016/03/15/cc-rethink-3/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
