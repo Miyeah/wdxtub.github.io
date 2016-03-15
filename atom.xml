@@ -114,7 +114,7 @@
     <link href="http://wdxtub.com/2016/03/14/cc-16/"/>
     <id>http://wdxtub.com/2016/03/14/cc-16/</id>
     <published>2016-03-14T12:17:34.000Z</published>
-    <updated>2016-03-14T22:48:13.000Z</updated>
+    <updated>2016-03-15T03:47:49.000Z</updated>
     <content type="html"><![CDATA[<p>前面我们使用过两种分布式存储的方式：sharding 和 replication，其中一个很重要的问题就是如何在分布式键值对存储中保证数据一致性，这一次我们来学习和理解关键的机制和概念。</p>
 <a id="more"></a>
 <hr>
@@ -335,6 +335,11 @@
 <li>只需要修改 <code>/home/ubuntu/Project3_3/vertx/bin/Coordinator.java</code> 文件使其工作, 在该文件夹下执行 <code>./vertx run Coordinator.java</code> 即可运行。注意在开始测试之前要在所有的 Coordinator 都做一次</li>
 <li>实现强一致性和最终一致性，除了系统需求之外，这两个部分还有各自的要求</li>
 </ol>
+<h3 id="u89E3_u9898_u8BB0_u5F55"><a href="#u89E3_u9898_u8BB0_u5F55" class="headerlink" title="解题记录"></a>解题记录</h3><p>分别开启 datacenter 和 coordinator 的实例，先把代码搞下来：</p>
+<ul>
+<li>Database: <code>scp -i demo.pem ubuntu@ec2-52-91-191-111.compute-1.amazonaws.com:~/Project3_3/vertx/bin/KeyValueStore.java ./</code></li>
+<li>Coordinator: <code>scp -i demo.pem ubuntu@ec2-54-164-37-130.compute-1.amazonaws.com:~/Project3_3/vertx/bin/Coordinator.java ./</code></li>
+</ul>
 <h3 id="u63D0_u4EA4_u65B9_u6CD5"><a href="#u63D0_u4EA4_u65B9_u6CD5" class="headerlink" title="提交方法"></a>提交方法</h3><ol>
 <li>启动一个 m1.small(ami-d72a2cbd) 客户端实例</li>
 <li>进入文件夹 <code>/home/ubuntu/Project3_3/</code></li>
