@@ -101,6 +101,11 @@
 <p>如果导入错误的话，可以在 hbase shell 中 <code>disable &#39;twitterdata&#39;</code> 之后 <code>drop &#39;twitterdata&#39;</code> 来删除这个表，还要原来的 shell 中删除原来的数据文件 <code>hadoop fs -rm /housailei/csv/cdata</code></p>
 <p>重新导入的时候需要注意输出文件夹不能已存在，每次换新的就好。注意需要确保没有 <code>BAD_LINE</code> 才能继续。</p>
 <p>在 HBase 的 master node 中备份（注意需要创建好对应的文件夹）：<code>aws emr create-hbase-backup --cluster-id j-3CU55C20WQ5E4 --dir s3://housailei15619/backups/j-3CU55C20WQ5E4 --consistent</code> </p>
+<p>最后附送几条 hadoop 指令</p>
+<ul>
+<li><code>mapred job -list</code> 查看当前在执行的任务列表</li>
+<li><code>hadoop job -kill $jobId</code> 杀掉当前的任务</li>
+</ul>
 <h2 id="u524D_u7AEF_u8BBE_u8BA1"><a href="#u524D_u7AEF_u8BBE_u8BA1" class="headerlink" title="前端设计"></a>前端设计</h2><p>其实只需要写两个连接器用来连接对应的数据库，然后在 Undertow 的 handler 中对应调用即可。具体访问的方式同样可以参考 <a href="http://wdxtub.com/2016/02/22/cc-14/">云计算 第 14 课 文件 vs 数据库</a></p>
 <ul>
 <li>HBase 直接在 EMR 上做完，所以直接连接即可，不需要怎么配置</li>
@@ -109,6 +114,7 @@
 <p>需要把换行符换回来</p>
 <p>get ‘twitterdata’,’1000001233BabyyO’</p>
 <p>一些不错的测试用例：</p>
+<p>ec2-54-208-55-16.compute-1.amazonaws.com/q2?userid=1000001233&amp;hashtag=BabyyO</p>
 <ul>
 <li>各种字符 + 多行输出：<a href="http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000001233&amp;hashtag=BabyyO" target="_blank" rel="external">http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000001233&amp;hashtag=BabyyO</a></li>
 <li>各种字符 + 多行输出：<a href="http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000003579&amp;hashtag=niigata" target="_blank" rel="external">http://q1-1848733628.us-east-1.elb.amazonaws.com/q2?userid=1000003579&amp;hashtag=niigata</a></li>
@@ -116,6 +122,7 @@
 </ul>
 <p>更新前端命令：<code>scp -i ../group.pem -r ./* ubuntu@ec2-52-91-245-255.compute-1.amazonaws.com:~/undertow-server/</code></p>
 <p>注意 pom 文件的版本要正确，并且不能在本地连接，要在 ec2 上连接。</p>
+<p>可能还需要修改 java 虚拟机默认的堆的大小，在 <code>~/.bashrc</code> 中加入 <code>export MAVEN_OPTS=”-Xms14000m -Xmx14000m”</code> 并 <code>source .bashrc</code></p>
 <p>杀掉当前在跑的进程 <code>ps -ef | grep mvn</code> 然后 <code>kill pid</code>，然后去 <code>/etc/init.d</code> 文件夹下把开机启动脚本删除（因为队友建的镜像默认是开机启动的，不方便调试）</p>
 <p>启动 server <code>sudo mvn exec:java</code></p>
 <h2 id="u4F18_u5316_u6280_u5DE7"><a href="#u4F18_u5316_u6280_u5DE7" class="headerlink" title="优化技巧"></a>优化技巧</h2><h3 id="MySQL__u4F18_u5316"><a href="#MySQL__u4F18_u5316" class="headerlink" title="MySQL 优化"></a>MySQL 优化</h3><blockquote>
