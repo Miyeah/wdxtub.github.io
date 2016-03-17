@@ -2,18 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wdxtub.com/life/index.html</loc>
+    <lastmod>2016-03-17T01:04:17.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/03/16/presentation-basics-2/</loc>
     <lastmod>2016-03-17T01:00:52.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://wdxtub.com/life/index.html</loc>
-    <lastmod>2016-03-15T20:12:46.000Z</lastmod>
+    <loc>http://wdxtub.com/cc/cc-16.html</loc>
+    <lastmod>2016-03-17T00:24:21.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://wdxtub.com/about/index.html</loc>
     <lastmod>2016-03-15T20:12:19.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/index.html</loc>
+    <lastmod>2016-03-15T20:10:47.000Z</lastmod>
   </url>
   
   <url>
@@ -42,8 +52,43 @@
   </url>
   
   <url>
+    <loc>http://wdxtub.com/cc/cc-p6.html</loc>
+    <lastmod>2016-03-15T01:02:10.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-15.html</loc>
+    <lastmod>2016-03-14T22:49:19.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-p7.html</loc>
+    <lastmod>2016-03-14T04:10:53.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-p2.html</loc>
+    <lastmod>2016-03-13T04:27:55.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/03/11/dark-fear/</loc>
     <lastmod>2016-03-12T03:18:57.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-14.html</loc>
+    <lastmod>2016-03-11T21:15:08.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-p5.html</loc>
+    <lastmod>2016-03-11T11:00:06.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-p1.html</loc>
+    <lastmod>2016-03-11T10:59:47.000Z</lastmod>
   </url>
   
   <url>
@@ -59,6 +104,11 @@
   <url>
     <loc>http://wdxtub.com/2016/03/08/csapp-lab5/</loc>
     <lastmod>2016-03-10T00:41:08.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-p4.html</loc>
+    <lastmod>2016-03-09T04:37:59.000Z</lastmod>
   </url>
   
   <url>
@@ -167,13 +217,93 @@
   </url>
   
   <url>
+    <loc>http://wdxtub.com/cc/cc-reading-14.html</loc>
+    <lastmod>2016-03-03T23:07:40.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-13.html</loc>
+    <lastmod>2016-03-03T17:52:45.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-12.html</loc>
+    <lastmod>2016-03-03T17:50:47.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-11.html</loc>
+    <lastmod>2016-03-03T17:50:04.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-10.html</loc>
+    <lastmod>2016-03-03T17:49:25.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-9.html</loc>
+    <lastmod>2016-03-03T17:47:06.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-8.html</loc>
+    <lastmod>2016-03-03T17:45:46.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-7.html</loc>
+    <lastmod>2016-03-03T17:44:44.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-6.html</loc>
+    <lastmod>2016-03-03T17:42:32.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-5.html</loc>
+    <lastmod>2016-03-03T17:41:28.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-4.html</loc>
+    <lastmod>2016-03-03T17:40:24.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-3.html</loc>
+    <lastmod>2016-03-03T17:38:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-2.html</loc>
+    <lastmod>2016-03-03T17:36:48.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-reading-1.html</loc>
+    <lastmod>2016-03-03T17:34:59.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/02/27/sad-midterm-review/</loc>
     <lastmod>2016-03-03T17:26:41.000Z</lastmod>
   </url>
   
   <url>
+    <loc>http://wdxtub.com/cc/cc-15.html</loc>
+    <lastmod>2016-03-03T04:45:39.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/02/15/csapp-11/</loc>
     <lastmod>2016-03-02T15:12:29.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-p3.html</loc>
+    <lastmod>2016-03-02T00:19:44.000Z</lastmod>
   </url>
   
   <url>
@@ -387,6 +517,11 @@
   </url>
   
   <url>
+    <loc>http://wdxtub.com/cc/cc-13.html</loc>
+    <lastmod>2016-02-16T03:22:48.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/02/14/interview-guide/</loc>
     <lastmod>2016-02-15T03:24:45.000Z</lastmod>
   </url>
@@ -412,6 +547,11 @@
   </url>
   
   <url>
+    <loc>http://wdxtub.com/cc/cc-12.html</loc>
+    <lastmod>2016-02-10T19:04:00.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/02/10/sad-12/</loc>
     <lastmod>2016-02-10T17:46:24.000Z</lastmod>
   </url>
@@ -419,6 +559,11 @@
   <url>
     <loc>http://wdxtub.com/2016/02/04/sad-11/</loc>
     <lastmod>2016-02-10T17:07:48.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-11.html</loc>
+    <lastmod>2016-02-08T13:11:11.000Z</lastmod>
   </url>
   
   <url>
@@ -509,6 +654,11 @@
   <url>
     <loc>http://wdxtub.com/2016/01/29/die-internationale/</loc>
     <lastmod>2016-01-30T06:18:29.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-10.html</loc>
+    <lastmod>2016-01-29T15:06:47.000Z</lastmod>
   </url>
   
   <url>
@@ -622,8 +772,48 @@
   </url>
   
   <url>
+    <loc>http://wdxtub.com/cc/cc-1.html</loc>
+    <lastmod>2016-01-22T20:36:44.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/01/14/sad-3/</loc>
     <lastmod>2016-01-22T20:36:37.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-2.html</loc>
+    <lastmod>2016-01-22T20:36:33.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-3.html</loc>
+    <lastmod>2016-01-22T20:36:30.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-4.html</loc>
+    <lastmod>2016-01-22T20:36:27.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-5.html</loc>
+    <lastmod>2016-01-22T20:36:25.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-6.html</loc>
+    <lastmod>2016-01-22T20:36:22.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-7.html</loc>
+    <lastmod>2016-01-22T20:36:14.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-8.html</loc>
+    <lastmod>2016-01-22T20:36:11.000Z</lastmod>
   </url>
   
   <url>
@@ -649,6 +839,11 @@
   <url>
     <loc>http://wdxtub.com/2016/01/19/sad-8/</loc>
     <lastmod>2016-01-22T20:35:21.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/cc/cc-9.html</loc>
+    <lastmod>2016-01-22T20:35:15.000Z</lastmod>
   </url>
   
   <url>
