@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-20T14:52:29.000Z</updated>
+  <updated>2016-03-20T15:56:26.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,130 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[How to Write Fast Code 第 4 课 并行架构]]></title>
+    <link href="http://wdxtub.com/2016/03/20/fastcode-4/"/>
+    <id>http://wdxtub.com/2016/03/20/fastcode-4/</id>
+    <published>2016-03-20T15:02:43.000Z</published>
+    <updated>2016-03-20T15:56:26.000Z</updated>
+    <content type="html"><![CDATA[<p>前面我们了解了并行程序的基本概念和写法，这节课我们从更大的角度来思考，如何去设计一个并行架构。</p>
+<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>前面我们了解了并行程序的基本概念和写法，这节课我们从更大的角度来思考，如何去设计一个并行架构。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="架构设计" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How to Write Fast Code 第 3 课 Manycore 编程]]></title>
+    <link href="http://wdxtub.com/2016/03/20/fastcode-3/"/>
+    <id>http://wdxtub.com/2016/03/20/fastcode-3/</id>
+    <published>2016-03-20T15:02:37.000Z</published>
+    <updated>2016-03-20T15:54:54.000Z</updated>
+    <content type="html"><![CDATA[<p>这节课我们主要来了解一下基于 CUDA 平台的 GPU 编程。</p>
+<a id="more"></a>
+<hr>
+<p>首先需要理解的概念就是，CPU 中的每个核都很强大，但是 GPU 中的每个核都比较弱。下面是一个很好的类比：</p>
+<p><img src="/images/14584867243585.jpg" alt="Multicore and Manycore Differences"></p>
+<p>换成更清晰的设计图，更能体现两者的不同：</p>
+<p><img src="/images/14584867762217.jpg" alt="Fundamentally different design philosophy"></p>
+<p>对于 CPU 来说，具体的优化是针对于减小若干线程的执行延迟的，包含复杂的指令控制和较大的缓存，每个核心能够以极高的速度执行单一线程。</p>
+<p>对于 GPU 来说，目的是提高并行数量，主要目标是提高总体的吞吐量，而不是某个具体核心的性能。下面是一个简单的比较：</p>
+<p><img src="/images/14584869755317.jpg" alt="Significant Architectural Difference"></p>
+<p>什么时候适合使用 GPU 呢？</p>
+<ul>
+<li>极高的并行计算数量，比方说需要同时计算几千个节点的状态</li>
+<li>计算时对内存带宽有极高的要求，因为 GPU 的内存更大更快，所以往往会有更好的性能</li>
+</ul>
+<h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h2><p>CUDA 的全程是 Compute Unified Device Architecture，是一个由 NVIDIA 开发的并行计算框架。整个计算的流程大概是：</p>
+<p><img src="/images/14584873704074.jpg" alt=""></p>
+<p>串行和简单的并行部分在 host 中完成，高度并行的代码在 GPU 的 kernel 中执行。</p>
+<p>这里说一下，我们知道 GPU 本质工作还是计算图形相关的东西，所以其架构决定了每个内核只能执行非常有限的工作（例如着色器渲染器这类计算量大但是不复杂的工作），我们在利用 CUDA 编程的时候，实际上最终也还是类似于渲染画面之类的感觉，只是结果不是图像，而是具体的数据了。</p>
+<h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><p>关于 GPU 的架构，有一个很有趣的地方，就是对应的 memory hierarchy 和 CPU 是相反的，如：</p>
+<p><img src="/images/14584875853095.jpg" alt="NVIDIA Fermi Architecture"></p>
+<p>寄存器 &gt; L1 缓存 &gt; L2 缓存，这是为什么呢？是为了解决现在处理器的速度和内存的速度相差越来越大的问题：</p>
+<p><img src="/images/14584876919855.jpg" alt="Inversion in Mem Hierarchy"></p>
+<p>为了利用好这些缓存，Fermi 内核会维护 48 个 warp，每个 warp 是一个用于计算的 32 位 SIMD 向量。每个线程大约有 20 个寄存器，我们来算一下：</p>
+<p>4(Bytes/register) x 20(Registers) x 32 (SIMD lanes) x 48 (Warps) = 128KB/core x 16 (core) = 2MB register files</p>
+<p>这也就是为什么有 2MB 的寄存器大小了。</p>
+<p>使用 warp 作为计算单位可以认为是为了简化 GPU 编程模型所做的设计（毕竟和 CPU 会有很大不同），前面我们也看到，不同的核心数目其实跟寄存器大小都是有关的，也就是说，GPU 编程仍然是一个非常硬件相关的工作：</p>
+<p><img src="/images/14584880244271.jpg" alt="不同的硬件配置"></p>
+<h2 id="Thread_Block"><a href="#Thread_Block" class="headerlink" title="Thread Block"></a>Thread Block</h2><p>为了配合不同的硬件，并行的工作实际上是以线程块的形式来组织的，下面的例子中，对于 2 个核心的 GPU，每次执行倆；对于 4 个核心的，每次执行四个：</p>
+<p><img src="/images/14584881432861.jpg" alt="Thread Blocks"></p>
+<p>然后我们来看看具体的数据是如何存储的。首先每个核心都有自己的存储，在同一个 SIMD lane 进行计算的核心可以通过内存读写来进行交流。</p>
+<p><img src="/images/14584882728749.jpg" alt="Shared Memory/L1 Cache"></p>
+<p> 对于 Fermi 架构的 GPU 来说，有两种不同的配置：</p>
+<ul>
+<li>48KB scratch pad (Shared Memory), 16KB L1 cache</li>
+<li>16KB scratch pad (Shared Memory), 48KB L1 cache</li>
+</ul>
+<p>具体编程的部分这里不再一一赘述，只列出一些关键的要点，提醒大家注意：</p>
+<ul>
+<li>什么工作在 CPU 里做，什么工作在 GPU 里做？</li>
+<li>如何高效使用共享内存？</li>
+<li>如何给 GPU 指定具体的工作？</li>
+<li>如何保证线程同步？</li>
+<li>如何保证操作的原子性？</li>
+</ul>
+<p>具体的执行模型是：</p>
+<p><img src="/images/14584884803363.jpg" alt="The CUDA Platform"></p>
+<p>其中：</p>
+<ul>
+<li>NVCC 是编译器，会调用需要调用的各种程序</li>
+<li>NVCC 会输出给 CPU 执行的 C 代码，还需要进一步编译</li>
+<li>还会输出 PTX，是对象代码，直接在 GPU 上进行执行</li>
+</ul>
+<p>更多的内容可以参考官网的指引（比较有时效性）</p>
+<h2 id="u6027_u80FD_u8003_u8651"><a href="#u6027_u80FD_u8003_u8651" class="headerlink" title="性能考虑"></a>性能考虑</h2><p>有三个考量，这里大概列出具体的思路，细节请大家自己探究：</p>
+<ul>
+<li>Maximizing Memory Throughput<ul>
+<li>SoA vs AoS</li>
+<li>Memory coalescing</li>
+<li>Use of Shared memory</li>
+<li>Memory bank conflict</li>
+<li>Padding</li>
+</ul>
+</li>
+<li>Maximizing Instruction Throughput<ul>
+<li>尽量减少分支部分的代码</li>
+<li>Loop unrolling </li>
+</ul>
+</li>
+<li>Maximizing Scheduling Throughput<ul>
+<li>对于数学运算，可以使用 GPU 相关的函数，如下图所示</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/14584888892692.jpg" alt="SoA vs AoS"></p>
+<p>根据应用的不同设计，看看这两种结构到底哪种更加适合</p>
+<p><img src="/images/14584890246660.jpg" alt="Device-only CUDA intrinsic functions"></p>
+<p>这一部分的内容最重要的是实践，一定要通过不断尝试理解具体的概念，不然真的会发现自己完完全全是纸上谈兵！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这节课我们主要来了解一下基于 CUDA 平台的 GPU 编程。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="CUDA" scheme="http://wdxtub.com/tags/CUDA/"/>
+    
+      <category term="GPU" scheme="http://wdxtub.com/tags/GPU/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[【辐射系列】历史、剧情与避难所]]></title>
@@ -4644,270 +4768,6 @@ int main(){
       <category term="春天" scheme="http://wdxtub.com/tags/%E6%98%A5%E5%A4%A9/"/>
     
       <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 17 课 Virtual Memory - System]]></title>
-    <link href="http://wdxtub.com/2016/03/18/csapp-17/"/>
-    <id>http://wdxtub.com/2016/03/18/csapp-17/</id>
-    <published>2016-03-18T13:48:57.000Z</published>
-    <updated>2016-03-19T02:21:36.000Z</updated>
-    <content type="html"><![CDATA[<p>了解了基本的虚拟内存概念，这节课我们来具体看看 Core i7 和 Linux 的内存系统，相信会对虚拟内存这一套机制有更深刻的认识。</p>
-<a id="more"></a>
-<hr>
-<p>开始之前我们还是先复习一下基本的概念：</p>
-<p><img src="/images/14583183552533.jpg" alt="Review of Symbols"></p>
-<h2 id="u5730_u5740_u7FFB_u8BD1_u5B9E_u4F8B"><a href="#u5730_u5740_u7FFB_u8BD1_u5B9E_u4F8B" class="headerlink" title="地址翻译实例"></a>地址翻译实例</h2><p>然后来看一个简单的例子：</p>
-<ul>
-<li>14 位的虚拟地址</li>
-<li>12 位的物理地址</li>
-<li>page size 为 64 字节</li>
-</ul>
-<p>如下图所示</p>
-<p><img src="/images/14583359973808.jpg" alt="Addressing"></p>
-<p>TLB 的配置为：</p>
-<ul>
-<li>16 entries</li>
-<li>4-way associative</li>
-</ul>
-<p>如下图所示</p>
-<p><img src="/images/14583376303817.jpg" alt="TLB"></p>
-<p>然后来看看 page table，一共有 256 个 entry，这里列出前 16 个：</p>
-<p><img src="/images/14583376858566.jpg" alt="Page Table"></p>
-<p>最后来看看系统本身缓存：</p>
-<ul>
-<li>16 lines, 4-byte block size</li>
-<li>Physically addressed</li>
-<li>Direct mapped</li>
-</ul>
-<p><img src="/images/14583377349696.jpg" alt="Cache"></p>
-<p>一定要注意好不同部分的所代表的位置，这里我也会尽量写得清楚一些，来看第一个例子：</p>
-<blockquote>
-<p>虚拟地址为 <code>0x03D4</code></p>
-</blockquote>
-<p>具体的转换过程如下图所示：</p>
-<p><img src="/images/14583479163395.jpg" alt="第一个例子"></p>
-<p>具体来梳理一次：</p>
-<p>先看 TLB 中有没有对应的条目，所以先看虚拟地址的第 6-13 位，在前面的 TLB 表中，根据 TLBI 为 3 这个信息，去看这个 set 中有没有 tag 为 3 的项目，发现有，并且对应的 PPN 是 0x0D，所以对应到物理地址，就是 PPN 加上虚拟地址的 0-5 位，而具体的物理地址又可以在缓存中找到（利用 cache memory 的机制），就可以获取到对应的数据了。</p>
-<p>下面的例子同样可以按照这个方法来进行分析</p>
-<p><img src="/images/14583493888490.jpg" alt="第二个例子"></p>
-<h2 id="u6848_u4F8B_u5B66_u4E60_uFF1ACore_i7"><a href="#u6848_u4F8B_u5B66_u4E60_uFF1ACore_i7" class="headerlink" title="案例学习：Core i7"></a>案例学习：Core i7</h2><p>我们先来看看整体的架构</p>
-<p><img src="/images/14583495456299.jpg" alt="Intel Core i7 Memory System"></p>
-<p>这里先留意一点，为什么 L1 d-cache 比上 L2 unified cache，和 L1 d-TLB 比上 L2 unified TLB 的比例一样呢？</p>
-<p><img src="/images/14583500587332.jpg" alt="End-to-end Core i7 Address Translation"></p>
-<p>可以清楚地看到，从 TLB 到 Page table 以及对应 cache 的转换，结合上面的说明仔细体会下。接下来的内容比较偏理论，大家有一个基本的认识即可（因为平时编程理论上也不会涉及到这些）</p>
-<p>Core i7 有 4 层的 page table，前 3 层的结构一样，如下图所示</p>
-<p><img src="/images/14583503794880.jpg" alt="Core i7 Level 1-3 Page Table Entries"></p>
-<p>第四层有少许不同，具体看下面的说明：</p>
-<p><img src="/images/14583505732854.jpg" alt="Core i7 Level 4 Page Table Entries"></p>
-<p>具体的翻译过程为：</p>
-<p><img src="/images/14583506241439.jpg" alt="Core i7 Page Table Translation"></p>
-<p>接下来就可以回答前面的问题了，为啥是成比例的呢？原因很简单！用来加速 L1 的访问！</p>
-<blockquote>
-<p>Virtually indexed, physically tagged</p>
-</blockquote>
-<p><img src="/images/14583509113693.jpg" alt="Cute Trick for Speeding Up L1 Access"></p>
-<h2 id="u6848_u4F8B_u5B66_u4E60_uFF1ALinux_Process"><a href="#u6848_u4F8B_u5B66_u4E60_uFF1ALinux_Process" class="headerlink" title="案例学习：Linux Process"></a>案例学习：Linux Process</h2><p>这一部分也是了解一下即可（具体可以不用太深究）</p>
-<p><img src="/images/14583511838723.jpg" alt="Virtual Address Space of a Linux Process"></p>
-<p>Linux 以不同的『区域』来组织虚拟内存</p>
-<p><img src="/images/14583514430157.jpg" alt="Linux Organizes VM as Collection of &quot;Areas&quot;"></p>
-<p>下面是处理 page fault 的机制：</p>
-<p><img src="/images/14583519002966.jpg" alt="Linux Page Fault Handling"></p>
-<h2 id="u5185_u5B58_u6620_u5C04"><a href="#u5185_u5B58_u6620_u5C04" class="headerlink" title="内存映射"></a>内存映射</h2><p>初始化虚拟内存的过程，实际上就是把对应的虚拟内存和磁盘上的对象关联起来的过程，称之为内存映射(memory mapping)</p>
-<p><img src="/images/14583529040142.jpg" alt=""></p>
-<p>Linux 中所谓的『交换分区』就是这么来的（我估计）</p>
-<p><img src="/images/14583530219645.jpg" alt="Shared Objects"></p>
-<ul>
-<li>Process 1 maps the shared object</li>
-<li>Process 2 maps the shared object</li>
-<li>Two processes mapping a <strong>private copy-on-write(COW)</strong> object</li>
-<li>Area flagged as private copy-on-write</li>
-<li>PTEs in private areas are flagged as read-only</li>
-</ul>
-<p><img src="/images/14583530323902.jpg" alt="Private Copy-on-write(COW) Objects"></p>
-<ul>
-<li>Instruction writing to private page triggers protection fault</li>
-<li>Handler creates new R/W page</li>
-<li>Instruction restarts upon handler return</li>
-<li>Copying deferred as long as possible!</li>
-</ul>
-<p>Fork 函数就是这种机制的一个很好的例子：</p>
-<p><img src="/images/14583534506790.jpg" alt="The `fork` Function"></p>
-<p>接着来看看 <code>execve</code> 函数</p>
-<p><img src="/images/14583535882515.jpg" alt="The `execve` Function"></p>
-<p>最后介绍了 <code>mmap</code> 函数，这里不赘述了。</p>
-<p>这一部分比较偏向实际，主要还是要理解虚拟内存的机制（具体现代的处理器和操纵系统已经『太』复杂了）</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>了解了基本的虚拟内存概念，这节课我们来具体看看 Core i7 和 Linux 的内存系统，相信会对虚拟内存这一套机制有更深刻的认识。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="虚拟内存" scheme="http://wdxtub.com/tags/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"/>
-    
-      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 16 课 Virtual Memory - Concepts]]></title>
-    <link href="http://wdxtub.com/2016/03/18/csapp-16/"/>
-    <id>http://wdxtub.com/2016/03/18/csapp-16/</id>
-    <published>2016-03-18T13:48:52.000Z</published>
-    <updated>2016-03-18T16:11:31.000Z</updated>
-    <content type="html"><![CDATA[<p>这节课开始，我们会接触到计算机系统中另外一个非常重要的概念：虚拟内存。这个机制提供给了上层应用一个统一的地址空间，而无须操心物理内存的位置。</p>
-<a id="more"></a>
-<hr>
-<p>在具体讲述之前，我们先来看看什么是物理地址，什么是虚拟地址。</p>
-<p><img src="/images/14583091815694.jpg" alt="物理地址"></p>
-<p>物理地址一般应用在简单的嵌入式微控制器中（汽车、电梯、电子相框等），因为应用的范围有严格的限制，不需要在内存管理中引入过多的复杂度。</p>
-<p>但是对于计算机（以及其他智能设备）来说，虚拟地址则是必不可少的，通过 MMU(Memory management unit)把虚拟地址(Virtual Address, VA)转换为物理地址(Physical Address, PA)，再由此进行实际的数据传输。大致的过程如下图所示</p>
-<p><img src="/images/14583093850630.jpg" alt="虚拟地址"></p>
-<p>使用虚拟内存主要是基于下面三个考虑：</p>
-<ol>
-<li>可以更有效率的使用内存：使用 DRAM 当做部分的虚拟地址空间的缓存</li>
-<li>简化内存管理：每个进程都有统一的线性地址空间</li>
-<li>隔离地址控件：进程之间不会相互影响；用户程序不能访问内核信息和代码</li>
-</ol>
-<h2 id="u4F5C_u4E3A_u7F13_u5B58_u5DE5_u5177"><a href="#u4F5C_u4E3A_u7F13_u5B58_u5DE5_u5177" class="headerlink" title="作为缓存工具"></a>作为缓存工具</h2><p>概念上来说，虚拟内存就是存储在磁盘上的 N 个连续字节的数组。这个数组的部分内容，会缓存在 DRAM 中，在 DRAM 中的每个 cache block 就称为 page（页），具体的大小为 $P=2^p$（这里 p 表示具体的位数），如下图所示：</p>
-<p><img src="/images/14583098368523.jpg" alt=""></p>
-<p>大致的思路和之前的 cache memory 是类似的，就是利用 DRAM 比较快的特性，把最常用的数据换缓存起来。如果要访问磁盘的话，大约会比访问 DRAM 慢一万倍，所以我们的目标就是尽可能从 DRAM 中拿数据。为此，我们需要：</p>
-<ul>
-<li>更大的 page size：通常是 4KB，有的时候可以达到 4MB</li>
-<li>全相联 Fully associative：每一个 virual page 可以放在任意的 physical page 中，没有限制。</li>
-<li>映射函数非常复杂，所以没有办法用硬件实现</li>
-<li>通常使用 Write-back 而非 Write-through 机制<ul>
-<li>Write-through: 命中后更新缓存，同时写入到内存中</li>
-<li>Write-back: 直到这个缓存需要被置换出去，才写入到内存中（需要额外的 dirty bit 来表示缓存中的数据是否和内存中相同，因为可能在其他的时候内存中对应地址的数据已经更新，那么重复写入就会导致原有数据丢失）</li>
-</ul>
-</li>
-</ul>
-<p>具体怎么做呢？通过 page table。每个 page table 实际上是一个数组，数组中的每个元素称为 page table entry(PTE)，每个 PTE 负责把 virtual page 映射到 physical page 上。在 DRAM 中，每个进程都有自己的 page table，具体如下</p>
-<p><img src="/images/14583104118576.jpg" alt="Page Table"></p>
-<p>因为有一个表可以查询，就会遇到两种情况，一种是 Page Hit，另一种则是 Page Fault。</p>
-<blockquote>
-<p>Page hit: reference to VM word that is in physical memory (DRAM cache hit)</p>
-</blockquote>
-<p>访问到 page table 中蓝色条目的地址时，因为在 DRAM 中有对应的数据，可以直接访问。</p>
-<blockquote>
-<p>Page fault: reference to VM word that is not in physical memory (DRAM cache miss)</p>
-</blockquote>
-<p>访问到 page table 中灰色条目的时候，因为在 DRAM 中并没有对应的数据，所以需要执行一系列操作（从磁盘复制到 DRAM 中），具体为：</p>
-<ul>
-<li>触发 Page fault，也就是一个异常</li>
-<li>Page fault handler 会选择 DRAM 中需要被置换的 page，并把数据从磁盘复制到 DRAM 中</li>
-<li>重新执行访问指令，这时候就会是 page hit</li>
-</ul>
-<p>复制过程中的等待时间称为 demand paging。</p>
-<p>仔细留意上面的 page table，会发现有一个条目是 null，也就是没有分配。具体的分配过程（比方说声明了一个大数组），就是让该条目指向虚拟内存（在磁盘上）的某个 page（但并不复制到 DRAM，只有当出现 page fault 的时候才需要赋值）</p>
-<p>看起来『多此一举』，但是由于局部性原理，虚拟内存其实是非常高效的机制，这一部分最后提到了 working set 的概念，比较简单，这里不再赘述：</p>
-<p><img src="/images/14583113431902.jpg" alt="working set"></p>
-<h2 id="u4F5C_u4E3A_u5185_u5B58_u7BA1_u7406_u5DE5_u5177"><a href="#u4F5C_u4E3A_u5185_u5B58_u7BA1_u7406_u5DE5_u5177" class="headerlink" title="作为内存管理工具"></a>作为内存管理工具</h2><p>前面提到，每个进程都有自己的虚拟地址空间，这样一来，对于进程来说，它们看到的就是简单的线性空间（但实际上在物理内存中可能是间隔、支离破碎的），具体的映射过程可以用下图表示：</p>
-<p><img src="/images/14583114512897.jpg" alt="maping"></p>
-<p>在内存分配中没有太多限制，每个 virtual page 都可以被映射到任何的 physical page 上。这样也带来一个好处，如果两个进程间有共享的数据，那么直接指向同一个 physical page 即可（也就是上图 PP 6 的状况，只读数据）</p>
-<p>虚拟内存带来的另一个好处就是可以简化链接和载入的结构（因为有了统一的抽象，不需要纠结细节），如下图所示：</p>
-<p><img src="/images/14583116383432.jpg" alt="Simplifying Linking and Loading"></p>
-<h2 id="u4F5C_u4E3A_u5185_u5B58_u4FDD_u62A4_u5DE5_u5177"><a href="#u4F5C_u4E3A_u5185_u5B58_u4FDD_u62A4_u5DE5_u5177" class="headerlink" title="作为内存保护工具"></a>作为内存保护工具</h2><p>Page table 中的每个条目的高位部分是表示权限的位，MMU 可以通过检查这些位来进行权限控制（读、写、执行）</p>
-<p><img src="/images/14583120873244.jpg" alt="Permission bits"></p>
-<h2 id="u5730_u5740_u7FFB_u8BD1"><a href="#u5730_u5740_u7FFB_u8BD1" class="headerlink" title="地址翻译"></a>地址翻译</h2><p>开始之前先来了解以下概念：</p>
-<p><img src="/images/14583133332593.jpg" alt="Summary of Address Translation Symbols"></p>
-<p>然后我们通过一个具体的例子来说明如何进行地址翻译</p>
-<p><img src="/images/14583134329438.jpg" alt="Address Translation With a Page Table"></p>
-<p>具体的访问过程为：</p>
-<ul>
-<li>通过虚拟地址找到 page table 中对应的条目</li>
-<li>检查 valid bit，是否需要触发 page fault</li>
-<li>然后根据 page table 中的 physical page number 找到内存中的对应地址</li>
-<li>最后把 virtual page offset 和前面的实际地址拼起来，就是最终的物理地址了</li>
-</ul>
-<p>这里又分两种情况：Page Hit 和 Page Fault，具体过程如下：</p>
-<p><img src="/images/14583139236125.jpg" alt="Page Hit"></p>
-<ol>
-<li>Processor sends virtual address to MMU</li>
-<li>MMU fetches PTE from page table in memory</li>
-<li>MMU fetches PTE from page table in memory</li>
-<li>MMU sends physical address to cache/memory</li>
-<li>Cache/memory sends data word to processor</li>
-</ol>
-<p><img src="/images/14583140218329.jpg" alt="Page Fault"></p>
-<ol>
-<li>Processor sends virtual address to MMU</li>
-<li>MMU fetches PTE from page table in memory</li>
-<li>MMU fetches PTE from page table in memory</li>
-<li>Valid bit is zero, so MMU triggers page fault exception</li>
-<li>Handler identifies victim (and, if dirty, pages it out to disk)</li>
-<li>Handler pages in new page and updates PTE in memory</li>
-<li>Handler returns to original process, restarting faulting instruction</li>
-</ol>
-<p>把这个和我们前面提到的 cache memory 结合起来就是：</p>
-<p><img src="/images/14583153762095.jpg" alt="Integrating VM and Cache"></p>
-<ul>
-<li>VA: virtual address, PA: physical address</li>
-<li>PTE: page table entry, PTEA = PTE address</li>
-</ul>
-<p>但是我们会发现，这样其实还不够快，L1 cache 虽然快，为什么不能直接在 MMU 进行一部分的工作呢？于是就有了另外一个设计：Translation Lookaside Buffer(TLB)</p>
-<ul>
-<li>Small set-associative hardware cache in MMU</li>
-<li>Maps virtual page numbers to physical page numbers</li>
-<li>Contains complete page table entries for small number of pages</li>
-</ul>
-<p>我们使用 Virtual Page Number 部分当做访问 TLB 的索引，具体如下（和 cache memory 非常相似）：</p>
-<p><img src="/images/14583156462414.jpg" alt="Accessing the TLB"></p>
-<p>同样分两个情况：TLB Hit 和 TLB Miss</p>
-<blockquote>
-<p>A TLB hit eliminates a memory access</p>
-</blockquote>
-<p><img src="/images/14583156886189.jpg" alt="TLB Hit"></p>
-<blockquote>
-<p>A TLB miss incurs an additional memory access(the PTE)</p>
-</blockquote>
-<p><img src="/images/14583157195012.jpg" alt="TLB Miss"></p>
-<h3 id="Multi-Level_Page_Tables"><a href="#Multi-Level_Page_Tables" class="headerlink" title="Multi-Level Page Tables"></a>Multi-Level Page Tables</h3><p>Page table 的另一个问题就是，因为往往虚拟地址的位数比物理内存的位数要大得多，所以保存 page table entry(PTE) 也是一个问题。举个例子：</p>
-<p>假设一个 page 的大小是 4KB($2^12$)，每个地址有 48 位，一条 PTE 记录有 8 个字节，那么要全部保存下来，需要的大小是：</p>
-<p>$$2^{48} \times 2^{-12} \times 2^3 = 2^{39} bytes$$</p>
-<p>整整 512 GB!</p>
-<p>所以解决办法就是，多层的 page table，第一层的 page table 中的条目指向其他的 page table，然后再去寻找具体的地址：</p>
-<p><img src="/images/14583164443493.jpg" alt="A Two-Level Page Table Hierarchy"></p>
-<p>具体的翻译过程如下：</p>
-<p><img src="/images/14583165384715.jpg" alt="Translating with a k-level Page Table"></p>
-<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>Programmer’s view of virtual memory<ul>
-<li>Each process has its own private linear address space</li>
-<li>Cannot be corrupted by other processes</li>
-</ul>
-</li>
-<li>System view of virtual memory<ul>
-<li>Use memory efficiently by caching virtual memory pages<ul>
-<li>Efficient only because of locality </li>
-</ul>
-</li>
-<li>Simplifies memory management and programming</li>
-<li>Simplifies protection by providing a convenient interpositioning point to check permissions</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这节课开始，我们会接触到计算机系统中另外一个非常重要的概念：虚拟内存。这个机制提供给了上层应用一个统一的地址空间，而无须操心物理内存的位置。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="虚拟内存" scheme="http://wdxtub.com/tags/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"/>
-    
-      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
   </entry>
   
