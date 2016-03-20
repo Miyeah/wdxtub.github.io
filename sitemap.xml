@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wdxtub.com/about/index.html</loc>
+    <lastmod>2016-03-20T19:34:16.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/03/20/fastcode-4/</loc>
     <lastmod>2016-03-20T19:27:09.000Z</lastmod>
   </url>
@@ -59,11 +64,6 @@
   <url>
     <loc>http://wdxtub.com/2016/03/20/cuda-note/</loc>
     <lastmod>2016-03-20T13:45:37.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/about/index.html</loc>
-    <lastmod>2016-03-20T13:45:19.000Z</lastmod>
   </url>
   
   <url>
