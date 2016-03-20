@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>CUDA 简明指南 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">CUDA 简明指南</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">CUDA 简明指南</h1><div class="post-meta">2016-03-20 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/03/20/cuda-note/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CUDA_u67B6_u6784"><span class="toc-number">1.</span> <span class="toc-text">CUDA架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u6267_u884C_u6A21_u5F0F"><span class="toc-number">2.</span> <span class="toc-text">执行模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u57FA_u672C_u6982_u5FF5"><span class="toc-number">3.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Some_Restrictions_First"><span class="toc-number">3.1.</span> <span class="toc-text">Some Restrictions First</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SM_-Streaming_multi-processors_with_multiple_processing_cores"><span class="toc-number">3.2.</span> <span class="toc-text">SM -Streaming multi-processors with multiple processing cores</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Warps"><span class="toc-number">3.3.</span> <span class="toc-text">Warps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Latency_Tolerance"><span class="toc-number">3.4.</span> <span class="toc-text">Latency Tolerance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4EE3_u7801_u76F8_u5173"><span class="toc-number">4.</span> <span class="toc-text">代码相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u7ECF_u9A8C_u6280_u5DE7"><span class="toc-number">5.</span> <span class="toc-text">经验技巧</span></a></li></ol></div></div><div class="post-content"><p>For CMU 18-645 How to write fast code. Learn CUDA in an hour!</p>
+<a id="more"></a>
+<hr>
+<h2 id="CUDA_u67B6_u6784"><a href="#CUDA_u67B6_u6784" class="headerlink" title="CUDA架构"></a>CUDA架构</h2><p>在 CUDA 的架构下,一个程序分为两个部份:host 端和 device 端。Host 端是指在 CPU 上执行 的部份,而 device 端则是在显示芯片上执行的部份。Device 端的程序又称为 “kernel(核心)”。 通常 host 端程序会将数据准备好后,复制到显卡的内存中,再由显示芯片执行 device 端程序,完 成后再由 host 端程序将结果从显卡的内存中取回。</p>
+<p>在 CUDA 架构下,显示芯片执行时的最小单位是 thread(线程)。数个 thread 可以组成一个 block(块)。一个 block 中的 thread 能存取同一块共享的内存,而且可以快速进行同步的动作。</p>
+<p>每一个 block 所能包含的 thread 数目是有限的。不过,执行相同程序的 block,可以组成 grid(格子)。不同 block 中的 thread 无法存取同一个共享的内存,因此无法直接互通或进行同步。因此, 不同 block 中的 thread 能合作的程度是比较低的。不过,利用这个模式,可以让程序不用担心显示芯片实际上能同时执行的 thread 数目限制。例如,一个具有很少量执行单元的显示芯片,可能会 把各个 block 中的 thread 顺序执行,而非同时执行。不同的 grid 则可以执行不同的程序(即 kernel)。</p>
+<p>每个 thread 都有自己的一份 register 和 local memory 的空间。同一个 block 中的每个 thread 则有共享的一份 share memory。此外,所有的 thread(包括不同 block 的 thread)都共享一份 global memory、constant memory、和 texture memory。不同的 grid 则有各自的 global memory、 constant memory 和 texture memory。</p>
+<h2 id="u6267_u884C_u6A21_u5F0F"><a href="#u6267_u884C_u6A21_u5F0F" class="headerlink" title="执行模式"></a>执行模式</h2><p>由于显示芯片大量并行计算的特性,它处理一些问题的方式,和一般 CPU 是不同的。主要的特点包括:</p>
+<ol>
+<li>内存存取 latency 的问题:CPU 通常使用 cache 来减少存取主内存的次数,以避免内存 latency 影响到执行效率。显示芯片则多半没有 cache(或很小),而利用并行化执行的方式来隐藏内存的 latency(即,当第一个 thread 需要等待内存读取结果时,则开始执行第二 个 thread,依此类推)。</li>
+<li>分支指令的问题:CPU 通常利用分支预测等方式来减少分支指令造成的 pipeline bubble。显示芯片则多半使用类似处理内存 latency 的方式。不过,通常显示芯片处理分支的效率会比较差</li>
+</ol>
+<p>最适合利用 CUDA 处理的问题,是可以大量并行化的问题,才能有效隐藏内存的 latency, 并有效利用显示芯片上的大量执行单元。使用 CUDA 时,同时有上千个 thread 在执行是很正常的。 因此,如果不能大量并行化的问题,使用 CUDA 就没办法达到最好的效率了。</p>
+<h2 id="u57FA_u672C_u6982_u5FF5"><a href="#u57FA_u672C_u6982_u5FF5" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>streaming processor, sp: 最基本的处理单元，最后具体的指令和任务都是在 sp 上处理的。GPU 进行并行计算，也就是很多个 sp 同时做处理</li>
+<li>streaming multiprocessor, sm: 多个 sp 加上存储资源组成一个 sm</li>
+<li>warp: GPU 执行程序时的调度单位，目前 CUDA 的 warp 大小为32，同在一个 warp 的线程，以不同数据资源执行相同的指令。</li>
+<li>thread, block, grid: 利用 CUDA 进行编程时，一个 grid 分为多个 block，一个 block 分为多个 thread (From a programmer’s perspective)</li>
+</ul>
+<h3 id="Some_Restrictions_First"><a href="#Some_Restrictions_First" class="headerlink" title="Some Restrictions First"></a>Some Restrictions First</h3><ul>
+<li>All threads in a grid execute the same kernel function</li>
+<li>A grid is organized as a 2D array of blocks(gridDim.X and gridDim.y)</li>
+<li>Each block is organized as 3D array of threads(blockDim.x, blockDim.y, and blockDim.z)</li>
+<li>Once a kernel is launched, its dimensions cannot change.</li>
+<li>All blocks in a grid have the same dimension</li>
+<li>The total size of a block is limited to 512 threads(? I’m not sure?)</li>
+<li>Once assigned to an SM, the block must execute in its entirey by the SM.</li>
+<li>Thread ID is unique within a block</li>
+<li>Using block ID and thread ID we can make unique ID for each thread per kernel</li>
+<li>Threads assigned to execution resources on a block-by-block basis</li>
+<li>CUDA runtime automatically reduces number of blocks assigned to each SM</li>
+<li>until resource usage is under limit.</li>
+</ul>
+<h3 id="SM_-Streaming_multi-processors_with_multiple_processing_cores"><a href="#SM_-Streaming_multi-processors_with_multiple_processing_cores" class="headerlink" title="SM -Streaming multi-processors with multiple processing cores"></a>SM -Streaming multi-processors with multiple processing cores</h3><ul>
+<li>Each SM contains 32 processing cores</li>
+<li>Execute in a Single Instruction Multiple Thread (SIMT) fashion</li>
+<li>Up to 16 SMs on a card cor a maximum of 512 compute cores</li>
+</ul>
+<h3 id="Warps"><a href="#Warps" class="headerlink" title="Warps"></a>Warps</h3><ul>
+<li>Once a block is assigned to an SM, it is divided into units called warps.</li>
+<li>Thread IDs within a warp are consecutive and increasing</li>
+<li>Warp 0 starts with Thread ID 0</li>
+<li>Warp is unit of thread scheduling in SMs</li>
+<li>Partitioning is always the same</li>
+<li>DO NOT rely on any ordering between warps</li>
+<li>Each warp is executed in a SIMD fashion (all threads within a warp must execute the same instruction at any given time)</li>
+<li>Problem: branch divergence</li>
+</ul>
+<h3 id="Latency_Tolerance"><a href="#Latency_Tolerance" class="headerlink" title="Latency Tolerance"></a>Latency Tolerance</h3><ul>
+<li>When an instruction executed by the threads in a warp must wait for the result of a previously initiated long-latency operation, the warp is not selected for execution -&gt; lantency hiding</li>
+<li>Priority mechanism used to schedule ready warps</li>
+<li>Scheduling does not introduce idle time -&gt; zero-overhead thread scheduling</li>
+<li>Scheduling is used for tolerating long-latency operations, such as:</li>
+<li>piplined floating-point arithmetic</li>
+<li>branch instructions</li>
+</ul>
+<p>The only safe way to synchronize threads in different blocks is to terminate the kernel and start a new kernel for the acitivities after the synchronization point.</p>
+<h2 id="u4EE3_u7801_u76F8_u5173"><a href="#u4EE3_u7801_u76F8_u5173" class="headerlink" title="代码相关"></a>代码相关</h2><ul>
+<li>通过 cudaGetDeviceProperties 函数可以取得许多数据，除了装置支持的 CUDA 版本之外, 还有装置的名称、内存的大小、最大的 thread 数目、执行单元的频率等等</li>
+<li>需要包含头文件<code>&lt;cuda_runtime.h&gt;</code></li>
+<li>编译直接可以<code>nvcc xxx.cu</code></li>
+<li>nvcc 是 CUDA 的 compile 工具,它会将 .cu 檔拆解出在 GPU 上执行的部份,及在 host 上执 行的部份,并呼叫适当的程序进行 compile 动作。在 GPU 执行的部份会透过 NVIDIA 提供的 compiler 编译成中介码,而 host 执行的部份则会透过系统上的 C++ compiler 编译(在 Windows 上使用 Visual C++ 而在 Linux 上使用 gcc)</li>
+<li>cudaMalloc 和 cudaMemcpy 的用法和一般的 malloc 及 memcpy 类似,不过 cudaMemcpy 则多出一个参数,指示复制内存的方向。从主内存复制到显卡内存,所以使用 cudaMemcpyHostToDevice。如果是从显卡内存到主内存,则使用 cudaMemcpyDeviceToHost。</li>
+<li>在 CUDA 中，在函数前面加上 <code>__global__</code> 表示这个函数是要在显示芯片上执行的。</li>
+<li>在显卡上执行的程序有一些限制，例如它不能有返回值</li>
+<li>让 CUDA 执行函数的语法<ul>
+<li><code>function&lt;&lt;&lt;# block, # thread, shared memory size&gt;&gt;&gt;(para....)</code></li>
+</ul>
+</li>
+<li>在 CUDA 中,一般的数据复制到的显卡内存的部份,称为 global memory。这些内存是没有 cache 的,而且,存取 global memory 所需要的时间(即 latency)是非常长的,通常是数百个 cycles。由于我们的程序只有一 个 thread,所以每次它读取 global memory 的内容,就要等到实际读取到数据、累加到 sum 之后, 才能进行下一步。</li>
+<li>由于 global memory 并没有 cache,所以要避开巨大的 latency 的方法,就是要利用大量的 threads。假设现在有大量的 threads 在同时执行,那么当一个 thread 读取内存,开始等待结果的 时候,GPU 就可以立刻切换到下一个 thread,并读取下一个内存位置。因此,理想上当 thread 的 数目够多的时候,就可以完全把 global memory 的巨大 latency 隐藏起来了。</li>
+<li>显卡上的内存是 DRAM,因此最有效率的存取方式,是以连续的方式存取。前面的程序,虽然看起 来是连续存取内存位置(每个 thread 对一块连续的数字计算平方和),但是我们要考虑到实际上 thread 的执行方式。前面提过,当一个 thread 在等待内存的数据时,GPU 会切换到下一个 thread。 也就是说,实际上执行的顺序是类似 thread0 -&gt; thread1 -&gt; thread2。因此,在同一个 thread 中连续存取内存,在实际执行时反而不是连续了。要让实际执行结果是连续 的存取,我们应该要让 thread 0 读取第一个数字,thread 1 读取第二个数字…依此类推。</li>
+<li>在 CUDA 中,thread 是可以分组的,也就是 block。一个 block 中的 thread,具有一个共享的 shared memory,也可以进行同步工作。不同 block 之间的 thread 则不行。在我们的程序中,其 实不太需要进行 thread 的同步动作,因此我们可以使用多个 block 来进一步增加 thread 的数目</li>
+<li>利用 <code>__shared__</code> 声明的变量表示这是 shared memory,是一个 block 中每个 thread 都共享的 内存。它会使用在 GPU 上的内存,所以存取的速度相当快,不需要担心 latency 的问题。</li>
+<li>`__syncthreads()`` 是一个 CUDA 的内部函数,表示 block 中所有的 thread 都要同步到这个点,才能继续执行。</li>
+</ul>
+<h2 id="u7ECF_u9A8C_u6280_u5DE7"><a href="#u7ECF_u9A8C_u6280_u5DE7" class="headerlink" title="经验技巧"></a>经验技巧</h2><ul>
+<li>利用 <code>threadIdx.x</code> 来分 thread 执行，考虑好邻接性。</li>
+</ul>
+</div><div class="tags"><a href="/tags/CUDA/">CUDA</a><a href="/tags/教程/">教程</a></div><div class="post-nav"><a href="/2016/03/20/sql-guide/" class="pre"><i class="icon-previous">SQL 指南</i></a><a href="/2016/03/20/java-note/" class="next">Java 学习笔记<i class="icon-next"></i></a></div><div data-thread-key="2016/03/20/cuda-note/" data-title="CUDA 简明指南" data-url="http://wdxtub.com/2016/03/20/cuda-note/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/03/20/cuda-note/" data-title="CUDA 简明指南" data-url="http://wdxtub.com/2016/03/20/cuda-note/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
