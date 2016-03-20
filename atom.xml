@@ -756,8 +756,8 @@ sudo apt-get install sublime-text-installer
     <link href="http://wdxtub.com/2016/03/20/cuda-note/"/>
     <id>http://wdxtub.com/2016/03/20/cuda-note/</id>
     <published>2016-03-20T12:05:36.000Z</published>
-    <updated>2016-03-20T12:07:36.000Z</updated>
-    <content type="html"><![CDATA[<p>For CMU 18-645 How to write fast code. Learn CUDA in an hour!</p>
+    <updated>2016-03-20T13:45:37.000Z</updated>
+    <content type="html"><![CDATA[<p>简单的 CUDA 快速入门指南。</p>
 <a id="more"></a>
 <hr>
 <h2 id="CUDA_u67B6_u6784"><a href="#CUDA_u67B6_u6784" class="headerlink" title="CUDA架构"></a>CUDA架构</h2><p>在 CUDA 的架构下,一个程序分为两个部份:host 端和 device 端。Host 端是指在 CPU 上执行 的部份,而 device 端则是在显示芯片上执行的部份。Device 端的程序又称为 “kernel(核心)”。 通常 host 端程序会将数据准备好后,复制到显卡的内存中,再由显示芯片执行 device 端程序,完 成后再由 host 端程序将结果从显卡的内存中取回。</p>
@@ -838,7 +838,7 @@ sudo apt-get install sublime-text-installer
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>For CMU 18-645 How to write fast code. Learn CUDA in an hour!</p>]]>
+    <![CDATA[<p>简单的 CUDA 快速入门指南。</p>]]>
     
     </summary>
     
@@ -3351,8 +3351,8 @@ c.assign(n,t)      将容器 c 重新设置为存储 n 各值为 t 的元素
     <link href="http://wdxtub.com/2016/03/20/openmp-guide/"/>
     <id>http://wdxtub.com/2016/03/20/openmp-guide/</id>
     <published>2016-03-20T11:58:43.000Z</published>
-    <updated>2016-03-20T12:14:30.000Z</updated>
-    <content type="html"><![CDATA[<p>For CMU 18-645 How to write fast code. Learn openmp in an hour!  <a href="http://blog.csdn.net/donhao" target="_blank" rel="external">主要来源</a></p>
+    <updated>2016-03-20T13:45:52.000Z</updated>
+    <content type="html"><![CDATA[<p>简单的 OpenMP 快速入门指南。<a href="http://blog.csdn.net/donhao" target="_blank" rel="external">主要来源</a></p>
 <a id="more"></a>
 <hr>
 <h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><p>这门课作为 ECE 中少有的跟计算机科学相关的课，自然是必上不可。不过无论是 OpenMP 还是 CUDA，对于平时极少接触并行编程的我来说，都是十分吃力的，第一次作业的 OpenMP 编程已经让意识到了个中的差别，当然，在单个核心的计算速度基本达到极致的现在，掌握并行编程可以算是程序员的基本素养，而 OpenMP 其实是一个非常好的开始，简单，易懂，见效飞快。所以我们的旅程，就从这里开始吧。</p>
@@ -3784,7 +3784,7 @@ int main(){
 <p>能看到这里，如果都跑过一遍的话，应该也就差不多了。上课过程中有啥想法再追加吧。我要去改代码了再见。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>For CMU 18-645 How to write fast code. Learn openmp in an hour!  <a href="http://blog.csdn.net/donhao">主要来源</a></p>]]>
+    <![CDATA[<p>简单的 OpenMP 快速入门指南。<a href="http://blog.csdn.net/donhao">主要来源</a></p>]]>
     
     </summary>
     
