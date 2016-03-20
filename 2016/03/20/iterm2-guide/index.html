@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>iTerm2 指南 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">iTerm2 指南</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">iTerm2 指南</h1><div class="post-meta">2016-03-20 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/03/20/iterm2-guide/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5149_u6807_u63A7_u5236"><span class="toc-number">1.</span> <span class="toc-text">光标控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u7A97_u53E3_u64CD_u4F5C"><span class="toc-number">2.</span> <span class="toc-text">窗口操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u6807_u7B7E_u9875_u64CD_u4F5C"><span class="toc-number">3.</span> <span class="toc-text">标签页操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u9762_u677F_u64CD_u4F5C"><span class="toc-number">4.</span> <span class="toc-text">面板操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5176_u4ED6_u529F_u80FD"><span class="toc-number">5.</span> <span class="toc-text">其他功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u6587_u672C_u9009_u53D6"><span class="toc-number">6.</span> <span class="toc-text">文本选取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4F4D_u7F6E_u4E66_u7B7E"><span class="toc-number">7.</span> <span class="toc-text">位置书签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u7C98_u8D34_u5386_u53F2"><span class="toc-number">8.</span> <span class="toc-text">粘贴历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5373_u65F6_u56DE_u653E"><span class="toc-number">9.</span> <span class="toc-text">即时回放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u7A97_u53E3_u72B6_u6001"><span class="toc-number">10.</span> <span class="toc-text">窗口状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u7279_u8272_u529F_u80FD"><span class="toc-number">11.</span> <span class="toc-text">特色功能</span></a></li></ol></div></div><div class="post-content"><p>这里是 iTerm2 的基本入门操作，熟悉之后可以大幅提高效率。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u5149_u6807_u63A7_u5236"><a href="#u5149_u6807_u63A7_u5236" class="headerlink" title="光标控制"></a>光标控制</h2><ul>
+<li>ctrl + a: 到行首</li>
+<li>ctrl + e: 行末</li>
+<li>ctrl + f/b: 前进后退，相当于左右方向键，但是显然比移开手按方向键更快</li>
+<li>ctrl + p: 上一条命令，相当于方向键上</li>
+<li>ctrl + r: 搜索命令历史，这个大家都应该很熟悉了</li>
+<li>ctrl + d: 删除当前字符</li>
+<li>ctrl + h: 删除之前的字符</li>
+<li>ctrl + w: 删除光标前的单词</li>
+<li>ctrl + k: 删除到文本末尾</li>
+<li>ctrl + t: 交换光标处文本</li>
+<li>⌘ + —/+/0: 调整字体大小</li>
+<li>⌘ + r:清屏，其实是滚到新的一屏，并没有清空。ctrl + l 也可以做到。</li>
+</ul>
+<h2 id="u7A97_u53E3_u64CD_u4F5C"><a href="#u7A97_u53E3_u64CD_u4F5C" class="headerlink" title="窗口操作"></a>窗口操作</h2><ul>
+<li>新建窗口：shift + command + d（横向）command + d（竖向）</li>
+<li>关闭窗口：shift + command + w</li>
+<li>前一个窗口：command + `</li>
+<li>后一个窗口：command + ~</li>
+<li>进入窗口 1,2,3：option + command + 编号</li>
+</ul>
+<h2 id="u6807_u7B7E_u9875_u64CD_u4F5C"><a href="#u6807_u7B7E_u9875_u64CD_u4F5C" class="headerlink" title="标签页操作"></a>标签页操作</h2><ul>
+<li>新建标签页: Command + T</li>
+<li>关闭标签页: Command + W</li>
+<li>前一个标签页: Command + 左方向键，Shift + Command + [</li>
+<li>后一个标签页: Command + 右方向键，Shitf + Command + ]</li>
+<li>进入标签页1，2，3…: Command + 标签页编号</li>
+<li>Expose 标签页: Option + Command + E（将标签页打撒到全屏，并可以全局搜索所有的标签页）</li>
+</ul>
+<h2 id="u9762_u677F_u64CD_u4F5C"><a href="#u9762_u677F_u64CD_u4F5C" class="headerlink" title="面板操作"></a>面板操作</h2><ul>
+<li>垂直分割: Command + D</li>
+<li>水平分割: Shift + Command + D</li>
+<li>前一个面板: Command + [</li>
+<li>后一个面板: Command + ]</li>
+<li>切换到上/下/左/右面板: Option + Command + 上下左右方向键</li>
+</ul>
+<h2 id="u5176_u4ED6_u529F_u80FD"><a href="#u5176_u4ED6_u529F_u80FD" class="headerlink" title="其他功能"></a>其他功能</h2><ul>
+<li>支持自定义全局快捷键用于显示和隐藏iTerm2 Preference -&gt; Keys －&gt; Show/hide iTerm2 with a system-wide hotkey 打上勾之后</li>
+<li>进入和退出全屏: Command + Enter</li>
+<li>查看当前终端中光标的位置: Command + /</li>
+<li>命令自动补全: Command + ;（很少用这个，还是感觉Zsh的补全更好用）</li>
+<li>开启和关闭背景半透明: Command + u</li>
+<li>清屏（重置当前终端）: Command + r</li>
+</ul>
+<h2 id="u6587_u672C_u9009_u53D6"><a href="#u6587_u672C_u9009_u53D6" class="headerlink" title="文本选取"></a>文本选取</h2><p>文本选取有使用鼠标和不使用鼠标两种方式。</p>
+<p>使用鼠标</p>
+<p>默认情况下，选取的文字会自动复制到剪切板，可以使用以下方式进行文本选取：</p>
+<ul>
+<li>常见的点击并拖拽方式</li>
+<li>双击选取整个单词</li>
+<li>三击选取整行</li>
+<li>选取某一部分，按住Shift，再点击某处，可以选取整个矩形内的文本（类似Windows下按住Shift可以批量选取图标）</li>
+<li>按住Command + Option，可以用鼠标画出一个矩形，用类似截图的方式选取文本 另外，还可以使用鼠标完成以下操作： 按住Command然后点击某个URL，会在浏览器中打开这个URL，点击某个文件夹，会在Finder里打开这个文件夹（再也不用open . 啦），点击某个文件名，会打开这个文件（文本文件支持MacVim，TextMate和BBEdit，如果后面跟随一个冒号和行号，文件会在行号处打开，其它格式的文件似乎不能调用默认程序打开） 选取文本之后，按住Command 同时拖动文本，可以将文本粘贴到目标位置（Drag and Drop） 鼠标中键粘贴（这个太感人了，一下子找回Linux的感觉了）</li>
+</ul>
+<p>不使用鼠标</p>
+<p>(这种方式最多只能选取一行文本) 使用 Command + f，会呼出一个搜索框，可以在当前面板中进行搜索，输入想要选取的部分内容，输入过程中，按Tab可以将选取部分向右扩展，按Shift + Tab向左扩展，按回车转到下一个匹配位置。使用Tab或Shift+Tab扩展得到想要的内容之后，选取内容会自动复制到剪切板，再次按Command + f隐藏搜索框。</p>
+<h2 id="u4F4D_u7F6E_u4E66_u7B7E"><a href="#u4F4D_u7F6E_u4E66_u7B7E" class="headerlink" title="位置书签"></a>位置书签</h2><p>在当前会话中按Command + Shift + m可以保存当前位置，之后可以按Command + Shift + j跳回这个位置。</p>
+<h2 id="u7C98_u8D34_u5386_u53F2"><a href="#u7C98_u8D34_u5386_u53F2" class="headerlink" title="粘贴历史"></a>粘贴历史</h2><p>使用Command + Shift + h 可以呼出粘贴历史，支持模糊检索。还可以设置将粘贴历史保存在磁盘上（Preferences -&gt; General）</p>
+<h2 id="u5373_u65F6_u56DE_u653E"><a href="#u5373_u65F6_u56DE_u653E" class="headerlink" title="即时回放"></a>即时回放</h2><p>使用Command + Opt + b 打开即时回放，按Esc退出。即时回放可以记录终端输出的状态，让你“穿越时间”查看终端内容。默认每个会话最多储存4MB的内容，可以在设置中更改（Preferences -&gt; Genernal -&gt; Instant Replay）。</p>
+<h2 id="u7A97_u53E3_u72B6_u6001"><a href="#u7A97_u53E3_u72B6_u6001" class="headerlink" title="窗口状态"></a>窗口状态</h2><p>通过 Window -&gt; Save Window Arrangement 可以保存当前窗口状态的快照，包括打开的窗口，标签页和面板。通过 Window -&gt; Restore Window Arrangement 还原。还可以在 Preferences -&gt; General -&gt; Open saved window arrangement 中设置在启动iTerm2时自动恢复窗口状态</p>
+<h2 id="u7279_u8272_u529F_u80FD"><a href="#u7279_u8272_u529F_u80FD" class="headerlink" title="特色功能"></a>特色功能</h2><ul>
+<li>command+; 根据上下文呼出自动完成窗口，上下键选择</li>
+<li>全屏 command+enter</li>
+<li>光标去哪了？command+/</li>
+<li>用鼠标选中某个路径或者某个词汇就自动复制</li>
+</ul>
+</div><div class="tags"><a href="/tags/Mac/">Mac</a><a href="/tags/Shell/">Shell</a><a href="/tags/iTerm2/">iTerm2</a></div><div class="post-nav"><a href="/2016/03/20/make-gcc-guide/" class="next">Make 与 GCC 指南<i class="icon-next"></i></a></div><div data-thread-key="2016/03/20/iterm2-guide/" data-title="iTerm2 指南" data-url="http://wdxtub.com/2016/03/20/iterm2-guide/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/03/20/iterm2-guide/" data-title="iTerm2 指南" data-url="http://wdxtub.com/2016/03/20/iterm2-guide/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
