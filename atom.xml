@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-20T19:27:09.000Z</updated>
+  <updated>2016-03-21T00:15:17.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,118 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[深入理解计算机系统 习题课 6 Shelllab]]></title>
+    <link href="http://wdxtub.com/2016/03/20/csapp-lab6/"/>
+    <id>http://wdxtub.com/2016/03/20/csapp-lab6/</id>
+    <published>2016-03-20T21:10:37.000Z</published>
+    <updated>2016-03-21T00:15:17.000Z</updated>
+    <content type="html"><![CDATA[<p>在这个实验中，我们会实现自己的 <code>malloc</code> 函数，并借此深入理解堆中的内存分配机制。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u5B8F_u4E0E_u5185_u8054_u51FD_u6570"><a href="#u5B8F_u4E0E_u5185_u8054_u51FD_u6570" class="headerlink" title="宏与内联函数"></a>宏与内联函数</h2><p>宏实际上是一个简单的『查找并替换』的过程，会在编译前完成。一般用来定义常量以及简单的操作（这里很容易出错，下面会说）。</p>
+<p>定义常量比较简单：<code>#define NUM_ENTRIES 100</code> 即可。</p>
+<p>定义简单操作则需要注意，比如 <code>#define twice(x) 2*x</code> 这样写就是会出问题的，如果在代码中调用 <code>twice(x+1)</code> 期望得到的结果应该是 <code>2x+2</code>，但是因为宏只是简单的替换，所以会变成 <code>2x+1</code>。解决办法是一定要用括号包裹住会被替换的值，比如之前的例子应该改写成 <code>#define twice(x) (2*(x))</code>。</p>
+<p>使用宏，可以避免函数调用，也就少了很多跳转和对应的栈处理。对于 <code>malloc</code> 来说，可以通过宏快速访问 header 信息（例如 payload size, valid）</p>
+<p>宏的缺点也同样明显，能够执行的操作不如函数那么强大，并且不会进行拼写和类型检查，很容易出错，出错了也不容易找到问题所在。</p>
+<p>内联函数会在编译的时候被写入到代码中，同样因为不需要真实的函数调用，所以效率也很高。一般来说，比较小的函数都可以设置为内联。</p>
+<p>两者之间的差别在于：</p>
+<ul>
+<li>宏在编译前处理</li>
+<li>内联函数在编译时处理（带有类型检查）</li>
+<li>宏不能有返回值</li>
+<li>宏可能会带来一些副作用</li>
+<li>很难调试宏</li>
+</ul>
+<p>具体到这次作业：</p>
+<ul>
+<li>两个都需要使用</li>
+<li>宏适合做小的工作，比方说让代码更加容易理解</li>
+<li>如果宏没有办法完成，先考虑使用内联函数</li>
+</ul>
+<h2 id="u6307_u9488_u590D_u4E60"><a href="#u6307_u9488_u590D_u4E60" class="headerlink" title="指针复习"></a>指针复习</h2><p>指针恐怕是 C 语言最难的一部分了，这里会尽量解释得清楚一些。</p>
+<p>先来看看类型转换可能带来的问题：</p>
+<ul>
+<li>从 <code>&lt;type_a&gt;*</code> 转换到 <code>&lt;type_b&gt;*</code>（一个类型的指针转换为另一个类型的指针）<ul>
+<li>值并不会改变</li>
+<li>改变的是解析引用的行为，比方说原来是 int 指针，那么一次会读 4 个字节，现在转换成了 char 指针，一次就读 1 个字节（这里具体的字节数看是 32 位还是 64 位系统）</li>
+</ul>
+</li>
+<li>从 <code>&lt;type_a&gt;*</code> 转换到 integer / unsigned int<ul>
+<li>指针的值实际上就是 8 字节的数字</li>
+<li>这是一个很值得利用的特性！</li>
+<li>不过也很容易出错就是了</li>
+</ul>
+</li>
+<li>从 integer / unsigned int 转换到 <code>&lt;type_a&gt;*</code><ul>
+<li>这种情况基本不会使用，因为没人知道转换后的指针会指向什么地方</li>
+</ul>
+</li>
+</ul>
+<p>对于指针进行算术运算时，一定要注意跟指针本身的类型是有关的，比方说</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type_a* pointer = ...;</span><br><span class="line">(<span class="keyword">void</span> *) pointer1 = (<span class="keyword">void</span> *)(pointer + a);</span><br></pre></td></tr></table></figure>
+<p>实际上进行的运算是：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pointer1 = pointer + (a * sizeof(type_a))</span><br></pre></td></tr></table></figure>
+<p>对应的汇编代码是：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lea (pointer, a, sizeof(type_a)), pointer1&#10;``&#10;&#10;&#36825;&#37324;&#38656;&#35201;&#27880;&#24847;&#65292;&#22914;&#26524;&#19968;&#20010;&#25351;&#38024;&#30340;&#31867;&#22411;&#26159; `void *`&#65292;&#37027;&#20040;&#26159;&#19981;&#33021;&#23545;&#20854;&#36827;&#34892;&#31639;&#26415;&#25805;&#20316;&#30340;&#65292;&#22240;&#20026;&#25105;&#20204;&#27809;&#21150;&#27861;&#30830;&#23450;&#20854;&#22823;&#23567;&#12290;&#10;&#10;&#19979;&#38754;&#26159;&#20855;&#20307;&#30340;&#20960;&#20010;&#20363;&#23376;&#65292;&#19968;&#23450;&#35201;&#20180;&#32454;&#29702;&#35299;&#65306;&#10;&#10;![Pointer arithmetic](/images/14585171655720.jpg)&#10;&#10;![More pointer arithmetic](/images/14585171934388.jpg)&#10;&#10;&#25105;&#20204;&#19981;&#33021;&#22815;&#23545;&#31354;&#25351;&#38024;&#36827;&#34892;&#35299;&#24341;&#29992;&#65292;&#26469;&#30475;&#19968;&#20010;&#20363;&#23376;&#65306;&#10;&#10;```c&#10;int *ptr1 = malloc(sizeof(int));&#10;*ptr1 = 0xdeadbeef;&#10;&#10;int val1 = *ptr1;&#10;int val2 = (int) *((char *) ptr1);</span><br></pre></td></tr></table></figure>
+<p>那么 <code>val1</code> 和 <code>val2</code> 的值分别是什么呢？</p>
+<p><code>val1</code> 的值比较简单，因为没有改动，所以就是 <code>0xdeadbeef</code>，不过 <code>val2</code> 的值就比较特别了，我们具体来看一看，首先指针 <code>ptr1</code> 被转换成了 <code>char</code> 指针，按照小端规则，指针指向的值变成了 <code>0xef</code>，解引用之后在转换成 <code>int</code> 类型，前面会补上 <code>ffffff</code>，最后就是 <code>0xffffffef</code></p>
+<h2 id="Malloc"><a href="#Malloc" class="headerlink" title="Malloc"></a>Malloc</h2><p>需要知道的概念：</p>
+<ul>
+<li>malloc / calloc / realloc</li>
+<li>free</li>
+<li>sbrk</li>
+<li>payload</li>
+<li>framentation (internal vs. external)</li>
+<li>colescing<ul>
+<li>Bi-directional</li>
+<li>Immediate vs. Deferred</li>
+</ul>
+</li>
+</ul>
+<p>在 paylaod 比 block size 小的时候就会产生内部碎片，比方说</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> *m1 = <span class="built_in">malloc</span>(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">void</span> *m2 = <span class="built_in">malloc</span>(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p>因为 m1 和 m2 都需要以 8 bytes 对齐，所以都会有 5 个 bytes 的内部碎片。</p>
+<p>实现是需要考虑的问题有：</p>
+<ul>
+<li>怎么知道 block 在哪里</li>
+<li>怎么知道 block 多大</li>
+<li>怎么知道 block 是否 free</li>
+<li>注意：不能缓存 malloc/free 调用，必须实时处理</li>
+<li>注意：调用 free 的时候只传入一个指针，不会有表示 size 的参数</li>
+<li>我们需要一个数据结构来存储关于 block 的相关信息</li>
+</ul>
+<p>这个数据结构需要做到：</p>
+<ul>
+<li>block 的位置，block 的大小，以及 block 是否 free</li>
+<li>在 malloc/free 调用的时候，需要能够改变这个数据结构</li>
+<li>需要通过这个数据结构找到下一个合适的 block</li>
+<li>能够快速标记一个 block 是 free 还是 allocated</li>
+<li>能够检测是否有足够空间</li>
+</ul>
+<p>具体怎么实现就需要自己思考了，唯一需要注意的是内存就是我们存放这些信息的地方。课堂上介绍过三种方式：</p>
+<p><img src="/images/14585192291308.jpg" alt="Common types"></p>
+<p>最好实现一个堆检查器，方便我们写程序，具体如下：</p>
+<p><img src="/images/14585192921490.jpg" alt="Headp Checker"></p>
+<p><code>mm_heapchecker(__Line__);</code> 传入的参数是当前行数，方便大家找到错误位置。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在这个实验中，我们会实现自己的 <code>malloc</code> 函数，并借此深入理解堆中的内存分配机制。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="MallocLab" scheme="http://wdxtub.com/tags/MallocLab/"/>
+    
+      <category term="习题课" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98%E8%AF%BE/"/>
+    
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[How to Write Fast Code 第 4 课 并行架构]]></title>
@@ -4764,55 +4876,6 @@ int main(){
       <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[第十周 - Deacon Blue]]></title>
-    <link href="http://wdxtub.com/2016/03/18/deacon-blue/"/>
-    <id>http://wdxtub.com/2016/03/18/deacon-blue/</id>
-    <published>2016-03-19T02:37:13.000Z</published>
-    <updated>2016-03-19T11:55:43.000Z</updated>
-    <content type="html"><![CDATA[<p>You can’t control what life presents. Keep it moving man, one day you’ll make it through.</p>
-<a id="more"></a>
-<hr>
-<p>不知不觉就来到了第十周，回顾上个学期的周记，清楚地意识到，恐怕再写六周，就真的要告别『校园生活』了。没有太多不舍，因为已经尽力去体验了校园中的各种角色；没有太多遗憾，因为很多事情已经做到了足够好；甚至没有太多期待，人来人往，熙熙攘攘，桃源室外，锦城何在？</p>
-<p>万万没想到，记录一下对于课程的理解，翻译一下逻辑混乱语句不同的课程资料，竟收到了老师的『警告』：因为涉及题目的思路以及相关课程内容，必须把相关日志都删掉，否则老师很生气，后果很严重。我其实没有任何选择，人在屋檐下，不得不低头，二十多篇很用心写的日志不得不『消失』，虽有些气不过，但是更多的是失望。既然都写到这儿了，一不做二不休，来说说所谓的『老师』，和所谓的『课程』：</p>
-<ol>
-<li>我不知道老师到底干了啥，如果他真的有看课程资料的话，是如何容忍毫无逻辑且经常前后矛盾的作业说明的？</li>
-<li>我不知道助教到底是为啥一肚子坏水，说明写得不清不楚就算了，样例代码写得像下水道大学出来的一样就算了，但是拿着鸡毛当令箭真的好吗？</li>
-<li>我不知道作业中为啥老师和助教工作的不严谨，要让全体同学的时间来买单，很多明显是故意设置出来『浪费』大家时间的设定，我真心觉得这已经背离了『传道授业解惑』的范畴？</li>
-</ol>
-<p>日志就是我的武器，用重新组织的逻辑清晰的描述完备的文字，让大家尽可能明白每次的作业到底是要做什么，把时间节约起来，去做自己真正想做的事情。然而这个不知道在哪『梦游』的老师直接用行政压力让我缴械。势单力薄，除了投降我还能做什么？</p>
-<p>缺乏基本的语文能力是理工科学生的通病，又或者因为平时的生活学习节奏压根没有太多的表达训练，我真的真的遇到了太多哭笑不得的沟通障碍。举个例子，一旦走到专业之外，文化的范畴中，很多人就成了盲人。他们感受不到不同词汇不同句法背后蕴藏的深意，他们不去思考专业外的东西，眼中只有短期目标，一旦视线离开这个点，就成了无头苍蝇。</p>
-<p>跟六七十岁的教授讨论起文化、哲学、历史相关的话题，才真正有『沟通』的体验：一点即通，不会在细枝末节上浪费太多精力；一针见血，直接把最核心的问题拿出来打磨讨论，用思考来切磋。</p>
-<p>最近一直在玩《合金装备 5：幻痛》，整个剧情及世界观的设定和《白鲸记》《一九八四》以及《蝇王》有非常深的联系，跟同学聊起，没有人读过这些书，根本没办法进入游戏理念已经具体通过游戏来表达想法的技术讨论。</p>
-<p>这真的是很痛苦的事情。聊得来是非常高的标准，至少需要双方有同等水平的思维能力。</p>
-<p>最近也慢慢进入了找到工作互相请客的状态，看着大家一路坚持过来到最终实现自己的目标，我还是很开心的。借由自己的疏离感带来的观察，更加深刻理解了『性格即命运』。</p>
-<p>各种各样的性格，面对问题的时候也有各种各样的解法。从我的角度来说，除了一种人需要远离之外，其他怎么折腾都行。</p>
-<blockquote>
-<p>远离那些野心很大，自己却配不上这份野心的人。</p>
-</blockquote>
-<p>他们是最可能放弃一切尊严和道德，用力把你拉下水或者会为了一丁点微不足道的东西铤而走险的人。</p>
-<p>估计是因为没睡够的缘故，整篇周记的风格竟然成了这样，最后当然还是要 look on the bright side。</p>
-<p>很久没有聊过这么久的电话，即使特别困也想要多说两句，高质量的沟通真的是非常愉快的事情，找到加速度差不多的人真的不容易。</p>
-<p>最后说一句，AI 能取代的终究是那些思维强度太低的人，最好的做法就是多读多写多思考，人类在推动技术发展的同时，技术也在引导着人类进步的方向，跟不上时代的注定要淘汰，物竞天择，优胜劣汰。</p>
-<p>Set your goal high. Be sure to stay true.</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>You can’t control what life presents. Keep it moving man, one day you’ll make it through.</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="变化" scheme="http://wdxtub.com/tags/%E5%8F%98%E5%8C%96/"/>
-    
-      <category term="周记" scheme="http://wdxtub.com/tags/%E5%91%A8%E8%AE%B0/"/>
-    
-      <category term="春天" scheme="http://wdxtub.com/tags/%E6%98%A5%E5%A4%A9/"/>
-    
-      <category term="Gossip" scheme="http://wdxtub.com/categories/Gossip/"/>
     
   </entry>
   
