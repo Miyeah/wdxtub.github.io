@@ -70,7 +70,7 @@
 <h3 id="Graph_Distance"><a href="#Graph_Distance" class="headerlink" title="Graph Distance"></a>Graph Distance</h3><p>这里我们使用<a href="https://en.wikipedia.org/wiki/Distance_%28graph_theory%29" target="_blank" rel="external">有向图的距离度量</a>来作为推荐的依据（就是判断谁更值得推荐）</p>
 <ul>
 <li>令 <code>d(A, v)</code> 表示从节点 <code>A</code> 到节点 <code>v</code> 的最小距离</li>
-<li>令 <code>S</code> 为 <code>A</code> 关注的人的集合，那么对于 <code>S 中的每个</code>s<code>，有</code>d(A, s) = 1`</li>
+<li>令 <code>S</code> 为 <code>A</code> 关注的人的集合，那么对于 <code>S</code> 中的每个 <code>s</code>，有 <code>d(A, s) = 1</code></li>
 <li>令 <code>R</code> 为需要给 <code>A</code> 推荐的人的集合，那么对于 <code>R</code> 中的每个 <code>r</code>，需要满足 <code>d(A, r) = 2</code></li>
 <li>对于 <code>R</code> 中的每个 <code>r</code>，<code>rate(r)</code> 表示从集合 <code>S</code> 中到 <code>r</code> 的边的数量</li>
 <li><code>R</code> 中元素的排序，首先按照 <code>rate(r)</code>（降序，大的在前面），然后按照 userid（升序）</li>
@@ -105,6 +105,12 @@
 <li>在浏览器中访问 <code>http://&lt;frontend-public-dns&gt;:3000</code>，应该能够看到前端界面</li>
 </ol>
 <p><img src="/images/14585563770377.jpg" alt="前端界面"></p>
+<p>一些我用到的命令：</p>
+<ul>
+<li><code>ssh -i ../demo.pem ubuntu@ec2-52-201-238-55.compute-1.amazonaws.com</code></li>
+<li>服务器到本地 <code>scp -i ../demo.pem ubuntu@ec2-52-201-238-55.compute-1.amazonaws.com:~/SN2/routes/backend.js ./</code></li>
+<li>本地到服务器 <code>scp -i ../demo.pem ./backend.js ubuntu@ec2-52-201-238-55.compute-1.amazonaws.com:~/SN2/routes/</code></li>
+</ul>
 <h3 id="u540E_u7AEF"><a href="#u540E_u7AEF" class="headerlink" title="后端"></a>后端</h3><ol>
 <li>启动一个后端实例(BI)，所有的实现都在后端完成</li>
 <li>因为依赖关系比较多的缘故，这次使用 maven3 来完成各类工作。具体的依赖在 <a href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html" target="_blank" rel="external"><code>pom.xml</code></a> 文件中，如果没有添加额外的包，应该不需要改动</li>
@@ -129,6 +135,14 @@
 </ul>
 </li>
 </ol>
+<p>一些我用到的命令：</p>
+<ul>
+<li><code>ssh -i ../demo.pem ubuntu@ec2-54-164-149-7.compute-1.amazonaws.com</code></li>
+<li><code>cd Project3_4/src/main/java/cc/cmu/edu/minisite/</code></li>
+<li>服务器到本地 <code>scp -i ../demo.pem -r ubuntu@ec2-54-164-149-7.compute-1.amazonaws.com:~/Project3_4/src/main/java/cc/cmu/edu/minisite/*.java ./</code></li>
+<li>本地到服务器1 <code>scp -i ../demo.pem -r ./*.java ubuntu@ec2-54-164-149-7.compute-1.amazonaws.com:~/Project3_4/src/main/java/cc/cmu/edu/minisite/</code></li>
+<li>本地到服务器2 <code>scp -i ../demo.pem -r ./*.py ubuntu@ec2-54-164-149-7.compute-1.amazonaws.com:~/</code></li>
+</ul>
 <h3 id="u914D_u7F6E_RDS"><a href="#u914D_u7F6E_RDS" class="headerlink" title="配置 RDS"></a>配置 RDS</h3><ol>
 <li>登录 AWS，并进入 RDS 页面</li>
 <li>启动一个 MySQL 数据库，设置如下<ul>
@@ -148,10 +162,18 @@
 </ul>
 </li>
 <li>启动完成后记录下 endpoint 地址，包括 host 地址和端口号</li>
-<li>我们需要建立自己的数据库来保存数据，使用 <code>mysql -h &lt;your_db_instance_dns&gt; -u &lt;user_name&gt; -p &lt;password&gt;</code> 登录数据库，根据提供的数据来设计表，同时可能需要建立索引（假哭啊速度）</li>
+<li>我们需要建立自己的数据库来保存数据，使用 <code>mysql -h &lt;your_db_instance_dns&gt; -u &lt;user_name&gt; -p&lt;password&gt;</code> 登录数据库，根据提供的数据来设计表，同时可能需要建立索引（假哭啊速度）</li>
 <li>载入数据需要使用 <code>--local-infile</code>，可能需要使用 <code>grant</code> 命令来给权限，具体参考 <a href="http://dev.mysql.com/doc/refman/5.7/en/grant.html" target="_blank" rel="external">MySQL GRANT syntax</a> 和 <a href="https://www.flydata.com/blog/access-denied-issue-amazon-rds/" target="_blank" rel="external">Access denied issue on Amazon RDS</a></li>
 <li>载入好数据之后，就可以使用 <a href="http://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm" target="_blank" rel="external">JDBC</a> 来连接数据库（参考之前的代码）</li>
 </ol>
+<p>创建好之后大概是这样的：</p>
+<p><img src="/images/14585714973609.jpg" alt="RDS Example"></p>
+<ul>
+<li><code>mysql -u wdxtub -pohnohaha -h wdxdb.cinhw8whkk4g.us-east-1.rds.amazonaws.com --port=3306 --local-infile wdxdb</code></li>
+<li><code>LOAD DATA LOCAL INFILE &#39;/home/ubuntu/users.csv&#39; INTO TABLE users CHARACTER SET utf8mb4 FIELDS TERMINATED BY &#39;,&#39; LINES TERMINATED BY &#39;\n&#39;;</code></li>
+<li><code>load data local infile &#39;/home/ubuntu/userinfo.csv&#39; into table userinfos character set utf8mb4 fields terminated by &#39;,&#39; lines terminated by &#39;\n&#39;;</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">users</span>(</span><br><span class="line">userid <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line"><span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">);</span></span><br><span class="line"></span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> userinfos(</span><br><span class="line">userid <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line"><span class="keyword">url</span> <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">);</span></span><br><span class="line"></span><br><span class="line"><span class="operator"><span class="keyword">show</span> <span class="keyword">tables</span>;</span></span><br><span class="line">+<span class="comment">-----------------+</span></span><br><span class="line">| Tables_in_users |</span><br><span class="line">+<span class="comment">-----------------+</span></span><br><span class="line">| userinfos       |</span><br><span class="line">| users           |</span><br><span class="line">+<span class="comment">-----------------+</span></span><br><span class="line">2 rows in <span class="operator"><span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line"><span class="keyword">desc</span> <span class="keyword">users</span>;</span></span><br><span class="line">+<span class="comment">----------+--------------+------+-----+---------+-------+</span></span><br><span class="line">| Field    | Type         | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">----------+--------------+------+-----+---------+-------+</span></span><br><span class="line">| userid   | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| password | varchar(255) | YES  |     | NULL    |       |</span><br><span class="line">+<span class="comment">----------+--------------+------+-----+---------+-------+</span></span><br><span class="line">2 rows in <span class="operator"><span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line"><span class="keyword">desc</span> userinfos;</span></span><br><span class="line">+<span class="comment">--------+--------------+------+-----+---------+-------+</span></span><br><span class="line">| Field  | Type         | Null | Key | Default | Extra |</span><br><span class="line">+<span class="comment">--------+--------------+------+-----+---------+-------+</span></span><br><span class="line">| userid | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| name   | varchar(255) | YES  |     | NULL    |       |</span><br><span class="line">| url    | varchar(255) | YES  |     | NULL    |       |</span><br><span class="line">+<span class="comment">--------+--------------+------+-----+---------+-------+</span></span><br><span class="line">3 rows in <span class="operator"><span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> userid=<span class="number">1</span>;</span></span><br><span class="line">+<span class="comment">--------+----------+</span></span><br><span class="line">| userid | password |</span><br><span class="line">+<span class="comment">--------+----------+</span></span><br><span class="line">|      1 | yaihala  |</span><br><span class="line">+<span class="comment">--------+----------+</span></span><br><span class="line">1 row in <span class="operator"><span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfos <span class="keyword">where</span> userid=<span class="number">1</span>;</span></span><br><span class="line">+<span class="comment">--------+---------+-------------------------------------------------------------------------------------+</span></span><br><span class="line">| userid | name    | url                                                                                 |</span><br><span class="line">+<span class="comment">--------+---------+-------------------------------------------------------------------------------------+</span></span><br><span class="line">|      1 | Aaliyah | https://cmucloudsocial.s3.amazonaws.com/profiles/9cc1886c5af388976e959787fa810c.png |</span><br><span class="line">+<span class="comment">--------+---------+-------------------------------------------------------------------------------------+</span></span><br><span class="line">1 row in <span class="operator"><span class="keyword">set</span> (<span class="number">0.00</span> sec)</span></span><br></pre></td></tr></table></figure>
 <h3 id="u4EFB_u52A1_1_uFF1A_u767B_u5F55"><a href="#u4EFB_u52A1_1_uFF1A_u767B_u5F55" class="headerlink" title="任务 1：登录"></a>任务 1：登录</h3><p>相关信息：</p>
 <ul>
 <li>RDS 实例：1 台 <code>db.t2.micro</code> / <code>db.t2.small</code></li>
@@ -182,6 +204,15 @@
 <li>然后正常输入帐号密码登录测试即可</li>
 </ol>
 <p><img src="/images/14585621855441.jpg" alt="Task1 FI Response"></p>
+<p>解题思路：</p>
+<ul>
+<li>发送一次请求，获取 <code>password</code>, <code>name</code>, <code>url</code><ul>
+<li>SQL: <code>select password, name, url from users, userinfos where users.userid=1 and userinfos.userid=1;</code></li>
+</ul>
+</li>
+<li>校验密码等信息，按照前面给出的要求进行返回即可</li>
+</ul>
+<p>这一部分还是比较简单的，仔细一点即可</p>
 <h3 id="u4EFB_u52A1_2_uFF1A_u5B58_u50A8_u793E_u4EA4_u56FE_u8C31"><a href="#u4EFB_u52A1_2_uFF1A_u5B58_u50A8_u793E_u4EA4_u56FE_u8C31" class="headerlink" title="任务 2：存储社交图谱"></a>任务 2：存储社交图谱</h3><p>简单来说，就是用 HBase 保存用户间的关系（具体可以看前面的背景知识）。我们需要从『邻接矩阵』和『邻接表』这两种方式选择一种，来保存具体的数据（原始数据是简单的 <code>&lt;Followee, Follower&gt;</code>）</p>
 <p>相关信息：</p>
 <ul>
@@ -221,6 +252,48 @@
 <li>然后正常输入 userid 进行测试即可（范围是 1-35919）</li>
 </ol>
 <p><img src="/images/14585622016888.jpg" alt="Task2 FI Response"></p>
+<p>解题思路</p>
+<ul>
+<li>首先需要排序，完全可以处理成 <code>followee: follower1, follower2, follower3, ...</code> 这样的格式</li>
+<li>因为需要排序，所以我们用命令行把顺序也排好（虽然看起来已经是排好顺序了的，不过还是保险起见，TA 恶意满满规矩我懂） <code>sort -t&quot;,&quot; -nk1 links.csv &gt; sorted.csv</code></li>
+<li>Q2 和 Q4 排序是不一样的，所以这里要用另一个命令为 Q4 排序 <code>sort -t&quot;,&quot; -nk2 links.csv &gt; sorted2.csv</code></li>
+<li>排好顺序我们需要合并</li>
+<li>合并之后就可以导入到 HBase 了</li>
+</ul>
+<p>一些会用到的命令：</p>
+<ul>
+<li><code>ssh -i ../demo.pem hadoop@ec2-54-165-85-78.compute-1.amazonaws.com</code></li>
+<li><code>mkdir q2; cd q2;</code></li>
+<li>下载排序后的 links.csv <code>scp -i ../demo.pem -r ubuntu@ec2-54-164-149-7.compute-1.amazonaws.com:~/q2.csv ./</code></li>
+<li>上传到 HBase <code>scp -i ../demo.pem ./q2.csv hadoop@ec2-54-165-85-78.compute-1.amazonaws.com:~/q2/</code></li>
+<li>创建文件夹 <code>hadoop fs -mkdir /q2</code></li>
+<li>移动文件 <code>hadoop fs -put ./q2.csv /q2</code></li>
+<li>查看文件 <code>hadoop fs -ls /q2</code></li>
+<li>进入 <code>hbase shell</code><ul>
+<li><code>create &#39;linkdata&#39;,&#39;data&#39;</code></li>
+<li><code>exit</code></li>
+</ul>
+</li>
+<li>导入数据 <code>hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator=&quot;,&quot; -Dimporttsv.bulk.output=/hfile_groupt -Dimporttsv.columns=HBASE_ROW_KEY,data:v linkdata /q2/q2.csv</code></li>
+<li>应用改动 <code>hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_groupt linkdata</code></li>
+</ul>
+<p>为任务 4 进行导入：</p>
+<ul>
+<li><code>ssh -i ../demo.pem hadoop@ec2-54-165-85-78.compute-1.amazonaws.com</code></li>
+<li><code>mkdir q4; cd q4;</code></li>
+<li>下载排序后的 links.csv <code>scp -i ../demo.pem -r ubuntu@ec2-54-164-149-7.compute-1.amazonaws.com:~/q4.csv ./</code></li>
+<li>上传到 HBase <code>scp -i ../demo.pem ./q4.csv hadoop@ec2-54-165-85-78.compute-1.amazonaws.com:~/q4/</code></li>
+<li>创建文件夹 <code>hadoop fs -mkdir /q4</code></li>
+<li>移动文件 <code>hadoop fs -put ./q4.csv /q4</code></li>
+<li>查看文件 <code>hadoop fs -ls /q4</code></li>
+<li>进入 <code>hbase shell</code><ul>
+<li><code>create &#39;linkdata2&#39;,&#39;data&#39;</code></li>
+<li><code>exit</code></li>
+</ul>
+</li>
+<li>导入数据 <code>hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator=&quot;,&quot; -Dimporttsv.bulk.output=/hfile_group -Dimporttsv.columns=HBASE_ROW_KEY,data:v linkdata2 /q4/q4.csv</code></li>
+<li>应用改动 <code>hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /hfile_group linkdata2</code></li>
+</ul>
 <h3 id="u4EFB_u52A1_3_uFF1A_u642D_u5EFA_u4E3B_u9875"><a href="#u4EFB_u52A1_3_uFF1A_u642D_u5EFA_u4E3B_u9875" class="headerlink" title="任务 3：搭建主页"></a>任务 3：搭建主页</h3><p>使用 MongoDB 来存储帖子，这里主要会查询某些特定的 field，所以需要对应建立索引来加速查询。</p>
 <p>相关信息：</p>
 <ul>
@@ -247,6 +320,18 @@
 </ul>
 <p>具体的测试方法和之前非常类似，输入 userid 即可，如下图所示：</p>
 <p><img src="/images/14585644705800.jpg" alt="Task3 FI Response"></p>
+<p>用到的命令：</p>
+<ul>
+<li><code>ssh -i ../demo.pem ubuntu@ec2-54-172-46-200.compute-1.amazonaws.com</code></li>
+<li>启用服务 <code>mongod</code></li>
+<li>启动 mongo shell <code>mongo</code></li>
+<li>创建/切换数据库 <code>use posts</code></li>
+<li>导入数据 <code>mongoimport --db posts --collection post --drop --file posts.json</code></li>
+<li>查找记录 <code>db.post.find({&quot;uid&quot;:33152})</code> （注意这里是调用 collection 的名字）</li>
+<li>会发现比较慢，我们创建索引 <code>db.post.createIndex({uid:1})</code>，再次执行上面的命令就会发现快了很多</li>
+<li>需要给检索结果排序：<code>db.post.find({&quot;uid&quot;:33152}).sort({&quot;timestamp&quot;:1})</code></li>
+<li>调用 Java API 进行检索并返回即可</li>
+</ul>
 <h3 id="u4EFB_u52A1_4_uFF1A_u4E2D_u8DEF_u4E00_u6CE2"><a href="#u4EFB_u52A1_4_uFF1A_u4E2D_u8DEF_u4E00_u6CE2" class="headerlink" title="任务 4：中路一波"></a>任务 4：中路一波</h3><p>简单来说，就是把之前的东西全凑到一起。也就是说，给出一个 userid，需要返回 <code>Name</code>, <code>Profile Image URL</code>, 粉丝列表（要排序）以及用户关注的人的 30 条最新的帖子。</p>
 <p>粉丝需要按照名字的字典序升序排列（就是 A 在 B 前面），如果名字一样，就按照 URL 的升序排列（用同一个 Comparator 即可）</p>
 <p>关注的人的帖子需要按照时间戳来排序（旧的在前面），如果时间戳相同，那么就按照 <code>PID</code>(PostID) 来排序（升序，小的在前面）</p>
@@ -266,6 +351,13 @@
 <blockquote>
 <p>如果后端没有办法正确接收前端发来的请求，试着重启前端的应用</p>
 </blockquote>
+<p>解题思路：</p>
+<ul>
+<li>这里需要给 HBase 插入另一个表，因为这里需要看关注的人，具体的步骤我们在前面已经完成（参加任务 2）</li>
+<li>找到给定 userid 关注的人的列表</li>
+<li>在 MongoDB 中找到对应的 post，用优先队列存起来</li>
+<li>全部完成后输出前 30 个（如果超过 30 个的话）</li>
+</ul>
 <h3 id="u652F_u7EBF_u4EFB_u52A1_uFF1A_u7B80_u5355_u63A8_u8350"><a href="#u652F_u7EBF_u4EFB_u52A1_uFF1A_u7B80_u5355_u63A8_u8350" class="headerlink" title="支线任务：简单推荐"></a>支线任务：简单推荐</h3><p>简单来说就是做个推荐系统，具体推荐系统的介绍会专门写一篇来介绍（推荐系统我还是有比较多经验的）。这里我们只需要做一个协同过滤(Collaborative filtering)的推荐系统，利用『朋友的朋友』策略来推荐新朋友。</p>
 <p>相关信息：</p>
 <ul>
@@ -280,6 +372,18 @@
 <li>响应格式(JSON)：<code>returnRes({&quot;recommendation&quot;:[{name:&lt;name1&gt;, profile:&lt;profile1&gt;},{name:&lt;name2&gt;, profile:&lt;profile2&gt;},...,{name:&lt;name10&gt;, profile:&lt;profile10&gt;]})</code></li>
 </ul>
 <p><img src="/images/14585660105559.jpg" alt="Recommendation Example"></p>
+<p>解题思路：</p>
+<ul>
+<li>找到给定 userid 关注的人的集合 <code>S</code></li>
+<li>对于集合 <code>S</code> 中的元素 <code>s</code>，把每个 <code>s</code> 关注的人都添加到新集合 <code>R</code> 中<ul>
+<li>第一次出现的，值为 1</li>
+<li>之后再出现的，值为原来的值加 1</li>
+</ul>
+</li>
+<li>统计完成之后可以遍历一次加入到另一个优先队列中（包括 userid，以及分值），并且需要注意 userid 本身和在集合 <code>S</code> 中出现的元素都不应该添加到队列中</li>
+<li>选取队列的前十个返回</li>
+<li>最后从 MySQL 中取出这 10 个 userid 对应的 name 和 url，并返回</li>
+</ul>
 <h3 id="u63D0_u4EA4"><a href="#u63D0_u4EA4" class="headerlink" title="提交"></a>提交</h3><ul>
 <li>复制 ETL 的命令、代码到 <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code></li>
 <li>确保在 <code>/home/ubuntu/Project3_4/src/main/java/cc/cmu/edu/minisite/</code> 中有以下文件：<code>ProfileServlet.java</code>, <code>FollowerServlet.java</code>, <code>HomepageServlet.java</code>, <code>TimelineServlet.java</code>, <code>RecommendationServlet.java</code>, <code>MiniSite.java</code>, <code>references</code> 和其他自己创建的 Java 文件</li>
