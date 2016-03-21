@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-21T00:21:13.000Z</updated>
+  <updated>2016-03-21T01:44:11.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[软件架构与设计 习题课 5 设计模式练习]]></title>
+    <link href="http://wdxtub.com/2016/03/20/sad-r5/"/>
+    <id>http://wdxtub.com/2016/03/20/sad-r5/</id>
+    <published>2016-03-21T00:43:05.000Z</published>
+    <updated>2016-03-21T01:44:11.000Z</updated>
+    <content type="html"><![CDATA[<p>这次的作业就是对设计模式的练习和熟悉，直接来看情境吧。</p>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>Does the following code fragment implement the Factory Method design pattern? Explain why.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XMLReaderFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">// This method returns an instance of a class</span></span><br><span class="line">    <span class="comment">// that implements the XMLReader interface.</span></span><br><span class="line">    <span class="comment">// The specific class it creates and returns is</span></span><br><span class="line">    <span class="comment">// based on a system property.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> XMLReader <span class="title">createXMLReader</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">XMLReader</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentHandler</span><span class="params">(ContentHandler handler)</span>:</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(InputStream is)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这部分代码片段实现了工厂模式，注释中说明是根据系统属性来进行创建，所以无须传入参数，需要被生成的对象都需要实现 XMLReader 接口。</p>
+<blockquote>
+<p>Typically, there is a significant performance penalty for declaring a method synchronized. In general adding the keyword synchronized to a method slows the invocation of the method by a factor of 6. A common programming idiom used to avoid synchronization in the common case is double check locking. Can the double-check locking idiom be used with the singleton pattern to avoid synchronizing every time the static instance method is called? For example, is the following valid? Explain why.</p>
+</blockquote>
+<p>```java<br>public class Singleton {<br>    private Singleton() { }<br>    static private Singleton instance = null;<br>    static public Singleton instance() {<br>        // Double check locking idiom<br>        // The synchronization is done internally<br>        // rather than on the method. This avoids<br>        // the expense of synchronizing for the<br>        // common case.<br>/<em>12</em>/  if( instance == null ) {<br>            synchronized( Singleton.class ) {<br>                // Second check<br>                if( instance == null ) {<br>/<em>16</em>/               instance = new Singleton( );<br>                 }<br>            }<br>        }<br>/<em>20</em>/  return instance;<br>    }<br>}</p>
+<p>在大部分情况下代码没有问题，不过为了保险起见，还是要加上 <code>volatile</code> 关键字，不然在下面的情况中就会出问题：</p>
+<ol>
+<li>线程A发现变量没有被初始化, 然后它获取锁并开始变量的初始化。</li>
+<li>由于某些编程语言的语义，编译器生成的代码允许在线程A执行完变量的初始化之前，更新变量并将其指向部分初始化的对象。</li>
+<li>线程B发现共享变量已经被初始化，并返回变量。由于线程B确信变量已被初始化，它没有获取锁。如果在A完成初始化之前共享变量对B可见（这是由于A没有完成初始化或者因为一些初始化的值还没有穿过B使用的内存(缓存一致性)），程序很可能会崩溃。</li>
+</ol>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5%E9%94%81%E5%AE%9A%E6%A8%A1%E5%BC%8F" target="_blank" rel="external">这里</a>有一个很好的参考资料</p>
+<blockquote>
+<p>Consider the following scenario, please suggest a design pattern and implement it. The outcome should like this:</p>
+</blockquote>
+<p><img src="/images/14585221758261.jpg" alt=""></p>
+<p>In Elizabeth’s day care center, the teacher helps the kids to build all kinds of toys to develop their creative skills. One of Elizabeth’s favorite activities is to make animals with play-dough.</p>
+<p>A set of molds is the tool that Elizabeth always uses to create her favorite cool animals.</p>
+<p>One mold tool set includes five parts, including the head, body, arm, leg, and tail. Whenever Elizabeth wants to build an animal, she will use one set of each tools to make a head, body , leg, arm, and tail for that animal, and then assembles them with glue to build an animal. There are many types of animal mold tool sets that the kids can choose from.</p>
+<p>For example: if Elizabeth wants to make a monkey, then she will pick the set of monkey molds to start.</p>
+<ul>
+<li>Step 1. Make monkey head.</li>
+<li>Step 2. Make monkey body.</li>
+<li>Step 3. Make monkey leg.</li>
+<li>Step 4. Make monkey arm.</li>
+<li>Step 5. Make monkey tail.</li>
+</ul>
+<p>Once all the five parts are finished, then Elizabeth will glue them all together and decorate it to have a monkey done as a finished product. Most likely, she will give it to her mom as a gift when she picks her (she will not give her the monkey if the monkey is not decorated, since it will not be looking good at all then). When she wants to make a kitten, she follows the same steps with the set of Kitten molds.</p>
+<p>这道题目非常简单粗暴，看描述就知道直接使用建造者模式即可，具体的介绍看<a href="http://www.runoob.com/design-pattern/builder-pattern.html" target="_blank" rel="external">这里</a></p>
+<p>实现的话这里就不贴代码了，反正是不难的。</p>
+<blockquote>
+<p>You are working on software that interacts with a new hardware device and are anxious to test against the actual hardware. The hardware manufacture has a beta version of the driver they plan to release but is warning the interface of the device driver could change between now and the release date. The device driver is used throughout your code and you are concerned about writing code to an interface that is subject to change. What design pattern can be used to mitigate the risks involved? Describe what the risks are and how the design pattern mitigates these risks.</p>
+</blockquote>
+<p>这个其实也比较简单，直觉反应就是适配器模式，用来做不同接口的转换。</p>
+<blockquote>
+<p>In keeping with the holiday theme, use the Decorator design pattern to model a Christmas tree as a base component (the tree) and optional decorations or adornments such as bulbs, candy and garland. Initially it’s enough for your solution to model just the printing or display of the tree along with its adornments. You can also assume that each type of decoration is added all at once.</p>
+</blockquote>
+<p><img src="/images/14585236303062.jpg" alt=""></p>
+<p>Show the class diagram for your solution and the runtime organization of objects for different configurations of adornments.</p>
+<p>这里题目已经指名说要用装饰器模式，就按照<a href="http://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="external">这里</a>的方法设计一下即可，我就不啰嗦了。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这次的作业就是对设计模式的练习和熟悉，直接来看情境吧。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="习题" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98/"/>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 习题课 6 Malloclab]]></title>
@@ -4741,129 +4812,6 @@ int main(){
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这节课我们来看看关于内存分配的延伸话题，包括更加复杂的选择机制以及垃圾回收等相关内容。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="内存分配" scheme="http://wdxtub.com/tags/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
-    
-      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 18 课 Dynamic Memory Allocation - Basic Concept]]></title>
-    <link href="http://wdxtub.com/2016/03/19/csapp-18/"/>
-    <id>http://wdxtub.com/2016/03/19/csapp-18/</id>
-    <published>2016-03-19T21:32:26.000Z</published>
-    <updated>2016-03-20T00:16:19.000Z</updated>
-    <content type="html"><![CDATA[<p>前面了解了虚拟内存的相关知识，这节课我们来看看动态内存分配的基本概念，相信这之后就知道诸如 <code>malloc</code> 和 <code>new</code> 这类方法是怎么做的了。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u57FA_u7840_u6982_u5FF5"><a href="#u57FA_u7840_u6982_u5FF5" class="headerlink" title="基础概念"></a>基础概念</h2><p>程序员通过动态内存分配（例如 <code>malloc</code>）来让程序在运行时得到虚拟内存。动态内存分配器会管理一个虚拟内存区域，称为堆(heap)，如下图所示：</p>
-<p><img src="/images/14584238419962.jpg" alt="Dynamic Memory Allocation"></p>
-<p>分配器以 block 为单位来维护 heap，可以进行 allocate 或 free。有两种类型的分配器：</p>
-<ul>
-<li>显式分配器：应用分配并且回收空间（C 语言中的 <code>malloc</code> 和 <code>free</code>）</li>
-<li>隐式分配器：应用只负责分配，但是不负责回收（Java 中的垃圾收集）</li>
-</ul>
-<h2 id="malloc"><a href="#malloc" class="headerlink" title="malloc"></a>malloc</h2><p>我们来看看 <code>malloc</code> 函数：</p>
-<p><img src="/images/14584242618725.jpg" alt="The malloc Package"></p>
-<p>一个简单的例子：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void foo(int n) &#123;</span><br><span class="line">    int i, *p;</span><br><span class="line">    </span><br><span class="line">    /* Allocate a block of n ints */</span><br><span class="line">    p = (int *) malloc(n * sizeof(int));</span><br><span class="line">    if (p == NULL) &#123;</span><br><span class="line">        perror("malloc");</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /* Initialize allocated block */</span><br><span class="line">    for (i=0; i&lt;n; i++)</span><br><span class="line">        p[i] = i;</span><br><span class="line"></span><br><span class="line">    /* Return allocated block to the heap */</span><br><span class="line">    free(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这节课中，为了讲述方便，我们做如下假设：</p>
-<ul>
-<li>Memory is word addressed</li>
-<li>Words are int-sized</li>
-</ul>
-<p><img src="/images/14584252386542.jpg" alt="Assumptions Made in This Lecture"></p>
-<p>具体的例子：</p>
-<p><img src="/images/14584253826838.jpg" alt="Allocation Example"></p>
-<p>程序可以用任意的顺序发送 <code>malloc</code> 和 <code>free</code> 请求，<code>free</code> 请求必须作用与已被分配的 block。</p>
-<p>分配器有如下的限制：</p>
-<ul>
-<li>不能控制已分配 block 的数量和大小</li>
-<li>必须立即响应 <code>malloc</code> 请求（不能缓存或者给请求重新排序）</li>
-<li>必须在未分配的内存中分配</li>
-<li>不同的 block 需要对齐（32 位中 8 byte，64 位中 16 byte）</li>
-<li>只能操作和修改未分配的内存</li>
-<li>不能移动已分配的 block</li>
-</ul>
-<h2 id="u6027_u80FD_u6307_u6807"><a href="#u6027_u80FD_u6307_u6807" class="headerlink" title="性能指标"></a>性能指标</h2><p>现在我们可以来看看如何去评测具体的分配算法了。假设给定一个 <code>malloc</code> 和 <code>free</code> 的请求的序列：</p>
- $$R_0, R_1, ..., R_k, ..., R_{n-1}$$ 
-<p>目标是尽可能提高吞吐量以及内存利用率（注意，这两个目标常常是冲突的）</p>
-<p>吞吐量是在单位时间内完成的请求数量。假设在 10 秒中之内进行了 5000 次 <code>malloc</code> 和 5000 次 <code>free</code> 调用，那么吞吐量是 1000 operations/second</p>
-<p>另外一个目标是 Peak Memory Utilization，就是最大的内存利用率，具体如下：</p>
-<p><img src="/images/14584265326302.jpg" alt="Peak Memory Utilization"></p>
-<p>影响内存利用率的主要因素就是『内存碎片』，有两种类型：</p>
-<ul>
-<li>internal fragmentation</li>
-<li>external fragmentation0</li>
-</ul>
-<h3 id="u5185_u90E8_u788E_u7247"><a href="#u5185_u90E8_u788E_u7247" class="headerlink" title="内部碎片"></a>内部碎片</h3><p>对于给定的 block，internal fragmentation 主要是因为 payload 小于 block size 造成的，如下图所示：</p>
-<p><img src="/images/14584268109274.jpg" alt="internal fragmentation"></p>
-<p>主要是由以下原因导致；</p>
-<ul>
-<li>Overhead of maintaining heap data structures</li>
-<li>Padding for alignment purposes</li>
-<li>Explicit policy decisions</li>
-</ul>
-<p>只依赖于上一个请求的具体模式，所以比较容易测量。</p>
-<h3 id="u5916_u90E8_u788E_u7247"><a href="#u5916_u90E8_u788E_u7247" class="headerlink" title="外部碎片"></a>外部碎片</h3><p>指的是内存中没有足够的连续空间，如下图所示：</p>
-<p><img src="/images/14584269418830.jpg" alt="External Fragmentation"></p>
-<p>依赖于未来的请求模式，所以比较难测量。</p>
-<h3 id="u5B9E_u73B0_u7EC6_u8282"><a href="#u5B9E_u73B0_u7EC6_u8282" class="headerlink" title="实现细节"></a>实现细节</h3><p>在具体实现之前，需要考虑以下问题：</p>
-<ul>
-<li>给定一个指针，我们如何知道需要释放多少内存？</li>
-<li>如何记录未分配的 block ？</li>
-<li>实际需要的空间比未分配的空间要小的时候，剩下的空间怎么办？</li>
-<li>如果有多个区域满足条件，如何选择？</li>
-<li>释放空间之后如何进行记录？</li>
-</ul>
-<p>一个标准的方式是在指针的前一个  word 中保存 block 的大小，通常称之为 header field 或 header，这种方式需要额外的一个 word，具体如下：</p>
-<p><img src="/images/14584273450722.jpg" alt="Standard method"></p>
-<p>这里我们先给出常用的四种方式，这节课主要介绍第一种，下节课会介绍后面的方法：</p>
-<p><img src="/images/14584273923045.jpg" alt="Keeping Track of Free Blocks"></p>
-<h2 id="u9690_u5F0F_free__u5217_u8868"><a href="#u9690_u5F0F_free__u5217_u8868" class="headerlink" title="隐式 free 列表"></a>隐式 free 列表</h2><p>对于每个 block 来说，我们需要知道大小和具体的状态（已分配/未分配），可以用两个 word 来存储，但是这样太浪费了。</p>
-<p>如果一个 block 已经对其，低位地址一定是 0，所以我们可以用来当做 allocated/free 标志，当读入 word 大小的时候，需要标记出这个值。</p>
-<p><img src="/images/14584304354717.jpg" alt="Implicit List"></p>
-<p><img src="/images/14584304662424.jpg" alt="Detailed Implicit Free List Example"></p>
-<p>寻找未分配的空间的方式如下，主要有三种：</p>
-<p><img src="/images/14584305912848.jpg" alt="Finding a Free Block"></p>
-<p>确定空间之后，具体进行分配如下：</p>
-<p><img src="/images/14584306987840.jpg" alt="Allocating in Free Block"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addblock</span><span class="params">(ptr p, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> newsize = ((len + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>) &lt;&lt; <span class="number">1</span>;  <span class="comment">// round up to even</span></span><br><span class="line">    <span class="keyword">int</span> oldsize = *p &amp; -<span class="number">2</span>;                <span class="comment">// mask out low bit</span></span><br><span class="line">    *p = newsize | <span class="number">1</span>;                     <span class="comment">// set new length</span></span><br><span class="line">    <span class="keyword">if</span> (newsize &lt; oldsize)</span><br><span class="line">        *(p+newsize) = oldsize - newsize; <span class="comment">// set length in remaining</span></span><br><span class="line">                                          <span class="comment">// part of block</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在释放空间的时候如果 block 后面也是未分配的空间，只做基本的处理的话，会出现有足够的位置，但是因为多余的分隔而找不到对应的位置，如下所示：</p>
-<p><img src="/images/14584314075261.jpg" alt="Freeing a Block"></p>
-<p>解决的办法是 Coalescing：</p>
-<p><img src="/images/14584314805605.jpg" alt="coalesce"></p>
-<p>另一种方法是双向 coalescing：</p>
-<p><img src="/images/14584318651163.jpg" alt="Bidirectional Coalescing"></p>
-<p>具体 coalescing 的时候有四种情况：</p>
-<p><img src="/images/14584319803616.jpg" alt="Constant Time Coalescing"></p>
-<p>下面是四种情况的：</p>
-<p>Case 1：</p>
-<p><img src="/images/14584322811295.jpg" alt="Case 1"></p>
-<p>Case 2：</p>
-<p><img src="/images/14584322969946.jpg" alt="Case 2"></p>
-<p>Case 3：</p>
-<p><img src="/images/14584323407555.jpg" alt="Case 3"></p>
-<p>Case 4：</p>
-<p><img src="/images/14584323554767.jpg" alt="Case 4"></p>
-<p>Boundary Tags 的坏处就是会导致 internal fragmentation。</p>
-<p>总结一下：</p>
-<p><img src="/images/14584328927396.jpg" alt="Summary of Key Allocator Policies"></p>
-<p>最后是 implicit list 的总结：</p>
-<p><img src="/images/14584329366933.jpg" alt="Implicit Lists: Summary"></p>
-<p>总体来说这一部分还是比较简单的，虽然简单，但是一定要理解清楚，因为下节课会介绍更加复杂的机制。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>前面了解了虚拟内存的相关知识，这节课我们来看看动态内存分配的基本概念，相信这之后就知道诸如 <code>malloc</code> 和 <code>new</code> 这类方法是怎么做的了。</p>]]>
     
     </summary>
     
