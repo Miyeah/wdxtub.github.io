@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wdxtub.com/about/index.html</loc>
+    <lastmod>2016-03-22T20:13:51.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/03/22/arch-build-1/</loc>
     <lastmod>2016-03-22T19:58:37.000Z</lastmod>
   </url>
@@ -19,11 +24,6 @@
   <url>
     <loc>http://wdxtub.com/trash/index.html</loc>
     <lastmod>2016-03-21T13:26:05.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/about/index.html</loc>
-    <lastmod>2016-03-21T01:47:49.000Z</lastmod>
   </url>
   
   <url>
