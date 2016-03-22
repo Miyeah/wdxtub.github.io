@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-21T01:44:11.000Z</updated>
+  <updated>2016-03-22T19:58:37.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[架与构 1 缘起]]></title>
+    <link href="http://wdxtub.com/2016/03/22/arch-build-1/"/>
+    <id>http://wdxtub.com/2016/03/22/arch-build-1/</id>
+    <published>2016-03-22T19:09:02.000Z</published>
+    <updated>2016-03-22T19:58:37.000Z</updated>
+    <content type="html"><![CDATA[<p>做架构师是我从刚开始接触计算机科学时的梦想，现在，是时候为了这个梦想而做一些沉淀了。这个系列会写不同的架构概念，写不同的实际系统分析，写自己的想法和思考。</p>
+<a id="more"></a>
+<hr>
+<p>大二的时候，我走到老师的办公室，问了这样一个问题：</p>
+<blockquote>
+<p>我要怎么样成为一个游戏制作人，或者是一个架构师呢？</p>
+</blockquote>
+<p>老师当时的反应我还记得，他说这俩职位的差别还是挺大的（中间省略一万字）但是有一点是相同的，就是都要 think different。</p>
+<p>这年头，传统意义上的『好』，不如『特别』。所谓『特别』，意味着去想去做别人没想过或者不敢做的事儿，而不是在大家都知道要做的事情上做得最好。</p>
+<p>比如说写博客，我不是懂最多的，也不是做得最快的，但是我却是最先开始写课程相关博客的。虽然主要目的其实是强迫自己认真思考所学知识，但是能够给大家提供一点方便，做一个交流和讨论的平台，甚至让有些同学也开始写博客。我觉得这是特别好的事情，可能我自己做不到一百分，但是能让大家都学到八九十分，也许比自己的一百分更重要。</p>
+<p>回到正题，这个系列到底要写什么呢？主要分两大部分，一个是架构相关的基本概念介绍（<a href="http://parlab.eecs.berkeley.edu/wiki/patterns/patterns" target="_blank" rel="external">来源</a>），另一个就是结合各大公司公开出来的资料来分析不同业务背后对应的不同架构（主要来源于『聊聊架构』微信公众号）。</p>
+<p>具体涉及的知识点主要有：</p>
+<p><img src="/images/14586760521793.jpg" alt=""></p>
+<p>具体涉及的业务分析有：</p>
+<ul>
+<li>58 同城架构优化</li>
+<li>Etsy 研发体系构建</li>
+<li>豆瓣研发管理</li>
+<li>蘑菇街运维体系</li>
+<li>Qzone 架构设计</li>
+<li>当当网架构优化</li>
+<li>携程异步消息系统架构设计</li>
+<li>支付宝红包高并发</li>
+<li>eBay 微服务生态系统</li>
+<li>Twitter 高性能分布式日志</li>
+<li>LinkedIn 架构演进</li>
+<li>Uber 架构重构经验</li>
+<li>京东商品搜索系统架构设计</li>
+<li>IFTTT 的数据架构</li>
+<li>美团架构</li>
+<li>Spotify 运维监控体系</li>
+<li>酷狗大数据平台重构</li>
+<li>魅族云同步架构</li>
+<li>微博推荐系统架构</li>
+<li>1 号店分布式搜索引擎架构</li>
+<li>Airbnb 架构</li>
+</ul>
+<p>我个人是很希望能写好这个系列的，因为在不断的学习和思考的过程中，能够慢慢培养自己的架构思考模式。另外之所以把这个系列取名为『架与构』，是为了提醒自己设计和实现是不可分割的部分，『架』得再好，『构』不出来也没用。所谓『脚踏实地，仰望星空』，大概就是这个道理。</p>
+<p>与诸君共勉。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>做架构师是我从刚开始接触计算机科学时的梦想，现在，是时候为了这个梦想而做一些沉淀了。这个系列会写不同的架构概念，写不同的实际系统分析，写自己的想法和思考。</p>]]>
+    
+    </summary>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 习题课 5 设计模式练习]]></title>
@@ -4666,162 +4727,6 @@ int main(){
       <category term="OpenMP" scheme="http://wdxtub.com/tags/OpenMP/"/>
     
       <category term="整理" scheme="http://wdxtub.com/tags/%E6%95%B4%E7%90%86/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[深入理解计算机系统 第 19 课 Dynamic Memory Allocation - Advanced Concept]]></title>
-    <link href="http://wdxtub.com/2016/03/19/csapp-19/"/>
-    <id>http://wdxtub.com/2016/03/19/csapp-19/</id>
-    <published>2016-03-19T21:32:34.000Z</published>
-    <updated>2016-03-20T03:32:44.000Z</updated>
-    <content type="html"><![CDATA[<p>这节课我们来看看关于内存分配的延伸话题，包括更加复杂的选择机制以及垃圾回收等相关内容。</p>
-<a id="more"></a>
-<hr>
-<p>这节课主要介绍后面三种方法，都是用来记录未分配空间的，具体如下：</p>
-<p><img src="/images/14584386982186.jpg" alt="Keeping Track of Free Blocks"></p>
-<h2 id="u663E_u5F0F_free__u5217_u8868"><a href="#u663E_u5F0F_free__u5217_u8868" class="headerlink" title="显式 free 列表"></a>显式 free 列表</h2><p>主要的改动在于，只记录 free block，而不是所有的 block。因为是指针，所以不仅需要记录后一个也需要记录前一个；与此同时，仍然需要 boundary tag 来作为合并的辅助信息。具体的结构如下：</p>
-<p><img src="/images/14584389197608.jpg" alt="Explicit Free Lists"></p>
-<p>因为是指针，逻辑上是连续的，但实际上可以是无序的，如下图：</p>
-<p><img src="/images/14584389533544.jpg" alt="Logically vs Physically"></p>
-<p>分配空间的过程就是指针重新指向的过程：</p>
-<p><img src="/images/14584389995555.jpg" alt="Allocating From Explicit Free Lists"></p>
-<p>然后我们来看看，当释放空间的时候，具体要把刚释放的 block，放在列表中的哪个位置呢？有两种策略：后入先出或按照地址排序。</p>
-<p><img src="/images/14584390706378.jpg" alt="Freeing With Explicit Free Lists"></p>
-<p>接下来是 LIFO 策略的几个不同的情况，灰色表示已经分配的空间：</p>
-<p>Case 1</p>
-<p><img src="/images/14584391317448.jpg" alt="Case 1"></p>
-<p>Case 2</p>
-<p><img src="/images/14584391482644.jpg" alt="Case 2"></p>
-<p>Case 3</p>
-<p><img src="/images/14584391607445.jpg" alt="Case 3"></p>
-<p>Case 4</p>
-<p><img src="/images/14584391818093.jpg" alt="Case 4"></p>
-<p>总结一下，与隐式列表相比</p>
-<ul>
-<li>因为只记录 free block，在内存几乎满的时候效率很高</li>
-<li>因为需要切分 block 以及维护列表，所以稍微复杂一点</li>
-<li>对于每个链接来说需要 2 个额外的 word 来记录前面一个 free block 和后面一个 free block</li>
-</ul>
-<h2 id="Segregated_free__u5217_u8868"><a href="#Segregated_free__u5217_u8868" class="headerlink" title="Segregated free 列表"></a>Segregated free 列表</h2><blockquote>
-<p>Most common use of linked lists is in conjunction with segregated free lists. Keep multiple linked lists of different size classes, or possibly for different types of objects.</p>
-</blockquote>
-<p>也就是说，每个不同大小 block 会在不同的列表里，对于较小的 size，一般会有单独的列表，对于稍大的 size，列表的范围也会更大，如下图所示：</p>
-<p><img src="/images/14584404151349.jpg" alt="Each size class of blocks has its own free list"></p>
-<p>要分配一个大小为 n 的 block：</p>
-<ul>
-<li>搜索比 n 大的 free list 列表</li>
-<li>如果找到了合适的，切分 block 并且把剩余的放到对应的列表中（可选）</li>
-<li>如果没有合适的 block，找更大的 size</li>
-<li>重复上述过程，直到找到为止</li>
-</ul>
-<p>如果确实找不到：</p>
-<ul>
-<li>向系统请求额外的堆内存（使用 <code>sbrk()</code>）</li>
-<li>在新的内存中分配对应的空间</li>
-<li>把剩余的空间放到最大 size 的列表中</li>
-</ul>
-<p>释放空间时：</p>
-<ul>
-<li>合并 block 并放到对应的列表中</li>
-</ul>
-<p>Seglist allocator 的优势：</p>
-<ul>
-<li>更高的吞吐量(log time for power-of-two size classes)</li>
-<li>更好的内存利用率<ul>
-<li>First-fit search of segregated free list approximates a best-fit search of entire heap</li>
-<li>Extreme case: Giving each block its own size class is equivalent to best-fit</li>
-</ul>
-</li>
-</ul>
-<h2 id="u5783_u573E_u56DE_u6536"><a href="#u5783_u573E_u56DE_u6536" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>所谓垃圾回收，就是我们不再需要显式释放所申请内存空间了，例如：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="built_in">malloc</span>(<span class="number">128</span>);</span><br><span class="line">    <span class="keyword">return</span>; <span class="comment">/* p block is now garbage*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种机制在许多动态语言中都有实现：Python, Ruby, Java, Perl, ML, Lisp, Mathematica。C 和 C++ 中也有类似的变种，但是需要注意的是，是不可能回收所有的垃圾的。</p>
-<p>我们如何知道什么东西才是『垃圾』呢？简单！只要没有任何指针指向的地方，不管有没有用，因为都不可能被使用，当然可以直接清理掉啦。不过这其实是需要一些前提条件的：</p>
-<ul>
-<li>我们可以知道哪里是指针，哪里不是指针</li>
-<li>每个指针都指向 block 的开头</li>
-<li>指针不能被隐藏(by coercing them to an <code>int</code>, and then back again)</li>
-</ul>
-<p>相关的算法如下：</p>
-<p><img src="/images/14584417083434.jpg" alt="Classical GC Algorithms"></p>
-<p>这里我们主要讨论第一种 Mark-and-sweep collection 算法（居然已经有五十多年的历史了）</p>
-<p>内存具体的分布，可以看做是一个有向图，每个 block 相当于一个节点，每个指针相当于一条边。那些不在堆中的且指向堆的指针称为根节点（如寄存器，栈，全局变量等），如下图所示：</p>
-<p><img src="/images/14584420668262.jpg" alt="Memory as a Graph"></p>
-<h3 id="Mark_and_Sweep_Collecting"><a href="#Mark_and_Sweep_Collecting" class="headerlink" title="Mark and Sweep Collecting"></a>Mark and Sweep Collecting</h3><p>这个机制可以在 malloc/free 的基础上实现。当空间不够的时候， 在每个 block 的头部增加一个额外的 mark bit。</p>
-<ul>
-<li>Mark: Start at roots and set mark bit on each reachable block</li>
-<li>Sweep: Scan all blocks and free blocks that are not marked</li>
-</ul>
-<p>整个过程如下：</p>
-<p><img src="/images/14584422740964.jpg" alt="Mark and Sweep Collecting"></p>
-<p>一个简易实现的思路：</p>
-<p><img src="/images/14584424812466.jpg" alt="Assumptions For a Simple Iimplementation"></p>
-<p>代码如下：</p>
-<p><img src="/images/14584426898133.jpg" alt=""></p>
-<p>在 C 语言中，我们可以使用 <code>is_ptr()</code> 来判断是否为指针，但我们也知道，C 指针可能指向 block 的中间，这个时候我们要如何找到 block 的开头呢？</p>
-<p><img src="/images/14584429046281.jpg" alt="指向中间"></p>
-<p> 可以这么做</p>
-<ul>
-<li>Can use a balanced binary tree to keep track of all allocated blocks (key is start-of-block)</li>
-<li>Balanced-tree pointers can be stored in header (use two additional words)</li>
-</ul>
-<p><img src="/images/14584429821424.jpg" alt="存储结构"></p>
-<h2 id="u5185_u5B58_u76F8_u5173_u9677_u9631"><a href="#u5185_u5B58_u76F8_u5173_u9677_u9631" class="headerlink" title="内存相关陷阱"></a>内存相关陷阱</h2><p>关于内存的使用需要注意避免以下问题：</p>
-<ul>
-<li>Dereferencing bad pointers</li>
-<li>Reading uninitialized memory</li>
-<li>Overwriting memory</li>
-<li>Referencing nonexistent variables</li>
-<li>Freeing blocks multiple times</li>
-<li>Referencing freed blocks</li>
-<li>Failing to free blocks</li>
-</ul>
-<p>具体看上述问题前，我们先来了解 C 语言中操作符的顺序以及优先级：</p>
-<p><img src="/images/14584431989892.jpg" alt="C operators"></p>
-<p>下面是一些例子，一定要好好理解（指针什么的真的头疼）</p>
-<p><img src="/images/14584433625063.jpg" alt="C Pointer Declarations"></p>
-<h3 id="Dereferencing_Bad_Pointers"><a href="#Dereferencing_Bad_Pointers" class="headerlink" title="Dereferencing Bad Pointers"></a>Dereferencing Bad Pointers</h3><p>这是非常常见的例子，没有引用对应的地址，少了 <code>&amp;</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> val;</span><br><span class="line">...</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>, val);</span><br></pre></td></tr></table></figure>
-<h3 id="Reading_Uninitialized_Memory"><a href="#Reading_Uninitialized_Memory" class="headerlink" title="Reading Uninitialized Memory"></a>Reading Uninitialized Memory</h3><p>不能假设堆中的数据会自动初始化为 0，下面的代码就会出现奇怪的问题</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* return y = Ax */</span><br><span class="line">int *matvec(int **A, int *x) &#123;</span><br><span class="line">    int *y = malloc(N * sizeof(int));</span><br><span class="line">    int i, j;</span><br><span class="line">    </span><br><span class="line">    for (i = 0; i &lt; N; i++)</span><br><span class="line">        for (j = 0; j &lt; N; j++)</span><br><span class="line">            y[i] += A[i][j] * x[j];</span><br><span class="line">    return y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Overwriting_Memory"><a href="#Overwriting_Memory" class="headerlink" title="Overwriting Memory"></a>Overwriting Memory</h3><p>这里有挺多问题，第一种是分配了错误的大小，下面的例子中，一开始不能用 <code>sizeof(int)</code>，因为指针的长度不一定和 int 一样。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int **p;</span><br><span class="line">p = malloc(N * sizeof(int));</span><br><span class="line"></span><br><span class="line">for (i = 0; i &lt; N; i++) </span><br><span class="line">    p[i] = malloc(M * sizeof(int));</span><br></pre></td></tr></table></figure>
-<p>第二个问题是超出了分配的空间，下面代码的 for 循环中，因为使用了 <code>&lt;=</code>，会写入到其他位置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int **p;</span><br><span class="line"></span><br><span class="line">p = malloc(N * sizeof (int *));</span><br><span class="line"></span><br><span class="line">for (i = 0; i &lt;= N; i++)</span><br><span class="line">    p[i] = malloc(M * sizeof(int));</span><br></pre></td></tr></table></figure>
-<p>第三种是因为没有检查字符串的长度，超出部分就写到其他地方去了（经典的缓冲区溢出攻击也是利用相同的机制）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s[<span class="number">8</span>];</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">gets(s); <span class="comment">/* reads "123456789" from stdin */</span></span><br></pre></td></tr></table></figure>
-<p>第四种是没有正确理解指针的大小以及对应的操作，应该使用 <code>sizeof(int *)</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> *<span class="title">search</span><span class="params">(<span class="keyword">int</span> *p, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (*p &amp;&amp; *p != null)</span><br><span class="line">        p += <span class="keyword">sizeof</span>(<span class="keyword">int</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第五种是引用了指针，而不是其指向的对象，下面的例子中，<code>*size--</code> 一句因为 <code>--</code> 的优先级比较高，所以实际上是对指针进行了操作，正确的应该是 <code>(*size)--</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> *<span class="title">BinheapDelete</span><span class="params">(<span class="keyword">int</span> **binheap, <span class="keyword">int</span> *size)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *packet;</span><br><span class="line">    packet = binheap[<span class="number">0</span>];</span><br><span class="line">    binheap[<span class="number">0</span>] = binheap[*size - <span class="number">1</span>];</span><br><span class="line">    *size--;</span><br><span class="line">    Heapify(binheap, *size, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> (packet);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Referencing_Nonexistent_Variables"><a href="#Referencing_Nonexistent_Variables" class="headerlink" title="Referencing Nonexistent Variables"></a>Referencing Nonexistent Variables</h3><p>下面的情况中，没有注意到局部变量会在函数返回的时候失效（所以对应的指针也会无效），这是传引用和返回引用需要注意的，传值的话则不用担心</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> *<span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> &amp;val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Freeing_Blocks_Multiple_Times"><a href="#Freeing_Blocks_Multiple_Times" class="headerlink" title="Freeing Blocks Multiple Times"></a>Freeing Blocks Multiple Times</h3><p>这个不用多说，不能重复搞两次</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = malloc(N * sizeof(int));</span><br><span class="line">//  &lt;manipulate x&gt;</span><br><span class="line">free(x);</span><br><span class="line"></span><br><span class="line">y = malloc(M * sizeof(int));</span><br><span class="line">//  &lt;manipulate y&gt;</span><br><span class="line">free(x);</span><br></pre></td></tr></table></figure>
-<h3 id="Referencing_Freed_Blocks"><a href="#Referencing_Freed_Blocks" class="headerlink" title="Referencing Freed Blocks"></a>Referencing Freed Blocks</h3><p>同样是很明显的错误，不要犯</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = malloc(N * sizeof(int));</span><br><span class="line">//  &lt;manipulate x&gt;</span><br><span class="line">free(x);</span><br><span class="line">//  ....</span><br><span class="line"></span><br><span class="line">y = malloc(M * sizeof(int));</span><br><span class="line">for (i = 0; i &lt; M; i++)</span><br><span class="line">    y[i] = x[i]++;</span><br></pre></td></tr></table></figure>
-<h3 id="Memory_Leaks"><a href="#Memory_Leaks" class="headerlink" title="Memory Leaks"></a>Memory Leaks</h3><p>用完没有释放，就是内存泄露啦</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">foo() &#123;</span><br><span class="line">    int *x = malloc(N * sizeof(int));</span><br><span class="line">    // ...</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或者只释放了数据结构的一部分：</p>
-<p><img src="/images/14584447178117.jpg" alt="Freeing only part of a data structure"></p>
-<h3 id="u5BF9_u7B56"><a href="#u5BF9_u7B56" class="headerlink" title="对策"></a>对策</h3><p>我们可以使用下面的工具和方法来处理内存的 bug</p>
-<p><img src="/images/14584447590453.jpg" alt="Dealing With Memory Bugs"></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这节课我们来看看关于内存分配的延伸话题，包括更加复杂的选择机制以及垃圾回收等相关内容。</p>]]>
-    
-    </summary>
-    
-      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
-    
-      <category term="内存分配" scheme="http://wdxtub.com/tags/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
-    
-      <category term="组成原理" scheme="http://wdxtub.com/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
