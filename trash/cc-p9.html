@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>云计算 Twitter 语料分析 9 用 CDH 5 搭建基于 Hadoop 2.0 的 HBase | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">云计算 Twitter 语料分析 9 用 CDH 5 搭建基于 Hadoop 2.0 的 HBase</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/."><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">云计算 Twitter 语料分析 9 用 CDH 5 搭建基于 Hadoop 2.0 的 HBase</h1><div class="post-content"><p>之前的任务中我们使用 Amazon EMR 来搭建 HBase，这样一来，可定制性就比较差，没有办法根据具体的应用来进行调优，所以这里我们试着直接使用普通的 EC2 实例来自己搭建 HBase。</p>
+<a id="more"></a>
+<hr>
+<p>因为是试验性质，所以这里启用 2 台 <code>m4.large</code> 实例，1 台作为 master，1 台作为 core。先来看看整体的架构图：</p>
+<p><img src="/images/14586900951017.png" alt=""></p>
+<p>CDH 5 默认安装基于 YARN 架构的 MapReduce 2.x 版本（通常直接叫 YARN），更多版本相关的细节可以查看<a href="http://www.cloudera.com/content/cloudera/en/documentation/cdh5/v5-0-0/CDH5-Installation-Guide/cdh5ig_cdh5_mapreduce.html" target="_blank" rel="external">这里</a>。</p>
+<p>MapReduce 2.0(YARN) 采用了和之前版本不一样的架构。原先的架构分为 JobTracker（管理资源、调度和监控 job）以及每个 node 都有的 NodeManager：</p>
+<p><img src="/images/14586903332867.png" alt="MapReduce v1.0"></p>
+<p>相比之下 MapReduce 2.0(YARN) 的设计是：</p>
+<ul>
+<li>采用全局的 ResourceManager 来取代原来的 JobTracker 和在数据节点上跑的 TaskTracker</li>
+<li>采用 ApplicationMaster 来进行节点监控和任务管理</li>
+</ul>
+<p><img src="/images/14586906012610.png" alt=""></p>
+<p>接下来我们就具体来进行安装配置.</p>
+<h2 id="u5B89_u88C5_Cloudera"><a href="#u5B89_u88C5_Cloudera" class="headerlink" title="安装 Cloudera"></a>安装 Cloudera</h2><p>先连接到我们创建的 EC2 实例</p>
+<p><code>ssh -i group.pem ubuntu@ec2-54-174-152-232.compute-1.amazonaws.com</code></p>
+<p>最好使用 Ubuntu，因为支持的版本有限</p>
+<p><img src="/images/14586910277062.jpg" alt="Cloudera 支持的版本"></p>
+<p>然后通过下面的命令下载并安装 Cloudera Manager，因为是二进制文件，所以需要修改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://archive.cloudera.com/cm5/installer/latest/cloudera-manager-installer.bin</span><br><span class="line"></span><br><span class="line">chmod u+x cloudera-manager-installer.bin</span><br><span class="line">sudo ./cloudera-manager-installer.bin</span><br></pre></td></tr></table></figure>
+<p>跟着屏幕的指示进行安装即可，如果想要卸载，可以使用：</p>
+<p><code>sudo /usr/share/cmf/uninstall-cloudera-manager.sh</code></p>
+<h2 id="u7BA1_u7406_u96C6_u7FA4"><a href="#u7BA1_u7406_u96C6_u7FA4" class="headerlink" title="管理集群"></a>管理集群</h2><p>安装完成之后使用 <code>sudo service cloudera-scm-server start</code> 启动，具体的启动过程可以通过以下命令查看</p>
+<p><code>sudo tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log</code></p>
+<p>或者也可以使用 <code>netstat</code> 命令查看 7180 端口有没有启动，启动完成后。根据安装过程中出现的提示，我们可以在浏览器中访问 <code>http://ec2-54-174-152-232.compute-1.amazonaws.com:7180</code> 并用默认账户登录（用户名和密码都是 <code>admin</code>，地址就是 EC2 主机的地址）</p>
+<p><img src="/images/14586938548459.jpg" alt="登录界面"></p>
+<p>接受用户协议之后需要选择套餐，直接选择试用就行</p>
+<p><img src="/images/14586940151611.jpg" alt="版本选择"></p>
+<p>开启新的主机，然后填写地址（这里需要填写所有开启的主机的地址），输入用户名 <code>ubuntu</code> 并上传对应的 <code>key.pem</code>，然后就会自动进行安装配置了。</p>
+<p><img src="/images/14586949779041.jpg" alt="安装过程1"></p>
+<p><img src="/images/14586951659402.jpg" alt="安装过程2"></p>
+<p>最后会进行主机的检查，这里有一个提醒：</p>
+<blockquote>
+<p>Cloudera 建议将 /proc/sys/vm/swappiness 设置为 0。当前设置为 60。使用 sysctl 命令在运行时更改该设置并编辑 /etc/sysctl.conf 以在重启后保存该设置</p>
+</blockquote>
+<p>所以我们登录到 core 节点做一些修改。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -i group.pem ubuntu@ec2-<span class="number">52</span>-<span class="number">87</span>-<span class="number">250</span>-<span class="number">126</span>.compute-<span class="number">1</span>.amazonaws.com</span><br><span class="line">sudo sysctl -w vm.swappiness=<span class="number">0</span></span><br><span class="line">sudo vim /etc/sysctl.conf</span><br><span class="line"><span class="comment"># 在最后添加一行 vm.swappiness=0</span></span><br></pre></td></tr></table></figure>
+<p>重新检测之后一切正常，我们可以继续之后的操作。</p>
+<h2 id="u5B89_u88C5_u670D_u52A1"><a href="#u5B89_u88C5_u670D_u52A1" class="headerlink" title="安装服务"></a>安装服务</h2><p>然后我们就可以选择需要安装的服务了</p>
+<p><img src="/images/14586959285818.jpg" alt="服务选择"></p>
+<p>直接选择 HBase，然后一路进行配置。具体选项很多，因为是试验，我都没有修改，直接用的默认值。然后就开始配置：</p>
+<p><img src="/images/14586961787253.jpg" alt="首次运行"></p>
+<p>其实有很多服务都不用配置的，之后真正搭建的时候可以只保留 HBase 相关的服务。</p>
+<p>各种步骤都完成之后，就可以登录并使用 hbase 了，其余的步骤都类似，这里不再赘述：</p>
+<p><img src="/images/14586988955142.jpg" alt="HBase 测试"></p>
+<p>总体来说，Cloudera 很好很强大，全中文配置也很省心，重要的是，免费！</p>
+<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://www.bogotobogo.com/Hadoop/BigData_hadoop_CDH5_Install.php" target="_blank" rel="external">Apache Hadoop (CDH 5) Install - 2015</a></li>
+</ul>
+</div><div data-thread-key="trash/cc-p9.html" data-title="云计算 Twitter 语料分析 9 用 CDH 5 搭建基于 Hadoop 2.0 的 HBase" data-url="http://wdxtub.com/trash/cc-p9.html" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/library/" title="我的笔记" target="_blank">我的笔记</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
