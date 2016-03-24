@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-24T20:03:50.000Z</updated>
+  <updated>2016-03-24T20:10:02.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -15,11 +15,128 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Sublime 指南]]></title>
+    <link href="http://wdxtub.com/2016/03/24/sublime-guide/"/>
+    <id>http://wdxtub.com/2016/03/24/sublime-guide/</id>
+    <published>2016-03-24T20:08:06.000Z</published>
+    <updated>2016-03-24T20:10:02.000Z</updated>
+    <content type="html"><![CDATA[<p>Sublime 基本算是我的主力代码编辑器，这里简要介绍一些插件和技巧。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u63D2_u4EF6"><a href="#u63D2_u4EF6" class="headerlink" title="插件"></a>插件</h2><ol>
+<li><a href="https://github.com/emmetio/emmet" target="_blank" rel="external">Emmet Git</a>，<a href="http://docs.emmet.io/" target="_blank" rel="external">Document</a>原名为：<code>Zencoding, 快速生成html,css</code>，默认扩展快捷为<code>tab</code>，如果<code>tab</code>按钮损坏，<code>ctrl+e</code>替换。 生成规则在：<code>Preferences -&gt; Browser packages -&gt; Emment -&gt; emment -&gt; snippets.json</code>中修改。<a href="http://www.iteye.com/news/27580" target="_blank" rel="external">@ Emmet 中文版文档</a></li>
+<li><a href="https://github.com/titoBouzout/SideBarEnhancements" target="_blank" rel="external">Side Bar</a><code>增强的侧边栏</code></li>
+<li><a href="https://github.com/spadgos/sublime-jsdocs" target="_blank" rel="external">Docblockr</a><code>增强js注释</code></li>
+<li><a href="https://github.com/wbond/sublime_alignment" target="_blank" rel="external">Alignment</a><code>等号对齐</code>。在<code>Preferences -&gt; package settings -&gt; Alignment -&gt; Settings User</code>添加冒号对齐。<code>{ &quot;align_indent&quot;: false, &quot;alignment_chars&quot;: [&quot;=&quot;, &quot;:&quot;], &quot;alignment_space_chars&quot;: [&quot;=&quot;, &quot;:&quot;] }</code></li>
+<li><a href="https://github.com/BoundInCode/AutoFileName" target="_blank" rel="external">AutoFileName</a>: <code>文件路径自动提示</code></li>
+<li><a href="https://github.com/akira-cn/sublime-gbk" target="_blank" rel="external">gbk支持 GBK Encoding Support</a></li>
+<li><a href="http://www.welefen.com/keymapmanager-add-check-plugins-keymap-conflict-feature.html" target="_blank" rel="external">检测快捷键冲突</a></li>
+<li><a href="https://github.com/revolunet/sublimetext-markdown-preview" target="_blank" rel="external">markdown</a> <a href="http://www.tcreator.info/social/experience/markdown-to-pdf.html" target="_blank" rel="external">markdown 转为 pdf</a></li>
+<li><a href="https://github.com/SublimeText/LineEndings" target="_blank" rel="external">LineEndings 设置换行符</a></li>
+<li><a href="https://sublime.wbond.net/" target="_blank" rel="external">SublimeText插件列表</a></li>
+<li><a href="https://github.com/rehorn/sublime-htmlbeautify" target="_blank" rel="external">html美化插件</a></li>
+<li><a href="http://www.fantxi.com/blog/archives/sublime-template-engine-sublimetmpl/" target="_blank" rel="external">Sublime Text 新建文件的模版插件: SublimeTmpl</a></li>
+<li><a href="http://www.cnblogs.com/liu-l/p/3902100.html" target="_blank" rel="external">前端自动化神器LiveReload配合浏览器和less/sass使用方法</a></li>
+<li><a href="http://www.cnblogs.com/yili16438/p/3721896.html" target="_blank" rel="external">使用 Sublime Text 2 开发 Unity3D 项目</a></li>
+<li><a href="http://www.cnblogs.com/lhb25/p/10-essential-sublime-text-plugins.html" target="_blank" rel="external">全栈开发必备的10款 Sublime Text 插件</a></li>
+</ol>
+<h2 id="u8BBE_u7F6E"><a href="#u8BBE_u7F6E" class="headerlink" title="设置"></a>设置</h2><ol>
+<li>Font 推荐使用 <a href="http://code.google.com/p/uigroupcode/downloads/detail?name=YaHei.Consolas.1.12.zip&amp;can=2&amp;q=#makechanges" target="_blank" rel="external">YaHei.Consolas.1.12.ttf</a>，即为上图中所示字体。</li>
+<li>Theme<ul>
+<li>code style: 推荐使用这款<a href="http://code.google.com/p/uigroupcode/downloads/detail?name=Monokai.rar&amp;can=2&amp;q=#makechanges" target="_blank" rel="external">marktheme</a></li>
+<li><a href="https://gist.github.com/1854721" target="_blank" rel="external">更换sidebar皮肤</a></li>
+<li><a href="http://jamiewilson.io/predawn/" target="_blank" rel="external">分享一个sublime 主题 </a></li>
+<li><a href="http://colorsublime.com/" target="_blank" rel="external">颜色配色</a></li>
+</ul>
+</li>
+<li>Preferences -&gt; Settings - User</li>
+<li><a href="http://baelabs.duapp.com/Sublime/indentation.html" target="_blank" rel="external">定制缩进</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime/spell_checking.html" target="_blank" rel="external">拼写检查</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime/distraction_free.html" target="_blank" rel="external">全屏模式，自由模式的定制</a></li>
+<li><a href="http://www.cnblogs.com/jikey/archive/2013/03/12/2955230.html" target="_blank" rel="external">浏览器中预览</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime/settings.html" target="_blank" rel="external">其它配置</a></li>
+</ol>
+<h2 id="u7279_u6B8A_u64CD_u4F5C"><a href="#u7279_u6B8A_u64CD_u4F5C" class="headerlink" title="特殊操作"></a>特殊操作</h2><ol>
+<li>按住 <code>ctrl</code> 键，鼠标单击就是多重选择。</li>
+<li><a href="http://baelabs.duapp.com/Sublime/multiple_selection_with_the_keyboard.html" target="_blank" rel="external">键盘多重选择</a></li>
+<li>根据选择文本自动添加 ‘, “”,(),[] 匹配。</li>
+<li>搜索按钮的功能说明 (<a href="http://hi.baidu.com/chaoxinggsc/item/904a471aa937bc35f6625c42" target="_blank" rel="external">冷风贡献</a>)</li>
+</ol>
+<h2 id="u5FEB_u6377_u952E"><a href="#u5FEB_u6377_u952E" class="headerlink" title="快捷键"></a>快捷键</h2><ol>
+<li>Ctrl+L             选择整行（按住-继续选择下行）</li>
+<li>Ctrl+Shift+K(shhift+del)     删除整行，  ctrl + KK 从光标处删之行尾，Ctrl+K Backspace 从光标处删除至行首</li>
+<li>Ctrl+Shift+D       复制光标所在整行，插入在该行之前</li>
+<li>Ctrl+D             选词 （按住-继续选择下个相同的字符串，再按，可跳到相应的方法定义处</li>
+<li>Ctrl+Shift+M       选择括号内的内容（按住-继续选择父括号）</li>
+<li>Ctrl+/             注释整行（如已选择内容，同“Ctrl+Shift+/”效果）</li>
+<li>Ctrl + alt + /     取消注释</li>
+<li>Ctrl+Shift+UP      与上行互换  ctrl + shift + up: 列模式编辑</li>
+<li>Ctrl + R           跳转当前页的目标方法</li>
+<li>Ctrl+K + U        大写</li>
+<li>Ctrl+K + L        小写</li>
+<li>鼠标中间           列模式编辑</li>
+<li>Ctrl+Shift+[]     代码折叠</li>
+<li>ctrl+k ctrl+1:    折叠所有代码</li>
+<li>Ctrl + K,B        打开侧边栏</li>
+<li>ctrl + 回车：　　   光标后插入行，　Ctrl+Shift+Enter 光标前插入行</li>
+<li>ctrl + m:         匹配括号</li>
+<li>vim mode下        查找上一个下一个的快捷键是 是* #</li>
+<li>ctrl +z, y:       撤销，恢复撤销</li>
+<li>alt + .:          闭合当前标签</li>
+<li>Ctrl+F2:          设置书签</li>
+<li>F2:               下一个书签</li>
+<li>Shift+F2:         上一个书签</li>
+<li>ctrl + p:         即时的文件切换</li>
+<li>ctrl + shift + a: 选择标签内的内容</li>
+<li>ctrl + 单击：      多行随意位置添加光标</li>
+<li>alt + F3( mac: ctrl + command + g): 选择页面中所有相同的词</li>
+<li>ctrl + F3:        跳转到下一个选中的词</li>
+<li>Ctrl+Shift+P Set Syntax:html : 设置文件类型</li>
+<li>Shift + 右键:     连续多行光标选中 (by Gary Gauh)</li>
+</ol>
+<ul>
+<li>非官方文档：<a href="https://sublime-text-unofficial-documentation.readthedocs.org/en/latest/" target="_blank" rel="external">Unofficial Document英文版</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime_unofficial/" target="_blank" rel="external">Unofficial Document中文版</a></li>
+<li>sublime <a href="http://www.feelcss.com/sublime-text-2-settings.html" target="_blank" rel="external">配置详解</a></li>
+<li>sublime <a href="http://baelabs.duapp.com/Sublime/" target="_blank" rel="external">其它文档</a></li>
+</ul>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p>如何删除安装的插件？</p>
+<ol>
+<li>ctr+shift+P,输入package</li>
+<li>查找remove package</li>
+<li>输入你要删除的package</li>
+<li>回车，OK</li>
+</ol>
+<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://github.com/martomo/SublimeTextXdebug" target="_blank" rel="external">xdebug调试</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime%20text3" target="_blank" rel="external">sublimetext 3.0文档</a></li>
+<li><a href="http://www.cnblogs.com/bananaplan/p/Sublime-Text-3-Powerful.html" target="_blank" rel="external">Sublime Text 3 绝对神器</a></li>
+<li><a href="http://docs.sublimetext.tw/" target="_blank" rel="external">SublimeText手册-tw</a></li>
+<li><a href="http://code-tech.diandian.com/post/2012-11-10/40041273125" target="_blank" rel="external">怎样从直接Github的repository安装Sublime Text插件</a></li>
+<li><a href="http://code-tech.diandian.com/post/2012-11-14/40041132753" target="_blank" rel="external">Sublime text2的ThinkPHP插件</a></li>
+<li><a href="http://code-tech.diandian.com/post/2012-11-21/40042403501" target="_blank" rel="external">sublime text 左侧菜单美化1</a></li>
+<li><a href="http://zh.lucida.me/blog/sublime-text-complete-guide/" target="_blank" rel="external">Sublime Text 全程指南</a></li>
+<li><a href="http://www.zhihu.com/question/24896283" target="_blank" rel="external">sublime 有哪些使用技巧</a></li>
+<li><a href="http://www.html-js.com/article/The-frontend-tool-Megamix" target="_blank" rel="external">前端工程师手中的Sublime Text</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Sublime 基本算是我的主力代码编辑器，这里简要介绍一些插件和技巧。</p>]]>
+    
+    </summary>
+    
+      <category term="编辑器" scheme="http://wdxtub.com/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[VS Code 指南]]></title>
     <link href="http://wdxtub.com/2016/03/24/visual-code-guide/"/>
     <id>http://wdxtub.com/2016/03/24/visual-code-guide/</id>
     <published>2016-03-24T20:03:14.000Z</published>
-    <updated>2016-03-24T20:03:50.000Z</updated>
+    <updated>2016-03-24T20:08:33.000Z</updated>
     <content type="html"><![CDATA[<p>Visual Studio 终于把触角伸到了全平台，在加入了插件功能之后，VSC 事实上已经对各种老牌新生编辑器造成了强大的压力，为了紧跟时代脚步，还是要熟悉和了解一下 VSC 的。</p>
 <p>这里基本上是官方教程的总结和翻译。</p>
 <a id="more"></a>
@@ -99,6 +216,8 @@
 <p>这里基本上是官方教程的总结和翻译。</p>]]>
     
     </summary>
+    
+      <category term="编辑器" scheme="http://wdxtub.com/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
@@ -2326,105 +2445,6 @@ sudo apt-get install sublime-text-installer
       <category term="SQL" scheme="http://wdxtub.com/tags/SQL/"/>
     
       <category term="数据库" scheme="http://wdxtub.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[CUDA 简明指南]]></title>
-    <link href="http://wdxtub.com/2016/03/20/cuda-note/"/>
-    <id>http://wdxtub.com/2016/03/20/cuda-note/</id>
-    <published>2016-03-20T12:05:36.000Z</published>
-    <updated>2016-03-20T13:45:37.000Z</updated>
-    <content type="html"><![CDATA[<p>简单的 CUDA 快速入门指南。</p>
-<a id="more"></a>
-<hr>
-<h2 id="CUDA_u67B6_u6784"><a href="#CUDA_u67B6_u6784" class="headerlink" title="CUDA架构"></a>CUDA架构</h2><p>在 CUDA 的架构下,一个程序分为两个部份:host 端和 device 端。Host 端是指在 CPU 上执行 的部份,而 device 端则是在显示芯片上执行的部份。Device 端的程序又称为 “kernel(核心)”。 通常 host 端程序会将数据准备好后,复制到显卡的内存中,再由显示芯片执行 device 端程序,完 成后再由 host 端程序将结果从显卡的内存中取回。</p>
-<p>在 CUDA 架构下,显示芯片执行时的最小单位是 thread(线程)。数个 thread 可以组成一个 block(块)。一个 block 中的 thread 能存取同一块共享的内存,而且可以快速进行同步的动作。</p>
-<p>每一个 block 所能包含的 thread 数目是有限的。不过,执行相同程序的 block,可以组成 grid(格子)。不同 block 中的 thread 无法存取同一个共享的内存,因此无法直接互通或进行同步。因此, 不同 block 中的 thread 能合作的程度是比较低的。不过,利用这个模式,可以让程序不用担心显示芯片实际上能同时执行的 thread 数目限制。例如,一个具有很少量执行单元的显示芯片,可能会 把各个 block 中的 thread 顺序执行,而非同时执行。不同的 grid 则可以执行不同的程序(即 kernel)。</p>
-<p>每个 thread 都有自己的一份 register 和 local memory 的空间。同一个 block 中的每个 thread 则有共享的一份 share memory。此外,所有的 thread(包括不同 block 的 thread)都共享一份 global memory、constant memory、和 texture memory。不同的 grid 则有各自的 global memory、 constant memory 和 texture memory。</p>
-<h2 id="u6267_u884C_u6A21_u5F0F"><a href="#u6267_u884C_u6A21_u5F0F" class="headerlink" title="执行模式"></a>执行模式</h2><p>由于显示芯片大量并行计算的特性,它处理一些问题的方式,和一般 CPU 是不同的。主要的特点包括:</p>
-<ol>
-<li>内存存取 latency 的问题:CPU 通常使用 cache 来减少存取主内存的次数,以避免内存 latency 影响到执行效率。显示芯片则多半没有 cache(或很小),而利用并行化执行的方式来隐藏内存的 latency(即,当第一个 thread 需要等待内存读取结果时,则开始执行第二 个 thread,依此类推)。</li>
-<li>分支指令的问题:CPU 通常利用分支预测等方式来减少分支指令造成的 pipeline bubble。显示芯片则多半使用类似处理内存 latency 的方式。不过,通常显示芯片处理分支的效率会比较差</li>
-</ol>
-<p>最适合利用 CUDA 处理的问题,是可以大量并行化的问题,才能有效隐藏内存的 latency, 并有效利用显示芯片上的大量执行单元。使用 CUDA 时,同时有上千个 thread 在执行是很正常的。 因此,如果不能大量并行化的问题,使用 CUDA 就没办法达到最好的效率了。</p>
-<h2 id="u57FA_u672C_u6982_u5FF5"><a href="#u57FA_u672C_u6982_u5FF5" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
-<li>streaming processor, sp: 最基本的处理单元，最后具体的指令和任务都是在 sp 上处理的。GPU 进行并行计算，也就是很多个 sp 同时做处理</li>
-<li>streaming multiprocessor, sm: 多个 sp 加上存储资源组成一个 sm</li>
-<li>warp: GPU 执行程序时的调度单位，目前 CUDA 的 warp 大小为32，同在一个 warp 的线程，以不同数据资源执行相同的指令。</li>
-<li>thread, block, grid: 利用 CUDA 进行编程时，一个 grid 分为多个 block，一个 block 分为多个 thread (From a programmer’s perspective)</li>
-</ul>
-<h3 id="Some_Restrictions_First"><a href="#Some_Restrictions_First" class="headerlink" title="Some Restrictions First"></a>Some Restrictions First</h3><ul>
-<li>All threads in a grid execute the same kernel function</li>
-<li>A grid is organized as a 2D array of blocks(gridDim.X and gridDim.y)</li>
-<li>Each block is organized as 3D array of threads(blockDim.x, blockDim.y, and blockDim.z)</li>
-<li>Once a kernel is launched, its dimensions cannot change.</li>
-<li>All blocks in a grid have the same dimension</li>
-<li>The total size of a block is limited to 512 threads(? I’m not sure?)</li>
-<li>Once assigned to an SM, the block must execute in its entirey by the SM.</li>
-<li>Thread ID is unique within a block</li>
-<li>Using block ID and thread ID we can make unique ID for each thread per kernel</li>
-<li>Threads assigned to execution resources on a block-by-block basis</li>
-<li>CUDA runtime automatically reduces number of blocks assigned to each SM</li>
-<li>until resource usage is under limit.</li>
-</ul>
-<h3 id="SM_-Streaming_multi-processors_with_multiple_processing_cores"><a href="#SM_-Streaming_multi-processors_with_multiple_processing_cores" class="headerlink" title="SM -Streaming multi-processors with multiple processing cores"></a>SM -Streaming multi-processors with multiple processing cores</h3><ul>
-<li>Each SM contains 32 processing cores</li>
-<li>Execute in a Single Instruction Multiple Thread (SIMT) fashion</li>
-<li>Up to 16 SMs on a card cor a maximum of 512 compute cores</li>
-</ul>
-<h3 id="Warps"><a href="#Warps" class="headerlink" title="Warps"></a>Warps</h3><ul>
-<li>Once a block is assigned to an SM, it is divided into units called warps.</li>
-<li>Thread IDs within a warp are consecutive and increasing</li>
-<li>Warp 0 starts with Thread ID 0</li>
-<li>Warp is unit of thread scheduling in SMs</li>
-<li>Partitioning is always the same</li>
-<li>DO NOT rely on any ordering between warps</li>
-<li>Each warp is executed in a SIMD fashion (all threads within a warp must execute the same instruction at any given time)</li>
-<li>Problem: branch divergence</li>
-</ul>
-<h3 id="Latency_Tolerance"><a href="#Latency_Tolerance" class="headerlink" title="Latency Tolerance"></a>Latency Tolerance</h3><ul>
-<li>When an instruction executed by the threads in a warp must wait for the result of a previously initiated long-latency operation, the warp is not selected for execution -&gt; lantency hiding</li>
-<li>Priority mechanism used to schedule ready warps</li>
-<li>Scheduling does not introduce idle time -&gt; zero-overhead thread scheduling</li>
-<li>Scheduling is used for tolerating long-latency operations, such as:</li>
-<li>piplined floating-point arithmetic</li>
-<li>branch instructions</li>
-</ul>
-<p>The only safe way to synchronize threads in different blocks is to terminate the kernel and start a new kernel for the acitivities after the synchronization point.</p>
-<h2 id="u4EE3_u7801_u76F8_u5173"><a href="#u4EE3_u7801_u76F8_u5173" class="headerlink" title="代码相关"></a>代码相关</h2><ul>
-<li>通过 cudaGetDeviceProperties 函数可以取得许多数据，除了装置支持的 CUDA 版本之外, 还有装置的名称、内存的大小、最大的 thread 数目、执行单元的频率等等</li>
-<li>需要包含头文件<code>&lt;cuda_runtime.h&gt;</code></li>
-<li>编译直接可以<code>nvcc xxx.cu</code></li>
-<li>nvcc 是 CUDA 的 compile 工具,它会将 .cu 檔拆解出在 GPU 上执行的部份,及在 host 上执 行的部份,并呼叫适当的程序进行 compile 动作。在 GPU 执行的部份会透过 NVIDIA 提供的 compiler 编译成中介码,而 host 执行的部份则会透过系统上的 C++ compiler 编译(在 Windows 上使用 Visual C++ 而在 Linux 上使用 gcc)</li>
-<li>cudaMalloc 和 cudaMemcpy 的用法和一般的 malloc 及 memcpy 类似,不过 cudaMemcpy 则多出一个参数,指示复制内存的方向。从主内存复制到显卡内存,所以使用 cudaMemcpyHostToDevice。如果是从显卡内存到主内存,则使用 cudaMemcpyDeviceToHost。</li>
-<li>在 CUDA 中，在函数前面加上 <code>__global__</code> 表示这个函数是要在显示芯片上执行的。</li>
-<li>在显卡上执行的程序有一些限制，例如它不能有返回值</li>
-<li>让 CUDA 执行函数的语法<ul>
-<li><code>function&lt;&lt;&lt;# block, # thread, shared memory size&gt;&gt;&gt;(para....)</code></li>
-</ul>
-</li>
-<li>在 CUDA 中,一般的数据复制到的显卡内存的部份,称为 global memory。这些内存是没有 cache 的,而且,存取 global memory 所需要的时间(即 latency)是非常长的,通常是数百个 cycles。由于我们的程序只有一 个 thread,所以每次它读取 global memory 的内容,就要等到实际读取到数据、累加到 sum 之后, 才能进行下一步。</li>
-<li>由于 global memory 并没有 cache,所以要避开巨大的 latency 的方法,就是要利用大量的 threads。假设现在有大量的 threads 在同时执行,那么当一个 thread 读取内存,开始等待结果的 时候,GPU 就可以立刻切换到下一个 thread,并读取下一个内存位置。因此,理想上当 thread 的 数目够多的时候,就可以完全把 global memory 的巨大 latency 隐藏起来了。</li>
-<li>显卡上的内存是 DRAM,因此最有效率的存取方式,是以连续的方式存取。前面的程序,虽然看起 来是连续存取内存位置(每个 thread 对一块连续的数字计算平方和),但是我们要考虑到实际上 thread 的执行方式。前面提过,当一个 thread 在等待内存的数据时,GPU 会切换到下一个 thread。 也就是说,实际上执行的顺序是类似 thread0 -&gt; thread1 -&gt; thread2。因此,在同一个 thread 中连续存取内存,在实际执行时反而不是连续了。要让实际执行结果是连续 的存取,我们应该要让 thread 0 读取第一个数字,thread 1 读取第二个数字…依此类推。</li>
-<li>在 CUDA 中,thread 是可以分组的,也就是 block。一个 block 中的 thread,具有一个共享的 shared memory,也可以进行同步工作。不同 block 之间的 thread 则不行。在我们的程序中,其 实不太需要进行 thread 的同步动作,因此我们可以使用多个 block 来进一步增加 thread 的数目</li>
-<li>利用 <code>__shared__</code> 声明的变量表示这是 shared memory,是一个 block 中每个 thread 都共享的 内存。它会使用在 GPU 上的内存,所以存取的速度相当快,不需要担心 latency 的问题。</li>
-<li>`__syncthreads()`` 是一个 CUDA 的内部函数,表示 block 中所有的 thread 都要同步到这个点,才能继续执行。</li>
-</ul>
-<h2 id="u7ECF_u9A8C_u6280_u5DE7"><a href="#u7ECF_u9A8C_u6280_u5DE7" class="headerlink" title="经验技巧"></a>经验技巧</h2><ul>
-<li>利用 <code>threadIdx.x</code> 来分 thread 执行，考虑好邻接性。</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>简单的 CUDA 快速入门指南。</p>]]>
-    
-    </summary>
-    
-      <category term="CUDA" scheme="http://wdxtub.com/tags/CUDA/"/>
-    
-      <category term="教程" scheme="http://wdxtub.com/tags/%E6%95%99%E7%A8%8B/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
