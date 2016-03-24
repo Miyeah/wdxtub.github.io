@@ -151,7 +151,7 @@
     <link href="http://wdxtub.com/2016/03/20/csapp-lab6/"/>
     <id>http://wdxtub.com/2016/03/20/csapp-lab6/</id>
     <published>2016-03-20T21:10:37.000Z</published>
-    <updated>2016-03-23T14:42:19.000Z</updated>
+    <updated>2016-03-24T12:58:59.000Z</updated>
     <content type="html"><![CDATA[<p>在这个实验中，我们会实现自己的 <code>malloc</code>, <code>free</code>, <code>realloc</code>, <code>calloc</code> 函数，并借此深入理解堆中的内存分配机制。</p>
 <a id="more"></a>
 <hr>
@@ -168,7 +168,7 @@
 </ul>
 </li>
 <li>本地至服务器<ul>
-<li><code>scp -r ./mm.* dawang@shark.ics.cs.cmu.edu:~/513/malloclab-handout/</code></li>
+<li><code>scp ./mm.c dawang@shark.ics.cs.cmu.edu:~/513/malloclab-handout/</code></li>
 </ul>
 </li>
 </ul>
@@ -247,7 +247,18 @@
 <li><code>-s &lt;s&gt;</code>：超过 s 秒则认为是超时，默认是永远不会超时的</li>
 </ul>
 <p>主要的考察目标是空间使用率以及吞吐量（每秒钟执行的操作数目）</p>
-<h2 id="u89E3_u9898_u601D_u8DEF"><a href="#u89E3_u9898_u601D_u8DEF" class="headerlink" title="解题思路"></a>解题思路</h2><p>TODO</p>
+<h2 id="u89E3_u9898_u601D_u8DEF"><a href="#u89E3_u9898_u601D_u8DEF" class="headerlink" title="解题思路"></a>解题思路</h2><p>题目中给出了一个提示，说堆的大小不会超过 $2^32$ 字节，这个是什么意思呢？其实很简单，我们知道 64 位机器中指针的长度是 8 个字节（八八六十四），但是因为堆的大小是有上限的，理论上来说，只要 4 个字节就可以完成整个空间的寻址（只需要记录偏移量即可），这样一来，用来保存结构信息的部分只需要原来的一半，内存的有效使用率自然就上去了。（不过具体作业的时候因为我主要参考 <code>mm-textbook.c</code> 中的代码，就没有另外做 4 字节寻址的版本了）</p>
+<p>如果有仔细看习题课视频的话，其实助教已经讲得非常清楚了，我的建议如下：</p>
+<ul>
+<li><code>mm-naive.c</code> 很短，一下就可以看完，用来热身</li>
+<li><code>mm-textbook.c</code> 基本上包括各种所需的宏以及存储结构，一定要好好理解清楚</li>
+<li>确定了具体保存信息的数据结构之后，一定要先完成 heap checker</li>
+<li>遇到段错误的时候就需要利用 heap checker 找到具体问题所在了</li>
+<li>最好画简单的示意图，对照着来编码，不然很容易乱</li>
+<li>很多时候需要用到位操作，确保每个基本操作都没有错（如果用 <code>mm-textbook.c</code> 中的就不用担心这个）</li>
+<li>列表的粒度越细，利用率就越高，但是最好的优化还是从数据结构入手</li>
+</ul>
+<p>最后要说的是不用自定义的数据结构应该很难做到 100 分，但是 90 分是没有问题的。</p>
 <h2 id="u57FA_u7840_u77E5_u8BC6_u590D_u4E60"><a href="#u57FA_u7840_u77E5_u8BC6_u590D_u4E60" class="headerlink" title="基础知识复习"></a>基础知识复习</h2><h3 id="u5B8F_u4E0E_u5185_u8054_u51FD_u6570"><a href="#u5B8F_u4E0E_u5185_u8054_u51FD_u6570" class="headerlink" title="宏与内联函数"></a>宏与内联函数</h3><p>宏实际上是一个简单的『查找并替换』的过程，会在编译前完成。一般用来定义常量以及简单的操作（这里很容易出错，下面会说）。</p>
 <p>定义常量比较简单：<code>#define NUM_ENTRIES 100</code> 即可。</p>
 <p>定义简单操作则需要注意，比如 <code>#define twice(x) 2*x</code> 这样写就是会出问题的，如果在代码中调用 <code>twice(x+1)</code> 期望得到的结果应该是 <code>2x+2</code>，但是因为宏只是简单的替换，所以会变成 <code>2x+1</code>。解决办法是一定要用括号包裹住会被替换的值，比如之前的例子应该改写成 <code>#define twice(x) (2*(x))</code>。</p>
