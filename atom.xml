@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-25T10:59:31.000Z</updated>
+  <updated>2016-03-26T15:27:54.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,614 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Linux 的概念与体系]]></title>
+    <link href="http://wdxtub.com/2016/03/26/linux-basic/"/>
+    <id>http://wdxtub.com/2016/03/26/linux-basic/</id>
+    <published>2016-03-26T15:17:06.000Z</published>
+    <updated>2016-03-26T15:27:54.000Z</updated>
+    <content type="html"><![CDATA[<p>这篇日志来自 <a href="http://www.cnblogs.com/vamei" target="_blank" rel="external">Vamei 博客</a> 中的系列文章，把一些基本的内容做了整合，方便查阅。</p>
+<a id="more"></a>
+<hr>
+<h2 id="0_Linux_u7B80_u4ECB_u4E0E_u5382_u5546_u7248_u672C"><a href="#0_Linux_u7B80_u4ECB_u4E0E_u5382_u5546_u7248_u672C" class="headerlink" title="0 Linux简介与厂商版本"></a>0 Linux简介与厂商版本</h2><h3 id="Linux_u7B80_u4ECB"><a href="#Linux_u7B80_u4ECB" class="headerlink" title="Linux简介"></a>Linux简介</h3><p>Linux可以有狭义和广义两种定义。狭义来说，Linux实际上指Linux kernel (内核)。内核负责管理硬件，并为上层应用提供接口。而广义来说，是指以Linux kernel为基础的，包括OS和各种应用在内的各个Linux版本(distribution)。尽管看起来版本眼花缭乱，但实际上，各个版本之间也只是大同小异，其差别往往体现在客户群、升级维护和界面等方面。</p>
+<p>Linus Torvalds是Linux之父。他根据Minix系统的代码，参照UNIX系统的设计，写出了第一给Linux内核。Linus的创举在于将Linux内核的代码开源。后来，Linux内核和一套开源的应用软件GNU结合，共同采取开源协议，并迅速发展成熟。我们可以随意地使用和修改开源代码，但以此为基础开发的程序也要根据开源协议公开。Linux和GNU的开源性吸引了大批优秀的程序员参与到Linux相关的开发中。</p>
+<p>从哲学和设计理念上，Linux与其他的UNIX版本相类似，并使用类似的接口。我们可以通过学习Linux的基本概念和机制来了解其它UNIX系统，比如Solaris, FreeBSD，还有基于FreeBSD的苹果公司的Mac OS。曾经Windows的兴起曾经让许多人认为UNIX将最终被Windows取代，但如今看到Linux和苹果产品的兴盛，我很感慨于UNIX体系的力量。</p>
+<p>Linux的有如下比较重要的机制: 用于储存数据以及管理权限的文件系统，用于IO的文本操作API，用于管理操作的进程，用于实现多任务运行的多线程，以及进程间通信(我将信号和网络也都归入这一类中)。</p>
+<p>特别推荐下面的一些文章，以便你对Linux有一个概观：</p>
+<p><a href="http://www.catb.org/~esr/writings/cathedral-bazaar/introduction/" target="_blank" rel="external">大教堂和市集（The Cathedral and the Bazaar）</a>，作者Eric Raymond</p>
+<p>可以说是为Linux正名的一篇文章，深入分析Linux成功的原因。你也可以通过名字来搜索中文翻译版本。</p>
+<p>该作者的<a href="http://www.catb.org/~esr/writings/" target="_blank" rel="external">其他文章</a>也非常值得一读。</p>
+<p>UNIX传奇，来自酷壳，作者陈皓</p>
+<ul>
+<li>上篇：<a href="http://coolshell.cn/articles/2322.html" target="_blank" rel="external">http://coolshell.cn/articles/2322.html</a></li>
+<li>下篇：<a href="http://coolshell.cn/articles/2324.html" target="_blank" rel="external">http://coolshell.cn/articles/2324.html</a></li>
+</ul>
+<p>(作者博客内容丰富，又容易读，非常值得订阅。)</p>
+<h3 id="Linux_u7684_u5382_u5546_u7248_u672C"><a href="#Linux_u7684_u5382_u5546_u7248_u672C" class="headerlink" title="Linux的厂商版本"></a>Linux的厂商版本</h3><p>在Linux内核基础上，我们还有许多厂商版本。即使有了内核和GNU软件，Linux的安装和编译并不是简单的工作，Linux厂商就是瞄准了这个市场。这些厂商会在Linux内核的基础上，结合自己开发的软件，帮助用户安装和使用Linux，并提供技术支持。由于在服务器领域，Linux操作系统远远领先于Windows系统，而这些被政府部门、银行或者大学拥有的服务器往往承担很重要的信息处理和IO (input/outpt) 工作，所以尽管Linux开源，厂商还是可以根据其提供的商用软件和技术支持获得丰厚的利润。</p>
+<p>(IBM是Linux设备最大的供应商，同时它的咨询业务很大一部份也来源于提供Linux相关的支持。我们所熟知的Android操作系统，也算是Google提供的一个厂商版本。)</p>
+<p>我们这里主要介绍在PC上比较流行的Linux厂商版本:</p>
+<p><strong>红帽系列</strong></p>
+<ul>
+<li>Red Hat linux: 大名鼎鼎的红帽，现在已经完结。以此为基础有以下分支:</li>
+<li>Red Hat Enterprise: (www.redhat.com) 这个是企业级的linux，主要面向服务器。作为商业版，有比较好的配套软件和技术支持。RH的教材也堪称经典。</li>
+<li>Fedora: (<a href="http://fedoraproject.org" target="_blank" rel="external">http://fedoraproject.org</a>) 由社区维护，去除了一些商业软件。红帽实际上赞助了这个项目，以便以此作为技术测试平台。</li>
+<li>CentOS: (www.centos.org) 这个版本不来自红帽的公司，是收集红帽公开的源码组成的免费版本，由社区维护，和红帽完全兼容。版本号升级较慢，但有持续的技术支持，所以适合于不愿意频繁升级的情形，鸟哥中就推荐以CentOS来建站。</li>
+</ul>
+<p><strong>SUSE系列</strong></p>
+<ul>
+<li>SUSE Linux Enterprise: (www.suse.com) 和红帽商业版类似，是德国公司制作的，据说在欧洲比较流行，但我欧洲的朋友表示没怎么听说过。SUSE系列比较有特色的是YAST2，就是用来设置Linux的界面，对初级管理员比较方便。</li>
+<li>openSUSE: (www.opensuse.org) SUSE的免费版本。以前SUSE不是很推这个免费版本，支持不好。现在似乎态度大大转变。就我个人的使用体验来说，还是觉得社区支持不足。</li>
+</ul>
+<p><strong>Debian系列</strong></p>
+<ul>
+<li>Debian: (www.debian.org) 完全免费，社区维护的Linux版本，有很大的用户群，所以遇到问题，基本都可以找到社区用户的支持。</li>
+<li>Ubuntu: (www.ubuntu.com) 由一个基金提供支持的免费Linux版本。 继承自Debian。界面很友好。发邮件过去，还会送你免费安装CD (不知道现在还有没有)。现在的版本加载的东西有些多，速度有些慢。写《大教堂和市集》的Eric Raymond说它是最好的Linux。</li>
+<li>Mint (<a href="http://www.linuxmint.com" target="_blank" rel="external">http://www.linuxmint.com</a>), 基于ubuntu。它提供了更加丰富的预装应用，以减少用户搜索并安装应用的麻烦。其使用的应用版本比较新，可能不是很稳定。</li>
+</ul>
+<p>此外，还有如下一些版本：</p>
+<ul>
+<li>Gentoo (www.gentoo.org) 基于源码的版本，提供给用户很大的自由度。为用户提供大量应用程序的源码，可以在用户的系统上重新编译建造。需要一定的系统配置的知识。</li>
+<li>ArchLinux (www.archlinux.org)，推崇简洁，避免不必要和复杂的修改，是一个轻便灵活的版本。其配置文件有良好注释。</li>
+<li>Mandriva (www.mandriva.com) 一个很方便用户使用的版本，其目标是使得新用户更容易使用linux。</li>
+<li>Slackware (www.slackware.com) 稳定，基本。它的只包含稳定版本的应用程序。对于初级用户不是很友好。</li>
+<li>TurboLinux (www.turbolinux.com) 在亚洲比较流行。商业版本，提供技术支持和咨询服务。</li>
+</ul>
+<h2 id="Linux_u5F00_u673A_u542F_u52A8"><a href="#Linux_u5F00_u673A_u542F_u52A8" class="headerlink" title="Linux开机启动"></a>Linux开机启动</h2><p>计算机开机是一个神秘的过程。我们只是按了开机键，就看到屏幕上的进度条或者一行行的输出，直到我们到达登录界面。然而，计算机开机又是个异常脆弱的过程，我们满心期望的登录界面可能并不会出现，而是一个命令行或者错误信息。了解计算机开机过程有助于我们修复开机可能出现的问题。</p>
+<p><strong>最初始阶段</strong></p>
+<p>当我们打开计算机电源，计算机会自动从主板的BIOS(Basic Input/Output System)读取其中所存储的程序。这一程序通常知道一些直接连接在主板上的硬件(硬盘，网络接口，键盘，串口，并口)。现在大部分的BIOS允许你从软盘、光盘或者硬盘中选择一个来启动计算机。</p>
+<p>下一步，计算机将从你所选择的存储设备中读取起始的512 bytes(比如光盘一开是的512 bytes，如果我们从光盘启动的话)。这512 bytes叫做主引导记录MBR (master boot record)。MBR会告诉电脑从该设备的某一个分区(partition)来装载引导加载程序(boot loader)。Boot loader储存有操作系统(OS)的相关信息，比如操作系统名称，操作系统内核 (kernel)所在位置等。常用的boot loader有GRUB和LILO。</p>
+<p>随后，boot loader会帮助我们加载kernel。kernel实际上是一个用来操作计算机的程序，它是计算机操作系统的内核，主要的任务是管理计算机的硬件资源，充当软件和硬件的接口。操作系统上的任何操作都要通过kernel传达给硬件。Windows和Linux各自有自己kernel。狭义的操作系统就是指kernel，广义的操作系统包括kernel以及kernel之上的各种应用。</p>
+<p>（Linus Torvalds与其说是Linux之父，不如说是Linux kernel之父。他依然负责Linux kernel的开发和维护。至于Ubuntu, Red Hat, 它们都是基于相同的kernel之上，囊括了不同的应用和界面构成的一个更加完整的操作系统版本。)</p>
+<p>实际上，我们可以在多个分区安装boot loader，每个boot loader对应不同的操作系统，在读取MBR的时候选择我们想要启动的boot loader。这就是多操作系统的原理。</p>
+<p>小结：BIOS -&gt; MBR -&gt; boot loader -&gt; kernel</p>
+<p><strong>kernel</strong></p>
+<p>如果我们加载的是Linux kernel，Linux kernel开始工作。kernel会首先预留自己运行所需的内存空间，然后通过驱动程序(driver)检测计算机硬件。这样，操作系统就可以知道自己有哪些硬件可用。随后，kernel会启动一个init进程。它是Linux系统中的1号进程(Linux系统没有0号进程)。到此，kernel就完成了在计算机启动阶段的工作，交接给init来管理。</p>
+<p>小结: kernel -&gt; init process</p>
+<p><strong>init process</strong></p>
+<p>(根据boot loader的选项，Linux此时可以进入单用户模式(single user mode)。在此模式下，初始脚本还没有开始执行，我们可以检测并修复计算机可能存在的错误)</p>
+<p>随后，init会运行一系列的初始脚本(startup scripts)，这些脚本是Linux中常见的shell scripts。这些脚本执行如下功能：</p>
+<p>设置计算机名称，时区，检测文件系统，挂载硬盘，清空临时文件，设置网络……</p>
+<p>当这些初始脚本，操作系统已经完全准备好了，只是，还没有人可以登录！！！init会给出登录(login)对话框，或者是图形化的登录界面。</p>
+<p>输入用户名(比如说vamei)和密码，DONE！</p>
+<p>在此后的过程中，你将以用户(user)vamei的身份操作电脑。此外，根据你创建用户时的设定，Linux还会将你归到某个组(group)中，比如可以是stupid组，或者是vamei组。</p>
+<p>所以你将是用户vamei， 同时是vamei组的组员。(注意，组vamei和用户vamei只是重名而已，就好想你可以叫Dell, 同时还是Dell公司的老板一样。你完全也可以是用户vamei，同时为stupid组的组员)</p>
+<p><strong>总结</strong></p>
+<p>BIOS -&gt; MBR -&gt; boot loader -&gt; kernel -&gt; init process -&gt; login</p>
+<p>用户，组。</p>
+<h2 id="Linux_u6587_u4EF6_u7BA1_u7406"><a href="#Linux_u6587_u4EF6_u7BA1_u7406" class="headerlink" title="Linux文件管理"></a>Linux文件管理</h2><p>对于计算机来说，所谓的数据就是0和1的序列。这样的一个序列可以存储在内存中，但内存中的数据会随着关机而消失。为了将数据长久保存，我们把数据存储在光盘或者硬盘中。根据我们的需要，我们通常会将数据分开保存到文件这样一个个的小单位中(所谓的小，是相对于所有的数据而言)。但如果数据只能组织为文件的话，而不能分类的话，文件还是会杂乱无章。每次我们搜索某一个文件，就要一个文件又一个文件地检查，太过麻烦。文件系统(file system)是就是文件在逻辑上组织形式，它以一种更加清晰的方式来存放各个文件。</p>
+<p><strong>路径与文件简介</strong></p>
+<p>文件被组织到文件系统(file system)中，通常会成为一个树状(tree)结构。Linux有一个根目录/, 也就是树状结构的最顶端。这个树的分叉的最末端都代表一个文件，而这个树的分叉处则是一个目录(directory, 相当于我们在windows界面中看到的文件夹)。在图1中看到的是整个的一个文件树。如果我们从该树中截取一部分，比如说从目录vamei开始往下，实际上也构成一个文件系统。</p>
+<p>要找到一个文件，除了要知道该文件的文件名，还需要知道从树根到该文件的所有目录名。从根目录开始的所有途径的目录名和文件名构成一个路径(path)。比如说，我们在Linux中寻找一个文件file.txt，不仅要知道文件名(file.txt)，还要知道完整路径，也就是绝对路径(/home/vamei/doc/file.txt)。从根目录录/, 也就是树状结构的最顶端出发，经过目录home, vamei, doc，最终才看到文件file.txt。整个文件系统层层分级(hierarchy)，vamei是home的子目录，而home是vamei的父目录。</p>
+<p>在Linux中，我们用ls命令来显示目录下的所有文件，比如 $ls /home/vamei/doc</p>
+<p><strong>目录</strong></p>
+<p>在Linux系统中，目录也是一种文件。所以/home/vamei是指向目录文件vamei的绝对路径。</p>
+<p>这个文件中至少包含有以下条目:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">.       </span>指向当前目录</span><br><span class="line"><span class="bullet">..      </span>指向父目录</span><br></pre></td></tr></table></figure>
+<p>除此之外，目录文件中还包含有属于该目录的文件的文件名，比如vamei中就还要有如下条目，指向属于该目录的文件:</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">doc</span></span><br><span class="line"><span class="keyword">movie</span><br><span class="line"></span><span class="label">photo</span></span><br></pre></td></tr></table></figure>
+<p>Linux解释一个绝对路径的方式如下：先找到根目录文件，从该目录文件中读取home目录文件的位置，然后从home文件中读取vamei的位置……直到找到目录doc中的file.txt的位置。</p>
+<p>由于目录文件中都有.和..的条目，我们可以在路径中加入.或者..来表示当前目录或者父目录，比如/home/vamei/doc/..与/home/vamei等同。</p>
+<p>此外，Linux会在进程中，维护一个工作目录(present working directory)的变量。在shell中，你可以随时查询到到工作目录(在命令行输入<code>$pwd</code>)。这是为了省去每次都输入很长的绝对路径的麻烦。比如说我们将工作目录更改为/home/vamei (<code>$cd /home/vamei</code>)，那么此时我们再去找file.txt就可以省去/home/vamei/ (<code>$ls doc/file.txt</code>)，这样得到的路径叫相对路径(relative path)，上面的doc/file.txt就是这样一个相对路径。</p>
+<p>当文件出现在一个目录文件中时，我们就把文件接入到文件系统中，我们称建立一个到文件的硬链接(hard link)。一个文件允许出现在多个目录中，这样，它就有多个硬链接。当硬链接的数目(link count)降为0时，文件会被Linux删除。所以很多时候，unlink与remove在Linux操作系统中是一个意思。由于软链接(soft link)的广泛使用(soft link不会影响link count，而且可以跨越文件系统)，现在较少手动建立硬连接。</p>
+<p><strong>文件操作</strong></p>
+<p>对于文件，我们可以读取(read)，写入(write)和运行(execute)。读取是从已经存在的文件中获得数据。写入是向新的文件或者旧的文件写入数据。如果文件储存的是可执行的二进制码，那么它可以被载入内存，作为一个程序运行。在Linux的文件系统中，如果某个用户想对某个文件执行某一种操作，那么该用户必须拥有对该文件进行这一操作的权限。文件权限的信息保存在文件信息(metadata)中, 见下一节。</p>
+<p><strong>文件附加信息 (metadata)</strong></p>
+<p>文件自身包含的只有数据。文件名实际上储存在目录文件。除了这些之外，还有操作系统维护的文件附加信息，比如文件类型，文件尺寸，文件权限，文件修改时间，文件读取时间等。可以用ls命令查询文件信息($ls -l file.txt)，得到如下结果：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- <span class="number">1</span> vamei vamei <span class="number">8445</span> Sep  <span class="number">8</span> <span class="number">07</span>:<span class="number">33</span> file1.txt</span><br></pre></td></tr></table></figure>
+<p>各个部分的含义如下：</p>
+<ul>
+<li>我们先介绍最开始的-，它表示文件类型，说明file1.txt是常规文件(如果是目录文件，则应显示d)。</li>
+<li>随后有九个字符，为rw-r–r–，它们用于表示文件权限。这九个字符分为三组，rw-, r–, r–，分别对应拥有者(owner)，拥有组(owner group)和所有其他人(other)。回顾Linux开机启动，登录后，我会有一个用户身份和一个组身份, 相当于我的名片。第一组表示，如果我的名片上的用户身份证明我是该文件的拥有者，那么我就可以对该文件有读取(r)，写入(w)该文件的权限，但不拥有执行(-，如果拥有执行权限，则为x)该文件的权限。第二组表示，如果我的名片上的组身份证明我所在的组是该文件的拥有组的一员，那么我有从该文件读入的权限。第三组表示，如果我的名片显示我既不是拥有者，也不是拥有组的一员，那么我只有读入的权限。当我想要进行一个读取操作时，Linux会先看我是否是拥有者下文会进一步解释拥有者和拥有组。</li>
+<li>后面的1是硬连接(hard link)数目(link count)。</li>
+<li>之后的vamei表示用户vamei是文件的拥有者(owner)，文件的拥有者有权更改文件权限(比如改为rwxrwxrwx)。而后面的vamei文件的拥有组是组vamei。文件的拥有者和拥有组在文件创建时就附加在文件上(相当于给文件上锁，只有有合适名片的用户才能打开操作)。要注意，Linux有一个超级用户root (也叫做根用户)，该用户拥有所有的文件。</li>
+<li>随后的8445表示文件大小，单位为字节(byte)。</li>
+<li>Sep 8 07:33表示文件的上一次写入的时间(modification time)。实际上在文件附加信息中还包含有文件的上一次读取时间(access time)，没有显示出来。</li>
+</ul>
+<p><strong>软链接 (soft link, or symbolic link)</strong></p>
+<p>如上讨论硬链接时说到的，软链接不会影响文件的link count。如果还记得windows系统的快捷方式的话，Linux的软链接(soft link，也叫做symbolic link)就是linux的快捷方式。软链接本质上是一个文件，它的文件类型是symbolic link。在这个文件中，包含有链接指向的文件的绝对路径。当你从这个文件读取数据时，linux会把你导向所指向的文件，然后从那个文件中读取（就好像你双击快捷方式的效果一样）。软链接可以方便的在任何地方建立，并指向任何一个绝对路径。</p>
+<p>软链接本身也是一个文件，也可以执行文件所可以进行的操作。当我们对软链接操作时，要注意我们是对软链接本身操作，还是对软链接指向的目标操作。如果是后者，我们就说该操作跟随链接指引(follow the link)。</p>
+<p>umask</p>
+<p>当我们创建文件的时候，比如使用touch，它会尝试将新建文件创建为权限666，也就是rw-rw-rw-。但操作系统要参照权限mask来看是否真正将文件创建为666。权限mask表示操作系统不允许设置的权限位，比如说037(—-wxrwx)的权限mask意味着不允许设置设置group的wx位和other的rwx位。如果是这个权限mask的话，最终的文件权限是rw-r—– (group的w位和other的rw位被mask)。</p>
+<p>我们可以通过</p>
+<pre><code>$umask 022
+</code></pre><p>的方式改变权限mask。</p>
+<p><strong>总结</strong></p>
+<p>计算机本质上是对数据进行处理的工具，而文件是数据储存的逻辑载体，所以了解Linux文件系统很重要。对于文件系统的了解要结合Linux的其他方面(比如用户管理)进行有机的学习。</p>
+<p>文件权限，拥有者，拥有组，超级用户root</p>
+<p>硬链接，软链接，follow the link</p>
+<h2 id="Linux_u7684_u67B6_u6784"><a href="#Linux_u7684_u67B6_u6784" class="headerlink" title="Linux的架构"></a>Linux的架构</h2><p>我以下图为基础，说明Linux的架构(architecture)。(该图参考《Advanced Programming in Unix Environment》)</p>
+<p><img src="/images/14590055441877.jpg" alt=""></p>
+<p>最内层是硬件，最外层是用户常用的应用，比如说firefox浏览器，evolution查看邮件，一个计算流体模型等等。硬件是物质基础，而应用提供服务。但在两者之间，还要经过一番周折。</p>
+<p>还记得Linux启动。Linux首先启动内核 (kernel)，内核是一段计算机程序，这个程序直接管理管理硬件，包括CPU、内存空间、硬盘接口、网络接口等等。所有的计算机操作都要通过内核传递给硬件。</p>
+<p>为了方便调用内核，Linux将内核的功能接口制作成系统调用(system call)。系统调用看起来就像C语言的函数。你可以在程序中直接调用。Linux系统有两百多个这样的系统调用。用户不需要了解内核的复杂结构，就可以使用内核。系统调用是操作系统的最小功能单位。一个操作系统，以及基于操作系统的应用，都不可能实现超越系统调用的功能。一个系统调用函数就像是汉字的一个笔画。任何一个汉字都要由基本的笔画（点、横、撇等等）构成。我不能臆造笔画。</p>
+<p>在命令行中输入<code>$man 2 syscalls</code>可以查看所有的系统调用。你也可以通过<code>$man 2 read</code>来查看系统调用read()的说明。在这两个命令中的2都表示我们要在2类(系统调用类)中查询 (具体各个类是什么可以通过<code>$man man</code>看到)。</p>
+<p>系统调用提供的功能非常基础，所以使用起来很麻烦。一个简单的给变量分配内存空间的操作，就需要动用多个系统调用。Linux定义一些库函数(library routine)来将系统调用组合成某些常用的功能。上面的分配内存的操作，可以定义成一个库函数(像malloc()这样的函数)。再比如说，在读取文件的时候，系统调用要求我们设置好所需要的缓冲。我可以使用Standard IO库中的读取函数。这个读取函数既负责设置缓冲，又负责使用读取的系统调用函数。使用库函数对于机器来说并没有效率上的优势，但可以把程序员从细节中解救出来。库函数就像是汉字的偏旁部首，它由笔画组成，但使用偏旁部首更容易组成字，比如”铁”。当然，你也完全可以不使用库函数，而直接调用系统函数，就像“人”字一样，不用偏旁部首。</p>
+<p>(实际上，一个操作系统要称得上是UNIX系统，必须要拥有一些库函数，比如ISO C标准库，POSIX标准等。)</p>
+<p>shell是一个特殊的应用。很多用户将它称为命令行。shell是一个命令解释器(interpreter)，当我们输入“ls -l”的时候，它将此字符串解释为</p>
+<ol>
+<li>在默认路径找到该文件(/bin/ls)，</li>
+<li>执行该文件，并附带参数”-l”。</li>
+</ol>
+<p>我之前用&gt;表示重新定向，用|表示管道，也是通过shell解释&amp;或者|的含义。Shell接着通过系统调，用指挥内核，实现具体的重定向或者管道。在没有图形界面之前，shell充当了用户的界面，当用户要运行某些应用时，通过shell输入命令，来运行程序。shell是可编程的，它可以执行符合shell语法的文本。这样的文本叫做shell脚本(script)。可以在架构图中看到，shell下通系统调用，上通各种应用，同时还有许多自身的小工具可以使用。Shell脚本可以在寥寥数行中，实现复杂的功能。</p>
+<p>UNIX的一条哲学是让每个程序尽量独立的做好一个小的功能。而shell充当了这些小功能之间的”胶水”，让不同程序能够以一个清晰的接口(文本流)协同工作，从而增强各个程序的功能。这也是Linux老鸟鼓励新手多用shell，少用图形化界面的原因之一。</p>
+<p>(shell也有很多种，最常见的是bash, 另外还有sh, csh, tcsh, ksh。它们出现的年代不同，所支持的功能也有差异。)</p>
+<p>一个shell对应一个终端 (terminal)。曾经来说，终端是一个硬件设备，用来输入并显示输出。如今，由于图形化界面的普及，终端往往就像上图一样，是一个图形化的窗口。你可以通过这个窗口输入或者输出文本。这个文本直接传递给shell进行分析解释，然后执行。</p>
+<p>最后，我们进入一般的应用。应用是一个程序，它可以</p>
+<ol>
+<li>直接调用系统函数</li>
+<li>调用库函数</li>
+<li>运行shell脚本</li>
+</ol>
+<p>这些应用可以由多种语言开发。最常见的是C语言。</p>
+<p><strong>总结</strong></p>
+<p>Linux利用内核实现软硬件的对话。</p>
+<p>通过系统调用的这个接口，Linux将上层的应用与下层的内核分离，隐藏了底层的复杂性，也提高了上层应用的可移植性。</p>
+<p>库函数利用系统调用创造出模块化的功能，</p>
+<p>Shell则提供了一个用户界面，并让我们可以利用shell的语法编写脚本，以整合程序。</p>
+<h2 id="Linux_u547D_u4EE4_u884C_u4E0E_u547D_u4EE4"><a href="#Linux_u547D_u4EE4_u884C_u4E0E_u547D_u4EE4" class="headerlink" title="Linux命令行与命令"></a>Linux命令行与命令</h2><p>Linux的命令是很重要的工具，也往往是初学者最大的瓶颈。有朋友用了很长时间的Linux图形界面，基本不使用命令行输入命令执行，所以装的Linux最终成了摆设。这里总结一些命令行下常使用的命令，希望能有用。</p>
+<p><strong>什么是命令</strong></p>
+<p>我们通常所说的Linux命令行是运行在终端(terminal)的shell (阅读Linux架构以了解什么是shell以及它在Linux系统中的位置)</p>
+<p>所谓的命令，是我们在命令行输入的一串字符。shell负责理解并执行这些字符串。shell命令可以分为如下几类 1）可执行文件(executable file) 2）shell内建函数(built-in function) 3) 别名(alias)。可执行文件为经过编译的程序文件，我们输入这些文件的路径来让shell运行，比如<code>$/bin/ls</code>。有些可执行文件被放在特殊的目录(默认路径)下面，从而使得操作系统可以通过文件名找到，而不用总是输入该文件的绝对路径(absolute path)。比如说<code>$ls</code>(实际上，shell自动帮我们补齐ls的路径)。随后，这些可执行文件中包含的程序运行，并成为进程。shell的内建函数与上面类似，只是其对应的程序被保存在shell的内部。别名是指我们给以上两种命令起一个简称，以便减少输入的工作量。</p>
+<p>我们可以通过type命令来了解命令的类型：</p>
+<ul>
+<li><code>$type ls</code></li>
+<li><code>$type cd</code></li>
+</ul>
+<p>命令的构成</p>
+<p>当我们在命令行输入命令的时候，往往由以下方式构成:</p>
+<pre><code>$ls -l /home
+</code></pre><p>整个一行命令由空格分为三个部分（注意, $是自动出现的提示符，有时还会在此之前出现计算机名）。第一个为命令的名字ls，这个命令ls的功能是列出目录中所有文件，第二个-l是关键字，它告诉ls要列出每个文件的详细信息，第三个/home为参数，表示我所要列出的目录是/home。实际上关键字是一种特殊的参数，大部分情况下用来开关程序的某些特殊功能 （用来选择做出的是拿铁咖啡还是黑咖啡）。而参数是用来传递给程序的一般的变量。ls经过处理之后，将在终端输出/home下面包含的各个文件名 (该文件系统见:<a href="http://www.cnblogs.com/vamei/archive/2012/09/09/2676792.html)：" target="_blank" rel="external">http://www.cnblogs.com/vamei/archive/2012/09/09/2676792.html)：</a></p>
+<pre><code>vamei another
+</code></pre><p>关键字和参数可以不止有一个，比如:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ls</span> -l -a /home /bin</span><br><span class="line"><span class="variable">$ls</span> -la /home /bin</span><br><span class="line">(上面两个命令等价)</span><br></pre></td></tr></table></figure>
+<p>列出/home和/bin目录下的文件，-a表示列出全部文件(即使是隐藏文件也要列出)， -l表示列出每个文件的详细信息。</p>
+<p>(如果命令没有被放在默认路径中，你也可以输入绝对路径来执行)</p>
+<p>回忆Linux文件管理背景知识，我们知道，每个文件能否被执行要根据用户所拥有的权限。命令实际上是可执行文件，也是如此。系统相关的命令，或者某个命令中的定义的操作，往往会要求超级用户root的身份才能使用。如果你是用户vamei，那么你就无法使用这些命令。但以root的身份登录是个糟糕的想法。为了解决这一矛盾，你可以以vamei的身份登录，但在执行命令之前加上sudo， 以便临时以root的身份执行某条命令。比如<code>$sudo ls .</code></p>
+<p>对于大多数的shell来说，都有命令补齐的功能。当你在<code>$</code>的后面输入命令的一部分时，比如rmdir的rmd的时候，按Tab键，Linux会帮你打剩下的字符，补充成为rmdir。不止是命令，如果你输入的是文件名，Linux也可以帮你补齐。比如说, <code>$ls a.txt</code>。当你输入到<code>$ls a.t</code>的时候，按Tab键，Linux会帮你补齐该文件名，成为<code>$ls a.txt</code>。当然，这样做的前提是你输入到rmd的时候，默认路径下能和它相符的命令只有一个rmdir了。如果有多个相符的命令，连按两下Tab，Linux会显示所有的相符的命令。</p>
+<p><strong>多使用命令的好处</strong></p>
+<p>实际上，许多命令的功能都可以通过图形化界面来实现，学习这些命令的意义在哪里呢？</p>
+<p>在UNIX发育的大部分历史上，用户都是通过shell来工作的。大部分命令都已经经过了几十年的发展和改良，功能强大，性能稳定。Linux继承自UNIX，自然也是如此。此外Linux的图形化界面并不好，并不是所有的命令都有对应的图形按钮。更别说在图形化界面崩溃的情况下，你就要靠shell输入命令来恢复计算机了。</p>
+<p>命令本身是一个函数 (function)，是一个小的功能模块。当我们想要让计算机做很复杂的事情 (比如说: 在晚上12:00下载某个页面的所有链接，然后复制到移动硬盘)的时候，不断地去按各个图形化按钮并不是个很聪明的事情 (1. 要点很多下，2. 必须等到12:00)。我们通常是通过shell编程来实现这样一些复杂任务，这时，就可以把命令作为函数，嵌入到我们的shell程序中, 从而让不同命令协同工作 (比如使用date来查询时间，再根据时间来使用wget下载等等)。</p>
+<p><strong>如何了解一个陌生的命令</strong>？</p>
+<p>有一些命令可以用来了解某个命令本身的情况，比如这个命令的绝对路径。</p>
+<pre><code>$which ls
+</code></pre><p>which 在默认路径中搜索命令，返回该命令的绝对路径。</p>
+<pre><code>$whereis ls
+</code></pre><p>whereis 在相对比较大的范围搜索命令，返回该命令的绝对路径。</p>
+<pre><code>$whatis ls
+</code></pre><p>whatis 用很简短的一句话来介绍命令。</p>
+<pre><code>$man ls
+</code></pre><p>man 查询简明的帮助手册。对于大部分的Linux自带的命令来说，当作者编写它的时候，都会带有一个帮助文档，告诉用户怎么使用这个命令。</p>
+<p>(man可以说是我们了解Linux最好的百科全书，它不但可以告诉你Linux自带的命令的功能，还可以查询Linux的系统文件和系统调用。如果想要深入学习Linux，就必须要懂得如何用man来查询相关文档。)</p>
+<pre><code>$info ls
+</code></pre><p>info 查询更详细的帮助信息</p>
+<p>此外，在shell中，你还可以用向上箭头来查看之前输入运行的命令。</p>
+<p>你也可以用</p>
+<pre><code>$history
+</code></pre><p>来查询之前在命令行的操作。</p>
+<p>当一个命令运行时，你中途想要停止它时，可以用Ctrl + c。如果你只是想暂时停止，使用Ctrl + z。具体机制与信号(signal)有关，我们将在以后介绍</p>
+<p><strong>总结</strong></p>
+<p>命令行: 使用shell解释输入的字符串，以运行程序</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span></span><br><span class="line">sudo</span><br><span class="line"><span class="keyword">which</span>, whereis, whatis, <span class="keyword">man</span>, info</span><br></pre></td></tr></table></figure>
+<p>使用Tab自动补齐，向上箭头查询历史，history</p>
+<pre><code>Ctrl + c, Ctrl + z
+</code></pre><h2 id="Linux_u6587_u4EF6_u7BA1_u7406_u76F8_u5173_u547D_u4EE4"><a href="#Linux_u6587_u4EF6_u7BA1_u7406_u76F8_u5173_u547D_u4EE4" class="headerlink" title="Linux文件管理相关命令"></a>Linux文件管理相关命令</h2><p>在了解了Linux文件管理背景知识之后， 我们可以学习一些命令来管理我们的文件。</p>
+<p><strong>文件操作相关</strong></p>
+<p>有一些命令可以帮助我们”修剪”之前看到的文件树。</p>
+<pre><code>$touch a.txt
+</code></pre><p>如果a.txt不存在，生成一个新的空文档a.txt。如果a.txt存在，那么只更改该文档的时间信息。(这个命令实际上用得并不广泛，但可以帮我们创建一个空文件来实验下面操作)</p>
+<pre><code>$ls .
+</code></pre><p>是list的简写，列出当前目录下的所有文件名</p>
+<pre><code>$ls -l a.txt
+</code></pre><p>列出文件的详细信息</p>
+<pre><code>$cp a.txt b.txt 
+</code></pre><p>cp是copy的简写，用来复制文件。在工作目录下，将a.txt复制到文件b.txt</p>
+<pre><code>$cp a.txt ..
+</code></pre><p>将a.txt复制到父目录的a.txt</p>
+<pre><code>$mv a.txt c.txt
+</code></pre><p>mv是move的简写，用来移动文件。将a.txt移动成为c.txt (相当于重命名rename)</p>
+<pre><code>$mv c.txt /home/vamei
+</code></pre><p>将c.txt移动到/home/vamei目录</p>
+<pre><code>$rm a.txt
+</code></pre><p>rm是remove的缩写，用于删除文件。删除a.txt</p>
+<pre><code>$rm -r /home/vamei 
+</code></pre><p>删除从/home/vamei向下的整个子文件系统。-r表示recursive， 是指重复删除的操作，/home/vamei文件夹为空，然后删除/home/vamei文件夹本身。</p>
+<p>(程序员总是对这个命令很感兴趣,   <code>$rm -rf /</code>   它会删除整个文件树。f的目的是告诉rm放心干，不用再确认了…… 一般情况下，应该没有人会用这个命令。)</p>
+<pre><code>$mkdir /home/vamei/good
+</code></pre><p>创建一个新的目录</p>
+<pre><code>$rmdir /home/vamei/good
+</code></pre><p>删除一个空的目录</p>
+<p><strong>文件权限相关</strong></p>
+<pre><code>$chmod 755 a.txt
+</code></pre><p>(你必须是文件a.txt的拥有者才能运行此命令。或者以$sudo chmod 755 a.txt的方式，以超级用户的身份运行该命令。)</p>
+<p>change mode 改变a.txt的读、写以及执行权限。还记得每个文件都有九位的读写执行权限(参看 Linux文件管理背景知识)，分为三组，分别对应拥有者(owner)，拥有组(owner group)中的用户和所有其他用户(other)。在这里，我们也有三个数字，755，对应三个组。7被分配给拥有者，5被分配给拥有组，最后一个5分配给其它用户。Linux规定: 4为有读取的权利，2为有写入的权利，1为有执行的权利。我们看到的7实际上是4 + 2 + 1，表示拥有者有读、写、执行三项权利。(想想5 意味着什么)</p>
+<p>这时，运行<code>$ls -l a.txt</code>, 你应该看到九位的权限变成了rwxr-xr-x。根据自己的需要，你可以用比如444, 744代替755，来让文件有不同的权限。</p>
+<pre><code>$sudo chown root a.txt
+</code></pre><p>change owner 改变文件的拥有者为root用户。这个命令需要有超级用户权限才能执行，所以我们在命令之前加上sudo。</p>
+<pre><code>$sudo chgrp root a.txt
+</code></pre><p>change group 改变文件的拥有组为root组</p>
+<p><strong>Linux文件名通配表达式</strong></p>
+<p>(wild card, 也叫filename pattern matching)</p>
+<p>之前所讲的命令，比如ls, mv, cp都可以接收多个参数，比如:</p>
+<pre><code>$ls -l a.txt b.txt c.txt
+</code></pre><p>就可以列出这三个文件的所有信息。</p>
+<p>有时候，我们想列出工作目录下所有的以.txt结尾的文件的信息，可以用下面的方式:</p>
+<pre><code>$ls -l *.txt
+</code></pre><p><code>*.txt</code>的写法就运用了Linux通配表达式。它与正则表达式相类似，但语法有所不同。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Filename Pattern Matching</th>
+<th style="text-align:center">对应含义 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>*</code></td>
+<td style="text-align:center">任意多个任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:center">任意一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[kl]</td>
+<td style="text-align:center">字符k或者字符l</td>
+</tr>
+<tr>
+<td style="text-align:center">[0-4]</td>
+<td style="text-align:center">数字0到4字符中的一个</td>
+</tr>
+<tr>
+<td style="text-align:center">[b-e]</td>
+<td style="text-align:center">b到e字符中的一个</td>
+</tr>
+<tr>
+<td style="text-align:center">[^mnp]</td>
+<td style="text-align:center">一个字符，这个字符不是m,n,p</td>
+</tr>
+</tbody>
+</table>
+<p>Linux会找到符合表达式的文件名，然后用这些文件名作为参数传递给命令。注意，当使用rm的时候，要格外小心。下面两个命令，只相差一个空格，但效果大为不同:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> * .txt</span><br><span class="line"><span class="variable">$rm</span> *.txt</span><br></pre></td></tr></table></figure>
+<p>第一个命令会删除当前目录下所有文件！</p>
+<p><strong>总结</strong></p>
+<p>touch, ls, mv, cp, rm, mkdir, rmdir</p>
+<p>chmod, chown, chgrp</p>
+<p>wild card</p>
+<h2 id="Linux_u6587_u672C_u6D41"><a href="#Linux_u6587_u672C_u6D41" class="headerlink" title="Linux文本流"></a>Linux文本流</h2><p><strong>文本流</strong></p>
+<p>文件用于数据的存储，相当于一个个存储数据的房子。我们之前说，所谓的数据是0或者1的序列，但严格来说，Linux以字节(byte)来作为数据的单位，也就是说这个序列每八位(bit)为一个单位(八位二进制对应的十进制范围为0到255)。使用ASCII编码，可以将这样一个字节转换成为字符。所以，在Linux中，我们所说的数据，完全可以用字符表达出来，也就是说文本(text)的形式。</p>
+<p>实际上，如果以bit为单位处理字符的话，机器会更容易读懂和传输，效率会更高。但为什么Linux依然以字节为单位进行处理呢？原因在于，相对于以bit为单位处理数据，以byte为单位可以更容易将数据转化为字符。相对于枯燥的0和1，字符更容易被人读懂 (human readable)。然而，并不是所有的数据都是设计来让人读懂的，比如可执行文件包含的各种字符对于人来说并没有什么意义 (因为可执行文件是为了让机器读懂的)。但Linux依然以字节为单位处理所有文件，这是为了让所有文件能够共用一套接口 (virtual file system)，从而减少Linux设计的复杂度。</p>
+<p>(“everything is a file”是通常所流传的UNIX设计的哲学之一，但Linus对此作出纠正，改为”everything is a stream of bytes”。)</p>
+<p>然而，数据不是在找到了自己的房子(file)之后就永远的定居下来。它往往要被读入到内存 (就像是到办公室上班)，或者被传送到外部设备(好像去酒店休假)，或者搬到别的房子中。在这样的搬迁过程中，数据像是一个个排着队走路的人流，我们叫它文本流(text stream，或者byte stream)。然而，计算机不同设备之间的连接方法差异很大，从内存到文件的连接像是爬山，从内存到外设像是游过一条河。为此，Linux还定义了流 (stream)，以此作为修建连接各处的公路的标准。Stream的好处在于，无论你是从内存到外设，还是从内存到文件，所有的公路都是相同的 (至于公路下面是石头还是土地，都可以不用操心)。</p>
+<p>我们再回味一下“everything is a stream of bytes”这句话。信息包含在文本流中，不断在计算机的各个组件之间流动，不断地接受计算机的加工，最终成为用户所需要的某种服务。</p>
+<p>标准输入，标准输出，标准错误与重新定向</p>
+<p>当Linux执行一个程序的时候，会自动打开三个流，标准输入(standard input)，标准输出(standard output)，标准错误(standard error)。比如说你打开命令行的时候，默认情况下，命令行的标准输入连接到键盘，标准输出和标准错误都连接到屏幕。对于一个程序来说，尽管它总会打开这三个流，但它会根据需要使用，并不是一定要使用。</p>
+<p>想象一下敲击一个</p>
+<pre><code>$ls
+</code></pre><p>键盘敲击的文本流(“ls\n”，\n是回车时输入的字符，表示换行)命令行 (命令行实际上也是一个程序)。命令行随后调用/bin/ls得到结果(“a.txt”)，最后这个输出的文本流(“a.txt”)流到屏幕，显示出来，比如说：</p>
+<pre><code>a.txt
+</code></pre><p>假设说我们不想让文本流流到屏幕，而是流到另一个文件，我们可以采用重新定向(redirect)的机制。</p>
+<pre><code>$ls &gt; a.txt
+</code></pre><p>重新定向标准输出。这里的&gt;就是提醒命令行，让它知道我现在想变换文本流的方向了，我们不让标准输出输出到屏幕，而是要到a.txt这个文件 (好像火车轨道换轨)。此时，计算机会新建一个a.txt的文件，并将命令行的标准输出指向这个文件。</p>
+<p>有另一个符号:</p>
+<pre><code>$ls &gt;&gt; a.txt
+</code></pre><p>这里&gt;&gt;的作用也是重新定向标准输出。如果a.txt已经存在的话，ls产生的文本流会附加在a.txt的结尾，而不会像&gt;那样每次都新建a.txt。</p>
+<p>我们下面介绍命令echo：</p>
+<pre><code>$echo IamVamei
+</code></pre><p>echo的作用是将文本流导向标准输出。在这里，echo的作用就是将IamVamei输出到屏幕上。如果是</p>
+<pre><code>$echo IamVamei &gt; a.txt
+</code></pre><p>a.txt中就会有IamVamei这个文本。</p>
+<p>我们也可以用&lt;符号来改变标准输入。比如cat命令，它可以从标准输入读入文本流，并输出到标准输出:</p>
+<pre><code>$cat &lt; a.txt
+</code></pre><p>我们将cat标准输入指向a.txt，文本会从文件流到cat，然后再输出到屏幕上。当然，我们还可以同时重新定向标准输出:</p>
+<pre><code>$cat &lt; a.txt &gt; b.txt
+</code></pre><p>这样，a.txt的内容就复制到了b.txt中。</p>
+<p>我们还可以使用&gt;&amp;来同时重新定向标准输出和标准错误。假设我们并没有一个目录void。那么</p>
+<pre><code>$cd void &gt; a.txt
+</code></pre><p>会在屏幕上返回错误信息。因为此时标准错误依然指向屏幕。当我们使用:</p>
+<pre><code>$cd void &gt;&amp; a.txt
+</code></pre><p>错误信息被导向a.txt。</p>
+<p>如果只想重新定向标准错误，可以使用2&gt;:</p>
+<pre><code>$cd void 2&gt; a.txt &gt; b.txt
+</code></pre><p>标准错误对应的总是2号，所以有以上写法。标准错误输出到a.txt，标准输出输出到b.txt。</p>
+<p><strong>管道 (pipe)</strong></p>
+<p>理解了以上的内容之后，管道的概念就易如反掌。管道可以将一个命令的输出导向另一个命令的输入，从而让两个(或者更多命令)像流水线一样连续工作，不断地处理文本流。在命令行中，我们用|表示管道：</p>
+<pre><code>$cat &lt; a.txt | wc 
+</code></pre><p>wc命令代表word count，用于统计文本中的行、词以及字符的总数。a.txt中的文本先流到cat，然后从cat的标准输出流到wc的标准输入，从而让wc知道自己要处理的是a.txt这个字符串。</p>
+<p>Linux的各个命令实际上高度专业化，并尽量相互独立。每一个都只专注于一个小的功能。但通过pipe，我们可以将这些功能合在一起，实现一些复杂的目的。</p>
+<p><strong>总结</strong></p>
+<p>文本流，标准输入，标准输出，标准错误</p>
+<p>cat, echo, wc</p>
+<p><code>&gt;, &gt;&gt;, &lt;, |</code></p>
+<h2 id="Linux_u8FDB_u7A0B_u57FA_u7840"><a href="#Linux_u8FDB_u7A0B_u57FA_u7840" class="headerlink" title="Linux进程基础"></a>Linux进程基础</h2><p>计算机实际上可以做的事情实质上非常简单，比如计算两个数的和，再比如在内存中寻找到某个地址等等。这些最基础的计算机动作被称为指令 (instruction)。所谓的程序(program)，就是这样一系列指令的所构成的集合。通过程序，我们可以让计算机完成复杂的操作。程序大多数时候被存储为可执行的文件。这样一个可执行文件就像是一个菜谱，计算机可以按照菜谱作出可口的饭菜。</p>
+<p>那么，程序和进程(process)的区别又是什么呢?</p>
+<p>进程是程序的一个具体实现。只有食谱没什么用，我们总要按照食谱的指点真正一步步实行，才能做出菜肴。进程是执行程序的过程，类似于按照食谱，真正去做菜的过程。同一个程序可以执行多次，每次都可以在内存中开辟独立的空间来装载，从而产生多个进程。不同的进程还可以拥有各自独立的IO接口。</p>
+<p>操作系统的一个重要功能就是为进程提供方便，比如说为进程分配内存空间，管理进程的相关信息等等，就好像是为我们准备好了一个精美的厨房。</p>
+<p><strong>看一眼进程</strong></p>
+<p>首先，我们可以使用<code>$ps</code>命令来查询正在运行的进程，比如<code>$ps -eo pid,comm,cmd</code>，下图为执行结果:</p>
+<p>(-e表示列出全部进程，-o pid,comm,cmd表示我们需要PID，COMMAND，CMD信息)</p>
+<p><img src="/images/14590055629919.jpg" alt=""></p>
+<p>每一行代表了一个进程。每一行又分为三列。第一列PID(process IDentity)是一个整数，每一个进程都有一个唯一的PID来代表自己的身份，进程也可以根据PID来识别其他的进程。第二列COMMAND是这个进程的简称。第三列CMD是进程所对应的程序以及运行时所带的参数。</p>
+<p>(第三列有一些由中括号[]括起来的。它们是kernel的一部分功能，被打扮成进程的样子以方便操作系统管理。我们不必考虑它们。)</p>
+<p>我们看第一行，PID为1，名字为init。这个进程是执行/bin/init这一文件(程序)生成的。当Linux启动的时候，init是系统创建的第一个进程，这一进程会一直存在，直到我们关闭计算机。这一进程有特殊的重要性，我们会不断提到它。</p>
+<p><strong>如何创建一个进程</strong></p>
+<p>实际上，当计算机开机的时候，内核(kernel)只建立了一个init进程。Linux kernel并不提供直接建立新进程的系统调用。剩下的所有进程都是init进程通过fork机制建立的。新的进程要通过老的进程复制自身得到，这就是fork。fork是一个系统调用。进程存活于内存中。每个进程都在内存中分配有属于自己的一片空间 (address space)。当进程fork的时候，Linux在内存中开辟出一片新的内存空间给新的进程，并将老的进程空间中的内容复制到新的空间中，此后两个进程同时运行。</p>
+<p>老进程成为新进程的父进程(parent process)，而相应的，新进程就是老的进程的子进程(child process)。一个进程除了有一个PID之外，还会有一个PPID(parent PID)来存储的父进程PID。如果我们循着PPID不断向上追溯的话，总会发现其源头是init进程。所以说，所有的进程也构成一个以init为根的树状结构。</p>
+<p>如下，我们查询当前shell下的进程：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@vamei:~# ps -o pid,ppid,cmd&#10;  PID  PPID CMD&#10;16935  3101 sudo -i&#10;16939 16935 -bash&#10;23774 16939 ps -o pid,ppid,cmd</span><br></pre></td></tr></table></figure>
+<p>我们可以看到，第二个进程bash是第一个进程sudo的子进程，而第三个进程ps是第二个进程的子进程。</p>
+<p>还可以用$pstree命令来显示整个进程树：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init&#9472;&#9516;&#9472;NetworkManager&#9472;&#9516;&#9472;dhclient&#10;     &#9474;                &#9492;&#9472;2*[&#123;NetworkManager&#125;]&#10;     &#9500;&#9472;accounts-daemon&#9472;&#9472;&#9472;&#123;accounts-daemon&#125;&#10;     &#9500;&#9472;acpid&#10;     &#9500;&#9472;apache2&#9472;&#9516;&#9472;apache2&#10;     &#9474;         &#9492;&#9472;2*[apache2&#9472;&#9472;&#9472;26*[&#123;apache2&#125;]]&#10;     &#9500;&#9472;at-spi-bus-laun&#9472;&#9472;&#9472;2*[&#123;at-spi-bus-laun&#125;]&#10;     &#9500;&#9472;atd&#10;     &#9500;&#9472;avahi-daemon&#9472;&#9472;&#9472;avahi-daemon&#10;     &#9500;&#9472;bluetoothd&#10;     &#9500;&#9472;colord&#9472;&#9472;&#9472;2*[&#123;colord&#125;]&#10;     &#9500;&#9472;console-kit-dae&#9472;&#9472;&#9472;64*[&#123;console-kit-dae&#125;]&#10;     &#9500;&#9472;cron&#10;     &#9500;&#9472;cupsd&#9472;&#9472;&#9472;2*[dbus]&#10;     &#9500;&#9472;2*[dbus-daemon]&#10;     &#9500;&#9472;dbus-launch&#10;     &#9500;&#9472;dconf-service&#9472;&#9472;&#9472;2*[&#123;dconf-service&#125;]&#10;     &#9500;&#9472;dropbox&#9472;&#9472;&#9472;15*[&#123;dropbox&#125;]&#10;     &#9500;&#9472;firefox&#9472;&#9472;&#9472;27*[&#123;firefox&#125;]&#10;     &#9500;&#9472;gconfd-2&#10;     &#9500;&#9472;geoclue-master&#10;     &#9500;&#9472;6*[getty]&#10;     &#9500;&#9472;gnome-keyring-d&#9472;&#9472;&#9472;7*[&#123;gnome-keyring-d&#125;]&#10;     &#9500;&#9472;gnome-terminal&#9472;&#9516;&#9472;bash&#10;     &#9474;                &#9500;&#9472;bash&#9472;&#9472;&#9472;pstree&#10;     &#9474;                &#9500;&#9472;gnome-pty-helpe&#10;     &#9474;                &#9500;&#9472;sh&#9472;&#9472;&#9472;R&#9472;&#9472;&#9472;&#123;R&#125;&#10;     &#9474;                &#9492;&#9472;3*[&#123;gnome-terminal&#125;]</span><br></pre></td></tr></table></figure>
+<p>fork通常作为一个函数被调用。这个函数会有两次返回，将子进程的PID返回给父进程，0返回给子进程。实际上，子进程总可以查询自己的PPID来知道自己的父进程是谁，这样，一对父进程和子进程就可以随时查询对方。</p>
+<p>通常在调用fork函数之后，程序会设计一个if选择结构。当PID等于0时，说明该进程为子进程，那么让它执行某些指令,比如说使用exec库函数(library function)读取另一个程序文件，并在当前的进程空间执行 (这实际上是我们使用fork的一大目的: 为某一程序创建进程)；而当PID为一个正整数时，说明为父进程，则执行另外一些指令。由此，就可以在子进程建立之后，让它执行与父进程不同的功能。</p>
+<p><strong>子进程的终结(termination)</strong></p>
+<p>当子进程终结时，它会通知父进程，并清空自己所占据的内存，并在kernel里留下自己的退出信息(exit code，如果顺利运行，为0；如果有错误或异常状况，为&gt;0的整数)。在这个信息里，会解释该进程为什么退出。父进程在得知子进程终结时，有责任对该子进程使用wait系统调用。这个wait函数能从kernel中取出子进程的退出信息，并清空该信息在kernel中所占据的空间。但是，如果父进程早于子进程终结，子进程就会成为一个孤儿(orphand)进程。孤儿进程会被过继给init进程，init进程也就成了该进程的父进程。init进程负责该子进程终结时调用wait函数。</p>
+<p>当然，一个糟糕的程序也完全可能造成子进程的退出信息滞留在kernel中的状况（父进程不对子进程调用wait函数），这样的情况下，子进程成为僵尸（zombie）进程。当大量僵尸进程积累时，内存空间会被挤占。</p>
+<p><strong>进程与线程(thread)</strong></p>
+<p>尽管在UNIX中，进程与线程是有联系但不同的两个东西，但在Linux中，线程只是一种特殊的进程。多个线程之间可以共享内存空间和IO接口。所以，进程是Linux程序的唯一的实现方式。</p>
+<p><strong>总结</strong></p>
+<p>程序，进程，PID，内存空间</p>
+<p>子进程，父进程，PPID，fork， wait</p>
+<h2 id="Linux_u4FE1_u53F7_u57FA_u7840"><a href="#Linux_u4FE1_u53F7_u57FA_u7840" class="headerlink" title="Linux信号基础"></a>Linux信号基础</h2><p>Linux进程基础一文中已经提到，Linux以进程为单位来执行程序。我们可以将计算机看作一个大楼，内核(kernel)是大楼的管理员，进程是大楼的房客。每个进程拥有一个独立的房间(属于进程的内存空间)，而每个房间都是不允许该进程之外的人进入。这样，每个进程都只专注于自己干的事情，而不考虑其他进程，同时也不让别的进程看到自己的房间内部。这对于每个进程来说是一种保护机制。(想像一下几百个进程总是要干涉对方，那会有多么混乱，或者几百个进程相互偷窥……)</p>
+<p>然而，在一些情况，我们需要打破封闭的房间，以便和进程交流信息。比如说，内核发现有一个进程在砸墙(硬件错误)，需要让进程意识到这样继续下去会毁了整个大楼。再比如说，我们想让多个进程之间合作。这样，我们就需要一定的通信方式。信号(signal)就是一种向进程传递信息的方式。我们可以将信号想象成大楼的管理员往房间的信箱里塞小纸条。随后进程取出小纸条，会根据纸条上的内容来采取一定的行动，比如灯坏了，提醒进程使用手电。(当然，也可以完全无视这张纸条，然而在失火这样紧急的状况下，无视信号不是个好的选择)。相对于其他的进程间通信方式(interprocess communication， 比如说pipe, shared memory)来说，信号所能传递的信息比较粗糙，只是一个整数。但正是由于传递的信息量少，信号也便于管理和使用。信号因此被经常地用于系统管理相关的任务，比如通知进程终结、中止或者恢复等等。</p>
+<p>信号是由内核(kernel)管理的。信号的产生方式多种多样，它可以是内核自身产生的，比如出现硬件错误(比如出现分母为0的除法运算，或者出现segmentation fault)，内核需要通知某一进程；也可以是其它进程产生的，发送给内核，再由内核传递给目标进程。内核中针对每一个进程都有一个表存储相关信息(房间的信箱)。当内核需要将信号传递给某个进程时，就在该进程相对应的表中的适当位置写入信号(塞入纸条)，这样，就生成(generate)了信号。当该进程执行系统调用时，在系统调用完成后退出内核时，都会顺便查看信箱里的信息。如果有信号，进程会执行对应该信号的操作(signal action, 也叫做信号处理signal disposition)，此时叫做执行(deliver)信号。从信号的生成到信号的传递的时间，信号处于等待(pending)状态(纸条还没有被查看)。我们同样可以设计程序，让其生成的进程阻塞(block)某些信号，也就是让这些信号始终处于等待的状态，直到进程取消阻塞(unblock)或者无视信号。</p>
+<p><strong>常见信号</strong></p>
+<p>信号所传递的每一个整数都被赋予了特殊的意义，并有一个信号名对应该整数。常见的信号有SIGINT, SIGQUIT, SIGCONT, SIGTSTP, SIGALRM等。这些都是信号的名字。你可以通过</p>
+<pre><code>$man 7 signal
+</code></pre><p>来查阅更多的信号。</p>
+<p>上面几个信号中，</p>
+<ul>
+<li><code>SIGINT</code>   当键盘按下CTRL+C从shell中发出信号，信号被传递给shell中前台运行的进程，对应该信号的默认操作是中断 (INTERRUPT) 该进程。</li>
+<li><code>SIGQUIT</code>  当键盘按下CTRL+\从shell中发出信号，信号被传递给shell中前台运行的进程，对应该信号的默认操作是退出 (QUIT) 该进程。</li>
+<li><code>SIGTSTP</code>  当键盘按下CTRL+Z从shell中发出信号，信号被传递给shell中前台运行的进程，对应该信号的默认操作是暂停 (STOP) 该进程。</li>
+<li><code>SIGCONT</code>  用于通知暂停的进程继续。</li>
+<li><code>SIGALRM</code>  起到定时器的作用，通常是程序在一定的时间之后才生成该信号。</li>
+</ul>
+<p><strong>在shell中使用信号</strong></p>
+<p>下面我们实际应用一下信号。我们在shell中运行ping：</p>
+<pre><code>$ping localhost
+</code></pre><p>此时我们可以通过CTRL+Z来将SIGTSTP传递给该进程。shell中显示：</p>
+<pre><code>[1]+  Stopped                 ping localhost
+</code></pre><p>我们使用<code>$ps</code>来查询ping进程的PID (PID是ping进程的房间号), 在我的机器中为27397</p>
+<p>我们可以在shell中通过$kill命令来向某个进程发出信号:</p>
+<pre><code>$kill -SIGCONT  27397
+</code></pre><p>来传递SIGCONT信号给ping进程。</p>
+<p><strong>信号处理 (signal disposition)</strong></p>
+<p>在上面的例子中，所有的信号都采取了对应信号的默认操作。但这并不绝对。当进程决定执行信号的时候，有下面几种可能：</p>
+<ol>
+<li>无视(ignore)信号，信号被清除，进程本身不采取任何特殊的操作</li>
+<li>默认(default)操作。每个信号对应有一定的默认操作。比如上面SIGCONT用于继续进程。</li>
+<li>自定义操作。也叫做获取 (catch) 信号。执行进程中预设的对应于该信号的操作。</li>
+</ol>
+<p>进程会采取哪种操作，要根据该进程的程序设计。特别是获取信号的情况，程序往往会设置一些比较长而复杂的操作(通常将这些操作放到一个函数中)。</p>
+<p>信号常常被用于系统管理，所以它的内容相当庞杂。深入了解信号，需要一定的Linux环境编程知识。</p>
+<p><strong>总结</strong></p>
+<p>信号机制; generate, deliver, pending, blocking</p>
+<p>signal action/dispositon; ignore, default action, catch signal</p>
+<p><code>$kill</code></p>
+<h2 id="Linux_u8FDB_u7A0B_u5173_u7CFB"><a href="#Linux_u8FDB_u7A0B_u5173_u7CFB" class="headerlink" title="Linux进程关系"></a>Linux进程关系</h2><p>Linux的进程相互之间有一定的关系。比如说，在Linux进程基础中，我们看到，每个进程都有父进程，而所有的进程以init进程为根，形成一个树状结构。我们在这里讲解进程组和会话，以便以更加丰富的方式了管理进程。</p>
+<p><strong>进程组 (process group)</strong></p>
+<p>每个进程都会属于一个进程组(process group)，每个进程组中可以包含多个进程。进程组会有一个进程组领导进程 (process group leader)，领导进程的PID (PID见Linux进程基础)成为进程组的ID (process group ID, PGID)，以识别进程组。</p>
+<pre><code>$ps -o pid,pgid,ppid,comm | cat
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  PID  PGID  PPID COMMAND</span><br><span class="line"><span class="number">17763</span> <span class="number">17763</span> <span class="number">17751</span> bash</span><br><span class="line"><span class="number">18534</span> <span class="number">18534</span> <span class="number">17763</span> ps</span><br><span class="line"><span class="number">18535</span> <span class="number">18534</span> <span class="number">17763</span> cat</span><br></pre></td></tr></table></figure>
+<p>PID为进程自身的ID，PGID为进程所在的进程组的ID， PPID为进程的父进程ID。从上面的结果，我们可以推测出如下关系：</p>
+<p><img src="/images/14590055773563.jpg" alt=""></p>
+<p>图中箭头表示父进程通过fork和exec机制产生子进程。ps和cat都是bash的子进程。进程组的领导进程的PID成为进程组ID。领导进程可以先终结。此时进程组依然存在，并持有相同的PGID，直到进程组中最后一个进程终结。</p>
+<p>我们将一些进程归为进程组的一个重要原因是我们可以将信号发送给一个进程组。进程组中的所有进程都会收到该信号。我们会在下一部分深入讨论这一点。</p>
+<p><strong>会话 (session)</strong></p>
+<p>更进一步，在shell支持工作控制(job control)的前提下，多个进程组还可以构成一个会话 (session)。bash(Bourne-Again shell)支持工作控制，而sh(Bourne shell)并不支持。</p>
+<p>会话是由其中的进程建立的，该进程叫做会话的领导进程(session leader)。会话领导进程的PID成为识别会话的SID(session ID)。会话中的每个进程组称为一个工作(job)。会话可以有一个进程组成为会话的前台工作(foreground)，而其他的进程组是后台工作(background)。每个会话可以连接一个控制终端(control terminal)。当控制终端有输入输出时，都传递给该会话的前台进程组。由终端产生的信号，比如CTRL+Z， CTRL+\，会传递到前台进程组。</p>
+<p>会话的意义在于将多个工作囊括在一个终端，并取其中的一个工作作为前台，来直接接收该终端的输入输出以及终端信号。 其他工作在后台运行。</p>
+<p>一个命令可以通过在末尾加上&amp;方式让它在后台运行:</p>
+<pre><code>$ping localhost &gt; log &amp;
+</code></pre><p>此时终端显示:</p>
+<pre><code>[1] 10141
+</code></pre><p>括号中的1表示工作号，而10141为PGID</p>
+<p>我们通过如下方式查询更加详细的信息:</p>
+<pre><code>$ps -o pid,pgid,ppid,sid,tty,comm
+(tty表示控制终端）
+</code></pre><p>信号可以通过kill</p>
+<pre><code>$kill -SIGTERM -10141
+</code></pre><p>或者</p>
+<pre><code>$kill -SIGTERM %1
+</code></pre><p>的方式来发送给工作组。上面的两个命令，一个是发送给PGID(通过在PGID前面加-来表示是一个PGID而不是PID)，一个是发送给工作1(%1)，两者等价。</p>
+<p>一个工作可以通过$fg从后台工作变为前台工作:</p>
+<pre><code>$cat &gt; log &amp;
+$fg %1
+</code></pre><p>当我们运行第一个命令后，由于工作在后台，我们无法对命令进行输入，直到我们将工作带入前台，才能向cat命令输入。在输入完成后，按下CTRL+D来通知shell输入结束。</p>
+<p>进程组(工作)的概念较为简单易懂。而会话主要是针对一个终端建立的。当我们打开多个终端窗口时，实际上就创建了多个终端会话。每个会话都会有自己的前台工作和后台工作。这样，我们就为进程增加了管理和运行的层次。在没有图形化界面的时代，会话允许用户通过shell进行多层次的进程发起和管理。比如说，我可以通过shell发起多个后台工作，而此时标准输入输出并不被占据，我依然可以继续其它的工作。如今，图形化界面可以帮助我们解决这一需求，但工作组和会话机制依然在Linux的许多地方应用。</p>
+<p><strong>总结</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">process group, pgid</span><br><span class="line">session, sid, job, forground, background</span><br><span class="line"><span class="built_in">fg</span>, <span class="built_in">kill</span> -pid, &amp;, %</span><br></pre></td></tr></table></figure>
+<h2 id="Linux_u7528_u6237"><a href="#Linux_u7528_u6237" class="headerlink" title="Linux用户"></a>Linux用户</h2><p>Linux的用户在登录(login)之后，就带有一个用户身份(user ID, UID)和一个组身份(group ID, GID)。在Linux文件管理背景知识中，我们又看到，每个文件又有九位的权限说明，用来指明该文件允许哪些用户执行哪些操作(读、写或者执行)。</p>
+<p><strong>进程权限</strong></p>
+<p>但是，在Linux中，用户的指令是在进程的范围内进行的。当我们向对某个文件进行操作的时候，我们需要在进程中运行一个程序，在进程中对文件打开，并进行读、写或者执行的操作。因此，我们需要将用户的权限传递给进程，以便进程真正去执行操作。例如我们有一个文件a.txt, 文件中为一个字符串:</p>
+<pre><code>Hello world!
+</code></pre><p>我以用户Vamei的身份登录，并在shell中运行如下命令：</p>
+<pre><code>$cat a.txt
+</code></pre><p>整个运行过程以及文件读取如下:</p>
+<p><img src="/images/14590055890788.jpg" alt=""></p>
+<p>我们可以看到，整个过程中我们会有两个进程，一个是shell本身(2256)，一个是shell复制自身，再运行/bin/cat (9913)。图中的fork, exec, PID可参看Linux进程基础。第二个进程总共对文件系统进行了两次操作，一次是执行(x)文件/bin/cat，另外一次是读取(r)文件a.txt。使用<code>$ls -l</code> 查看这两个文件的权限:</p>
+<pre><code>$ls -l /bin/cat
+-rwxr-xr-x 1 root root 46764 Apr  1  2012 /bin/cat
+
+$ls -l a.txt
+-rw-rw-r-- 1 Vamei Vamei 14 Oct  7 09:14 a.txt
+</code></pre><p>从上面可以看到(参考Linux文件管理背景知识)，/bin/cat让所有用户都享有执行的权利，而Vamei作为a.txt的拥有者，对a.txt享有读取的权利。</p>
+<p>让我们进入更多的细节 (The devil is in the details)。在进行这两次操作的时候，尽管用户Vamei拥有相应的权限，但我们发现，真正做工作的是进程9913。我们要让这个进程得到相应的权限。实际上，每个进程会维护有如下6个ID：</p>
+<p>真实身份: real UID,       real GID</p>
+<p>有效身份: effective UID,  effective GID</p>
+<p>存储身份: saved UID,      saved GID</p>
+<p>其中，真实身份是我们登录使用的身份，有效身份是当该进程真正去操作文件时所检查的身份，存储身份较为特殊，我们等一下再深入。当进程fork的时候，真实身份和有效身份都会复制给子进程。大部分情况下，真实身份和有效身份都相同。当Linux完成开机启动之后，init进程会执行一个login的子进程。我们将用户名和密码传递给login子进程。login在查询了/etc/passwd和/etc/shadow，并确定了其合法性之后，运行(利用exec)一个shell进程，shell进程真实身份被设置成为该用户的身份。由于此后fork此shell进程的子进程都会继承真实身份，所以该真实身份会持续下去，直到我们登出并以其他身份再次登录(当我们使用su成为root的时候，实际上就是以root身份再次登录，此后真实身份成为root)。</p>
+<p><strong>最小权限原则</strong></p>
+<p>每个进程为什么不简单地只维护真实身份，却选择费尽麻烦地去维护有效身份和存储身份呢？这牵涉到Linux的“最小特权”(least priviledge)的原则。Linux通常希望进程只拥有足够完成其工作的特权，而不希望赋予更多的特权给它。从设计上来说，最简单的是赋予每个进程以super user的特权，这样进程就可以想做什么做什么。然而，这对于系统来说是一个巨大的安全漏洞，特别是在多用户环境下，如果每个用户都享有无限制的特权，就很容易破坏其他用户的文件或者系统本身。“最小特权”就是收缩进程所享有的特权，以防进程滥用特权。</p>
+<p>然而，进程的不同阶段可能需要不同的特权。比如一个进程最开始的有效身份是真实身份，但运行到中间的时候，需要以其他的用户身份读入某些配置文件，然后再进行其他的操作。为了防止其他的用户身份被滥用，我们需要在操作之前，让进程的有效身份变更回来成为真实身份。这样，进程需要在两个身份之间变化。</p>
+<p>存储身份就是真实身份之外的另一个身份。当我们将一个程序文件执行成为进程的时候，该程序文件的拥有者(owner)和拥有组(owner group)可以被，存储成为进程的存储身份。在随后进程的运行过程中，进程就将可以选择将真实身份或者存储身份复制到有效身份，以拥有真实身份或者存储身份的权限。并不是所有的程序文件在执行的过程都设置存储身份的。需要这么做的程序文件会在其九位(bit)权限的执行位的x改为s。这时，这一位(bit)叫做set UID bit或者set GID bit。</p>
+<pre><code>$ls -l /usr/bin/uuidd
+-rwsr-sr-x 1 libuuid libuuid 17976 Mar 30  2012 /usr/sbin/uuidd
+</code></pre><p>当我以root(UID), root(GID)的真实身份运行这个程序的时候，由于拥有者(owner)有s位的设定，所以saved UID被设置成为libuuid，saved GID被设置成为libuuid。这样，uuidd的进程就可以在两个身份之间切换。</p>
+<p>我们通常使用chmod来修改set-UID bit和set-GID bit:</p>
+<pre><code>$chmod 4700 file
+</code></pre><p>我们看到，这里的chmod后面不再只是三位的数字。最前面一位用于处理set-UID bit/set-GID bit，它可以被设置成为4/2/1以及或者上面数字的和。4表示为set UID bit, 2表示为set GID bit，1表示为sticky bit (暂时不介绍)。必须要先有x位的基础上，才能设置s位。</p>
+<p>作为一个Linux用户来说，我们并不需要特别关心上面的机制。但是，当我们去编写一个Linux应用程序的时候，就要注意在程序中实现以上切换(有必要的前提下)，以便让我们的程序符合”最小权限”的原则，不给系统留下可能的安全隐患</p>
+<h2 id="Linux_u4ECE_u7A0B_u5E8F_u5230_u8FDB_u7A0B"><a href="#Linux_u4ECE_u7A0B_u5E8F_u5230_u8FDB_u7A0B" class="headerlink" title="Linux从程序到进程"></a>Linux从程序到进程</h2><p>计算机如何执行进程呢？这是计算机运行的核心问题。即使已经编写好程序，但程序是死的。只有活的进程才能产出。我们已经从Linux进程基础中了解了进程。现在我们看一下从程序到进程的漫漫征程。</p>
+<p><strong>一段程序</strong></p>
+<p>下面是一个简单的C程序，假设该程序已经编译好</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> glob=<span class="number">0</span>;                                             <span class="comment">/*global variable*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> main1=<span class="number">5</span>;                                          <span class="comment">/*local variable of main()*/</span></span><br><span class="line">  <span class="keyword">int</span> main2;                                            <span class="comment">/*local variable of main()*/</span></span><br><span class="line">  main2 = inner(main1);                                 <span class="comment">/* call inner() function */</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"From Main: glob: %d \n"</span>, glob);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"From Main: main2: %d \n"</span>, main2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">inner</span><span class="params">(<span class="keyword">int</span> inner1)</span> </span>&#123;                                 <span class="comment">/*inner1 is an argument, also local to inner()*/</span></span><br><span class="line">  <span class="keyword">int</span> inner2=<span class="number">10</span>;                                        <span class="comment">/*local variable of inner()*/</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"From inner: glob: %d \n"</span>, glob);</span><br><span class="line">  <span class="keyword">return</span>(inner1+inner2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(选取哪一个语言或者具体的语法并不是关键，大部分语言都可以写出类似上面的程序。在看Python教程的读者也可以利用Python的函数结构和print写一个类似的python程序。当然，还可以是C++，Java，Objective-C等等。选用C语言的原因是：它是为UNIX而生的语言。)</p>
+<p>main()函数中调用了inner()函数。inner()中调用一次printf()以输出。最后，在main()中进行了两次printf()。</p>
+<p>注意变量的作用范围。简单地说，变量可以分为全局变量和局部变量。在所有函数之外声明的变量为全局变量，比如glob，在任何时候都可以使用。在函数内定义的变量为局部变量，只能在该函数的作用域(range)内使用，比如说我们在inner()工作的时候不能使用main()函数中声明的main1变量，而在main()中我们无法使用inner()函数中声明的inner2变量。</p>
+<p>不用太过在意这个程序的具体功能。要点是这个程序的运行过程。下图为该程序的运行过程，以及各个变量的作用范围：</p>
+<p><img src="/images/14590056061703.jpg" alt=""></p>
+<p><strong>进程空间</strong></p>
+<p>为了进一步了解上面程序的运行，我们还需要知道，进程如何使用内存。当程序文件运行为进程时，进程在内存中获得空间。这个空间是进程自己的小屋子。</p>
+<p>每个进程空间按照如下方式分为不同区域:</p>
+<p><img src="/images/14590056162054.jpg" alt=""></p>
+<p>Text区域用来储存指令(instruction)，说明每一步的操作。Global Data用于存放全局变量，栈(Stack)用于存放局部变量，堆(heap)用于存放动态变量 (dynamic variable. 程序利用malloc系统调用，直接从内存中为dynamic variable开辟空间)。Text和Global data在进程一开始的时候就确定了，并在整个进程中保持固定大小。</p>
+<p>栈(Stack)以帧(stack frame)为单位。当程序调用函数的时候，比如main()函数中调用inner()函数，stack会向下增长一帧。帧中存储该函数的参数和局部变量，以及该函数的返回地址(return address)。此时，计算机将控制权从main()转移到inner()，inner()函数处于激活(active)状态。位于栈最下方的帧，和全局变量一起，构成了当前的环境(context)。激活函数可以从环境中调用需要的变量。典型的编程语言都只允许你使用位于stack最下方的帧 ，而不允许你调用其它的帧 (这也符合stack结构“先进后出”的特征。但也有一些语言允许你调用栈的其它部分，相当于允许你在运行inner()函数的时候调用main()中声明的局部变量，比如Pascal)。当函数又进一步调用另一个函数的时候，一个新的帧会继续增加到栈的下方，控制权转移到新的函数中。当激活函数返回的时候，会从栈中弹出(pop，读取并从栈中删除)该帧，并根据帧中记录的返回地址，将控制权交给返回地址所指向的指令(比如从inner()函数中返回，继续执行main()中赋值给main2的操作)。</p>
+<p>下图是栈在运行过程中的变化。箭头表示栈的增长方向。每个方块代表一帧。开始的时候我们有一个为main()服务的帧，随着调用inner()，我们为inner()增加一个帧。在inner()返回时，我们再次只有main()的帧，直到最后main()返回，其返回地址为空，所以进程结束。</p>
+<p><img src="/images/14590056276526.jpg" alt=""></p>
+<p>在进程运行的过程中，通过调用和返回函数，控制权不断在函数间转移。进程可以在调用函数的时候，原函数的帧中保存有在我们离开时的状态，并为新的函数开辟所需的帧空间。在调用函数返回时，该函数的帧所占据的空间随着帧的弹出而清空。进程再次回到原函数的帧中保存的状态，并根据返回地址所指向的指令继续执行。上面过程不断继续，栈不断增长或减小，直到main()返回的时候，栈完全清空，进程结束。</p>
+<p>当程序中使用malloc的时候，堆(heap)会向上增长，其增长的部分就成为malloc从内存中分配的空间。malloc开辟的空间会一直存在，直到我们用free系统调用来释放，或者进程结束。一个经典的错误是内存泄漏(memory leakage), 就是指我们没有释放不再使用的堆空间，导致堆不断增长，而内存可用空间不断减少。</p>
+<p>栈和堆的大小则会随着进程的运行增大或者变小。当栈和堆增长到两者相遇时候，也就是内存空间图中的蓝色区域(unused area)完全消失的时候，再无可用内存。进程会出现栈溢出(stack overflow)的错误，导致进程终止。在现代计算机中，内核一般会为进程分配足够多的蓝色区域，如果清理及时，栈溢出很容易避免。即便如此，内存负荷过大，依然可能出现栈溢出的情况。我们就需要增加物理内存了。</p>
+<p>Stack overflow可以说是最出名的计算机错误了，所以才有IT网站(stackoverflow.com)以此为名。</p>
+<p><strong>进程附加信息</strong></p>
+<p>除了上面的信息之外，每个进程还要包括一些进程附加信息，包括PID，PPID，PGID(参考Linux进程基础以及Linux进程关系)等，用来说明进程的身份、进程关系以及其它统计信息。这些信息并不保存在进程的内存空间中。内核会为每个进程在内核自己的空间中分配一个变量(task_struct结构体)以保存上述信息。内核可以通过查看自己空间中的各个进程的附加信息就能知道进程的概况，而不用进入到进程自身的空间 (就好像我们可以通过门牌就可以知道房间的主人是谁一样，而不用打开房门)。每个进程的附加信息中有位置专门用于保存接收到的信号(正如我们在Linux信号基础中所说的“信箱”)。</p>
+<p><strong>fork &amp; exec</strong></p>
+<p>现在，我们可以更加深入地了解fork和exec(参考Linux进程基础)的机制了。当一个程序调用fork的时候，实际上就是将上面的内存空间，包括text, global data, heap和stack，又复制出来一个，构成一个新的进程，并在内核中为改进程创建新的附加信息 (比如新的PID，而PPID为原进程的PID)。此后，两个进程分别地继续运行下去。新的进程和原有进程有相同的运行状态(相同的变量值，相同的instructions…)。我们只能通过进程的附加信息来区分两者。</p>
+<p>程序调用exec的时候，进程清空自身内存空间的text, global data, heap和stack，并根据新的程序文件重建text, global data, heap和stack (此时heap和stack大小都为0)，并开始运行。</p>
+<p>(现代操作系统为了更有效率，改进了管理fork和exec的具体机制，但从逻辑上来说并没有差别。具体机制请参看Linux内核相关书籍)</p>
+<p>这一篇写了整合了许多东西，所以有些长。这篇文章主要是概念性的，许多细节会根据语言和平台乃至于编译器的不同而有所变化，但大体上，以上的概念适用于所有的计算机进程(无论是Windows还是UNIX)。更加深入的内容，包括线程(thread)、进程间通信(IPC)等，都依赖于这里介绍的内容。</p>
+<p><strong>总结</strong></p>
+<p>函数，变量的作用范围，global/local/dynamic variables</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">global data, text,</span><br><span class="line"><span class="built_in">stack</span>, <span class="built_in">stack</span> frame, <span class="keyword">return</span> address, <span class="built_in">stack</span> overflow</span><br><span class="line">heap, <span class="built_in">malloc</span>, <span class="built_in">free</span>, memory leakage</span><br><span class="line">进程附加信息, task_struct</span><br><span class="line">fork &amp; exec</span><br></pre></td></tr></table></figure>
+<h2 id="Linux_u591A_u7EBF_u7A0B_u4E0E_u540C_u6B65"><a href="#Linux_u591A_u7EBF_u7A0B_u4E0E_u540C_u6B65" class="headerlink" title="Linux多线程与同步"></a>Linux多线程与同步</h2><p>典型的UNIX系统都支持一个进程创建多个线程(thread)。在Linux进程基础中提到，Linux以进程为单位组织操作，Linux中的线程也都基于进程。尽管实现方式有异于其它的UNIX系统，但Linux的多线程在逻辑和使用上与真正的多线程并没有差别。</p>
+<p><strong>多线程</strong></p>
+<p>我们先来看一下什么是多线程。在Linux从程序到进程中，我们看到了一个程序在内存中的表示。这个程序的整个运行过程中，只有一个控制权的存在。当函数被调用的时候，该函数获得控制权，成为激活(active)函数，然后运行该函数中的指令。与此同时，其它的函数处于离场状态，并不运行。如下图所示:</p>
+<p><img src="/images/14590056454901.jpg" alt=""></p>
+<p>我们看到，各个方块之间由箭头连接。各个函数就像是连在一根线上一样，计算机像一条流水线一样执行各个函数中定义的操作。这样的一个程序叫做单线程程序。</p>
+<p>多线程就是允许一个进程内存在多个控制权，以便让多个函数同时处于激活状态，从而让多个函数的操作同时运行。即使是单CPU的计算机，也可以通过不停地在不同线程的指令间切换，从而造成多线程同时运行的效果。如下图所示，就是一个多线程的流程:</p>
+<p><img src="/images/14590056551293.jpg" alt=""></p>
+<p>main()到func3()再到main()构成一个线程，此外func1()和func2()构成另外两个线程。操作系统一般都有一些系统调用来让你将一个函数运行成为一个新的线程。</p>
+<p>回忆我们在Linux从程序到进程中提到的栈的功能和用途。一个栈，只有最下方的帧可被读写。相应的，也只有该帧对应的那个函数被激活，处于工作状态。为了实现多线程，我们必须绕开栈的限制。为此，创建一个新的线程时，我们为这个线程建一个新的栈。每个栈对应一个线程。当某个栈执行到全部弹出时，对应线程完成任务，并收工。所以，多线程的进程在内存中有多个栈。多个栈之间以一定的空白区域隔开，以备栈的增长。每个线程可调用自己栈最下方的帧中的参数和变量，并与其它线程共享内存中的Text，heap和global data区域。对应上面的例子，我们的进程空间中需要有3个栈。</p>
+<p>(要注意的是，对于多线程来说，由于同一个进程空间中存在多个栈，任何一个空白区域被填满都会导致stack overflow的问题。)</p>
+<p><strong>并发</strong></p>
+<p>多线程相当于一个并发(concunrrency)系统。并发系统一般同时执行多个任务。如果多个任务可以共享资源，特别是同时写入某个变量的时候，就需要解决同步的问题。比如说，我们有一个多线程火车售票系统，用全局变量i存储剩余的票数。多个线程不断地卖票(i = i - 1)，直到剩余票数为0。所以每个都需要执行如下操作:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*mu is a global mutex*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>) &#123;                        <span class="comment">/*infinite loop*/</span></span><br><span class="line">    <span class="keyword">if</span> (i != <span class="number">0</span>) i = i -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"no more tickets"</span>);</span><br><span class="line">      <span class="built_in">exit</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果只有一个线程执行上面的程序的时候(相当于一个窗口售票)，则没有问题。但如果多个线程都执行上面的程序(相当于多个窗口售票), 我们就会出现问题。我们会看到，其根本原因在于同时发生的各个线程都可以对i读取和写入。</p>
+<p>我们这里的if结构会给CPU两个指令, 一个是判断是否有剩余的票(i != 0), 一个是卖票 (i = i -1)。某个线程会先判断是否有票(比如说此时i为1)，但两个指令之间存在一个时间窗口，其它线程可能在此时间窗口内执行卖票操作(i = i -1)，导致该线程卖票的条件不再成立。但该线程由于已经执行过了判断指令，所以无从知道i发生了变化，所以继续执行卖票指令，以至于卖出不存在的票 (i成为负数)。对于一个真实的售票系统来说，这将成为一个严重的错误 (售出了过多的票，火车爆满)。</p>
+<p>在并发情况下，指令执行的先后顺序由内核决定。同一个线程内部，指令按照先后顺序执行，但不同线程之间的指令很难说清除哪一个会先执行。如果运行的结果依赖于不同线程执行的先后的话，那么就会造成竞争条件(race condition)，在这样的状况下，计算机的结果很难预知。我们应该尽量避免竞争条件的形成。最常见的解决竞争条件的方法是将原先分离的两个指令构成不可分隔的一个原子操作(atomic operation)，而其它任务不能插入到原子操作中。</p>
+<p><strong>多线程同步</strong></p>
+<p>对于多线程程序来说，同步(synchronization)是指在一定的时间内只允许某一个线程访问某个资源 。而在此时间内，不允许其它的线程访问该资源。我们可以通过互斥锁(mutex)，条件变量(condition variable)和读写锁(reader-writer lock)来同步资源。</p>
+<p><strong>1) 互斥锁</strong></p>
+<p>互斥锁是一个特殊的变量，它有锁上(lock)和打开(unlock)两个状态。互斥锁一般被设置成全局变量。打开的互斥锁可以由某个线程获得。一旦获得，这个互斥锁会锁上，此后只有该线程有权打开。其它想要获得互斥锁的线程，会等待直到互斥锁再次打开的时候。我们可以将互斥锁想像成为一个只能容纳一个人的洗手间，当某个人进入洗手间的时候，可以从里面将洗手间锁上。其它人只能在互斥锁外面等待那个人出来，才能进去。在外面等候的人并没有排队，谁先看到洗手间空了，就可以首先冲进去。</p>
+<p>上面的问题很容易使用互斥锁的问题解决，每个线程的程序可以改为:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*mu is a global mutex*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>) &#123;                <span class="comment">/*infinite loop*/</span></span><br><span class="line">  mutex_lock(mu);           <span class="comment">/*aquire mutex and lock it, if cannot, wait until mutex is unblocked*/</span></span><br><span class="line">  <span class="keyword">if</span> (i != <span class="number">0</span>) i = i - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"no more tickets"</span>);</span><br><span class="line">    <span class="built_in">exit</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  mutex_unlock(mu);         <span class="comment">/*release mutex, make it unblocked*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个执行mutex_lock()的线程会先获得mu。其它想要获得mu的线程必须等待，直到第一个线程执行到mutex_unlock()释放mu，才可以获得mu，并继续执行线程。所以线程在mutex_lock()和mutex_unlock()之间的操作时，不会被其它线程影响，就构成了一个原子操作。</p>
+<p>需要注意的时候，如果存在某个线程依然使用原先的程序 (即不尝试获得mu，而直接修改i)，互斥锁不能阻止该程序修改i，互斥锁就失去了保护资源的意义。所以，互斥锁机制需要程序员自己来写出完善的程序来实现互斥锁的功能。我们下面讲的其它机制也是如此。</p>
+<p><strong>2) 条件变量</strong></p>
+<p>条件变量是另一种常用的变量。它也常常被保存为全局变量，并和互斥锁合作。</p>
+<p>假设这样一个状况: 有100个工人，每人负责装修一个房间。当有10个房间装修完成的时候，老板就通知相应的十个工人一起去喝啤酒。</p>
+<p>我们如何实现呢？老板让工人在装修好房间之后，去检查已经装修好的房间数。但多线程条件下，会有竞争条件的危险。也就是说，其他工人有可能会在该工人装修好房子和检查之间完成工作。采用下面方式解决：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*mu: global mutex, cond: global codition variable, num: global int*/</span></span><br><span class="line">mutex_lock(mu)</span><br><span class="line"></span><br><span class="line">num = num + <span class="number">1</span>;                      <span class="comment">/*worker build the room*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (num &lt;= <span class="number">10</span>) &#123;                     <span class="comment">/*worker is within the first 10 to finish*/</span></span><br><span class="line">    cond_wait(mu, cond);            <span class="comment">/*wait*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"drink beer"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (num = <span class="number">11</span>) &#123;                <span class="comment">/*workder is the 11th to finish*/</span></span><br><span class="line">  cond_broadcast(mu, cond);         <span class="comment">/*inform the other 9 to wake up*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mutex_unlock(mu);</span><br></pre></td></tr></table></figure>
+<p>上面使用了条件变量。条件变量除了要和互斥锁配合之外，还需要和另一个全局变量配合(这里的num, 也就是装修好的房间数)。这个全局变量用来构成各个条件。</p>
+<p>具体思路如下。我们让工人在装修好房间(num = num + 1)之后，去检查已经装修好的房间数( num &lt; 10 )。由于mu被锁上，所以不会有其他工人在此期间装修房间(改变num的值)。如果该工人是前十个完成的人，那么我们就调用cond_wait()函数。<br>cond_wait()做两件事情，一个是释放mu，从而让别的工人可以建房。另一个是等待，直到cond的通知。这样的话，符合条件的线程就开始等待。</p>
+<p>当有通知(第十个房间已经修建好)到达的时候，condwait()会再次锁上mu。线程的恢复运行，执行下一句prinft(“drink beer”) (喝啤酒！)。从这里开始，直到mutex_unlock()，就构成了另一个互斥锁结构。</p>
+<p>那么，前面十个调用cond_wait()的线程如何得到的通知呢？我们注意到elif if，即修建好第11个房间的人，负责调用cond_broadcast()。这个函数会给所有调用cond_wait()的线程放送通知，以便让那些线程恢复运行。</p>
+<p>条件变量特别适用于多个线程等待某个条件的发生。如果不使用条件变量，那么每个线程就需要不断尝试获得互斥锁并检查条件是否发生，这样大大浪费了系统的资源。</p>
+<p><strong>3) 读写锁</strong></p>
+<p>读写锁与互斥锁非常相似。r、RW lock有三种状态: 共享读取锁(shared-read), 互斥写入锁(exclusive-write lock), 打开(unlock)。后两种状态与之前的互斥锁两种状态完全相同。</p>
+<p>一个unlock的RW lock可以被某个线程获取R锁或者W锁。</p>
+<p>如果被一个线程获得R锁，RW lock可以被其它线程继续获得R锁，而不必等待该线程释放R锁。但是，如果此时有其它线程想要获得W锁，它必须等到所有持有共享读取锁的线程释放掉各自的R锁。</p>
+<p>如果一个锁被一个线程获得W锁，那么其它线程，无论是想要获取R锁还是W锁，都必须等待该线程释放W锁。</p>
+<p>这样，多个线程就可以同时读取共享资源。而具有危险性的写入操作则得到了互斥锁的保护。</p>
+<p>我们需要同步并发系统，这为程序员编程带来了难度。但是多线程系统可以很好的解决许多IO瓶颈的问题。比如我们监听网络端口。如果我们只有一个线程，那么我们必须监听，接收请求，处理，回复，再监听。如果我们使用多线程系统，则可以让多个线程监听。当我们的某个线程进行处理的时候，我们还可以有其他的线程继续监听，这样，就大大提高了系统的利用率。在数据越来越大，服务器读写操作越来越多的今天，这具有相当的意义。多线程还可以更有效地利用多CPU的环境。</p>
+<p>(就像做饭一样，不断切换去处理不同的菜。)</p>
+<p>本文中的程序采用伪C的写法。不同的语言有不同的函数名(比如mutex_lock)。这里关注的是逻辑上的概念，而不是具体的实现和语言规范。</p>
+<p><strong>总结</strong></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">multiple </span>threads, <span class="keyword">multiple </span>stacks</span><br><span class="line"><span class="label">race</span> condition</span><br><span class="line"><span class="label">mutex</span>, condition variable, RW lock</span><br></pre></td></tr></table></figure>
+<h2 id="Linux_u8FDB_u7A0B_u95F4_u901A_u4FE1"><a href="#Linux_u8FDB_u7A0B_u95F4_u901A_u4FE1" class="headerlink" title="Linux进程间通信"></a>Linux进程间通信</h2><p>我们在Linux信号基础中已经说明，信号可以看作一种粗糙的进程间通信(IPC, interprocess communication)的方式，用以向进程封闭的内存空间传递信息。为了让进程间传递更多的信息量，我们需要其他的进程间通信方式。这些进程间通信方式可以分为两种:</p>
+<ul>
+<li>管道(PIPE)机制。在Linux文本流中，我们提到可以使用管道将一个进程的输出和另一个进程的输入连接起来，从而利用文件操作API来管理进程间通信。在shell中，我们经常利用管道将多个进程连接在一起，从而让各个进程协作，实现复杂的功能。</li>
+<li>传统IPC (interprocess communication)。我们主要是指消息队列(message queue)，信号量(semaphore)，共享内存(shared memory)。这些IPC的特点是允许多进程之间共享资源，这与多线程共享heap和global data相类似。由于多进程任务具有并发性 (每个进程包含一个进程，多个进程的话就有多个线程)，所以在共享资源的时候也必须解决同步的问题 (参考Linux多线程与同步)。</li>
+</ul>
+<p><strong>管道与FIFO文件</strong></p>
+<p>一个原始的IPC方式是所有的进程通过一个文件交流。比如我在纸(文件)上写下我的名字和年纪。另一个人读这张纸，会知道我的名字和年纪。他也可以在同一张纸上写下他的信息，而当我读这张纸的话，同样也可以知道别人的信息。但是，由于硬盘读写比较慢，所以这个方式效率很低。那么，我们是否可以将这张纸放入内存中以提高读写速度呢？</p>
+<p>在Linux文本流中，我们已经讲解了如何在shell中使用管道连接多个进程。同样，许多编程语言中，也有一些命令用以实现类似的机制，比如在Python子进程中使用Popen和PIPE，在C语言中也有popen库函数来实现管道 (shell中的管道就是根据此编写的)。管道是由内核管理的一个缓冲区(buffer)，相当于我们放入内存中的一个纸条。管道的一端连接一个进程的输出。这个进程会向管道中放入信息。管道的另一端连接一个进程的输入，这个进程取出被放入管道的信息。一个缓冲区不需要很大，它被设计成为环形的数据结构，以便管道可以被循环利用。当管道中没有信息的话，从管道中读取的进程会等待，直到另一端的进程放入信息。当管道被放满信息的时候，尝试放入信息的进程会等待，直到另一端的进程取出信息。当两个进程都终结的时候，管道也自动消失。</p>
+<p><img src="/images/14590056730715.jpg" alt=""></p>
+<p>从原理上，管道利用fork机制建立(参考Linux进程基础和Linux从程序到进程），从而让两个进程可以连接到同一个PIPE上。最开始的时候，上面的两个箭头都连接在同一个进程Process 1上(连接在Process 1上的两个箭头)。当fork复制进程的时候，会将这两个连接也复制到新的进程(Process 2)。随后，每个进程关闭自己不需要的一个连接 (两个黑色的箭头被关闭; Process 1关闭从PIPE来的输入连接，Process 2关闭输出到PIPE的连接)，这样，剩下的红色连接就构成了如上图的PIPE。</p>
+<p><img src="/images/14590056811596.jpg" alt=""></p>
+<p><strong>传统IPC</strong></p>
+<p>这几种传统IPC实际上有很悠久的历史，所以其实现方式也并不完善 (比如说我们需要某个进程负责删除建立的IPC)。一个共同的特征是它们并不使用文件操作的API。对于任何一种IPC来说，你都可以建立多个连接，并使用键值(key)作为识别的方式。我们可以在一个进程中中通过键值来使用的想要那一个连接 (比如多个消息队列，而我们选择使用其中的一个)。键值可以通过某种IPC方式在进程间传递(比如说我们上面说的PIPE，FIFO或者写入文件)，也可以在编程的时候内置于程序中。</p>
+<p>在几个进程共享键值的情况下，这些传统IPC非常类似于多线程共享资源的方式(参看Linux多线程与同步):</p>
+<ul>
+<li>semaphore与mutex类似，用于处理同步问题。我们说mutex像是一个只能容纳一个人的洗手间，那么semaphore就像是一个能容纳N个人的洗手间。其实从意义上来说，semaphore就是一个计数锁(我觉得将semaphore翻译成为信号量非常容易让人混淆semaphore与signal)，它允许被N个进程获得。当有更多的进程尝试获得semaphore的时候，就必须等待有前面的进程释放锁。当N等于1的时候，semaphore与mutex实现的功能就完全相同。许多编程语言也使用semaphore处理多线程同步的问题。一个semaphore会一直存在在内核中，直到某个进程删除它。</li>
+<li>共享内存与多线程共享global data和heap类似。一个进程可以将自己内存空间中的一部分拿出来，允许其它进程读写。当使用共享内存的时候，我们要注意同步的问题。我们可以使用semaphore同步，也可以在共享内存中建立mutex或其它的线程同步变量来同步。由于共享内存允许多个进程直接对同一个内存区域直接操作，所以它是效率最高的IPC方式。</li>
+</ul>
+<p>消息队列(message queue)与PIPE相类似。它也是建立一个队列，先放入队列的消息被最先取出。不同的是，消息队列允许多个进程放入消息，也允许多个进程取出消息。每个消息可以带有一个整数识别符(message_type)。你可以通过识别符对消息分类 (极端的情况是将每个消息设置一个不同的识别符)。某个进程从队列中取出消息的时候，可以按照先进先出的顺序取出，也可以只取出符合某个识别符的消息(有多个这样的消息时，同样按照先进先出的顺序取出)。消息队列与PIPE的另一个不同在于它并不使用文件API。最后，一个队列不会自动消失，它会一直存在于内核中，直到某个进程删除该队列。</p>
+<p>多进程协作可以帮助我们充分利用多核和网络时代带来的优势。多进程可以有效解决计算瓶颈的问题。互联网通信实际上也是一个进程间通信的问题，只不过这多个进程分布于不同的电脑上。网络连接是通过socket实现的。由于socket内容庞大，所以我们不在这里深入。一个小小的注解是，socket也可以用于计算机内部进程间的通信。</p>
+<p><strong>总结</strong></p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PIPE, FIFO</span><br><span class="line">semaphore, message queue, <span class="keyword">shared</span> memory; <span class="keyword">key</span></span><br></pre></td></tr></table></figure>
+<h2 id="Linux_u6587_u4EF6_u7CFB_u7EDF_u7684_u5B9E_u73B0"><a href="#Linux_u6587_u4EF6_u7CFB_u7EDF_u7684_u5B9E_u73B0" class="headerlink" title="Linux文件系统的实现"></a>Linux文件系统的实现</h2><p>Linux文件管理从用户的层面介绍了Linux管理文件的方式。Linux有一个树状结构来组织文件。树的顶端为根目录(/)，节点为目录，而末端的叶子为包含数据的文件。当我们给出一个文件的完整路径时，我们从根目录出发，经过沿途各个目录，最终到达文件。</p>
+<p>我们可以对文件进行许多操作，比如打开和读写。在Linux文件管理相关命令中，我们看到许多对文件进行操作的命令。它们大都基于对文件的打开和读写操作。比如cat可以打开文件，读取数据，最后在终端显示：</p>
+<pre><code>$cat test.txt
+</code></pre><p>对于Linux下的程序员来说，了解文件系统的底层组织方式，是深入进行系统编程所必备的。即使是普通的Linux用户，也可以根据相关的内容，设计出更好的系统维护方案。</p>
+<p><strong>存储设备分区</strong></p>
+<p>文件系统的最终目的是把大量数据有组织的放入持久性(persistant)的存储设备中，比如硬盘和磁盘。这些存储设备与内存不同。它们的存储能力具有持久性，不会因为断电而消失；存储量大，但读取速度慢。</p>
+<p>观察常见存储设备。最开始的区域是MBR，用于Linux开机启动(参考Linux开机启动)。剩余的空间可能分成数个分区(partition)。每个分区有一个相关的分区表(Partition table)，记录分区的相关信息。这个分区表是储存在分区之外的。分区表说明了对应分区的起始位置和分区的大小。</p>
+<p><img src="/images/14590056923433.jpg" alt=""></p>
+<p>我们在Windows系统常常看到C分区、D分区等。Linux系统下也可以有多个分区，但都被挂载在同一个文件系统树上。</p>
+<p>数据被存入到某个分区中。一个典型的Linux分区(partition)包含有下面各个部分:</p>
+<p><img src="/images/14590056997684.jpg" alt=""></p>
+<p>分区的第一个部分是启动区(Boot block)，它主要是为计算机开机服务的。Linux开机启动后，会首先载入MBR，随后MBR从某个硬盘的启动区加载程序。该程序负责进一步的操作系统的加载和启动。为了方便管理，即使某个分区中没有安装操作系统，Linux也会在该分区预留启动区。</p>
+<p>启动区之后的是超级区(Super block)。它存储有文件系统的相关信息，包括文件系统的类型，inode的数目，数据块的数目。</p>
+<p>随后是多个inodes，它们是实现文件存储的关键。在Linux系统中，一个文件可以分成几个数据块存储，就好像是分散在各地的龙珠一样。为了顺利的收集齐龙珠，我们需要一个“雷达”的指引：该文件对应的inode。每个文件对应一个inode。这个inode中包含多个指针，指向属于该文件各个数据块。当操作系统需要读取文件时，只需要对应inode的”地图”，收集起分散的数据块，就可以收获我们的文件了。</p>
+<p>最后一部分，就是真正储存数据的数据块们(data blocks)了。</p>
+<p><strong>inode简介</strong></p>
+<p>上面我们看到了存储设备的宏观结构。我们要深入到分区的结构，特别是文件在分区中的存储方式。</p>
+<p>文件是文件系统对数据的分割单元。文件系统用目录来组织文件，赋予文件以上下分级的结构。在硬盘上实现这一分级结构的关键，是使用inode来虚拟普通文件和目录文件对象。</p>
+<p>在Linux文件管理中，我们知道，一个文件除了自身的数据之外，还有一个附属信息，即文件的元数据(metadata)。这个元数据用于记录文件的许多信息，比如文件大小，拥有人，所属的组，修改日期等等。元数据并不包含在文件的数据中，而是由操作系统维护的。事实上，这个所谓的元数据就包含在inode中。我们可以用$ls -l filename来查看这些元数据。正如我们上面看到的，inode所占据的区域与数据块的区域不同。每个inode有一个唯一的整数编号(inode number)表示。</p>
+<p>在保存元数据，inode是“文件”从抽象到具体的关键。正如上一节中提到的，inode储存由一些指针，这些指针指向存储设备中的一些数据块，文件的内容就储存在这些数据块中。当Linux想要打开一个文件时，只需要找到文件对应的inode，然后沿着指针，将所有的数据块收集起来，就可以在内存中组成一个文件的数据了。</p>
+<p><img src="/images/14590057101211.jpg" alt=""></p>
+<p>inode并不是组织文件的唯一方式。最简单的组织文件的方法，是把文件依次顺序的放入存储设备，DVD就采取了类似的方式。但如果有删除操作，删除造成的空余空间夹杂在正常文件之间，很难利用和管理。</p>
+<p>复杂的方式可以使用链表，每个数据块都有一个指针，指向属于同一文件的下一个数据块。这样的好处是可以利用零散的空余空间，坏处是对文件的操作必须按照线性方式进行。如果想随机存取，那么必须遍历链表，直到目标位置。由于这一遍历不是在内存进行，所以速度很慢。</p>
+<p>FAT系统是将上面链表的指针取出，放入到内存的一个数组中。这样，FAT可以根据内存的索引，迅速的找到一个文件。这样做的主要问题是，索引数组的大小与数据块的总数相同。因此，存储设备很大的话，这个索引数组会比较大。</p>
+<p>inode既可以充分利用空间，在内存占据空间不与存储设备相关，解决了上面的问题。但inode也有自己的问题。每个inode能够存储的数据块指针总数是固定的。如果一个文件需要的数据块超过这一总数，inode需要额外的空间来存储多出来的指针。</p>
+<p><strong>inode示例</strong></p>
+<p>在Linux中，我们通过解析路径，根据沿途的目录文件来找到某个文件。目录中的条目除了所包含的文件名，还有对应的inode编号。当我们输入$cat /var/test.txt时，Linux将在根目录文件中找到var这个目录文件的inode编号，然后根据inode合成var的数据。随后，根据var中的记录，找到text.txt的inode编号，沿着inode中的指针，收集数据块，合成text.txt的数据。整个过程中，我们参考了三个inode：根目录文件，var目录文件，text.txt文件的inodes。</p>
+<p>在Linux下，可以使用$stat filename，来查询某个文件对应的inode编号。</p>
+<p><img src="/images/14590057224870.jpg" alt=""></p>
+<p>在存储设备中实际上存储为：</p>
+<p><img src="/images/14590057295211.jpg" alt=""></p>
+<p>当我们读取一个文件时，实际上是在目录中找到了这个文件的inode编号，然后根据inode的指针，把数据块组合起来，放入内存供进一步的处理。当我们写入一个文件时，是分配一个空白inode给该文件，将其inode编号记入该文件所属的目录，然后选取空白的数据块，让inode的指针指像这些数据块，并放入内存中的数据。</p>
+<p><strong>文件共享</strong></p>
+<p>在Linux的进程中，当我们打开一个文件时，返回的是一个文件描述符。这个文件描述符是一个数组的下标，对应数组元素为一个指针。有趣的是，这个指针并没有直接指向文件的inode，而是指向了一个文件表格，再通过该表格，指向加载到内存中的目标文件的inode。如下图，一个进程打开了两个文件。</p>
+<p><img src="/images/14590057435416.jpg" alt=""></p>
+<p>可以看到，每个文件表格中记录了文件打开的状态(status flags)，比如只读，写入等，还记录了每个文件的当前读写位置(offset)。当有两个进程打开同一个文件时，可以有两个文件表格，每个文件表格对应的打开状态和当前位置不同，从而支持一些文件共享的操作，比如同时读取。</p>
+<p>要注意的是进程fork之后的情况，子进程将只复制文件描述符的数组，而和父进程共享内核维护的文件表格和inode。此时要特别小心程序的编写。</p>
+<p><strong>总结</strong></p>
+<p>这里概括性的总结了Linux的文件系统。Linux以inode的方式，让数据形成文件。</p>
+<p>了解Linux的文件系统，是深入了解操作系Linux原理的重要一步。</p>
+<h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ul>
+<li><a href="http://www.cnblogs.com/vamei/archive/2013/03/03/2871198.html" target="_blank" rel="external">Linux 常用命令</a></li>
+<li><a href="http://www.cnblogs.com/peida/archive/2012/12/05/2803591.html" target="_blank" rel="external">每天一个linux命令目录</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>这篇日志来自 <a href="http://www.cnblogs.com/vamei">Vamei 博客</a> 中的系列文章，把一些基本的内容做了整合，方便查阅。</p>]]>
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://wdxtub.com/tags/Linux/"/>
+    
+      <category term="Vamei" scheme="http://wdxtub.com/tags/Vamei/"/>
+    
+      <category term="概念" scheme="http://wdxtub.com/tags/%E6%A6%82%E5%BF%B5/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[第十一周 - 声律启蒙]]></title>
@@ -2377,99 +2985,6 @@ foo
       <category term="游戏" scheme="http://wdxtub.com/tags/%E6%B8%B8%E6%88%8F/"/>
     
       <category term="足球" scheme="http://wdxtub.com/tags/%E8%B6%B3%E7%90%83/"/>
-    
-      <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[游戏发展史 - Blizzard]]></title>
-    <link href="http://wdxtub.com/2016/03/20/game-history-blizzard/"/>
-    <id>http://wdxtub.com/2016/03/20/game-history-blizzard/</id>
-    <published>2016-03-20T14:07:28.000Z</published>
-    <updated>2016-03-20T14:29:38.000Z</updated>
-    <content type="html"><![CDATA[<p>暴雪的大名已如雷贯耳，虽然现在也面临着一些困难，但是回顾往昔，光芒依旧耀眼。</p>
-<a id="more"></a>
-<hr>
-<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>就读于加州大学洛杉矶分校的迈克·默汉曾经对同学这样恶作剧：当艾伦·艾德涵暂时离开电脑时，默汉迅速把艾伦的电脑密码改成了 JOE，毫不知情的艾伦回来输入密码，竟然成功登陆了。这时轮到默汉大吃一惊，艾德涵究竟是怎么做到的？于是他招认了自己的恶作剧，然后请教艾德涵是如何破解的，然而，后者的惊讶程度丝毫不亚于默汉，他不过是输入了自己的密码而已。默汉终于明白了其中关键：由于机缘巧合，艾德涵自己的密码也刚好是 JOE。此后两人成为挚友，他们关系之好，最终又成为商业上的合作伙伴，之后20年中他们的工作室制作了数十款精品游戏，不仅成为游戏史上最伟大的传奇之一，更晋升为行业巨头，屹立于整个娱乐产业。他们的公司如此受欢迎，甚至拥有自己的年度大会。且不论两人是否还把 JOE 作为密码，在产品制作的完美程度和持续的卓越方面，世界上几乎少有同行能够同暴雪娱乐并驾齐驱，这是毋庸置疑的。</p>
-<p>毕业之际，艾伦·艾德涵觉得这是实现理想的最佳时机，他热衷玩游戏，为何不以制作游戏为业呢？但是他不甘心在大公司当低级程序员，而是想自己当老板，自己决定工作计划。艾德涵决定创立自己的公司，于是他联系迈克·默汉，邀请他入伙，同时还联系了另外一名同学弗兰克·皮尔斯。</p>
-<p>【弗兰克·皮尔斯】我与艾伦通过熟人认识，当时很凑巧，因为我确实很想制作游戏，觉得是一项很酷的事业，却苦于不知道如何着手，而艾伦对于自己想做的事情有着明确计划和确切的愿景，他想做的事刚好也是我感兴趣的，因为我少走了很多弯路，我们能够相遇是很幸运的。</p>
-<p>【迈克·默汉】公司成立的第一天我才和弗兰克首次见面，当时我正在说话，一个陌生人出现了，于是我闭住了嘴，然后就这么结识了。</p>
-<p>1991年2月8日，三人在加州科斯塔梅萨建立了他们的工作室『硅与神经键Silicon&amp;Synapse』，艾德涵担任总裁，默汉担任副总裁，皮尔斯则是程序员。他们决心不紧要制作出伟大的游戏，更要在其过程中享受到乐趣。</p>
-<p>【弗兰克·皮尔斯】其实当初我和迈克都不太相信自己的公司能够这么成功，但是艾伦充满激情，积极乐观，他一直以为，如果几个聪明的头脑集思广益，自然能找出最正确的做事方式，无论是制作游戏还是别的。艾伦做事的原则是从不懈怠，他坚信只要大家投入时间精力，就没有克服不了的难关。艾伦说过，制作游戏并非火箭科技那样高深，只要我们几个聪明人齐心协力，也能同顶级公司一决高下。</p>
-<p>当年他们便崭露头角，在 Commodore64平台早期游戏《毁灭赛车》的启发下，1991年他们为超级任天堂这个新机种开发了《RPM 赛车》。『硅与神经键』如今成为第一家为超任开发游戏的美国工作室，这是个良好的开端。1992年略有不同，这一年他们没有开发原创游戏，而是把已经把发行的游戏移植到其他平台。例如他们把《指环王》移植到 Amiga 平台，《战斗国际象棋》移植到 Windows 等等。游戏移植并非什么激动人心的工作，但报酬不错。原创游戏的开发无疑还是他们的热情所在，同年，硅与神经键在许多平台上发行了《失落的维京人》，在略为老套的剧情中，三名维京人主角被邪恶的 Tomator 吸入太空船中，必须尽力逃脱。作为一款平台跳跃游戏，本作加入了独一无二的要素，玩家能在三名维京人中任意切换，利用每个角色独有的能力来解开谜题。这是一款单人操纵多角色的游戏，通过杰出的艺术设计和幽默感，硅与神经键独树一帜的个性和卓越的制作水平得到了首次体现，这些品质而后都成为了暴雪的代名词。</p>
-<p>【弗兰克·皮尔斯】作为我们的第一款完全原创游戏，《失落的维京人》有着特殊意义，开发过程中我们都很开心，学到了很多游戏设计的经验以及让玩家通过重复完成动作来实现目标的重要性。《失落的维京人》受欢迎程度之高，在街上遇到熟人都会问今天你玩了吗？这个游戏优秀之处在于它以难以阐明的魅力牢牢吸引了大众，太酷了。</p>
-<p>《失落的维京人》成为工作室早期作品的典型，并在1995年出品了续作。1993年《摇滚赛车》在超任和世嘉上推出，硅与神经键的名声渐响，同年他们获得《电子游戏》杂志办法的最佳软件开发商奖项。麻烦的是，工作室的名字不太到位，硅与神经键原本用来象征科技和创造力的结合，然而合作的商家中没有一个知道神经键是个啥，名字起得让人疑惑不解，这对新生企业不利。于是他们改名混沌工作室，希望借此被更多人熟知。此外还有更大的问题接踵而来：首先，尽管成员都是凭借兴趣爱好走到一起，工作氛围却一点都不轻松。</p>
-<p>【弗兰克·皮尔斯】我记得在创立之初自己特别拼命，每天都超时工作，一直持续几周，与当时相比，现在的工作规划实在太轻松了，在来到硅与神经键之前我从事航空业，早晨7点就上班，转行到游戏业之后我习惯不改：早上7:00-7:30到公司，埋头工作10到12小时之多。</p>
-<p>【迈克·默汉】7点上班对我来说是天方夜谭，但是我加夜班到很晚。</p>
-<p>火上浇油的是，虽然取得一些成绩，他们在财务方面却很困难。尽管只有15名员工，创始人们却不得不透支之际的信用卡以支付工资，有时候甚至要啃老。当父母的资助也不再可行时，他们知道必须痛定思痛了。1994年，混沌工作室开始对两份并购提议作出正式考量，一份来自大发行商 Interplay公司，另一份来自教育软件开发商戴维斯及联营公司。起初，二选一的答案看似毫无悬念，新兴企业应当寻求行业巨鳄的庇护，然而再三考虑后，他们意识到要加入 Interplay 就得甘当一枚不起眼的螺丝钉，失去自主权，相反戴维斯及联营公司在游戏业初来乍到，因此在产品开发方面愿意给予工作室全面自主。面对两难抉择，他们最终在业界菜鸟一边压下了赌注，最终戴维斯公司以一千万美元并购了混沌工作室，这对于当时的他们无异于雪中送炭。</p>
-<p>【迈克·默汉】戴维斯的这次并购极为关键，它加速了我们的成长。公众所不了解的是，直到这次并购之前我们的预算一直很紧张，当时办公室甚至没有局域网，大家需要轮流用电脑等等。我们希望挺过来之后，能够实现资金自主和自主发行产品。并购后再也不用担心发不出工资，还有了新的高速局域网，我们终于能真正专注到制作游戏上。</p>
-<p>当一切趋于稳定，他们发现不能再用混沌这个名字，商标权已经归属另一家软件公司，他们必须再度改名。几乎选定为食人魔工作室后，又被戴维斯的大老板否决，最后艾德涵翻字典找到了七个备选词，长期讨论后敲定了一个既酷又得到管理层首肯的名字，就是暴雪娱乐。即使在发展之初，因为不愿把自己局限到一种媒体，暴雪公司一开始就选定『娱乐』而不是『游戏』这个词，他们从不缺乏雄心壮志。同年，改头换面的暴雪娱乐受到发行商 Sunsoft 委托，将漫画史上最重要的大事件《超人之死》改编成游戏，8月《超人浴火重生》在超任上发行。这是一款简单的横版过关游戏，不过主角可是超人。游戏终章里主角没有打败最终 boss，而是同归于尽，之后玩家控制剩下的四名超人之一重新游戏，只有在五名超人都通关后才能看到真正结局。《超人浴火重生》这款作品无愧于暴雪公司响当当的名号，创立仅三年，他们就被娱乐界最大的巨头之一点名为其制作游戏。九月，暴雪公司在超任和 DOS 平台吓发布了一款新的原创射击动作游戏《黑色荆棘》。为了使人物动作尽可能逼真，工作人员把弗兰克·皮尔斯的动作拍摄下来，再把录像转化为游戏画面，这一技术被称为 Photoscoping。《黑色荆棘》同样以特立独行的艺术风格和怪诞幽默著称，在逐步形成的暴雪风格上又跨出了一步。至此1994年重大事件不断，公司被并购后又更名，其发行的两款游戏，一款以家喻户晓的超人作为题材，另一款则是原创的《黑色荆棘》，小规模的发行商能做到这份上，无疑是硕果累累。事实上他们远未满足，还计划在圣诞节发布一款小作品——《魔兽争霸》为94年画上完美句号。</p>
-<p>早在1992年，Westwood 工作室发行了《沙丘魔堡2》这款战略游戏，游戏要求玩家利用资源发展建筑，而后通过建筑生产单位来与敌人作战，本作特点如此鲜明，最终发展成全新的游戏类型，称为即时战略或 RTS。该作算是小有收获，但是直到1994年，还没有一款跟风作品出炉。暴雪公司却别出心裁，要另辟蹊径。</p>
-<p>【迈克·默汉】《沙丘魔堡2》问世时我们觉得大为震撼，感觉这种游戏题材真是酷毙，沙丘2仅限单人，我们就想，即时战略中如果能多人对战岂不是碉堡了。当然，那时我们都局限在魔幻题材下，专注魔幻30年可是我们的成功秘诀啊。</p>
-<p>考虑到即时战略游戏的复杂性不适合手柄，《魔兽争霸》成为暴雪公司第一款 PC 专属作品，这也是他们首款自主发行的游戏，同时利用戴维斯和联营公司已然发展成熟的销售网络。游戏中两个种族的平衡性近乎完美，这是因为双方本质上一样，除少许例外，每个种族的攻击力和血量都相等。尽管如此，游戏画面堪称美轮美奂，魔幻背景的情节也是引人入胜，此外更有局域网多人对战模式，也允许技术宅们采用 IP 直连。尽管有这些限制，游戏引发的狂热对战浪潮真正是前所未有，作为沙丘2之后仅有的一款即时战略游戏，市场前景无法估量。《魔兽争霸：兽与人》一上市便受到欢迎，销售业绩颇佳，虽然算不上里程碑式的成功，但上级公司戴维斯即联营公司已经为续作开了绿灯。暴雪公司如今算是走上了正轨，有足够的资金进一步发展并逐步拥有了粉丝群，更重要的是，他们有着完全的创造自主权，这一切，仅仅在四年内就已经做到了。《魔兽争霸》问世后，他们又信心续作能更上一层楼，其实结果让他们自己都吃惊。</p>
-<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>从加州大学洛杉矶分校毕业后，三个好朋友决定放手一搏成立自己的游戏公司。『硅与神经键』在超任上出品的《RPM 赛车》获得成功，并成为第一家为该平台开发游戏的美国公司。在制作几部移植作品之后，他们继而推出了《失落的维京人》和《摇滚赛车》等原创作品。1994年，这家新兴企业经历了不少变动，包括被戴维斯及联营公司并购，以及更名为暴雪娱乐，除了平台动作游戏《黑色荆棘》外，暴雪还推出了《魔兽争霸：兽与人》，魔兽作为整个即时战略类型游戏的第二款作品，更引入了前所未有的多人游戏模式，该作在评论界广受好评，全球销量也不错，暴雪公司逐渐得以立足，《魔兽争霸》成为了公司自主发行的首款游戏。时值1995年，暴雪在计划开发数款续作的同时，也在着手扩展公司的发行业务，期间暴雪逐渐脱颖而出，成为行业的佼佼者。</p>
-<p>1994年暴雪再度接受委托，制作一款 DC 漫画超级英雄题材的游戏，《正义超人大对决》把漫画书的偶像英雄们带进格斗世界，此时格斗游戏作为新的游戏类型很受欢迎。发行商 Acclaim 召集了数家开发商共同开发，其中暴雪负责超任版本的制作，世嘉版则由位于红木城的 Condor 娱乐工作室开发。尽管两个小组之前没有合作经验，暴雪的 CEO 艾伦·艾德涵在一次大会上同 Condor 的几名负责人偶然会过面。之后在1995年1月，暴雪公司接到了一个意料之外的电话，是 Condor 打来的，后者正在开发一款完全原创的新游戏，想要找发行商。他们找遍了所有的大发行商，甚至连小一些的发行商也找过，但都无功而返，发行商们都认为 Condor 一定是秀逗了：这家工作室毫无 PC 平台的经验，却妄想开发一款史诗题材的粘土动画式回合制动作 RPG。如今 Condor 小组饥不择食，转而向在大会上仅有一面之缘的暴雪求助。暴雪在这个项目上看到了一些与众不同的东西，他们认为将有机会出品一款前所未有的崭新佳作，最后他们同意签约，Condor也有幸成为第一家为发行商暴雪制作游戏的公司，这款游戏的名称暂定为《暗黑破坏神》。</p>
-<p>在 Condor 权力着手开发的同时，暴雪的《失落维京人2》也推出了，三名勇敢的主角再次被 Tomator 外星人绑架，不过这次他们学会了用外星人的武器武装自己，甚至还有龙和狼人加入队伍。从游戏性来说角色数量和能力都增加了，不过3名角色的限制还在。2代虽然没有带来前作那样的轰动，却也受到了好评。此时暴雪正在开发另一款续作，这是一款各方面都超越前作的游戏。《魔兽争霸2：黑潮》于1995年12月出品，表面看来同初代极为相似，都是魔幻背景的即时战略游戏，有着相似度颇高的两个种族，然而通过对几百个细节的关注，续作真正将该模式提升到了完美的极致。</p>
-<p>【弗兰克·皮尔斯】可以说，魔兽2是第一款真正体现出暴雪精益求精风格的作品，通过千锤百炼制作出一款精品。虽然之前的作品也并非泛泛之辈，但是此时我们才真正展现了才华。</p>
-<p>【迈克·默汉】我同意，并且魔兽2可以说是各方面都更进一步，游戏人数增加，解析度提高，有海陆空三军。我们在魔兽上投入已经一年，因而小组很清楚自己在开发时应该要做什么。</p>
-<p>在《魔兽2》的许多改进中，对 RTS 类型最具重要意义的是持续存在的战争迷雾。在之前的即时战略中，地图区域探索过之后就持续可见了，魔兽2则不同，只有当玩家的单位正位于一个区域时，才能看到该处的状况，侦查因而成为对战中的关键之一，该设计被战略类游戏广泛采用。在本作中，暴雪的幽默和个性发展成了一种标志性的特色，无论是史诗剧情，还是单位的回应方式都大放异彩。游戏中充满生机的世界观，加上独有的个性从此成为暴雪与众不同的标志。另外2待最显著的改进都在多人游戏方面，对战不仅仅局限于一对一，分组对战中每组可容纳多达4名玩家，由此引入了大规模混战以及惊人的战略复杂性。然而在连接方式上，仍然仅限于局域网或 IP 直连。不过年内早些时候，几名爱好者编写了外挂程序，使得游戏跨域局域网在互联网上对战成为可能，这个程序名叫 Kali。这款并非暴雪操刀的第三方程序为魔兽2推波助澜，使其获得了空前的成功。</p>
-<p>【弗兰克·皮尔斯】魔兽争霸一代很酷很有乐趣，但是在玩家社群方面颇受限制。我认为凭借互联网发展起来的魔兽2玩家群体对我们至关重要，他们的忠诚是无价的。</p>
-<p>此时还有一场对战正在如火如荼地进行，这就是暴雪公司和即时战略元祖 Westwood 之间的较量。仅在魔兽2发售前几个月他们推出了《命令与征服》，另一款制作精良的战略游戏大作。两款近似的大作接踵而至，使得 RTS 类型空前火热。当然两款游戏各有其重视的拥趸群，互联网上也掀起一场关于孰优孰劣的大论战。至今不变的只有一点，对于狂热的粉丝来说，萝卜白菜各有所爱这种事情真是让人难以接受啊。当然，多亏这些唇枪舌战，两款游戏更为引人注目了。在暴雪方面，魔兽2的销量继而暴涨，仅在4个月内就售出50万份，对于1995年的一家小工作室来说，这是惊人的成绩，最终该作的销量甚至超过了神器的100万份，在当时少有游戏能享受此殊荣，对于10个月的开发期来说，这算是挺不错了。</p>
-<p>在魔兽2已经颇具人气后，暴雪决定趁热打铁出资料片，由于他们自己正忙于新项目抽不开身，便将《黑暗之门》的开发交给 Cyberlore 工作室，后者于1996年完成了制作。同时 Condor 正在不遗余力进行《暗黑破坏神》这款回合制粘土动画动作游戏的制作，并取得了不错的进度。然而，新的发行商暴雪坚持要让他们做出一些改动：首先，要求他们把粘土动画改为3D 动画，此时3D 正在迅速崛起成为未来的新标准，而粘土动画这种方式也太怪异了；此外暴雪还希望 Condor 将回合制改成即时。Condor 起初的反应是抗拒，因为目前为止的制作都是围绕回合制来进行的。</p>
-<p>【弗兰克·皮尔斯】两个工作室之间的沟通有了障碍，当时同他们工作室的远距离交涉是个很大的挑战，我们自己还很稚嫩，在项目管理方面初来乍到，他们也是头一次涉足游戏制作业，总之加上地理上的距离，使得我们的合作颇具挑战性。最后他们同意制作一份技术掩饰，测试实际的游戏效果。</p>
-<p>Condor 立即就意识到采用即时方式后，游戏变得更为引人入胜了，于是他们把即时方式彻底应用到游戏中。很快暴雪就意识到，Condor 的这个项目将会是个惊天动地的大作，他们不满足于仅仅做发行商了，他们要自己拥有《暗黑破坏神》。</p>
-<p>【迈克·默汉】Condor 正在开发《暗黑破坏神》并且进展相当顺利，彼此合作也很愉快，我们想把他们吸收过来成为兄弟工作室，于是同联营公司即我们的母公司提出了这个想法，他们也很有兴趣，于是不久后 Condor 成为了暴雪北方。</p>
-<p>在1996年E3上，该作品终于向公众展示了庐山真面目并引起了很大反响，这种新颖的游戏设计真的是前所未见。凭借魔兽2，暴雪已经成为世界上最炙手可热的开发商之一，在同年 E3上，暴雪公司还有两项重大事件要发表：首先是 Battle.net 这个免费的在线多人游戏服务平台将同《暗黑破坏神》捆绑提供，玩家们无需再从 Kali 等第三方软件处寻求帮助。暴雪开始提供自己精心打造的联网服务，以供玩家通过互联网进行随机多人游戏。其次发表的第二项内容就不怎么让人惊喜了，这就是『无聊的魔兽争霸科幻山寨版』，连名字也如出一辙——《星际争霸》。最先暴雪的展台上有3个屏幕用于《暗黑破坏神》，另外三个用于《星际争霸》，到了展会结束时，星际被缩减到只有一个屏幕了。星际同去年的魔兽2相比，画面上没什么进步，游戏方式也是平淡无奇，当暴雪北方正在着力制作一款前所未有的创新作品的同时，他们的南方兄弟小组却似乎在用旧创意炒冷饭。展会后，暴雪必须要决定《星际争霸》何去何从，游戏已经有了相当的开发进度，而得到的反响却只能说差强人意。</p>
-<p>【迈克·默汉】那届 E3有很多开发中的即时战略游戏参展，全都令人耳目一新，我们回到公司后开始讨论 RTS 类型的现状以及发展方向，并且意识到应该在《星际争霸》上做到百尺竿头更进一步。</p>
-<p>最后他们做出了艰难的决定，将目前的进度放弃从头开始制作，而不是勉强发布一款平庸作品。之后几年内《星际争霸》从人们视野中消失了。与此同时《暗黑破坏神》却充分吸引了公众的关注，大有不征服市场不罢休之势，然而为了确保品质，暴雪未能按计划在1995年圣诞假日发售游戏。</p>
-<p>【弗兰克·皮尔斯】《暗黑破坏神》的收尾工作到了关键时期，暴雪南方的员工们也临时到北方分部协助工作，而 Battle.net 的开发则在暴雪南方这边进行，我们在 Battle.net 平台的开发和暗黑的开发之间协调，并为即将发售的游戏提供支持。实际上《星际争霸》小组的大部分成员也被我们指派去协助暗黑的开发。人们所不知道的是，在《暗黑破坏神》中加入 Battle.net 支持这个决定是在游戏快接近完成时才做出的，因为这个点子太新，在上面投入的时间也短。</p>
-<p>整个 Battle.net 的开发只用了几个月，实际上游戏于12月26日开发完成，刚好比圣诞节晚了一天，最终，游戏于1997年1月2日发售并引起了巨大的轰动。《暗黑破坏神》中的 RPG 升级体系和动作要素相辅相成，无疑是最完美的游戏设计，通过史诗般的剧情来完美衬托游戏过程，构成了引人入胜的世界观，更别处心裁的是，每个玩家经历的游戏体验都不同。这全靠随机声称的地牢设计，使得玩家每次冒险时见到的地形、物品和怪物都不一样，暗黑由此获得了杰出的重复可玩性，对于设计一成不变的游戏来说，这是不可企及的。此外玩家还能同他人结伴进入地牢冒险，游戏支持多人合作模式，最多同时支持4名英雄联手对敌。遗憾的是，在合作模式中没有关闭互伤这一选项，杀死盟友这种事情时有发生，这导致不少玩家故意杀光盟友以博得一笑，多么的邪恶啊！</p>
-<p>除去游戏本身优越的品质外，《暗黑破坏神》也是暴雪采用专门小组制作剧情动画的首款作品，后者的任务是制作高品质预渲染的过场动画，为暴雪的游戏增光添彩，使其在同行间脱颖而出。以今天的眼光看这些开场画面颇为过时了，但它们代表着暴雪公司另一个标志性特色的开端。以上这些结合在一起，为暴雪公司带来又一款里程碑式的成功作品。《暗黑破坏神》最终销量也超过了100万，这是暴雪在魔兽2之后紧接着第二次实现这一成绩，当时能达到这个销量的游戏寥寥无几。暴雪公司如今已跻身整个行业最杰出的开发商之列，他们的游戏无论在制作精美度、表现方式和个性上都难有人与之并驾齐驱。他们当前唯一的问题就是那款舅舅不疼姥姥不爱的『魔兽科幻版山寨』，改进游戏质量的尝试也已停滞。现在的问题是：《星际争霸》究竟能否脱胎换骨，成为不愧于暴雪大名的又一款佳作？</p>
-<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>1997年末的暴雪正是鸿运当头，从三名怀着梦想的毕业生这一平凡的起点，发展到连续出品两款销量百万的游戏，公司获得了空前成功。《魔兽争霸2》作为即时战略游戏有着热衷于对战的庞大拥趸群，而《暗黑破坏神》中角色扮演和动作珠联璧合的形式堪称前所未有。《魔兽争霸2》由位于加州欧文的暴雪总部（暴雪南方）出品，而《暗黑破坏神》则由位于圣马特奥的首家分公司暴雪北方制作，凭借两款大作和两家颇具实力的公司，暴雪似乎已然屹立 PC 市场。然而问题来了，欧文团队当前的项目在首次测试中遭到失败，除了游戏背景设定在太空之外，这款新作其实与《魔兽争霸》八九不离十，甚至名字听起来也相当一致——《星际争霸》。1996年 E3上的玩家和评论家们对这款新作丝毫不感冒，不过凭借着麾下的两款超级大作，暴雪能够调用足够的人力物力重新来过。所以，当北方小组开始着手开发《暗黑破坏神2》的时候，南方小组则推倒了《星际争霸》的全部进度，从零开始设计。</p>
-<p>《暗黑破坏神》广受欢迎，资料片也毫无悬念地推出了，不过如同魔兽的资料片《黑暗之门》，《地狱火》并非由暴雪自己操刀制作，而是外包给 Synergistic 软件公司并于1997年11月发行。暴雪北方手头有更为紧要的工作：出品一款完整的续作，此时离二代问世还有数年。而南方小组的《星际争霸》终于开始收尾，并在1998年3月面世，这款游戏的里里外外都被重新制作一遍，从而在外观、游戏体验和手感上都焕然一新。其本质仍然是一款围绕资源、建筑和单位的即时战略游戏，但却有着革命性的彻底改变：三大种族不再彼此雷同，而是每个都独一无二，一个种族的玩法要套用到另一种族就完全行不通，这使得任何一场赛事中的战略以指数级复杂化，根据对手种族的不同，玩家必须要采取不同的打法，此外《星际争霸》的故事叙述水平更是登峰造极。《魔兽争霸》的剧情引人入胜，但仅限在人物之间的过场部分由旁白来讲述，兽族和人族的剧情体验明显一分为二，并无关联。《星际争霸》与此相反，整个剧情一气呵成，从人族开始，接着是残暴的虫族，最后以高等外星文明神族收尾，故事通过形形色色的角色之间的互动来讲述，其中许多角色都可以在任务中实际操作，这些角色在任务过程中甚至还会继续交流。换言之，剧情叙述和游戏过程一起构成了天衣无缝的娱乐体验，没有任何一款即时战略游戏能够与之媲美。</p>
-<p>【迈克·默汉】我们认为背景故事对于玩家的投入度相当重要，首先要让玩家觉得自己在游戏中的行为师出有名，但最重要的是，暴雪的核心价值是游戏性第一，游戏性就是一切东西的核心，从游戏性角度出发，如果一种设计比其他设计更有趣，我们就会尝试从剧情方面来迎合游戏性的需求。</p>
-<p>此外还有一个卖点，就是所谓多人对战，《星际争霸》全面支持暴雪的 Battle.net 服务，用于多人对战，尽管理论上同《魔兽争霸2》相比没有太多改变，三个截然不同的种族再加上多姿多彩的战略深度，在多人游戏中得以发挥到极致。《星际争霸》让人真正废寝忘食，到了史无前例的地步，那么销量究竟如何呢？可以这么说《魔兽争霸2》和《暗黑破坏神》各发行一百万份实现了巨大的商业成功，《星际争霸》也卖出一百万份，而且仅仅是在韩国这一个国家里。在韩国，一百万的销售量已经占到其人口的百分之二，再算上全球其他市场的销量，《星际争霸》一跃成为有史以来最畅销的 PC 游戏之一。</p>
-<p>专业游戏联盟如雨后春笋般诞生，《星际争霸》也成为运动赛事中的竞技项目，问世十年后仍经久不衰——对于瞬息万变的游戏业来说，十年就是永恒。在韩国《星际争霸》至今仍然是一项重大观赏性运动，与传统运动分庭抗礼。最后《星际争霸》的累计销量达到了惊人的1100万份。在此之前暴雪已经跻身世界最成功的游戏开发商之列，现在更是天下无敌，从剧情到手法，再到表现形式，他们重新定义了战略游戏，甚至整个游戏媒介本身，该游戏影响之深远，甚至在1999年5月，发现号航天飞机执行首次国际空间站对接任务时也携带了一份。暴雪本可以做一部平庸作品了事，但凭借着对完美的执着，《星际争霸》成为了永恒经典。当然其资料片也很快跟进，如暴雪早期其他游戏一样，前两款资料片由第三方制作，由 Aztec New Media 制作发行的《起义》讲述了同主线剧情平行发展的分支故事，三个种族各有一套战役；《反攻》由 Stardock 开发，其本质基本相同，也是每个种族一套新战役，两套资料片在评论界波澜不惊，发行量也不大，如今它们已经被遗忘，无法购买得到。</p>
-<p>终于在1998年11月，《星际争霸》的最后一款资料片问世，并引起了前所未有的巨大轰动。《母巢之战》从每个方面对游戏做出了核心上的彻底改进，非但延续了剧情，还引导其进入了全新的领域，同时针对多人对战进行了全新设计和扩充。该资料片显然不是由第三方制作，而是由暴雪自己在 Sapphire 公司的协助下亲自操刀完成。《星际争霸》的资料片中，只有《母巢之战》至今还广为流传。其后很长一段时间内，星际系列都没有发行续作。</p>
-<p>暴雪接二连三的辉煌令人头晕目眩，人们往往忽视了他们的失败作品。《魔兽争霸：氏族之王》计划成为一款关于萨尔个人经历的冒险游戏，讲述一名逃跑的兽族奴隶如何陈伟氏族之王的故事。不幸的是，尽管部分暴雪员工对该作抱有相当的热情，其他人却不以为然，他们认为该游戏不符合暴雪的黄金标准，而且在98年2D和冒险游戏已经倍受冷落，另一个障碍源于该作的开发商 Animation Magic 远在俄罗斯，造成暴雪和他们之间的沟通困难，更糟的是当这款游戏正准备发行时，LucasArts 抢先发布了《猴岛小英雄3》和《冥界狂想曲》，暴雪意识到这两款优秀作品真正将冒险类游戏发挥到了极致，远远超过《氏族之王》。这是相当严峻的，如果他们迎头而上，照原计划发行游戏，玩家们会感觉这只是暴雪的一部跟风之作。最后的消息是，在离预订完成时间只有3个月的时候，暴雪取消了这个项目，他们再度贯彻了要么不做，要么做到完美的准则。</p>
-<p>1998年还有一项重大改变：最早提出成立工作室的共同创始人艾伦·艾德涵辞去了暴雪总裁一职，作为总裁他一直从事商务领域的工作，因为期望回归到游戏制作上来，于是他和另一位创始人迈克·默汉交换了职位，后者至今扔担任该职。1999年暴雪公司没有大的动作，没有发行作品，甚至《暗黑破坏神2》也只预订在圣诞假期旺季发行，其延迟发售无疑让拥趸失望，然而此时人们已经习惯了暴雪为持续改进作品而跳票的方式，9月他们宣布《魔兽争霸3》即将发表，该作集公司最擅长的两种游戏类型于一身：即时战略和角色扮演，即时对暴雪来说这也是很激进的。游戏有六个种族，游戏视角始终以主角的英雄单位作为核心，类似《暗黑破坏神》，其他单位根据英雄发出的指令动作，而不是由玩家直接操控。游戏将采用无缝衔接的场景，由角色之间的对话场景来代替载入画面，除了期待暴雪下一部完美大作之外，粉丝们别无他求，全盘接受。然而有个小问题：在公开宣布后，暴雪制作了游戏概念的内部试玩版——效果连他们自己都讨厌。着手实验了自己的想法后，他们在意识到它有多糟糕。于是在2000年的 E3上暴雪发表了爆炸性消息：他们已经在着手全面改变《魔兽争霸3》，在保持英雄单位重要性的同时，使其更加接近传统即时战略，这也遭到了反对，因为这代表又一次延期，同时给人一种暴雪拒绝创新，却返回到保守安全领域的感觉。</p>
-<p>人们再次议论纷纷，暴雪的游戏虽然品质优良却缺乏根本的创新，然而仅在一个月后暴雪就挽回了名声：2000年6月《暗黑破坏神2》终于问世，在最后一年里，初代的制作组暴雪北方日复一日埋头苦干，只为实现让续作在所有方面都超越前作的初衷。《暗黑破坏神2》有着更丰富的剧情，更庞大的关卡，更多的职业，全新的技能和各式各样种类繁多的武器装备，如此多的游戏内容的制作使得小组成员几乎崩溃，但最后证明这是值得的。《暗黑破坏神2》是一款当之无愧的动作游戏经典，游戏主角在地狱烈焰中的英勇征战令人热血沸腾，游戏当然不是没有缺点的，同4年前的初代相比，画质并无飞跃，游戏首发的几周内 Battle.net 服务也经常崩溃。但游戏在直观、流畅的操作和令人废寝忘食的游戏性方面脱颖而出，以上都是瑕不掩瑜。《暗黑破坏神2》成为了暴雪迄今销售最快的游戏，问世仅一个月就卖出了一百万份，本作经常被誉为游戏史上最优秀的动作 RPG，毋庸置疑的说，暴雪公司现在已经是全世界最受推崇最成功的游戏开发商之一，他们发行的每一款作品都能轻松达到百万销量，并随即成为游戏业的经典作品。暴雪已然称霸了90年代，而新世纪00年代也将成为他们的囊中之物，此时距暴雪成立甚至还不到十年。</p>
-<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><p>自90年代起的10年间，暴雪娱乐从起初的无名小卒发展为如今的 PC 游戏界大亨，早起的《魔兽争霸》和《暗黑破坏神》的成功，推动了其续作达到新的高峰，经历了艰难的起步后《星际争霸》创造的传奇达到了艺术的高度。自1995年起，每款单机游戏至少卖出了100万份，且逐年递增。暴雪在创造方向和财政上都享有自由，他们的所有想法都得以实现，把游戏做成他们理想中的那样大胆而多样化。但出于各种原因，2000年年初时公司经历了数次挫折且几名高管卸任，最终仅有两款《魔兽争霸》系列的游戏见到了黎明的曙光，这两款游戏跻身于史上最知名最具影响力和最成功的游戏行列当中。即使是在糟糕透顶的时候，暴雪响当当的名号仍然如雷贯耳。</p>
-<p>1998年11月，在完成了资料片《星际争霸：母巢之战》后，暴雪在加州欧文地区的主团队氛围两拨，一拨队伍负责新一代实时策略游戏《魔兽争霸3》，而另一组筹备全新科幻角色扮演游戏《Nomad》，遗憾的是《Nomad》 还没来得及对外宣布就胎死腹中，这就意味着该小组必须另辟项目。此时公司的另一个工作室暴雪北方正红得发紫，在2000年发布了《暗黑破坏神2》后，他们又自行开发了资料片。这种自行开发资料片，而不交给第三方的做法前所未有，如今《母巢之战》起头，暴雪所有的资料片都由游戏的原班人马操刀制作。这种新的策略效果显著：2001年6月发布的《毁灭之王》获得了巨大成功，暴雪北方便趁热打铁着手开发《暗黑破坏神3》，与南部兄弟小组在冒险游戏《魔兽争霸冒险》和《Nomad》项目上屡屡受挫不同，暴雪北方似乎志得意满，他们绝对没有想到，暗黑2将会是他们出品的最后一个游戏。2001年9月，暴雪宣布了一款新作，它是《Nomad》制作小组的后续项目。</p>
-<p>【弗兰克·皮尔斯】当时许多成员都在玩大型多人在线游戏，在《Nomad》项目毫无进展的时候，我们决定改变方向打造大型多人在线游戏。关于应该采用哪个系列来做网游，以及是创造一个全新世界好，还是尝试利用现有游戏系列的题材好，我们都做了讨论。当开始审视魔兽系列时，我们觉得找到正确的题材了。</p>
-<p>这就是《魔兽世界》的起源，然而按照暴雪的一贯作风，游戏并无确切的发布日期，考虑到小组精益求精的制作态度，游戏很可能数年后才会与玩家见面。同时南方小组正在为其它魔兽系列游戏收尾，2002年7月问世的《魔兽世界3：混乱之治》在初期理念上作出了大幅度的变动，原定的6个种族缩减到了4个，倍受关注的英雄角色并非玩家扮演的主角，而是强化版的单位，也就是说，游戏是传统的即时战略，英雄角色仅用于增色添彩。不过它在某些方面还是领先的：其一，它是暴雪的第一款全3D 游戏，尽管对游戏性没有造成太大的影响；其二，工作室在预渲染过场动画领域更上一层楼，这使得小组能够将单调的剧情叙述变得前所未有的充实，而游戏角色们仍然是焦点，这也也成就了一款注重情节的策略游戏，前无古人。除剧本外，更有暴雪一贯在游戏性方面的完美平衡，以及每个种族的独一无二的设计，所有这些加在一起促成了一款精品，至今仍被认为是最佳策略游戏之一。与《魔兽争霸》前作一样，本作也成为了世界级专业游戏锦标赛的典范。资料片毫无悬念地接踵而至——即2003年的《冰封王座》，与《暗黑破坏神2》一样，资料片同样由原班人马操刀完成，在保有原汁原味的同时确保了同等的高质量。归功于长篇的新剧情以及多人模式添加的多个新单位，资料片几乎是一款全新游戏。</p>
-<p>现今，暴雪旗下三个主要游戏系列都在开发新作品，暴雪北方在开发《暗黑破坏神3》，南方分部着手《星际争霸》的续作以及《魔兽世界》，第三个小组『虚无软件』则在研发全新的《星际争霸》系列作品。2002年启动，预计2003年发布的《星际争霸：幽灵》将成为家用机上的第三人称动作游戏。尽管从1995年后暴雪不再涉足家用机领域，但这款游戏却完美复合家用机的模式，在星际大背景剧情下，故事围绕人族的高级特种兵展开，玩家对此的反馈很不错。暴雪几年内发布了许多截图、预告片以及文章，但游戏本身却不见踪影。按老规矩暴雪将游戏改了又改，发布时间一延再延。此时对《幽灵》团队来说是屋漏偏逢连夜雨，2003年6月《暗黑》项目领导人离开了暴雪北方，这些人起初成立的『秃鹰工作室』被暴雪吸收到麾下，而暴雪本身又是其他集团的子公司，当感觉到自己已经不再参与重大决策且无法保障自身成员的收益和前景时，暴雪北方管理层提出了抗议，他们甚至以辞职威胁获取话语权，不幸的是，辞职得到了批准。</p>
-<p>失去领导人后，《暗黑》团队遭受了无法弥补的损失。祸不单行的是，2004年1月暴雪原团队的领导人也辞职了。艾伦·艾德涵大学毕业后按照自己的想法建立了一个游戏公司，13年后他选择退出。长时间高压的工作打垮了他，如今他希望投身金融领域，他的职位由共同创始人迈克·默汉接替，因而公司并未发生巨变。同年，暴雪停止聘用『虚无软件』公司开发《星际争霸：幽灵》，该游戏至今搁浅无人过问。不过欧文地区团队仍然对《幽灵》信心十足，并且让『飞猿工作室』继续这个项目，『飞猿』最终被暴雪收购，更名为暴雪家用机分布，之后所有暴雪公司的游戏不再外包，全部内部制作，于是《幽灵》的制作得以继续，然后就没有然后了…..与此同时，暴雪自己的续作《星际争霸2》却遥遥无期。</p>
-<p>员工陆续辞职，公司屡屡受挫，有人开始觉得暴雪的巅峰期已经结束。之后在2004年11月，即第一款《魔兽争霸》出品后10周年，《魔兽世界》终于问世。历经4年开发，本作是工作迄今为止规模最大，投资最多的项目，公司成败在此一举。不过暴雪对本作仍然满怀信心，并预期实体店的销量能在第一年达到40万。</p>
-<p>【弗兰克·皮尔斯】按现在的标准，我们当时的预计销量极为保守。我们在北美的设备能够为40万到50万活跃用户提供支持，当时估计，如果能在北美发展这个数量的用户就谢天谢地了，然后在以此为基础将魔兽系列游戏发展壮大。</p>
-<p>仅仅在第一个月内，他们就如愿以偿，大型多人在线游戏当时还在蹒跚学步阶段，数千玩家汇聚在一个庞大的虚拟世界中，这在当时可是小众游戏，在重点市场如欧洲等地区少有人问津。《魔兽世界》靠离经叛道成为一匹世界级黑马，上述偏见自然也消失殆尽。该游戏类型的优势之一是公司可以向玩家收取月费，从而抵消游戏的开发维护费用。然而当用户群高达数十万之多，就形成了一种盈利模式。在不到一年里，《魔兽世界》用户增加到了史无前例的400万，每名用户的月费加起来，使得本作成为获利最高的单款游戏。否定论者说暴雪在走下坡路，而《魔兽世界》做出了有力的回击，数年来本作的人气有增无减，原班人马制作的每款资料片都在发售后被抢购一空，创造了记录，用户人数从600万逐渐增长到现今的1200万。这首先说明游戏的销售量至少也有1200万，再考虑到有些玩家购买游戏后又停止了付费，实际销量应该更高。另一方面，如果把全球所有玩家的付费加个总和，意味着暴雪仅靠月费每年就能赚取10亿美元，在过去整个游戏史上这是闻所未闻的。</p>
-<p>是什么让人们对它如此着迷？和其他暴雪游戏相同，本作并无任何真正意义上的全新内容，游戏紧贴已然成型的大型多人在线游戏模式，以魔幻角色扮演为题材，着重升级和装备搜集，然则同其他暴雪产品一样，游戏的方方面面都被加工到了完美境界，游戏十分直观友好，任何瑕疵都由负责平衡性的部门快速修正，美工华丽而亲切，战斗体验在大型多人在线游戏中被公认为最佳。当然《魔兽》的金字招牌自首发起就吸引了大批玩家，总体来说，对于打造了数款精品大作，屡屡超越大众期待的暴雪来说，《魔兽世界》是一个新奇迹，到达游戏业巅峰后，暴雪公司再度登峰造极，已经很难有其他公司与之并驾齐驱。凭借着《魔兽世界》带来的这笔意外之财，暴雪接下来的发展势不可挡。当然，他们还得接着运营《魔兽争霸》，这带来了一些问题。尽管他们的大型多人在线巨作获得空前成功，其他项目并为从中受益。</p>
-<p>【弗兰克·皮尔斯】对《魔兽争霸》玩家社群的支持成为我们的优先工作，尤其在 WOW 发布初期。我甚至觉得如果 WOW没有获得意想不到的成功，《星际争霸2》的推出应该还能更早一些。</p>
-<h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><p>2000到2005年间暴雪娱乐状况不佳，由于辞职不断和大量烂尾项目，暴雪娱乐似乎要跌下游戏霸主的宝座，但是这一切随着2004年11月《魔兽世界》的发行而改变，这个大型多人在线游戏一炮打响，成为有史以来最火爆的游戏。接下来的几年，该游戏的付费人数超过了1200万，如此可观的收益流在整个游戏界是史无前例的，意外的收获本该让暴雪能够率性而为，然而游戏的火爆度始料未及，暴雪不得不勉力扩员，确保在支持《魔兽世界》的同时还能顾及其它项目。暴雪手头已经有大量未完成的游戏，此时同魔兽系列无关的游戏统统问题不断，发行严重滞后，如今最大的问题在于，暴雪能否应付《魔兽世界》突如其来的成功？</p>
-<p>尽管《魔兽世界》如此成功令人难以置信，暴雪其他的项目依然处于挣扎之中，例如暴雪北方小组制作的《暗黑破坏神3》就迟迟无法完工，虽有暗黑这面金字招牌，续作却难以与时俱进，开发团队始终想不出有趣的设计点子，更糟糕的是，按照2005年的标准，游戏画面已经颇为过时，加上暴雪北方管理人也在2003年辞职，使得《暗黑破坏神3》最终失去了方向，最后，位于加利福尼亚欧文的暴雪南方公司的执行者们不得不做出一个艰难的决定，在希望对开发团队加紧管理但却难以远距离操控的情况下，他们于2005年8月决定关闭暴雪北方，同时告知前员工们可以选择到欧文继续开发《暗黑破坏神3》。一部分人加入了南方公司，另一部分人选择离开，但不管是走是留，这一巨变对制作组的自身文化和创作独立性都造成了打击，导致了《暗黑破坏神3》项目流产，此后《暗黑破坏神3》的开发又回到原点。正如暴雪的一贯作风，《暗黑破坏神3》从大众的视野中消失了数年。但2005年也有好的消息，10月，首届暴雪嘉年华拉开了帷幕，这是由暴雪主办的大型粉丝集会。本届参加者可以第一时间试玩《魔兽世界》资料片和《星际争霸：幽灵》，后者是开发中的家用机动作游戏。拥趸们也有机会同游戏的开发者——他们的偶像们见面，这次的大会极为成功，在2006年平息一年后，从2007年起暴雪嘉年华正式成为每年一度的活动，其规模逐年增加也并非巧合，从2009年起暴雪甚至不再出席E3，从此暴雪不用再对游戏社群大力宣传招揽，而是由后者自觉地参与进来。</p>
-<p>【弗兰克·皮尔斯】如今我们有其他的宣传场合，如暴雪嘉年华，期间我们向粉丝们展示一些尚未测试的游戏，让他们有机会体验试玩，我们同时有机会倾听玩家对该游戏的第一时间反馈。基于第一印象的反馈信息极为珍贵，这也是唯一的机会。</p>
-<p>尽管《星际争霸：幽灵》在暴雪嘉年华上得以抛头露面，本作却再度遭到挫折。XBOX360于2005年11月发售后，暴雪清楚 PS3和 Wii 也将随之推出，暴雪不断跳票直到游戏完美方才发售的作风在 PC 上一帆风顺，然而在家用机平台上却遭到了意想不到的麻烦，这就是家用机的更新换代。为 PS2、GameCube 和初代 XBOX 主机开发的《星际争霸：幽灵》，在消耗了大量的时间和金钱后，突然沦为上一代主机的游戏，甚至离完成之日还远。2006 年3月新一轮的筛选开始了，暴雪宣布该作将无限期延迟。《幽灵》一直到现在还在推迟，其实等同于取消开发，现在已经没有人在开发《星际争霸：幽灵》，员工早已经分配到魔兽和暗黑团队了，这些小问题都丝毫不影响《魔兽世界》迅速崛起和称霸游戏界。2006年5月暴雪自豪地宣布将同好莱坞的传奇影像工作室合作打造魔兽题材电影，不久又宣布《蜘蛛侠》的导演山姆·雷米加入到该项目，之后根据暴雪的典型作风，此事淡出视线，至今仍不为人知。</p>
-<p>几年过去，暴雪除了推出一个又一个魔兽资料片，再没有其它动作，然而2008年公司有了重大动向，即发行巨头 Activision和维旺迪游戏合并了，你问这与暴雪何干？1994年新兴的暴雪被戴维斯及联营公司所收购，后者被 CUC 国际收购，后者不久又和 HFS 集团合并成为 CENDANT 公司，CENDANT 被指控做假帐之后，又被卖给法国哈维斯下属的娱乐部门，后者同一年又被维旺迪收购，维旺迪 vivendi 与2007年12月宣布同游戏发行巨头 Activision 合并，获得多数控股权并成立合资公司，以上都听明白了吗？</p>
-<p>2008年7月时交易完成，合资形成的超级公司在利润方面无疑是业界之最，一半 Activision 一半 vivendi 组成的合资企业并不叫做动视维旺迪，而是叫动视暴雪。暴雪坚持要把自己的名头打出去，实际上他们最初希望公司叫做暴雪动视，最后暴雪做出妥协，允许游戏界首屈一指的 Activision 把名字放在前面而自己屈居第二，这是暴雪崇高地位的不二佐证。在合资公司中暴雪享有前所未闻的自主权，作为独立工作室自主管理，做出计划后仅向动视做出例行通知，直到现在动视对此并无异议，因为暴雪在魔兽上的巨大成功使动视非常满意，今后的合作关系将怎样，我们只能拭目以待（暴雪独立了）。暴雪的自主权使得他们能够维持原有风格，不吝惜时间而努力将游戏做到最好，即时有《幽灵》的前车之鉴，其他两款倍受期待的作品；《星际争霸2》和《暗黑破坏神3》数年来依旧按部就班地进行开发。</p>
-<p>【弗兰克·皮尔斯】这么说吧，即使我们拥有魔兽、星际和暗黑这些知名系列，如果你回顾我们最近10年左右的记录，你可以说我们只是一家魔兽公司，但所有这些系列对我们来说都很重要，对游戏迷也一样重要，最重要的是我们如何将优秀的游戏体验提供给玩家们，而且保持游戏背景世界观的原汁原味，我们希望忠实地实现这点。过去十年来，我们的重点都放在魔兽系列上，最大的挑战在于如何不偏不倚地把三个系列都照顾好，要知道在最近六七年来为了给《魔兽世界》提供持续支持我们付出了极大努力。</p>
-<p>最终在2011年7月，《星际争霸2》在首作问世多年后推出，游戏有着庞大的非线性关卡结构，依靠过场动画衔接的动人情节，游戏中嵌入的冒险要素，改进后的战网服务，对 Mod 社群的强力支持，此外自然还有举世闻名的多人对战模式，12年的辉煌对于游戏界来说已经不仅仅是不朽神话了，凭借寿命超越想象的星际原作和暴雪响当当的名号，《星际争霸2：自由之翼》在发布的当天就销售了100万份，并在头一个月达到了300万份的销售额，同魔兽系列相比这只是一般般，但和其他游戏公司相比，这是惊人的销量。这次发行后《星际争霸2》的故事还远未结束，原版《星际争霸》被分为三部剧情，第一段针对人类，其他两段对应两个外星种族，对于2代来说，暴雪将剧情分割为三个独立的游戏，现在《自由之翼》只是在讲述人类部分的故事而已。《星际争霸2：虫群之心》预计2012年发布，而三部曲的最后一作《星际争霸2：虚空之遗》将为剧情划上完满的句号。三款组拼之间具体会有什么不同，又会提供什么新的特性来吸引玩家？暴雪会吊住大家的胃口，我们只好慢慢等待了。</p>
-<p>除此之外《暗黑破坏神3》这款千呼万唤始出来的大作，在数次停牌和复牌之后终于接近制作的尾声，故事发生在《暗黑破坏神2：毁灭之王》的20年后，使得老玩家可以延续前情，而新玩家可以有崭新的开始，总体来说，游戏性和风格延续旧作，在俯视视角下身怀绝技的英雄凭借着一身极品装备，像割草般击杀大批敌人，数次迭代后，本作在画风上同暴雪其他游戏靠拢，暴雪还表示，近期的《战神》等动作游戏启发他们在《暗黑破坏神3》中加入更多的视觉冲击，引发动作 RPG 中动作要素的回归，同时他们宣称要更强调角色和剧情，实现动作 RPG 中角色扮演内容的复兴，《暗黑破坏神3》将在2011年下半年或2012年上市，这是仅有的一款暴雪向全球正式公布的游戏。</p>
-<p>然而2010年11月30日，一份包含游戏发行目录的内部文件在互联网上泄密，其中提到了前所未知的游戏，包括计划在2013年发布一款代号《泰坦》的作品，据说泄密文件中还包含敏感的财政数据，之后暴雪中国的总经理被开除，一般认为这证明了本次泄密的真实性，的确《泰坦》现已被暴雪证实确有其事，这将是1995年以来暴雪首款不属于魔兽、星际或是暗黑系列的游戏。</p>
-<p>【迈克·默汉】我们已经开始对一款新的多人在线网游进行开发，这并不是《魔兽世界》续作，它是一款崭新的游戏，我们尝试投入这六年在魔兽上得到的经验和教训，打造一款全新的游戏来推动 MMO 类型的发展。</p>
-<p>除了这次泄密的消息，还有传言说暴雪的另一团队真在开发另一个新系列，如果属实，在近10年内除魔兽外并无建树的暴雪，将再一次开拓新的领域。现在已经知道的是，除了魔兽、星际、暗黑、泰坦各有一个开发小组外，还可能有另一对人马在从事新的游戏。如果皇天不负有心人，接下来数年间暴雪将持续发布不同系列下的游戏作品，从而再度成为一个以多款精品游戏而驰名的公司。</p>
-<p>艹，也该是时候了</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>暴雪的大名已如雷贯耳，虽然现在也面临着一些困难，但是回顾往昔，光芒依旧耀眼。</p>]]>
-    
-    </summary>
-    
-      <category term="Blizzard" scheme="http://wdxtub.com/tags/Blizzard/"/>
-    
-      <category term="历史" scheme="http://wdxtub.com/tags/%E5%8E%86%E5%8F%B2/"/>
-    
-      <category term="游戏" scheme="http://wdxtub.com/tags/%E6%B8%B8%E6%88%8F/"/>
     
       <category term="Game" scheme="http://wdxtub.com/categories/Game/"/>
     
