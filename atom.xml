@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-27T03:09:58.000Z</updated>
+  <updated>2016-03-27T03:13:49.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wdxtub.com/2016/03/26/linux-basic-soup/"/>
     <id>http://wdxtub.com/2016/03/26/linux-basic-soup/</id>
     <published>2016-03-27T01:33:53.000Z</published>
-    <updated>2016-03-27T03:09:58.000Z</updated>
+    <updated>2016-03-27T03:13:49.000Z</updated>
     <content type="html"><![CDATA[<p>因为之后更多会涉及后台开发的部分，所以系统学习一下 Linux 还是很有必要的，这里就用《鸟哥的 Linux 私房菜》作为主要的学习材料。不过因为我本身已经有一定基础了，所以这里主要会记录个人觉得比较生疏和重要的地方。</p>
 <a id="more"></a>
 <hr>
@@ -399,7 +399,7 @@
 </li>
 </ul>
 <p>早期 Linux 在设计的时候，若发生问题时，救援模式通常仅挂载根目录而已，因此有五个重要的目录被要求一定要与根目录放置在一起， 那就是 /etc, /bin, /dev, /lib, /sbin 这五个重要目录。现在许多的 Linux distributions 由于已经将许多非必要的文件移出 /usr 之外了， 所以 /usr 也是越来越精简，同时因为 /usr 被建议为“即使挂载成为只读，系统还是可以正常运行”的模样，所以救援模式也能同时挂载 /usr 喔！ </p>
-<h2 id="/usr__u4ECB_u7ECD"><a href="#/usr__u4ECB_u7ECD" class="headerlink" title="/usr 介绍"></a>/usr 介绍</h2><p>依据FHS的基本定义，/usr里面放置的数据属于可分享的与不可变动的（shareable, static）。usr是Unix Software Resource的缩写， 也就是“Unix操作系统软件资源”所放置的目录，而不是使用者的数据啦！这点要注意。 FHS建议所有软件开发者，应该将他们的数据合理的分别放置到这个目录下的次目录，而不要自行创建该软件自己独立的目录。</p>
+<h3 id="/usr__u4ECB_u7ECD"><a href="#/usr__u4ECB_u7ECD" class="headerlink" title="/usr 介绍"></a>/usr 介绍</h3><p>依据FHS的基本定义，/usr里面放置的数据属于可分享的与不可变动的（shareable, static）。usr是Unix Software Resource的缩写， 也就是“Unix操作系统软件资源”所放置的目录，而不是使用者的数据啦！这点要注意。 FHS建议所有软件开发者，应该将他们的数据合理的分别放置到这个目录下的次目录，而不要自行创建该软件自己独立的目录。</p>
 <p>一般来说，/usr的次目录建议有下面这些：</p>
 <ul>
 <li><code>/usr/bin/</code><ul>
