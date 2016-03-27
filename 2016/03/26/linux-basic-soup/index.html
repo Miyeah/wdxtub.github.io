@@ -1,0 +1,472 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>【鸟哥的 Linux 私房菜 - 基础】学习笔记 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">【鸟哥的 Linux 私房菜 - 基础】学习笔记</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">【鸟哥的 Linux 私房菜 - 基础】学习笔记</h1><div class="post-meta">2016-03-26 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/03/26/linux-basic-soup/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5E38_u7528_u6280_u5DE7"><span class="toc-number">1.</span> <span class="toc-text">常用技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u547D_u4EE4_3A_ls_2C_cp_2C_rm_2C_mv"><span class="toc-number">2.</span> <span class="toc-text">命令: ls, cp, rm, mv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u547D_u4EE4_3A_cat_2C_tac_2C_nl_2C_more_2C_less"><span class="toc-number">3.</span> <span class="toc-text">命令: cat, tac, nl, more, less</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u547D_u4EE4_3A_head_2C_tail_2C_od_2C_touch"><span class="toc-number">4.</span> <span class="toc-text">命令: head, tail, od, touch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u547D_u4EE4_3A_file_2C_which_2C_whereis_2C_locate/updatedb_2C_find"><span class="toc-number">5.</span> <span class="toc-text">命令: file, which, whereis, locate/updatedb, find</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux__u76EE_u5F55_u7684_u542B_u4E49"><span class="toc-number">6.</span> <span class="toc-text">Linux 目录的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#/usr__u4ECB_u7ECD"><span class="toc-number">7.</span> <span class="toc-text">/usr 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#/var__u4ECB_u7ECD"><span class="toc-number">7.1.</span> <span class="toc-text">/var 介绍</span></a></li></ol></li></ol></div></div><div class="post-content"><p>因为之后更多会涉及后台开发的部分，所以系统学习一下 Linux 还是很有必要的，这里就用《鸟哥的 Linux 私房菜》作为主要的学习材料。不过因为我本身已经有一定基础了，所以这里主要会记录个人觉得比较生疏和重要的地方。</p>
+<a id="more"></a>
+<hr>
+<p>对于计算机的基本了解，可以参考我之前写的『深入理解计算机系统』系列日志。接下来主要是比较零散的知识点，具体可以参见目录。</p>
+<h2 id="u5E38_u7528_u6280_u5DE7"><a href="#u5E38_u7528_u6280_u5DE7" class="headerlink" title="常用技巧"></a>常用技巧</h2><ul>
+<li>遇到不懂的命令，一定先用 <code>man</code> 命令来了解一下，可以看到详细的介绍<ul>
+<li><code>/string</code> 向下搜索 string 这个字符串</li>
+<li><code>?string</code> 向上搜索这个字符串</li>
+<li>搜索的时候输入 n, N 可以跳到下一个/上一个结果 ，q 可以退出</li>
+</ul>
+</li>
+<li>遇到不懂的命令，可以使用 <code>info</code> 命令来查看<ul>
+<li>n（下一个），p（前一个），u（上一层），h（帮助），q（退出）</li>
+</ul>
+</li>
+<li>nano 是非常简单的编辑器，只需要 <code>nano filename</code> 即可，具体的操作会在终端中显示<ul>
+<li><code>^</code> 表示 ctrl 按键</li>
+</ul>
+</li>
+<li>改变文件属性与权限的命令<ul>
+<li><code>chgrp</code>：改变文件所属群组</li>
+<li><code>chown</code>：改变文件拥有者</li>
+<li><code>chmod</code>：改变文件权限</li>
+</ul>
+</li>
+<li>目录相关操作<ul>
+<li><code>.</code>：代表此层目录</li>
+<li><code>..</code>：代表上一层目录</li>
+<li><code>-</code>：代表前一个工作目录</li>
+<li><code>~</code>：代表“目前使用者身份”所在的主文件夹</li>
+<li><code>~account</code>：代表 account 这个使用者的主文件夹（account是个帐号名称）</li>
+<li>在所有目录下面都会存在的两个目录，分别是“.”与“..” 分别代表此层与上层目录的意思</li>
+<li><code>cd</code>：变化目录</li>
+<li><code>pwd</code>：显示目前目录</li>
+<li><code>mkdir</code>：创建新目录</li>
+<li><code>rmdir</code>：删除一个空的目录</li>
+</ul>
+</li>
+<li>可执行文件路径变量 <code>$PATH</code><ul>
+<li>当我们在执行一个指令的时候，举例来说“ls”好了，系统会依照PATH的设置去每个PATH定义的目录下搜寻文件名为ls的可执行文件， 如果在PATH定义的目录中含有多个文件名为ls的可可执行文件，那么先搜寻到的同名指令先被执行！</li>
+<li><code>echo $PATH</code> 来查看当前的值</li>
+</ul>
+</li>
+</ul>
+<h2 id="u547D_u4EE4_3A_ls_2C_cp_2C_rm_2C_mv"><a href="#u547D_u4EE4_3A_ls_2C_cp_2C_rm_2C_mv" class="headerlink" title="命令: ls, cp, rm, mv"></a>命令: ls, cp, rm, mv</h2><blockquote>
+<p>ls 用来查看文件与目录，选项与参数为：</p>
+</blockquote>
+<ul>
+<li><code>-a</code>：全部的文件，连同隐藏文件（ 开头为 . 的文件） 一起列出来（常用）</li>
+<li><code>-A</code>：全部的文件，连同隐藏文件，但不包括 . 与 .. 这两个目录</li>
+<li><code>-d</code>：仅列出目录本身，而不是列出目录内的文件数据（常用）</li>
+<li><code>-f</code>：直接列出结果，而不进行排序 （ls 默认会以文件名排序！）</li>
+<li><code>-F</code>：根据文件、目录等信息，给予附加数据结构，例如：<code>*:</code> 代表可可执行文件； <code>/:</code> 代表目录； <code>=:</code> 代表 socket 文件； <code>|:</code> 代表 FIFO 文件；</li>
+<li><code>-h</code>：将文件大小以人类较易读的方式（例如 GB, KB 等等）列出来；</li>
+<li><code>-i</code>：列出 inode 号码，inode 的意义下一章将会介绍；</li>
+<li><code>-l</code>：长数据串行出，包含文件的属性与权限等等数据；（常用）</li>
+<li><code>-n</code>：列出 UID 与 GID 而非使用者与群组的名称 （UID与GID会在帐号管理提到！）</li>
+<li><code>-r</code>：将排序结果反向输出，例如：原本文件名由小到大，反向则为由大到小；</li>
+<li><code>-R</code>：连同子目录内容一起列出来，等于该目录下的所有文件都会显示出来；</li>
+<li><code>-S</code>：以文件大小大小排序，而不是用文件名排序；</li>
+<li><code>-t</code>：依时间排序，而不是用文件名。</li>
+<li><code>--color=never</code>：不要依据文件特性给予颜色显示；</li>
+<li><code>--color=always</code>：显示颜色</li>
+<li><code>--color=auto</code>：让系统自行依据设置来判断是否给予颜色</li>
+<li><code>--full-time</code>：以完整时间模式 （包含年、月、日、时、分） 输出</li>
+<li><code>--time={atime,ctime}</code>：输出 access 时间或改变权限属性时间 （ctime） 而非内容变更时间 （modification time）</li>
+</ul>
+<blockquote>
+<p>cp 用来复制文件或者创建链接，选项与参数为：</p>
+</blockquote>
+<ul>
+<li><code>-a</code>：相当于 -dr –preserve=all 的意思，至于 dr 请参考下列说明；（常用）</li>
+<li><code>-d</code>：若来源文件为链接文件的属性（link file），则复制链接文件属性而非文件本身；</li>
+<li><code>-f</code>：为强制（force）的意思，若目标文件已经存在且无法打开，则移除后再尝试一次；</li>
+<li><code>-i</code>：若目标文件（destination）已经存在时，在覆盖时会先询问动作的进行（常用）</li>
+<li><code>-l</code>：进行硬式链接（hard link）的链接文件创建，而非复制文件本身；</li>
+<li><code>-p</code>：连同文件的属性（权限、用户、时间）一起复制过去，而非使用默认属性（备份常用）；</li>
+<li><code>-r</code>：递回持续复制，用于目录的复制行为；（常用）</li>
+<li><code>-s</code>：复制成为符号链接文件 （symbolic link），亦即“捷径”文件；</li>
+<li><code>-u</code>：destination 比 source 旧才更新 destination，或 destination 不存在的情况下才复制。</li>
+<li><code>--preserve=all</code>：除了 -p 的权限相关参数外，还加入 SELinux 的属性, links, xattr 等也复制了。最后需要注意的，如果来源文件有两个以上，则最后一个目的文件一定要是“目录”才行！</li>
+</ul>
+<blockquote>
+<p>mv 用来移动文件或者重命名，选项与参数为：</p>
+</blockquote>
+<ul>
+<li><code>-f</code>：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</li>
+<li><code>-i</code>：若目标文件 （destination） 已经存在时，就会询问是否覆盖！</li>
+<li><code>-u</code>：若目标文件已经存在，且 source 比较新，才会更新 （update）</li>
+</ul>
+<blockquote>
+<p>rm 用来删除文件，选项与参数为：</p>
+</blockquote>
+<ul>
+<li><code>-f</code>：就是 force 的意思，忽略不存在的文件，不会出现警告讯息；</li>
+<li><code>-i</code>：互动模式，在删除前会询问使用者是否动作</li>
+<li><code>-r</code>：递回删除啊！最常用在目录的删除了！这是非常危险的选项！！！</li>
+</ul>
+<h2 id="u547D_u4EE4_3A_cat_2C_tac_2C_nl_2C_more_2C_less"><a href="#u547D_u4EE4_3A_cat_2C_tac_2C_nl_2C_more_2C_less" class="headerlink" title="命令: cat, tac, nl, more, less"></a>命令: cat, tac, nl, more, less</h2><blockquote>
+<p>cat 由第一行开始显示文件内容</p>
+</blockquote>
+<ul>
+<li><code>-A</code>：相当于 -vET 的整合选项，可列出一些特殊字符而不是空白而已；</li>
+<li><code>-b</code>：列出行号，仅针对非空白行做行号显示，空白行不标行号！</li>
+<li><code>-E</code>：将结尾的断行字符 $ 显示出来；</li>
+<li><code>-n</code>：打印出行号，连同空白行也会有行号，与 -b 的选项不同；</li>
+<li><code>-T</code>：将 [tab] 按键以 ^I 显示出来；</li>
+<li><code>-v</code>：列出一些看不出来的特殊字符</li>
+</ul>
+<blockquote>
+<p>tac  从最后一行开始显示，可以看出 tac 是 cat 的倒着写！</p>
+</blockquote>
+<p>具体的参数和 cat 是一致的，这里不赘述</p>
+<blockquote>
+<p>nl   显示的时候，顺道输出行号！</p>
+</blockquote>
+<ul>
+<li><code>-b</code>：指定行号指定的方式，主要有两种：<ul>
+<li><code>-b a</code>：表示不论是否为空行，也同样列出行号（类似 cat -n）；</li>
+<li><code>-b t</code>：如果有空行，空的那一行不要列出行号（默认值）；</li>
+</ul>
+</li>
+<li><code>-n</code>：列出行号表示的方法，主要有三种：<ul>
+<li><code>-n ln</code>：行号在屏幕的最左方显示；</li>
+<li><code>-n rn</code>：行号在自己字段的最右方显示，且不加 0 ；</li>
+<li><code>-n rz</code>：行号在自己字段的最右方显示，且加 0 ；</li>
+</ul>
+</li>
+<li><code>-w</code>：行号字段的占用的字符数。</li>
+</ul>
+<blockquote>
+<p>more 一页一页的显示文件内容，支持的按键有</p>
+</blockquote>
+<ul>
+<li><code>空格</code>：代表向下翻一页；</li>
+<li><code>Enter</code>：代表向下翻“一行”；</li>
+<li><code>/字串</code>：代表在这个显示的内容当中，向下搜寻“字串”这个关键字；</li>
+<li><code>:f</code>：立刻显示出文件名以及目前显示的行数；</li>
+<li><code>q</code>：代表立刻离开 more ，不再显示该文件内容。</li>
+<li><code>b 或 [ctrl]-b</code>：代表往回翻页，不过这动作只对文件有用，对管线无用。</li>
+</ul>
+<blockquote>
+<p>less 与 more 类似，但是比 more 更好的是，他可以往前翻页！支持的按键有</p>
+</blockquote>
+<ul>
+<li><code>空格</code>：向下翻动一页；</li>
+<li><code>[pagedown]</code>：向下翻动一页；</li>
+<li><code>[pageup]</code>：向上翻动一页；</li>
+<li><code>/字串</code>：向下搜寻“字串”的功能；</li>
+<li><code>?字串</code>：向上搜寻“字串”的功能；</li>
+<li><code>n</code>：重复前一个搜寻 （与 / 或 ? 有关！）</li>
+<li><code>N</code>：反向的重复前一个搜寻 （与 / 或 ? 有关！）</li>
+<li><code>g</code>：前进到这个数据的第一行去；</li>
+<li><code>G</code>：前进到这个数据的最后一行去 （注意大小写）；</li>
+<li><code>q</code>：离开 less 这个程序；</li>
+</ul>
+<p>你是否会觉得 less 使用的画面与环境与 man page 非常的类似呢？没错啦！因为man这个指令就是调用 less 来显示说明文档的内容的！</p>
+<h2 id="u547D_u4EE4_3A_head_2C_tail_2C_od_2C_touch"><a href="#u547D_u4EE4_3A_head_2C_tail_2C_od_2C_touch" class="headerlink" title="命令: head, tail, od, touch"></a>命令: head, tail, od, touch</h2><blockquote>
+<p>head 只看头几行</p>
+</blockquote>
+<ul>
+<li><code>-n</code>：后面接数字，代表显示几行的意思</li>
+<li>另外那个 -n 选项后面的参数较有趣，如果接的是负数，例如上面范例的 -n -100时，代表列前的所有行数， 但不包括后面100行</li>
+</ul>
+<blockquote>
+<p>tail 只看尾巴几行</p>
+</blockquote>
+<ul>
+<li><code>-n</code>：后面接数字，代表显示几行的意思</li>
+<li><code>-f</code>：表示持续侦测后面所接的文件名，要等到按下[ctrl]-c才会结束tail的侦测</li>
+</ul>
+<blockquote>
+<p>od 以二进制的方式读取文件内容！</p>
+</blockquote>
+<ul>
+<li><code>-t</code>：后面可以接各种“类型 （TYPE）”的输出，例如：<ul>
+<li><code>a</code>：利用默认的字符来输出；</li>
+<li><code>c</code>：使用 ASCII 字符来输出</li>
+<li><code>d[size]</code>：利用十进制（decimal）来输出数据，每个整数占用 size Bytes ；</li>
+<li><code>f[size]</code>：利用浮点数值（floating）来输出数据，每个数占用 size Bytes ；</li>
+<li><code>o[size]</code>：利用八进位（octal）来输出数据，每个整数占用 size Bytes ；</li>
+<li><code>x[size]</code>：利用十六进制（hexadecimal）来输出数据，每个整数占用 size Bytes ；</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>touch 修改文件时间或创建新文件</p>
+</blockquote>
+<p>我们在 ls 这个指令的介绍时，有稍微提到每个文件在linux下面都会记录许多的时间参数， 其实是有三个主要的变动时间，那么三个时间的意义是什么呢？</p>
+<ul>
+<li>modification time （mtime）：<ul>
+<li>当该文件的“内容数据”变更时，就会更新这个时间！内容数据指的是文件的内容，而不是文件的属性或权限喔！</li>
+</ul>
+</li>
+<li>status time （ctime）：<ul>
+<li>当该文件的“状态 （status）”改变时，就会更新这个时间，举例来说，像是权限与属性被更改了，都会更新这个时间啊。</li>
+</ul>
+</li>
+<li>access time （atime）：<ul>
+<li>当“该文件的内容被取用”时，就会更新这个读取时间 （access）。举例来说，我们使用 cat 去读取 /etc/man_db.conf ， 就会更新该文件的 atime 了。</li>
+</ul>
+</li>
+</ul>
+<p>选项与参数</p>
+<ul>
+<li><code>-a</code>：仅修订 access time；</li>
+<li><code>-c</code>：仅修改文件的时间，若该文件不存在则不创建新文件；</li>
+<li><code>-d</code>：后面可以接欲修订的日期而不用目前的日期，也可以使用 –date=”日期或时间”</li>
+<li><code>-m</code>：仅修改 mtime ；</li>
+<li><code>-t</code>：后面可以接欲修订的时间而不用目前的时间，格式为[YYYYMMDDhhmm]</li>
+</ul>
+<h2 id="u547D_u4EE4_3A_file_2C_which_2C_whereis_2C_locate/updatedb_2C_find"><a href="#u547D_u4EE4_3A_file_2C_which_2C_whereis_2C_locate/updatedb_2C_find" class="headerlink" title="命令: file, which, whereis, locate/updatedb, find"></a>命令: file, which, whereis, locate/updatedb, find</h2><blockquote>
+<p>file 观察文件类型</p>
+</blockquote>
+<p>如果你想要知道某个文件的基本数据，例如是属于 ASCII 或者是 data 文件，或者是 binary ， 且其中有没有使用到动态函数库 （share library） 等等的信息，就可以利用 file 这个指令来检阅喔！</p>
+<blockquote>
+<p>which 指令文件名的搜寻 </p>
+</blockquote>
+<p><code>which [-a] command</code> 选项或参数：</p>
+<ul>
+<li><code>-a</code>：将所有由 PATH 目录中可以找到的指令均列出，而不止第一个被找到的指令名称</li>
+</ul>
+<blockquote>
+<p>whereis 由一些特定的目录中寻找文件文件名</p>
+</blockquote>
+<p><code>whereis [-bmsu] 文件或目录名</code>  选项或参数：</p>
+<ul>
+<li><code>-l</code>:可以列出 whereis 会去查询的几个主要目录而已</li>
+<li><code>-b</code>:只找 binary 格式的文件</li>
+<li><code>-m</code>:只找在说明文档 manual 路径下的文件</li>
+<li><code>-s</code>:只找 source 来源文件</li>
+<li><code>-u</code>:搜寻不在上述三个项目当中的其他特殊文件</li>
+</ul>
+<blockquote>
+<p>locate 搜索包含指定词的文件</p>
+</blockquote>
+<p><code>locate [-ir] keyword</code> 选项与参数：</p>
+<ul>
+<li><code>-i</code>：忽略大小写的差异；</li>
+<li><code>-c</code>：不输出文件名，仅计算找到的文件数量</li>
+<li><code>-l</code>：仅输出几行的意思，例如输出五行则是 -l 5</li>
+<li><code>-S</code>：输出 locate 所使用的数据库文件的相关信息，包括该数据库纪录的文件/目录数量等</li>
+<li><code>-r</code>：后面可接正则表达式的显示方式</li>
+</ul>
+<p>locate 寻找的数据是由“已创建的数据库 /var/lib/mlocate/” 里面的数据所搜寻到的，所以不用直接在去硬盘当中存取数据。那么有什么限制呢？就是因为他是经由数据库来搜寻的，而数据库的创建默认是在每天执行一次 </p>
+<p>那能否手动更新数据库哪？当然可以啊！更新 locate 数据库的方法非常简单，直接输入“ updatedb ”就可以了！ updatedb 指令会去读取 /etc/updatedb.conf 这个配置文件的设置，然后再去硬盘里面进行搜寻文件名的动作， 最后就更新整个数据库文件啰！因为 updatedb 会去搜寻硬盘，所以当你执行 updatedb 时，可能会等待数分钟的时间喔！</p>
+<blockquote>
+<p>find 查找具体文件</p>
+</blockquote>
+<p><code>find [PATH] [option] [action]</code> 选项与参数：</p>
+<ul>
+<li>与时间有关的选项：共有 -atime, -ctime 与 -mtime ，以 -mtime 说明<ul>
+<li><code>-mtime  n</code>：n 为数字，意义为在 n 天之前的“一天之内”被更动过内容的文件；</li>
+<li><code>-mtime +n</code>：列出在 n 天之前（不含 n 天本身）被更动过内容的文件文件名；</li>
+<li><code>-mtime -n</code>：列出在 n 天之内（含 n 天本身）被更动过内容的文件文件名。</li>
+<li><code>-newer file</code>：file 为一个存在的文件，列出比 file 还要新的文件文件名</li>
+</ul>
+</li>
+<li>与使用者或群组名称有关的参数<ul>
+<li><code>-uid n</code>：n 为数字，这个数字是使用者的帐号 ID，亦即 UID ，这个 UID 是记录在 /etc/passwd 里面与帐号名称对应的数字。</li>
+<li><code>-gid n</code>：n 为数字，这个数字是群组名称的 ID，亦即 GID，这个 GID 记录在/etc/group</li>
+<li><code>-user name</code>：name 为使用者帐号名称喔！例如 dmtsai </li>
+<li><code>-group name</code>：name 为群组名称喔，例如 users ；</li>
+<li><code>-nouser</code>：寻找文件的拥有者不存在 /etc/passwd 的人！</li>
+<li><code>-nogroup</code>：寻找文件的拥有群组不存在于 /etc/group 的文件！</li>
+<li>当你自行安装软件时，很可能该软件的属性当中并没有文件拥有者，这是可能的！在这个时候，就可以使用 -nouser 与 -nogroup 搜寻。</li>
+</ul>
+</li>
+<li>与文件权限及名称有关的参数：<ul>
+<li><code>-name filename</code>：搜寻文件名称为 filename 的文件；</li>
+<li><code>-size [+-]SIZE</code>：搜寻比 SIZE 还要大（+）或小（-）的文件。这个 SIZE 的规格有：<ul>
+<li><code>c</code>: 代表 Byte</li>
+<li><code>k</code>: 代表 1024Bytes</li>
+<li>所以，要找比 50KB 还要大的文件，就是 <code>-size +50k</code></li>
+</ul>
+</li>
+<li><code>-type TYPE</code>：搜寻文件的类型为 TYPE 的，类型主要有：一般正规文件 （f）, 设备文件 （b, c）,目录 （d）, 链接文件 （l）, socket （s）, 及 FIFO （p） 等属性。</li>
+<li><code>-perm mode</code>：搜寻文件权限“刚好等于” mode 的文件，这个 mode 为类似 chmod 的属性值，举例来说， -rwsr-xr-x 的属性为 4755 ！</li>
+<li><code>-perm -mode</code>：搜寻文件权限“必须要全部囊括 mode 的权限”的文件，举例来说，我们要搜寻 <code>-rwxr--r--</code> ，亦即 0744 的文件，使用 <code>-perm -0744</code>，当一个文件的权限为 <code>-rwsr-xr-x</code> ，亦即 4755 时，也会被列出来，因为 <code>-rwsr-xr-x</code> 的属性已经囊括了 <code>-rwxr--r--</code> 的属性了。</li>
+<li><code>-perm /mode</code>：搜寻文件权限“包含任一 mode 的权限”的文件，举例来说，我们搜寻 <code>-rwxr-xr-x</code> ，亦即 <code>-perm /755</code> 时，但一个文件属性为 <code>-rw-------</code> 也会被列出来，因为他有 <code>-rw....</code> 的属性存在！</li>
+</ul>
+</li>
+</ul>
+<h2 id="Linux__u76EE_u5F55_u7684_u542B_u4E49"><a href="#Linux__u76EE_u5F55_u7684_u542B_u4E49" class="headerlink" title="Linux 目录的含义"></a>Linux 目录的含义</h2><ul>
+<li><code>bin</code><ul>
+<li>系统有很多放置可执行文件的目录，但/bin比较特殊。因为/bin放置的是在单人维护模式下还能够被操作的指令。 在/bin下面的指令可以被root与一般帐号所使用，主要有：cat, chmod, chown, date, mv, mkdir, cp, bash等等常用的指令。</li>
+</ul>
+</li>
+<li><code>/boot</code><ul>
+<li>这个目录主要在放置开机会使用到的文件，包括Linux核心文件以及开机菜单与开机所需配置文件等等。 Linux kernel常用的文件名为：vmlinuz，如果使用的是grub2这个开机管理程序， 则还会存在/boot/grub2/这个目录喔！</li>
+</ul>
+</li>
+<li><code>/dev</code><ul>
+<li>在Linux系统上，任何设备与周边设备都是以文件的型态存在于这个目录当中的。 你只要通过存取这个目录下面的某个文件，就等于存取某个设备啰～ 比要重要的文件有 <code>/dev/null</code>, <code>/dev/zero</code>, <code>/dev/tty</code>, <code>/dev/loop*</code>, <code>/dev/sd*</code> 等等 </li>
+</ul>
+</li>
+<li><code>/etc</code><ul>
+<li>系统主要的配置文件几乎都放置在这个目录内，例如人员的帐号密码档、 各种服务的启始档等等。一般来说，这个目录下的各文件属性是可以让一般使用者查阅的， 但是只有root有权力修改。FHS建议不要放置可可执行文件（binary）在这个目录中喔。比较重要的文件有： /etc/modprobe.d/, /etc/passwd, /etc/fstab, /etc/issue 等等。另外 FHS 还规范几个重要的目录最好要存在 /etc/ 目录下喔：</li>
+<li>/etc/opt（必要）：这个目录在放置第三方协力软件 /opt 的相关配置文件</li>
+<li>/etc/X11/（建议）：与 X Window 有关的各种配置文件都在这里，尤其是 xorg.conf 这个 X Server 的配置文件。</li>
+<li>/etc/sgml/（建议）：与 SGML 格式有关的各项配置文件</li>
+<li>/etc/xml/（建议）：与 XML 格式有关的各项配置文件</li>
+</ul>
+</li>
+<li><code>/lib</code><ul>
+<li>系统的函数库非常的多，而/lib放置的则是在开机时会用到的函数库， 以及在/bin或/sbin下面的指令会调用的函数库而已。 什么是函数库呢？你可以将他想成是“外挂”，某些指令必须要有这些“外挂”才能够顺利完成程序的执行之意。 另外 FSH 还要求下面的目录必须要存在：</li>
+<li>/lib/modules/：这个目录主要放置可抽换式的核心相关模块（驱动程序）喔！</li>
+</ul>
+</li>
+<li><code>/media</code><ul>
+<li>media是“媒体”的英文，顾名思义，这个/media下面放置的就是可移除的设备啦！ 包括软盘、光盘、DVD等等设备都暂时挂载于此。常见的文件名有：/media/floppy，/media/cdrom等等。</li>
+</ul>
+</li>
+<li><code>/mnt</code><ul>
+<li>如果你想要暂时挂载某些额外的设备，一般建议你可以放置到这个目录中。 在古早时候，这个目录的用途与/media相同啦！只是有了/media之后，这个目录就用来暂时挂载用了。</li>
+</ul>
+</li>
+<li><code>/opt</code><ul>
+<li>这个是给第三方协力软件放置的目录。什么是第三方协力软件啊？ 举例来说，KDE这个桌面管理系统是一个独立的计划，不过他可以安装到Linux系统中，因此KDE的软件就建议放置到此目录下了。 另外，如果你想要自行安装额外的软件（非原本的distribution提供的），那么也能够将你的软件安装到这里来。 不过，以前的Linux系统中，我们还是习惯放置在/usr/local目录下呢！ </li>
+</ul>
+</li>
+<li><code>/run</code><ul>
+<li>早期的 FHS 规定系统开机后所产生的各项信息应该要放置到 /var/run 目录下，新版的 FHS 则规范到 /run 下面。 由于 /run 可以使用内存来仿真，因此性能上会好很多！</li>
+</ul>
+</li>
+<li><code>/sbin</code><ul>
+<li>Linux有非常多指令是用来设置系统环境的，这些指令只有root才能够利用来“设置”系统，其他使用者最多只能用来“查询”而已。 放在/sbin下面的为开机过程中所需要的，里面包括了开机、修复、还原系统所需要的指令。 至于某些服务器软件程序，一般则放置到/usr/sbin/当中。至于本机自行安装的软件所产生的系统可执行文件（system binary）， 则放置到/usr/local/sbin/当中了。常见的指令包括：fdisk, fsck, ifconfig, mkfs等等。</li>
+</ul>
+</li>
+<li><code>/srv</code><ul>
+<li>srv可以视为“service”的缩写，是一些网络服务启动之后，这些服务所需要取用的数据目录。 常见的服务例如WWW, FTP等等。举例来说，WWW服务器需要的网页数据就可以放置在/srv/www/里面。 不过，系统的服务数据如果尚未要提供给网际网络任何人浏览的话，默认还是建议放置到 /var/lib 下面即可。 </li>
+</ul>
+</li>
+<li><code>/tmp</code><ul>
+<li>这是让一般使用者或者是正在执行的程序暂时放置文件的地方。 这个目录是任何人都能够存取的，所以你需要定期的清理一下。当然，重要数据不可放置在此目录啊！ 因为FHS甚至建议在开机时，应该要将/tmp下的数据都删除唷！</li>
+</ul>
+</li>
+<li><code>/usr</code><ul>
+<li>第二层 FHS 设置，后续介绍</li>
+</ul>
+</li>
+<li><code>/var</code><ul>
+<li>第二层 FHS 设置，主要为放置变动性的数据，后续介绍</li>
+</ul>
+</li>
+</ul>
+<p>FHS 建议可以存在的目录</p>
+<ul>
+<li><code>/home</code><ul>
+<li>这是系统默认的使用者主文件夹（home directory）。在你新增一个一般使用者帐号时， 默认的使用者主文件夹都会规范到这里来。比较重要的是，主文件夹有两种代号喔：</li>
+<li><code>~</code>：代表目前这个使用者的主文件夹</li>
+<li><code>~dmtsai</code>：则代表 dmtsai 的主文件夹！</li>
+</ul>
+</li>
+<li><code>/lib&lt;qual&gt;</code><ul>
+<li>用来存放与 /lib 不同的格式的二进制函数库，例如支持 64 位的 /lib64 函数库等</li>
+</ul>
+</li>
+<li><code>/root</code><ul>
+<li>系统管理员（root）的主文件夹。之所以放在这里，是因为如果进入单人维护模式而仅挂载根目录时， 该目录就能够拥有root的主文件夹，所以我们会希望root的主文件夹与根目录放置在同一个分区中。</li>
+</ul>
+</li>
+</ul>
+<p>事实上FHS针对根目录所定义的标准就仅有上面的咚咚，不过我们的Linux下面还有许多目录你也需要了解一下的。 下面是几个在Linux当中也是非常重要的目录喔</p>
+<ul>
+<li><code>/lost+found</code><ul>
+<li>这个目录是使用标准的ext2/ext3/ext4文件系统格式才会产生的一个目录，目的在于当文件系统发生错误时， 将一些遗失的片段放置到这个目录下。不过如果使用的是 xfs 文件系统的话，就不会存在这个目录了！</li>
+</ul>
+</li>
+<li><code>/proc</code><ul>
+<li>这个目录本身是一个“虚拟文件系统（virtual filesystem）”喔！他放置的数据都是在内存当中， 例如系统核心、行程信息（process）、周边设备的状态及网络状态等等。因为这个目录下的数据都是在内存当中， 所以本身不占任何硬盘空间啊！比较重要的文件例如：<code>/proc/cpuinfo</code>, <code>/proc/dma</code>, <code>/proc/interrupts</code>, <code>/proc/ioports</code>, <code>/proc/net/*</code> 等等。</li>
+</ul>
+</li>
+<li><code>/sys</code><ul>
+<li>这个目录其实跟/proc非常类似，也是一个虚拟的文件系统，主要也是记录核心与系统硬件信息较相关的信息。 包括目前已载入的核心模块与核心侦测到的硬件设备信息等等。这个目录同样不占硬盘容量喔！</li>
+</ul>
+</li>
+</ul>
+<p>早期 Linux 在设计的时候，若发生问题时，救援模式通常仅挂载根目录而已，因此有五个重要的目录被要求一定要与根目录放置在一起， 那就是 /etc, /bin, /dev, /lib, /sbin 这五个重要目录。现在许多的 Linux distributions 由于已经将许多非必要的文件移出 /usr 之外了， 所以 /usr 也是越来越精简，同时因为 /usr 被建议为“即使挂载成为只读，系统还是可以正常运行”的模样，所以救援模式也能同时挂载 /usr 喔！ </p>
+<h2 id="/usr__u4ECB_u7ECD"><a href="#/usr__u4ECB_u7ECD" class="headerlink" title="/usr 介绍"></a>/usr 介绍</h2><p>依据FHS的基本定义，/usr里面放置的数据属于可分享的与不可变动的（shareable, static）。usr是Unix Software Resource的缩写， 也就是“Unix操作系统软件资源”所放置的目录，而不是使用者的数据啦！这点要注意。 FHS建议所有软件开发者，应该将他们的数据合理的分别放置到这个目录下的次目录，而不要自行创建该软件自己独立的目录。</p>
+<p>一般来说，/usr的次目录建议有下面这些：</p>
+<ul>
+<li><code>/usr/bin/</code><ul>
+<li>所有一般用户能够使用的指令都放在这里！目前新的 CentOS 7 已经将全部的使用者指令放置于此，而使用链接文件的方式将 /bin 链接至此！ 也就是说， /usr/bin 与 /bin 是一模一样了！另外，FHS 要求在此目录下不应该有子目录！</li>
+</ul>
+</li>
+<li><code>/usr/lib/</code><ul>
+<li>基本上，与 /lib 功能相同，所以 /lib 就是链接到此目录中的！</li>
+</ul>
+</li>
+<li><code>/usr/local/</code><ul>
+<li>系统管理员在本机自行安装自己下载的软件（非distribution默认提供者），建议安装到此目录， 这样会比较便于管理。举例来说，你的distribution提供的软件较旧，你想安装较新的软件但又不想移除旧版， 此时你可以将新版软件安装于/usr/local/目录下，可与原先的旧版软件有分别啦！ 你可以自行到/usr/local去看看，该目录下也是具有bin, etc, include, lib…的次目录喔！</li>
+</ul>
+</li>
+<li><code>/usr/sbin/</code><ul>
+<li>非系统正常运行所需要的系统指令。最常见的就是某些网络服务器软件的服务指令（daemon）啰！不过基本功能与 /sbin 也差不多， 因此目前 /sbin 就是链接到此目录中的。</li>
+</ul>
+</li>
+<li><code>/usr/share/</code><ul>
+<li>主要放置只读架构的数据文件，当然也包括共享文件。在这个目录下放置的数据几乎是不分硬件架构均可读取的数据， 因为几乎都是文字文件嘛！在此目录下常见的还有这些次目录：</li>
+<li>/usr/share/man：线上说明文档</li>
+<li>/usr/share/doc：软件杂项的文件说明</li>
+<li>/usr/share/zoneinfo：与时区有关的时区文件</li>
+</ul>
+</li>
+</ul>
+<p>FHS 建议可以存在的目录</p>
+<ul>
+<li><code>/usr/games/</code><ul>
+<li>与游戏比较相关的数据放置处</li>
+</ul>
+</li>
+<li><code>/usr/include/</code><ul>
+<li>c/c++等程序语言的文件开始（header）与包含档（include）放置处，当我们以tarball方式 （<code>*.tar.gz</code> 的方式安装软件）安装某些数据时，会使用到里头的许多包含档喔！</li>
+</ul>
+</li>
+<li><code>/usr/libexec/</code><ul>
+<li>某些不被一般使用者惯用的可执行文件或脚本（script）等等，都会放置在此目录中。例如大部分的 X 窗口下面的操作指令， 很多都是放在此目录下的。</li>
+</ul>
+</li>
+<li><code>/usr/lib&lt;qual&gt;/</code><ul>
+<li>与 <code>/lib&lt;qual&gt;/</code> 功能相同，因此目前 <code>/lib&lt;qual&gt;</code> 就是链接到此目录中 </li>
+</ul>
+</li>
+<li><code>/usr/src/</code><ul>
+<li>一般源代码建议放置到这里，src有source的意思。至于核心源代码则建议放置到/usr/src/linux/目录下。</li>
+</ul>
+</li>
+</ul>
+<h3 id="/var__u4ECB_u7ECD"><a href="#/var__u4ECB_u7ECD" class="headerlink" title="/var 介绍"></a>/var 介绍</h3><p>如果/usr是安装时会占用较大硬盘容量的目录，那么/var就是在系统运行后才会渐渐占用硬盘容量的目录。 因为/var目录主要针对常态性变动的文件，包括高速缓存（cache）、登录文件（log file）以及某些软件运行所产生的文件， 包括程序文件（lock file, run file），或者例如MySQL数据库的文件等等。常见的次目录有：</p>
+<ul>
+<li><code>/var/cache/</code><ul>
+<li>应用程序本身运行过程中会产生的一些暂存盘；</li>
+</ul>
+</li>
+<li><code>/var/lib/</code><ul>
+<li>程序本身执行的过程中，需要使用到的数据文件放置的目录。在此目录下各自的软件应该要有各自的目录。 举例来说，MySQL的数据库放置到/var/lib/mysql/而rpm的数据库则放到/var/lib/rpm去！</li>
+</ul>
+</li>
+<li><code>/var/lock/</code><ul>
+<li>某些设备或者是文件资源一次只能被一个应用程序所使用，如果同时有两个程序使用该设备时， 就可能产生一些错误的状况，因此就得要将该设备上锁（lock），以确保该设备只会给单一软件所使用。 举例来说，烧录机正在烧录一块光盘，你想一下，会不会有两个人同时在使用一个烧录机烧片？ 如果两个人同时烧录，那片子写入的是谁的数据？所以当第一个人在烧录时该烧录机就会被上锁， 第二个人就得要该设备被解除锁定（就是前一个人用完了）才能够继续使用啰。目前此目录也已经挪到 /run/lock 中！</li>
+</ul>
+</li>
+<li><code>/var/log/</code><ul>
+<li>重要到不行！这是登录文件放置的目录！里面比较重要的文件如/var/log/messages, /var/log/wtmp（记录登陆者的信息）等。</li>
+</ul>
+</li>
+<li><code>/var/mail/</code><ul>
+<li>放置个人电子邮件信箱的目录，不过这个目录也被放置到/var/spool/mail/目录中！ 通常这两个目录是互为链接文件啦！</li>
+</ul>
+</li>
+<li><code>/var/run/</code><ul>
+<li>某些程序或者是服务启动后，会将他们的PID放置在这个目录下喔！至于PID的意义我们会在后续章节提到的。 与 /run 相同，这个目录链接到 /run 去了！</li>
+</ul>
+</li>
+<li><code>/var/spool/</code><ul>
+<li>这个目录通常放置一些伫列数据，所谓的“伫列”就是排队等待其他程序使用的数据啦！ 这些数据被使用后通常都会被删除。举例来说，系统收到新信会放置到/var/spool/mail/中， 但使用者收下该信件后该封信原则上就会被删除。信件如果暂时寄不出去会被放到/var/spool/mqueue/中， 等到被送出后就被删除。如果是工作调度数据（crontab），就会被放置到/var/spool/cron/目录中！</li>
+</ul>
+</li>
+</ul>
+</div><div class="tags"><a href="/tags/Linux/">Linux</a><a href="/tags/基础/">基础</a><a href="/tags/服务器/">服务器</a></div><div class="post-nav"><a href="/2016/03/26/inspired-create-product/" class="next">【启示录：打造用户喜爱的产品】读书笔记<i class="icon-next"></i></a></div><div data-thread-key="2016/03/26/linux-basic-soup/" data-title="【鸟哥的 Linux 私房菜 - 基础】学习笔记" data-url="http://wdxtub.com/2016/03/26/linux-basic-soup/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/03/26/linux-basic-soup/" data-title="【鸟哥的 Linux 私房菜 - 基础】学习笔记" data-url="http://wdxtub.com/2016/03/26/linux-basic-soup/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
