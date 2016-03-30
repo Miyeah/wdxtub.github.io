@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wdxtub.com/trash/index.html</loc>
+    <lastmod>2016-03-30T03:50:44.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://wdxtub.com/about/index.html</loc>
+    <lastmod>2016-03-30T03:50:24.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wdxtub.com/2016/03/29/cc-rethink-4/</loc>
     <lastmod>2016-03-30T03:44:46.000Z</lastmod>
   </url>
@@ -27,11 +37,6 @@
   </url>
   
   <url>
-    <loc>http://wdxtub.com/trash/index.html</loc>
-    <lastmod>2016-03-28T15:12:38.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://wdxtub.com/2016/03/20/iterm2-guide/</loc>
     <lastmod>2016-03-28T10:28:59.000Z</lastmod>
   </url>
@@ -49,11 +54,6 @@
   <url>
     <loc>http://wdxtub.com/2016/03/26/linux-basic-soup/</loc>
     <lastmod>2016-03-27T17:20:41.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wdxtub.com/about/index.html</loc>
-    <lastmod>2016-03-27T03:13:31.000Z</lastmod>
   </url>
   
   <url>
