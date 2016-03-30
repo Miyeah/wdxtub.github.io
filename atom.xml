@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-30T11:15:07.000Z</updated>
+  <updated>2016-03-30T14:08:17.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Rudy 快速入门]]></title>
+    <link href="http://wdxtub.com/2016/03/30/ruby-first-step/"/>
+    <id>http://wdxtub.com/2016/03/30/ruby-first-step/</id>
+    <published>2016-03-30T13:14:28.000Z</published>
+    <updated>2016-03-30T14:08:17.000Z</updated>
+    <content type="html"><![CDATA[<p>学编程就好比学有用，再好的理论也不如一头扎下水，扑腾着呼吸新鲜空气管用。这个系列的目的，就是帮助自己跳入水中，这一次我们来学 Ruby。</p>
+<a id="more"></a>
+<hr>
+<p>获得任何新技能的第一步，是先别想着独立解决什么，而是重复一边前人已竟之事，这是最快的方法。每门语言都有自己的一套惯用方法，各有所长，各有所短。通过学习不同的编程语言，你会明白，哪门语言最适宜解决自己当下关注的问题。</p>
+<p>精于禅宗的大师会告诉你，拉丁语学得越好，数学也就越好。编程也同样如此。通过研究逻辑式编程或函数式编程，你能领悟到面向对象编程的精华；通过学习汇编语言，你能更透彻地理解函数式编程。</p>
+<p>学习新语言的时候，一定要弄清楚以下几个问题：</p>
+<ul>
+<li>语言的类型模型是什么？<ul>
+<li>强类型/弱类型，静态类型/动态类型</li>
+<li>类型模型会改变问题的处理方式，控制语言的运行方式</li>
+</ul>
+</li>
+<li>语言的编程范型是什么？<ul>
+<li>面向对象、函数式、过程式等等</li>
+</ul>
+</li>
+<li>怎样和语言交互？<ul>
+<li>编译、解释</li>
+</ul>
+</li>
+<li>语言的判断结构(decision construct)和核心数据结构是什么？</li>
+<li>哪些核心特性让这门语言与众不同？</li>
+</ul>
+<h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>由松本行弘(Yukihiro Matsumoto)大约在 1993 年发明</li>
+<li>脚本语言、解释型、面向对象、动态类型</li>
+</ul>
+<p>现在我的机器上安装的 ruby 版本是 2.1，可以使用下面的命令来查询：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ruby -v</span><br><span class="line">ruby <span class="number">2.1</span>.<span class="number">4</span>p265 (<span class="number">2014</span>-<span class="number">10</span>-<span class="number">27</span> revision <span class="number">48166</span>) [x86_64-darwin14.<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>具体的安装不做太多介绍，在<a href="https://www.ruby-lang.org/zh_cn/" target="_blank" rel="external">官方网站</a>查阅不同平台的相关资料即可，下面是一个简单的例子</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">irb(main):001:0&gt;</span> properties = [<span class="string">'good'</span>, <span class="string">'bad'</span>, <span class="string">'clever'</span>, <span class="string">'stupid'</span>]</span><br><span class="line"><span class="status">=&gt;</span> [<span class="string">"good"</span>, <span class="string">"bad"</span>, <span class="string">"clever"</span>, <span class="string">"stupid"</span>]</span><br><span class="line"><span class="prompt">irb(main):002:0&gt;</span> properties.each &#123;|property| puts <span class="string">"I am <span class="subst">#&#123;property&#125;</span>."</span>&#125;</span><br><span class="line"><span class="constant">I</span> am good.</span><br><span class="line"><span class="constant">I</span> am bad.</span><br><span class="line"><span class="constant">I</span> am clever.</span><br><span class="line"><span class="constant">I</span> am stupid.</span><br><span class="line"><span class="status">=&gt;</span> [<span class="string">"good"</span>, <span class="string">"bad"</span>, <span class="string">"clever"</span>, <span class="string">"stupid"</span>]</span><br></pre></td></tr></table></figure>
+<p>留意一下 ruby 是如何进行遍历及值替换的，之后我们也会深入了解。需要注意的是，这种写起来方便的语言，一般来说效率都不会太高。但是开发效率与执行效率常常是鱼与熊掌，很多时候不得不进行选择。</p>
+<p>我们再来看一个长一点的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">irb(main):001:0&gt;</span> puts <span class="string">'hello, wdx'</span></span><br><span class="line">hello, wdx</span><br><span class="line"><span class="status">=&gt;</span> nil</span><br><span class="line"><span class="prompt">irb(main):002:0&gt;</span> friend = <span class="string">'Snake'</span></span><br><span class="line"><span class="status">=&gt;</span> <span class="string">"Snake"</span></span><br><span class="line"><span class="prompt">irb(main):003:0&gt;</span> puts <span class="string">"hello, <span class="subst">#&#123;friend&#125;</span>"</span></span><br><span class="line">hello, <span class="constant">Snake</span></span><br><span class="line"><span class="status">=&gt;</span> nil</span><br><span class="line"><span class="prompt">irb(main):004:0&gt;</span> friend = <span class="string">'Queit'</span></span><br><span class="line"><span class="status">=&gt;</span> <span class="string">"Queit"</span></span><br><span class="line"><span class="prompt">irb(main):005:0&gt;</span> puts <span class="string">"hello, <span class="subst">#&#123;friend&#125;</span>"</span></span><br><span class="line">hello, <span class="constant">Queit</span></span><br><span class="line"><span class="status">=&gt;</span> nil</span><br></pre></td></tr></table></figure>
+<p>这里我们可以看到以下几点：</p>
+<ul>
+<li>不用声明变量</li>
+<li>每条 ruby 代码都会返回某个值</li>
+<li>单引号表示直接解释</li>
+<li>双引号包含的字符串会进行字符串替换</li>
+</ul>
+<h2 id="u7F16_u7A0B_u6A21_u578B"><a href="#u7F16_u7A0B_u6A21_u578B" class="headerlink" title="编程模型"></a>编程模型</h2><p>Ruby 是一门纯面向对象语言。从下面的例子就可以看出来：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">irb(main):001:0&gt;</span> <span class="number">233</span></span><br><span class="line"><span class="status">=&gt;</span> <span class="number">233</span></span><br><span class="line"><span class="prompt">irb(main):002:0&gt;</span> <span class="number">233</span>.class</span><br><span class="line"><span class="status">=&gt;</span> <span class="constant">Fixnum</span></span><br><span class="line"><span class="prompt">irb(main):003:0&gt;</span> <span class="number">233</span> + <span class="number">233</span></span><br><span class="line"><span class="status">=&gt;</span> <span class="number">466</span></span><br><span class="line"><span class="prompt">irb(main):004:0&gt;</span> <span class="number">233</span>.methods</span><br><span class="line"><span class="status">=&gt;</span> [<span class="symbol">:to_s</span>, <span class="symbol">:inspect</span>, <span class="symbol">:-@</span>, <span class="symbol">:+</span>, <span class="symbol">:-</span>, <span class="symbol">:*</span>, <span class="symbol">:/</span>, <span class="symbol">:div</span>, <span class="symbol">:%</span>, <span class="symbol">:modulo</span>, <span class="symbol">:divmod</span>, <span class="symbol">:fdiv</span>, <span class="symbol">:**</span>, <span class="symbol">:abs</span>, <span class="symbol">:magnitude</span>, <span class="symbol">:==</span>, <span class="symbol">:===</span>, <span class="symbol">:&lt;=&gt;</span>, <span class="symbol">:&gt;</span>, <span class="symbol">:&gt;=</span>, <span class="symbol">:&lt;</span>, <span class="symbol">:&lt;=</span>, <span class="symbol">:~</span>, <span class="symbol">:&amp;</span>, <span class="symbol">:|</span>, <span class="symbol">:^</span>, <span class="symbol">:[]</span>, <span class="symbol">:&lt;&lt;</span>, <span class="symbol">:&gt;&gt;</span>, <span class="symbol">:to_f</span>, <span class="symbol">:size</span>, <span class="symbol">:bit_length</span>, <span class="symbol">:zero?</span>, <span class="symbol">:odd?</span>, <span class="symbol">:even?</span>, <span class="symbol">:succ</span>, <span class="symbol">:integer?</span>, <span class="symbol">:upto</span>, <span class="symbol">:downto</span>, <span class="symbol">:times</span>, <span class="symbol">:next</span>, <span class="symbol">:pred</span>, <span class="symbol">:chr</span>, <span class="symbol">:ord</span>, <span class="symbol">:to_i</span>, <span class="symbol">:to_int</span>, <span class="symbol">:floor</span>, <span class="symbol">:ceil</span>, <span class="symbol">:truncate</span>, <span class="symbol">:round</span>, <span class="symbol">:gcd</span>, <span class="symbol">:lcm</span>, <span class="symbol">:gcdlcm</span>, <span class="symbol">:numerator</span>, <span class="symbol">:denominator</span>, <span class="symbol">:to_r</span>, <span class="symbol">:rationalize</span>, <span class="symbol">:singleton_method_added</span>, <span class="symbol">:coerce</span>, <span class="symbol">:i</span>, <span class="symbol">:+@</span>, <span class="symbol">:eql?</span>, <span class="symbol">:remainder</span>, <span class="symbol">:real?</span>, <span class="symbol">:nonzero?</span>, <span class="symbol">:step</span>, <span class="symbol">:quo</span>, <span class="symbol">:to_c</span>, <span class="symbol">:real</span>, <span class="symbol">:imaginary</span>, <span class="symbol">:imag</span>, <span class="symbol">:abs2</span>, <span class="symbol">:arg</span>, <span class="symbol">:angle</span>, <span class="symbol">:phase</span>, <span class="symbol">:rectangular</span>, <span class="symbol">:rect</span>, <span class="symbol">:polar</span>, <span class="symbol">:conjugate</span>, <span class="symbol">:conj</span>, <span class="symbol">:between?</span>, <span class="symbol">:nil?</span>, <span class="symbol">:=~</span>, <span class="symbol">:</span>!~, <span class="symbol">:hash</span>, <span class="symbol">:class</span>, <span class="symbol">:singleton_class</span>, <span class="symbol">:clone</span>, <span class="symbol">:dup</span>, <span class="symbol">:taint</span>, <span class="symbol">:tainted?</span>, <span class="symbol">:untaint</span>, <span class="symbol">:untrust</span>, <span class="symbol">:untrusted?</span>, <span class="symbol">:trust</span>, <span class="symbol">:freeze</span>, <span class="symbol">:frozen?</span>, <span class="symbol">:methods</span>, <span class="symbol">:singleton_methods</span>, <span class="symbol">:protected_methods</span>, <span class="symbol">:private_methods</span>, <span class="symbol">:public_methods</span>, <span class="symbol">:instance_variables</span>, <span class="symbol">:instance_variable_get</span>, <span class="symbol">:instance_variable_set</span>, <span class="symbol">:instance_variable_defined?</span>, <span class="symbol">:remove_instance_variable</span>, <span class="symbol">:instance_of?</span>, <span class="symbol">:kind_of?</span>, <span class="symbol">:is_a?</span>, <span class="symbol">:tap</span>, <span class="symbol">:send</span>, <span class="symbol">:public_send</span>, <span class="symbol">:respond_to?</span>, <span class="symbol">:extend</span>, <span class="symbol">:display</span>, <span class="symbol">:method</span>, <span class="symbol">:public_method</span>, <span class="symbol">:singleton_method</span>, <span class="symbol">:define_singleton_method</span>, <span class="symbol">:object_id</span>, <span class="symbol">:to_enum</span>, <span class="symbol">:enum_for</span>, <span class="symbol">:equal?</span>, <span class="symbol">:</span>!, <span class="symbol">:</span>!=, <span class="symbol">:instance_eval</span>, <span class="symbol">:instance_exec</span>, <span class="symbol">:__send__</span>, <span class="symbol">:__id__</span>]</span><br></pre></td></tr></table></figure>
+<p>看出来了吗，ruby 中一切皆为对象，比方说数字就是 <code>Fixnum</code> 类型的对象，我们也可以用 <code>.</code> 来调用对象的各种方法。</p>
+<h2 id="u5224_u65AD"><a href="#u5224_u65AD" class="headerlink" title="判断"></a>判断</h2><p>我们同样可以通过例子来研究研究。</p>
+<p>TODO</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>学编程就好比学有用，再好的理论也不如一头扎下水，扑腾着呼吸新鲜空气管用。这个系列的目的，就是帮助自己跳入水中，这一次我们来学 Ruby。</p>]]>
+    
+    </summary>
+    
+      <category term="Ruby" scheme="http://wdxtub.com/tags/Ruby/"/>
+    
+      <category term="编程" scheme="http://wdxtub.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="语言" scheme="http://wdxtub.com/tags/%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[软件架构与设计 习题课 6 设计模式进阶练习]]></title>
@@ -6214,49 +6282,6 @@ done
       <category term="命令行" scheme="http://wdxtub.com/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
     
       <category term="技巧" scheme="http://wdxtub.com/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[SVN 指南]]></title>
-    <link href="http://wdxtub.com/2016/03/24/svn-guide/"/>
-    <id>http://wdxtub.com/2016/03/24/svn-guide/</id>
-    <published>2016-03-24T20:34:47.000Z</published>
-    <updated>2016-03-24T20:35:18.000Z</updated>
-    <content type="html"><![CDATA[<p>国内不少云平台都只支持 SVN，所以还是需要了解基本的操作的。和 Git 的思路不大一样，SVN 等于是总-分结构，虽然可能不如 git 灵活，但是还是比较方便的。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u64CD_u4F5C_u6D41_u7A0B"><a href="#u64CD_u4F5C_u6D41_u7A0B" class="headerlink" title="操作流程"></a>操作流程</h2><p>常见的操作如下：</p>
-<ul>
-<li>checkout（检出）项目</li>
-<li>增加文件或目录 — add(增加)，commit(提交)</li>
-<li>修改文件或目录 — commit(提交)</li>
-<li>删除文件或目录 — commit(提交)</li>
-<li>更新文件或目录 — update(更新)</li>
-</ul>
-<p>其中，checkout只进行一次，以后使用update更新即可。update、commit、add操作根据需要会经常使用。</p>
-<p>简单来说可以这样理解：</p>
-<ul>
-<li>项目中增加了文件或目录，需要先通知服务器要增加，所以首先要 add</li>
-<li>然后如果要让服务器知道这些变动，就 commit，具体参加下面的命令</li>
-<li>如果要从服务器获取最新的代码，就 update</li>
-</ul>
-<p>首先checkout出$appname的svn仓库。</p>
-<pre><code>$ svn checkout https://svn.sinacloud.com/$appname
-</code></pre><p>进入代码目录，创建一个新的子目录 <code>1</code> 作为版本1的代码目录。</p>
-<pre><code>$ mkdir 1
-</code></pre><p>进入版本1的代码目录，编辑代码并版本1的代码部署到线上。</p>
-<pre><code>$ svn add .
-$ svn commit -m &quot;make it better&quot;
-</code></pre>]]></content>
-    <summary type="html">
-    <![CDATA[<p>国内不少云平台都只支持 SVN，所以还是需要了解基本的操作的。和 Git 的思路不大一样，SVN 等于是总-分结构，虽然可能不如 git 灵活，但是还是比较方便的。</p>]]>
-    
-    </summary>
-    
-      <category term="版本控制" scheme="http://wdxtub.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
