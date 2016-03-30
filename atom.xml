@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-30T03:44:46.000Z</updated>
+  <updated>2016-03-30T11:15:07.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[软件架构与设计 习题课 6 设计模式进阶练习]]></title>
+    <link href="http://wdxtub.com/2016/03/30/sad-r6/"/>
+    <id>http://wdxtub.com/2016/03/30/sad-r6/</id>
+    <published>2016-03-30T11:11:03.000Z</published>
+    <updated>2016-03-30T11:15:07.000Z</updated>
+    <content type="html"><![CDATA[<p>接着上次的练习，这次给出具体场景，来进行设计模式的应用，咱们直接看习题。</p>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>Consider this scenario. The business decision process of a company involves several decision makers.Each position has can have its own set of rules which orders they can approve. In more detail, each executive can respond to a purchase request within a certain price range. Beyond the range, the executive needs to hand it off to her superior. A director can approve a purchase order within <code>$10K</code>; a VP can approve within <code>$25K</code>; and a President can approve within <code>$100K</code>. Beyond that, an executive meeting has to be called to make the decision. To solve this scenario, which design pattern would you like to use? Develop a program to implement this scenario associated with test code.</p>
+</blockquote>
+<p>TODO</p>
+<blockquote>
+<p>At an airport, typically there is an airport control tower. All airplanes talk to the control tower instead of having plane-to-plane communication. The control tower looks after which airplane can take off and land. In order to implement such a scenario, which design pattern would you suggest to use? Briefly implement your idea associated with test code.</p>
+</blockquote>
+<p>TODO</p>
+<blockquote>
+<p>Which design pattern is suitable to enable the round-robin CPU scheduling strategy? A CPU typically serves multiple applications simultaneously. Applications will be loaded to memory in a waiting queue. When it is its turn, it will be loaded to CPU to execute. After a common time unit, the application will be swapped out of the CPU and wait for its next turn, and the next application in the queue will be loaded into the CPU to execute. In order for an application to be resumed execution from the last time it was paused, it is important that its context be stored before being moved out of CPU and be recovered before it is loaded into CPU once again. Which design pattern is suitable to realize this context switch scenario? Draw class diagram and write pseudo code.</p>
+</blockquote>
+<p>TODO</p>
+<blockquote>
+<p>Company is trying to implement a message bus between services, supporting different types of multi-casting and broadcasting communication scenarios. A service can broadcast a message to all services registered in the message bus. In addition, services can form interest groups, and a service can send messages to its group member services. Which design pattern is suitable to design such a message bus? Draw class diagram and write pseudo code.</p>
+</blockquote>
+<p>TODO</p>
+<blockquote>
+<p>In the real world you usually find buildings in a community look similar. For example, the buildings appear in the same shape and structures, but each has specific color. It is reasonable to think they share a basic house plan, while have variations. Which design pattern is reflected here? Draw class diagram and write pseudo code.</p>
+</blockquote>
+<p>TODO</p>
+<blockquote>
+<p>Describe a real-life example that illustrates an application of the state design pattern.</p>
+</blockquote>
+<p>TODO</p>
+<blockquote>
+<p>Describe a real-life example that illustrates an application of the visitor design pattern.</p>
+</blockquote>
+<p>TODO</p>
+<blockquote>
+<p>Describe a real-life example that illustrates an application of the command design pattern.</p>
+</blockquote>
+<p>TODO</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>接着上次的练习，这次给出具体场景，来进行设计模式的应用，咱们直接看习题。</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="习题" scheme="http://wdxtub.com/tags/%E4%B9%A0%E9%A2%98/"/>
+    
+      <category term="架构" scheme="http://wdxtub.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="设计" scheme="http://wdxtub.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[云计算 反思课 4 HBase 优化的策略与思考]]></title>
@@ -6198,85 +6257,6 @@ $ svn commit -m &quot;make it better&quot;
     </summary>
     
       <category term="版本控制" scheme="http://wdxtub.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Vim 基本操作]]></title>
-    <link href="http://wdxtub.com/2016/03/24/vim-basic-op/"/>
-    <id>http://wdxtub.com/2016/03/24/vim-basic-op/</id>
-    <published>2016-03-24T20:23:06.000Z</published>
-    <updated>2016-03-24T20:31:14.000Z</updated>
-    <content type="html"><![CDATA[<p>虽然我还是喜欢图形化界面编辑器，但是有的时候登录到远程机器，不得不使用 vim 来编辑文件，这里记录下基本的操作。</p>
-<a id="more"></a>
-<hr>
-<ul>
-<li><code>i</code> 进入 Insert 模式</li>
-<li><code>x</code> 删除当前光标所在的字符</li>
-<li><code>:w</code> 存盘(后面可以跟文件名) </li>
-<li><code>:q</code> 退出</li>
-<li><code>:wq</code> 存盘并退出</li>
-<li><code>dd</code> 删除当前行，并存到剪贴板里</li>
-<li><code>p</code> 粘贴剪贴板</li>
-<li><code>:help &lt;command&gt;</code> 要 :q 退出帮助</li>
-</ul>
-<p>如何浏览帮助呢？请牢记如下秘籍：</p>
-<ul>
-<li>移动: 使用光标键，或者用 h 向左，j 向下，k 向上，l 向右。</li>
-<li>退出: 使用 :q<enter>。</enter></li>
-<li>跳转到一个主题: 将光标置于标签 (例如 usr_01.txt) 上然后输入 CTRL-]。</li>
-<li>跳回: 键入 CTRL-T。</li>
-<li>翻页：键入 CTRL-F/B</li>
-</ul>
-<h2 id="u63D2_u5165_u6A21_u5F0F"><a href="#u63D2_u5165_u6A21_u5F0F" class="headerlink" title="插入模式"></a>插入模式</h2><ul>
-<li><code>a</code> 在光标后插入</li>
-<li><code>o</code> 在当前行后插入一个新行</li>
-<li><code>O</code> 在当前行前插入一个新行</li>
-<li><code>cw</code> 替换从光标所在位置后到一个单词结尾的字符</li>
-</ul>
-<h2 id="u79FB_u52A8_u5149_u6807"><a href="#u79FB_u52A8_u5149_u6807" class="headerlink" title="移动光标"></a>移动光标</h2><ul>
-<li><code>0</code> 数字零，到行头</li>
-<li><code>^</code> 到本行第一个不是blank字符的位置</li>
-<li><code>$</code> 到本行行尾</li>
-<li><code>g_</code> 到本行最后一个不是blank字符的位置。</li>
-<li><code>/pattern</code> 搜索 pattern 的字符串(按n到下一个)</li>
-<li><code>w b</code> 词移动</li>
-</ul>
-<h2 id="u62F7_u8D1D/_u7C98_u8D34"><a href="#u62F7_u8D1D/_u7C98_u8D34" class="headerlink" title="拷贝/粘贴"></a>拷贝/粘贴</h2><ul>
-<li><code>p</code> 在当前位置之后粘贴</li>
-<li><code>P</code> 在当前位置之前粘贴</li>
-<li><code>yy</code> 拷贝当前行，相当于 ddP</li>
-</ul>
-<h2 id="u64A4_u9500/_u91CD_u505A"><a href="#u64A4_u9500/_u91CD_u505A" class="headerlink" title="撤销/重做"></a>撤销/重做</h2><ul>
-<li><code>u</code> undo</li>
-<li><code>&lt;C-r&gt;</code> redo</li>
-</ul>
-<h2 id="u6253_u5F00/_u4FDD_u5B58/_u9000_u51FA/_u6539_u53D8_u6587_u4EF6_28Buffer_29"><a href="#u6253_u5F00/_u4FDD_u5B58/_u9000_u51FA/_u6539_u53D8_u6587_u4EF6_28Buffer_29" class="headerlink" title="打开/保存/退出/改变文件(Buffer)"></a>打开/保存/退出/改变文件(Buffer)</h2><ul>
-<li><code>:e &lt;path/to/file&gt;</code> 打开一个文件</li>
-<li><code>:w</code> 存盘</li>
-<li><code>:saveas &lt;path/to/file&gt;</code> 另存为 <code>&lt;path/to/file&gt;</code></li>
-<li><code>:x</code>, <code>ZZ</code> 或 <code>:wq</code> 保存并退出</li>
-<li><code>:q!</code> 退出不保存 </li>
-<li><code>:qa!</code> 强行退出所有文件。</li>
-<li><code>:bn</code> 和 <code>:bp</code> 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。</li>
-</ul>
-<h2 id="u6280_u5DE7"><a href="#u6280_u5DE7" class="headerlink" title="技巧"></a>技巧</h2><ol>
-<li>打开 Vim之后，可以用 <code>:split filename</code>或 <code>:vsplit filename</code> 或 <code>new filename</code> 横向或纵向切割窗口，使用 <code>ctrl + w</code> 可以在个窗口之间跳转，使用 <code>ctrl + 方向键</code> 可以按照方向切换窗口。</li>
-<li>用 Vim 打开一个文件，如果我们想实现所有文本行翻转，那么可以执行如下命令：<code>:g/^/m 0</code></li>
-<li>在 Vim 中统计文本行数和当前光标的位置，可以使用 <code>ctrl + g</code>，统计字节数，可以使用 <code>g + ctrl + g</code></li>
-<li>对文本进行简单排序：用 <code>shift v</code> 选中多行文本，输入 <code>:!sort</code>，看看效果如何</li>
-<li>如果你想把当前目录下（包括子文件夹）所有后缀为 java 的文件中的 apache 替换成 eclipse，那么依次执行如下命令： 在当前目录下执行：</li>
-</ol>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim</span><br><span class="line">:n <span class="keyword">*</span><span class="keyword">*</span>/<span class="keyword">*</span>.java</span><br><span class="line">:argdo %s/apache/eclipse/ge |<span class="string"> update</span></span><br></pre></td></tr></table></figure>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>虽然我还是喜欢图形化界面编辑器，但是有的时候登录到远程机器，不得不使用 vim 来编辑文件，这里记录下基本的操作。</p>]]>
-    
-    </summary>
-    
-      <category term="编辑器" scheme="http://wdxtub.com/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
