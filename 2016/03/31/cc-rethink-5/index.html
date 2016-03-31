@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>云计算 反思课 5 实时服务测试的策略与思考 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">云计算 反思课 5 实时服务测试的策略与思考</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">云计算 反思课 5 实时服务测试的策略与思考</h1><div class="post-meta">2016-03-31 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/03/31/cc-rethink-5/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div></div></div><div class="post-content"><p>昨天我们的 Twitter Analysis Service 采用了新的测试方式，在大约两个半小时的时间内进行各类请求的压力测试，以确保系统能够应对复杂请求。虽然我做的部分表现非常糟糕，但是从中学到了很多东西，知耻而后勇。</p>
+<a id="more"></a>
+<hr>
+<p>总得来说，因为有靠谱的队友（手动重启服务器几十次），整个测试不至于滑铁卢，但是这也暴露了我们在前后端设计处理的各种问题，接下来逐条分析。</p>
+<blockquote>
+<p>架构设计</p>
+</blockquote>
+<p>因为整套系统目前有 6 台机器，之前测试的时候使用 1 台前端 + 4 台后端是行得通的。但是因为之前并没有过多留意前后端机器的硬件利用情况（基本凭感觉），所以想当然得觉得后端是瓶颈（对 HBase 的特性不大了解，估计错误）。事实狠狠打了我的脸，前端的 CPU 利用率居高不下（接近满负荷运载）而后端的利用率分布不均（有的节点 60% 的 CPU 使用率，有的节点甚至只有 20%）。</p>
+<p>当我意识到这个问题的时候，只能眼睁睁看着唯一的一台前端苦苦支撑，爆内存，和 HBase 的连接断开，每次都只能手动重启服务器（但是因为 CPU 占用满了，重启也需要几分钟）。这极大影响了正确率和吞吐量，最终得到的分数自然少得可怜。</p>
+<p>参考其他组的先进经验，前端使用 ELB(负载均衡) + 2 台机器，后端使用 1(master) + 3(slave) 的模式可能是最科学的，这样可以尽可能得减轻前端单机压力。</p>
+<blockquote>
+<p>硬件监控</p>
+</blockquote>
+<p>好消息是，在同学的帮助之下，终于意识到了『监控』的重要性。虽然不难（每台机器开着 <code>top</code> 查看使用率即可），但是有没有这个意识就有天壤之别。简单粗暴来说，哪怕只通过 CPU 利用率一个指标，就能大概估计目前的硬件使用情况，可是我之前竟然拍脑袋想当然总觉得硬件不是问题。</p>
+<p>这是很好的教训，我要吸取经验。</p>
+<p>痛定思痛，至少可以从其他多个角度来利用监控数据：</p>
+<ul>
+<li>了解不同的监控命令，深入理解不同监控参数的意义，编写脚本抓取重点关注的数据</li>
+<li>结合 CPU 利用率 + 内存利用率来优化代码，力求达到充分利用 CPU 以及内存</li>
+<li>观察 CPU / 内存 / 网络的相关数据，来确定具体的瓶颈所在，然后对症下药，寻找可能的解决方案</li>
+<li>在监控脚本的基础上，可以设定一些阈值，自动化提醒和记录日志（不用自己时刻盯着屏幕了）</li>
+<li>提醒内容：CPU / 内存 / 网络满载警报，或者不均衡使用警报等</li>
+<li>日志内容：在出现警报的时候，需要记录相关请求，查看日志的时候能够快速掌握上下文</li>
+</ul>
+<blockquote>
+<p>数据统计</p>
+</blockquote>
+<p>一般来说，不同的 web 服务，用户的请求模式总体来说是有一定规律的。对于 Twitter 数据的分析，就有热门/冷门的用户/hashtag/单词/时间段（比方说有重大事件发生的日子，tweet 的数量可能会更多）</p>
+<p>我们应该根据具体的需求，通过统计大致了解数据分布。比方说其中一个请求是返回某用户包含某 hashtag 的 tweet，那么我们最好需要了解哪些用户热门，哪些 hashtag 热门，然后根据这些特点来进行数据库 schema 的设计（就是 rowkey 和 value）以及数据库中不同 region 在不同 regionserver 的平衡。之前的设计方式会导致有些 region 访问次数非常多，有些却非常少，这样就没有充分利用 HBase 的能力。</p>
+<p>这部分具体怎么实现还需要通过不断实践来摸索，但是想要获得更好的性能，总是逃不开这步的。</p>
+<blockquote>
+<p>代码实现</p>
+</blockquote>
+<p>这一部分就是压力测试下暴露的代码问题了，主要是以下几点：</p>
+<ul>
+<li>请求的参数要进行检查，很可能为空。但是写起来的语法很麻烦，这个时候就开始怀念 Swift 中的语法糖了</li>
+<li>对于 HBase 1.0 来说，连接池几乎没用，因为共用 HConnection 的 HTableInterface 并不会并行</li>
+<li>线程池也不大需要，undertow 框架基本能够处理好，就不要画蛇添足（容易爆内存）</li>
+</ul>
+<p>最后写三句，从错误中学习比实现 web 服务本身更有意义，这是第二句，第三句也写完了。</p>
+</div><div class="tags"><a href="/tags/CMU/">CMU</a><a href="/tags/云计算/">云计算</a><a href="/tags/优化/">优化</a><a href="/tags/思考/">思考</a></div><div class="post-nav"><a href="/2016/03/30/tmux-guide/" class="next">tmux 指南<i class="icon-next"></i></a></div><div data-thread-key="2016/03/31/cc-rethink-5/" data-title="云计算 反思课 5 实时服务测试的策略与思考" data-url="http://wdxtub.com/2016/03/31/cc-rethink-5/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/03/31/cc-rethink-5/" data-title="云计算 反思课 5 实时服务测试的策略与思考" data-url="http://wdxtub.com/2016/03/31/cc-rethink-5/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
