@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-03-31T03:58:18.000Z</updated>
+  <updated>2016-03-31T04:01:21.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Tmux 指南]]></title>
+    <title><![CDATA[tmux 指南]]></title>
     <link href="http://wdxtub.com/2016/03/30/tmux-guide/"/>
     <id>http://wdxtub.com/2016/03/30/tmux-guide/</id>
     <published>2016-03-30T22:55:27.000Z</published>
-    <updated>2016-03-31T03:58:18.000Z</updated>
+    <updated>2016-03-31T04:01:21.000Z</updated>
     <content type="html"><![CDATA[<p>今天试用了一下 tmux，发现简直是神器！以前还傻傻不停开窗口，现在一个窗口就可以都搞定啦！</p>
 <a id="more"></a>
 <hr>
@@ -150,11 +150,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Rudy 快速入门]]></title>
+    <title><![CDATA[Ruby 快速入门]]></title>
     <link href="http://wdxtub.com/2016/03/30/ruby-first-step/"/>
     <id>http://wdxtub.com/2016/03/30/ruby-first-step/</id>
     <published>2016-03-30T13:14:28.000Z</published>
-    <updated>2016-03-30T14:08:17.000Z</updated>
+    <updated>2016-03-31T04:02:42.000Z</updated>
     <content type="html"><![CDATA[<p>学编程就好比学有用，再好的理论也不如一头扎下水，扑腾着呼吸新鲜空气管用。这个系列的目的，就是帮助自己跳入水中，这一次我们来学 Ruby。</p>
 <a id="more"></a>
 <hr>
