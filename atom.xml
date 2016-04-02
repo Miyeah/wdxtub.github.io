@@ -69,7 +69,7 @@
     <link href="http://wdxtub.com/2016/04/01/prolog-first-step/"/>
     <id>http://wdxtub.com/2016/04/01/prolog-first-step/</id>
     <published>2016-04-02T01:02:45.000Z</published>
-    <updated>2016-04-02T02:44:55.000Z</updated>
+    <updated>2016-04-02T15:45:43.000Z</updated>
     <content type="html"><![CDATA[<p>Prolog 是一门声明式编程语言，也是最早成功的逻辑编程语言之一。只需提供 fact 和 inference，程序会替我们进行推断。甚至不需要知道怎么做，只要告诉计算机要做什么即可。比方说，用不到 20 行代码解决数独问题。</p>
 <a id="more"></a>
 <hr>
@@ -97,7 +97,32 @@
 </ul>
 <p>具体执行时，先输入 <code>gprolog</code>，然后输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| ?- [<span class="string">'friends.pl'</span>].compiling /home/parallels/Documents/friends.pl <span class="keyword">for</span> byte code.../home/parallels/Documents/friends.pl compiled, <span class="number">5</span> lines <span class="built_in">read</span> - <span class="number">976</span> bytes written, <span class="number">6</span> ms(<span class="number">1</span> ms) yes</span><br></pre></td></tr></table></figure>
-<p>这里 <code>| ?-</code> 是命令前面的提示符，类似于命令行前的 <code>$</code>，不过这么有个性的，我还是第一次见</p>
+<p>除非 Prolog 在等待一个中间结果，否则都会用 <code>yes</code> 或者 <code>no</code> 来回应，这一句里文件加载成功，所以返回 <code>yes</code>。而 <code>| ?-</code> 是命令前面的提示符，类似于命令行前的 <code>$</code>，不过这么有个性的，我还是第一次见</p>
+<p>然后我们就可以让计算机自己进行逻辑推断了，比如：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| ?- <span class="atom">likes</span>(<span class="atom">wallace</span>, <span class="atom">sheep</span>).<span class="atom">no</span></span><br></pre></td></tr></table></figure>
+<p>通过前面的条件我们知道，并不能推断出 wallace 喜欢 sheep，所以返回 no。</p>
+<blockquote>
+<p>基本推论和变量</p>
+</blockquote>
+<p>来测试以下前面的 <code>friend</code> 规则：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">| ?- <span class="atom">friend</span>(<span class="atom">wallace</span>, <span class="atom">wallace</span>).<span class="atom">no</span></span><br><span class="line">| ?- <span class="atom">friend</span>(<span class="atom">grommit</span>, <span class="atom">wallace</span>).<span class="atom">yes</span>| ?- <span class="atom">friend</span>(<span class="atom">wallace</span>, <span class="atom">grommit</span>).<span class="atom">yes</span></span><br></pre></td></tr></table></figure>
+<p>我们来用自然语言翻译一下 <code>friend</code> 规则</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="atom">friend</span>(<span class="name">X</span>, <span class="name">Y</span>) :- \+(<span class="name">X</span> = <span class="name">Y</span>), <span class="atom">likes</span>(<span class="name">X</span>, <span class="name">Z</span>), <span class="atom">likes</span>(<span class="name">Y</span>, <span class="name">Z</span>).</span><br></pre></td></tr></table></figure>
+<p>如果 <code>X</code> 和 <code>Y</code> 是朋友，那么 X 就不能与 Y 相同。<code>:-</code> 右边的称为子目标(subgoal)。<code>\+</code> 是逻辑取反操作，所以第一个子目标 <code>\+(X=Y)</code> 的意思是 <code>X</code> 不等于 <code>Y</code>。后面的 <code>likes</code> 语句表示如果 <code>X</code> 喜欢 <code>Z</code>，并且 <code>Y</code> 也喜欢 <code>Z</code>，所以后面的子目标就是在 <code>X</code> 不等于 <code>Y</code> 的情况下，他们还喜欢同一个 <code>Z</code>。我们可以试验以下其他的组合，来看看 prolog 的工作机制。</p>
+<p>上面的代码是一个具有三个变量 <code>X</code>, <code>Y</code> 和 <code>Z</code> 的 Prolog 规则，称为 <code>friend/2</code> 表示参数有 2 个，这个规则有三个子目标（条件）。只有都满足的时候，规则才为真。</p>
+<blockquote>
+<p>填空</p>
+</blockquote>
+<p>我们还可以利用 prolog 查询出所有可能的匹配，这时候我们就需要一个变量，打开一个新的文件 <code>food.pl</code>，并填入下面的代码：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="atom">food_type</span>(<span class="atom">velveeta</span>, <span class="atom">cheese</span>).</span><br><span class="line"><span class="atom">food_type</span>(<span class="atom">ritz</span>, <span class="atom">cracker</span>).</span><br><span class="line"><span class="atom">food_type</span>(<span class="atom">spam</span>, <span class="atom">meat</span>).</span><br><span class="line"><span class="atom">food_type</span>(<span class="atom">sausage</span>, <span class="atom">meat</span>).</span><br><span class="line"><span class="atom">food_type</span>(<span class="atom">jolt</span>, <span class="atom">soda</span>).</span><br><span class="line"><span class="atom">food_type</span>(<span class="atom">twinkie</span>, <span class="atom">dessert</span>).</span><br><span class="line"></span><br><span class="line"><span class="atom">flavor</span>(<span class="atom">sweet</span>, <span class="atom">dessert</span>).</span><br><span class="line"><span class="atom">flavor</span>(<span class="atom">savory</span>, <span class="atom">meat</span>).</span><br><span class="line"><span class="atom">flavor</span>(<span class="atom">savory</span>, <span class="atom">cheese</span>).</span><br><span class="line"><span class="atom">flavor</span>(<span class="atom">sweet</span>, <span class="atom">soda</span>).</span><br><span class="line"></span><br><span class="line"><span class="atom">food_flavor</span>(<span class="name">X</span>, <span class="name">Y</span>) :- <span class="atom">food_type</span>(<span class="name">X</span>, <span class="name">Z</span>), <span class="atom">flavor</span>(<span class="name">Y</span>, <span class="name">Z</span>).</span><br></pre></td></tr></table></figure>
+<p>其中 <code>food_type(velveeta, cheese)</code> 意思是 <code>velveeta</code> 属于 <code>cheese</code> 类食物；而 <code>flavor(sweet, dessert)</code> 则表示 <code>sweet</code> 是 <code>dessert</code> 的味道。最后的规则的意思是如果食物 <code>X</code> 属于类别 <code>Z</code> 并且 <code>Z</code> 的味道是 <code>Y</code>，那么食物 <code>X</code> 具有 <code>food_flavor</code> <code>Y</code>。编译一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| ?- [<span class="string">'food.pl'</span>].compiling /home/parallels/Documents/food.pl <span class="keyword">for</span> byte code.../home/parallels/Documents/food.pl compiled, <span class="number">13</span> lines <span class="built_in">read</span> - <span class="number">1536</span> bytes written, <span class="number">5</span> msyes</span><br></pre></td></tr></table></figure>
+<p>然后我们来问几个问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| ?- food_<span class="built_in">type</span>(What, meat).What = spam ? ;What = sausage ? ;no</span><br></pre></td></tr></table></figure>
+<p>这里 prolog 会先找到 <code>spam</code>，然后输入 <code>;</code>，prolog 就会继续寻找下一个，也就是返回 <code>sausage</code>，继续输入 <code>;</code>，会发现返回了 <code>no</code>，这表示在未经更多计算的情况下不能判断是否还有更多选项。</p>
+<p>另一个问题可以是 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| ?- food_flavor(What, savory).What = velveeta ? ;What = spam ? ;What = sausage ? ;no</span><br></pre></td></tr></table></figure>
+<p>这里要注意 <code>food_flavor(X,Y)</code> 是一个规则，而不是事实，逻辑引擎会遍历所有使目标为真的可能组合。</p>
 <h2 id="u4E60_u9898"><a href="#u4E60_u9898" class="headerlink" title="习题"></a>习题</h2><h2 id="u53C2_u8003_u94FE_u63A5"><a href="#u53C2_u8003_u94FE_u63A5" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
 <li><a href="http://fengdidi.github.io/blog/2011/11/15/di-1zhang-pei-zhi-kai-fa-huan-jing/" target="_blank" rel="external">笨办法学Prolog</a></li>
 </ul>
