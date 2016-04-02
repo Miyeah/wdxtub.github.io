@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-04-02T01:05:20.000Z</updated>
+  <updated>2016-04-02T02:44:55.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -19,11 +19,39 @@
     <link href="http://wdxtub.com/2016/04/01/prolog-first-step/"/>
     <id>http://wdxtub.com/2016/04/01/prolog-first-step/</id>
     <published>2016-04-02T01:02:45.000Z</published>
-    <updated>2016-04-02T01:05:20.000Z</updated>
+    <updated>2016-04-02T02:44:55.000Z</updated>
     <content type="html"><![CDATA[<p>Prolog 是一门声明式编程语言，也是最早成功的逻辑编程语言之一。只需提供 fact 和 inference，程序会替我们进行推断。甚至不需要知道怎么做，只要告诉计算机要做什么即可。比方说，用不到 20 行代码解决数独问题。</p>
 <a id="more"></a>
 <hr>
-<h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><h2 id="u7F16_u7A0B_u6A21_u578B"><a href="#u7F16_u7A0B_u6A21_u578B" class="headerlink" title="编程模型"></a>编程模型</h2><h2 id="u4E60_u9898"><a href="#u4E60_u9898" class="headerlink" title="习题"></a>习题</h2><h2 id="u53C2_u8003_u94FE_u63A5"><a href="#u53C2_u8003_u94FE_u63A5" class="headerlink" title="参考链接"></a>参考链接</h2>]]></content>
+<h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>1972 年由 Alain Colmerauer 和 Phillipe Roussel 开发完成</li>
+<li>基于数据库，数据由逻辑规则和关系组成</li>
+<li>包含两个部分：一部分用于描述数据，另一部分用于查询数据</li>
+</ul>
+<p>在 Prolog 中，数据以逻辑规则的形式存在，下面是基本构建单元：</p>
+<ul>
+<li>事实：关于真实世界的基本断言（Babe 是一头猪，猪喜欢泥巴）</li>
+<li>规则：关于真实世界中的一些事实的推论（如果一个动物是猪，那么它喜欢泥巴）</li>
+<li>查询：关于真实世界的一个问题（Babe 喜欢泥巴吗）</li>
+</ul>
+<p>事实和规则被放入一个知识库(knowledge base)。Prolog 编译器将这个知识库编译成一种适于高效查询的形式。</p>
+<p>这里我们在 ubuntu 下做实验，直接 <code>sudo apt-get install gprolog</code> 即可</p>
+<h2 id="u7F16_u7A0B_u6A21_u578B"><a href="#u7F16_u7A0B_u6A21_u578B" class="headerlink" title="编程模型"></a>编程模型</h2><p>Prolog 中，一个词以小写字母开头，就是一个原子(atom)——类似于 Ruby 中的符号(symbol)的固定值，如果一个词以大写字母或下划线开头，那么它就是一个变量。变量的值可以改变，原则则不能。</p>
+<p>下面是一个简单的例子，先创建一个文件（比如 <code>friends.pl</code>），输入以下内容</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="atom">likes</span>(<span class="atom">wallace</span>, <span class="atom">cheese</span>).</span><br><span class="line"><span class="atom">likes</span>(<span class="atom">grommit</span>, <span class="atom">cheese</span>).</span><br><span class="line"><span class="atom">likes</span>(<span class="atom">wendolene</span>, <span class="atom">sheep</span>).</span><br><span class="line"></span><br><span class="line"><span class="atom">friend</span>(<span class="name">X</span>, <span class="name">Y</span>) :- \+(<span class="name">X</span> = <span class="name">Y</span>), <span class="atom">likes</span>(<span class="name">X</span>, <span class="name">Z</span>), <span class="atom">likes</span>(<span class="name">Y</span>, <span class="name">Z</span>).</span><br></pre></td></tr></table></figure>
+<p>上面这个文件就是由事实和规则组成的知识库。前三条语句是事实，最后一条语句是一个规则。<code>wallace</code>, <code>grommit</code> 和 <code>wendolene</code> 都是原子，翻译过来就是</p>
+<ul>
+<li><code>wallace</code> 喜欢 <code>cheese</code></li>
+<li><code>grommit</code> 喜欢 <code>cheese</code></li>
+<li><code>wendolene</code> 喜欢 <code>sheep</code></li>
+</ul>
+<p>具体执行时，先输入 <code>gprolog</code>，然后输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| ?- [<span class="string">'friends.pl'</span>].compiling /home/parallels/Documents/friends.pl <span class="keyword">for</span> byte code.../home/parallels/Documents/friends.pl compiled, <span class="number">5</span> lines <span class="built_in">read</span> - <span class="number">976</span> bytes written, <span class="number">6</span> ms(<span class="number">1</span> ms) yes</span><br></pre></td></tr></table></figure>
+<p>这里 <code>| ?-</code> 是命令前面的提示符，类似于命令行前的 <code>$</code>，不过这么有个性的，我还是第一次见</p>
+<h2 id="u4E60_u9898"><a href="#u4E60_u9898" class="headerlink" title="习题"></a>习题</h2><h2 id="u53C2_u8003_u94FE_u63A5"><a href="#u53C2_u8003_u94FE_u63A5" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="http://fengdidi.github.io/blog/2011/11/15/di-1zhang-pei-zhi-kai-fa-huan-jing/" target="_blank" rel="external">笨办法学Prolog</a></li>
+</ul>
+]]></content>
     <summary type="html">
     <![CDATA[<p>Prolog 是一门声明式编程语言，也是最早成功的逻辑编程语言之一。只需提供 fact 和 inference，程序会替我们进行推断。甚至不需要知道怎么做，只要告诉计算机要做什么即可。比方说，用不到 20 行代码解决数独问题。</p>]]>
     
