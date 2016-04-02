@@ -291,6 +291,7 @@
 </li>
 </ul>
 <p>基本上需要根据范围来进行分隔，比以此确定 partition key，通过观察应该能够找到合适的 key。其他的部分根据原来的代码复制粘贴即可。</p>
+<p>如果使用了 EXTERNAL 关键字，删除的时候还需要对应删除 hdfs 中的文件。然而 EMR 很可能没权限删，所以…唉</p>
 <p>这部分不算太难。需要仔细。另外注意 <code>project3_5.sql</code> 中不要写注释，会出错。</p>
 <h3 id="Redshift__u4EFB_u52A1"><a href="#Redshift__u4EFB_u52A1" class="headerlink" title="Redshift 任务"></a>Redshift 任务</h3><p>Redshift 很贵，确定弄清楚了要做的事情，才开启，启动的配置如下：</p>
 <ul>
