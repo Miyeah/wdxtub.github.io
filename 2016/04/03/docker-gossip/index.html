@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>Docker 碎碎念 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Docker 碎碎念</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">Docker 碎碎念</h1><div class="post-meta">2016-04-03 | <span class="categories">分类于<a href="/categories/Technique/"> Technique</a></span></div><span data-thread-key="2016/04/03/docker-gossip/" class="ds-thread-count"></span><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u53C2_u8003_u94FE_u63A5"><span class="toc-number">1.</span> <span class="toc-text">参考链接</span></a></li></ol></div></div><div class="post-content"><p>这篇日志主要来自 Docker 的应用及部署实践，算是从感性的角度来了解 Docker。</p>
+<a id="more"></a>
+<hr>
+<p>以 Docker 为代表的容器技术模糊了 IaaS 与 PaaS 之间的界限，为云计算的服务形式带来了一个开放的未来。</p>
+<p>一些言论：</p>
+<ul>
+<li>对 Docker 大规模应用到生产环境需要谨慎，但是仅考虑测试和开发，是可以真正解决环境部署问题的好办法</li>
+<li>将所有服务放在一个容器叫做 Fat Container</li>
+<li>Docker 天然适合一个容器只运行一种服务（官方更推荐）<ul>
+<li>为每个服务创建单独文件夹，并在每个文件夹下放一个 Dockerfile</li>
+</ul>
+</li>
+<li>每个容器只运行单一服务，容器间的互相通信有两种办法：<ul>
+<li>将容器端口绑定到一个本地端口，通过端口通讯</li>
+<li>通过 Docker 提供的 Linking 功能，推荐使用 Docker-Compose</li>
+</ul>
+</li>
+<li>当前容器技术面临的最大阻力是安全问题和管理工具</li>
+<li>学习 Docker 的三个阶段<ul>
+<li>Docker 本身功能的使用</li>
+<li>驾驭 Docker 集群（使用 Kubernetes, Shipyard, Machine+Swarm+Compose）</li>
+<li>为场景和业务深度定制</li>
+</ul>
+</li>
+<li>Docker 面临的最大阻碍 <ul>
+<li>Docker 所属公司本身的强势，想做一揽子事情的态度，这使得 Docker 现在非常臃肿</li>
+<li>不要把眼光局限在 Docker 上面，让 Docker 只做容器的事情</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>除非你不想做，不想做就算了，想做好的话就不可能不劳而获</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">差劲的叛逆者</th>
+<th style="text-align:center">优秀的叛逆者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">抱怨</td>
+<td style="text-align:center">创造</td>
+</tr>
+<tr>
+<td style="text-align:center">断言</td>
+<td style="text-align:center">质疑</td>
+</tr>
+<tr>
+<td style="text-align:center">关注个人</td>
+<td style="text-align:center">关注任务</td>
+</tr>
+<tr>
+<td style="text-align:center">悲观</td>
+<td style="text-align:center">乐观</td>
+</tr>
+<tr>
+<td style="text-align:center">愤怒</td>
+<td style="text-align:center">热情</td>
+</tr>
+<tr>
+<td style="text-align:center">耗费能量</td>
+<td style="text-align:center">生成能量</td>
+</tr>
+<tr>
+<td style="text-align:center">疏离</td>
+<td style="text-align:center">吸引</td>
+</tr>
+<tr>
+<td style="text-align:center">问题</td>
+<td style="text-align:center">可能性</td>
+</tr>
+<tr>
+<td style="text-align:center">抱怨问题</td>
+<td style="text-align:center">寻找机会</td>
+</tr>
+<tr>
+<td style="text-align:center">担心</td>
+<td style="text-align:center">希冀</td>
+</tr>
+<tr>
+<td style="text-align:center">指责他人</td>
+<td style="text-align:center">指出原因</td>
+</tr>
+<tr>
+<td style="text-align:center">困扰</td>
+<td style="text-align:center">反抗</td>
+</tr>
+<tr>
+<td style="text-align:center">说教</td>
+<td style="text-align:center">倾听</td>
+</tr>
+</tbody>
+</table>
+<p>成功叛逆者的秘密</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">策略：实现特定目标的行动</th>
+<th style="text-align:left">行为：你的行为举止，特别是对他人时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">利用他人的才华，明白没人能独自完成意义重大的改变</td>
+<td style="text-align:left">保持乐观，鼓舞他人加入解决问题的行列</td>
+</tr>
+<tr>
+<td style="text-align:left">将自己的想法和组织的目标统一起来</td>
+<td style="text-align:left">评论想法，不评论人；讨论想法和想法的价值</td>
+</tr>
+<tr>
+<td style="text-align:left">展现改变带来的好处与代价相称</td>
+<td style="text-align:left">从愤怒中学习：思考是什么引发了愤怒，避免陷入情绪闹剧</td>
+</tr>
+<tr>
+<td style="text-align:left">有效利用冲突：探究分歧和冲突，学习如何完善和推进一个想法</td>
+<td style="text-align:left">尊重他人并考虑不同的观点</td>
+</tr>
+<tr>
+<td style="text-align:left">不操之过急：给他人实践来接受新想法并思考它的影响</td>
+<td style="text-align:left">知道何时该放弃坚持，懂得权衡想法的重要性和固执的代价</td>
+</tr>
+</tbody>
+</table>
+<h2 id="u53C2_u8003_u94FE_u63A5"><a href="#u53C2_u8003_u94FE_u63A5" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="http://www.wolonge.com/zhuanlan/detail/117441" target="_blank" rel="external">Docker在PHP项目开发环境中的应用</a></li>
+<li><a href="http://news.oneapm.com/mesos-docker-go/" target="_blank" rel="external">通过 Mesos、Docker 和 Go，使用 300 行代码创建一个分布式系统</a></li>
+<li>《Docker 开发实践》</li>
+<li>《Docker——容器与容器云》</li>
+</ul>
+</div><div class="tags"><a href="/tags/Docker/">Docker</a><a href="/tags/云计算/">云计算</a><a href="/tags/平台/">平台</a></div><div class="post-nav"><a href="/2016/04/03/docker-basic-concept/" class="next">Docker 基本概念<i class="icon-next"></i></a></div><div data-thread-key="2016/04/03/docker-gossip/" data-title="Docker 碎碎念" data-url="http://wdxtub.com/2016/04/03/docker-gossip/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/04/03/docker-gossip/" data-title="Docker 碎碎念" data-url="http://wdxtub.com/2016/04/03/docker-gossip/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
