@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-04-02T14:44:39.000Z</updated>
+  <updated>2016-04-03T02:46:17.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,137 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Docker 快速入门及试验环境配置]]></title>
+    <link href="http://wdxtub.com/2016/04/02/docker-first-step/"/>
+    <id>http://wdxtub.com/2016/04/02/docker-first-step/</id>
+    <published>2016-04-03T00:11:29.000Z</published>
+    <updated>2016-04-03T02:46:17.000Z</updated>
+    <content type="html"><![CDATA[<p>借着课程的机会来了解一下 Docker，大部分内容来自官方文档以及课程指引。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>Docker 最初 dotCloud 公司内部的一个业余项目</li>
+<li>Docker 基于 Go 语言</li>
+<li>Docker 项目的目标是实现轻量级的操作系统虚拟化解决方案</li>
+<li>Docker 的基础是 Linux 容器（LXC）等技术</li>
+<li>Docker 容器的启动可以在秒级实现，这相比传统的虚拟机方式要快得多</li>
+<li>Docker 对系统资源的利用率很高，一台主机上可以同时运行数千个 Docker 容器</li>
+</ul>
+<p>下面的图片比较了 Docker 和传统虚拟化方式的不同之处，可见容器是在操作系统层面上实现虚拟化，直接复用本地主机的操作系统，而传统方式则是在硬件层面实现。</p>
+<p><img src="/images/14596424862659.png" alt=""></p>
+<p><img src="/images/14596424920098.png" alt=""></p>
+<p>容器除了运行其中应用外，基本不消耗额外的系统资源，使得应用的性能很高，同时系统的开销尽量小。传统虚拟机方式运行 10 个不同的应用就要起 10 个虚拟机，而Docker 只需要启动 10 个隔离的应用即可。</p>
+<p>主要优势为：</p>
+<ul>
+<li>更快速的交付和部署 - 容器成为了最小单位</li>
+<li>更高效的虚拟化 - 内核级虚拟化</li>
+<li>更轻松的迁移和拓展</li>
+<li>更简单的管理</li>
+</ul>
+<h2 id="u57FA_u672C_u6982_u5FF5"><a href="#u57FA_u672C_u6982_u5FF5" class="headerlink" title="基本概念"></a>基本概念</h2><p>主要是三个：</p>
+<ul>
+<li>镜像(Image)<ul>
+<li>一个只读的模板，镜像可以用来创建 Docker 容器</li>
+<li>可以简单创建或更新现有镜像，或者直接下载使用其他人的</li>
+</ul>
+</li>
+<li>容器(Container)<ul>
+<li>容器是从镜像创建的运行实例，在启动的时候创建一层可写层作为最上层（因为镜像是只读的）</li>
+<li>可以被启动、开始、停止、删除。每个容器都是相互隔离的、保证安全的平台</li>
+<li>可以把容器看做是一个简易版的 Linux 环境（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序</li>
+</ul>
+</li>
+<li>仓库(Repository)<ul>
+<li>集中存放镜像文件的场所</li>
+<li>最大的公开仓库是 <a href="https://hub.docker.com/" target="_blank" rel="external">Docker Hub</a></li>
+<li>国内的公开仓库包括 <a href="http://www.dockerpool.com/" target="_blank" rel="external">Docker Pool</a> 等</li>
+<li>当用户创建了自己的镜像之后就可以使用 push 命令将它上传到公有或者私有仓库，这样下次在另外一台机器上使用这个镜像时候，只需要从仓库上 pull 下来就可以了</li>
+<li>Docker 仓库的概念跟 Git 类似，注册服务器可以理解为 GitHub 这样的托管服务</li>
+</ul>
+</li>
+</ul>
+<h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><p>官方网站提供了 <a href="https://docs.docker.com/mac/" target="_blank" rel="external">Mac</a>, <a href="https://docs.docker.com/linux/" target="_blank" rel="external">Linux</a> 和 <a href="https://docs.docker.com/windows/" target="_blank" rel="external">Windows</a> 版本的安装教程。因为我打算使用虚拟机进行安装测试，所以这里主要走 Linux 的安装教程，不过其他的应该大同小异。我的 ubuntu 版本是 14.04 LTS, trusty</p>
+<p>Docker 目前只能安装在 64 位平台上，并且要求内核版本不低于 3.10，实际上内核越新越好，过低的内核版本容易造成功能的不稳定。可以通过下面的命令来检查内核版本（两个方式，都可以）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parallels@ubuntu:~$ uname <span class="operator">-a</span>Linux ubuntu <span class="number">3.13</span>.<span class="number">0</span>-<span class="number">83</span>-generic <span class="comment">#127-Ubuntu SMP Fri Mar 11 00:25:37 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</span></span><br><span class="line">parallels@ubuntu:~$ cat /proc/versionLinux version <span class="number">3.13</span>.<span class="number">0</span>-<span class="number">83</span>-generic (buildd@lgw01-<span class="number">55</span>) (gcc version <span class="number">4.8</span>.<span class="number">2</span> (Ubuntu <span class="number">4.8</span>.<span class="number">2</span>-<span class="number">19</span>ubuntu1) ) <span class="comment">#127-Ubuntu SMP Fri Mar 11 00:25:37 UTC 2016</span></span><br></pre></td></tr></table></figure>
+<p>这里我们按照官网的教程，不使用 <code>apt-get</code> 而是使用 <code>curl</code> 来进行安装。</p>
+<ol>
+<li>如果没有安装 <code>curl</code>，使用 <code>sudo apt-get update; sudo apt-get install curl</code> 来进行安装</li>
+<li>下载最新的 Docker 包 <code>curl -fsSL https://get.docker.com/ | sh</code><ul>
+<li>如果想要以 non-root 用户的角色来使用，请使用 <code>sudo usermod -aG docker parallels</code>（这里 <code>parallels</code> 是用户名），注意需要注销并重新登录以应用改动</li>
+</ul>
+</li>
+<li>验证安装<ul>
+<li>需要先启用 docker <code>sudo service docker start</code></li>
+<li>然后可以用 <code>docker version</code> 来查看版本</li>
+<li>最后使用 <code>docker run hello-world</code> 来测试</li>
+</ul>
+</li>
+</ol>
+<p>版本信息</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parallels@ubuntu:~$ docker versionClient: Version:      <span class="number">1.10</span><span class="number">.3</span> API version:  <span class="number">1.22</span> Go version:   go1<span class="number">.5</span><span class="number">.3</span> Git commit:   <span class="number">20f</span>81dd Built:        Thu Mar <span class="number">10</span> <span class="number">15</span>:<span class="number">54</span>:<span class="number">52</span> <span class="number">2016</span> OS/Arch:      linux/amd64Server: Version:      <span class="number">1.10</span><span class="number">.3</span> API version:  <span class="number">1.22</span> Go version:   go1<span class="number">.5</span><span class="number">.3</span> Git commit:   <span class="number">20f</span>81dd Built:        Thu Mar <span class="number">10</span> <span class="number">15</span>:<span class="number">54</span>:<span class="number">52</span> <span class="number">2016</span> OS/Arch:      linux/amd64</span><br></pre></td></tr></table></figure>
+<p>成功运行 hello world 的结果</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parallels@ubuntu:~$ docker run hello-worldHello <span class="built_in">from</span> Docker.This message shows that your installation appears <span class="built_in">to</span> be working correctly.To generate this message, Docker took <span class="operator">the</span> following steps: <span class="number">1.</span> The Docker client contacted <span class="operator">the</span> Docker daemon. <span class="number">2.</span> The Docker daemon pulled <span class="operator">the</span> <span class="string">"hello-world"</span> image <span class="built_in">from</span> <span class="operator">the</span> Docker Hub. <span class="number">3.</span> The Docker daemon created <span class="operator">a</span> <span class="built_in">new</span> container <span class="built_in">from</span> that image which runs <span class="operator">the</span>    executable that produces <span class="operator">the</span> output you are currently reading. <span class="number">4.</span> The Docker daemon streamed that output <span class="built_in">to</span> <span class="operator">the</span> Docker client, which sent <span class="keyword">it</span>    <span class="built_in">to</span> your terminal.To <span class="keyword">try</span> something more ambitious, you can run <span class="operator">an</span> Ubuntu container <span class="operator">with</span>: $ docker run -<span class="keyword">it</span> ubuntu bashShare images, automate workflows, <span class="operator">and</span> more <span class="operator">with</span> <span class="operator">a</span> free Docker Hub account: <span class="keyword">https</span>://hub.docker.comFor more examples <span class="operator">and</span> ideas, visit: <span class="keyword">https</span>://docs.docker.com/userguide/</span><br></pre></td></tr></table></figure>
+<p>这之后我们需要安装 docker machine 和 virtual box，具体步骤为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取权限</span></span><br><span class="line">$ sudo su</span><br><span class="line"><span class="comment"># 下载 Docker Machine 的二进制文件 </span></span><br><span class="line">$ curl -L https://github.com/docker/machine/releases/download/v0.<span class="number">6.0</span>/docker-machine-`uname <span class="operator">-s</span>`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-machine &amp;&amp; chmod +x /usr/<span class="built_in">local</span>/bin/docker-machine</span><br><span class="line"><span class="comment"># 验证安装</span></span><br><span class="line">$ docker-machine version</span><br><span class="line">docker-machine version <span class="number">0.6</span>.<span class="number">0</span>, build e27fb87</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加源<ul>
+<li>把这行添加到 <code>/etc/apt/sources.list</code> 文件中 <code>deb http://download.virtualbox.org/virtualbox/debian trusty contrib</code> </li>
+<li><code>wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -</code></li>
+</ul>
+</li>
+<li>更新并安装 <code>sudo apt-get update; sudo apt-get install virtualbox-5.0</code></li>
+</ul>
+<h2 id="u914D_u7F6E"><a href="#u914D_u7F6E" class="headerlink" title="配置"></a>配置</h2><p>然后是一些配置，先重设默认的虚拟机 </p>
+<ul>
+<li>删除原来的默认（如果有的话）<code>docker-machine rm default</code></li>
+<li>创建新的默认虚拟机 <code>docker-machine create --driver virtualbox default</code>（这一步可能需要等一下，我用的是 Parallel Desktop 11，还需要在虚拟机设置中开启 CPU 虚拟化，主要是支持 vt-x）</li>
+</ul>
+<p>然后如果直接在菜单中选择 Virtual Box 的话，就会发现什么都没有，技巧是要在刚才的命令行中输入 <code>virtualbox</code>，然后就可以看到下面的界面：</p>
+<p><img src="/images/14596481872848.jpg" alt="default 就是我们刚才创建的虚拟机"></p>
+<p>在 Settings - Network 中选择 Port Forwarding，然后按照如图所示添加记录</p>
+<p><img src="/images/14596485001418.jpg" alt=""></p>
+<p>这里的 Host Port: 9234 记为 A，Guest Port: 9001 记为 B。然后就可以启动 docker 中老师提供的镜像了：</p>
+<p>命令为 <code>docker run -it -p 9001:9000 cmusvsc/apachecmda:1.1</code>（需要下载一段时间，然后再解压一段时间），这里 9001 记为 C，9000 记为 D。</p>
+<p>接着就会直接连接到 docker 中的虚拟机，从之后的图中可以看到命令行前面的内容也变化了。然后我们输入命令开启前端 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/Spring2016/ApacheCMDA-Frontend</span><br><span class="line">./activator run <span class="comment"># 相当于在 9000 端口开启</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/14596510005751.jpg" alt="开启前端"></p>
+<p>不要关现在的终端，开启一个新的终端。仍然 <code>docker run -it -p 9001:9000 cmusvsc/apachecmda:1.1</code></p>
+<p>等待一段时间后，继续走以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/Spring2016/ApacheCMDA-Backend</span><br><span class="line">./activator <span class="string">"run 9034"</span></span><br></pre></td></tr></table></figure>
+<p>然后可以见到 </p>
+<p><img src="/images/14596503095705.jpg" alt="开启后端"></p>
+<p>然后等待一段时间（第一运行需要编译），就可以见到主页面了：</p>
+<p><img src="/images/14596510450895.jpg" alt="主界面"></p>
+<p>还记得前面的端口转发吗？这里解释一下：</p>
+<ul>
+<li>A，也就是 9234，是用户访问的端口号</li>
+<li>B，也就是 9001，我们通过虚拟机的端口转发从 9234 转到了 9001</li>
+<li>C，也就是 9001（这个命令中的 <code>docker run -it -p 9001:9000 cmusvsc/apachecmda:1.1</code>），是虚拟机继续转发的端口</li>
+<li>D，也就是 9000（这个命令中的 <code>docker run -it -p 9001:9000 cmusvsc/apachecmda:1.1</code>），是 Docker 容器中接收请求的端口。</li>
+</ul>
+<p>也就是说，B 和 C 一定要一样，A 和 D 可以在命令中设置。至于为什么后端需要运行在 9034 端口，是因为前端和后端通过这个端口通讯（应该是写死在代码里的）</p>
+<p>如果想要在本地和容器中方便进行文件交换，可以通过如下命令进行文件夹映射</p>
+<p><code>docker run -it -p 9999:9999 -p 9001:9000 -v ~/localFolder:/sharedFolder cmusvsc/apachecmda:1.1</code></p>
+<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://github.com/docker/docker" target="_blank" rel="external">开源代码</a></li>
+<li><a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="external">Docker —— 从入门到实践</a></li>
+<li><a href="https://docs.docker.com/machine/install-machine/" target="_blank" rel="external">Install Docker Machine</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>借着课程的机会来了解一下 Docker，大部分内容来自官方文档以及课程指引。</p>]]>
+    
+    </summary>
+    
+      <category term="Docker" scheme="http://wdxtub.com/tags/Docker/"/>
+    
+      <category term="容器" scheme="http://wdxtub.com/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[第十二周 - 正趣果上果]]></title>
@@ -696,7 +827,7 @@
     <link href="http://wdxtub.com/2016/03/30/sad-r6/"/>
     <id>http://wdxtub.com/2016/03/30/sad-r6/</id>
     <published>2016-03-30T11:11:03.000Z</published>
-    <updated>2016-04-02T20:17:28.000Z</updated>
+    <updated>2016-04-02T20:46:16.000Z</updated>
     <content type="html"><![CDATA[<p>接着上次的练习，这次给出具体场景，来进行设计模式的应用，咱们直接看习题。</p>
 <a id="more"></a>
 <hr>
@@ -716,18 +847,18 @@
 </blockquote>
 <p>（注）这个模式我也不是很确定</p>
 <p>前端控制器模式（Front Controller Pattern）是用来提供一个集中的请求处理机制，所有的请求都将由一个单一的处理程序处理。该处理程序可以做认证/授权/记录日志，或者跟踪请求，然后把请求传给相应的处理程序。</p>
-<p>图和伪代码稍后弄</p>
+<p>图和伪代码略</p>
 <blockquote>
 <p>弄一个消息系统，可以广播给所有的订阅者，什么设计模式比较合适呢？画出类图并写出伪代码。</p>
 </blockquote>
 <p>当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。</p>
-<p>图和伪代码稍后弄</p>
+<p>图和伪代码略</p>
 <blockquote>
 <p>同一个社区的方法除了颜色基本一致，什么设计模式比较合适呢？画出类图并写出伪代码。</p>
 </blockquote>
 <p>（注）这个模式我也不是很确定</p>
 <p>享元模式（Flyweight Pattern）主要用于减少创建对象的数量，以减少内存占用和提高性能。这种类型的设计模式属于结构型模式，它提供了减少对象数量从而改善应用所需的对象结构的方式。</p>
-<p>图和伪代码稍后弄</p>
+<p>图和伪代码略</p>
 <blockquote>
 <p>给出一个实际生活中使用状态模式的例子</p>
 </blockquote>
@@ -5481,91 +5612,6 @@ int connect(int sockfd, struct sockaddr *serv_addr, int addrlen);
       <category term="Latex" scheme="http://wdxtub.com/tags/Latex/"/>
     
       <category term="符号" scheme="http://wdxtub.com/tags/%E7%AC%A6%E5%8F%B7/"/>
-    
-      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Google 搜索技巧]]></title>
-    <link href="http://wdxtub.com/2016/03/26/google-tip/"/>
-    <id>http://wdxtub.com/2016/03/26/google-tip/</id>
-    <published>2016-03-26T16:15:16.000Z</published>
-    <updated>2016-03-26T16:16:19.000Z</updated>
-    <content type="html"><![CDATA[<p>这里记录一些非常有用的搜索技巧，熟练运用后可以有效提升自己的效率。</p>
-<a id="more"></a>
-<hr>
-<h2 id="u64CD_u4F5C_u7B26"><a href="#u64CD_u4F5C_u7B26" class="headerlink" title="操作符"></a>操作符</h2><p><code>+</code> 强制搜索</p>
-<p>由于Google会忽略和过滤一些常用词（称为stop words / common words），如and、how等。使用+可以让搜索引擎强制包括这些词。使用+还可以强制过滤关键词变体形式（不让搜索结果出现关键词的其它形式），如单复数、动词时态、ing形式等等。</p>
-<p><code>-</code>  逻辑非</p>
-<p>用于过滤-号后面的关键词。如：MP3 -MP4，表示只搜索MP3而不要MP4的搜索结果。 -号后面没有空格。</p>
-<p><code>~</code> 同义词</p>
-<p>关键词前加波浪线。如：~table 。</p>
-<p><code>*</code> 通配符</p>
-<p>如：Google was founded in * 。</p>
-<p><code>**</code> 指数</p>
-<p>作用同  ^ ，如：2**10 。</p>
-<p><code>&quot; &quot;</code> 引号</p>
-<p>用引号精确搜索，有时可只用左侧引号。如：”Google hacking” = “Google hacking 。</p>
-<p><code>|</code> 逻辑或</p>
-<p>作用同 OR ，如：Google hacking | hacks 。</p>
-<p><code>..</code> 数字范围</p>
-<p>用于限定数值范围，如：spring festival logo 2002..2009 。</p>
-<p><code>^</code> 指数</p>
-<p>作用同  ** ，如：2^10 。</p>
-<h2 id="u64CD_u4F5C_u547D_u4EE4"><a href="#u64CD_u4F5C_u547D_u4EE4" class="headerlink" title="操作命令"></a>操作命令</h2><p><code>OR</code>  逻辑或</p>
-<p>作用同 | ，如：Google hacking OR hacks 。</p>
-<p><code>define:</code>  关键词定义</p>
-<p>查询关键词的网络释义。如： define:google 。</p>
-<p><code>ext:</code>  限定搜索指定文件类型</p>
-<p>作用同 filetype:</p>
-<p><code>filetype:</code>  限定搜索指定文件类型<br>    作用同 ext: 如：filetype:pdf = ext:pdf 。目前文件类型支持如下格式：<br>    Adobe Acrobat PDF (.pdf)<br>    Adobe Postscript (.ps)<br>    Autodesk DWF (.dwf)<br>    Google地球 KML (.kml)<br>    Google地球 KMZ (.kmz)<br>    Lotus 1-2-3（wk1、wk2、wk3、wk4、wk5、wki、wks、wku）<br>    Lotus WordPro (.lwp)<br>    MacWrite (.mw)<br>    Microsoft Excel (.xls)<br>    Microsoft Powerpoint (.ppt)<br>    Microsoft Word (.doc)<br>    Microsoft Works（wks、wps、wdb）<br>    Microsoft Write (.wri)<br>    Rich Text Format富文本格式 (.rtf)<br>    Shockwave Flash (.swf)<br>    纯文本（ans、txt）</p>
-<p><code>intitle:</code>  限定搜索标题中含指定关键词的网页</p>
-<p>如： intitle:google search guide 。限定多个关键词用 allintitle:</p>
-<p><code>inurl:</code>  限定搜索url中含指定关键词的网页</p>
-<p>如： inurl:google search guide 。通过inurl:view.shtml 你可以找到在线的网络摄像头。 限定多个关键词用 allinurl:</p>
-<p><code>inanchor:</code>  限定搜索页面链接锚文本中含指定关键词的网页</p>
-<p>如： inanchor:google search guide 。限定多个关键词用 allinanchor:</p>
-<p><code>intext:</code>  限定搜索正文文本（不含标题和链接）中含指定关键词的网页</p>
-<p>如： intext:google vs mircosoft。</p>
-<h2 id="u7F51_u7AD9_u7F51_u9875_u547D_u4EE4"><a href="#u7F51_u7AD9_u7F51_u9875_u547D_u4EE4" class="headerlink" title="网站网页命令"></a>网站网页命令</h2><p><code>site:</code>  限定搜索某网站的网页</p>
-<p>如： site:www.google.com 。</p>
-<p><code>link:</code>  搜索链向某网站/网址的网页</p>
-<p>如： link:www.google.com 。</p>
-<p><code>related:</code>  搜索与某网页相似或相关的页面</p>
-<p>如： related:www.google.com 。</p>
-<p><code>cache:</code>  搜索某网页在Google缓存（网页快照）中的旧版本</p>
-<p>如： cache:www.google.com 。</p>
-<p><code>info:</code>  综合查询某网页的信息，即列出上述四个命令</p>
-<p>如： info:www.google.com 。作用同 id:</p>
-<h2 id="u56FE_u7247_u641C_u7D22_u4E0E_u5F71_u89C6_u641C_u7D22"><a href="#u56FE_u7247_u641C_u7D22_u4E0E_u5F71_u89C6_u641C_u7D22" class="headerlink" title="图片搜索与影视搜索"></a>图片搜索与影视搜索</h2><p>filetype: 限定搜索指定文件类型的图片，支持如下格式：</p>
-<ul>
-<li>filetype:jpg</li>
-<li>filetype:gif</li>
-<li>filetype:png</li>
-<li>filetype:bmp</li>
-</ul>
-<p>imagesize: 限定搜索指定尺寸的图片，如: imagesize:800x600</p>
-<p>URL 参数：加在图片搜索网页的 URL 后面，可以实现更精细的搜索</p>
-<ul>
-<li>&amp;imgtype=news 资讯</li>
-<li>&amp;imgtype=face 脸部特写</li>
-<li>&amp;imgtype=clipart 剪贴画</li>
-<li>&amp;imgtype=lineart 素描</li>
-<li>&amp;imgtype=photo 照片</li>
-<li>&amp;imgc=gray 黑白图片</li>
-<li>&amp;imgc=mono 灰阶图片</li>
-<li>&amp;imgc=color 全彩图片</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这里记录一些非常有用的搜索技巧，熟练运用后可以有效提升自己的效率。</p>]]>
-    
-    </summary>
-    
-      <category term="Google" scheme="http://wdxtub.com/tags/Google/"/>
-    
-      <category term="搜索" scheme="http://wdxtub.com/tags/%E6%90%9C%E7%B4%A2/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
     
