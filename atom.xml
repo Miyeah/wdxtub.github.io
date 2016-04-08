@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Agony is my triumph]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wdxtub.com/"/>
-  <updated>2016-04-08T16:43:18.000Z</updated>
+  <updated>2016-04-08T18:42:00.000Z</updated>
   <id>http://wdxtub.com/</id>
   
   <author>
@@ -13,6 +13,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[深入理解计算机系统 第 26 课 Future of Computing]]></title>
+    <link href="http://wdxtub.com/2016/04/08/csapp-26/"/>
+    <id>http://wdxtub.com/2016/04/08/csapp-26/</id>
+    <published>2016-04-08T18:40:49.000Z</published>
+    <updated>2016-04-08T18:42:00.000Z</updated>
+    <content type="html"><![CDATA[<p>从 1965 年看 2015 年，和从 2015 年想象 2065 年，究竟哪个会更让我们惊喜？</p>
+<a id="more"></a>
+<hr>
+ 公式 
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>从 1965 年看 2015 年，和从 2015 年想象 2065 年，究竟哪个会更让我们惊喜？</p>]]>
+    
+    </summary>
+    
+      <category term="CMU" scheme="http://wdxtub.com/tags/CMU/"/>
+    
+      <category term="未来" scheme="http://wdxtub.com/tags/%E6%9C%AA%E6%9D%A5/"/>
+    
+      <category term="计算机" scheme="http://wdxtub.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[深入理解计算机系统 第 25 课 Thread-Level Parallelism]]></title>
@@ -2175,45 +2201,6 @@
       <category term="思考" scheme="http://wdxtub.com/tags/%E6%80%9D%E8%80%83/"/>
     
       <category term="Technique" scheme="http://wdxtub.com/categories/Technique/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[范式转移]]></title>
-    <link href="http://wdxtub.com/2016/03/27/paradigm-shift/"/>
-    <id>http://wdxtub.com/2016/03/27/paradigm-shift/</id>
-    <published>2016-03-28T00:18:45.000Z</published>
-    <updated>2016-03-28T02:19:32.000Z</updated>
-    <content type="html"><![CDATA[<p>所谓范式，是一套非常清晰的概念、思维模式、研究方法、假设和标准。从这些基准出发，我们可以推导演绎出『真理』。但假如有一天，基准改变了，是不是这些『真理』，也就不再『真』了？</p>
-<a id="more"></a>
-<hr>
-<p>前段时间知道了『范式转移』这个概念，感觉很有意思，但是拖着拖着一直到今天才动笔。一是懒，二是最近生活中的一些变化也印证了『范式转移』本身，能够说道说道了。</p>
-<p>简单来说，范式转移可以看做是一种根本假设的改变，继而带来翻天覆地的影响。对于我们来说，范式转移更应该接近于『范式升级』，我们要改变的不仅是思维，而是对事物对人情的更准确更基本的认识。</p>
-<p>从去年九十月份开始一路面试了半年，了解了许多之前不熟悉的圈子，接触了不同的行业、公司、职位。虽然通过面试官来了解一个公司有些『管中窥豹』，但是至少要比从新闻中得来的要真实。毕竟新闻里说得都是最好的一面，刚入职的话，更可能接触的就是面试官一级的人。大公司选组更像是摇骰子，小公司更多时候是跟着创始人的想法走。我既不想把未来寄托于概率，也不想丢掉太多的自主性，那么正在发展转型期的已经证明自己的公司恐怕是最佳的选择，既可以通过自己的努力主导技术及业务方向，又可以不被各种制度流程所束缚。</p>
-<p>从学生向社会人转变，其实就是一个『范式转移』的过程。校园是静态的，成绩、奖项以及几乎固定的同学；只要分数高，很多事儿都不是事儿；社会是动态的，环境、形势一直在变；前行路上难免磕磕碰碰，荣时知辱，逆时知顺。</p>
-<p>在选择职业选择公司的时候，重要的是『三观一致』，知道自己的价值，去最能发光发热的地方去。</p>
-<blockquote>
-<p>一个人的命运，当然要靠自我奋斗，但是也要考虑到历史的行程。</p>
-</blockquote>
-<p>职业发展一定要从长远的角度思考，慢慢去摸索未来与趋势，顺势而为。俗一点说，在大家都能赚钱的时候才最好赚钱。与人相处，也更应该『职业』一些，以合作为主、待人接物自然（不要凡事都写在脸上），珍惜别人的时间，让身边的人变得更好，从更大的格局去看待问题。</p>
-<p>另外，从课程考试向『做成事情』转变，也是重中之重。很多时候，我们是因为没有能力做好手头上的事情，所以才不喜欢。而越是工作做不好的无用之人，就越是会强调自己有多努力。</p>
-<p>无论是在学校还是在公司，重要的不是分数的高低还是职位的级别，而是全身心投入，去验证自己的想法。不要专门去做那些证明自己的事情，事实会说明一切。</p>
-<p>这也是为什么我决定从 iOS 开发转到后台系统的开发。iOS 实在太火了，各种培训班批量生产学员搞得乌烟瘴气（最近的前端热估计也是这个套路），开发一款基本的应用难度也越来越低。当然，高端人才总是稀缺的，但是有这样的大环境在，又岂能独善其身呢？</p>
-<p>做成事情的重点是策略和坚持，而坚持就是最重要的策略。越来越觉得，无论是编程、雕刻还是建筑，都是技术加艺术的结晶，天赋固然重要，但刻苦练习也是不可或缺的。想要做成事情，不把手弄『脏』是不可能的。</p>
-<p>于是主题就变成：范式转移了吗？手弄脏了吗？</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>所谓范式，是一套非常清晰的概念、思维模式、研究方法、假设和标准。从这些基准出发，我们可以推导演绎出『真理』。但假如有一天，基准改变了，是不是这些『真理』，也就不再『真』了？</p>]]>
-    
-    </summary>
-    
-      <category term="改变" scheme="http://wdxtub.com/tags/%E6%94%B9%E5%8F%98/"/>
-    
-      <category term="范式" scheme="http://wdxtub.com/tags/%E8%8C%83%E5%BC%8F/"/>
-    
-      <category term="远见" scheme="http://wdxtub.com/tags/%E8%BF%9C%E8%A7%81/"/>
-    
-      <category term="Thinking" scheme="http://wdxtub.com/categories/Thinking/"/>
     
   </entry>
   
