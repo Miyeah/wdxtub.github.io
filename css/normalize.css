@@ -232,9 +232,6 @@ pre,
 samp {
   font-family: monospace, monospace;
   font-size: 1em;
-  padding: 1px 3px;
-  margin: 0 3px;
-  word-wrap: break-word;
 }
 
 /* Forms
