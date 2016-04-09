@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>软件架构与设计 习题课 3 从不同视角描述系统 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">软件架构与设计 习题课 3 从不同视角描述系统</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/."><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">软件架构与设计 习题课 3 从不同视角描述系统</h1><div class="post-content"><p>这一次的作业，会在之前的基础上，通过不同的观察角度，更加科学系统来展示整个软件的架构和各个部分的关系。老师给出了一篇论文，这里也会简单总结下。</p>
+<a id="more"></a>
+<hr>
+<p>老师给出的论文叫做 <a href="http://www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf" target="_blank" rel="external">Architectural Blueprints—The “4+1” View Model of Software Architecture</a>，实话说，没啥用。作者用若干个例子来说明了我们需要从多个角度来审视和描述系统，整个思路基本上用下面这张图就可以概括：</p>
+<p><img src="/images/Screen%20Shot%202016-01-31%20at%202.16.18%20PM.jpg" alt="总体设计"></p>
+<p>因为论文是20多年前的，所以很多当时比较『新』的概念，其实在现在的软件开发中早已成为平常，甚至也已经过时了。至少在目前风口浪尖的移动互联网，等这些乱七八糟的文档画完，项目估计都黄了。更有意思的是，这篇论文和我们的作业并没有太大关系（你™是在逗我？）</p>
+<p>这里补充一段自己在飞机上看时写的批注：20 年前的方法论，在很多尚未成熟的领域（比如移动互联网）不适用，因为需求本身不是明确的，而是要靠试错和挖掘的。而且需要撰写的文档太多，会导致启动/转向缓慢，并且保证文档实时更新也是难题，而不更新的文档，其实是毫无意义的。文档应当是开发的产出，反过来，开发不应是文档的产出。但是这种分层和切片的思想，是很有用的。不过在这个具体的场景中，对于已经理解了整个系统的人，这样写会更清晰，但是对于不理解的人来说，还是难以有全局概念（但是比传统的仍旧好一些）。就我个人的感觉，还是快速原型+迭代更新更有效。</p>
+<p>那么现在我们来看看，这次的作业是要干嘛。简单来说，就是利用这种多个视角的方式来继续完成之前的设计，有以下角度：</p>
+<ul>
+<li>功能视图：各个模块图，包括接口和依赖<ul>
+<li>系统中主要的功能模块是哪些</li>
+<li>使用简化版的 UML 2.0 来描述</li>
+</ul>
+</li>
+<li>信息视图：展示 schema，数据模型和数据流，用状态机图来描述系统的信息模型</li>
+<li>部署视图：软件的组件需要在哪里部署和运行</li>
+<li>开发视图：主要的软件包是什么</li>
+<li>并行视图：在不同地方运行时，系统是如何运行的。你会如何保证数据一致性？</li>
+</ul>
+<p>以上是作业的第一部分（这句话的意思是，还有另外一部分，不过先从这里开始），下面是我的设计，但是用来描述的文字就不翻译了，就算是抛砖引玉，大家自己思考下。</p>
+<h2 id="Function_View"><a href="#Function_View" class="headerlink" title="Function View"></a>Function View</h2><p><img src="/images/3.1functionview.png" alt="3.1functionvie"></p>
+<h2 id="Information_View"><a href="#Information_View" class="headerlink" title="Information View"></a>Information View</h2><p><img src="/images/3.1informationview.png" alt="3.1informationvie"></p>
+<h2 id="Concurrency_View"><a href="#Concurrency_View" class="headerlink" title="Concurrency View"></a>Concurrency View</h2><p><img src="/images/3.1concurrencyview.png" alt="3.1concurrencyvie"></p>
+<h2 id="Deployment_View"><a href="#Deployment_View" class="headerlink" title="Deployment View"></a>Deployment View</h2><p><img src="/images/3.1deploymentview.png" alt="3.1deploymentvie"></p>
+<h2 id="Development_View"><a href="#Development_View" class="headerlink" title="Development View"></a>Development View</h2><p><img src="/images/3.1developmentview.png" alt="3.1developmentvie"></p>
+<p>接下来的一部分是根据之前的设计，把每个架构风格的各个部件列举出来，如：</p>
+<ul>
+<li>组件</li>
+<li>连接器</li>
+<li>数据元素</li>
+<li>行为</li>
+<li>需要注意的事项</li>
+</ul>
+<p>基本上对着 PPT 改一下就好，这里也就不赘述了。</p>
+<p>说了这么多，就是想要表达，在一门以实践为重的学科里，天天学理论，是有多™蛋疼。</p>
+<p>本课完。</p>
+</div><div data-thread-key="vault/sad-r3.html" data-title="软件架构与设计 习题课 3 从不同视角描述系统" data-url="http://wdxtub.com/vault/sad-r3.html" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>

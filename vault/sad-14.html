@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>软件架构与设计 第 14 课 Architecture Tradeoff Analysis Method | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">软件架构与设计 第 14 课 Architecture Tradeoff Analysis Method</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/."><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">软件架构与设计 第 14 课 Architecture Tradeoff Analysis Method</h1><div class="post-content"><p>这节课具体会介绍进行架构分析时候的一些权衡考量的方法，还是非常有用的（至少比前面两课那么『虚』的要好很多）。这里也会综合老师给出的阅读材料，争取给大家一个完整的概念。</p>
+<a id="more"></a>
+<hr>
+<h2 id="u9636_u6BB5_u4E00_Evaluator__26amp_3B_Decision_Maker"><a href="#u9636_u6BB5_u4E00_Evaluator__26amp_3B_Decision_Maker" class="headerlink" title="阶段一 Evaluator &amp; Decision Maker"></a>阶段一 Evaluator &amp; Decision Maker</h2><h3 id="u7B2C_u4E00_u6B65_Present_ATAM"><a href="#u7B2C_u4E00_u6B65_Present_ATAM" class="headerlink" title="第一步 Present ATAM"></a>第一步 Present ATAM</h3><p>使用的技术有：</p>
+<ul>
+<li>Utility tree genration</li>
+<li>Architecture elicitation and analysis</li>
+<li>Scenario brainstorming / mapping</li>
+</ul>
+<p>这个阶段的产出有</p>
+<ul>
+<li>Architectural approaches</li>
+<li>Utility tree</li>
+<li>Scenarios</li>
+<li>Risks and “non-risks”</li>
+<li>sensitivity points and tradeoffs</li>
+</ul>
+<p><img src="/images/14558185071430.jpg" alt="ATAM 过程"></p>
+<h3 id="u7B2C_u4E8C_u6B65_Present_Business_Drivers"><a href="#u7B2C_u4E8C_u6B65_Present_Business_Drivers" class="headerlink" title="第二步 Present Business Drivers"></a>第二步 Present Business Drivers</h3><p>顾客代表会描述：</p>
+<ul>
+<li>系统的商业 context</li>
+<li>高层级的功能需求</li>
+<li>高层级的质量需求</li>
+</ul>
+<blockquote>
+<p>Architectural drivers: quality attributes that “shape” the architecture</p>
+<p>Critical reirements: quality attributes most central to the system’s success</p>
+</blockquote>
+<p>具体来说包括：</p>
+<ul>
+<li>系统的关键功能</li>
+<li>任何技术、管理、经济或政策的限制</li>
+<li>商业目标和背景</li>
+<li>主要的权益关系着</li>
+<li>主要的质量目标(principla quality attribute, NFP)</li>
+</ul>
+<h3 id="u7B2C_u4E09_u6B65_Present_the_Architecture"><a href="#u7B2C_u4E09_u6B65_Present_the_Architecture" class="headerlink" title="第三步 Present the Architecture"></a>第三步 Present the Architecture</h3><p>展示系统的整体架构，可能包括：</p>
+<ul>
+<li>技术限制：操作系统、硬件、中间件</li>
+<li>其他需要与之交互的系统</li>
+<li>如何选择架构风格来达到质量要求</li>
+</ul>
+<p>这个阶段评估小组开始寻找可能的风险</p>
+<h3 id="u7B2C_u56DB_u6B65_Identify_Architectural_Approaches"><a href="#u7B2C_u56DB_u6B65_Identify_Architectural_Approaches" class="headerlink" title="第四步 Identify Architectural Approaches"></a>第四步 Identify Architectural Approaches</h3><p>开始寻找那些在架构中堆达到质量目标举足轻重的关键点，了解比较常用的架构模型：</p>
+<ul>
+<li>Client-Server</li>
+<li>3-tier</li>
+<li>Proxy</li>
+<li>Publish-Subscribe</li>
+<li>Redundant hardware</li>
+</ul>
+<h3 id="u7B2C_u4E94_u6B65_Generate_Utility_Tree"><a href="#u7B2C_u4E94_u6B65_Generate_Utility_Tree" class="headerlink" title="第五步 Generate Utility Tree"></a>第五步 Generate Utility Tree</h3><p>通过构造 utility tree 来进一步优化改进重要的质量目标</p>
+<ul>
+<li>Utility tree 是一个自顶向下的方法，来驱动属性相关的需求</li>
+<li>高层级节点应当是最重要的质量目标（如 performance, modifiability, security 和 availability）</li>
+<li>场景是 utility tree 的叶子</li>
+</ul>
+<p><img src="/images/14558198859387.jpg" alt="一个 utility tree 的例子"></p>
+<p><strong>Scenarios</strong></p>
+<p>用来展示利益相关者的兴趣所在，便于理解质量需求，应当包括</p>
+<ul>
+<li>Anticipated uses of (use case scenarios)</li>
+<li>Anticipated changes to (growth scenarios)</li>
+<li>Unanticipated stresses (exploratory scenarios)</li>
+</ul>
+<p><img src="/images/14558199929846.jpg" alt="ATAM Scenarios"></p>
+<p><img src="/images/14558200171596.jpg" alt="Scenario 的例子"></p>
+<h3 id="u7B2C_u516D_u6B65_Analyze_Architectural_Approaches"><a href="#u7B2C_u516D_u6B65_Analyze_Architectural_Approaches" class="headerlink" title="第六步 Analyze Architectural Approaches"></a>第六步 Analyze Architectural Approaches</h3><p>评估小组从特定的质量目标的角度入手，了解架构及识别可能的风险：</p>
+<ul>
+<li>找到那些保证质量需求的方法</li>
+<li>提出相关问题</li>
+<li>识别出 risks, non-risks, sensitivity points 和 tradeoffs</li>
+</ul>
+<p>下面是一些例子：</p>
+<p><img src="/images/14558202021169.jpg" alt="可能的问题"></p>
+<p><img src="/images/14558202227194.jpg" alt="Sensitivity &amp; Tradeoffs"></p>
+<p><img src="/images/14558202695271.jpg" alt="Risk &amp; Non-Risks"></p>
+<h3 id="u6700_u540E_u51E0_u6B65"><a href="#u6700_u540E_u51E0_u6B65" class="headerlink" title="最后几步"></a>最后几步</h3><ul>
+<li>第七步 Brainstom &amp; Prioritize Scenarios<ul>
+<li>利益相关者头脑风暴，相关过程</li>
+</ul>
+</li>
+<li>第八步 Analyze Architectural Approaches<ul>
+<li>重复第六步中的工作</li>
+</ul>
+</li>
+<li>第九步 Present ATAM results<ul>
+<li>完整的产出</li>
+<li>Architectural appoaches</li>
+<li>Utility tree</li>
+<li>Scenarios</li>
+<li>Risks and Non-risks</li>
+<li>Sensitivity points and tradeoffs</li>
+</ul>
+</li>
+</ul>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>架构分析既不简单也不便宜</li>
+<li>从长远来看，利大于弊</li>
+<li>关于系统核心特性的早期信息非常重要</li>
+<li>应当使用多种分析技术</li>
+<li>到底需要分析到什么程度？<ul>
+<li>这是架构师最需要琢磨的地方</li>
+<li>分析过多，则会无谓消耗有限的资源</li>
+<li>分析过少，则会面临系统失败的风险</li>
+<li>错误的分析既浪费资源，又可能导致系统失败</li>
+</ul>
+</li>
+</ul>
+<h2 id="u9605_u8BFB_u6750_u6599_u7B14_u8BB0"><a href="#u9605_u8BFB_u6750_u6599_u7B14_u8BB0" class="headerlink" title="阅读材料笔记"></a>阅读材料笔记</h2><ul>
+<li>云计算部分非常简略，建议参考我的云计算课程笔记</li>
+<li>使用 ATAM 来评估一个架构时，目标是理解不同的架构决定对系统质量可能带来的影响，所以可以看作是一个风险识别的方法</li>
+<li>实际上是根据不同的属性和资源提出对应的问题，并找出相互的影响</li>
+<li>三个场景：use case scenarios, growth scenarios, exploratory scenarios</li>
+<li>不同的场景有不同的侧重点和要求，具体可以结合下图的实例来理解体会</li>
+</ul>
+<p><img src="/images/14558122473154.jpg" alt="Use Case Scenarios"></p>
+<p><img src="/images/14558122635076.jpg" alt="Growth Scenarios"></p>
+<p><img src="/images/14558122890374.jpg" alt="Exploratory Scenarios"></p>
+<ul>
+<li>Utility tree 和 Facilitated brainstorm 是两种常见的方式，各有不同的侧重</li>
+</ul>
+<p><img src="/images/14558123943034.jpg" alt="Utility Trees vs. Scenario Brainstorming"></p>
+<p><img src="/images/14558124405619.jpg" alt="一个 Utility Tree 的例子"></p>
+<ul>
+<li>ATAM 过程结束后的产出有<ul>
+<li>Risk and Non-Risks 文档，用来分析各个架构决定的风险性</li>
+<li>Sensitivity and Tradeoff Points 文档，用来具体说明不同权衡的利弊（最重要的部分）</li>
+<li>A Structure for Reasoning 文档，用来说明具体的架构选择及其原因</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/14558126249185.jpg" alt="Concept Interactions"></p>
+<ul>
+<li>评测中的重要属性<ul>
+<li>Availability, Modifiability, Performance, Security, Usability</li>
+<li>Deployment, Locating, Errors, Cost/Effort Estimation, Personalization, Safety</li>
+</ul>
+</li>
+<li>可能的风险来源<ul>
+<li>Risks Due to Unknowns</li>
+<li>Risks Due to Side Effects of Architectural Decisions</li>
+<li>Risks Due to Ignoring Architectural Solutions to Attribute Requirements</li>
+<li>Risks Due to Interaaction with Other Organizations</li>
+</ul>
+</li>
+<li>具体步骤<ul>
+<li>Background</li>
+<li>Business and Mission Drivers</li>
+<li>Architectural Approaches</li>
+<li>Utility Tree</li>
+<li>Scenario Generation and Prioritization</li>
+<li>Analysis Process</li>
+<li>Post-ATAM Activities </li>
+</ul>
+</li>
+</ul>
+<p>感觉还是有点虚，估计作业就是模仿阅读材料完成一次具体的 ATAM 分析，但是老师给出的参考作业的内容又是关于 SOA 的，真的很令人费解。</p>
+</div><div data-thread-key="vault/sad-14.html" data-title="软件架构与设计 第 14 课 Architecture Tradeoff Analysis Method" data-url="http://wdxtub.com/vault/sad-14.html" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
