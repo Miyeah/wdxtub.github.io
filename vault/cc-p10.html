@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一个逗比的碎碎念"><title>云计算 Twitter 语料分析 10 搭建数据分析网络应用 | 小土刀</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">云计算 Twitter 语料分析 10 搭建数据分析网络应用</h1><a id="logo" href="/.">小土刀</a><p class="description">Agony is my triumph</p></div><div id="nav-menu"><a href="/."><i class="icon-home"> 首页</i></a><a href="/about/"><i class="icon-power-cord"> 技术</i></a><a href="/life/"><i class="icon-pacman"> 生活</i></a><a href="/portfolio/"><i class="icon-infinite"> 作品</i></a><a href="/archives/"><i class="icon-floppy-disk"> 归档</i></a><a href="/atom.xml"><i class="icon-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">云计算 Twitter 语料分析 10 搭建数据分析网络应用</h1><div class="post-content"><p>这是 Twitter 语料分析的最后一个阶段，我们需要搭建一个完整的数据分析网络应用</p>
+<a id="more"></a>
+<hr>
+<h2 id="u5B66_u4E60_u76EE_u6807"><a href="#u5B66_u4E60_u76EE_u6807" class="headerlink" title="学习目标"></a>学习目标</h2><ol>
+<li>探索和使用不同的方法和工具来提高 web 服务的性能</li>
+<li>拓展服务器使其可以处理不同的请求</li>
+<li>开发后端服务器处理范围请求</li>
+<li>开发支持写入请求的 web 服务</li>
+<li>开发容错可拓展的服务</li>
+<li>评估主流数据库的写入性能，并探索不同的优化技术</li>
+<li>实现强一致性</li>
+<li>比较不同数据库的写入性能和特点</li>
+<li>分析写入操作对系统中每个组件的影响</li>
+</ol>
+<h2 id="u4EFB_u52A1_u76EE_u6807"><a href="#u4EFB_u52A1_u76EE_u6807" class="headerlink" title="任务目标"></a>任务目标</h2><p>Q1 中我们学会了如何处理简单的并发请求。Q2 中我们结合后端（MySQL 和 HBase） 完成了简单的键值对存储和查询工作。Q3 中我们利用 MySQL 和 HBase 的特性处理更加复杂的请求。</p>
+<p>但是之前我们处理的都是读请求，这次我们会处理大量写请求</p>
+<ul>
+<li>只能使用 M 系列不大于 large 型号的机器</li>
+<li>打标签 <code>15619project:phase3</code></li>
+<li>预算是 $0.85/h，按照标注计费</li>
+<li>队伍的预算是 <code>$50</code>（包括 Live Test）</li>
+</ul>
+<p>这次我们可以从 MySQL 和 HBase 中选择一个来实现（或者混合也可以）</p>
+<p>具体的测试计划为：</p>
+<p><img src="/images/14595094971909.jpg" alt=""></p>
+<h2 id="Query_4__28Tweet_Server_29"><a href="#Query_4__28Tweet_Server_29" class="headerlink" title="Query 4 (Tweet Server)"></a>Query 4 (Tweet Server)</h2><p>目标 10000 rps</p>
+<p>给定 tweet id，我们需要处理针对一个或多个部分的 set 和 get 请求。</p>
+<blockquote>
+<p>set 请求的格式</p>
+</blockquote>
+<p><code>q4?tweetid=&lt;tweetid&gt;&amp;op=set&amp;seq=&lt;sequence number&gt;&amp;fields=&lt;comma separated list of fields&gt;&amp;payload=&lt;comma separated list of base64 * encoded fields&gt;</code></p>
+<ul>
+<li><code>tweetid</code> - 每条 tweet 的独立标识符</li>
+<li><code>op</code> - 一定为 set</li>
+<li><code>seq</code> - 对于某个 tweetid 的操作编号，从 1 开始，假设一个操作的编号是 <code>s</code>，那么只有在前面 <code>s-1</code> 个操作都完成了之后，才能继续执行</li>
+<li><code>fields</code> - 需要写入的部分</li>
+<li><code>payload</code> - 需要写入的数据，以逗号分隔</li>
+</ul>
+<p>例如：</p>
+<p><code>GET /q4?tweetid=15213&amp;op=set&amp;seq=1&amp;fields=repliedby,reply_count&amp;payload=MzM2NDE5MzE2NjUsMTc0Mjg5OTA1OTksOTQ5MDczNzc5NjQsMzkzMjIxMzU4NjQsMTg0NDA4MDg5NTUsNTE2MjU1MzMxOTgsOTI4MzA3NTgwNzQ=,Nw==</code></p>
+<p>响应格式</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TEAMID,TEAM_AWS_ACCOUNT_ID<span class="string">\n</span></span><br><span class="line">success<span class="string">\n</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>get 请求的格式</p>
+</blockquote>
+<p><code>q4?tweetid=&lt;tweetid&gt;&amp;op=get&amp;seq=&lt;sequence number&gt;&amp;fields=&lt;comma separated list of fields&gt;&amp;payload=&lt;empty&gt;</code></p>
+<ul>
+<li><code>tweetid</code> - 每条 tweet 的独立标识符</li>
+<li><code>op</code> - 一定为 get</li>
+<li><code>seq</code> - 对于某个 tweetid 的操作编号，从 1 开始，假设一个操作的编号是 <code>s</code>，那么只有在前面 <code>s-1</code> 个操作都完成了之后，才能继续执行</li>
+<li><code>fields</code> -需要读入的部分，只会有一个部分</li>
+<li><code>payload</code> - 为空</li>
+</ul>
+<p>例如</p>
+<p><code>GET /q4?tweetid=15213&amp;op=get&amp;seq=2&amp;fields=repliedby&amp;payload=</code></p>
+<p>如果有对应的数据，响应为</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TEAMID,TEAM_AWS_ACCOUNT_ID<span class="string">\n</span></span><br><span class="line">MzM2NDE5MzE2NjUsMTc0Mjg5OTA1OTksOTQ5MDczNzc5NjQsMzkzMjIxMzU4NjQsMTg0NDA4MDg5NTUsNTE2MjU1MzMxOTgsOTI4MzA3NTgwNzQ=<span class="string">\n</span></span><br></pre></td></tr></table></figure>
+<p>如果对应 field 未空，响应为</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TEAMID,TEAM_AWS_ACCOUNT_ID<span class="string">\n</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不同 field 的规格</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">field</th>
+<th style="text-align:center">type</th>
+<th style="text-align:center">example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">tweetid</td>
+<td style="text-align:center">long int</td>
+<td style="text-align:center">15213 </td>
+</tr>
+<tr>
+<td style="text-align:center">userid</td>
+<td style="text-align:center">long int</td>
+<td style="text-align:center">156190000001</td>
+</tr>
+<tr>
+<td style="text-align:center">username</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">CloudComputing </td>
+</tr>
+<tr>
+<td style="text-align:center">timestamp</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">Mon Feb 15 19:19:57 2016 </td>
+</tr>
+<tr>
+<td style="text-align:center">text</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">Welcome to P4!#CC15619#P3 </td>
+</tr>
+<tr>
+<td style="text-align:center">hashtag</td>
+<td style="text-align:center">comma separated string</td>
+<td style="text-align:center">CC15619,P3 </td>
+</tr>
+<tr>
+<td style="text-align:center">ip</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">128.2.217.13 </td>
+</tr>
+<tr>
+<td style="text-align:center">coordinates</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">-75.14310264,40.05701649 </td>
+</tr>
+<tr>
+<td style="text-align:center">repliedby</td>
+<td style="text-align:center">comma separated userid</td>
+<td style="text-align:center">156190000001,156190000002,156190000003 </td>
+</tr>
+<tr>
+<td style="text-align:center">reply_count</td>
+<td style="text-align:center">long int</td>
+<td style="text-align:center">3 </td>
+</tr>
+<tr>
+<td style="text-align:center">mentioned</td>
+<td style="text-align:center">comma separated userid</td>
+<td style="text-align:center">156190000004,156190000005,156190000006 </td>
+</tr>
+<tr>
+<td style="text-align:center">mentioned_count</td>
+<td style="text-align:center">long int</td>
+<td style="text-align:center">3 </td>
+</tr>
+<tr>
+<td style="text-align:center">favoritedby</td>
+<td style="text-align:center">comma separated userid</td>
+<td style="text-align:center">156190000007,156190000008,156190000009  </td>
+</tr>
+<tr>
+<td style="text-align:center">favorite_count</td>
+<td style="text-align:center">long int</td>
+<td style="text-align:center">3 </td>
+</tr>
+<tr>
+<td style="text-align:center">useragent</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">Mozilla/5.0 (iPhone; CPU iPhone OS …) </td>
+</tr>
+<tr>
+<td style="text-align:center">filter_level</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">PG-13 </td>
+</tr>
+<tr>
+<td style="text-align:center">lang</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">American </td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>一些提示</p>
+</blockquote>
+<ul>
+<li>RFC 3548 定义的 Base64 在大多数编程语言中都有内置支持</li>
+<li>处理请求的时候要按照 sequence number</li>
+<li>数据的一致性很重要，正确率很重要</li>
+<li>想想最影响性能的因素是什么，然后解决</li>
+<li>最好对不同的 tweetid 进行 sharding，这样更容易维持一致性</li>
+</ul>
+<h2 id="u9879_u76EE_u65E5_u5FD7"><a href="#u9879_u76EE_u65E5_u5FD7" class="headerlink" title="项目日志"></a>项目日志</h2><blockquote>
+<p>架构</p>
+</blockquote>
+<ul>
+<li>前端<ul>
+<li>ELB + 2 台 m4.large</li>
+</ul>
+</li>
+<li>后端<ul>
+<li>HBase(1 master +  3 slaves)</li>
+<li>后端服务器程序搭建在 master 节点上</li>
+<li>使用 Cloudera</li>
+</ul>
+</li>
+</ul>
+</div><div data-thread-key="vault/cc-p10.html" data-title="云计算 Twitter 语料分析 10 搭建数据分析网络应用" data-url="http://wdxtub.com/vault/cc-p10.html" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://wdxtub.com"/></form></div><div class="widget"><div class="widget-title">分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gossip/">Gossip</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Memory/">Memory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movie/">Movie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Story/">Story</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technique/">Technique</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Thinking/">Thinking</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Traveling/">Traveling</a></li></ul></div><div class="widget"><div class="comments-title">最近评论</div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title">友情链接</div><ul></ul><a href="http://jackqdyulei.github.io" title="Lei YU" target="_blank">Lei YU</a><ul></ul><a href="http://wdxtub.com/bookclips/" title="我的书摘" target="_blank">我的书摘</a><ul></ul><a href="http://wdxtub.com/interview/" title="刷题笔记" target="_blank">刷题笔记</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">小土刀.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"><script>var duoshuoQuery = {short_name:'wdxblog'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script></div></body></html>
